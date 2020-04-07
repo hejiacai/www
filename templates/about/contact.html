@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!--[if lt IE9]  --> 
+<script src="{/version file='html5.js'/}"></script>  
+<!-- [endif] -->
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+    <link rel="stylesheet" type="text/css" href="{/version file='jobnew.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='front.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='about.css'/}" />
+    <script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+    <script type="text/javascript">
+        window.CONFIG = {
+            HOST: '{/$siteurl.style/}',
+            COMBOPATH: '/js/v2/'
+        }
+    </script>
+    <script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+    <script type="text/javascript" src="{/version file="global.js"/}"></script>
+    <script type="text/javascript">
+            hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+    </script>
+<style>
+.contac p a{ display:inline-block; padding-left:18px; background:url(contactImg05.png) left 4px no-repeat; color:#24a5e3;}
+.contactList{ overflow:hidden;}
+.contactList li{ padding:25px; width:330px; border:1px solid #f2f2f2; background:#fff; float:left; margin:0 0 15px 15px;}
+.contactList li img{ display:block; float:left;}
+.contactList li p{ width:225px; float:right;}
+.contactList li p b{ font-family:"微软雅黑"; line-height:18px; font-weight:bold; color:#09b5c4; font-size:18px; display:block; padding-bottom:6px;}
+.contactList li p b.yew01{ color:#09b5c4}
+.contactList li p b.yew02{ color:#49c09a}
+.contactList li p b.yew03{ color:#ff7c58}
+.contactList li p b.yew04{ color:#4a92dc}
+.contactList li p span{ color:#444; display:block; line-height:20px; font-family:Arial, Helvetica, sans-serif;}
+</style>
+</head>
+<body>
+{/include file="new_headsearch_2015.html"/}
+
+<section class="oth">
+	<div class="othLft">
+    	{/include file="about/leftlink.html" link="contact"/}
+    </div>
+    <hgroup class="othRht">
+      <div class="hd"><h2>联系我们</h2></div>
+        <div class="bd contac">
+        	<p>传真号码：023-63611574&nbsp;&nbsp;&nbsp;&nbsp;邮政编码：400015
+</p>
+			<p>在线咨询：<a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin=2851501286&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:2851501286:51" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></p>
+            <p>重庆市江北区观音桥北城天街富力海洋广场网商产业园负2楼<a href="http://api.map.baidu.com/geocoder?address=重庆市江北区观音桥北城天街富力海洋广场网商产业园4楼负2楼&output=html" target="_blank" style="margin-left:10px;">查看电子地图</a></p>
+            
+        </div>
+        <ul class="contactList">
+        	<li>
+            	<img src="{/$siteurl.style/}/img/about/contactImg01.png" width="80" height="80" />
+                <p>
+                	<b class="yew01">企业客户服务</b>
+                    <span>电话：{/if $company_ser_phone!=''/}{/$company_ser_phone/}{/else/}400-1010-970 转1{//if/}
+          <br /> Q Q：2851501279<br />
+时间：9：00－18：00</span>
+                </p>
+            </li>
+            <li>
+            	<img src="{/$siteurl.style/}/img/about/contactImg02.png" width="80" height="80" />
+                <p>
+                	<b class="yew02">求职者咨询</b>
+                    <span>电话：{/if $person_ser_phone!=''/}{/$person_ser_phone/}{/else/}400-1010-970转2{//if/}<br />
+           Q Q： 2851501286<br />
+时间：9：00－18：00</span>
+                </p>
+            </li>
+            <li>
+            	<img src="{/$siteurl.style/}/img/about/contactImg03.png" width="80" height="80" />
+                <p>
+                	<b class="yew03">市场推广/品牌合作</b>
+                    <span>电话：{/$technical_phone/}<br />
+           Q Q：2851501259 / 3005075914<br />
+时间：9：00－18：00</span>
+                </p>
+            </li>
+            <li>
+            	<img src="{/$siteurl.style/}/img/about/contactImg04.png" width="80" height="80" />
+                <p>
+                	<b class="yew04">技术支持</b>
+                    <span>电话：{/$technical_phone/}<br />Q Q：2851501208<br />时间：9：00－18：00</span>
+                </p>
+            </li><li>
+            	<img src="{/$siteurl.style/}/img/about/contactImg05.jpg" width="80" height="80" />
+                <p>
+                	<b style="color:#7369f3">培训机构/讲师合作</b>
+                    <span>电话：17302351624<br/>QQ：2851501275<br/>微信：Dickmy</span>
+                </p>
+            </li>
+            <li>
+            	<img src="{/$siteurl.style/}/img/about/contactImg06.jpg" width="80" height="80" />
+                <p>
+                	<b style="color:#f5a70a">高校合作</b>
+                    <span>电话：15123309864<br />QQ：2851501397 / 2851501379时<br />间：9：00-18：00</span>
+                </p>
+            </li>
+        </ul>  
+        
+    </hgroup>
+    <div class="clear"></div>
+</section>
+{/include file="./about/footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+</body>
+</html>

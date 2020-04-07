@@ -1,0 +1,78 @@
+{/if $ajax_appraise_info && $_userid/}
+	<div class="appeal-all-item">
+		{/foreach $ajax_appraise_info as $v/}
+			<div class="appeal-jobseeker clearfix">
+				<span class="head-img"><img src="{/$v['photo_url']/}"/></span>
+				<div class="appeal-jobseeker-box">
+					<p class="username">{/if $v['is_hidename'] == 1/}匿名{/else/}{/if !empty($v['user_name'])/}{/base_lib_BaseUtils::cutstr($v['user_name'],1,'utf-8','','**')/}{/else/}--{//if/}{//if/}</p>
+					<p class="job-name">面试职位：{/$v['station']/}</p>
+					<div class="appeal-star" style="float: none;margin-bottom: 2px;">
+						{/if $v['match_level']/}
+							<span class="appeal-star-title1">岗位职责相符度：</span>
+							<p class="public-star"><span style="width:{/((int)$v['match_level']*20)/}%"></span></p>
+							<span class="color-red2">{/if $v['match_level']/}{/$v['match_level']/}{/else/}0{//if/}分</span>
+						{//if/}
+						{/if $v['welfare_salary_level']/}
+							<span class="appeal-star-title2">福利薪资相符度：</span>
+							<p class="public-star"><span style="width:{/((int)$v['welfare_salary_level']*20)/}%"></span></p>
+							<span class="color-red2">{/if $v['welfare_salary_level']/}{/$v['welfare_salary_level']/}{/else/}0{//if/}分</span>
+						{//if/}
+					</div>
+					<p class="evaluate-label">{/foreach $v['tip_names'] as $v2/}<span>{/$v2/}</span>{//foreach/}</p>
+					<!--<span class="job-tit">面试经过：</span>
+					<p class="job-infor-text" style="max-height: 93px;overflow: hidden">{/$v['content']/}</p>{/if mb_strlen($v['content']) > 156/}
+					<p class="companyp-switch companyp_switch_submit"><a href="">展开<i class="icon-arr-down">{//if/}</i></a></p>-->
+					<div class="appeal-operating clearfix">
+						<p class="thumbs-up"><a href="javascript:;" data-app="{/$v['appraise_id']/}" {/if $v['is_click']/}class='cur'{//if/}><i class="icon-up"></i>有用（<em>{/(int)$v['useful_count']/}</em>）</a><u></u><span class="time">{/date('Y-m-d',strtotime($v['appraise_time']))/}</span>
+						</p>
+					</div>
+					<!--{/if !empty($v['com_reply_content'])/}
+						&lt;!&ndash;回复&ndash;&gt;
+						<div class="appeal-replytext-box">
+							<p class="title"><span class="time">{/date('Y-m-d',strtotime($v['com_reply_time']))/}</span>企业回复：</p>
+							<div class="text" style="max-height: 93px;overflow: hidden">{/$v['com_reply_content']/}</div>{/if mb_strlen($v['com_reply_content']) > 156/}
+							<p class="companyp-switch companyp_switch_submit"><a href="">展开<i class="icon-arr-down"></i></a></p>{//if/}
+						</div>
+						&lt;!&ndash;/回复&ndash;&gt;
+					{//if/}-->
+				</div>
+			</div>
+		{//foreach/}
+
+		{/if $is_from_job_detail/}
+			<p class="appeal-jobseeker-more">
+				<a href="/job/OtherJobAppraise/jobflag-{/$jobflag/}">
+					去看看该公司其他职位的评价<i class="hbFntWes"></i>
+				</a>
+			</p>
+		{//if/}
+	</div>
+	<div class="appeal-all-page clearfix">
+		{/$page/}
+	</div>
+{/elseif !$_userid/}
+	<style>
+		.appeal-job-blurMask{width: 100%;height: 469px;background: url('{/$siteurl.style/}/img/appeal/blurMask2.jpg') no-repeat center;background-size: contain;text-align: center;}
+		.appeal-job-toLogin{display: inline-block;border: 1px solid #0af;background: #fff;padding: 10px 22px;font-size: 16px;color: #0af;text-align: center;margin-top: 25%;border-radius: 2px;}
+		.appeal-job-toLogin span{text-decoration: underline;color: #0af;}
+		.appeal-job-toLogin:hover{border: 1px solid #0092db;background: #0092db;color:#fff;}
+		.appeal-job-toLogin:hover span{color: #fff;}
+	</style>
+	<div class="appeal-job-blurMask">
+		<a class="appeal-job-toLogin" href="{/get_url rule='/login' domain="person"/}">
+			<span>登录</span>后查看详细面试评价
+		</a>
+	</div>
+{/else/}
+	<div class="appeal-job-all" style="text-align:center;padding:100px 0;color:#999;font-size:14px;background: #fff">
+		{/if $is_from_job_detail/}
+			还没有人对该职位评价哦
+		{/else/}
+			还没有人对该企业的职位评价哦
+		{//if/}
+		{/if $is_from_job_detail && (int)$company_appraise_num > 0/}，
+			<a href="/job/OtherJobAppraise/jobflag-{/$jobflag/}">去看看该公司其他职位的评价》</a>
+		{//if/}
+	</div>
+{//if/}
+

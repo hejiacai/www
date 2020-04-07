@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>汇博简历-登录</title>
+    <link rel="stylesheet" type="text/css" href="{/version file="base.css"/}"/>
+    <link rel="stylesheet" type="text/css" href="{/version file="jobRegister.css"/}"/>
+    <link rel="stylesheet" type="text/css" href="{/version file="v2-widge.css"/}"/>
+    <link rel="stylesheet" type="text/css" href="{/version file="jianliHeader.css"/}"/>
+    <link rel="stylesheet" type="text/css" href="{/version file="jianliTemp.css"/}"/>
+    <script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+    <style type="text/css">
+
+        .regpopLeft {
+            width: auto;
+            margin: 0 auto;
+        }
+
+        button[type=submit] {
+            border: none;
+        }
+
+        .m-header {
+            height: 72px;
+            background-color: #4b4c54;
+            width: 100%;
+        }
+
+        .m-header .inner-header {
+            width: 1000px;
+            margin: 0 auto;
+            height: 100%;
+            background: url({/$siteurl.style/}/img/xiaoyuan/resume/logo.png) 0 10px no-repeat;
+            line-height: 72px;
+            position: relative;
+        }
+
+        .m-header .inner-header a {
+            float: right;
+            color: white;
+            font-size: 18px;
+        }
+
+        .m-header .inner-header .avatar {
+            background-color: #4b4c54;
+            float: right;
+            width: 40px;
+            height: 40px;
+            border: none;
+            margin-top: 16px;
+            border-radius: 50%
+        }
+
+        .m-header .inner-header .user {
+            float: right;
+            color: #fff;
+            font-size: 18px;
+            margin-left: 10px;
+            display: block;
+            position: relative
+        }
+
+        .m-header .inner-header .user .icon {
+            margin-left: 5px;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: url({/$siteurl.style/}/img/xiaoyuan/resume/icon-down.png) 0px -2px no-repeat
+        }
+
+        .m-header .inner-header a.huiboLogo {
+            display: block;
+            width: 140px;
+            height: 72px;
+            float: left;
+        }
+
+        /*下拉框*/
+        .m-header .inner-header .user-choose {
+            position: absolute;
+            top: 80px;
+            right: -30px;
+            height: 104px;
+            width: 134px;
+            display: none;
+            background-color: #fff;
+            z-index: 2;
+            border-radius: 5px;
+            box-shadow: 0 0 2px #ddd;
+        }
+
+        .m-header .inner-header .user-choose > a {
+            color: #444;
+            height: 20px;
+            line-height: 20px;
+            padding-left: 18px;
+            font-size: 14px;
+            display: block;
+            float: none;
+        }
+
+        .m-header .inner-header .user-choose > a:hover {
+            color: #16caa4;
+        }
+
+        .m-header .inner-header .user .user-choose > div {
+            color: #444;
+            height: 20px;
+            line-height: 20px;
+            padding-left: 18px;
+            font-size: 14px;
+        }
+
+        .saveBtnxbg {
+            position: relative;
+            overflow: hidden;
+            padding: 35px 0 10px 0;
+            border-bottom: 1px solid #eeeff2;
+            margin: 0 20px;
+        }
+
+        .saveBtnxbg span {
+            position: absolute;
+            top: 35px;
+            left: 0px;
+            color: #ccc;
+        }
+
+        .saveBtnxbg input {
+            font-size: 14px;
+            color: #444;
+            display: block;
+            width: 100%;
+            height: 18px;
+            line-height: 18px;
+            border: none;
+            outline: none;
+            text-indent: 58px;
+        }
+
+        .saveBtnxbg img {
+            display: block;
+            width: 100px;
+            height: 40px;
+            position: absolute;
+            top: 18px;
+            right: 0;
+        }
+
+        .hb_ui_dialog .ui_dialog_footer {
+            text-align: left;
+            background: none;
+            padding-bottom: 40px;
+            padding-top: 40px;
+        }
+
+        .ui_dialog_footer button {
+            background: #16caa4;
+            color: #fff;
+            border: none;
+            box-shadow: none;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .ui_dialog_footer button.btn2:hover {
+            background: #0ac39b;
+            color: #fff;
+            border: none;
+        }
+
+        .ui_dialog_footer button.btn3 {
+            background: #ebebeb;
+            color: #999;
+            border: none;
+        }
+
+        .ui_dialog_footer button.btn3:hover {
+            background: #e1e1e1;
+            color: #999;
+            border: none;
+        }
+        .ui_login_dialog{ border: none!important; border-radius: 4px!important;}
+        .weixin_code_x{ text-align: center; padding: 45px 0; font-size: 16px; font-weight: bold; color: #444;}
+        .weixin_code_oppen{ padding: 30px 0; text-align: center; color: #07b56d; font-size: 16px;}
+        .weixin_code_img{ display: block;width:180px; height: 180px; border: 1px solid #f1f1f1; margin: 0 auto;}
+    </style>
+    <style>
+        .m-header {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+{/include file="hbResume/public/head.html"/}
+{/if !$_userid/}
+    <!--登录弹窗-->
+    <div class="" style="display: block;width: auto;">
+        <div class="">
+            <div class="regBankTab">
+                <div class="bankTab" style="display: block;">
+                    <div class="weixin_code_x">微信扫码，安全登录</div>
+                    <img src="{/$weixin_qrcod/}" class="weixin_code_img">
+                    <div class="weixin_code_oppen">打开微信 扫一扫</div>
+                </div>
+            </div>
+            <div class="regBankTab binding_phone" style="display: block">
+                <div class="bankTab" style="display: block;">
+                    <!--首次登录请设置密码-->
+                    <div class="bankPwdx" style="display: block;">
+                        <form action="###" onsubmit="return false;">
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{//if/}
+
+<script type="text/javascript">
+
+    var PollingScan,login_dialog_top, session_id = '{/$session_id/}';
+    hbjs.use('@jobDialog, @confirmBox, @hbCommon, @form', function (m) {
+        var $ = m['product.hbCommon'].extend(m['cqjob.jobDialog'], m['cqjob.jobForm']);
+        var confirmBox = m['widge.overlay.confirmBox'],
+            Dialog = m['widge.overlay.hbDialog'];
+        //水印
+        $('input:text,input:password').placeHolder();
+
+        //轮询查询登录信息
+        AjaxLogin1PollingScan();
+    });
+
+
+    function AjaxLogin1PollingScan() {
+        var url = "{/get_url rule="/resumeModel/AjaxLogin1PollingScan"/}",
+            data = {session_id: session_id};
+        ajax_function(url, data, {
+            success: function (data) {
+                if (data.code == 404) {
+                    msg_error_box(data.msg);
+                    setTimeout(function () {
+                        window.top.location.reload();
+                    }, 800);
+                }
+                if (data.data.scan_code == 400) {
+                    //未扫码,重新启动轮询
+                    setTimeout(AjaxLogin1PollingScan, 500);
+                }
+                if (data.data.scan_code == 200) {
+                    //扫码成功,已登录
+                    msg_success_box(data.msg);
+                    setTimeout(function () {
+                        window.top.location.reload();
+                    }, 800);
+                }
+                if (data.data.scan_code == 201) {
+                    //扫码成功,未绑定
+                    msg_success_box(data.msg);
+                debugger;
+                    var WxData = data.data.login_data;
+                    login_dialog_top = window.parent.login_dialog;
+                    login_dialog_top.hide();
+                    login_dialog_top.set('initHeight', 244);
+                    login_dialog_top.setContent({content:  "{/get_url rule='/resumeModel/AjaxLoginSMS/'/}?open_id="+WxData.openid+"&nickname="+WxData.nickname});
+                    login_dialog_top._addLoading();
+                    login_dialog_top._body.find('.ui_dialog_loading').css({position: 'absolute', width: '99%'});
+                    login_dialog_top.on('loadComplete', function () {
+                        login_dialog_top._removeLoading();
+                    });
+                    login_dialog_top.show();
+                }
+            }, error: function (data) {
+                setTimeout(function () {
+                    window.top.location.reload();
+                }, 800);
+            }
+        }, true);
+    }
+
+</script>
+</body>
+</html>

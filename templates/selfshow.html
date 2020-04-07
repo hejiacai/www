@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script src="{/version file="html5.js"/}"></script>   
+<![endif]–>
+
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="combase.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="style{/$color_id|default:1/}.css"/}" />
+
+<script type="text/javascript"  src="{/version file="jquery-1.8.3.js"/}"></script>
+<script type="text/javascript"  src="{/version file="ui_validate.js"/}"></script>
+<script type="text/javascript"  src="{/version file="common.js"/}"></script>
+<script type="text/javascript"  src="{/version file="dialog.js"/}"></script>
+<script type="text/javascript"  src="{/version file="ui_uploadify.js"/}"></script>
+<script type="text/javascript"  src="{/version file="ui_flexslider.js"/}"></script>
+<script type="text/javascript"  src="{/version file="ui_fancybox.js"/}"></script>
+<script type="text/javascript"  src="{/version file="ui_fancybox-thumbs.js"/}"></script>
+<script type="text/javascript"  src="{/version file="jquery.form.js"/}"></script>
+<style>
+  /*=======企业主页======*/
+.job_list_table{ overflow:inherit;}
+.jobs .bd .table table tbody tr td .jobsNm{width:225px;}
+.table td{ overflow:inherit;}
+.ax_push{ height:19px;color:#999; line-height:19px; text-align:center;}
+.ax_pushS,.ax_pushR{width:auto; height:42px; display:block;}
+.ax_pushR{margin:-42px auto 0 auto;position:absolute;_margin:-84px auto 0 auto;}
+.ax_pushS span,.ax_pushR span{ display:block;width:auto; height:36px; background:#333; color:#fff; line-height:36px; padding:0 5px;}
+.ax_pushS i,.ax_pushR i{ display:block;width:11px; height:6px; margin-left:50px; background:url({/$siteurl.style/}/img/salary/imgrNavR.gif) center 0 no-repeat;}  
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function(e) {
+    $('.ax_push').hover(function(){
+            $(this).prev().toggle();								
+        });
+        $('.ax_pushL').hover(function(){
+            $(this).prev().toggle();								
+        })
+});
+$(function(){ 
+	$('#btnPersonalSet').click(function(){
+		$.showModal('{/get_url rule="/company/SetPersonal"/}',{title:'个性化设置',onclose:tipSave});
+	});
+	$('.flexslider').flexslider({
+	    animation: "slide",
+	    itemWidth: 182,
+	    itemMargin: 0,
+	    controlNav:false,
+	    prevText:'&#xf053;',
+	    nextText:'&#xf054;',
+	    pauseOnAction: false,
+	    pauseOnHover: true,  
+	    {/if count($company_photos) + count($company_video_path) <=5/}
+	    slideshow: false,
+	    directionNav: false,
+	    {//if/}
+	    move:1
+	  });
+	$('.flexslider2').flexslider({
+	    animation: "slide",
+	    directionNav:false,
+	    pauseOnAction: false,
+	    pauseOnHover: true,  
+	    move:1
+	});
+
+	$('.fancybox-thumbs').fancybox({
+		closeBtn  : true,
+		arrows    : true,
+		helpers : {
+			thumbs : {
+				width  : 100,
+				height : 100
+			}
+		},
+		beforeShow:function(){
+			$('.flexslider').flexslider('pause');
+		},
+		afterClose:function(){
+			$('.flexslider').flexslider('play');
+		}
+	});
+
+	$('.fancybox-media').attr('rel', 'media-gallery')
+	.fancybox({
+		openEffect : 'none',
+		closeEffect : 'none',
+		prevEffect : 'none',
+		nextEffect : 'none',
+
+		arrows : false,
+		helpers : {
+			media : {},
+			buttons : {}
+		},
+		beforeShow:function(){
+			$('.flexslider').flexslider('pause');
+		},
+		afterClose:function(){
+			$('.flexslider').flexslider('play');
+		}
+	});
+});
+
+function tipSave(){
+	if(isModed && $('#tipSave').is(':hidden')){
+		$('#tipSave').show();
+		$('#formSave').hide();
+		return false;
+	}
+	return true;
+}
+
+function savePersonalSuccess(json){
+	if(json.error){
+		$.anchorMsg(json.msg,{icon:'fail'});
+		return;
+	}
+	isModed = false;
+	$("#btnSave").closeDialog();
+	window.location.reload();
+}
+</script>
+
+</head>
+<body>
+<div class="content" id="content">
+	<header>
+    	{/if $template_header_path == ''/}
+    	<div class="headCon">
+	            <div class="headLogo">
+	            	{/if $logo_path!=""/}
+						<h1><img src="{/$logo_path/}" /></h1><h2>{/$company_name/}</h2>
+					{/else/}
+						<h1>{/$company_name/}</h1>
+					{//if/}
+	            </div>
+        </div>
+        {/else/}
+        <div class="headBg"><img src="{/$template_header_path/}?{/$smarty.now/}" /></div>
+        {//if/}
+    </header>
+    {/if count($company_images) >0/}
+    <div class="banner" id="banner">
+		 <div class="lst flexslider2">
+          	<ul class="slides">
+	          	{/foreach $company_images as $key_image=>$value_image/}
+					<li><img src="{/$host/}/{/$VirtualName/}/{/$TemplateImageFolder/}/{/$company_id/}/{/$value_image['image_path']/}" /></li>
+				{//foreach/}
+              </ul>
+          </div>
+    </div>
+    {//if/}
+    <nav>
+    	<div class="navL"><a href="javascript:void(0);" id="lnk1">公司简介</a><a href="javascript:void(0);" id="lnk2">招聘职位</a><!-- <a href="javascript:void(0);" id="lnk3">联系方式</a> --></div>
+        <div class="navR">
+        	<ul>
+                <li class="hbTip comhbTip zindex"><a href="javascript:void(0);" class="btn3 btnsF12" data-toggle="tooltip" data-placement="left" title="更换风格、上传/更改形象图" id="btnPersonalSet"><i class="hbFntWes">&#xf013;</i><span>个性化设置</span></a></li>
+            </ul>
+        	<div class="clear"></div>
+        </div>
+    </nav>
+    <div class="part comInfo" id="p1">
+    	<div class="hd">
+        	<h3><b></b>公司简介</h3><div class="rtLnk"><a href="{/get_url rule='/company/modify' domain='company'/}" target="_blank" class="btn3 btnsF12"><i class="hbFntWes">&#xf013;</i><span>修改简介/企业风采</span></a></div>
+        </div>
+        
+        <div class="noData" style="display:none;">您还未填写公司简介<a target="_blank" href="{/get_url rule='/company/modify' domain='company'/}">立即填写</a></div>
+        
+        <div class="bd">
+        	<div class="basic">
+        		所处行业：
+        		{/if $company_callings[0]!=""/}<em>
+		        	{/foreach $company_callings as $key_callings=>$value_callings/}
+						{/get_name calling = $value_callings/}
+					{//foreach/}
+				{/else/}
+					<span class="gray">未填写</span>
+				{//if/}
+				</em><i>|</i>
+				
+				单位性质：<em>
+				{/if $property_id != ""/}
+					{/get_name com_property = $property_id/}
+				{/else/}
+					<span class="gray">未填写</span>
+				{//if/}
+				</em><i>|</i>
+				
+				公司规模：<em>
+				{/if $size_id != ""/}
+					{/get_name com_size=$size_id/}
+				{/else/}
+					<span class="gray">未填写</span>
+				{//if/}</em><i>|</i>
+				
+				公司网址：<em>{/if $homepage != ""/}
+					<a href="{/$redirect_homepage/}" target="_blank" rel="nofollow">{/$homepage/}</a></em>
+				{/else/}
+					<span class="gray">未填写</span>
+				{//if/}
+        	</div>
+            <div class="txt">
+            	<p>{/html_encode content=$info/}</p>
+            </div>
+            {/if count($company_photos)>0 || $company_video_path != ''/}
+            <div class="pic">
+                <div class="lst flexslider">
+                	<ul class="slides">
+                		{/if $company_video_path != ''/}
+                			{/if substr($company_video_path, -3, 3)=='swf'/}
+		                		<li class="video">
+							     	 <a class="flasMask fancybox-media" href="{/$company_video_path/}">&nbsp;</a>
+							         <object type="application/x-shockwave-flash" data="{/$company_video_path/}" width="150" height="115">
+							             <param name="allowscriptaccess" value="always">
+							             <!-- 解决 IE 6 7 8 层叠问题 -->
+							              <param name="wmode" value="transparent"> 
+							             <param name="movie" value="{/$company_video_path/}" width="150" height="115">
+							             <embed  src="{/$company_video_path/}" allowFullScreen="true" quality="high" width="150" height="115" align="middle" wmode= "transparent" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+							         </object>
+							    </li>
+						    {/else/}
+					        	<li class="video" style="background-image:url({/$siteurl.style/}/img/comshow/playVideo.jpg);" >
+							     	 <a class="flasMask" target="_blank" href="{/$company_video_path/}">&nbsp;</a>
+							    </li>
+					        {//if/} 
+					    {//if/}
+					    {/foreach $company_photos as $key_photo=>$value_photo/}
+					    	<li><a  class="fancybox-thumbs"  data-fancybox-group="thumb" href="{/$host/}/{/$VirtualName/}/{/$photo_folder/}/{/$company_id/}/{/$value_photo['photo_path']/}"><img src="{/$host/}/{/$VirtualName/}/{/$photo_folder/}/{/$company_id/}/{/$value_photo['photo_path1']/}" /></a></li>
+					    {//foreach/}
+                    </ul>
+                </div>
+            </div>
+            {//if/}
+        </div>
+    </div>
+    <div class="part jobs" id="p2">
+    	<div class="hd"><h3><b></b>正在招聘的职位</h3><div class="rtLnk"><a target="_blank" href="{/get_url rule='/' domain='company'/}" class="btn3 btnsF12"><i class="hbFntWes">&#xf013;</i><span>管理职位</span></a></div>
+        </div>
+        
+        {/if count($jobs)==0/}
+        <div class="noData" >没有正在招聘的职位<a target="_blank" href="{/get_url rule='/job/add/' domain='company'/}">立即发布职位</a>或<a target="_blank" href="{/get_url rule='/' domain='company'/}">管理职位</a></div>
+        {/else/}
+        <div class="bd">
+        	<div class="table">
+            	<table cellpadding="0" cellspacing="0" width="100%" border="0">
+                	<thead>
+                    	<tr>
+                        	<td valign="middle" align="left">职位名称</td>
+                            <td valign="middle" align="left">工作地点</td>
+                            <td valign="middle" align="left">月薪</td>
+                            <td valign="middle" align="left">招聘人数</td>
+                            <td valign="middle" align="left">工作经验</td>
+                            <td valign="middle" align="left">学历要求</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {/foreach $jobs as $key_job=>$value/}
+                    	<tr>
+                        	<td valign="middle" align="left"><div class="jobsNm">
+                        	   <a href="{/$value['job_link']/}" title="{/$value['station']/}" target="_blank" > {/if $value.job_type=="2"/}
+                        		<em>[兼职]</em>
+                        		{/else if $value.job_type=="3"/}
+                        		<em>[实习]</em>
+                        		{//if/}{/$value.station/}</a>{/$value.is_urgent/}
+                        	</div>
+                        	</td>
+                            <td valign="middle" align="left"><div class="jobAdd">{/$value.area_name/}  </div></td>
+                            <td valign="middle" align="left">
+                             {/if $value.is_salary_show ==0/}
+                                    {/if $value.salary_type==1/}
+                                        <div class="ax_pushR" style="display:none">
+                                          <span>平均收入（底薪+提成）：{/if $value.min_salary == $value.max_salary/}{/$value.min_salary/}{/else/}{/$value.min_salary/}-{/$value.max_salary/}{//if/} 
+                                          &nbsp;底薪：{/if $value.base_min_salary == $value.base_max_salary/}{/$value.base_min_salary/}{/else/}{/$value.base_min_salary/}~{/$value.base_max_salary/}{//if/}
+                                            </span>
+                                               <i></i>
+                                        </div>
+                                    <span class="ax_pushL">￥{/if $value.min_salary == $value.max_salary/}{/$value.min_salary/}{/else/}{/$value.min_salary/}-{/$value.max_salary/}{//if/}
+                                        （{/if $value.base_min_salary == $value.base_max_salary/}{/$value.base_min_salary/}{/else/}{/$value.base_min_salary/}~{/$value.base_max_salary/}{//if/}）</span>
+                                    {/else/}
+                                         <span class="ax_pushL">￥{/if $value.min_salary == $value.max_salary/}{/$value.min_salary/}{/else/}{/$value.min_salary/}-{/$value.max_salary/}{//if/}</span>
+                                    {//if/}
+                                {/else/}
+                                    面议
+                                {//if/}
+                            </td>
+                            <td valign="middle" align="left"><div class="jobPeo">{/if $value.quantity=="0"/}若干{/else/}{/$value.quantity/}人{//if/}</div></td>
+                            <td valign="middle" align="left"><div class="jobExp">
+	                            {/if $value.work_year ==""/}
+									不限
+								{/else/}
+									{/$value.work_year/}
+								{//if/}</div></td>
+                            <td valign="middle" align="left"><div class="jobRec">
+	                            {/if $value.degree_name ==""/}
+									不限
+								{/else/}
+									{/$value.degree_name/}
+								{//if/}
+								</div>
+							</td>
+                        </tr>
+                    {//foreach/}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {//if/}
+    </div>
+     <div class="part contac" id="p3">
+    	<div class="hd">
+        	<h3></h3><div class="rtLnk"></div>
+        </div>
+        <div class="bd">
+            <p>公司地址：{/$address|default:'<span class="gray">未填写</span>'/}</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$.setIndex("zIndex");
+var $header = $('header');//获取头部对象
+var $headerHt = $header.height();//获取头部的高度
+
+$('nav').find('.navL').find('a').click(function(){
+	var thsIndex = ($(this).index())+1;
+	var thsPartIndex = $('#p'+thsIndex);
+	var thsPartTop = thsPartIndex.offset().top;
+	$('html,body').animate({scrollTop:thsPartTop-$headerHt});
+});
+</script> 
+</body>
+</html> 

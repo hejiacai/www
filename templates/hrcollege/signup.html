@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+</head>
+
+<style>
+.hrApplyBox{width:560px;font-size:12px;}
+.hrApplyBox p.txt{line-height:30px; margin:0 0 20px 65px;}
+.hrApplyBox .formMod .l{width:140px;}
+.hrApplyBox .formMod .r{width:360px;}
+.hrApplyBox .formMod .r .formTextarea textarea.textarea{height:80px;}
+.hrApplyBox .formMod .r .tipTxt{margin:0; width:430px;}
+.hrApplyBox .formBtn{margin-left:145px;}
+.hrApplyBox .footTxt{padding:15px 50px; zoom:1;border-top:1px solid #dadada; margin-top:20px; color:#666;}
+.hrApplyBox .footTxt dl dt{line-height:30px;}
+.hrApplyBox .footTxt dl dd{margin-left:30px; line-height:20px;}
+</style>
+<body>
+<div class="dgBox hrApplyBox">
+<form id="formSign" action="{/get_url rule="/hrcollege/signupdo/"/}" method="post">
+	<input type="hidden" name="hddActivity" value="{/$activity_id/}"/>
+	<div class="hrApplyForm">
+    	<p class="txt">请认真填写以下资料，我们将会第一时间联系您。</p>
+        <div class="formMod">
+            <div class="l">姓名<i>*</i></div>
+            <div class="r">
+                <span class="formText">
+					<input type="text" name="txtUserName" class="text" value="" style="width:230px;" />
+                </span>
+                <span class="tipPos">
+                    <span class="tipLay tipError">
+                    </span>
+                </span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="formMod">
+           <div class="l">单位<i>*</i></div>
+           <div class="r">
+              <span class="formText">
+                 <input type="text" name="txtCompanyName" class="text" value="" style="width:230px;" />
+              </span>
+              <span class="tipPos">
+                    <span class="tipLay tipError">
+                       
+                    </span>
+                </span>
+           </div>
+           <div class="clear"></div>
+        </div>
+        <div class="formMod">
+            <div class="l">职位<i>*</i></div>
+            <div class="r">
+                <span id="sltJob" class="drop zindex"></span>
+                 <span class="tipPos">
+                    <span class="tipLay tipError">
+                       
+                    </span>
+                </span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="formMod">
+           <div class="l">邮箱<i>*</i></div>
+           <div class="r">
+              <span class="formText">
+                 <input type="text" name="txtEmail" class="text" value="" style="width:230px;" />
+              </span>
+              <span class="tipPos">
+                    <span class="tipLay tipError">
+                    </span>
+                </span>
+           </div>
+           <div class="clear"></div>
+        </div>
+        <div class="formMod">
+           <div class="l">联系方式<i>*</i></div>
+           <div class="r">
+              <span class="formText">
+                 <input type="text" name="txtLink" class="text" value="" style="width:230px;" />
+              </span>
+              <span class="tipPos">
+                    <span class="tipLay tipError">
+                    </span>
+                </span>
+           </div>
+           <div class="clear"></div>
+        </div>
+        <div class="formBtn"><a id="btnSignUp" href="javascript:void(0)" class="btnsF14 btn1">报名</a></div>
+        <div class="footTxt">
+        	<dl>
+            	<dt>您也可以通过以下方式</dt>
+                <dd>
+                	<p>电  话：61201213</p>
+                    <p>手  机：15320356531</p>
+                    <p>QQ号码：505660085</p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</form>
+</div>
+<script type="text/javascript">
+var sign={
+	formSignValid:null,	
+	init:function(){
+		$.focusColor('input.text');
+		$.setIndex("zindex");
+		sign.formSignValid = $('#formSign').validate({
+			 rules:{
+	            txtUserName: {required:true,rangelength:[2,6]},
+	            txtCompanyName: { required:true,rangelength: [1, 256] },
+	            hidAudicene:{required:true},
+	            txtEmail:{required:true,email:true},
+	            txtLink:{required:true,tel:true}
+	        },
+	        messages:
+	        {
+	            txtUserName: {required:'请输入真实姓名<span class="tipArr"></span>',rangelength:'姓名长度超过限制<span class="tipArr"></span>'},
+	            txtCompanyName: { required:'请输入单位名称<span class="tipArr"></span>',rangelength: '单位名称长度为1-256个字符<span class="tipArr"></span>' },
+	            hidAudicene:{required:'请选择职位<span class="tipArr"></span>'},
+	            txtEmail:{required:'请填写电子邮箱<span class="tipArr"></span>',email:'电子邮箱格式不正确<span class="tipArr"></span>'},
+	            txtLink:{required:'请输入联系方式<span class="tipArr"></span>',tel:'联系方式为手机，固话(格式不正确)<span class="tipArr"></span>'}
+	        },
+	        errorClasses:{
+				txtCompanyName:{required: 'tipLayErr tipw150',rangelength: 'tipLayErr tipw150'},
+				txtUserName:{required: 'tipLayErr tipw150',rangelength: 'tipLayErr tipw150'},
+				hidAudicene:{required: 'tipLayErr tipw150'},
+				txtEmail:{required:'tipLayErr tipw150',email: 'tipLayErr tipw150'},
+				txtLink:{required: 'tipLayErr tipw150',tel: 'tipLayErr tipw150'}
+		    },
+		    tips:{
+		    	txtUserName:'请输入2-6个汉字<span class="tipArr"></span>'
+		    },
+		    tipClasses:{
+		    	txtUserName:'tipLayTxt tipw150'
+		    },
+	        onkeyup:false,
+		    errorElement: 'span',
+		    errorPlacement: function(error, element)
+		    {
+		    	element.parent().next().find('.tipLay').append(error);                             
+		    },
+		    success: function(label)
+			{
+				label.text(" ");
+			}
+		});
+		$('#btnSignUp').click(function(event) {
+            $('#btnSignUp').submitForm({ beforeSubmit: $.proxy(sign.formSignValid.form, sign.formSignValid), success: sign._success });
+            return false;
+        });
+	},
+	_success:function(json){
+		 if (json && json.error) {
+             $.message(json.error,{ icon: 'warning' });
+             return;
+         }  
+         $('#btnSignUp').closeDialog();
+         $.anchorMsg(json.msg, { icon: 'success' });  
+	}	
+}
+sign.init();
+
+var jobItems = [{id:'',name:''}];
+{/foreach $audience as $key=>$value/}
+	jobItems.push({id:{/$key/},name:'{/$value/}'});
+{//foreach/}
+$('#sltJob').droplist({
+	defaultTitle:'请选择',
+	style:'width:238px;',
+    noSelectClass:'gray',
+    inputWidth:230,
+    width:256,
+    hddName:'hidAudicene',
+    items:jobItems
+ });
+</script>
+</body>
+</html>

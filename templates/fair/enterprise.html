@@ -1,0 +1,660 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="重庆招聘会,重庆人才市场,重庆人才招聘会,重庆招聘会信息,重庆近期招聘会,重庆现场招聘会,汇博人才市场" />
+<meta name="Description" content="汇博人才市场，每周二四六在重庆龙头寺举办大型重庆招聘会，{/$config->HuiBoSiteName/}为您提供最新{/date('Y',time())/}年{/date('m',time())/}月重庆招聘会信息,获悉最新重庆招聘会信息请上{/$config->HuiBoSiteName/}" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script src="{/version file='html5.js'/}"></script>
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="fair.css"/}" />
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="dialog.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="common.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_dropdownlist.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_inputFocus.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_validate.js"/}"></script><!--验证-->
+<script type="text/javascript" language="javascript" src="{/version file="jquery.form.js"/}"></script><!--表单提交-->
+
+</head>
+<body>
+<!--top begin-->
+{/include file="header.html"/}
+<!--top end-->
+<!--head-->
+<div class="container">
+	<div class="head">
+    	<h1><a href='{/rewrite type="fair"/}' title="现场招聘会"></a></h1>
+<!--        <div class="headRtScrl" id="headRtScrl">-->
+<!--        	<ul>-->
+<!--            <li title="专业网络招聘+专业现场招聘服务机构！">专业网络招聘+专业现场招聘服务机构！</li>-->
+<!--            <li title="周二：工业、汽车、电子、制造业专场招聘会">周二：工业、汽车、电子、制造业专场招聘会</li>-->
+<!--            <li title="周四：商场百货、酒店餐饮、快消品、物业建材及营销人才专场招聘会">周四：商场百货、酒店餐饮、快消品、物业建材及营销人才专场招聘会</li>-->
+<!--            <li title="周六：特大型招聘会  {/$config->HuiBoFairShowRoom/}家企业  {/$config->HuiBoFairJobNumSat/}岗位">周六：特大型招聘会  {/$config->HuiBoFairShowRoom/}家企业  {/$config->HuiBoFairJobNumSat/}岗位</li>-->
+<!--            </ul>-->
+<!--        </div>-->
+        <div class="headRtScrl" id="headRtScrl">
+        	<ul>
+            <li title="每周二、三、四、六上午（8：30-12：00）定期举办招聘会">每周二、三、四、六上午（8：30-12：00）定期举办招聘会</li>
+            </ul>
+        </div>
+    </div>
+    <div class="nav">
+    	<div class="navL"></div>
+        <div class="navC">
+        	<div class="navCon"><a href='{/rewrite type="fair"/}'>招聘会首页</a><a href='{/get_url rule="/zhaopinhui/enterprise"/}' class="cu">我是企业</a><a href='{/get_url rule="/zhaopinhui/Notified"/}'>参会须知</a><a href='{/get_url rule="/zhaopinhui/traffic"/}'>交通指南</a></div>
+            <div class="navRtTxt">咨询热线：{/$config->CqjobFairsPhone/}   在线咨询：<a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></div>
+        </div>
+        <div class="navR"></div>
+    </div>
+    <div class="floatImComNav zindex" id="floatImComNav">
+  		<div class="floatImComNavC imComNavDo" id="floatImComNavC">
+      		<a href="javascript:void(0);" name="c1">招聘会预告</a><a href="javascript:void(0);" name="c2">宣传渠道</a><a href="javascript:void(0);"name="c3">在线订展</a><a href="javascript:void(0);"name="c4">参会流程</a><a href="javascript:void(0);"name="c5">海报提交</a><a href="javascript:void(0);"name="c6">参会须知</a>
+      		<b class="floatImComNavSup" id="floatImComNavSup"></b>
+	    </div>
+	</div>
+    <div class="pageCon">
+<!--    	<div class="banner"><a href="#"><img src="/a_dv_img/fairBanner.jpg" /></a></div>-->
+        <div class="imComNav">
+        	<div class="imComNavL"></div>
+            <div class="imComNavC imComNavDo" id="imComNavC">
+            	<a href="javascript:void(0);" name="c1">招聘会预告</a><a href="javascript:void(0);" name="c2">宣传渠道</a><a href="javascript:void(0);"name="c3">在线订展</a><a href="javascript:void(0);"name="c4">参会流程</a><a href="javascript:void(0);"name="c5">海报提交</a><a href="javascript:void(0);"name="c6">参会须知</a>
+            	<b class="imComNavSup" id="imComNavSup"></b>
+            </div>
+            <div class="imComNavR"></div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="part">
+            <div class="partT"><h2>近期招聘会预告</h2><a id="pc1"></a><div class="txt"><a href='{/get_url rule="/zhaopinhui/fairlist"/}' target="_blank">更多</a></div></div>
+            <div class="partC">
+                <div id="annLst" class="annLst font14">
+                    <div class="table" id="tabFairBatchList">
+                        <div class="tHead">
+                            <div class="lstCon lst1">招聘会名称</div>
+                            <div class="lstCon lst2">招聘会时间</div>
+                            <div class="lstCon lst3">发布职位</div>
+<!--                            <div class="lstCon lst4">预约</div>-->
+                            <div class="clear"></div>
+                        </div>
+                        <div class="tBody">
+                            <ul>
+                            {/if !empty($nearly_three_fairscene) && count($nearly_three_fairscene)>0/}
+                          	{/foreach $nearly_three_fairscene as $item=>$value/}
+                            <li>
+                                <div class="tLst">
+                                    <div class="lstCon lst1"><i><a href='{/rewrite type="fairScene" date="{/date("Ymd", strtotime($value.date))/}"/}' target="_blank">{/$value.subject/}</a></i>{/if {/$value.is_major/}/}<b class="ico icoHot"></b>{//if/}</div>
+                                    <div class="lstCon lst2">{/$value.the_date/} ({/$value.the_weekday/})</div>
+                                    <div class="lstCon lst3">{/$value.jobcount/}</div>
+<!--                                    <div class="lstCon lst4"><span class="gray">不可预约</span></div>-->
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="bubble">
+                                    <div class="bubbleCon">
+                                        <div class="bubbleConTxt">
+                                            <p class="red strong">本场特点介绍：</p>
+                                            <p>{/$value.describe/}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            {//foreach/}
+                			{//if/}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="part">
+            <div class="partT"><h2>宣传渠道</h2><a id="pc2"></a><div class="txt">网站+报纸+短信+户外广告&nbsp;&nbsp;&nbsp;&nbsp;立体全面宣传</div></div>
+            <div class="partC">
+                <div class="conduct">
+                    <p>重庆本土招聘网站——汇博网原重庆人才网www.huibo.com,全程宣传、互动。</p>
+                    <p>本地强势媒体合作——重庆时报，重庆商报，重庆晚报，重庆晨报、大渝网等强媒鼎力支持</p>
+                    <p>短信邮件单页——针对汇博网<span class="orange">{/$config->ShowResumeNum/}</span>英才会员，<span class="orange">{/$config->HuiBoFairDmNum/}</span>份单页无孔不入。</p>
+                    <p>户外广告——3号轻轨线广告语音每日覆盖<span class="orange">{/$config->HuiBoFairRailwayAdv/}</span>人次、<span class="orange">{/$config->HuiBoFairBusNum/}</span>公交广告语音穿梭于主城9区</p>
+                </div>
+            </div>
+        </div>
+        <form id="formFairApply" method="post" action='{/get_url rule="/zhaopinhui/fairapplydo"/}'>
+        <div class="part">
+            <div class="partT"><h2>企业在线订展</h2><a id="pc3"></a></div>
+            <div class="partC">
+                <div class="onlineForm">
+                	<div class="formMod">
+                    	<div class="l">请选择招聘会场次</div>
+                        <div class="r">
+                        	<span id="tstDropscene" class="drop zindex"></span>
+                        	<span class="tipPos">
+			                    <span class="tipLay">
+			                    </span>
+			                </span>
+                     	</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formMod">
+                        <div class="l">企业名称<i>*</i></div>
+                        <div class="r">
+                        	<span class="formText">
+                        		<input name="txtCompanyName" type="text" class="text" value="{/if !empty($current_company)/}{/$current_company.company_name/}{//if/}"/>
+                        	</span>
+                        	<span class="tipPos">
+			                    <span class="tipLay">
+			                    </span>
+			                </span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formMod">
+                        <div class="l">联系人<i>*</i></div>
+                        <div class="r">
+                        	<span class="formText">
+                        		<input name="txtLinkMan" type="text" class="text" value="{/if !empty($current_company)/}{/$current_company.linkman/}{//if/}"/>
+                       		</span>
+                       		<span class="tipPos">
+			                    <span class="tipLay">
+			                    </span>
+			                </span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formMod">
+                        <div class="l">联系电话<i>*</i></div>
+                        <div class="r">
+                        	<span class="formText">
+                        		<input name="txtLinkTel" type="text" class="text" value="{/if !empty($current_company)/}{/$current_company.link_tel/}{//if/}"/>
+                        	</span>
+                        	<span class="tipPos">
+			                    <span class="tipLay">
+			                    </span>
+			                </span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formMod">
+                        <div class="l">招聘信息上传</div>
+                        <div class="r">
+                        	<span style="width:800px;height:35px;margin-left:0;" class="tipTxt formFile"><a href="#" style="margin:0;" class="btn3 btnsF12">添加文件</a><input type="file" class="file"></span>
+                            <span class="tipTxt gray">仅支持.doc,.docx,.txt格式文件，文件体积不超过500KB</span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formMod">
+                        <div class="l">内容</div>
+                        <div class="r">
+                        	<span class="formTextarea">
+                        		<textarea name="textMark" type="text" class="textarea"></textarea>
+                       		</span>
+                       		<span class="tipPos">
+								<span class="tipLay">
+				              	</span>
+				       		</span>
+                    	</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="btn">
+                    	<p>如有疑问，请致电热线：{/$config->CqjobFairsPhone/} 在线咨询：<a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></p>
+                    	<a id="btnSubmitData" href="javascript:void(0);" class="btn1 btnsF16">提交</a>
+                   	</div>
+                </div>
+            </div>
+        </div>
+        </form>
+        <div class="part">
+            <div class="partT"><h2>企业参会流程</h2><a id="pc4"></a></div>
+            <div class="partC">
+                <div class="comPatch">
+                	<dl>
+                    <dt>1</dt>
+                    <dd class="tit">企业订展</dd>
+                    <dd>您可在线订展和电话订展（电话订展请拨打{/$config->CqjobFairsPhone/}转1办理参会手续）；</dd>
+                    </dl>
+                    <dl>
+                    <dt>2</dt>
+                    <dd class="tit">发布职位</dd>
+                    <dd>发布现场职位</dd>
+                    </dl>
+                    <dl>
+                    <dt>3</dt>
+                    <dd class="tit">提交资料</dd>
+                    <dd>参会资料有:企业简介、招聘职位信息、营业执照等。请见资料提交方式。</dd>
+                    </dl>
+<!--                    <dl>-->
+<!--                    <dt>4</dt>-->
+<!--                    <dd class="tit">查看预约</dd>-->
+<!--                    <dd>查看人才预约情况，在线短信邀请预约人才到现场面试；</dd>-->
+<!--                    </dl>-->
+                    <dl>
+                    <dt>4</dt>
+                    <dd class="tit">邀请人才</dd>
+                    <dd>在huibo.com查找人才，邀请人才参会面试;</dd>
+                    </dl>
+                    <dl>
+                    <dt>5</dt>
+                    <dd class="tit">企业参会</dd>
+                    <dd>8：30准时到达现场，签到并领取相应物品入场招聘；</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+        <div class="part">
+            <div class="partT"><h2>海报提交</h2><a id="pc5"></a></div>
+            <div class="partC">
+                <div class="bill">
+                    <div class="billWay">
+                        <div class="billWayL">
+                            <p><b>方法一</b><i>通过QQ在线提交海报</i><span><a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></span></p>
+                            <p><b>方法二</b><i>通过邮箱提交海报</i><span>邮箱地址：<a target="_blank" href="mailto:{/$config->HuiBoFairEmail/}">{/$config->HuiBoFairEmail/}</a></span></p>
+                        </div>
+                        <div id="fairArea" class="billWayR">
+                            <ul>
+                            <li><a href="javascript:void(0)"><img src="{/base_lib_Constant::UPLOAD_FILE_URL/}img/fair/posters1.jpg"><p>海报范例一</p></a></li>
+                            <li><a href="javascript:void(0)"><img src="{/base_lib_Constant::UPLOAD_FILE_URL/}img/fair/posters2.jpg"><p>海报范例二</p></a></li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="billTip">
+                        <dl>
+                        <dt>海报提交注意事项</dt>
+                        <dd>
+                            <p>1.提交海报资料时，请注意控制内容长度（企业海报正文区域最多可显示32行，每行36字，总共1000个字，包含空格及标点符号，标点符号为中文标点的逗号、顿号、句号及感叹号）；</p>
+                            <p>2.海报内容中不能存在繁体字或一些不规范的符号，请使用简体字或英文进行提交；</p>
+                            <p>3.海报资料提交的内容包括企业名称（海报上显示的名称）、企业简介、招聘职位及职位要求。</p>
+                            <p>4、海报资料请自行核对，确认无误后再进行提交。</p>
+                        </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="part">
+            <div class="partT"><h2>参会须知</h2><a id="pc6"></a></div>
+            <div class="partC">
+                <div class="comWarn">
+                	<dl class="lst1">
+                    	<dt></dt>
+                        <dd>
+                        	<p class="tit">招聘会地点</p>
+                            <p>重庆市两江新区龙头寺华宇地产5号楼（龙头寺火车站广场正对面/天宫殿站附近/北城中央站附近，乘坐<span class="orange">轻轨3号线</span>，在<span class="orange">狮子坪车站</span>下站即到。）</p>
+                        </dd>
+                    </dl>
+                    <dl class="lst2">
+                    	<dt></dt>
+                        <dd>
+                        	<p class="tit">提交参会资料</p>
+                            <p>提交企业简介、招聘职位信息、营业执照等。</p>
+                        </dd>
+                    </dl>
+                    <dl class="lst3">
+                    	<dt></dt>
+                        <dd>
+                        	<p class="tit">携带参会物品</p>
+                            <p><span class="orange">无线上网电脑一台</span>，以随时关注到场人才的信息，直接发出邀请面试的短信（免费）；禁止携带易拉宝、X展架、音响等物品；招聘资料请放在桌面上供求职者取阅，禁止在会场内派发，汇博拒绝一切与招聘无直接相关的行为。 </p>
+                        </dd>
+                    </dl>
+                    <dl class="lst4">
+                    	<dt></dt>
+                        <dd>
+                        	<p class="tit">参会进场时间</p>
+                            <p>夏季上午8：30-12：00，冬季上午9：00-12：00。若10：00后未入场的招聘企业，汇博有权取消为其预留的展位。</p>
+                        </dd>
+                    </dl>
+                    <dl class="lst5">
+                    	<dt></dt>
+                        <dd>
+                        	<p class="tit">诚信合法招聘</p>
+                            <p>不违规违法以任何名义任何形式向求职者收费；不提供虚假用人信息和参会信息。若有发生，汇博有权拒绝提供服务。</p>
+                        </dd>
+                    </dl>
+                    <dl class="lst6">
+                    	<dt></dt>
+                        <dd>
+                        	<p class="tit">企业参会海报</p>
+                            <p>汇博免费为企业提供海报1张；也可自带海报，规格为1M*1.2M，如不符，将不予以张贴。</p>
+                        </dd>
+                    </dl>
+                    <dl class="lst7">
+                    	<dt></dt>
+                        <dd>
+                        	<p class="tit">物品妥善保管，注意安全，文明招聘。</p>
+                            <p></p>
+                        </dd>
+                    </dl>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="javascript:void(0);" style="z-index:1001" id="fairAreaImg" />
+	<div class="fairAreaMask" id="fairAreaMask"></div>
+</div>
+<!--head-->
+{/include file="footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script language="javascript" type="text/javascript">
+if (typeof (jQuery) != "undefined"){
+    jQuery.fn.extend({
+        scrollFollow: function(opts){
+	        var os = this;
+	        //默认参数定义
+	        //动画持续时间
+	        var duration = 200;
+	        //上边距
+	        var offset = 0;
+	        //获取函数传入的参数
+	        if (opts){
+		        if (!isNaN(opts.duration)){
+			        duration = parseInt(opts.duration);
+		        }
+		        if (!isNaN(opts.offset)){
+			        offset = parseInt(opts.offset);
+		        }
+	        }
+	        //定义css默认属性，预处理
+	        os.each(function(){
+		        var o = $(this);
+		        o.css('position', 'absolute').appendTo('body');
+	        });
+	        var wnd=$(window);
+	        //响应滚动条滚动事件
+	        $(window).scroll(function(){
+		        var scrollPos=wnd.scrollTop();
+		        if(scrollPos>285){
+	                //如果支持fixed样式，直接设置就可以了
+			        if($.support.leadingWhitespace)
+			        {
+				        var refixed=function(){
+					        var wnd=$(window);
+					        $('#floatImComNav').css({position:'fixed',top:0}).show();
+				        };
+				        refixed();
+			        }else{
+				        os.stop();
+				        os.each(function(){
+				            var o = $(this);
+					        var callback=function()
+					        {   
+						        for(var i in os.depend)
+						        {
+							        try{
+								          os.depend[i]();
+								        }catch(e){continue;}
+						        }    
+					        };
+					        o.animate({ 'top':  scrollPos }, duration,callback);
+				        }); 	   
+			        }
+		        }
+		        else
+		        {
+			        //如果支持fixed样式，直接设置就可以了
+			        if($.support.leadingWhitespace){
+				        var refixed=function(){
+					        var wnd=$(window);
+					        $('#floatImComNav').css({position:'fixed',top:offset-scrollPos}).hide();
+				         };
+				         refixed();
+			        }else{
+				        os.stop();
+				        os.each(function(){
+					        var o = $(this);
+					        var callback=function()
+					        {   
+						        for(var i in os.depend)
+						        {
+							        try{
+								          os.depend[i]();
+								        }catch(e){continue;}
+						        }    
+					        };
+					        o.animate({ 'top': offset }, duration,callback);
+				        });
+			        }
+		        }
+	        });
+	        return this;
+        },
+        depend:new Array(),
+        addDepend:function(fn)
+        {
+          this.depend.push(fn);
+        }
+    });
+}
+var formValid;
+var enterprise={
+    isClick:false,          //是否点击
+    tempLeft:null,          //临时位置
+    tempWidth:null,         //临时宽度
+    fairApply:'{/if !base_lib_BaseUtils::nullOrEmpty($fair_apply) && $fair_apply/}true{/else/}false{//if/}',
+    init:function(){
+		$('#tstDropscene').droplist({{/if base_lib_BaseUtils::nullOrEmpty($select_scene_id)/}defaultTitle:'请选择'{/else/}selectValue:{/$select_scene_id/}{//if/},noSelectClass:'gray',width:165,inputWidth:632,style:'width:640px;',hddName:'hddthesceneid',items:{/$scene_json/},onSelect:function(i,name) {
+		}});
+        enterprise.elementHover();
+        enterprise.showImage();
+        //设置起始位置
+        enterprise.remove();
+        //浏览器的宽度发送改变时重新设置其样式
+        $(window).resize(function(){
+            enterprise.remove();
+        });//导航滚动
+        if(enterprise.fairApply=='true'){
+            $('#imComNavC').find('a[name="c3"]').click();
+            $('#floatImComNavSup').css({left:'386px',width:'56px',overflow:'hidden'});
+        }
+        formValid = $("#formFairApply").validate({
+        	rules:{
+        		hddthesceneid:{required:true},
+        		txtCompanyName:{required:true},
+        	    txtLinkMan:{required:true},
+        	    txtLinkTel:{required:true,tel: true},
+        	    textMark:{maxlength: 256}
+        	},
+        	messages:{
+              	hddthesceneid:{required:'请选择场次<span class="tipArr"></span>'},
+           		txtCompanyName:{required:'请输入公司名称<span class="tipArr"></span>'},
+             	txtLinkMan:{required:'请输入联系人姓名<span class="tipArr"></span>'},
+              	txtLinkTel:{required:'请输入联系电话 <span class="tipArr"></span>',tel:'电话号码格式不正确<span class="tipArr"></span>'},
+             	textMark:{maxlength: '备注信息不能超过256个字符<span class="tipArr"></span>'}
+        	},
+          		errorElement: "span",
+          		errorClasses: {
+            	hddthesceneid: { required: 'tipLayErr tipw180'},
+            	txtCompanyName: { required: 'tipLayErr tipw180'},
+            	txtLinkMan: { required: 'tipLayErr tipw180'},
+            	txtLinkTel: { required:'tipLayErr tipw180',tel:'tipLayErr tipw180'},
+            	textMark:{maxlength:'tipLayErr tipw180'}
+            },
+            errorPlacement: function(error, element) {
+        		element.parent().nextAll().find('.tipLay').append(error);
+            },
+            success: function(label) {
+            	label.text(" ");
+            }
+        });
+        $('#btnSubmitData').click(function()
+    	{
+    		var data = { operate: 'addFairApply' };
+      		$('#btnSubmitData').submitForm({ beforeSubmit: $.proxy(formValid.form,formValid),data:data, success: enterprise.applySuccess, clearForm: false });
+         	return false;
+    	});
+        $.setIndex('zindex');
+        $('#floatImComNav').scrollFollow({ duration: 200, offset: 0 });
+    },
+    applySuccess:function(json){
+    	if (json && json.error){
+			$.message(json.error, { title: "系统提示", icon: "fail" });
+			return;
+		}
+		if (json && json.info){
+			$.message(json.info, { title: "系统提示", icon: "info" });
+			return;
+		}
+		if (json && json.success) {
+          	//成功
+       		$.anchorMsg(json.success, { onclose: function() {
+         	}
+         	});
+	    }
+    },
+    elementHover:function(){
+        //近期招聘会
+        $('#tabFairBatchList .tBody ul li').hover(function(){
+            var _self=$(this);
+            _self.addClass('hov');
+            if(_self.find('.featuresIntr').html()!=''){
+		        _self.find('.bubble').animate({opacity:1,top:35,fontSize:12},{queue:false,duration:300}).show();
+		    }
+	    },function(){
+	        var _self=$(this);
+	        _self.removeClass('hov');
+	        if(_self.find('.featuresIntr').html()!=''){
+		        _self.find('.bubble').animate({opacity:0,top:0,fontSize:18},{queue:false,duration:300}).fadeOut();
+		    }
+	    });
+	    //常见问题
+	    $('#comQues').find('li').hover(function(){
+		    $(this).addClass('hov');
+	    },function(){
+		    $(this).removeClass('hov');
+	    });
+	    //导航
+	    $('#imComNavC').find('a').hover(function(){
+	         enterprise.isClick=false;
+		    var position =$(this).position();
+		    var tsLt =$(this).position().left+52; //获取当前对象左偏移
+		    var tsWth = $(this).width();
+		    $('#imComNavSup').animate({left:tsLt,width:tsWth},{queue:false,duration:300})
+	    },function(){
+	        if(!enterprise.isClick){
+	            if(enterprise.tempLeft!=null){
+	                $('#imComNavSup').animate({left:enterprise.tempLeft,width:enterprise.tempWidth},{queue:false,duration:300});
+	            }else{
+		            $('#imComNavSup').animate({left:52,width:70},{queue:false,duration:300});
+		        }
+		    }
+	    });
+	    $('.imComNavDo').find('a').hover(function(){
+	        enterprise.isClick=false;
+		    var position =$(this).position();
+		    var tsLt =$(this).position().left+52; //获取当前对象左偏移
+		    var tsWth = $(this).width();
+		    $('#floatImComNavSup').animate({left:tsLt,width:tsWth},{queue:false,duration:300})
+	    },function(){
+	        if(!enterprise.isClick){
+	            if(enterprise.tempLeft!=null){
+	                 $('#floatImComNavSup').animate({left:enterprise.tempLeft,width:enterprise.tempWidth},{queue:false,duration:300});
+	            }else{
+		             $('#floatImComNavSup').animate({left:52,width:70},{queue:false,duration:300});
+		        }
+		    }
+	    }).click(function(){
+	        enterprise.isClick=true;
+		    var navLink = $(this).attr('name'); //获取当前元素name的值
+		    var pcNo="p"+navLink;               //在name的值前追加字符串
+		    var offset = $("a[id='"+pcNo+"']").offset();
+		    var offsetT = offset.top-51;
+		    //存入临时位置
+		    enterprise.tempLeft=$(this).position().left+52;
+		    enterprise.tempWidth=$(this).width();
+		    $('html,body').animate({ scrollTop: offsetT });
+	    });
+    },
+    remove:function(){
+        var w=document.body.clientWidth;
+	    //获取浏览器的宽度
+	    var wnd=$(window);
+	    //设置初始位置
+	    var position=function()
+	    {
+		    var scrollTop = wnd.scrollTop() + 285;
+		    $('#floatImComNav').css({top:scrollTop + 'px'});
+	    }
+	    var init=function(){
+		    position();
+	    }
+	    init();
+    },
+    _ImitationValue: function(obj) {
+       $('#spanShowAtt').html($(obj).val());
+    },
+    showImage:function(){
+        $('#fairArea ul li a').click(function(){
+            var clientHeight=$('#fairAreaImg').height();
+            var clientWidth=$('#fairAreaImg').width();
+		    var dcHeight = $(document).height();
+		    var dcWidth = $(document).width();
+		    var magin_top=0; 
+		    if (document.documentElement.scrollTop >170) {
+                magin_top = (window.screen.availHeight - clientHeight) / 2 + document.documentElement.scrollTop + document.body.scrollTop - 67 + "px";
+            } else {
+                magin_top = (window.screen.availHeight - clientHeight) / 2 + document.documentElement.scrollTop + document.body.scrollTop + "px";
+            }
+		    var magin_left = (document.body.clientWidth - clientWidth) / 2 + "px";
+		    var newImgSrc =$(this).find('img').attr('src');
+		    $('#fairAreaMask').css({height:dcHeight,width:dcWidth}).fadeIn('500').click(function(){
+			    $('#fairAreaImg').fadeOut('500');
+			    $('#fairAreaMask').fadeOut('500');
+		    });
+		    $('#fairAreaImg').css({ top: magin_top, left: magin_left,position:'absolute'});
+		    $('#fairAreaImg').fadeIn('500');
+		    $('#fairAreaImg').attr({src:newImgSrc}).click(function(){
+			    $('#fairAreaImg').fadeOut('500');
+			    $('#fairAreaMask').fadeOut('500');
+		    });
+	    });
+    }
+}
+enterprise.init();
+
+(function($){
+	$.fn.extend({ 
+		Scroll:function(opt){ 
+			//参数初始化  
+			if(!opt) var opt={}; 
+			var _this=this.eq(0).find("ul:first"); 
+			var lineH=_this.find("li:first").height(), //获取行高  
+			    line=opt.line?parseInt(opt.line,10):parseInt(this.height()/lineH,10), //每次滚动的行数，默认为一屏，即父容器高度  
+			    speed=opt.speed?parseInt(opt.speed,10):500, //卷动速度，数值越大，速度越慢（毫秒）  
+			    timer=opt.timer?parseInt(opt.timer,10):3000; //滚动的时间间隔（毫秒）  
+			if(line==0) line=1; 
+			var upHeight=0-line*lineH; 
+			//滚动函数  
+			scrollUp=function(){ 
+		        _this.animate({ 
+		                marginTop:upHeight 
+		        },speed,function(){ 
+		                for(i=1;i<=line;i++){ 
+		                        _this.find("li:first").appendTo(_this); 
+		                } 
+		                _this.css({marginTop:0}); 
+		        }); 
+			} 
+			//鼠标事件绑定  
+			_this.hover(function(){ 
+			        clearInterval(timerID); 
+			},function(){ 
+			        timerID=setInterval("scrollUp()",timer); 
+			}).mouseout(); 
+		}         
+	})
+})(jQuery); 
+$(document).ready(function(){ 
+<!--    $("#headRtScrl").Scroll({line:1,speed:500,timer:3000});-->
+    enterprise.showImage();
+});
+</script>
+</body>
+</html>
+
+

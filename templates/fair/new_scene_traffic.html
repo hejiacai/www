@@ -1,0 +1,972 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="{/$config->EmailFromName/}，重庆{/if !empty($current_scene['Showdate'])/}{/date('m月d日', strtotime($current_scene['Showdate']))/}{/else/}{/date('m月d日', strtotime($current_scene['date']))/}{//if/}招聘会,重庆{/if !empty($current_scene['Showdate'])/}{/date('m', strtotime($current_scene['Showdate']))/}{/else/}{/date('m', strtotime($current_scene['date']))/}{//if/}月招聘会,重庆龙头寺招聘会" />
+<meta name="Description" content="重庆市龙头寺招聘会{/if !empty($current_scene['Showdate'])/}{/date('m月d日', strtotime($current_scene['Showdate']))/}{/else/}{/date('m月d日', strtotime($current_scene['date']))/}{//if/}500家企业现场招聘，找人才,六千工作岗位,咨询电话{/$config->CqjobFairsPhone/}求职者可登录{/$config->SiteTitle/}免费领取门票。" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script src="{/version file='html5.js'/}"></script>  
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="fairNew.css"/}" />
+
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="dialog.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="common.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_inputFocus.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_validate.js"/}"></script><!--验证-->
+<script type="text/javascript" language="javascript" src="{/version file="jquery.form.js"/}"></script><!--表单提交-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_flexslider.js"/}"></script><!--左右滚动-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_inputFocus.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+<script type="text/javascript">
+    window.CONFIG = {
+        HOST: '{/$siteurl.style/}',
+        COMBOPATH: '/js/v2/'
+    }
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file="global.js"/}"></script>
+<script type="text/javascript">
+        hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<style>
+ .jobFairBner{width:auto;font-family:"微软雅黑"; height:200px; background:url({/$siteurl.style/}/img/fair/new_fair/jobFairBner.jpg) center top no-repeat;}
+ .jobFairMag{width:1000px; overflow:hidden;margin:0 auto;}
+ .jobFairMag h2{ display:block; text-align:left; float:left; font-size:20px; color:#b62a2a; padding-top:120px; padding-left:0;}
+ .jobFairMag div{width:490px; text-align:right; float:right; padding-top:50px;}
+ .jobFairMag div b,.jobFairMag div p{ color:#333; font-size:16px; display:block;width:490px; overflow:hidden; }
+ .jobFairMag div b{ color:#333; font-size:21px; padding-bottom:8px;}
+ .jobFairMag div p span{ font-weight:bold; }
+</style>
+</head>
+<body>
+{/include file="new_headsearch_2015.html"/}
+<div class="topPart">
+    <div class="jobFairBner">
+    	<div class="jobFairMag">
+            <h2>每周二、四、六[08:30-12:00] 定期举办招聘会</h2>
+            <div>
+                <b>重庆北部新区龙头寺华宇北城中央汇B区5号楼</b>
+                <p><span>轻轨——</span>3号线狮子坪站下车（2号出口左行100米）即到</p>
+                <p><span>公交——</span>天宫大道站下，过马路100米即到</p>
+            </div>
+        </div>
+    </div>
+    	<div class="bannerBox" style='display:none'>
+        	<h2>{/$current_scene['the_date']/}（{/$current_scene['the_weekday']/} {/date('H:i',strtotime($current_scene['begin_time']))/}-{/date('H:i',strtotime($current_scene['end_time']))/}）</h2>
+            <h1>{/$current_scene['subject']/}</h1>
+            <h3 {/if base_lib_BaseUtils::nullOrEmpty($current_scene['describe'])/}style="display: none;"{//if/}>{/$current_scene['describe']/}</h3>
+            <p class="add">地点：重庆市两江新区龙头寺华宇地产5号楼（3号线狮子坪站下即到）</p>
+            <p>
+                <span class="tel">咨询订展热线：{/$config->CqjobFairsPhone/}</span>
+                <span class="onLine"><b>在线咨询：</b><a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></span>
+            </p>
+        </div>
+    </div>
+    <div class="navFair">
+    	<ul class="navBox">
+        	<li><a href="{/rewrite type="fair"/}">招聘会</a></li>
+            <li><a href="{/get_url rule="/zhaopinhui/enterprise"/}">我是企业</a></li>
+            <li><a href="{/get_url rule="/zhaopinhui/fairlist"/}">招聘会排期</a></li>
+            <li><a href="{/get_url rule="/zhaopinhui/traffic"/}">交通指南</a></li>
+            <li><a href="{/get_url rule="/zhaopinhui/medialist/"/}">媒体报道</a></li>
+            <li><a href="{/get_url rule="/zhaopinhui/historylist/"/}">招聘会回顾</a></li>
+        </ul>
+    </div>
+</div>
+<div class="conPart">
+	<div class="part">
+    	<div class="notOpen">
+        	<p>正接受企业订展中，已参会企业、职位清单稍后开放...</p>
+        </div>
+    </div>
+    <div class="part adPart">
+    	<h2><b></b>为什么选择汇博人才市场？</h2>
+        <div class="advLst">
+            <dl class="lst1">
+                <dt></dt>
+                <dd>
+                    <h4>预约人才、针对性极强</h4>
+                    <p>依托汇博网{/$config->ShowResumeNum/}的人才库强大优势根据企业招聘位进行定向预约，人才与企业匹配度高，针对性极强。</p>
+                </dd>
+            </dl>
+            <dl class="lst2">
+                <dt></dt>
+                <dd>
+                    <h4>专场招聘，特色服务</h4>
+                    <p>与重庆外商投资促进中心、重庆市卫生人才交流中心等权威机构及中国汽车人才网、建筑英人才网等专业网站战略合作，打造行业招聘盛宴。</p>
+                </dd>
+            </dl>
+            <dl class="lst3">
+                <dt></dt>
+                <dd>
+                    <h4>职位提前看</h4>
+                    <p>求职者可在招聘会前一天查询参会企业发布的招聘会职位，不再盲目的参加招聘会。</p>
+                </dd>
+            </dl>
+            <dl class="lst4">
+                <dt></dt>
+                <dd>
+                    <h4>交通便利，通达全城</h4>
+                    <p>3号轻轨线狮子坪下车即到，{/$config->HuiBoFairTrafficLine/}条公交线路到达，距龙头寺长途汽车站、重庆北站咫尺之遥，通达全城。</p>
+                </dd>
+            </dl>
+            <dl class="lst5">
+                <dt></dt>
+                <dd>
+                    <h4>主流媒体，强势宣传</h4>
+                    <p>电视台、移动电视、晨报、时报、商报、都市热报、大渝网、华龙网等8类主流媒体强势宣传。</p>
+                </dd>
+            </dl>
+            <dl class="lst6">
+                <dt></dt>
+                <dd>
+                    <h4>超大规模，超旺人气</h4>
+                    <p>常设{/$config->HuiBoFairShowRoom/}标准展位 每周参会企业{/$config->HuiBoFairCompanyNumWeek/}家以上、提供{/$config->HuiBoFairJobNumWeek/}岗位，{/$config->HuiBoFairPersonNumWeek/}以上求职者。</p>
+                </dd>
+            </dl>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="part traffic">
+    	<div class="traT">
+        	<div class="traInfo">
+            	<p><b>汇博人才市场地点：</b>重庆两江新区龙头寺火车站华宇广场5号楼</p>
+                <p><b>公交下车站点：</b>天宫大道站、北城中央站、龙头寺火车北站[汽车站]（非广场站）</p>
+                <p><b>轨道交通下车站点：</b>轻轨3号线狮子坪站下车即到</p>
+            </div>
+            <div class="traSearch">
+	            <span class="formText">
+		     		<input class="text watermark" watermark="输入您的位置，如上清寺" id="txtStart" type="text" />
+		      	</span>
+	  			<a target="_blank" id="btnSearch" href="javascript:void(0)">查找公交路线</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="busRide" id="busRide">
+            <div class="busRideT">
+                <h6>公交线路展示</h6>
+                <div class="busRideTab">
+                    <a href="javascript:void(0)" class="cu">江北区</a>
+                    <a href="javascript:void(0)" class="">渝北区</a>
+                    <a href="javascript:void(0)" class="">渝中区</a>
+                    <a class="" href="javascript:void(0)">沙坪坝区</a>
+                    <a href="javascript:void(0)" class="">南岸区</a>
+                    <a href="javascript:void(0)" class="">九龙坡区</a>
+                    <a href="javascript:void(0)" class="">大渡口区</a>
+                    <a href="javascript:void(0)" class="">巴南区</a>
+                </div>
+                <div class="clear"></div></div>
+            <div class="busRideC" id="busRideC">
+            	<div class="tipTxt">
+                	<div class="num">线路</div>
+                    <div class="start">起点/终点</div>
+                    <div class="site">下车站点</div>
+                    <div class="det">&nbsp;</div>
+                    <div class="clear"></div>
+                </div>
+                <!--江北区begin-->
+                <div class="busRideLst" style="display: block;">
+                    <ul>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3DBRT01" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num red">快速公交BRT01</span>
+                            <span class="start">
+                                <span class="mgr10">香港城（轻轨新山村站）</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">龙头寺火车北站（汽车站）</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D288" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">288</span>
+                            <span class="start">
+                                <span class="mgr10">重庆房地产学院（大学城校区）</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">龙头寺火车北站（汽车站）</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D119" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">119</span>
+                            <span class="start">
+                                <span class="mgr10">南坪枢纽站</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">人和医院</span>
+                            </span>
+                            <span class="site">龙头寺火车北站（汽车站）</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D841" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">841</span>
+                            <span class="start">
+                                <span class="mgr10">八公里</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">火车北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D354" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">354</span>
+                            <span class="start">
+                                <span class="mgr10">南坪中学</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D166"target="_blank"  class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">166</span>
+                            <span class="start">
+                                <span class="mgr10">重庆图书馆</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">鲁能新城</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D245" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">245</span>
+                            <span class="start">
+                                <span class="mgr10">站西路</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">龙头寺公交枢纽站</span>
+                            </span>
+                            <span class="site">龙头寺公交枢纽站</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D270" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">270</span>
+                            <span class="start">
+                                <span class="mgr10">新桥</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D821" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">821</span>
+                            <span class="start">
+                                <span class="mgr10">杨家山</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">龙头寺公交枢纽站</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D138" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">138</span>
+                            <span class="start">
+                                <span class="mgr10">南方花园D区</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li> 
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D421" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">421</span>
+                            <span class="start">
+                                <span class="mgr10">杨家坪</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D820" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">820</span>
+                            <span class="start">
+                                <span class="mgr10">上江城</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">重庆北站</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D879" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">879</span>
+                            <span class="start">
+                                <span class="mgr10">南桥寺</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">重庆龙头寺长途汽车站</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D323" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">323</span>
+                            <span class="start">
+                                <span class="mgr10">大佛寺</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D202" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">202</span>
+                            <span class="start">
+                                <span class="mgr10">双碑</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D105" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">105</span>
+                            <span class="start">
+                                <span class="mgr10">新华路</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D141" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">141</span>
+                            <span class="start">
+                                <span class="mgr10">朝天门</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D439" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">439</span>
+                            <span class="start">
+                                <span class="mgr10">菜园坝</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">龙头寺火车站</span>
+                            </span>
+                            <span class="site">龙头寺火车站</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D818" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">818</span>
+                            <span class="start">
+                                <span class="mgr10">湖榕路</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                    </ul>
+                 </div>
+                <!--江北区end-->
+                
+                <!--渝北区begin-->
+                <div class="busRideLst none" style="display: none;">
+                    <ul>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3DBRT01" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">快速公交BRT01</span>
+                            <span class="start">
+                                <span class="mgr10">香港城（轻轨新山村站）</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">龙头寺火车北站（汽车站）</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D119"  target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">119</span>
+                            <span class="start">
+                                <span class="mgr10">南坪枢纽站</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">人和医院</span>
+                            </span>
+                            <span class="site">龙头寺火车北站（汽车站）</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D841" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">841</span>
+                            <span class="start">
+                                <span class="mgr10">八公里</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">火车北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D323" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">323</span>
+                            <span class="start">
+                                <span class="mgr10">大佛寺</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D354" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">354</span>
+                            <span class="start">
+                                <span class="mgr10">南坪中学</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D166" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">166</span>
+                            <span class="start">
+                                <span class="mgr10">重庆图书馆</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">鲁能新城</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D202" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">202</span>
+                            <span class="start">
+                                <span class="mgr10">双碑</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D245" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">245</span>
+                            <span class="start">
+                                <span class="mgr10">站西路</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">龙头寺公交枢纽站</span>
+                            </span>
+                            <span class="site">龙头寺公交枢纽站</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D270" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">270</span>
+                            <span class="start">
+                                <span class="mgr10">新桥</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D821" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">821</span>
+                            <span class="start">
+                                <span class="mgr10">杨家山</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">龙头寺公交枢纽站</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D622" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">622</span>
+                            <span class="start">
+                                <span class="mgr10">渝北空港</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">北城中央</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D419" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">421</span>
+                            <span class="start">
+                                <span class="mgr10">杨家坪</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D820" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">820</span>
+                            <span class="start">
+                                <span class="mgr10">上江城</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">重庆北站</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D869" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">869</span>
+                            <span class="start">
+                                <span class="mgr10">金竹苑</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">北城中央</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D818" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">818</span>
+                            <span class="start">
+                                <span class="mgr10">湖榕路</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D138" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">138</span>
+                            <span class="start">
+                                <span class="mgr10">南方花园</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D105" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">105</span>
+                            <span class="start">
+                                <span class="mgr10">新华路</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D141" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">141</span>
+                            <span class="start">
+                                <span class="mgr10">朝天门</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D439" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">439</span>
+                            <span class="start">
+                                <span class="mgr10">菜园坝</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">龙头寺火车站</span>
+                            </span>
+                            <span class="site">龙头寺火车站</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D879" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">879</span>
+                            <span class="start">
+                                <span class="mgr10">南桥寺</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆龙头寺长途汽车站</span>
+                            </span>
+                            <span class="site">重庆龙头寺长途汽车站</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--渝北区end-->
+                
+                <!--渝中区begin-->
+                <div class="busRideLst none" style="display: none;">
+                    <ul>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3DBRT01" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">快速公交BRT01</span>
+                            <span class="start">
+                                <span class="mgr10">香港城（轻轨新山村站）</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">龙头寺火车北站（汽车站）</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D461" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">119</span>
+                            <span class="start">
+                                <span class="mgr10">南坪枢纽站</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">人和医院</span>
+                            </span>
+                            <span class="site">龙头寺火车北站（汽车站）</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D841" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">841</span>
+                            <span class="start">
+                                <span class="mgr10">八公里</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">火车北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D323" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">323</span>
+                            <span class="start">
+                                <span class="mgr10">大佛寺</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D354" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">354</span>
+                            <span class="start">
+                                <span class="mgr10">南坪中学</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D421" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">421</span>
+                            <span class="start">
+                                <span class="mgr10">杨家坪</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D820" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">820</span>
+                            <span class="start">
+                                <span class="mgr10">上江城</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">重庆北站</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D138" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">138</span>
+                            <span class="start">
+                                <span class="mgr10">南方花园D区</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D818" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">818</span>
+                            <span class="start">
+                                <span class="mgr10">湖榕路</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D105" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">105</span>
+                            <span class="start">
+                                <span class="mgr10">湖榕路</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D141" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">141</span>
+                            <span class="start">
+                                <span class="mgr10">朝天门</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D439" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">439</span>
+                            <span class="start">
+                                <span class="mgr10">菜园坝</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">龙头寺火车站</span>
+                            </span>
+                            <span class="site">龙头寺火车站</span>
+                        </li>
+                     </ul>
+                </div>
+                <!--渝中区end-->
+                
+                <!--沙坪坝begin-->
+                <div class="busRideLst none" style="display: none;">
+                    <ul>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3DBRT01" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">快速公交BRT01</span>
+                            <span class="start">
+                                <span class="mgr10">香港城（轻轨新山村站）</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">龙头寺火车北站（汽车站）</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D288" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">288</span>
+                            <span class="start">
+                                <span class="mgr10">重庆房地产学院（大学城校区）</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">龙头寺火车北站（汽车站）</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D166" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">166</span>
+                            <span class="start">
+                                <span class="mgr10">重庆图书馆</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">鲁能新城</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D202" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">202</span>
+                            <span class="start">
+                                <span class="mgr10">双碑</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D245" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">245</span>
+                            <span class="start">
+                                <span class="mgr10">站西路</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">龙头寺公交枢纽站</span>
+                            </span>
+                            <span class="site">龙头寺公交枢纽站</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D270" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">270</span>
+                            <span class="start">
+                                <span class="mgr10">新桥</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D821" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">821</span>
+                            <span class="start">
+                                <span class="mgr10">杨家山</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">龙头寺公交枢纽站</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--沙坪坝end-->
+                
+                <!--南岸区begin-->
+                <div class="busRideLst none" style="display: none;">
+                    <ul>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D119" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">119</span>
+                            <span class="start">
+                                <span class="mgr10">南坪枢纽站</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重人和医院北站</span>
+                            </span>
+                            <span class="site">龙头寺火车北站（汽车站）</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D841" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">841</span>
+                            <span class="start">
+                                <span class="mgr10">八公里</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">火车北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D323" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">323</span>
+                            <span class="start">
+                                <span class="mgr10">大佛寺</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D354" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">354</span>
+                            <span class="start">
+                                <span class="mgr10">南坪中学</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--南岸区end-->
+                
+                <!--九龙坡begin-->
+                <div class="busRideLst none" style="display: none;">
+                    <ul>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3DBRT01" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">快速公交BRT01</span>
+                            <span class="start">
+                                <span class="mgr10">香港城（轻轨新山村站）</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">龙头寺火车北站（汽车站）</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D818" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">818</span>
+                            <span class="start">
+                                <span class="mgr10">湖榕路</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D138" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">138</span>
+                            <span class="start">
+                                <span class="mgr10">南方花园D区</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D421" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">421</span>
+                            <span class="start">
+                                <span class="mgr10">杨家坪</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D820" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">820</span>
+                            <span class="start">
+                                <span class="mgr10">上江城</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">重庆北站</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--九龙坡end-->
+                
+                <!--大渡口begin-->
+                <div class="busRideLst none" style="display: none;">
+                    <ul>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3DBRT01" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">快速公交BRT01</span>
+                            <span class="start">
+                                <span class="mgr10">香港城（轻轨新山村站）</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">龙头寺火车北站（汽车站）</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D818" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">818</span>
+                            <span class="start">
+                                <span class="mgr10">湖榕路</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">重庆北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--大渡口end-->
+                <!--巴南begin-->
+                <div class="busRideLst none" style="display: none;">
+                    <ul>
+                        <li>
+                            <a href="//map.baidu.com/?newmap=1&ie=utf→8&s=s%26wd%3D841" target="_blank" class="btn3 btnsF12 busRideWayLink">路线详情</a>
+                            <span class="num">841</span>
+                            <span class="start">
+                                <span class="mgr10">八公里</span>
+                                <span class="mgr10">-----&gt;</span>
+                                <span class="mgr10">火车北站</span>
+                            </span>
+                            <span class="site">天宫大道</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--巴南end-->
+        	</div>
+        </div>
+    </div>
+</div>
+{/include file="footer.html"/}
+<section class="qqTalk">
+	<a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:53" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+</section>
+<script type="text/javascript" language="javascript">
+$(document).ready(function(){
+	$.focusblur('input.text');
+});
+var traffic={
+    busride_tab_con:$('#busRideC .busRideLst'),
+    init:function(){
+       traffic.showRoute();
+       traffic.searchRoute();
+       $('.watermark').watermark2();
+    }, 
+    showRoute:function(){
+	    $(".busRideT").find("a").hover(function()
+	    {
+		    traffic.switchTab(this, $(".busRideT").find("a").index(this));
+	    });
+	    $('#busRide').find('li').hover(function(){
+		    $(this).addClass('hov')
+	    },function(){
+		    $(this).removeClass('hov');
+	    });
+    },
+    switchTab:function(obj,index){
+        traffic.busride_tab_con.hide(); // 隐藏全部窗口
+	    traffic.busride_tab_con.eq(index).show(); // 显示与单击相对应的那个窗口
+	    $(".busRideT").find("a").removeClass("cu"); // 清除全部的 cu
+	    $(obj).addClass("cu");
+    },
+    searchRoute:function(){
+        $('#btnSearch').click(function(){
+             var start=$('#txtStart').val();
+         	$('#btnSearch').attr('href','http://api.map.baidu.com/direction?region=重庆市&origin='+start+'&destination=重庆汇博人才市场&mode=transit&output=html');
+        });
+     }
+}
+traffic.init();
+</script>
+</body>
+</html>

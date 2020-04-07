@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>兼职</title>
+<!–[if lt IE9]> 
+<script type="text/javascript" language="javascript" src="{/version file="html5.js"/}" ></script>  
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+    HOST: '{/$siteurl.style/}',
+    COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript">
+    hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<link href="{/version file='base.css'/}" rel="stylesheet" />
+<link href="{/version file='comback.css'/}" rel="stylesheet" />
+<link href="{/version file='tJob_style.css'/}" rel="stylesheet" />
+
+<style>
+.tDtoptitx p i.partIcon01{ background:url({/$siteurl.style/}/img/part/partIcon02.png) no-repeat;width:28px; height:21px; margin-left:35px;}
+.tDtoptitx p span.cyan{ color:#49bfbf;}
+.partsCan{width:220px; overflow:hidden; margin:0 auto 0 auto; background:#fffbf9;}
+.partsCan img{ display:block; margin:28px auto 8px auto;}
+.partsCan p{ line-height:18px; padding-bottom:15px; font-size:15px; text-align:center; color:#6b5237;}
+.partsCan span{ display:block; line-height:18px; color:#fff; background:#c5883d; text-align:center; padding:12px 0px;}
+.tpartApply{ margin:20px 0 8px 15px;}
+.tpartAList ul li{ cursor:pointer;}
+.tpartAList ul li:hover{ background:#b08d74;}
+.tpartAList ul li:hover a,.tpartAList ul li:hover span,.tpartAList ul li:hover span em{ color:#fff;}
+.tpartAList ul li a:hover{ text-decoration:none;}
+.tpartDefinRt{width:280px; padding:26px 0px;}
+.tpartAList{width:280px;}
+.tpartAList ul li{ padding:10px 20px;}
+.tpartAList h2{  padding: 30px 20px 10px 20px;}
+</style>
+
+</head>
+
+<body class="tpartDgray">
+{/include file="part_header.html"/}
+<div class="tpartDefinite">
+	<div class="tpartDefinLf">
+    	<div class="tDtoptit">
+        	<h2>{/$station/}</h2>
+            <p>职位类别：{/$jobsort/}</p>
+        </div>
+        <div class="tDtoptitx">
+        	<p><i class="tDtitIcon01"></i><span>{/$company_name/}</span><i class="partIcon01" style="margin-right:5px;"></i><span class="cyan">营业执照已验证</span></p>
+            <p><i class="tDtitIcon02"></i><span>招聘{/$apply_count/}人，{/if $need_invite == 1/}需要面试{/else/}不需要面试{//if/}</span></p>
+            <p><i class="tDtitIcon03"></i><span>{/$address/}</span><a target="_blank" href="http://api.map.baidu.com/marker?location={/$map_y/},{/$map_x/}&output=html&title={/$company_name/}&content={/$address/}"><em></em>查看地图</a></p>
+            <p><i class="tDtitIcon04"></i><span>{/$salary/}，{/$salary_type/}</span></p>
+            <p><i class="tDtitIcon05"></i><span>{/if $long_recruit!=0/}长期招聘{/else/}{/$start_time/} -- {/$end_time/}{//if/}</span></p>
+            <table class="tpart_time">
+                <tr>
+                    <th class="black">TIME</th>
+                    <th>周一</th>
+                    <th>周二</th>
+                    <th>周三</th>
+                    <th>周四</th>
+                    <th>周五</th>
+                    <th>周六</th>
+                    <th>周日</th>
+                </tr>
+                {/assign var="noon" value=['01'=>'上午','02'=>'下午','03'=>'晚上']/}
+                {/assign var="day" value=['01','02','03','04','05','06','07']/}
+                {/foreach $noon as $k => $val/}
+                <tr>
+                    <th class="orange">{/$val/}</th>
+                    {/foreach $day as $va/}
+                    <td data-val="{/$va/}{/$k/}">       
+                        {/assign var='tt' value=$va|cat:$k/}                
+                        {/if in_array($tt, $freetimes)/}<i class="yes"></i>{/else/}&nbsp;{//if/}
+                    </td>
+                    {//foreach/}
+                </tr>
+                {//foreach/}
+            </table>
+            <p style="margin-left: 35px"><span>{/$time_detail/}</span></p>
+        </div>
+        <div class="newTytit">
+            <h2>工作描述</h2>
+            <p>学历要求：{/if (empty($degree))/}不限{/else/}{/get_name degree=$degree/}{//if/}</p>
+            <p>性别要求：{/if (empty($sex))/}不限{/else/}{/get_name sex=$sex/}{//if/}</p>
+            <p>{/html_encode content=$position_require/}</p>
+            <a href="javascript:void(0)" class="tpartApply share">立即报名</a>
+            {/if $fee_type==1/}<p>注：该职位承诺不在求职过程中收取任何费用</p>{//if/}
+            <div style="width:630px;border-bottom:1px solid #e7e5df;margin-left:15px;padding-top:8px;"></div>
+        </div>
+        <div class="newTytit">
+            <h2>企业简介</h2>
+            <p>{/html_encode content=$info/}</p>
+        </div>
+    </div>
+    <div class="tpartDefinRt">
+        <div class="partsCan">
+            <img src="{/$siteurl.style/}/img/part/codeImg02.png" width="164" height="164" />
+            <p>手机扫描上方二维码</p>
+            <span>下载汇博兼职APP<br />即可立即开始免费求职</span>
+        </div>             
+        <div class="tpartAList">
+            {/if !empty($other_jobs)/}
+        	<h2><span>我们的其他兼职</span></h2>
+            <ul>
+                {/foreach $other_jobs as $job/}
+            	<li>
+                	<a target="_blank" href="{/get_url rule="/partjob/index/" data="job_flag={/$job['job_flag']/}"/}">{/$job['station']/}</a><span><em>{/$job['salary']/}元</em>{/$job['salary_type_text']/}</span>
+                </li>
+                {//foreach/}
+            </ul>
+            {//if/}
+        </div>
+    </div>
+</div>
+{/include file="footer.html"/}
+</body>
+<script type="text/javascript">
+hbjs.use('widge.overlay.hbDialog', function (Dialog, $) {
+    /* 分享提示 */
+    var shareHTML = [
+        '<div style="text-align: center;padding:10px 0 20px 0">',
+            '<img src="{/$siteurl.style/}/img/part/two_dimension_window.jpg" style="width:98px;height: 98px;border:1px solid #d3d3d3;display: block;margin:10px auto" />请下载汇博兼职APP进行报名<br />扫描上方二维码即可下载',
+        '</div>'
+    ].join('');
+
+    var shareDialog = new Dialog({
+        close: 'x',
+        idName: 'ui_company_share_dialog',
+        width: 350,
+        title: '下载APP',
+        content: shareHTML,
+        isAjax: true
+    });
+    
+    $(".share").on("click", function() {
+       shareDialog.show();
+    });
+});
+</script>
+</html>

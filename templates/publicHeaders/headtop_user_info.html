@@ -1,0 +1,97 @@
+{/include_php file='app/controller/head.php'/}
+<link rel="stylesheet" type="text/css" href="{/version file='newHeader2019.css'/}">
+<div class="partjobPop" id="partjobPop" style="display:none;">
+    <a target="_blank" href="{/base_lib_Constant::JIANZHI_URL_NO_HTTP/}" class="partknowx"></a>
+    <a href="javascript:" class="partknow">知道了</a>
+</div>
+<div class="nav_login" {/if $dataitem['isLogin'] && $dataitem['type']=='p'/} style="line-height: 0px;"{//if/}>
+<div class="w1100">
+    {/if $dataitem['isLogin']/}
+    <div class="lgAft" id="userLoginBox">
+
+        {/if $dataitem['type']=='p'/}
+                        {/if $isIndex==true/}{/include_php file='app/controller/head.php'/}{//if/}
+                        <div class="psnLg_new" {/if $dataitem['isLogin']==false/}style="display:none;" {//if/}>
+                        <div style="display: block;" class="login_reg login_regAge" >
+                            <div   {/if  $origin=='search'/}class="personage" style="margin-top: -4px;"{/elseif $origin=='other'/}class="personage personageNbord" style="margin-top: 2px;"{/else/} class="personage" {//if/} >
+                            <a class="cur" href="{/$siteurl.person/}" target="_blank" {/if $origin=='other'/} style="margin-left: 0px;" {//if/}>{/$dataitem['username']/}<i {/if $dataitem['total_num']==null/} style="display:none;"{/elseif $dataitem['total_num']>9/}class="tipsNull" {/elseif $dataitem['total_num']<=9/}class="tips"{//if/}>{/if $dataitem['total_num']<=9/}{/$dataitem['total_num']/}{//if/}</i><i class="arr_tb"></i></a>
+                            <ol class="item itemAge" {/if  $origin=='search' || $origin=='other'/}style="width: 80px;"{//if/}>
+                            <li><a href="{/$siteurl.person/}" target="_blank">我的汇博</a></li>
+                            <li><a href="{/$siteurl.person/}/resume/manage/" target="_blank">我的简历</a></li>
+                            <li><a href="{/$siteurl.person/}/apply" target="_blank">申请的职位</a></li>
+                            <li><a href="{/$siteurl.person/}/invite" target="_blank">面试邀请<i {/if $dataitem['invite_num']==null/} style="display:none;"{/elseif $dataitem['invite_num']>9/}class="tipsNullx" {/elseif $dataitem['invite_num']<=9/}class="tips"{//if/}>{/if $dataitem['invite_num']<=9/}{/$dataitem['invite_num']/}{//if/}</i></a></li>
+                            <li><a href="{/$siteurl.person/}/message" target="_blank">消息提醒<i {/if $dataitem['message_num']==null/} style="display:none;"{/elseif $dataitem['message_num']>9/}class="tipsNullx" {/elseif $dataitem['message_num']<=9/}class="tips"{//if/}>{/if $dataitem['message_num']<=9/}{/$dataitem['message_num']/}{//if/}</i></a></li>
+                            <li><a href="{/$siteurl.person/}/certification" target="_blank">账号设置</a></li>
+                            <li><a id="userOut" class="userOut" href="javascript:return 0">退出</a></li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="otherInfo" {/if $origin=='search'/}style="float: right; margin-top: -6px;margin-right:-10px;"{/elseif $origin=='index'/}style="float: right; margin-right:-10px;"{/else/}style="float: right; "{//if/}>
+                    <ul>
+                        <li class="line">|</li>
+                        {/if $dataitem['jl_refresh']==1/}
+                        <li class="jian_li">
+                            <a href="{/$siteurl.person/}/person/createbasic/" style="color:#DC143C"><span class="psnUserName">创建简历</span></a>
+                        </li>
+                        <li class="line">|</li>
+                        {/elseif $dataitem['jl_refresh']==2/}
+                        <li id="jian_li_shuaxin" class="jian_li_shuaxin">
+                            <a id="refresh" {/if $origin=='index'/} onclick="refresh_index()" {//if/} href="javascript:;" style="color:#DC143C"><span class="psnUserName">刷新简历</span><img src="{/$siteurl.style/}/img/c/new_index/reddian.png" style="vertical-align: 9px;#vertical-align:8px;margin-left: 3px;"></a>
+                        </li>
+                        <li id="jianlishuaxin_line" class="line">|</li>
+                        {/else/}
+                        <!--<li id="jian_li_shuaxin" class="jian_li_shuaxin">-->
+                        <!--<a id="refresh" {/if $origin=='index'/} onclick="refresh_index()" {//if/} href="javascript:;" style="color:#DC143C"><span class="psnUserName">刷新简历2</span></a>-->
+                        <!--</li>-->
+                        <!--<li id="jianlishuaxin_line" class="line">|</li>-->
+                        {//if/}
+                        <li><a class="newPhone" href="/app/p/" style="margin-right: 0px"><i></i>手机版</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" id="user_jianli_1" value="{/if $origin=='index'/}{/$dataitem['open_mode']/}{//if/}" />
+                </div>
+
+        {/else/}
+        <ul style="margin-top: -5px;">
+            <li><a class="userOut" id="userOut" href="javascript:void(0);">退出</a></li>
+            <li class="line">|</li>
+            <li class="user">
+                <img width="18" height="18" id="headphoto" src="{/$dataitem['photo']/}">
+                <a href="{/if $dataitem['type']=='c'/}{/get_url domain="company"/}{/else/}{/get_url domain="person"/}{//if/}" target="_blank"><span class="comUserName">{/if $dataitem['type']=='c'/}企业招聘中心{/else/}我的汇博{//if/}</span></a>
+            </li>
+        </ul>
+        {//if/}
+
+    </div>
+    {//if/}
+    <div id="userEnterBox" class="login_reg"  {/if $dataitem['isLogin']/}style="display:none"{//if/} >
+    <a class="newPhone" href="/app/p/" style="margin-right: 15px;float: left;line-height: 28px;color:#999"  target="_blank"><i></i>手机版</a>
+    <u>|</u>
+    <div class="jobDingYue" style="margin-right: 15px;float: left;line-height: 28px;margin-left:15px;">
+        <a href="javascript:;" style="color:rgb(153, 153, 153)" onclick="web_sub()">职位订阅</a>
+    </div>
+    <u>|</u>
+    <div class="log_new">
+        <a href="javascript:">企业:</a>
+        <a class="cur" href="{/$siteurl.company/}/login">登录</a>
+        <span class="slash">/</span>
+        <a class="cur" href="{/$siteurl.main/}/company/register">注册</a>
+    </div>
+    <u>|</u>
+    <div class="reg_new">
+        <a href="javascript:">求职:</a>
+        <a class="cur" href="{/$siteurl.person/}/login">登录</a>
+        <span class="slash">/</span>
+        <a class="cur" href="{/$siteurl.person/}/register">注册</a>
+    </div>
+</div>
+
+<a  href="javascript:" class="collect" id="addFavoritesBtn"><i class="icon_collect"></i>收藏汇博</a>
+</div>
+</div>
+
+
+
+
+

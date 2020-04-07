@@ -1,0 +1,58 @@
+<style>
+.pReg .regL .thrdLogin{ margin:0; padding:0;}
+.thrdLogin{ background:#e8f5fe; text-align:center; font-size:16px;}
+.regL{ float:none;}
+.reg{ border:none}
+.edSucTit{ background:#e8f5fe;height:72px;}
+.edSucTit2{ padding:30px 0;}
+.subSpan{ text-align:left;}
+div.content{width:585px;border:none;}
+.edSucTit2 b{ color:#3d84b8;}
+.edSucTit em, .edSucTit span{ font-family:"微软雅黑";}
+.edSrightx{ padding-bottom:15px;}
+.edSright p span.subSpan{ font-size:14px;width:352px;}
+.edSright p a{ height:30px; line-height:30px; font-size:14px;}
+.edSright p span.subSpan{width:505px;}
+.hb_ui_dialog .ui_dialog_container{padding:0px;}
+.edSucTit em, .edSucTit span{margin-top:12px;}
+.edSucTit .fail{background:url({/$siteurl.style/}/img/fair/failicon.png);width:32px;height:32px;}
+.hb_ui_dialog{border:none;border-radius: 4px;}
+</style>
+<div class="content" id="content">
+    <div class="reg pReg">
+    	<div class="regL">
+            {/if $error/}
+                <div class="edSucTit">
+                    <em class='fail'></em><span>很抱歉，预约失败!</span>
+                </div>
+                <div class="edSright edSrightx">
+                    <p style="padding-top:80px;padding-bottom:80px;"><span class="subSpan" style="text-align:left;font-size:16px;">{/$errormsg/}</span></p>
+                </div>
+            {/else/}
+        	<div class="edSucTit">
+                    <em></em><span>恭喜您，预约成功!</span>
+                </div>
+                <div class="edSright edSrightx">
+                    <p style="padding-top:80px;padding-bottom:80px;"><span class="subSpan" style="text-align:left;font-size:16px;">您可以参会了，请您于{/$day/}（{/$week/}）8：30-11：00准时到场！</span></p>
+                </div>
+            {//if/}
+        </div>
+    </div>
+</div>
+<script>
+    {/if $job_id !=0/}
+    var job_id = {/$job_id/};
+	hbjs.use(function($){
+		var html ='<span class="cJobBtnx">已报名</span>';
+		setHaveBooking && setHaveBooking(html,job_id, $);
+               // $.get("{/$oa_url/}");
+                $.ajax({  
+                    url: "{/$oa_url/}",  
+                    data:{},
+                    type: "POST", 
+                    async: false,  
+                    dataType : "jsonp"
+                });
+            });
+    {//if/}
+</script>

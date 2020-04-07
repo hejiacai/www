@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>汇博简历</title>
+	<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file="jobRegister.css"/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file="v2-widge.css"/}"/>
+	<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+	<script type="text/javascript" src="{/version file='version.js'/}"></script>
+	<script type="text/javascript">
+		window.CONFIG = {
+			HOST: '{/$siteurl.style/}',
+			COMBOPATH: '/js/v2/'
+		}
+	</script>
+	<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+	<script type="text/javascript" src="{/version file='global.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+	<script type="text/javascript">
+		hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+	</script>
+	<script type="text/javascript">
+		$(function () {
+			$('#user').hover(function () {
+				$('#user_choose').css('display', 'block');
+			});
+			$("#user_choose").mouseleave(function () {
+				$(this).css('display', 'none');
+			});
+
+			$('#my_resume').click(function (e) {
+				e.stopPropagation();
+			});
+
+			$('#quit').click(function (e) {
+				e.stopPropagation();
+			});
+		});
+	</script>
+	<style type="text/css">
+
+		button[type=submit] {
+			border: none;
+		}
+
+		.m-header {
+			height: 72px;
+			background-color: #4b4c54;
+			width: 100%;
+		}
+
+		.m-header .inner-header {
+			width: 1000px;
+			margin: 0 auto;
+			height: 100%;
+			background: url({/$style_url/}/img/xiaoyuan/resume/logo.png) 0 10px no-repeat;
+			line-height: 72px;
+			position: relative;
+		}
+
+		.m-header .inner-header a {
+			float: right;
+			color: white;
+			font-size: 18px;
+		}
+
+		.m-header .inner-header .avatar {
+			background-color: #4b4c54;
+			float: right;
+			width: 40px;
+			height: 40px;
+			border: none;
+			margin-top: 16px;
+			border-radius: 50%
+		}
+
+		.m-header .inner-header .user {
+			float: right;
+			color: #fff;
+			font-size: 18px;
+			margin-left: 10px;
+			display: block;
+			position: relative
+		}
+
+		.m-header .inner-header .user .icon {
+			margin-left: 5px;
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			background: url({/$siteurl.style/}/img/xiaoyuan/resume/icon-down.png) 0px -2px no-repeat
+		}
+
+		.m-header .inner-header a.huiboLogo {
+			display: block;
+			width: 140px;
+			height: 72px;
+			float: left;
+		}
+
+		/*下拉框*/
+		.m-header .inner-header .user-choose {
+			position: absolute;
+			top: 80px;
+			right: -30px;
+			height: 156px;
+			width: 134px;
+			display: none;
+			background-color: #fff;
+			z-index: 2;
+			border-radius: 5px;
+			box-shadow: 0 0 2px #ddd;
+		}
+
+		.m-header .inner-header .user-choose > a {
+			color: #444;
+			height: 20px;
+			line-height: 20px;
+			padding-left: 18px;
+			font-size: 14px;
+			display: block;
+			float: none;
+		}
+
+		.m-header .inner-header .user-choose > a:hover {
+			color: #16caa4;
+		}
+
+		.m-header .inner-header .user .user-choose > div {
+			color: #444;
+			height: 20px;
+			line-height: 20px;
+			padding-left: 18px;
+			font-size: 14px;
+		}
+
+		.saveBtnxbg {
+			position: relative;
+			overflow: hidden;
+			padding: 35px 0 10px 0;
+			border-bottom: 1px solid #eeeff2;
+			margin: 0 20px;
+		}
+		
+		.saveBtnxbg span {
+			position:absolute;
+			top: 35px;
+			left: 0px;
+			color: #ccc;
+		}
+
+		.saveBtnxbg input {
+			font-size: 14px;
+			color: #444;
+			display: block;
+			width: 100%;
+			height: 18px;
+			line-height: 18px;
+			border: none;
+			outline: none;
+			text-indent: 58px;
+		}
+
+		.saveBtnxbg img {
+			display: block;
+			width: 100px;
+			height: 40px;
+			position: absolute;
+			top: 18px;
+			right: 0;
+		}
+
+		.hb_ui_dialog .ui_dialog_footer {
+			text-align: left;
+			background: none;
+			padding-bottom: 40px;
+			padding-top: 40px;
+		}
+
+		.ui_dialog_footer button {
+			background: #16caa4;
+			color: #fff;
+			border: none;
+			box-shadow: none;
+			width: 100px;
+			height: 30px;
+			line-height: 30px;
+			margin-right: 20px;
+			cursor: pointer;
+		}
+
+		.ui_dialog_footer button.btn2:hover {
+			background: #0ac39b;
+			color: #fff;
+			border: none;
+		}
+
+		.ui_dialog_footer button.btn3 {
+			background: #ebebeb;
+			color: #999;
+			border: none;
+		}
+
+		.ui_dialog_footer button.btn3:hover {
+			background: #e1e1e1;
+			color: #999;
+			border: none;
+		}
+	</style>
+</head>
+<body>
+<div class="jobBanner">
+	<!--头部-->
+	{/include file="hbResume/public/head.html"/}
+	<div class="regTipbd">
+		<span class="regTip01">针对不同岗位匹配专属简历模板</span>
+		<span class="regTip02">川渝174所高校学生都在使用</span>
+		{/if !$_userid/}
+			<!--未登录-->
+			<a href="{/get_url rule='/hbResumeModel/Index/' domain="person"/}" class="regTip03">立即<b>免费</b>制作简历<i></i></a>
+		{/else/}
+			<a href="{/get_url rule='/hbResumeModel/Index/' domain="person"/}" class="regTip03">立即<b>免费</b>制作简历<i></i></a>
+		{//if/}
+		<span class="regTip04">与理想工作之间，就差一份好简历了</span>
+	</div>
+</div>
+<div class="jobUserNumber">
+	<ul class="jobUserMain clearfix">
+		<li>
+			<img src="{/$img_path/}/job_icon01.png"/>
+			<span>已有<b>400万+</b>用户<br/>在这里创建了简历</span>
+		</li>
+		<li>
+			<img src="{/$img_path/}/job_icon02.png"/>
+			<span>来自<b>10万+</b>HR<br/>的专业建议</span>
+		</li>
+		<li class="last">
+			<img src="{/$img_path/}/job_icon03.png"/>
+			<span>基于<b>5万+</b>校招职位<br/>的岗位分析</span>
+		</li>
+	</ul>
+</div>
+
+<div class="footerBm" style="text-align: center;">
+	<div class="footerNav"><a target="_blank" href="{/get_url rule='/about/' domain='main'/}">关于汇博</a>|<a target="_blank"
+																							 href="{/get_url rule='/about/contact/' domain='main'/}">联系我们</a>|<a target="_blank"
+																																					href="{/get_url rule='/qiye/ent49no58.html' domain='main'/}">诚聘英才</a>|<a
+				target="_blank"
+				href="{/get_url rule='/about/brand/' domain='main'/}">品牌合作</a>|<a target="_blank" href="{/get_url rule='/about/links/' domain='main'/}">友情链接</a>
+																						 <!--|<a target="_blank" href="http://www.huibo.com/about/sitemap/">网站地图</a>-->|<a
+				target="_blank"
+				href="{/get_url rule='/about/law/' domain='main'/}">法律声明</a>|<a target="_blank" href="{/get_url rule='/about/privacy/' domain='main'/}">隐私政策</a></div>
+	<div class="copyright">
+		<p>©2018&nbsp;汇博网&nbsp;版权所有&nbsp;&nbsp;|&nbsp;&nbsp;增值电信业务经营许可证：渝B2-20060063&nbsp;&nbsp;|&nbsp;&nbsp;人才中介服务许可证：渝新委发[2012]
+		   124号&nbsp;&nbsp;|&nbsp;&nbsp;<a target="_blank"
+										   href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=50010502001182"
+										   rel="nofollow"
+										   style="color:#999;">渝公网安备
+															   50010502001182号</a></p>
+		<p>招聘单位无权收取任何费用,请求职人员加强自我保护意识,按劳动法规保护自身权益,警惕虚假招聘,避免上当受骗!</p>
+	</div>
+</div>
+
+{/include file="statistics.html"/}
+</body>
+</html>

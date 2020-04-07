@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{/$seo_title/} - {/$title/}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{/$seo_key/}" />
+<meta name="description" content="{/$seo_desc/}" />
+<style>
+/*body{background:url({/$siteurl.style/}/img/topicPage/topic/bannerBg.png) center top;}*/
+/*body{background: {/$bg_color/} url({/base_lib_Constant::YUN_ASSETS_URL_NO_HTTP/}/{/$bg_img/}) center top no-repeat;}*/
+*{ margin:0; padding:0; font-family:"微软雅黑";font-size:12px; list-style:none; font-style:normal;}
+img{ display:block; border:none;}
+a{ text-decoration:none;}
+.temBanner{height:420px; background:url({/$siteurl.style/}/img/topicPage/topic/banner.png) center top no-repeat; margin:0 auto;}
+.temList{width:1021px; overflow:hidden; margin:0 auto;}
+.temList li{width:234px; overflow:hidden; float:left; margin:0 21px 21px 0;}
+.temList li p{width:100%; overflow:hidden; background:#ea543e;}
+.temList li p span,.temList li p b{ text-align:center;width:100%; height:20px; overflow :hidden; font-size:16px; display:block; height:20px; line-height:20px; color:#fff;}
+.temList li p span{ margin-top:16px;}
+.temList li p b{ margin:8px 0 16px 0; font-size:18px; font-weight:bold; color:#ffff00;}
+.temList li a{ display:block; color:#666; line-height:50px; height:50px; width:100%; overflow:hidden; background:#fff; text-align:center; font-size:14px;}
+.temList li p a{background:none; color:#fff; height: auto; line-height: 22px; font-size: 16px;display: inline}
+.temList li p a:hover{background: none;text-decoration: underline}
+.temList li a:hover{ background:#f2f2f2;}
+.temTitBg{width:1021px; margin:0 auto;}
+.temTit{width:979px; margin-bottom:21px; height:45px; line-height:45px; color:#333; font-size:18px; border-bottom:1px solid #404d68; background:url({/$siteurl.style/}/img/topicPage/topic/bannerIcon.png) left 13px no-repeat; padding-left:20px;}
+.footer{ overflow:hidden;width:100%;background: #333; text-align:center; font-family:Verdana, Geneva, sans-serif; font-size:12px; color:#ccc; padding:30px 0px; line-height:24px;}
+
+</style>
+<link rel="stylesheet" type="text/css" href="{/$siteurl.style/}/css/topic/m_{/$topic_name/}.css?t={/uniqid()/}">
+</head>
+
+<body style="background: {/$bg_color/} url({/$pic_base/}{/$bg_img/}) center 420px no-repeat;">
+<div style="width:1021px;margin:0 auto;position: relative">
+	{/if {/$topic_name/} == "jiabohui"/}
+	<style>
+		#Jsewm{position:absolute;top:385px;right: -210px;width:221px;height:181px;background: url('{/$siteurl.style/}/img/topicPage/topic/zhuantiiejiabohui.png')}
+		#Jsewm a{height:33px;width:190px;display: block;background: #6e15db;padding:20px 15px 15px 15px;margin-top: 41px;cursor: pointer}
+		#Jsewm a i{width:30px;height:30px;display: inline-block;background: url('{/$siteurl.style/}/img/topicPage/topic/zhuantiiejiabohui.png') -16px -59px no-repeat;float:left;margin-right:8px}
+		#Jsewm a span{font-size: 18px;color: #fff;margin-top: 3px;display: inline-block}
+		#Jsewm a:hover{background: #600ec4}
+	</style>
+	<div style="" id="Jsewm">
+		<a href="http://huiborencaiwang.mikecrm.com/f.php?t=Umn43k" target="_blank"><i></i><span>企业参会报名通道</span></a>
+		<a href="http://www.51jiabo.com/cq/ticket/get_ticket.shtml" target="_blank" style="margin-top: 2px"><i style="background-position:-19px -133px"></i><span>参会免费索票通道</span></a>
+	</div>	
+	{/elseif {/$topic_name/} == "zhongxx"/}
+	<style>
+		#Jsewm{position:absolute;top:385px;right: -210px;width:178px;height:82px}
+	</style>
+	<div id="Jsewm">
+		<a href="http://gszc.zbj.com/ssszm?=hbrc" target="_blank"><img src="{/$siteurl.style/}/img/topicPage/topic/zhongxx20160506.jpg" /></a>
+	</div>	
+	{/else/}	
+	<div style="position:absolute;top:385px;right: -210px;width:198px;height:347px;background: url('{/$siteurl.style/}/img/topicPage/topic/zhuantiiewm.png')" id="Jsewm"></div>	
+	{//if/}
+</div>
+<div class="temBanner" style="background: {/$bg_color/} url({/if empty($main_pic)/}{/$siteurl.style/}/img/topicPage/topic/banner.png{/else/}{/$pic_base/}{/$main_pic/}{//if/}) no-repeat scroll center 0;"></div>
+
+{/foreach $dataLst as $k=>$list/}
+
+<div class="temTitBg">
+  {/assign var="keyw" value=(explode(' ',$list['job_short_info']))/}
+  
+  <h2 class="temTit" style="{/if !empty($job_font_color)/}color: {/$job_font_color/};{//if/}{/if !empty($job_line_color)/}border-bottom:1px solid {/$job_line_color/};{//if/}">{/$list['job_short_info']/}<a target="_blank" class="more" href="{/get_url rule='/jobsearch'/}?key={/$keyw[0]/}" style="display: none;">点击查看更多>></a></h2>
+</div>
+
+<ul class="temList">
+    {/foreach $list['list'] as $k=>$job/}
+	<li>
+    	<p style="{/if !empty($job_back_color)/}background: {/$job_back_color/};{//if/}">
+        	<span  ><a target="_blank" href="{/if !empty($job['job_flag'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopin/zhiwei/{/$job['job_flag']/}.html{/else/}{/if stripos($job['job_link'],'http://')=== false/}//{//if/}{/$job['job_link']/}{//if/}">{/$job.station/}</a></span>
+          <b>{/$job.min_salary/}-{/$job.max_salary/}</b>
+        </p>
+        <a target="_blank" data-companyflag="{/$job['company_flag']/}" style="width:232px;border:1px solid {/if !empty($job_border_color)/}{/$job_border_color/}{/else/}#f1f1f1{//if/}; border-top:none;" href="{/if !empty($job['company_flag'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopin/qiye/{/$job['company_flag']/}.html{/else/}{/if stripos($job['company_link'],'http://')=== false/}//{//if/}{/$job['company_link']/}{//if/}" data-companyid="{/$job.company_id/}">{/if empty($job.company_shortname)/}{/$job.company_name/}{/else/}{/$job.company_shortname/}{//if/}</a>
+    </li>
+    {//foreach/}
+</ul>
+{//foreach/}
+<div class="footer" style="{/if !empty($bottow_footer_color)/}background: {/$bottow_footer_color/};{//if/}">
+©{/date('Y')/} 汇博网 版权所有<br />招聘单位无权收取任何费用，请求职人员加强自我保护意识，按劳动法规保护自身权益，警惕虚假招聘，避免上当受骗!
+</div>
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='track.js'/}"></script>
+<script>
+	window.onscroll = function(){
+		$("#Jsewm").css("top",$(document).scrollTop()+385);
+	}
+</script>
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "http://hm.baidu.com/hm.js?fb51309e47424acd6e31c0bd2a65a5a1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+{/if $is_force_login==1/}
+<script type="text/javascript">
+    window.CONFIG = {
+        HOST: '{/$siteurl.style/}',
+        COMBOPATH: '/js/v2/'
+    }
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<link rel="stylesheet" type="text/css" href="{/version file='v2-reset.css,v2-header.css,v2-widge.css,jobnew2018.css,leaveinfo.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='topictemplatelogin.css'/}" />
+<script type="text/javascript" src="{/version file='topictemplatelogin.js'/}"></script>
+{//if/}
+</body>
+</html>

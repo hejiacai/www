@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+{/include_php file='app/controller/head.php'/}
+<!--样式-->
+{/include file='./publicHeaders/publicstyle.html'/}
+</head>
+<body style="background:#f0f0f0">
+<!--user_info-->
+{/include file='./publicHeaders/headtop_user_info.html' isIndex=true origin='search'/}
+<!--logo和搜索-->
+{/include file='./publicHeaders/log_serar.html'/}
+<!--菜单-->
+{/include file='./publicHeaders/navigation.html'/}
+
+<!--自定义内容编写-->
+
+<style>
+    .newNavbg .w1100,.w1100{width:1000px}
+    .gongzao-box{background: #f0f0f0;}
+    .gongzao-right{float:right;width:260px}
+    .gongzao-right img{margin-bottom: 20px;width:260px}
+    .gongzao-list{float:left;width:720px}
+    .gongzao-list .gongz-title{height:66px;line-height: 66px;background: #fafafa;border-bottom:1px solid #f0f0f0;padding:0 20px;font-size:24px;color:#444}
+    .gongzao-list-item{background: #fff;padding:0 20px}
+    .gongzao-list-item li{height:66px;line-height: 66px;border-bottom:1px dashed #f0f0f0}
+    .gongzao-list-item li:last-child{border:0px}
+    .gongzao-list-item li a{color:#444;font-size:14px}
+    .gongzao-list-item li span{float:right;font-size:14px;color:#999}
+    .gongzao-list-item li a:hover,.gongzao-list-item li a:hover span{color:#116fc0}
+    .pageBot{width:100%;background: #fff;margin-bottom:0}
+    .pageBotCon{padding:20px 0 25px 0;width:1000px}
+    .frdLink b{width:65px}
+    .pageBotCon .linkScroller,.pageBotCon .linkScroller ul{width:900px;margin-left: 10px}
+    .pageBotCon .linkScroller ul a{color:#666}
+    .footerBm{margin-top: 0;padding-top: 20px}
+</style>
+<form id="web_subscribe_form" action="{/$siteurl.main/}/jobsearch/" method="post"><input type="hidden" name="subscribe_origin" value="nosearchpage"></form>
+<div class="gongzao-box">
+    <p class="cur_location" style="width: 1000px">
+        <a href="{/$siteurl.main/}">首页</a>
+        <i class="arr_right"></i>
+        <a href="javascript:;">公招信息列表</a>
+    </p>
+    <div class="w1100 clearfix">
+        <div class="gongzao-right">
+            <!--<a href=""><img src="{/$siteurl.style/}\img\publicreruit\img1.jpg" /></a>-->
+            <a href=""><img src="{/$siteurl.style/}/img/publicreruit/img2.jpg" /></a>
+        </div>
+        <div class="gongzao-list">
+            <p class="gongz-title">公招列表</p>
+            <div class="gongzao-list-item">
+                <ul>
+                    {/foreach $res as $k=>$v/}
+                    <li><a target="_blank" href="{/$siteurl.main/}/gongzhao/{/$v['recruit_id']/}"><span>{/$v['create_time']/}</span>· {/base_lib_BaseUtils::cutstr($v['title'],39,'utf-8','','…')/}</a></li>
+                    {//foreach/}
+                </ul>
+            </div>
+           {/$pager/}
+        </div>
+    </div>
+</div>
+
+<!--右侧：意见，返回顶部共用-->
+{/include file='./publicHeaders/right_public.html'/}
+
+<!--友情链接-->
+{/if count($links->items) > 0/}
+<div class="pageBot">
+    <div class="pageBotCon">
+        <div class="frdLink" style=" border-top: 0px;">
+            <b style="font-weight: bolder;">友情链接:</b>
+            <div id="linkScroller" class="linkScroller" style="overflow: visible;">
+                <ul>
+                    {/foreach from=$links->items item=link/}
+                    <li><a target="_blank" href="{/$link["url"]/}">{/$link["site_name"]/}</a></li>
+                    {//foreach/}
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+{//if/}
+<!--底部-->
+<style>
+    .footerBm{background: white}
+</style>
+{/include file="footer.html"/}
+<!--共用script-->1
+{/$dataitem['username']/}
+{/include file='./publicHeaders/public_js.html'/}
+
+<!--当前页自定义script-->
+<script>
+
+</script>
+</body>
+</html>

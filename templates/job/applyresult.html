@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script type="text/javascript" language="javascript" src="{/version file="html5.js"/}" ></script> 
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="icons.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="job.css"/}" />
+
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="common.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="dialog.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_menudisplay.js"/}"></script><!--下拉菜单-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_inputFocus.js"/}"></script><!--输入框获取焦点-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_hovchange.js"/}"></script><!--指向改变class-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_drop.js"/}"></script><!--下拉模拟-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_dragsort.js"/}"></script><!--拖动插件-->
+<script type="text/javascript" language="javascript" src="{/version file="highcharts.js"/}"></script>
+<style>
+.delHd{ padding:0; width:1000px; height:369px; overflow:hidden; background:url({/$siteurl.style/}/img/p/popzTd.jpg) no-repeat; margin-top:20px;}
+.delBox{ margin-top:0;}
+.popz_banner{width:310px; overflow:hidden; margin:60px 0 0 140px;}
+.popz_banner span{ display:block; font-size:14px; color:#000;}
+.popz_banner b{ font-size:22px; color:#ea4848; padding:5px 0;}
+.popz_code{ overflow:hidden; margin-top:10px;}
+.popz_code img{ display:block;}
+.popz_code em{ display:block;width:184px; text-align:center; line-height:28px; font-size:12px;}
+    
+</style>
+<style>
+.content{background: #fff;margin:20px auto!important}
+.toudi_suc{padding:50px;font-family: "微软雅黑"}
+.toudi_suc .suc_box{padding:10px 0}
+.toudi_suc .suc_box img{vertical-align: middle}
+.toudi_suc .suc_box .orang_title{color:#eb6f0b;font-size:16px;font-weight:bold;margin-top: 30px}
+.jobList_title{font-size:14px;color:#999;margin-top:15px}
+.jobList dl{width:425px;height:80px;float:left;background: #f8f8f8;margin:10px 10px 0 0;padding:10px}
+.jobList dt{float:left;margin-right: 20px}
+.jobList dt img{width:79px;height:79px;border:1px solid #e9e9e9}
+.jobList dd{float:left;color:#999;font-size:14px;line-height: 25px;margin-top: 5px;width:310px}
+.jobList dd a{color:#999;font-size:16px;height: 25px;overflow: hidden;display: block;}
+.jobList dd i{background: url({/$siteurl.style/}/img/p/toudiIcon.jpg) left 0 no-repeat;display: inline-block;width:13px;height:15px;overflow: hidden;float:left;margin-right:5px;margin-top:4px}
+.jobList dd i.icon2{background-position: 0 -25px}
+.jobList dd strong{color:#ff9c00;font-size:16px;font-weight: normal}
+.huifu{float:right;font-size:14px;color:#999}
+.huifu img{vertical-align: middle;margin-right:3px}
+.ewmBox{float:right;width:245px;height: 95px;background: #f2f2f2;padding:10px}
+.ewmBox span{display: block;color:#999;font-size:14px;width:135px;float:right;line-height: 25px;padding-top: 10px}
+.ewmBox img{width:95px;height:95px}
+</style>
+</head>
+<body id="body">
+<style type="text/css">
+</style>
+{/include file='header.html'/}
+<div class="content" id="content">
+    <div class="toudi_suc" style="padding-bottom:20px">
+        <div class="suc_box clearfix">           
+            <div class="ewmBox" style="margin-top:-40px;background: #fcfcfc">    
+                <span>微信扫一扫<br />入职更快速<br />接收简历回复更及时</span>            
+                <img src="{/base_lib_Constant::YUN_ASSETS_URL_NO_HTTP/}/img/p/codeImg03.png"  id="weixinimg"/>
+            </div>
+            {/if $success/}
+            <img src="{/$siteurl.style/}/img/company/suc.jpg" />&nbsp;&nbsp;
+            <strong style="color:#da221a">{/$station/}</strong>&nbsp;&nbsp;职位投递成功
+            {/else/}
+             <strong style="color:#da221a">{/$info/}</strong>
+            {//if/}
+        </div>
+    </div>
+    {/if $has_job_apply_count/}
+    <div style="background:#fcfcfc;padding:20px;border-top:1px solid #f2f2f2;border-bottom:1px solid #f2f2f2" class="clearfix">
+        <div style="width:100%; overflow: hidden; font-family: '微软雅黑'; font-size: 16px;padding-bottom:30px;" >该职位于{/date('Y-m-d', strtotime($issue_time))/}发布，预计招聘<span style="color:#f00">{/$hire_num/}</span>人，近2周已有<span style="color:#f00">{/$apply_num/}</span>名人投递：</div>
+        <div>
+            <div id="experience_distribution" style="width:450px;height:230px;float:left;"></div>
+            <div id="degree_distribution" style="width:450px;height:230px;float:right;"></div>
+        </div>
+    </div>
+    {//if/}
+    <div class="toudi_suc">
+        <div style="width:100%; overflow: hidden; font-family: '微软雅黑'; font-size: 16px;font-weight:bold;padding-bottom:30px;color:#eb6f0b;padding-top: 20px;" >{/$showMsg/}</div>
+        <div class="jobList clearfix">           
+            {/foreach $recommendJobs as $key=>$job/}
+            <dl class="clearfix" {/if $key%2!=0/}style="float:right;margin-right: 0px"{//if/}>
+                <dt><a href="{/$job.companylink/}" target="_blank"><img src="{/$job.companylogo/}" onerror="javascript:this.src='{/$defaultLogo/}'"/></a></dt>
+                <dd>
+                    {/if in_array($job['jobreply'],[2,5])/}<span class="huifu"><img src="{/$siteurl.style/}/img/c/new_index/{/$job.jobreply/}.png" />工作日必复</span>{//if/}
+                    <a href="{/$job.joblink/}?src=1|{/$basejobflag/}" target="_blank" value="{/$job.jobflag/}">{/base_lib_BaseUtils::cutstr($job['station'],10)/}</a>
+                    <p><i class="icon2"></i><strong>{/$job.salary/}</strong></p>
+                    <p><i></i>{/base_lib_BaseUtils::cutstr($job['companyname'],6)/}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/$job.address/}</p>
+                </dd>
+            </dl>
+            {//foreach/}
+        </div>
+    </div>
+</div>
+<section class="floatRT"><a href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/about/message" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script>
+var userEnterBox = $('#userEnterBox');
+    userEnterBox.on('mouseenter mouseleave', '.login', function(e){
+        var target = $(e.currentTarget);
+        target.toggleClass('hover');
+    });
+    
+{/if $has_job_apply_count/}
+$(function () {
+    var experience_categories = [];
+    var experience_data = [];
+    var degree_categories = [];
+    var degree_data = [];
+    {/foreach $experience_distribution as $e/}
+    experience_categories.push("{/$e['describes']/}");
+    experience_data.push(parseInt("{/$e['num']/}"));
+    {//foreach/}
+        
+    {/foreach $degree_distribution as $v/}
+    degree_categories.push("{/$v['describes']/}");
+    degree_data.push(parseInt("{/$v['num']/}"));
+    {//foreach/}
+    $('#experience_distribution').highcharts({
+                chart: {
+                    type: 'bar',
+                    backgroundColor:"#fcfcfc"
+                },
+                title: {
+                    text: '<strong>经验分布</strong>'
+                },
+                credits: {
+                    enabled: false
+                },
+                xAxis: {
+                    categories: experience_categories
+                },
+                yAxis: {
+                    visible:false
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true,
+                            format:'{y}人'
+                        }
+                    },
+
+                },
+
+                series: [{
+                    name: '人数',
+                    showInLegend: false,
+                    data: experience_data,
+                    color:"#07cdb6"
+                }]
+            });
+
+            $('#degree_distribution').highcharts({
+                chart: {
+                    type: 'bar',
+                    backgroundColor:"#fcfcfc"
+                },
+                title: {
+                    text: '<strong>学历分布</strong>'
+                },
+                credits: {
+                    enabled: false
+                },
+                xAxis: {
+                    categories: degree_categories
+                },
+                yAxis: {
+                    visible:false
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true,
+                            format:'{y}人'
+                        }
+                    },
+
+                },
+
+                series: [{
+                    name: '人数',
+                    showInLegend: false,
+                    data: degree_data,
+                    color:"#fd942b"
+                }]
+            });
+});
+{//if/}
+</script>
+<script>
+$(document).ready(function(e) {
+	/*$.focusColor('input.text');
+	$.focusDate('.dateText');
+    $('#lst').find('tr').hover(function(){
+		$(this).addClass('hov');},function(){
+		$(this).removeClass('hov');
+	})*/ 
+
+    //微信图片
+    // $.getJSON('{/get_url rule="/index/getweixinaccount/"/}',function(result) {
+    //     if(!result.status) {
+    //         $("#weixinimg").attr("src", result.twodimensioncodeurl);
+    //     }
+    // });
+
+    $.ajax({
+        url : '{/get_url rule="/index/getweixinaccount/" domain="person"/}',
+        jsonp : 'jsonpCallBack',
+        type : 'GET',
+        dataType : 'jsonp',
+        success : function(result){
+            if(!result.status) {
+                $("#weixinimg").attr("src", result.twodimensioncodeurl);
+            }
+        }
+    })
+
+
+});
+/*
+$('#btnBatch').click(function(e){
+	var checkbox = $('#tdBody input:checked'),
+		jobflags = new Array();	
+	checkbox.each(function(){
+		jobflags.push($(this).val());
+	});
+	if(jobflags.length>0) {
+		$('#hddJobfalg').val(jobflags.join(','));
+		$('#frmBatchApply').get(0).submit();
+    }else {
+    	$.anchorMsg('请选择需投递的职位',{title: "操作提示", icon: "info"});
+    }
+    e.preventDefault();
+});
+
+$('#allSelect').bindCheckBox('jobflag','#tdBody');
+
+
+//记录推荐点击
+$('#lst').find('a').click(function(){
+	var job_flag = $(this).closest('td').find('input[name=jobflag]').val();
+	$.ajax(
+	{
+		url: '/apply/setrecommendhit?job_flag=' + job_flag + '&d=' + new Date(),
+		dataType: 'json',
+		async: false,
+		success: function() {  },
+		error: function() {  }
+	});
+	
+})
+*/
+</script>
+</body>
+</html>

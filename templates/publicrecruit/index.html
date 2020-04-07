@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="{/version file='xiaoyuan.css'/}" />
+		
+		<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}"/>
+		<link rel="stylesheet" type="text/css" href="{/version file='layer.css'/}">
+		<script type="text/javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+		<script type="text/javascript" src="{/version file='layer.js'/}"></script>
+		<style type="text/css">
+			.lgAft{ padding-top: 5px!important;}
+			.address_box .title{ height: 45px!important;}
+		</style>
+		{/include_php file='app/controller/head.php'/}
+		<!--样式-->
+		{/include file='./publicHeaders/publicstyle.html'/}
+	</head>
+	<body>
+
+
+	<!--user_info-->
+	{/include file='./publicHeaders/headtop_user_info.html' isIndex=true origin='search'/}
+	<!--logo和搜索-->
+	{/include file='./publicHeaders/log_serar.html'/}
+	<!--菜单-->
+	{/include file='./publicHeaders/navigation.html'/}
+	<!--页面报Cannot read property 'left' of undefined错误，加以下代码-->
+	<div id="job_list_table" style="display: none;"><div class="des_title"></div></div>
+	
+<link rel="stylesheet" type="text/css" href="{/version file='maleRecruit.css'/}" />
+	<div class="crcruti_lsit" data-explain="do not delete!" style="display: none"></div>
+	<input type="hidden" id="keyword"  name="keyword" value="{/$c_keyword/}"/>
+	<input type="hidden" id="hddarea" name="hddarea" value="{/$c_area_id_two/}"/>
+	<input type="hidden" id="hddcate" name="hddcate" value="{/$c_apply_category/}"/>
+	<input type="hidden" id="hddprof" name="hddprof" value="{/$c_profession_describe/}"/>
+	<input type="hidden" id="hddprof2" name="hddprof2" value="{/$c_profession_describe_two/}"/>
+	<input type="hidden" id="hdddegree" name="hdddegree" value="{/$c_degree_id/}"/>
+
+
+	<div class="maleMain">
+			<p class="cur_location">
+	            <a href='{/get_url rule=""/}'>首页</a>
+	            <i class="arr_right"></i><span>公招列表信息</span>
+            </p>
+            <div class="maleSearch">
+            	<input type="text" placeholder="试试输入专业/岗位关键字" name="maleSearchPut" id="maleSearchPut" value="{/$c_keyword/}" />
+            	<a id="keysearch" href="javascript:void(0);">搜索</a>
+            </div>
+            <div class="filter_box">
+            	<div class="address_box address_box_area">
+            		<p class="title">
+	                    <strong class="name" style="padding-left: 10px;">工作地点:</strong>           
+	                    <a href="javascript:void(0);" class="any anycur" style="display: none">不限</a>
+						{/foreach $common_area as $_area/}
+						<a href="javascript:" class="list {/if $_area['value']==$c_area_id/}click{//if/}">{/$_area['label']/}<i class="arr_down"></i></a>
+						{//foreach/}
+
+	                </p>
+	                <div class="two_address_area">
+						{/foreach $common_area as $_area/}
+						<dl class="two_address " style=" {/if $_area['value']==$c_area_id/}display: block;{/else/}display: none;{//if/}">
+							<dt style="width:auto"><a class="first two_address_one {/if $_area['value']==$c_area_id_two/}cur{//if/}" href="javascript:void(0);" data-value="{/$_area['value']/}">全部</a></dt>
+							<dd>
+								{/foreach $_area['second'] as $secon_area/}
+								<a class="two_address_one {/if $secon_area['area_id']==$c_area_id_two/}cur{//if/}" href="javascript:void(0);" data-value="{/$secon_area['area_id']/}">{/$secon_area['area_name']/}</a>
+								{//foreach/}
+							</dd>
+						</dl>
+						{//foreach/}
+
+                	</div>
+                </div>
+               <div class="address_box welfare_box_educt">
+	    			<dl class="two_address" style="display: block; background: #fff;">
+	    				<dt>学历要求：</dt>
+	    				<dd>
+							{/foreach $common_degree as $item/}
+							<a href="javascript:void(0);" data-value="{/$item['id']/}" class="list {/if $item['id']==$c_degree_id/}cur{//if/}">{/$item['ranWork']/}</a>
+							{//foreach/}
+	                    </dd>
+	    			</dl>
+	    		</div>
+            	<div class="address_box welfare_box_exam">
+	    			<dl class="two_address"  style="display: block;background: #fff;">
+	    				<dt>报考分类：</dt>
+	    				<dd>
+							{/foreach $common_category as $key=>$item/}
+							<a href="javascript:void(0);" data-value="{/$key/}" class="list {/if $key==$c_apply_category/}cur{//if/}">{/$item/}</a>
+							{//foreach/}
+
+	                    </dd>
+	    			</dl>
+	    		</div>
+	    		<div class="address_box other_box">
+	    			<strong class="name" style="padding-left: 26px; color: #444;">其他条件:</strong>   
+	    			<a href="javascript:" class="list researchMethod">{/if $c_profession_name/}<em style="color: #D73937">{/$c_profession_name/}{/else/}<em>适合专业{//if/}</em><i class="arr_down"></i></a>
+	    		</div>
+            </div>
+            <div class="sptionCont">
+            	<div class="sptionContLeft">
+		            <div class="allSubscription">
+		            	<p>
+		            		<a data-id="list" href="javascript:void(0);" class="cur">全部</a>
+		            		<a class="sub_top" data-id="mysub" href="javascript:void(0);">我的订阅</a>
+		            	</p>
+		            	<span class="{/if $is_subcre/}subscriptionManage{//if/} sub_top" id="subscriptionManagex">{/if $is_subcre/}订阅管理{/else/}添加订阅{//if/}</span>
+		            </div>
+		            <div class="allSubscriptionx">
+						<!--搜索列表页-->
+		            	<div class="sptionList_wrap" style="display: block;">
+			            	<div class="sptionList">
+								{/if !empty($res)/}
+			            		{/foreach $res as $item/}
+									<a target="_blank" href="/gongzhao/art{/$item['recruit_id']/}.html">
+										<span class="sptionx01">
+											<b>{/$item['title']/}</b>
+											<em>报名时间：{/$item['apply_time_start']/} ~ {/$item['apply_time_end']/}</em>
+										</span>
+										<span class="sptionx02"> {/$item['area_name']/}
+											{/if $item['degree_name']/}<em></em>{/$item['degree_name']/}{//if/}
+											 {/if $item['recruit_number']/}<em></em>{/$item['recruit_number']/}人{//if/}
+										</span>
+										<span class="sptionx03">
+											{/foreach $item['job_name_arr'] as $job_name/}
+												<em>{/$job_name/}</em>
+											{//foreach/}
+											<i>{/$item['last_mod_time_show']/}</i>
+										</span>
+									</a>
+			            		{//foreach/}
+								{//if/}
+
+								{/if (empty($res) || count($res)<2) && $cur_page==1/}
+								<div class='noData'>
+									<i class="iconfont icon-evaluate-none"></i>
+									<span>内容太少？试试关键字搜索~</span>
+								</div>
+								{//if/}
+
+			            	</div>
+			            	{/$pager/}
+		            	</div>
+						<!--我的订阅-->
+		            	<div id="mysubget" class="sptionList_wrap">
+		            	</div>
+		            </div>
+	            </div>
+	            <div class="sptionContRight">
+	            	<div class="sptionCode">
+	            		<img src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQFW8TwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyOW9Ub00tSnI5TlUxMDAwMHcwMzAAAgSVJURdAwQAAAAA" />
+	            	</div>
+	            	<div class="sptionCodeTips">
+	            		<b>微信扫一扫</b>公招信息随时看
+	            	</div>
+	            </div>
+            </div>
+            <div class="clear"></div>
+		</div>
+
+<!--专业分类-->
+<div id="proPopup" class="idunt_float otherproPopup" style="display: none; position: absolute;">
+	<!--多选状态class="idunt_float_select";单选状态class="idunt_float"-->
+	<dl class="first">
+		<dt><a id="pro_all" href="javascript:;" data-value="0">不限</a></dt>
+		<dd style="display: none;"></dd>
+	</dl>
+	<dl class="twoList">
+			{/foreach from=$professions key=pid item=top name=professionforeach/}
+			<dt><a class="{/if $c_profession_describe==$top['professional_name']/}hover{//if/} top" href="javascript:;" data-value="{/$top['professional_id']/}"><i
+					class="arr_idRit"></i>{/$top['professional_name']/}</a></dt>
+			<dd class="small" {/if $c_profession_describe==$top['professional_name']/}style="display: block;"{//if/}>
+			{/foreach $top["sub_items"] as $second/}
+			<ul>
+				<span class="tit" style="line-height: 34px; cursor: default;" data-value="{/$second['professional_id']/}">{/$second['professional_name']/}</span>
+				<li>
+					{/foreach $second['sub_items'] as $third/}
+					<a data-topname="{/$top['professional_name']/}" class="{/if $c_profession_describe_two==$third['professional_name']/}cur{//if/}" href="javascript:;" data-value="{/$third['professional_id']/}">{/$third['professional_name']/}</a>
+					{//foreach/}
+				</li>
+			</ul>
+			{//foreach/}
+			</dd>
+			{//foreach/}
+	</dl>
+</div>
+
+
+
+	<!--右侧：意见，返回顶部共用-->
+	{/include file='./publicHeaders/right_public.html'/}
+<style type="text/css">
+	.pageBot{ background: #6c6c6c;width:100%; border: none; margin-top: 60px;}
+	.frdLink{ padding-top: 15px;}
+	.frdLink b{ color: #fff;}
+	.frdLink .linkScroller ul li a{ display: inline-block; padding-right: 10px; color: #fff;}
+	.pageBotCon{width:1100px}
+	.frdLink b{width:auto}
+</style>
+	<!--友情链接-->
+	{/if count($links->items) > 0/}
+	<div class="pageBot">
+		<div class="pageBotCon">
+			<div class="frdLink">
+				<b style="font-weight: bolder;">友情链接：</b>
+				<div id="linkScroller" class="linkScroller" style="overflow: visible;">
+					<ul>
+						{/foreach from=$links->items item=link/}
+						<li><a target="_blank" href="{/$link["url"]/}">{/$link["site_name"]/}</a></li>
+						{//foreach/}
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	{//if/}
+
+<!--底部-->
+<style>
+	.footerBm{background: white}
+	.footerBm{ margin-top: 0;}
+</style>
+{/include file="footer.html"/}
+<!--共用script-->
+{/include file='./publicHeaders/public_js.html'/}
+
+
+<script  type="text/javascript">
+	var action_url = '{/$siteurl.style/}';
+		action_dom = [
+			['.crcruti_lsit', 11],
+			['.sub_top', 18],
+		];
+		
+	var sptionList_wrap = parseInt($('.sptionList_wrap').offset().top);
+	$(window).scroll(function(){
+        if ($(document).scrollTop() > sptionList_wrap){
+            $('.sptionContRight').addClass('sptionContRightFloat');
+        }else{
+        	$('.sptionContRight').removeClass('sptionContRightFloat');
+        }
+  });
+</script>
+<script type="text/javascript" language="javascript" src="{/version file='action.js'/}"></script>
+
+<script type="text/javascript">
+    hbjs.use('@checkLogin, @confirmBox, @dialog', function(m) {
+        var checkLogin = m['product.checkLogin'],
+            cookie     = m['tools.cookie'],
+            confirmBox = m['widge.overlay.confirmBox'],
+            Dialog     = m['widge.overlay.hbDialog'],
+            $ = m['jquery'],
+            isLogin = parseInt('{/$is_login/}');
+        $('.allSubscription p a').click(function(){
+			var _this = this;
+            if($(this).attr('data-id')=='mysub'){
+                if(isLogin==0){
+                    $.post('{/$siteurl.main/}/index/SetRegSourceAjax',{reg_source:'recruit_pc_subscrib',login_action_source:'recruit_pc_subscrib'},function (e) {
+                    },'json')
+                }
+                isLogin = checkLogin.isLogin('ajaxLoginCallback-isReload-true');
+                if(isLogin){
+					$.post("{/get_url rule='/subscribe/GetSubscribes'/}",{},function (e) {
+						$('#mysubget').html(e.html);
+                        $('.allSubscriptionx .sptionList_wrap').hide();
+                        $(_this).addClass('cur').siblings().removeClass('cur');
+                        var thisIndex = $(_this).index();
+                        $('.allSubscriptionx .sptionList_wrap').eq(thisIndex).css('display','block');
+					},'json')
+                }
+            }else{
+                $('.allSubscriptionx .sptionList_wrap').hide();
+                $(this).addClass('cur').siblings().removeClass('cur');
+                var thisIndex = $(this).index();
+                $('.allSubscriptionx .sptionList_wrap').eq(thisIndex).css('display','block');
+            }
+
+
+        });
+
+        $('.crcruti_lsit').click();//访问量统计
+
+        //订阅
+        $('#subscriptionManagex').click(function(){
+            if(isLogin==0){
+                $.post('{/$siteurl.main/}/index/SetRegSourceAjax',{reg_source:'recruit_pc_subscrib',login_action_source:'recruit_pc_subscrib'},function (e) {
+                },'json')
+            }
+            isLogin = checkLogin.isLogin('ajaxLoginCallback-isReload-true');
+            if(isLogin){
+                layer.open({
+                    type: 2,
+                    title: '订阅管理',
+                    shadeClose: true,
+                    shade: 0.8,
+                    area: ['850px', '550px'],
+                    content: '{/get_url rule="/subscribe/SetSubscribe"/}'
+                });
+            }
+
+        });
+
+    });
+
+	$('.address_box_area .list').click(function(){
+		$('.two_address_area dl').hide();
+		$(this).addClass('click').siblings().removeClass('click');
+		var thisIndex = $(this).index();
+		if(thisIndex ==2){
+			$('.two_address_area dl').eq(0).css('display','block');
+		}
+		if(thisIndex == 3){
+			$('.two_address_area dl').eq(1).css('display','block');
+		}
+        if(thisIndex == 4){
+            $('.two_address_area dl').eq(2).css('display','block');
+        }
+	});
+	$('.otherproPopup dl.twoList dt').hover(function(){
+		$('.otherproPopup dl.twoList dd').css('display','none');
+		$('.otherproPopup dl.twoList dt').find('a').removeClass('hover');
+		$(this).find('a').addClass('hover');
+		$(this).next('dd').css('display','block');
+	});
+	$('.researchMethod').click(function(){
+		$(this).toggleClass('click');
+		var thisOffset = ($(this).offset().top)+42;
+		var thisleftOffset = ($(this).offset().left);
+		$('#proPopup').css({
+			top:thisOffset+'px',
+			left:thisleftOffset+'px'
+		});
+		if($(this).hasClass('click')){
+			$('#proPopup').css('display','block');
+		}else{
+			$('#proPopup').css('display','none');
+		}
+	});
+
+	//专业选择
+	$('.idunt_float dd a').click(function(){
+		var thistxt = $(this).text();
+		$('.researchMethod').removeClass('click').find('em').text(thistxt);
+		$('#proPopup').css('display','none');
+
+        $('#hddprof2').val(thistxt)
+        $('#hddprof').val($(this).attr('data-topname'))
+        go_request();
+	});
+	$("#pro_all").click(function () {
+        var thistxt = '不限'
+        $('.researchMethod').removeClass('click').find('em').text(thistxt);
+        $('#hddprof2').val(0)
+        go_request();
+    })
+
+	//学历
+	$('.welfare_box_educt dd a').click(function(){
+		$(this).addClass('cur').siblings().removeClass('cur');
+		$('#hdddegree').val($(this).attr('data-value'))
+		go_request();
+
+	});
+	//报考类别
+	$('.welfare_box_exam dd a').click(function(){
+		$(this).addClass('cur').siblings().removeClass('cur');
+        $('#hddcate').val($(this).attr('data-value'))
+        go_request();
+	});
+
+	$('#keysearch').click(function () {
+        //重置其他搜索添加
+        $('#hddarea').val(0);
+        $('#hddcate').val(0);
+        $('#hddprof').val(0);
+        $('#hddprof2').val(0);
+        $('#hdddegree').val(0);
+        $('#keyword').val($('#maleSearchPut').val())
+	    go_request();
+    })
+
+	$('.two_address_one').click(function () {
+        $('#hddarea').val($(this).attr('data-value'));
+        go_request();
+    })
+
+	function go_request() {
+
+		var keyword = $('#keyword').val();
+		var hddarea = $('#hddarea').val();
+		var hddcate = $('#hddcate').val();
+		var hddprof = $('#hddprof').val();
+		var hddprof2 = $('#hddprof2').val();
+		var hdddegree = $('#hdddegree').val();
+		var url = "/gongzhao/page-{/$cur_page/}";
+		if(keyword)
+            url = url + "-keyword-" + keyword;
+
+        if(hddarea && hddarea!=0)
+            url = url + "-a-" + hddarea;
+        if(hddcate && hddcate!=0)
+            url = url + "-c-" + hddcate;
+        if(hddprof && hddprof!=0)
+            url = url + "-p-" + hddprof;
+        if(hddprof2 && hddprof2!=0)
+            url = url + "-p2-" + hddprof2;
+        if(hdddegree && hdddegree!=0)
+            url = url + "-d-" + hdddegree;
+
+        window.location.href = url;
+
+//		window.location.href="/gongzhao/page-{/$cur_page/}"
+//			+"&keyword="+keyword
+//			+"&hddarea="+hddarea
+//			+"&hddcate="+hddcate
+//			+"&hddprof="+hddprof
+//			+"&hddprof2="+hddprof2
+//			+"&hdddegree="+hdddegree
+//		;
+
+
+    }
+
+    $(function () {
+
+    })
+
+</script>
+</body>
+</html>

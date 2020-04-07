@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>汇博网_手机客户端</title>
+<!–[if lt IE9]> 
+<script src="{/version file='html5.js'/}"></script>  
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='front.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='app.css'/}" />
+
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+
+</head>
+<body id="body">
+{/include file="header.html"/}
+<link rel="stylesheet" type="text/css" href="{/version file='newHeader2019.css'/}" />
+<div class="banner">
+		<ul class="clearfix" id="imgTag">
+		<li><img src="{/$siteurl.style/}/img/app/new/banner1.jpg" border="0" usemap="#Map" title="好工作，尽在您的手机里！" />
+            <map name="Map" id="Map">
+				<area shape="rect" coords="548,453,827,511" target='_blank' href="{/get_url domain='appdown' rule='/index/download/'/}typeid-1-apporigin-3" />
+            </map>
+		</li>
+		<li><img src="{/$siteurl.style/}/img/app/new/banner2.jpg" border="0" usemap="#Map2" title="随时随地好薪情!" />
+            <map name="Map2" id="Map2">
+				<area shape="rect" coords="548,453,827,511" target='_blank' href="{/get_url domain='appdown' rule='/index/download/'/}typeid-2-apporigin-3" />
+            </map>
+		</li>
+		<li><img src="{/$siteurl.style/}/img/app/new/banner3.jpg" title="好工作，尽在您的手机里！" /></li>
+	</ul>
+</div>
+<div class="nav">
+	<ul class="clearfix" id="clickTag">
+		<li class="cur"><a href="" class="tit1"></a></li>
+		<li><a href="" class="tit2"></a></li>
+		<li><a href="" class="tit3"></a></li>
+	</ul>
+</div>
+<div class="cont clearfix">
+	<dl>
+		<dt>
+			<p><img src="{/$siteurl.style/}/img/app/new/icon2.jpg" /></p>
+			<p class="t">海量招聘想看就看</p>
+		</dt>
+		<dd>
+			海量职位，随时随地任您搜！<br />选择行业、工作年限、地区多重组合，精准查询职位。
+		</dd>
+	</dl>
+	<dl class="last">
+		<dt>
+			<p><img src="{/$siteurl.style/}/img/app/new/icon1.jpg" /></p>
+			<p class="t">申请记录随时知</p>
+		</dt>
+		<dd>
+			好工作，先下手为强!<br />及时了解申请职位的回复状态，随时备战。
+		</dd>
+	</dl>
+	<dl class="fot">
+		<dt>
+			<p><img src="{/$siteurl.style/}/img/app/new/icon3.jpg" /></p>
+			<p class="t">面试邀请不错过</p>
+		</dt>
+		<dd>
+			及时查看通知，好工作不再错过！<br />查看并回复企业邀请，了解企业详情。
+		</dd>
+	</dl>
+	<dl class="last fot">
+		<dt>
+			<p><img src="{/$siteurl.style/}/img/app/new/icon4.jpg" /></p>
+			<p class="t">职位收藏</p>
+		</dt>
+		<dd>
+			职位宝库，开启您的求职之旅！<br />将您喜欢的职位通通收藏起来，随时投递。
+		</dd>
+	</dl>
+</div>
+{/include file="footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script>
+	var clickTag = $('#clickTag'),imgTag = $('#imgTag');
+	clickTag.find("a").click(function(){
+		clickTag.find(".cur").removeClass("cur");		
+		imgTag.find("li").hide().eq($(this).parents("li").addClass("cur").index()).show();
+		return false;
+	});
+</script>
+</body>
+</html>

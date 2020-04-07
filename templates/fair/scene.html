@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="{/$config->EmailFromName/}，重庆{/date('m月d日', strtotime($current_scene['date']))/}招聘会,重庆{/date('m', strtotime($current_scene['date']))/}月招聘会,重庆龙头寺招聘会" />
+<meta name="Description" content="重庆市龙头寺招聘会{/date('m月d日', strtotime($current_scene['date']))/}500家企业现场招聘，找人才,六千工作岗位,咨询电话{/$config->CqjobFairsPhone/}求职者可登录{/$config->SiteTitle/}免费领取门票。" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script src="{/version file='html5.js'/}"></script>
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="fw{/$current_scene['css_type']/}.css"/}" />
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="dialog.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="common.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_inputFocus.js"/}"></script>
+</head>
+<body>
+{/include file="header.html"/}
+<!--head-->
+<div class="fairHead">
+    <div class="fairHeadCon">
+        <div class="fairHeadL">
+            <h2>{/$current_scene['the_date']/}（{/$current_scene['the_weekday']/}&nbsp;{/date('H:i',strtotime($current_scene['begin_time']))/}-{/date('H:i',strtotime($current_scene['end_time']))/}）</h2>
+            <h1>{/$current_scene['subject']/}<sup>求职者，全免费入场!</sup></h1>
+            <div class="remark"><b>大会特点：</b>{/$current_scene['describe']/}</div>
+            <p>地点：重庆市两江新区龙头寺华宇地产5号楼&nbsp;&nbsp;&nbsp;轻轨：<span class="orange strong">3号线狮子坪站</span>下即到&nbsp;&nbsp;&nbsp;公交：221 202 302 <a href='{/get_url rule="/zhaopinhui/traffic"/}'>查询更多公交线路</a></p>
+            <p>咨询热线：{/$config->CqjobFairsPhone/}&nbsp;&nbsp;&nbsp;&nbsp;在线咨询：<a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></p>
+        </div>
+        <div class="fairHeadR">
+            <div class="soonTxt">距离开场还有<em>{/$current_scene['timeinterval']/}</em>天</div>
+            <div class="btn"><a href='{/get_url rule="/zhaopinhui/enterprise" data="sceneid={/$current_scene["scene_id"]/}&fairApply=true"/}'></a></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--head-->
+<!--nav begin-->
+<div class="fairNav">
+	<div class="fairNavCon">
+    	<a href='{/rewrite type="fairScene" date="{/date("Ymd", strtotime($current_scene["date"]))/}"/}' class="cu">招聘会首页</a><a href='{/get_url rule="/zhaopinhui/enterprise"/}' target="_blank">我是企业</a><a href='{/get_url rule="/zhaopinhui/Notified"/}' target="_blank">参会须知</a><a href='{/get_url rule="/zhaopinhui/traffic"/}' target="_blank">交通指南</a><a href='{/rewrite type="fair"/}#question' target="_blank" class="lastNav">我要咨询</a>
+    </div>
+</div>
+<!--nav end-->
+<!---->
+<div class="content">
+    <div class="topPart">
+        <div class="topPartL">
+            <div id="herald" class="herald">
+                <a class="more" href='{/get_url rule="/zhaopinhui/fairlist"/}' target="_blank">更多招聘会排期&gt;&gt;</a>
+                <b class="orange">招聘会预告：</b>
+              		{/if !empty($nearly_four_fairscene) && count($nearly_four_fairscene)>0/}
+               		{/foreach $nearly_four_fairscene as $item=>$value/}
+                 		<a id="_fairNotice_{/$item/}" href='{/rewrite type="fairScene" date="{/date("Ymd", strtotime($value.date))/}"/}' target="_blank">{/$value.the_date/} ({/$value.the_weekday/})</a>
+	              	{//foreach/}
+                	{//if/}
+                	{/if !empty($nearly_four_fairscene) && count($nearly_four_fairscene)>0/}
+               		{/foreach $nearly_four_fairscene as $item=>$value/}
+                 		<div id="bubble_fairNotice_{/$item/}" style="display: none;" class="bubble">
+                            <div class="bubbleCon">
+                            <div class="bubbleArrow bubbleArrowB"></div>
+                            <p class="strong">主题：{/$value.subject/}</p>
+                            <p>大会特点：{/$value.describe/}</p>
+                            <p>预计规模：<span class="red strong">{/$value.predict_extent/}</span>家</p>
+                            </div>
+                        </div>
+	              	{//foreach/}
+                	{//if/}
+            </div>
+            <div class="fairInfo">
+                <div style="{/if $isHiddenCurrentBatchData === true/}display:none;{//if/}">
+                    <div class="aloneFairJobs">
+                        <div class="aloneFairJobsT"><b>部分职位<em>(<span class="orange strong">{/$curbatch_jobcount/}</span>个)</em></b><i><a href='{/rewrite type="fairSceneJobSearch" date="{/date("Ymd", strtotime($current_scene.date))/}"/}' target="_blank">更多</a></i></div>
+                        <div class="lst">
+                            <ul>
+                            {/if !empty($topten_jobandcount) && count($topten_jobandcount)>0/}
+                            {/foreach $topten_jobandcount as $item=>$value/}
+                            	<li><a title="{/$value.station/}" href='{/rewrite type="fairSceneJobSearch" date="{/date("Ymd", strtotime($current_scene.date))/}" job_name="{/urlencode($value.station)/}"/}' target="_blank">{/$value.station/}<em>（{/$value.jobcount/}）</em></a></li>
+                            {//foreach/}
+                    		{//if/}
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="fairJobSearch">
+                    <form target="_blank" method="get" id="formSceneJobSearch" action='{/rewrite type="fairSceneJobSearch" date="{/date("Ymd", strtotime($current_scene.date))/}"/}'>
+                        关键字<input type="text" class="" id="jobName" name="jobName"><a onclick="$('#formSceneJobSearch').submit();" class="btn1 btnsF14" id="btnSearch" name="btnSearch" href="javascript:void(0);"><b class="L"></b><b class="R"></b>搜索</a>
+                    </form>
+                    </div>
+                </div>
+                <div style="{/if $isHiddenCurrentBatchData !== true/}display:none;{//if/}" class="noOpen">
+                    <div class="txt txt1"><p>电视台、移动电视、晨报、商报、时报、晚报、都市热报强力宣传，汇博网、大渝网、华龙网等主流网站大力推广</p></div>
+                    <div class="txt txt2">
+                        <p>汇博网<span class="orange strong">{/$config->ShowResumeNum/}</span>求职者全面覆盖</p>
+                        <p>每周<span class="orange strong">{/$config->HuiBoFairCompanyNumWeek/}多家</span>企业参会</p>
+                    </div>
+                    <div class="txt txt3">
+                        <p>3号轻轨线语音广告日覆盖<span class="orange strong">{/$config->HuiBoFairRailwayAdv/}</span>人次</p>
+                    </div>
+                    <div class="txt txt4">
+                        <p>常设<span class="orange strong">{/$config->HuiBoFairShowRoom/}</span>个标准展位</p>
+                        <p>每周进场<span class="orange strong">{/$config->HuiBoFairPersonNumWeek/}</span>个求职者</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="topPartR">
+            <div class="annFair">
+                <div class="pic"><a target="_blank" href="{/if !empty($nearly_major_fairscene) && !base_lib_BaseUtils::nullOrEmpty($nearly_major_fairscene.topic_url)/}{/$nearly_major_fairscene.topic_url/}{/else/}javascript:void(0);{//if/}"><img src="{/$ad_path/}{/if !empty($nearly_major_fairscene) && !base_lib_BaseUtils::nullOrEmpty($nearly_major_fairscene.topic_img_url)/}{/$nearly_major_fairscene.topic_img_url/}{//if/}"></a></div>
+                <div class="txt">
+                    <div class="txtL">距离开场时间<em>{/$nearly_major_fairscene_timeinterval/}</em>天</div>
+                    <div class="txtR"><a href='{/get_url rule="/zhaopinhui/enterprise" data="sceneid={/$nearly_major_fairscene["scene_id"]/}&fairApply=true"/}' class="btn3 btnsF12">我要订展</a></div>
+                </div>
+                <div class="annFairTxt">
+                    <p class="annFairTxtInfo"><b>大会特点：</b>{/if !empty($nearly_major_fairscene)/}{/$nearly_major_fairscene.describe/}{//if/}</p>
+                    <p><b>预计规模：</b><span class="orange strong">{/if !empty($nearly_major_fairscene) && !base_lib_BaseUtils::nullOrEmpty($nearly_major_fairscene.predict_extent)/}{/$nearly_major_fairscene.predict_extent/}{/else/}0{//if/}</span>家&nbsp;&nbsp;<b>预计岗位：</b><span class="orange">{/if !empty($nearly_major_fairscene) && !base_lib_BaseUtils::nullOrEmpty($nearly_major_fairscene.predict_jobcount)/}{/$nearly_major_fairscene.predict_jobcount/}{/else/}0{//if/}</span>个</p><p style="{/if $nearly_major_fairscene_jobcount < 30/}display:none;{//if/}"><b>部分职位：</b><span class="orange strong">{/$nearly_major_fairscene_jobcount/}</span>个</p>
+                </div>
+            </div>
+            <div class="rightBanner"><p><a target="_blank" href="{/get_url rule='/app/p'/}"><img src="{/base_lib_Constant::UPLOAD_FILE_URL/}img/fair/fPhBn.gif"></a></p></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    
+    <div class="pagePart">
+        {/if $current_scene.is_major_scene != true/}<div class="pagePartL">{//if/}
+            <div class="p1" style="{/if $isHiddenCurrentBatchData === true || empty($recommendcomcompany) || count($recommendcomcompany)==0/}display:none;{//if/}">
+                <div class="part">
+                    <div class="partT"><h2>推荐企业</h2></div>
+                    <div class="partC">
+                        <div class="lst" id="compositeFairCompany" style="height:222px;overflow:hidden">
+                            <ul>
+                            {/if !empty($recommendcomcompany) && count($recommendcomcompany)>0/}
+                           	{/foreach $recommendcomcompany as $item=>$value/}
+                          		<li><a title="{/$value.company_name/}" href='{/rewrite type="fairSceneCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}" company_flag="{/$value.company_flag/}"/}' target="_blank">{/$value.company_name/}</a></li>
+                         	{//foreach/}
+                         	{//if/}
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/if $current_scene.is_major_scene == true/}<div class="pagePartL">{//if/}
+            <div class="p2" style="{/if $isHiddenCurrentBatchData === true || empty($notrecommendcompany) || count($notrecommendcompany)==0/}display:none;{//if/}">
+                <div class="part">
+                    <div class="partT"><h2>参会企业</h2><div class="txt">参展企业<span class="orange">{/$all_company_count/}</span>家&nbsp;&nbsp;&nbsp;&nbsp;<a href='{/rewrite type="fairSceneAllCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}"/}' target="_blank">更多</a></div></div>
+                    <div class="partC">
+                        <div class="lst">
+                            <ul>
+                            {/if !empty($notrecommendcompany) && count($notrecommendcompany)>0/}
+                           	{/foreach $notrecommendcompany as $item=>$value/}
+                         		<li>
+                         			<a title="{/$value.company_name/}" href='{/rewrite type="fairSceneCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}" company_flag="{/$value.company_flag/}"/}' target="_blank" class="comName">{/$value.company_name/}</a>
+                         			{/if !empty($value.jobs) && count($value.jobs)>0/}
+                         			{/foreach $value.jobs as $it=>$val/}
+                         				<a href='{/rewrite type="fairSceneCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}" company_flag="{/$value.company_flag/}"/}#{/$val.job_id/}' target="_blank">{/$val.station/}</a>
+                         			{//foreach/}
+                					{//if/}
+                         		</li>
+                         	{//foreach/}
+                         	{//if/}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p3">
+                <div class="part">
+                    <div class="partT"><h2>招聘会回顾</h2><div class="txt"><a target="_blank" href='{/get_url rule="/zhaopinhui/historylist/"/}'>更多</a></div></div>
+                    <div class="partC">
+                        <div class="lst">
+                            <ul>
+                            {/if !empty($fairscene_history) && count($fairscene_history)>0/}
+                       		{/foreach $fairscene_history as $item=>$value/}
+                        		<li><a title="{/$value.title/}——{/$value.subject/}" target="_blank" href='{/get_url rule="/zhaopinhui/historydetail/" data="historyid={/$value.history_id/}"/}'><img src="{/base_lib_Constant::UPLOAD_FILE_URL/}{/$value.cover_image_url/}"><p>{/$value.title/}——{/$value.subject/}</p></a></li>
+                       		{//foreach/}
+                			{//if/}
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p4">
+                <div class="part">
+                    <div class="partT"><h2>汇博招聘会6大优势</h2></div>
+                    <div class="partC">
+                    	<div class="advLst">
+		                    <dl class="lst1">
+		                    <dt></dt>
+		                    <dd><p class="tit"></p><p>电视台、移动电视、晨报、时报、商报、都市热报等8类主流媒体强势宣传；汇博网、大渝网、华龙网等主流网站大力推广</p></dd>
+		                    </dl>
+		                    <dl class="lst2">
+		                    <dt></dt>
+		                    <dd><p class="tit"></p><p>汇博人才<span class="orange">{/$config->ShowResumeNum/}</span>求职者全面覆盖</p></dd>
+		                    </dl>
+		                    <dl class="lst3">
+		                    <dt></dt>
+		                    <dd><p class="tit"></p><p>常设<span class="orange">{/$config->HuiBoFairShowRoom/}个</span>标准展位&nbsp;&nbsp;&nbsp;&nbsp;每周提供<span class="orange strong">{/$config->HuiBoFairCompanyNumWeek/}多家</span>企业参会</p><p>每周提供<span class="orange">{/$config->HuiBoFairJobNumWeek/}个</span>职位&nbsp;&nbsp;&nbsp;&nbsp;每周进场<span class="orange">{/$config->HuiBoFairPersonNumWeek/}个</span>求职者</p></dd>
+		                    </dl>
+		                    <dl class="lst4">
+		                    <dt></dt>
+		                    <dd><p class="tit"></p><p>参会企业职位提前查看</p><p>参加重庆招聘会不再撞运气</p></dd>
+		                    </dl>
+		                    <dl class="lst5">
+		                    <dt></dt>
+		                    <dd><p class="tit"></p><p>WIFI全场覆盖</p><p>免费为会员制作海报</p><p>免费提供求职招聘工具</p></dd>
+		                    </dl>
+		                    <dl class="lst6">
+		                    <dt></dt>
+		                    <dd><p class="tit"></p><p>3号轻轨线狮子坪下车即到</p><p><span class="orange strong">{/$config->HuiBoFairTrafficLine/}条</span>公交线路到达</p></dd>
+		                    </dl>
+		                    <div class="clear"></div>
+		                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pagePartR">
+            <div class="p6">
+                <div class="part">
+                    <div class="partT"><h2>媒体报道</h2><div class="txt"><a href='{/get_url rule="/zhaopinhui/medialist/"/}' target="_blank">更多</a></div></div>
+                    <div class="partC">
+                        <div class="fairReport" id="fairReport">
+                            <div class="lst">
+                                <ul>
+                                {/if !empty($fairscene_media) && count($fairscene_media)>0/}
+	                          	{/foreach $fairscene_media as $item=>$value/}
+	                         		<li title="【{/$value.origin/}】{/$value.subject/}">
+                                		<p><a target="_blank" href='{/get_url rule="/zhaopinhui/MediaDetail/" data="mediaid={/$value.media_id/}"/}'>【{/$value.origin/}】{/$value.subject/}</a></p>
+                                      	<p class="time">{/$value.the_date/}</p>
+                                	</li>
+	                         	{//foreach/}
+	                			{//if/}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!---->
+{/include file="footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script type="text/javascript">
+    var hbFairIndex = 
+    {
+        initialize: function()
+        {
+            hbFairIndex.initializeControls();
+            hbFairIndex._initializeRecommendCompanyRoll();
+        },
+        initializeControls: function()
+        {
+            $('#herald').find('a').hover(function()
+            {
+		        if($(this).hasClass('more'))
+		        {
+			        return false;
+		        }
+		        else
+		        {
+			        var position = $(this).position();
+			        var tsLt = position.left;
+			        $('#herald').find('#bubble' + $(this).attr('id')).css({left:tsLt}).show();
+		        }
+	        },function()
+	        {
+		        $(this).parent('#herald').find('#bubble' + $(this).attr('id')).hide();
+	        });
+	        $('#fairReport').find('li').hover(function()
+	        {
+		        $(this).addClass('hov');
+	        },function()
+	        {
+		        $(this).removeClass('hov');
+	        });
+	        $('#fairAna').find('li').hover(function(){
+		        $(this).parent('ul').find('li').removeClass('cu');
+		        $(this).addClass('cu');
+        		
+	        },function(){
+		        return false;
+	        }).last().css({border:0});
+	        $('#fairAna').find('li').find('img').removeAttr('height');
+        },
+        _initializeRecommendCompanyRoll: function()
+        {
+            var picNumPerLine = {/if $current_scene.is_major_scene == true/}"5"{/else/}"3"{//if/};
+            var picSumNum = {/if $current_scene.is_major_scene == true/}"25"{/else/}"15"{//if/};
+            var nav_today2 = $("#compositeFairCompany"), ul2 = nav_today2.find("li");
+            if (nav_today2.find("li").size() > 0)
+            {
+                while (nav_today2.find("li").size() < picSumNum)
+                {
+                    nav_today2.find("ul").append(ul2.clone());
+                }
+                nav_today2.find("ul").append(nav_today2.find("li").clone());
+                var n = 0;
+                var ul_size2 = nav_today2.find("li").size() / 2;
+                ul_h2 = nav_today2.find("li").height();
+                function start()
+                {
+                    scrollUp();
+                }
+                var timer = window.setInterval(function()
+                {
+                    start();
+                }, 2000);
+                function stop()
+                {
+                    clearInterval(timer);
+                }
+                function restart()
+                {
+                    timer = window.setInterval(function()
+                    {
+                        start();
+                    }, 2000);
+                }
+                nav_today2.mouseover(function()
+                {
+                    stop();
+                }).mouseout(function()
+                {
+                    restart();
+                })
+                function scrollUp()
+                {
+                    if (nav_today2.is(":animated")) { return false; }
+                    nav_today2.animate({ scrollTop: nav_today2.scrollTop() + ul_h2 + 5 }, "normal", function()
+                    {
+                        if ((ul_size2 / picNumPerLine) > Math.round(ul_size2 / picNumPerLine))
+                        {
+                            if (n == (Math.round(ul_size2 / picNumPerLine) + 1))
+                            {
+                                nav_today2.scrollTop(0);
+                                n = 0;
+                            }
+                        }
+                        else
+                        {
+                            if (n == Math.round(ul_size2 / picNumPerLine))
+                            {
+                                nav_today2.scrollTop(0);
+                                n = 0;
+                            }
+                        }
+                        n++;
+                    });
+                } 
+            }
+        }
+    }
+    hbFairIndex.initialize();
+</script>
+
+
+
+
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+	$('#fairReport').find('li').hover(function(){
+		$(this).addClass('hov');
+	},function(){
+		$(this).removeClass('hov');
+	});
+	
+});
+</script>
+</body>
+</html>
+
+

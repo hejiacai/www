@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{/$title/}</title>
+<meta name="keywords" content="{/$keyword/}">
+<meta name="description" content="{/$description/}">
+<meta name="mobile-agent" content="format=xhtml; url={/$mobile_agent/}"/>
+<meta name="mobile-agent" content="format=html5; url={/$mobile_agent/}"/>
+<meta name="mobile-agent" content="format=wml; url={/$mobile_agent/}"/>
+
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="v2-reset.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="v2-resume.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="v2-header.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="v2-widge.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="job.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="jobnew.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="mainPhoto.css"/}" />
+<link rel="alternate" media="only screen and(max-width: 640px)" href="{/$mobile_agent/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='leaveinfo.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='appeal.css'/}" />
+<script type="text/javascript" src="{/version file="version.js"/}"></script>
+<!–[if lt IE9]> 
+<script type="text/javascript" language="javascript" src="{/version file="html5.js"/}" ></script>  
+<![endif]–>
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript">
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=33f9256a1a1ba5a80eb40f8ed45bce3c"></script>
+
+</head>
+<body>
+{/include_php file='app/controller/head.php'/}
+{/include file='schoolserachhead.html'/}
+<style>
+	body{font-family:"微软雅黑"}
+    #re_apply_type{color: red;font-size: 12px;}
+    .topHeader .header_fix{width:980px !important;}
+    .appeal-job-all .title2 a.interView{ display: block; text-indent: 20px; background: url("{/$siteurl.style/}/img/company/interview.png") #fcfcfc left center no-repeat; position: absolute; top: -11px; right: 0px; color: #3d84b8; font-size: 14px;}
+	.appr_all {
+		text-align: right;
+		padding-right: 30px;
+		background: #fcfcfc;
+		padding-bottom: 30px;
+	}
+	.appr_all a {
+		color: #3d84b8;
+		font-size: 14px;
+	}
+</style>
+{/$header/}
+	 <div class="appeal-jobMain-cont clearfix">
+		 <div class="jobMain-left">
+			 <!--公司简介-->
+			 <div class="appeal-companyp-profile">
+				 <ul class="title-tab clearfix">
+					 <li class="cur"><a href="javascript:;" class="index-1">公司简介</a></li>
+					 <li><a href="javascript:;" class="index-2">校招职位{/if $hasjob/}<span style="color:#2abbb4">（{/count($job_list)/}）</span>{/else/}(0<!--该单位还没有正在招聘的职位-->){//if/}</a></li>
+				 </ul>
+				 <div class="appeal-companyp-text">
+                 	<style>.companyp-text p{text-indent:30px}</style>
+					 <div data-id="{/mb_strlen($company_info,'utf-8')/}" class="companyp-text" style="overflow: hidden; text-indent:30px">{/html_encode content=base_lib_BaseUtils::cutstr($company_info,500,'utf-8','','')/}</div>
+					 {/if mb_strlen($company_info,'utf-8') > 500/}<p class="companyp-switch companyp_switch_company_info"><a href="javascript:;">展开<i class="icon-arr-down"></i></a></p>{//if/}
+				 </div>
+				 <script type="text/javascript">
+					 var phoneImgs = [];
+				 </script>
+				 {/if count($company_photos) >0/}
+				 <div class="njmBanner">
+					 <!------图片滚动开始-------->
+					 <div class="infopicBg">
+						 <div class="infopic">
+							 <div class="picbox">
+								 <ul class="gallery piclist" style="width: 2160px;">
+									 {/foreach $company_photos as $photo/}
+									 <li><a href="{/$photo_path/}{/$photo['photo_path']/}" rel="prettyPhoto[]"><img src="{/$photo_path/}{/$photo['photo_path']/}"></a></li>
+									 {//foreach/}
+									 </ul>
+							 </div>
+						 </div>
+					 </div>
+
+					 <div class="pic_prev"><i></i></div>
+					 <div class="pic_next"><i></i></div>
+					 <style type="text/css">
+						 .picList{width:1080px}
+						 #pp_full_res img{ display:block; margin:0 auto;}
+						 .pp_hoverContainer{ top:30px;}
+						 div.pp_default .pp_content_container .pp_details{ margin:0;}
+						 div.pp_default .pp_close{ margin:0px 0px 0 0;}
+						 div.pp_default .pp_nav .currentTextHolder{ left:0px;}
+						 .pp_gallery{ margin-top:40px;}
+						 div.pp_default .pp_gallery ul li a{ border:1px solid #fff;}
+						 div.pp_default .pp_gallery ul li a:hover,div.pp_default .pp_gallery ul li.selected a{ border:1px solid #0f0;}
+						 #pp_full_res{ clear:both;}
+
+						 .pp_pic_holder.pp_default{ cursor:pointer;}
+						 div.ppt,div.pp_default .pp_top,div.pp_default .pp_bottom,div.pp_default .pp_expand{ display:none;}
+						 div.pp_default .pp_content_container .pp_left,div.pp_default .pp_content_container .pp_right{ background:none;}
+						 .pp_pic_holder.pp_default,div.pp_default .pp_content, div.light_rounded .pp_content{ background:none;}
+						 div.pp_default .pp_nav .currentTextHolder{ color:#fff; padding-left:0px; left:inherit; right:0px;}
+						 .pp_nav{ margin-top:0px; margin-right:30px;}
+						 div.pp_default .pp_close{ position:fixed; top:150px; right:50%; margin-right:-500px;}
+
+					 </style>
+					 <script type="text/javascript">
+						 hbjs.use('@jobPrettyPhoto, @imgLoader', function(m){
+							 var $ = m['cqjob.jobPrettyPhoto'],
+									 imgLoader = new m['tools.imgLoader']();
+							 //var imgLoader = new imageLoader();
+							 var m1, r, s,
+									 picList = $('.piclist'),
+									 picListItem = picList.children('li'),
+									 lw = picListItem.width()*3,
+									 liw = lw * picListItem.length,
+									 curIndex = 0,
+									 imgs = [],
+									 loadImgs = {},
+									 isAnimated = false;
+
+
+							 picList.width( liw + 'px' );
+
+							 loadPhone();
+							 function loadPhone(index){
+								 index || (index = curIndex);
+								 if(loadImgs[index]) return;
+								 phoneImgs && phoneImgs[index] && imgLoader.load(phoneImgs[index], {imgIndex: index});
+							 }
+							 imgLoader.on('load', function(e){
+								 loadImgs[e.imgIndex || 0] = true;
+								 picListItem.eq(e.imgIndex || 0).css('background', 'none').find('img').attr('src', e.src);
+							 });
+
+							 $('.pic_next').click(function(){
+								 if(isAnimated || curIndex >= picListItem.length - 1) return;
+								 isAnimated = true;
+								 /*
+								  if(picList.is(':animated')){
+								  picList.stop(true,true);
+								  }*/ /* 避免点击事件重复 */
+
+								 ml = parseInt(picList.css('left'));
+								 r = liw - (lw - ml);  /* 700为外部区块.infopic的宽度，15为li之间的距离，即.piclist li的margin-right的值 */
+								 if(r < lw){
+									 s = r - 0;
+								 } else {
+									 s = lw;
+								 }
+								 if(curIndex < picListItem.length - 1){
+									 curIndex+=4;
+								 }
+								 picList.stop(true, false).animate({left: ml - s + 'px'}, 'slow', function(){
+									 isAnimated = false;
+									 loadPhone(curIndex);
+								 });
+							 });
+
+							 $('.pic_prev').click(function(){
+								 if(isAnimated || curIndex < 0) return;
+								 isAnimated = true;
+								 /*
+								  if(picList.is(':animated')){
+								  picList.stop(true,true);
+								  }*/ /* 避免点击事件重复 */
+
+								 ml = parseInt(picList.css('left'));
+								 if(ml > -lw){
+									 s = ml;
+								 } else {
+									 curIndex-=4;
+									 s = -lw;
+								 }
+								 picList.stop(true, false).animate({left: ml - s + 'px'}, 'slow', function(){
+									 isAnimated = false;
+									 loadPhone(curIndex);
+								 });
+							 });
+
+							 $(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({
+								 animation_speed:'fast',
+								 slideshow: 10000,
+								 hideflash: true,
+								 initcallback: function(){
+									 $.each(phoneImgs, function(index){
+										 loadPhone(index);
+									 });
+								 },
+								 ajaxcallback:function(){
+
+								 }
+							 });
+						 });
+					 </script>
+				 </div>
+				 {//if/}
+				<!--在招校招职位列表-->
+				 <div class="appeal-njmJoinUs" style="display: none;">
+					 {/if $hasjob/}
+					 <ul>
+						 {/foreach $job_list as $job/}
+						 <li>
+							 <a href="{/$job['job_link']/}" target='_blank'>
+								 <p><span>{/$job['station']/}</span>{/if $job['is_urgent']/}<b></b>{//if/}{/if $job['job_type_name']!='全职'/}<em>{/$job['job_type_name']/}</em>{//if/}{/if $job['re_apply_type']>0/}<span id="re_apply_type">[{/$job['re_apply_type']/}工作日必复]</span>{//if/}<i class="time">{/$job['issue_time']/}</i></p>
+								 <span class="nUcolor">
+                                     {/if $job['min_salary'] > 0 || $job['base_min_salary'] > 0/}
+                                         {/if $job['min_salary'] == $job['max_salary']/}{/$job['min_salary']/}{/else/}{/$job['min_salary']/}-{/$job['max_salary']/}{//if/}元 / 月 {/if $job['salary_type'] == 1/}（底薪：{/if $job['base_min_salary'] == $job['base_max_salary']/}{/$job['base_min_salary']/}{/else/}{/$job['base_min_salary']/}-{/$job['base_max_salary']/}{//if/}元/月+提成）{//if/} 
+                                     {/else/}
+                                        --
+                                     {//if/}
+                                     &nbsp;  {/$job['degree_name']/} / {/$job['area_name']/} / {/$job['graduate_profession']/}</span>
+							 </a>
+						 </li>
+						 {//foreach/}
+					 </ul>
+					 {//if/}
+				 </div>
+				 {/if $hasjob/}
+				 <!--<div class="appeal-njmJoinUs" style="display: none;">-->
+					 <!--{/$pager/}-->
+				 <!--</div>-->
+				 {//if/}
+			 </div>
+			 <!--/公司简介-->
+
+			 {/if !empty($ajax_appraise_info)/}
+			 <!--评分展示-->
+			 <div class="appeal-job-all">
+				 <p class="title2">
+					 <span>面试评价<font>（{/(int)$job_appraise_num/}）</font></span>
+					 {/if !$isMember/}
+					 <a href="{/get_url domain='person' rule='/appraise/appraise/'/}cid-{/$company['company_id']/}" class="interView">发布面试评价</a>
+					 {//if/}
+				 </p>
+
+				 <div class="appeal-star clearfix">
+					 {/if $company_level_appraise['avg_match_level']/}
+					 <span class="appeal-star-title1">岗位职责相符度：</span>
+					 <p class="public-star"><span style="width: {/($company_level_appraise['avg_match_level']*20)/}%" ></span></p>
+					 <span class="color-red2">{/$company_level_appraise['avg_match_level']/}分</span>
+					 {//if/}
+					 {/if $company_level_appraise['avg_welfare_salary_level']/}
+					 <span class="appeal-star-title2">福利薪资相符度：</span>
+					 <p class="public-star"><span style="width: {/($company_level_appraise['avg_welfare_salary_level']*20)/}%"></span></p>
+					 <span class="color-red2">{/$company_level_appraise['avg_welfare_salary_level']/}分</span>
+					 {//if/}
+				 </div>
+				 {/if !empty($appraise_tip_info)/}
+				 <p class="evaluate-label">
+					 {/foreach $appraise_tip_info as $v/} <span>{/$v['tip_name']/}<font >({/(int)$v['num']/})</font></span>{//foreach/}
+				 </p>
+				 {//if/}
+			 </div>
+			 {/if $job_appraise_num/}
+			 <div class="appr_all">
+				 {/if !$_userid/}
+				 <a class="evaluate-label" href="{/get_url rule='/login' domain="person"/}">
+				 {/else/}
+				 <a class="evaluate-label" href="{/get_url rule='/school/OtherJobAppraise/'/}comflag-{/$company_flag/}" target="_blank">
+					 {//if/}
+					 查看全部评论 >
+				 </a>
+				 </p>
+			 </div>
+			 {//if/}
+			 {//if/}
+
+		 </div>
+		<div class="jobMain-right">
+			<ul class="nrtLit nrtLitMain">
+					<li>
+						<span>行业</span><em title="{/$company_callings/}">{/$company_callings/}</em>
+					</li>
+					<li>
+						<span>性质</span><em>{/$company_property/}</em>
+					</li>
+					<li>
+						<span>规模</span><em>{/$company_size/}</em>
+					</li>
+				{/if !empty($company['redirect_homepage'])/}
+					<li>
+						<span>网址</span><a {/if !$is_preg_url/}rel="nofollow"{//if/} href="{/$company['redirect_homepage']/}" target="_blank">{/$company['redirect_homepage']/}</a>
+					</li>
+				{//if/}
+			 </ul>
+			<div class="newMessage newMessagex">
+						<h2><img src="{/$siteurl.style/}/img/c/resumeNbtn.png" onclick="$('#newMsg').toggle()" style="float: right; cursor: pointer">给我留言</h2>
+				<div id="newMsg" style="display: none">
+						<textarea rows="" cols="" name="msgContent" id="msg" data-tip="请输入您对该职位的疑问。比如所在地、年薪、福利等等，我会及时给您回复！期待与您合作。">请输入您对该职位的疑问。比如所在地、年薪、福利等等，我会及时给您回复！期待与您合作。</textarea>
+						<div class="newLeaveB">
+							<span>0</span>
+							<em>/200</em>
+
+							<a href="javascript:void(0)" id="submitMessage" data-cid="{/$company['company_id']/}">发 送</a>
+						</div>
+				</div>
+				 </div>
+			<div class="newAaddress">
+				<span class="name">公司地址</span>
+				<p class="address">{/$company['address']/}</p>
+				<div id="allmap" class="map" >111</div>
+				<input type="hidden" id="hidMapX" name="hidMapX" value="{/$company['map_x']/}" />
+				<input type="hidden" id="hidMapY" name="hidMapY" value="{/$company['map_y']/}" />
+                {/if $company['map_x'] && $company['map_y']/}
+                    <!--<p class="more"><a href="http://api.map.baidu.com/marker?location={/$company['map_y']/},{/$company['map_x']/}&title={/$company['comapny_name']/}&output=html&src=汇博网" target="_blank"><i></i>查看地图</a></p>-->
+                    <p class="more"><a href="http://api.map.baidu.com/geocoder?location={/$company['map_y']/},{/$company['map_x']/}&coord_type=bd09ll&output=html" target="_blank"><i></i>查看地图</a></p>
+                {/else if !empty($company['address'])/}
+                    <p class="more"><a target='_blank' href="http://api.map.baidu.com/geocoder?address={/$company['address']/}&output=html"><i></i>查看地图</a></p>
+                {//if/}
+			</div>
+		</div>
+	 </div>
+</div>
+
+{/include file="leaveinfo.html"/}
+
+{/include file="footer.html"/}
+
+<!--消息提醒的那个啥-->
+{/include file="tipmsg.html"/}
+<span id="more_content" style="display: none">{/html_encode content=$company_info/}</span>
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+
+<script type="text/javascript">
+
+</script>
+
+<script> 
+hbjs.use('@checkLogin, @confirmBox', function(m){
+	
+	
+	var $ = m['jquery'],
+		checkLogin = m['product.checkLogin'],
+		ConfirmBox = ConfrimBox = m['widge.overlay.confirmBox'],
+		fontSize = 18,
+		cookie = m['tools.cookie'],
+		pWidth = 70;
+
+	//一分钟留下简历
+	var win = $(window);
+	var fixed_box = $('#fixed_box');
+	var falg_leav_info = false;
+	if(cookie.get('isBottomClose') == undefined) {
+		falg_leav_info = true;
+		win.on('scroll', function () {
+			if(falg_leav_info){
+				var scrollTop = $(document).scrollTop() + win.height();//类似当前文档的高度
+                var other1 = 0;
+                {/if !empty($herader)/}
+                other1 = $('.flex-viewport').height();
+                {//if/}
+				var w1 = $('.nJobMainCont').height() + $('.njmName').height() + other1;
+				if (scrollTop >= w1) {
+					fixed_box.show();
+				}
+			}
+		});
+	}
+	fixed_box.on('click', '.close', function(e){
+		var target = $(e.currentTarget);
+		cookie.set('isBottomClose', 1);
+		falg_leav_info = false;
+		fixed_box.hide();
+	});
+
+	$('.registerResume').on('click', function(e){
+		checkLogin.dialog.set('title', null);
+		checkLogin.dialog._updateHeader();
+		var isLogin = checkLogin.isPersonLogin(null, 'person_dialog', '/personregister/applyreg/success-ajaxLoginCallback-fromurl-jobsearch');
+		return false;
+	});
+
+	$(".ques").mouseover(function(){
+		$(this).parent().next().show();
+	});
+
+	$(".ques").mouseout(function(){
+		$(this).parent().next().hide();
+	});
+
+
+	//评价内容 -》收起展开
+	$(".companyp_switch_submit").click(function(){
+		var self = $(this),sHeight = "93px",sHtml = '<a href="">展开<i class="icon-arr-down"></i></a>';
+		if(self[0].switchstatus != "show"){
+			sHeight = "none";
+			sHtml = '<a href="">收起<i class="icon-arr-down" style="background-position:-22px -48px"></i></a>';
+			self[0].switchstatus = "show";
+		}else{
+			self[0].switchstatus = "hide";
+		}
+		self.prev().css({"max-height":sHeight});
+		self.html(sHtml);
+		return false;
+	});
+
+	//点击展开
+	$(".companyp_switch_company_info").click(function(){
+                var content = $("#more_content").html();
+		$(this).parent(".appeal-companyp-text").find(".companyp-text").css("height","auto");
+		$(this).hide();
+              //  var content = encodeURIComponent('');
+		$('.companyp-text').html(content);
+		return false;
+	});
+	//是否有用
+	var can_requist = true;
+	$("body").on("click",".thumbs-up a",function(){
+		if(!can_requist){return false;}
+		else{can_requist = false;}
+		var num = $(this).find('em').text();
+		var islogin = checkLogin.isLogin('ajaxLoginCallback-isReload-true');
+		if(!islogin){can_requist = true;return false;}
+		var status = 'add';
+		var _this = this;
+		if($(this).hasClass('cur')){
+			status = 'del';
+		}
+		$.post('/job/UpdateAppraiseUseful',{status:status,appraise_id:$(this).attr('data-app')},function(e){
+			if(e.status){
+				$(_this).toggleClass("cur");
+				if(status == 'add'){
+					num++;
+				}else{
+					num = (num - 1);
+					if(num < 0){num++;}
+				}
+				$(_this).find('em').text(num);
+				can_requist = true;
+			}else{
+			}
+		},'json');
+
+
+		return false;
+	});
+
+	//公司简介/在招职位标签切换
+	$(".title-tab li a").click(function(){
+		if($(this).parent().hasClass('cur')){
+			return false;
+		}else{
+			$(this).parent().addClass('cur').siblings().removeClass('cur');
+			if($(this).attr('class') == 'index-1'){
+				$('.appeal-companyp-text').show();
+				$('.njmBanner').show();
+				$('.appeal-job-all').show();
+				$('.appeal-all-page').show();
+				$('.appeal-all-item').show();
+				$('.appr_all').show();
+
+				$('.appeal-njmJoinUs').hide();
+
+				$('.appeal-companyp-profile').css('border-bottom','1px solid #f1f1f1');
+
+			}else if($(this).attr('class') == 'index-2'){
+				$('.appeal-companyp-text').hide();
+				$('.njmBanner').hide();
+				$('.appeal-job-all').hide();
+				$('.appeal-all-page').hide();
+				$('.appeal-all-item').hide();
+				$('.appr_all').hide();
+
+				$('.appeal-njmJoinUs').show();
+
+				$('.appeal-companyp-profile').css('border-bottom','none');
+			}
+
+		}
+	});
+
+
+	$("textarea").keyup(function(){ 
+		var max = 200;
+		var len = $(this).val().length;
+		if(0 ==len){
+			$(this).removeClass('textAreaChanged');
+		}else{
+			$(this).addClass('textAreaChanged');
+		}
+		if(max>=len){
+			$(this).parents(".newMessage").find("span").text(len);
+		}else{
+			ConfrimBox.timeBomb("留言长度不能超过200字", {
+				width : 250,
+				name : 'warning'
+			});
+			$(this).parents(".newMessage").find("span").text(200);
+			$(this).val($(this).val().substr(0,max));
+		}
+	});
+
+	$("textarea").focus(function(){
+		/* var islogin = checkLogin.isLogin('ajaxLoginCallback');
+        checkLogin.dialog.resetSize(498);
+        if(islogin){
+        	if(!$(this).hasClass('textAreaChanged')){
+    			$(this).val("");
+    			$(this).addClass('textAreaChanged');
+    		}	
+        } */
+        
+		if(!$(this).hasClass('textAreaChanged')){
+			$(this).val("");
+			$(this).addClass('textAreaChanged');
+		}else{
+    		$(this).removeAttr("style");
+    	}
+	});
+	
+	$("textarea").blur(function(){
+    	if($(this).val().replace(/^\s*$/g,'')  == ''){
+    		$(this).val($(this).attr('data-tip'));
+    		$(this).removeClass('textAreaChanged');
+    	}
+    });
+	
+	$(window).scroll(function(){
+        if ($(document).scrollTop() > 120){
+            $('#sus').find('a.backTop').css({'display':'inline-block'});
+        }else{
+            $('#sus').find('a.backTop').css({'display':'none'});
+        }
+    });
+    $('#sus').find('a.backTop').click(function(){
+        $('html,body').animate({ scrollTop: 0 });
+    });
+	
+	$('#show_short_info').click(function(){
+		$('#short_info').hide();
+		$('#info').show();
+	})
+	
+	$(document).ready(function(){
+		var oldMsg = getCookie(window.location.href+"_msg");// alert(oldMsg);
+		if(oldMsg != null){
+			$("textarea").val(oldMsg).addClass("textAreaChanged");
+			$(".newLeaveB span").html(oldMsg.length);
+		}
+	});
+
+	/**
+	 * 举报
+	 */
+	$('#report,#report_bf').click(function() {
+		var islogin = checkLogin.isLogin('ajaxLoginCallback-jobflag-{/$jobflag/}-isReload-true');
+		checkLogin.dialog.resetSize(498);
+		if(islogin){
+			checkLogin.dialog.setContent({
+				title: '举报',
+				content: '{/get_url rule="/companycomplaint/index/" data="companyflag=$company_flag&jobflag=$jobflag"/}'+'-v-'+Math.random(),
+				isOverflow: true
+			}).resetSize(610, 'auto').show().off('loadComplete').on('loadComplete', function(){
+				this.oneCloseEvent('#btnComplaint');
+			});
+		}
+	});
+
+
+	//提交留言
+	$('#submitMessage').click(function(){
+		if($('textarea').val().replace(/^\s*$/g,'')  != '' && ($('textarea').hasClass('textAreaChanged'))){
+    		setCookie(window.location.href+"_msg",$('textarea').val());
+		}
+		var islogin = checkLogin.isLogin('ajaxLoginCallback-isReload-true');
+        checkLogin.dialog.resetSize(498); 
+        if(islogin){
+        	var message = $('textarea').val();
+    		var url = "{/get_url rule='/company/ajaxSubmitMessage'/}";
+    		if(message.replace(/^\s*$/g,'')  == '' || !($('textarea').hasClass('textAreaChanged'))){
+    			ConfrimBox.timeBomb("留言内容不能为空！", {
+					width : 240,
+					name : 'warning'
+				});
+    			return false;	
+    		}else{
+    			$.post(url,{'company_id':$(this).attr('data-cid'),'content':message,'from':'12'},function(result){
+    				delCookie(window.location.href+"_msg");
+    				if((typeof result.status !='undefined') && parseInt(result.status)>0) {
+    					ConfrimBox.timeBomb(result.message, {
+							width : (result.message.length)*32,
+							name : 'success'
+						});
+    					$("textarea").val($("textarea").attr('data-tip')).removeClass('textAreaChanged');
+						$(".newLeaveB span").html("0");
+    				}else if(parseInt(result.status) == 0){
+						ConfrimBox.timeBomb(result.message, {
+							width : (result.message.length)*21,
+							name : 'warning'
+						});
+    					setTimeout(function(){window.location.href = result.url;},1000);
+    				}else if(parseInt(result.status) == -7){
+    					checkLogin.dialog.resetSize(498);
+    				}else {
+    					 ConfrimBox.timeBomb(result.message, {
+							width : (result.message.length)*21,
+							name : 'warning'
+						});
+    				}
+    			},'json');
+    		}
+        }		
+	});
+	
+	   function setCookie(name,value)
+	    {
+	        var exp = new Date();
+	        exp.setTime(exp.getTime() + 60*1000);
+	        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+	    }
+
+	    //读取cookies
+	    function getCookie(name)
+	    {
+	        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+	     
+	        if(arr=document.cookie.match(reg))
+	     
+	            return unescape(arr[2]);
+	        else
+	            return null;
+	    }
+
+	    //删除cookies
+	    function delCookie(name)
+	    {
+	        var exp = new Date();
+	        exp.setTime(exp.getTime() - 1);
+	        var cval=getCookie(name);
+	        if(cval!=null)
+	            document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+	    }  	
+	//添加关注
+	$('.att').click(function(){
+		var islogin = checkLogin.isLogin('ajaxLoginCallback-isReload-true');
+                 checkLogin.dialog.resetSize(498);
+		if(islogin){
+			var company_flag ="{/$company_flag/}";
+			var operate = $(this).attr('v');
+			var data = {operate:operate,company_flag:company_flag};
+			$.post('/company/attention/',data,function(json){
+				if(json && json.error){
+					ConfirmBox.timeBomb(json.error, {
+						name : "warning",
+						timeout : 1000,
+						width: fontSize * json.error.length + pWidth
+					});
+					return;
+				}
+				if(operate == 'add'){
+					$('#liAdd').hide();
+					$('#liCance').show();
+					ConfirmBox.timeBomb("关注成功", {
+						name : "success",
+						timeout : 3000,
+						width: 60
+					});
+                                       /* $('.nFcswin span').html("关注成功");
+                                          $('.nFcswin').show();*/
+				} else {
+					$('#liAdd').show();
+					$('#liCance').hide();
+					ConfirmBox.timeBomb("取消关注成功", {
+						name : "success",
+						timeout : 3000,
+						width: 80
+					});/*
+                     $('.nFcswin span').html("取消关注成功");
+                     $('.nFcswin').show();*/
+				}
+				ConfirmBox.timeBomb(json.info, {
+					name : "success",
+					timeout : 1000,
+					width: fontSize * json.info.length + pWidth
+				});
+				return;
+			},'json');
+		}
+	});
+	$.getJSON('/company/CompanyVisit/company_flag-{/$company_flag/}');
+	
+});
+
+function ajaxLoginCallback() {
+    window.location.href = window.location.href ; 
+}
+/*
+     $.setIndex("zindex");
+     
+    $('#ajaxlogin').click(function() {
+            $.showModal('/www/ui/ajaxlogin.html?v=qaaa',{title:'您尚未登录'});
+    }); 
+
+var attention={
+	init:function(){
+		$('.att').click(function(){
+			var islogin = ajaxCheckPersonLogin();
+			if(islogin){
+				var company_flag ="ent5y2wf5c";
+				var operate = $(this).attr('v');
+				var data = {operate:operate,company_flag:company_flag};
+				$.post('/company/attention/',data,function(json){
+					if(json&&json.error){
+						$.message(json.error,{icon:'warning'});
+						return;
+					}
+                                        console.log(operate);
+					if(operate=='add'){
+						$('#liAdd').hide();
+						$('#liCance').show();
+						$.anchorMsg(json.info);
+					}else{
+						$('#liAdd').show();
+						$('#liCance').hide();
+						$.anchorMsg(json.info);
+					}
+					//$('#attCount').text(json.attentioncount);
+					return;
+				},'json');
+			}
+		});
+//		$('#map_address').click(function(){
+//			var map_x = "107";
+//			var map_y = "30";
+//			var address ="北京东城区";
+//			if(map_x=="" || map_y==""){
+//				$('#map_address').attr('href','http://api.map.baidu.com/geocoder?address='+address+'&output=html');
+//				}
+//			else{
+//				$('#map_address').attr('href','http://api.map.baidu.com/marker?location='+map_y+','+map_x+'&title=无敌、&content='+address+'&output=html&');	
+//				}
+//		});
+	
+		$.getJSON('/company/CompanyVisit/company_flag-ent5y2wf5c');
+	}
+}
+	attention.init();
+*/
+//map.centerAndZoom(new BMap.Point($('#hidMapX').val(),$('#hidMapY').val()), 15);
+//var data_info = [[$('#hidMapX').val(),$('#hidMapY').val(),"地址：{/$company['address']/}"]];
+</script>
+
+<script type="text/javascript">
+	// 百度地图API功能
+	map = new BMap.Map("allmap");
+	var x = $('#hidMapX').val();
+	var y = $('#hidMapY').val();
+	//map.centerAndZoom(new BMap.Point(x,y), 15);
+//	map.centerAndZoom("重庆南岸区南坪亚太商谷7栋5-12", 15);
+    {/if $company['map_x'] && $company['map_y']/}
+        map.centerAndZoom(new BMap.Point(x,y), 15);
+    {/else/}
+        map.centerAndZoom("{/$company['address']/}", 15);
+    {//if/}
+	map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
+	map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+	var data_info = [[x,y,"地址：{/$company['address']/}"]];
+	var opts = {
+		width : 100,     // 信息窗口宽度
+		height: 40,     // 信息窗口高度
+		title : "信息窗口" , // 信息窗口标题
+		enableMessage:false//设置允许信息窗发送短息
+	};
+	for(var i=0;i<data_info.length;i++){
+		var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+		var content = data_info[i][2];
+		map.addOverlay(marker);               // 将标注添加到地图中
+		addClickHandler(content,marker);
+	}
+	function addClickHandler(content,marker){
+		marker.addEventListener("click",function(e){
+			openInfo(content,e)}
+		);
+	}
+	function openInfo(content,e){
+		var p = e.target;
+		var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+		var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+		map.openInfoWindow(infoWindow,point); //开启信息窗口
+	}
+
+</script>
+</body>
+</html>

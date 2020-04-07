@@ -1,0 +1,746 @@
+{/include_php file='app/controller/head.php'/}
+<script type="text/javascript">
+    hbjs.use('@fixed, @checkLogin, @confirmBox, @search, @homeSideSortMenu, @jobPostipGroup, @hbCommon, @mask', function(m){
+        var $ = m['product.hbCommon'],
+                util = m['base.util'],
+                cookie = m['tools.cookie'],
+                fixed = m['tools.fixed'],
+                position = m['tools.position'],
+                checkLogin = m['product.checkLogin'],
+                confirmBox = m['widge.overlay.confirmBox'],
+                jobTopSearch = m['product.jobSearch.jobTopSearch'],
+                homeSideSortMenu = m['product.homeSideSortMenu'],
+                jobPostipGroup = m['product.jobList.jobPostipGroup'],
+                Dialog = m['widge.overlay.hbDialog'],
+                mask = m['widge.overlay.mask'];
+        //判断用户输入是否包含"兼职"
+        var havePartjob = (decodeURI(location.href)).indexOf('兼职') !== -1;
+        if(havePartjob && !cookie.get("partjob_guid_alert")){
+            mask.show();
+            $('#partjobPop').show(function(){
+                var exp = new Date();
+                exp.setTime(exp.getTime() + 24 * 3600000);
+                cookie.set('partjob_guid_alert', true, {expires:exp,path:"/"});
+            });
+            $('#partjobPop').on('click','a',function(){
+                $('#partjobPop').hide();
+                mask.hide();
+            });
+        }
+
+        /*加入收藏*/
+        $('#addFavoritesBtn').click(function() {
+            var t = $(this),
+                    h = document.title,
+                    l = location.href;
+            try{
+                if($.browser.msie) {
+                    window.external.addFavorite(h, l);
+                } else if ($.browser.mozilla || $.browser.opera) {
+                    t.attr("rel", "sidebar");
+                    t.attr("title", l);
+                    t.attr("href", h);
+                } else {
+                    alert("请使用Ctrl+D将本页加入收藏夹！");
+                }
+            }catch(e){
+                alert("请使用Ctrl+D将本页加入收藏夹！");
+            }
+        });
+
+        //-----右侧共用js-----
+        $(window).scroll(function(){
+            if ($(document).scrollTop() > 120){
+                $('a.backTop').css({'display':'inline-block'});
+            }else{
+                $('a.backTop').css({'display':'none'});
+            }
+        });
+        $('a.backTop').click(function(){
+            $('html,body').animate({ scrollTop: 0 });
+        });
+
+        //右边浮动栏
+        $('.popzP').hover(function(){
+            $('.popzSpd').toggle();
+        });
+        //----end-----
+
+
+
+        var userEnterBox = $('#userEnterBox');
+        userEnterBox.on('mouseenter mouseleave', '.login', function(e){
+            var target = $(e.currentTarget);
+            target.toggleClass('hover');
+        });
+
+        pWidth = 70,
+                fontSize = 18;
+
+        var job = new homeSideSortMenu({
+            url: {
+                host: '{/$siteurl.main/}',
+                path: '/jobsearch/',
+                param: null,
+                alias: 'alias',
+                selectId: ["1701"]
+            },
+            banner: [{
+                id: 3,
+                link: '/it/',
+                value: '<img src="{/$siteurl.style/}/img/common/channel.jpg" alt="" />',
+                className: 'subPageMenu',
+                isHref : true
+            },
+                {
+                    id: 5,
+                    link: '/car/',
+                    value: '<img src="{/$siteurl.style/}/img/common/channel3.png" alt="" />',
+                    className: 'subPageMenu',
+                    isHref : true
+                },
+                {
+                    id: 6,
+                    link: '/fangdichan/',
+                    value: '<img src="{/$siteurl.style/}/img/common/channel2.png" alt="" />',
+                    className: 'subPageMenu',
+                    isHref: true
+                }],
+            isRenderTriggerMenu: false,
+            isSpacer: null,
+            width:740,
+            posY: 172
+        });
+        job.init();
+
+        var subClassifyMenu = job.get('trigger').closest('#subClassifyMenu'),
+                subClassify = $('#subClassify');
+        function resetMenuPostion(){
+            var pinObj = {
+                        element: subClassifyMenu,
+                        x: 0,
+                        y: 0
+                    },
+                    baseObj = {
+                        element: subClassify,
+                        x: 0,
+                        y: '100%'
+                    };
+            position.pin(pinObj, baseObj);
+        };
+
+        var subAreas = ['#subClassify', '#subClassifyMenu', '#side_menu_items'],
+                mouseSource;
+
+        $(document).on('mouseover', function(e){
+            var target = $(e.target);
+            resetMenuPostion();
+            if(target.closest(subAreas[0]).length){
+                if(!mouseSource){
+                    subClassifyMenu.slideDown('fast');
+                } else {
+                    subClassifyMenu.show();
+                }
+                mouseSource = true;
+            } else if(target.closest(subAreas[1]).length){
+                subClassifyMenu.show();
+                mouseSource = true;
+            } else if(target.closest(subAreas[2]).length){
+                subClassifyMenu.show();
+                mouseSource = true;
+            } else {
+                mouseSource = null;
+                subClassifyMenu.hide();
+            }
+        });
+
+        var searchConfig = {
+            trigger: '.butsub',
+            select: {
+                trigger: '.search_select',
+                trigerClassName: 'hover',
+                align: {
+                    baseXY: [0, '100%-2']
+                }
+            },
+            selectedIndex:'{/if $searchtype == "company"/}1{/elseif $searchtype == "fulltext"/}2{/else/}0{//if/}',
+            initDataSource: '/head/SearchKeyword',
+            dataSource:[
+                '{/$siteurl.main/}/index/auto/?limit=12&timestamp={{timestamp}}&type=job&q={{query}}&callback=jsonpcallback','{/$siteurl.main/}/index/auto/?limit=12&timestamp={{timestamp}}&type=company&q={{query}}&callback=jsonpcallback,{/$siteurl.main/}/index/auto/?limit=12&timestamp={{timestamp}}&type=fulltext&q={{query}}&callback=jsonpcallback'
+            ],
+            url: [
+                '{/$siteurl.main/}/jobsearch/?key={{query}}',
+                '{/$siteurl.main/}/jobsearch/?params=u2&key={{query}}',
+                '{/$siteurl.main/}/jobsearch/?params=u3&key={{query}}'
+            ],
+            placeHolder: [
+                '找一找，总有适合您的工作',
+                '请输入公司名称',
+                '请输入关键词'
+            ]
+        };
+        //头部搜索
+        var search = new jobTopSearch($.extend({
+            container: $('#search_box form'),
+            search: {
+                trigger: '.keys',
+                align: {
+                    baseXY: [0, '100%']
+                },
+                width: 493,
+                zIndex: 1000,
+                target: $('#ui_hbsug_top')
+            }
+        }, searchConfig));
+
+        search.on('submit', function(e){
+            if(e.index == 0 && e.value && e.value != undefined) {
+                $.getJSON('/head/SaveJobkey/?keyword='+ encodeURIComponent(e.value),function(result){
+                    window.location.href = e.url;
+                });
+            } else {
+                window.location.href = e.url;
+            }
+        });
+
+        var searchInput = search.getSearch(),
+                searchSelect = search.getSelect();
+
+        searchInput.on('itemAllDelete', function(e){
+            $.getJSON('{/get_url rule="/head/ClearSearchKeywords/"/}');
+        });
+        searchInput.on('itemDeleted', function(e){
+            $.getJSON('{/get_url rule="/head/DelSearchKeyword/" data="keyword='+e.value+'"/}');
+        });
+        searchInput.on('searchItemSelected', function(e){
+            //e.url是链接
+            //e.data.text是对应的文字
+            //e.index是索引号
+            var index = searchSelect.get('selectedIndex'),
+                    key = e.data.value;
+            if(e.url && index == 0 && key != undefined){
+                $.getJSON('{/get_url rule="/head/SaveJobkey/"/}?keyword='+encodeURIComponent(key),function(result){
+                    window.location.href = e.url;
+                });
+            } else {
+                window.location.href = e.url;
+            }
+        });
+
+
+
+
+        /*职业预览*/
+        new jobPostipGroup({width:670});
+        function resetSalaryTipPosition(pin, base){
+            var pinObj = {
+                        element: pin,
+                        x: '50%',
+                        y: 0
+                    },
+                    baseObj = {
+                        element: base,
+                        x: '50%',
+                        y: -(pin.outerHeight())
+                    };
+            position.pin(pinObj, baseObj);
+        }
+        function resetStatusTipPosition(pin, base){
+            var pinObj = {
+                        element: pin,
+                        x: 0,
+                        y: 0
+                    },
+                    baseObj = {
+                        element: base,
+                        x: '-23%',
+                        y: -(pin.outerHeight() + base.height() / 2)
+                    };
+            position.pin(pinObj, baseObj);
+        }
+
+        var jobListTable = $('#job_list_table');
+        jobListTable.on('mouseenter mouseleave', '.postIntroL, .money, .pxjg', function(e){
+            var target = $(e.currentTarget),
+                    promptTip;
+
+            if(target.hasClass('money')){
+                promptTip = target.parent().children('.salaryTip');
+                if(promptTip.length){
+                    if(e.type === 'mouseenter'){
+                        resetSalaryTipPosition(promptTip, target);
+                        promptTip.show();
+                    } else {
+                        promptTip.hide();
+                    }
+                }
+            } else if(target.hasClass('pxjg')){
+                promptTip = target.parent().children('.statusTip');
+                if(promptTip.length){
+                    if(e.type === 'mouseenter'){
+                        resetStatusTipPosition(promptTip, target);
+                        promptTip.show();
+                    } else {
+                        promptTip.hide();
+                    }
+                }
+            } else {
+                target.toggleClass('postIntroLcut');
+            }
+        });
+
+        function normalizeValue(el){
+            var ret = [], parent, p, ps, nodeName, status, f, index;
+            el.each(function(){
+                parent = $(this).parent(),
+                        p = parent.closest('dl'),
+                        ps = p.parent().children('dl'),
+                        nodeName = parent[0].nodeName.toLowerCase();
+
+                if(index != ps.index(p)){
+                    status = null;
+                }
+
+                if(nodeName === 'dt'){
+                    status = true;
+                    f = true;
+                } else {
+                    f = status ? false : true;
+                }
+                if(f){
+                    ret.push($(this).attr('data-value'));
+                }
+
+                index = ps.index(p);
+            });
+            return ret.join('_');
+        }
+
+        /*地点过滤*/
+        var address_box = $('#address_box'),
+                address_box_title = address_box.children('.title'),
+                address_box_tab = address_box_title.children('.list'),
+                address_box_cont = address_box.children('.two_address'),
+                address_box_more = address_box_title.children('.more_select'),
+                address_box_button = address_box.find('.button'),
+                address_box_hid = address_box.find('#hddArea'),
+                address_box_link = address_box_cont.children('dd').children('a'),
+                address_box_useLink = address_box_link.filter(function(){
+                    return $(this).hasClass('cur');
+                });
+
+
+        address_box_title.on('click', 'a', function(e){
+            var target = $(e.currentTarget),
+                    index = address_box_tab.index(target);
+
+            if(target.hasClass('list')){
+                if(target.hasClass('click')){
+                    address_box_tab.removeClass('click');
+                    var index = address_box_tab.index(target);
+                    address_box_cont.hide();
+                }else{
+                    address_box_tab.removeClass('click');
+                    target.addClass('click');
+                    var index = address_box_tab.index(target);
+                    address_box_cont.hide();
+                    address_box_cont.eq(index).show();
+                }
+            }
+        });
+
+        address_box_cont.on('click', 'a', function(e){
+            var target = $(e.currentTarget);
+            if(address_box.hasClass('many_status')){
+                e.preventDefault();
+                if(target.hasClass('cur')){
+                    target.removeClass('cur');
+                } else {
+                    target.addClass('cur');
+                }
+            }
+        });
+
+        address_box_button.on('click', 'a', function(e){
+            var target = $(e.currentTarget);
+            switch(target.attr('id')){
+                case 'addressCancelBtn':
+                    address_box_link.removeClass('cur');
+                    address_box_useLink.addClass('cur');
+                    address_box_cont.hide();
+                    address_box.removeClass('many_status');
+                    break;
+                case 'addressClearBtn':
+                    address_box_link.removeClass('cur');
+                    break;
+                case 'addressYesBtn':
+                    address_box_useLink = address_box_link.filter(function(){
+                        var self = $(this);
+                        return self.hasClass('cur') && !self.hasClass('first') && !self.hasClass('all');
+                    });
+                    if(!address_box_useLink.length){
+                        address_box_hid.val('');
+                    } else {
+                        address_box_hid.val(address_box_hid.attr('type-value') + normalizeValue(address_box_useLink));
+                    }
+                    target.closest('form').submit();
+                    break;
+            }
+        });
+
+        address_box_more.on('click', function(e){
+            address_box_tab.removeClass('click');
+            address_box_cont.show();
+            address_box.addClass('many_status');
+        });
+
+        /*福利过滤*/
+        var welfare_box = $('#welfare_box'),
+                welfare_box_title = welfare_box.children('.title'),
+                welfare_box_cont = welfare_box.children('.two_address'),
+                welfare_box_more = welfare_box_title.children('.more_select'),
+                welfare_box_button = welfare_box.find('.button'),
+                welfare_box_hid = welfare_box.find('#hddReward'),
+                welfare_box_link = welfare_box_cont.children('dd').children('a'),
+                welfare_box_useLink = welfare_box_link.filter(function(){
+                    return $(this).hasClass('cur');
+                });
+
+        welfare_box_more.on('click', function(e){
+            welfare_box_cont.show();
+            welfare_box.addClass('many_status');
+        });
+        welfare_box_button.on('click', 'a', function(e){
+            var target = $(e.currentTarget);
+
+            switch(target.attr('id')){
+                case 'welfareCancelBtn':
+                    welfare_box_link.removeClass('cur');
+                    welfare_box_useLink.addClass('cur');
+                    welfare_box_cont.hide();
+                    welfare_box.removeClass('many_status');
+                    break;
+                case 'welfareClearBtn':
+                    welfare_box_link.removeClass('cur');
+                    break;
+                case 'welfareYesBtn':
+                    welfare_box_useLink = welfare_box_link.filter(function(){
+                        var self = $(this);
+                        return self.hasClass('cur') && !self.hasClass('first') && !self.hasClass('all');
+                    });
+                    if(!welfare_box_useLink.length){
+                        welfare_box_hid.val('');
+                    } else {
+                        welfare_box_hid.val(welfare_box_hid.attr('type-value') + normalizeValue(welfare_box_useLink));
+                    }
+                    target.closest('form').submit();
+                    break;
+            }
+        });
+        welfare_box_cont.on('click', 'a', function(e){
+            var target = $(e.currentTarget);
+            if(target.hasClass('cur')){
+                target.removeClass('cur');
+            } else {
+                target.addClass('cur');
+            }
+        });
+
+        /*其它*/
+        /*招聘行业*/
+        var other_box = $('#other_box'),
+                jobsortTrigger = $('#jobsortTrigger'),
+                jobsortPopup = $('#jobsortPopup'),
+                jobsortPopupParent = jobsortPopup.children('dl'),
+                jobsortPopupAllLink = jobsortPopup.find('a'),
+                jobsortPopupMenu = jobsortPopupParent.children('dt'),
+                jobsortPopupMenuLink = jobsortPopupMenu.children('a'),
+                jobsortPopupItem = jobsortPopupParent.children('dd'),
+                jobsortPopupItemLink = jobsortPopupItem.children('a'),
+                jobsortPopupHid = jobsortPopup.find('#hddcallingid'),
+                jobsortSelectedIndex = 0,
+                jobsortPopupSelectedLink = jobsortPopupAllLink.filter(function(){
+                    return $(this).hasClass('cur');
+                });
+
+        function resetJobsortPostion(){
+            var pinObj = {
+                        element: jobsortPopup,
+                        x: 0,
+                        y: 0
+                    },
+                    baseObj = {
+                        element: jobsortTrigger,
+                        x: 0,
+                        y: '100%-1'
+                    };
+            position.pin(pinObj, baseObj);
+        };
+        function jobsortShow(){
+            jobsortTrigger.addClass('click');
+            jobsortPopup.show();
+            resetJobsortPostion();
+        }
+        function jobsortHide(){
+            jobsortTrigger.removeClass('click');
+            jobsortPopup.hide();
+        }
+
+        var jobsortIsListener = false;
+
+        jobsortPopup.on('mouseenter', 'dt a', function(e){
+            if(!jobsortPopup.hasClass('idunt_float_select')){
+                var target = $(e.currentTarget),
+                        parent = target.parent(),
+                        index = jobsortPopupMenu.index(parent);
+                if(!index) return;
+
+                jobsortPopupMenuLink.removeClass('hover');
+                target.addClass('hover');
+                jobsortPopupItem.hide();
+                jobsortPopupItem.eq(index).show();
+                jobsortSelectedIndex = index;
+            }
+        });
+        jobsortPopup.on('click', 'a', function(e){
+            var target = $(e.currentTarget);
+            switch(target.attr('id')){
+                case 'jobsortMutilpleBtn':
+                    jobsortPopup.removeClass('idunt_float').addClass('idunt_float_select');
+                    jobsortPopupItem.show();
+                    break;
+                case 'jobsortYesBtn':
+                    jobsortPopupSelectedLink = jobsortPopupAllLink.filter(function(){
+                        var self = $(this);
+                        return self.hasClass('cur') && !self.hasClass('first') && !self.hasClass('all');
+                    });
+                    jobsortPopupHid.val(jobsortPopupHid.attr('type-value') + normalizeValue(jobsortPopupSelectedLink));
+                    target.closest('form').submit();
+
+                    break;
+                case 'jobsortClearBtn':
+                    jobsortPopupAllLink.removeClass('cur');
+                    break;
+                case 'jobsortOneBtn':
+                    removeOtherBoxListener();
+                    jobsortPopupAllLink.removeClass('cur');
+                    jobsortPopupSelectedLink.addClass('cur');
+                    jobsortPopup.removeClass('idunt_float_select').addClass('idunt_float');
+                    jobsortPopupItem.hide().eq(jobsortSelectedIndex).show();
+                    setTimeout(function(){
+                        addOtherBoxListener();
+                        jobsortIsListener = true;
+                    }, 1);
+                    break;
+                default:
+                    if(jobsortPopup.hasClass('idunt_float_select')){
+                        e.preventDefault();
+                        var parent = target.closest('dl'),
+                                index = jobsortPopupParent.index(parent),
+                                p = target.parent();
+
+                        if(target.hasClass('cur')){
+                            target.removeClass('cur');
+                        } else {
+                            target.addClass('cur');
+                        }
+                        if(p[0].nodeName.toLowerCase() == 'dt'){
+                            var item = jobsortPopupItem.eq(index).children('a:gt(0)');
+                            if(target.hasClass('cur')){
+                                item.addClass('cur');
+                            } else {
+                                item.removeClass('cur');
+                            }
+                        } else if(p[0].nodeName.toLowerCase() == 'dd'){
+                            var item = jobsortPopupItem.eq(index).children('a:gt(0)'),
+                                    length = item.length,
+                                    selectedItem = item.filter(function(){
+                                        return $(this).hasClass('cur');
+                                    }),
+                                    selectedLength = selectedItem.length,
+                                    firstLink = parent.children('dt').children('a');
+
+                            if(selectedLength >= length){
+                                firstLink.addClass('cur');
+                            } else {
+                                firstLink.removeClass('cur');
+                            }
+                        }
+                    }
+                    break;
+            }
+        });
+    });
+    /*
+     * 用户登录，信息相关js
+     */
+    hbjs.use('@search', function(m){
+        var $ = m['jquery'],
+                trigger = $('#browser'),
+                popup = m['widge.popup'],
+                p = new popup({
+                    idName: 'navBox panelBox',
+                    width: 550,
+                    height: 'auto',
+                    align: {
+                        baseElement: trigger,
+                        baseXY: ['-50%', '100%+10']
+                    }
+                }),
+                hideTimer,
+                element = p.get('element');
+
+        var confirmBox = m['widge.overlay.confirmBox'];
+        Dialog = m['widge.overlay.hbDialog'];
+
+
+        var userEnterBox = $('#userEnterBox,.login_regAge');
+        userEnterBox.on('mouseenter mouseleave', '.login,.personage', function(e){
+            var target = $(e.currentTarget);
+            if(e.type === "mouseenter"){
+                target.addClass('hover');
+            } else {
+                target.removeClass('hover');
+            }
+        });
+
+
+
+        var lgAftBox = $('#lgAftBox');
+        lgAftBox.on('mouseenter mouseleave', '.psnCenter', function(e){
+            var target = $(e.currentTarget);
+            if(e.type === "mouseenter"){
+                target.addClass('hover');
+                $('#lgaftItem').css('display','block');
+            } else {
+                target.removeClass('hover');
+                $('#lgaftItem').css('display','none');
+            }
+        });
+
+        var isLogin = {/if $dataitem['personLogin']/}true{/else/}false{//if/};
+            var cookie = m['tools.cookie'];
+            var _showRefeshConfirm = cookie.get('_hideRefeshConfirm');
+            if(isLogin && (_showRefeshConfirm != 1)&&"{/$dataitem['auto_refresh']/}"==1){
+                setRefeshConfirmCookie();
+                _checkRefesh('ajaxlogin');
+            }
+            //点击刷新按钮
+            $("#refresh").on('click',function(){
+                _checkRefesh('index');
+            })
+
+            function setRefeshConfirmCookie(){
+                var tomorrow = new Date("{/date('Y/m/d 00:00:00',strtotime('+1 day'))/}");
+                cookie.set('_hideRefeshConfirm',1,{expires:tomorrow,path:'/',domain:"{/base_lib_Constant::COOKIE_DOMAIN/}"});
+            }
+
+            function doRefresh() {
+                $.ajax({
+                    type : "get",
+                    url :"{/$siteurl.person/}/resume/refresh",
+                    dataType : "jsonp",
+                    jsonp: "callbackparam",
+                    success : function(json){
+                        if(json.status){
+                            confirmBox.timeBomb("刷新成功", {
+                                name : 'success',
+                                timeout : 2000
+                            });
+                            $('#jian_li_shuaxin').hide();
+                            $('#jianlishuaxin_line').hide();
+                        } else {
+                            confirmBox.timeBomb("每天只能刷新一次简历", {
+                                name : 'warning',
+                                width : 240,
+                                timeout : 2000
+                            });
+                        }
+                    },
+                    error:function(e){
+                        console.log('ajax fail');
+                    }
+                });
+            }
+
+            function _checkRefesh(src){
+                var src = src || 'index';
+                $.ajax({
+                    type : "get",
+                    url :"{/$siteurl.person/}/index/checkrefesh?src="+src,
+                    dataType : "jsonp",
+                    jsonp: "jsonpCallback",
+                    success : function(json){
+                        if(json.status) {
+                            var tdialog = new Dialog({
+                                close: 'x',
+                                idName: 'refresh_dialog',
+                                title: '温馨提示',
+                                width: 500
+                            });
+                            tdialog.setContent(json.html).show();
+                            tdialog.after('hide', function(){
+                                tdialog.destory();
+                            });
+                        } else {
+                            if(src != 'ajaxlogin'){
+                                if('{/$dataitem['open_mode']/}' == 1) {
+                                    doRefresh();return;
+                                }
+                                confirmBox.confirm('简历当前为未公开状态，确认刷新后，将自动被公开', null, function () {
+                                    this.hide();doRefresh();return;
+                                }, function() {
+                                    this.hide();
+                                }, {
+                                    confirmBtn: '<button class="button_a button_a_red">确定</button>',
+                                    cancelBtn: '<button class="button_a cancelbtn">取消</button>',
+                                    width : 320
+                                });
+                            }
+                        }
+                    },
+                    error:function(e){
+                        console.log('ajax fail');
+                    }
+                });
+            }
+
+            /*退出按钮*/
+            $("#userOut").click(function(){
+                $.ajax({
+                    'url':'/index/signOut',
+                    'type':'get',
+                    'dataType':'json',
+                    'success':function(json){
+                        if(json.success){
+                            $("#userEnterBox").show();
+                            $("#lgAftBox").hide();
+                            var msg = '退出成功';
+                            confirmBox.timeBomb(msg, {
+                                name: 'success',
+                                width: 150,
+                                timeout: 1000
+                            });
+                            setTimeout('document.location.reload();',1000);
+                        }else{
+                            var msg = '退出失败';
+                            confirmBox.timeBomb(msg, {
+                                name: 'fail',
+                                width: 150,
+                                timeout: 1000
+                            });
+                        }
+                    }
+                });
+                return false;
+            });
+
+        });
+
+    //职位订阅
+    function web_sub(){
+        document.getElementById("web_subscribe_form").submit()
+    }
+
+
+</script>

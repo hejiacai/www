@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{/$title/}</title>
+<meta name="keywords" content="{/$keyword/}">
+<meta name="description" content="{/$description/}">
+<meta name="mobile-agent" content="format=xhtml; url={/$mobile_agent/}"/>
+<meta name="mobile-agent" content="format=html5; url={/$mobile_agent/}"/>
+<meta name="mobile-agent" content="format=wml; url={/$mobile_agent/}"/>
+<link rel="stylesheet" type="text/css" href="{/version file='base.css,v2-reset.css,v2-resume.css,v2-header.css,v2-widge.css,front.css,mobile.swiper.css,job.css,jobnew.css,mainPhoto.css,cpjobnew2018.css,leaveinfo.css,appeal.css'/}" />
+<link rel="alternate" media="only screen and(max-width: 640px)" href="{/$mobile_agent/}" />
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<!–[if lt IE9]>
+<script type="text/javascript" language="javascript" src="{/version file='html5.js'/}" ></script>
+<![endif]–>
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+
+<script type="text/javascript">
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=33f9256a1a1ba5a80eb40f8ed45bce3c"></script>
+<script type="text/javascript" language="javascript" src="{/version file='idangerous.swiper.min.js'/}"></script>
+<style>
+	.swiper-container-photo .swiper-slide{
+		width: 800px;
+	}
+	.swiper-container-photo .swiper-slide img{
+		width: 800px;
+		position: absolute;
+		top:0;
+		left:0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+	}
+
+	.person-item-text {  vertical-align: top;margin-left: 10px;  }
+	.device{height: 170px;}
+	.device .swiper-container{height: 590px;}
+	.swiper-slide{float: left;}
+	.swiper-container-person .swiper-slide{margin-right: 10px;}
+	/*2018-9-27 wh 面试评价*/
+	.appr_all{text-align: right;  padding-right: 30px;background: #fcfcfc;}
+	.appr_all a{color: #3d84b8;}
+	.appeal-job-all .evaluate-label span{color: #666;}
+	.appeal-job-all .evaluate-label span font{color: #666;}
+	.appeal-job-all .evaluate-label{margin-top: 10px;}
+	.appeal-job-all .appeal-star{margin-top: 30px;}
+</style>
+
+
+<style type="text/css">
+	.appeal-njmJoinUs ul li a span.moreSalary{
+		color: #f00;
+		font-size: 14px;
+		margin: 0 0 0 5px;
+	}
+</style>
+</head>
+
+<body>
+{/include_php file='app/controller/head.php'/}
+{/include file='new_headsearch_2015.html'/}
+{/$header/}
+<div>
+	<ul class="appeal-status-list clearfix">
+		<li class="item first-item">
+			<span class="number">{/$reversion_rate['reply_rate']/}%</span>
+			<p><i class="icon-question ques"></i>回复率</p>
+			<p class="orang">近两周该企业简历的回复率</p>
+			<u></u>
+		</li>
+		<li class="item">
+			<span class="number">{/$reversion_rate['avg_time']/}{/$reversion_rate['day_hour']/}</span>
+			<p><i class="icon-question ques"></i>回复时长</p>
+			<p class="orang">近两周该企业简历的平均回复时长</p>
+			<u></u>
+		</li>
+		<li class="item">
+			<span class="number">{/if $is_allow_appraise/}{/(int)$job_appraise_num/}{/else/}0{//if/}</span>
+			<p>面试评价</p>
+			<u></u>
+		</li>
+		<li class="item">
+			<span class="number">{/count($job_list)/}</span>
+			<p>在招职位</p>
+			<u></u>
+		</li>
+		<li class="item">
+			<span class="number">{/$last_login_time/}</span>
+			<p>登录时间</p>
+		</li>
+	</ul>
+</div>
+
+	 <div class="appeal-jobMain-cont clearfix">
+		 <div class="jobMain-left">
+			 <!--公司简介-->
+			 <div class="appeal-companyp-profile">
+				 <ul class="title-tab clearfix">
+					 <li class="cur"><a href="javascript:;" class="index-1">公司简介</a></li>
+					 <li><a href="javascript:;" class="index-2">在招职位{/if $hasjob/}<span style="color:#2abbb4">（{/count($job_list)/}）</span>{/else/}(0<!--该单位还没有正在招聘的职位-->){//if/}</a></li>
+				 </ul>
+				 <div class="appeal-companyp-text">
+                 	<style>.companyp-text p{text-indent:30px}</style>
+					 <div data-id="{/mb_strlen($company_info,'utf-8')/}" class="companyp-text" style="overflow: hidden; text-indent:30px">{/html_encode content=base_lib_BaseUtils::cutstr($company_info,500,'utf-8','','')/}</div>
+					 {/if mb_strlen($company_info,'utf-8') > 500/}<p class="companyp-switch companyp_switch_company_info"><a href="javascript:;">展开<i class="icon-arr-down"></i></a></p>{//if/}
+				 </div>
+				 <script type="text/javascript">
+					 var phoneImgs = [];
+				 </script>
+				 {/if count($company_photos) >0/}
+				 <div class="njmBanner">
+					 <!------图片滚动开始-------->
+					 <div class="infopicBg">
+						 <div class="infopic">
+							 <div class="picbox">
+								 <ul class="gallery piclist" style="width: 2160px;">
+									 {/foreach $company_photos as $photo/}
+									 <li><a href="{/$photo_path/}{/$photo['photo_path']/}" rel="prettyPhoto[]"><img src="{/$photo_path/}{/$photo['photo_path']/}"></a></li>
+									 {//foreach/}
+									 </ul>
+							 </div>
+						 </div>
+					 </div>
+
+					 <div class="pic_prev"><i></i></div>
+					 <div class="pic_next"><i></i></div>
+					 </div>
+				 {//if/}
+				<!--在招职位列表-->
+				 <div class="appeal-njmJoinUs" style="display: none;">
+					 {/if $hasjob/}
+					 <ul>
+						 {/foreach $job_list as $job/}
+						 <li>
+							 <a href="{/$job['job_link']/}" target='_blank'>
+								 <p><span>{/$job['station']/}</span>{/if $job['is_urgent']/}<b></b>{//if/}{/if $job['job_type_name']!='全职'/}<em>{/$job['job_type_name']/}</em>{//if/}{/if $job['re_apply_type']>0/}<span id="re_apply_type">[{/$job['re_apply_type']/}工作日必复]</span>{//if/}<i class="time">{/$job['issue_time']/}</i></p>
+								 <span class="nUcolor">
+                                     {/if $job['min_salary'] > 0 || $job['base_min_salary'] > 0/}
+                                         {/if $job['min_salary'] == $job['max_salary']/}{/$job['min_salary']/}{/else/}{/$job['min_salary']/}-{/$job['max_salary']/}{//if/}元 / 月 {/if $job['salary_type'] == 1/}（底薪：{/if $job['base_min_salary'] == $job['base_max_salary']/}{/$job['base_min_salary']/}{/else/}{/$job['base_min_salary']/}-{/$job['base_max_salary']/}{//if/}元/月+提成）{//if/} 
+                                     {/else/}
+                                        --
+                                     {//if/}
+									 {/if $job['salary_month_num']/}
+									 <span class="moreSalary">{/$job['salary_month_num']/}薪</span>
+									 {//if/}
+                                     &nbsp;  {/$job['degree_name']/} / {/$job['work_year']/} / {/$job['area_name']/}</span>
+							 </a>
+						 </li>
+						 {//foreach/}
+					 </ul>
+					 {//if/}
+				 </div>
+				 {/if $hasjob/}
+				 <!--<div class="appeal-njmJoinUs" style="display: none;">-->
+					 <!--{/$pager/}-->
+				 <!--</div>-->
+				 {//if/}
+			 </div>
+			 <!--/公司简介-->
+			 <!--产品项目介绍-->
+			 {/if !empty($projectlist)/}
+			 <div class="appeal-company-project">
+				 <h3>产品/项目介绍<em style="color: #2abbb4;">（{/count($projectlist)/}）</em></h3>
+				 {/foreach $projectlist as $val/}
+				 <div class="appeal-company-project-item clearfix">
+					 <div class="appeal-company-project-img openPhotos">
+						 <img src="{/$img_path_introduce/}{/$val['imgs'][0]/}" alt="">
+						 {/foreach $val.imgs as $key=>$v/}
+						 <input type="hidden" name="hideimgs" value="{/$v/}" class="hideimgs">
+						 {//foreach/}
+						 <span>1/{/count($val['imgs'])/}</span>
+					 </div>
+					 <div class="appeal-company-project-text">
+						 <h6>{/$val.name/}</h6>
+						 <p>{/$val.details/}</p>
+					 </div>
+				 </div>
+				 {//foreach/}
+			 </div>
+			 {//if/}
+			 <!--/产品项目介绍-->
+			 <!--高管团队-->
+			 {/if !empty($managelist)/}
+			 <div class="appeal-company-project" style="padding-bottom: 0px;">
+				 <h3>高管团队 <em style="color: #2abbb4;">（{/count($managelist)/}）</em></h3>
+				 <div class="device">
+					 <a class="arrow-left arrow-left-person" href="javascript:void(0);"></a>
+					 <a class="arrow-right arrow-right-person" href="javascript:void(0);"></a>
+					 <div class="swiper-container swiper-container-person">
+						 <div class="swiper-wrapper">
+							 {/foreach $managelist as $val/}
+							 <div class="swiper-slide">
+								 <div class="person-item-photo">
+									 <img src="{/$img_path_manage/}{/$val['img']/}">
+								 </div>
+								 <div class="person-item-text">
+									 <h6>{/$val.name/} <em style="font-size: 14px;color: #666;font-weight: normal;">/ {/$val.position/}</em></h6>
+									 <p>{/$val.details/}</p>
+								 </div>
+							 </div>
+							 {//foreach/}
+						 </div>
+						 <div class="pagination"></div>
+					 </div>
+				 </div>
+			 </div>
+			 {//if/}
+			 <!--/高管团队-->
+
+			 {/if !empty($ajax_appraise_info)/}
+					 <!--评分展示-->
+					 <div class="appeal-job-all">
+                         <p class="title2">
+							 <span>面试评价<font>（{/(int)$job_appraise_num/}）</font></span>
+							 {/if !$isMember/}
+							 <a href="{/get_url domain='person' rule='/appraise/appraise/'/}cid-{/$company['company_id']/}" class="interView">发布面试评价</a>
+							 {//if/}
+						 </p>
+						 <!--<div class="appeal-all-star clearfix">
+							 <span class="appeal-star-title3">总体评价：</span>
+							 <p class="public-star"><span style="width: {/($company_level_appraise['population_avg_level']*20)/}%"></span></p>
+							 <span class="color-red2">{/$company_level_appraise['population_avg_level']/}分</span>
+						 </div>-->
+						 <div class="appeal-star clearfix">
+							 {/if $company_level_appraise['avg_match_level']/}
+							 <span class="appeal-star-title1">岗位职责相符度：</span>
+							 <p class="public-star"><span style="width: {/($company_level_appraise['avg_match_level']*20)/}%" ></span></p>
+							 <span class="color-red2">{/$company_level_appraise['avg_match_level']/}分</span>
+							 {//if/}
+							 {/if $company_level_appraise['avg_welfare_salary_level']/}
+							 <span class="appeal-star-title2">福利薪资相符度：</span>
+							 <p class="public-star"><span style="width: {/($company_level_appraise['avg_welfare_salary_level']*20)/}%"></span></p>
+							 <span class="color-red2">{/$company_level_appraise['avg_welfare_salary_level']/}分</span>
+							 {//if/}
+						 </div>
+						 {/if !empty($appraise_tip_info)/}
+						 <p class="evaluate-label">
+							 {/foreach $appraise_tip_info as $v/} <span>{/$v['tip_name']/}<font >({/(int)$v['num']/})</font></span>{//foreach/}
+						 </p>
+						 {//if/}
+					 </div>
+				 {/if $job_appraise_num/}
+					 <div class="appr_all">
+						{/if !$_userid/}
+						 <a class="evaluate-label" href="{/get_url rule='/login' domain="person"/}">
+						 {/else/}
+						 <a class="evaluate-label" href="{/get_url rule='/job/OtherJobAppraise/'/}jobflag-{/$job_job_flag/}" target="_blank">
+							 {//if/}
+							 查看全部评论 >
+						 </a>
+						 </p>
+					 </div>
+				 {//if/}
+			 {//if/}
+				 <div class="appeal-all-page clearfix" style="background: #fcfcfc;">
+					 {/$page/}
+				 </div>
+		 </div>
+		<div class="jobMain-right">
+			<ul class="nrtLit nrtLitMain" style="padding: 25px 30px 0px 20px;">
+					<li>
+						<span>行业</span><em title="{/$company_callings/}">{/$company_callings/}</em>
+					</li>
+					<li>
+						<span>性质</span><em>{/$company_property/}</em>
+					</li>
+					<li>
+						<span>规模</span><em>{/$company_size/}</em>
+					</li>
+				{/if !empty($company['redirect_homepage'])/}
+					<li>
+						<span>网址</span><a {/if !$is_preg_url/}rel="nofollow"{//if/} href="{/$company['redirect_homepage']/}" target="_blank">{/$company['redirect_homepage']/}</a>
+					</li>
+				{//if/}
+			 </ul>
+			<div class="newMessage newMessagex" style="display: none;">
+						<h2><img src="{/$siteurl.style/}/img/c/resumeNbtn.png" onclick="$('#newMsg').toggle()" style="float: right; cursor: pointer">给我留言</h2>
+				<div id="newMsg" style="display: none">
+						<textarea rows="" cols="" name="msgContent" id="msg" data-tip="请输入您对该职位的疑问。比如所在地、年薪、福利等等，我会及时给您回复！期待与您合作。">请输入您对该职位的疑问。比如所在地、年薪、福利等等，我会及时给您回复！期待与您合作。</textarea>
+						<div class="newLeaveB">
+							<span>0</span>
+							<em>/200</em>
+
+							<a href="javascript:void(0)" id="submitMessage" data-cid="{/$company['company_id']/}">发 送</a>
+						</div>
+				</div>
+				 </div>
+			<div class="newAaddress" style="padding-top: 0;">
+				<span class="name">公司地址</span>
+				<p class="address">{/$company['address']/}</p>
+				<div id="allmap" class="map" >111</div>
+				<input type="hidden" id="hidMapX" name="hidMapX" value="{/$company['map_x']/}" />
+				<input type="hidden" id="hidMapY" name="hidMapY" value="{/$company['map_y']/}" />
+                {/if $company['map_x'] && $company['map_y']/}
+                    <!--<p class="more"><a href="http://api.map.baidu.com/marker?location={/$company['map_y']/},{/$company['map_x']/}&title={/$company['comapny_name']/}&output=html&src=汇博网" target="_blank"><i></i>查看地图</a></p>-->
+                    <p class="more"><a href="//api.map.baidu.com/geocoder?location={/$company['map_y']/},{/$company['map_x']/}&coord_type=bd09ll&output=html" target="_blank"><i></i>查看地图</a></p>
+                {/else if !empty($company['address'])/}
+                    <p class="more"><a target='_blank' href="//api.map.baidu.com/geocoder?address={/$company['address']/}&output=html"><i></i>查看地图</a></p>
+                {//if/}
+			</div>
+			
+			<div class="lookboard" style="display:none;">
+				<span class='estiblishTime'>成立日期：</span>
+				<span class='regCapital'>注册资本：</span>
+				<span class='legalPersonName'>法人代表：</span>
+				<span>经营范围：</span>
+				<p class='businessScope'></p>
+			</div>
+			<div class="lookboardLink" style="display:none;">
+				<img src="{/$siteurl.style/}/img/www/lookboardImg.jpg" >
+				<span>
+					更多内容<br />
+                    前往<a href="https://www.tianyancha.com/" target="_blank">天眼查</a>
+				</span>
+			</div>
+			
+		</div>
+	 </div>
+</div>
+<!--产品项目介绍图片弹窗-->
+<div class=" m_master_photo" style="width: 100%;height: 100%;overflow: hidden;background: #000;position: fixed; top: 0;left: 0;z-index: 2;display:none;filter:alpha(opacity=80);-moz-opacity:0.8;opacity: 0.8;z-index: 20;"></div>
+<div class="photo-all" style="height: 0;">
+	<a class="arrow-left arrow-left-photo" href="javascript:void(0);"></a>
+	<a class="arrow-right arrow-right-photo" href="javascript:void(0);"></a>
+	<div class="swiper-container swiper-container-photo">
+		<div class="swiper-wrapper" id="swiper-wrapper">
+
+		</div>
+		<div class="swiper-pagination swiper-pagination-photo"></div>
+	</div>
+	</div>
+
+
+<!--明星雇主-->
+<input type="hidden" id="is_show_job_tab" value="{/$is_show_job_tab/}">
+<div class="star_employer_job">
+    <i class="star_employer_title"></i>
+    <ul>
+        {/foreach $star_company_logos as $v/}
+        <li>
+            <a href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiye/{/$v['company_flag']/}.html" target="_blank"><img src="{/$v['img_url']/}" /><span>{/$v['img_title']/}</span></a>
+        </li>
+        {//foreach/}
+    </ul>
+</div>
+<!--/明星雇主-->
+{/include file="leaveinfo.html"/}
+
+{/include file="footer.html"/}
+
+<!--消息提醒的那个啥-->
+{/include file="tipmsg.html"/}
+<span id="more_content" style="display: none">{/html_encode content=$company_info/}</span>
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script type="text/javascript">
+    $.ajax({
+        url:'{/get_url rule="/company/tianYanChaData"/}',
+        data:{code : "{/$tian_yan_code/}"},
+        type:"post",
+        dataType:"json",
+        success:function(json){
+            if(json.status){
+                var data = json.data;
+                var estiblishTime = new Date(data.estiblishTime);
+                $('.lookboard .estiblishTime').text('成立日期：'+estiblishTime.getFullYear()+'.'+(estiblishTime.getMonth()+1)+'.'+estiblishTime.getDate());
+                $('.lookboard .regCapital').text('注册资本：'+data.regCapital);
+                $('.lookboard .legalPersonName').text('法人代表：'+data.legalPersonName);
+                $('.lookboard .businessScope').text(data.businessScope);
+                
+                $('.lookboardLink a').attr('href', 'https://www.tianyancha.com/company/' + data.id);
+                
+                $('.lookboard').show();
+                $('.lookboardLink').show();
+                return;
+            }
+        }
+    });
+	//一分钟留下简历
+	var resumeLeave = false;
+	{/if !empty($herader)/}
+    	resumeLeave = true;
+    {//if/}
+    //举报
+    var informJobflag = "{/$jobflag/}";
+    //举报content
+    var informJobflagCont = '{/get_url rule="/companycomplaint/index/" data="companyflag=$company_flag&jobflag=$jobflag"/}'+'-v-'+Math.random();
+    //添加关注{/$company_flag/}
+    var addCompanyFlag ="{/$company_flag/}";
+</script>
+<script src="{/version file='companyshow_rs.js'/}"></script>
+<script type="text/javascript">
+	// 百度地图API功能
+	map = new BMap.Map("allmap");
+	var x = $('#hidMapX').val();
+	var y = $('#hidMapY').val();
+	//map.centerAndZoom(new BMap.Point(x,y), 15);
+//	map.centerAndZoom("重庆南岸区南坪亚太商谷7栋5-12", 15);
+    {/if $company['map_x'] && $company['map_y']/}
+        map.centerAndZoom(new BMap.Point(x,y), 15);
+    {/else/}
+        map.centerAndZoom("{/$company['address']/}", 15);
+    {//if/}
+	map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
+	map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+	var data_info = [[x,y,"地址：{/$company['address']/}"]];
+	var opts = {
+		width : 100,     // 信息窗口宽度
+		height: 40,     // 信息窗口高度
+		title : "信息窗口" , // 信息窗口标题
+		enableMessage:false//设置允许信息窗发送短息
+	};
+	for(var i=0;i<data_info.length;i++){
+		var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+		var content = data_info[i][2];
+		map.addOverlay(marker);               // 将标注添加到地图中
+		addClickHandler(content,marker);
+	}
+	function addClickHandler(content,marker){
+		marker.addEventListener("click",function(e){
+			openInfo(content,e)}
+		);
+	}
+	function openInfo(content,e){
+		var p = e.target;
+		var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+		var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+		map.openInfoWindow(infoWindow,point); //开启信息窗口
+	}
+
+</script>
+<script src="{/version file='jquery.form.js'/}"></script>
+<script src="{/version file='jquery.ui.widget.js'/}"></script>
+<script src="{/version file='jquery.iframe-transport.js'/}"></script>
+<script src="{/version file='jquery.fileupload.js'/}"></script>
+
+</body>
+</html>

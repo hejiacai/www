@@ -1,0 +1,289 @@
+{/include_php file='app/controller/head.php'/}
+<link rel="stylesheet" type="text/css" href="{/version file='v2-header.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='newHeader2019.css'/}">
+<div id="header" class="topHeader">
+	<div class="header_fix">
+
+        <div class="header_cont">
+        
+            <div class="header_left">
+            
+                <a class="logo" href="{/$siteurl.main/}"><img src="{/$siteurl.style/}/img/common/smLogo.jpg" alt="" /></a>
+                <div class="nav">
+                
+                    <a href="{/get_url domain="main"/}">首页</a>
+                    <a id="browser" href="javascript:"><i class="hbFntWes">&#xf03a;</i>浏览</a>
+                
+                </div>
+                <div id="search_box_a" class="search_box_a">
+                
+                    <form action="">
+                        <div class="selecter">
+                        	<div class="label">
+                                <i class="hbFntWes">&#xf0dd;</i>
+                                <label>职位</label>
+                            </div>
+                            <ul class="options">
+                            	<li data-value="1"><a href="javascript:">职位</a></li>
+                                <li data-value="2"><a href="javascript:">公司</a></li>
+                                <li data-value="3"><a href="javascript:">全文</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="searchInput">
+                        	<input id="searchInput" class="keys" type="text" value='{/if !empty($headkeyword)/}{/$headkeyword/}{//if/}' />
+                            <div id="ui_hbsug" class="ui_hbsug"></div>
+                        </div>
+                        <button>搜 索</button>                       
+                    </form>
+                </div>
+                <a class="adSearch" href="{/get_url rule="/jobsearch/advanced/"/}">高级搜索</a>
+            </div>    
+                {/if $dataitem['isLogin']/}
+                <div class="lgAft" id="userLoginBox">
+                    <ul>
+                        <li><a class="userOut" id="userOut" href="javascript:void(0);">退出</a></li>
+                        <li class="line">|</li>
+                        <li class="user">
+                            <img width="23" height="23" id="headphoto" style="margin-top: 3px;" src="{/$dataitem['photo']/}">
+                            <a href="{/if $dataitem['type']=='c'/}{/get_url domain="company"/}{/else/}{/get_url domain="person"/}{//if/}" target="_blank"><span class="comUserName">{/if $dataitem['type']=='c'/}企业招聘中心{/else/}我的汇博{//if/}</span></a>
+                        </li>
+                    </ul>
+                </div>
+                {//if/}
+                <div id="userEnterBox" class="login_reg"  {/if $dataitem['isLogin']/}style="display:none"{//if/} >
+                <div class="log_new">
+                    <a href="javascript:">企业:</a>
+                    <a class="cur" href="{/$siteurl.company/}/login">登录</a>
+                    <span class="slash">/</span>
+                    <a class="cur" href="{/$siteurl.main/}/company/register">注册</a>
+                </div>
+                <u>|</u>
+                <div class="reg_new">
+                    <a href="javascript:">求职:</a>
+                    <a class="cur" href="{/$siteurl.person/}/login">登录</a>
+                    <span class="slash">/</span>
+                    <a class="cur" href="{/$siteurl.person/}/register">注册</a>
+                </div>
+                </div>
+        
+        </div>
+    </div>
+
+</div>
+
+<div id="boxNav" class="navBox panelBox">
+    <div class="navBoxC">
+        <div class="l">
+            <div class="navLst">
+                <p><a href="{/get_url rule='/xiaoyuan/'/}">校园招聘</a></p>
+                <p><a href="{/get_url rule='/zhaopinhui/'/}">重庆招聘会</a></p>
+                <p><a href="{/get_url rule='/hrcollege/'/}">HR学院</a></p>
+                <p><a href="{/get_url rule='/zhichang/'/}">职场指南</a></p>
+                <p><a href="{/$siteurl.company/}/login/">企业服务</a></p>
+            </div>
+            <div class="navPhone"><p>下载手机客户端</p><p class="lnk"><a href="{/$siteurl.main/}/app/p"></a></p></div>
+         </div>
+        <div class="r">
+            <div class="hd"><h3>热门导航</h3></div>
+            <div class="bd">
+                <ul>
+                <li><a href="{/$siteurl.main/}/xiaoshou/">销售</a></li>
+                <li><a href="{/$siteurl.main/}/kuaiji/">会计</a></li>
+                <li><a href="{/$siteurl.main/}/renshi/">人力资源</a></li>
+                <li><a href="{/$siteurl.main/}/xingzhengwenyuan/">文员</a></li>
+                <li><a href="{/$siteurl.main/}/qiantaiwenyuan/">前台</a></li>
+                <li><a href="{/$siteurl.main/}/wangluotuiguang/">网络推广</a></li>
+                <li><a href="{/$siteurl.main/}/ruanjiankaifa/">软件开发</a></li>
+                <li><a href="{/$siteurl.main/}/meigong/">美工</a></li>
+                <li><a href="{/$siteurl.main/}/wangzhanyunying/">网站运营</a></li>
+                <li><a href="{/$siteurl.main/}/zongjingli/">总经理</a></li>
+                <li><a href="{/$siteurl.main/}/itxiangmujingli/">项目经理</a></li>
+                <li><a href="{/$siteurl.main/}/daqujingli/">大区经理</a></li>
+                <li><a href="{/$siteurl.main/}/yingxiaozongjian/">营销总监</a></li>
+                <li><a href="{/$siteurl.main/}/xingzheng/">行政</a></li>
+                <li><a href="{/$siteurl.main/}/guanggaosheji/">广告设计</a></li>
+                <li><a href="{/$siteurl.main/}/pingmian/">平面</a></li>
+                <li><a href="{/$siteurl.main/}/jianli/">监理</a></li>
+                <li><a href="{/$siteurl.main/}/shigongyuan/">施工员</a></li>
+                <li><a href="{/$siteurl.main/}/zhiyeguwen/">置业顾问</a></li>
+                <li><a href="{/$siteurl.main/}/fuwuyuan/">服务员</a></li>
+                <li><a href="{/$siteurl.main/}/ershoufangxiaoshou/">二手房销售</a></li>
+                <li><a href="{/$siteurl.main/}/pingmianmote/">平面模特</a></li>
+                <li><a href="{/$siteurl.main/}/hulishi/">护理师</a></li>
+                <li class="hot"><a href="{/$siteurl.main/}/jobsearch/?params=d01_02">五险一金</a></li>
+                <li class="hot"><a href="{/$siteurl.main/}/jobsearch/?params=d05">周末双休</a></li><li class="hot"><a  href="{/$siteurl.main/}/jobsearch/?v=d03_04">包吃住</a></li>
+                <li class="hot"><a href="{/$siteurl.main/}/jobsearch/?params=e8000_0">高薪职位</a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <b class="arr"></b>
+    </div>
+</div>
+<script type="text/javascript">
+	/*
+	 * 查询js
+	 */
+	hbjs.use('@search', function(m){
+		var $ = m['jquery'],
+			trigger = $('#browser'),
+			popup = m['widge.popup'],
+			p = new popup({
+				idName: 'navBox panelBox',
+				width: 550,
+				height: 'auto',
+				align: {
+					baseElement: trigger,
+					baseXY: ['-50%', '100%+10']
+				}
+			}),
+			hideTimer,
+			element = p.get('element');
+			
+		$($('#boxNav').remove().html()).appendTo(element);
+		trigger.on('mouseenter', enterHandle).on('mouseleave', leaveHandle); 
+		element.on('mouseenter', enterHandle).on('mouseleave', leaveHandle);
+		
+		function enterHandle(){
+			hideTimer && clearTimeout(hideTimer);
+			p.show();
+		}
+		function leaveHandle(){
+			hideTimer && clearTimeout(hideTimer);
+			hideTimer = setTimeout(function(){
+				p.hide();
+			}, 120);
+		}
+		
+		//头部搜索
+		var search = new m['product.jobSearch.jobTopSearch']({
+			selectedIndex:{/if $searchItem == "company"/}1{/elseif $searchItem == "fulltext"/}2{/else/}0{//if/},
+			initDataSource: '/head/SearchKeyword',
+			dataSource:[
+				'{/get_url domain="main" rule="/index/auto/"/}?limit=12&timestamp={{timestamp}}&type=job&q={{query}}&callback=jsonpcallback',
+				'{/get_url domain="main" rule="/index/auto/"/}?limit=12&timestamp={{timestamp}}&type=company&q={{query}}&callback=jsonpcallback'
+			],
+			url: [
+				'{/get_url domain="main" rule="/jobsearch/"/}?key={{query}}',
+				'{/get_url domain="main" rule="/jobsearch/"/}?params=u2&key={{query}}',
+				'{/get_url domain="main" rule="/jobsearch/"/}?params=u3&key={{query}}'
+			],
+			placeHolder: [
+				'找一找，总有适合您的工作',
+				'请输入公司名称',
+				'请输入职位名称'
+			],
+			search: {
+				width: 310
+			}
+		});
+		
+		var searchInput = search.getSearch(),
+			searchSelect = search.getSelect(),
+			maxSize = 10;
+		searchInput.on('itemAllDelete', function(e){
+			$.getJSON('{/get_url rule="/head/ClearSearchKeywords/"/}');
+		});
+		searchInput.on('itemDeleted', function(e){
+			$.getJSON('{/get_url rule="/head/DelSearchKeyword/" data="keyword='+e.value+'"/}');
+		});
+		searchInput.on('searchItemSelected', function(e){
+			//e.url是链接
+			//e.data.text是对应的文字
+			//e.index是索引号
+			var index = searchSelect.get('selectedIndex'),
+				key = e.data.value;
+			if(e.url&&index==0 && key != undefined){
+				$.getJSON('{/get_url rule="/head/SaveJobkey/"/}?keyword='+encodeURIComponent(key),function(result){
+					window.location.href = e.url;
+				});
+			}else {
+				window.location.href = e.url;
+			}
+		});
+		searchInput.before('show', function(){
+			this.setLevel(99);
+			p.setLevel(98);
+		});
+		p.before('show', function(){
+			this.setLevel(99);
+			searchInput.setLevel(98);
+		});
+		
+		search.on('submit', function(e){
+			if(e.index==0&&e.value && e.value != undefined) {
+				$.getJSON('{/get_url rule="/head/SaveJobkey/"/}?keyword='+encodeURIComponent(e.value),function(result){
+					window.location.href = e.url;
+				});
+			}else {
+				  window.location.href = e.url;	
+			}
+		});
+        
+	
+		var confirmBox = m['widge.overlay.confirmBox'];
+        
+        var userEnterBox = $('#userEnterBox');
+        userEnterBox.on('mouseenter mouseleave', '.login', function(e){
+            var target = $(e.currentTarget);
+            target.toggleClass('hover');
+        });
+        /*退出按钮*/
+        $("#userOut").click(function(){
+            $.ajax({
+                'url':'/index/signOut',
+                'type':'get',
+                'dataType':'json',
+                'success':function(json){
+                    if(json.success){
+                        $("#userEnterBox").show();
+                        $("#userLoginBox").hide();
+					   	var msg = '退出成功';
+						confirmBox.timeBomb(msg, {
+							name: 'success',
+							width: 150,
+							timeout: 1000
+						});
+                    }else{
+						var msg = '退出失败';
+						confirmBox.timeBomb(msg, {
+							name: 'fail',
+							width: 150,
+							timeout: 1000
+						});                    
+                    }
+                }
+            });
+            return false;
+        });
+		//窗口尺寸
+		/*
+		(function(){
+			var minWidth = 1172,
+				win = $(window),
+				body = $(document.body),
+				orianleWidth = win.width(),
+				minClass = "minBody",
+				maxClass = "maxBody",
+				type = 2;
+			win.on('resize', function(){
+				resetLayout();
+			});
+			function resetLayout(){
+				searchInput.resetSize(win.width() <= minWidth ? 310 : 333);
+				if(type === 2 && win.width() <= minWidth){
+					body.addClass(minClass);
+					type = 1;
+				} else if(type === 1 && win.width() > minWidth){
+					body.removeClass(minClass);
+					type = 2;
+				}
+			}
+			resetLayout();
+		})();
+		*/
+	});
+	
+</script>

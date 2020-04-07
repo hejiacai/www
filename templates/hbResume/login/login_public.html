@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>汇博简历-登录</title>
+	<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file="jobRegister.css"/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file="v2-widge.css"/}"/>
+	<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+	<script type="text/javascript" src="{/version file='version.js'/}"></script>
+	<script type="text/javascript">
+		window.CONFIG = {
+			HOST: '{/$siteurl.style/}',
+			COMBOPATH: '/js/v2/'
+		}
+	</script>
+	<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+	<script type="text/javascript" src="{/version file='global.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+	<script type="text/javascript">
+		hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+	</script>
+	<style type="text/css">
+
+		button[type=submit] {
+			border: none;
+		}
+
+		.m-header {
+			height: 72px;
+			background-color: #4b4c54;
+			width: 100%;
+		}
+
+		.m-header .inner-header {
+			width: 1000px;
+			margin: 0 auto;
+			height: 100%;
+			background: url({/$siteurl.style/}/img/xiaoyuan/resume/logo.png) 0 10px no-repeat;
+			line-height: 72px;
+			position: relative;
+		}
+
+		.m-header .inner-header a {
+			float: right;
+			color: white;
+			font-size: 18px;
+		}
+
+		.m-header .inner-header .avatar {
+			background-color: #4b4c54;
+			float: right;
+			width: 40px;
+			height: 40px;
+			border: none;
+			margin-top: 16px;
+			border-radius: 50%
+		}
+
+		.m-header .inner-header .user {
+			float: right;
+			color: #fff;
+			font-size: 18px;
+			margin-left: 10px;
+			display: block;
+			position: relative
+		}
+
+		.m-header .inner-header .user .icon {
+			margin-left: 5px;
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			background: url({/$siteurl.style/}/img/xiaoyuan/resume/icon-down.png) 0px -2px no-repeat
+		}
+
+		.m-header .inner-header a.huiboLogo {
+			display: block;
+			width: 140px;
+			height: 72px;
+			float: left;
+		}
+
+		/*下拉框*/
+		.m-header .inner-header .user-choose {
+			position: absolute;
+			top: 80px;
+			right: -30px;
+			height: 104px;
+			width: 134px;
+			display: none;
+			background-color: #fff;
+			z-index: 2;
+			border-radius: 5px;
+			box-shadow: 0 0 2px #ddd;
+		}
+
+		.m-header .inner-header .user-choose > a {
+			color: #444;
+			height: 20px;
+			line-height: 20px;
+			padding-left: 18px;
+			font-size: 14px;
+			display: block;
+			float: none;
+		}
+
+		.m-header .inner-header .user-choose > a:hover {
+			color: #16caa4;
+		}
+
+		.m-header .inner-header .user .user-choose > div {
+			color: #444;
+			height: 20px;
+			line-height: 20px;
+			padding-left: 18px;
+			font-size: 14px;
+		}
+
+		.saveBtnxbg {
+			position: relative;
+			overflow: hidden;
+			padding: 35px 0 10px 0;
+			border-bottom: 1px solid #eeeff2;
+			margin: 0 20px;
+		}
+
+		.saveBtnxbg span {
+			position: absolute;
+			top: 35px;
+			left: 0px;
+			color: #ccc;
+		}
+
+		.saveBtnxbg input {
+			font-size: 14px;
+			color: #444;
+			display: block;
+			width: 100%;
+			height: 18px;
+			line-height: 18px;
+			border: none;
+			outline: none;
+			text-indent: 58px;
+		}
+
+		.saveBtnxbg img {
+			display: block;
+			width: 100px;
+			height: 40px;
+			position: absolute;
+			top: 18px;
+			right: 0;
+		}
+
+		.hb_ui_dialog .ui_dialog_footer {
+			text-align: left;
+			background: none;
+			padding-bottom: 40px;
+			padding-top: 40px;
+		}
+
+		.ui_dialog_footer button {
+			background: #16caa4;
+			color: #fff;
+			border: none;
+			box-shadow: none;
+			width: 100px;
+			height: 30px;
+			line-height: 30px;
+			margin-right: 20px;
+			cursor: pointer;
+		}
+
+		.ui_dialog_footer button.btn2:hover {
+			background: #0ac39b;
+			color: #fff;
+			border: none;
+		}
+
+		.ui_dialog_footer button.btn3 {
+			background: #ebebeb;
+			color: #999;
+			border: none;
+		}
+
+		.ui_dialog_footer button.btn3:hover {
+			background: #e1e1e1;
+			color: #999;
+			border: none;
+		}
+	</style>
+</head>
+<body>
+{/if !$_userid/}
+	<div style="display: none">
+		{/*验证码获取短信*/}
+		<div class="formNumber_verify">
+			<div>
+				<form action="###" onsubmit="return false;" method="post">
+					<div class="saveBtnxbg">
+						<span>验证码：</span>
+						<input type="text" name="formNumber" value=""/>
+						<img src="{/get_url rule="/resume/verify"/}?seed={/$session_id/}"
+							 class="login_verify_img"
+							 title="看不清?点击更换验证码..."/>
+					</div>
+					<div class="ui_dialog_footer">
+						<button type="submit" class="btn2 btnsF12" id="resumeok">确定</button>
+						<button type="button" class="btn3 btnsF12" id="btnClose">取消</button>
+					</div>
+					<script>
+						$('.login_verify_img').click(function () {
+							$(".login_verify_img").attr("src", $(".login_verify_img").attr('src') + '&v=1');
+						});
+
+					</script>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!--登录弹窗-->
+	<div class="regPopbd" style="display: block">
+		<div class="regpopLeft">
+			<div class="regCodetab clearfix">
+				<a href="javaScript:;" class="cut">验证码登录</a>
+				<a href="javaScript:;">账号密码登录</a>
+			</div>
+			<div class="regBankTab">
+				<div class="bankTab" style="display: block;">
+					<!--手机号码登录-->
+					<div class="bankPhone" style="display: block;">
+						<form action="###" onsubmit="return false;">
+							<span class="errorTip"></span>
+							<div class="formTextx">
+								<input type="text" name="formphone" value="" placeholder="手机号码"/>
+							</div>
+							<div class="formTextx">
+								<input type="text" name="formCode" value="" placeholder="请输入短信验证码"/>
+								<a href="javascript:;" class="noteCode">发送短信验证码</a>
+								<span class="noteSec"><em>60</em>秒后重新发送</span>
+							</div>
+							<span class="errorTipm" style="font-size: 12px; color: #ccc;">温馨提示：未注册汇博网的手机号，登录时将自动注册</span>
+							<button type="submit" class="regBtn">登录</button>
+						</form>
+					</div>
+					<!--首次登录请设置密码-->
+					<div class="bankPwdx" style="display: none;">
+						<form action="###" onsubmit="return false;">
+							<span class="errorTipm">首次登录请设置密码</span>
+							<span class="errorTipz"></span>
+							<div class="formTextx">
+								<input type="password" name="bankPwd" value="" placeholder="请输入6-18位密码"/>
+							</div>
+							<div class="formTextx">
+								<input type="password" name="bankPwdaff" value="" placeholder="请再次输入密码"/>
+								<input type="hidden" name="Pwdx_phone" value=""/>
+								<input type="hidden" name="Pwdx_person_id" value=""/>
+								<input type="hidden" name="Pwdx_person_id_key" value=""/>
+							</div>
+							<button type="submit" class="regBtnz">登录</button>
+						</form>
+					</div>
+				</div>
+				<div class="bankTab">
+					<form action="###" onsubmit="return false;">
+						<span class="errorTipx"></span>
+						<div class="formTextx">
+							<input type="text" name="formphoneMail" value="" placeholder="手机号/汇博账号（手机/邮箱）"/>
+						</div>
+						<div class="formTextx">
+							<input type="password" name="formPwd" value="" placeholder="登录密码"/>
+						</div>
+						<div class="formTextx needAuthCode" {/if !$isShowAuthCode/}style="display: none" {//if/}>
+							<input type="text" name="Mail_formNumber" value="" placeholder="请输入图片验证码"/>
+							<img src="{/get_url rule="/resume/verify"/}?seed={/$session_id/}1"
+								 class="Mail_login_verify_img"
+								 title="看不清?点击更换验证码..."/>
+							<input type="hidden" name="mail_seed" value="{/$session_id/}1">
+							<input type="hidden" name="is_Mail_formNumber" value="{/$isShowAuthCode/}">
+						</div>
+						<button type="submit" class="regBtnx">登录</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="regpopRigth">
+			<span>或用其他方式登录</span>
+			<div>
+				<a href="{/get_url rule='/resume/weixinlogin/'/}?back_url={/get_url rule='/hbResume/CreatOrUpdate/'/}" class="regWeixin"></a>
+				<a href="{/get_url rule='/resume/thirdlogin/'/}?type=1&back_url={/get_url rule='/hbResume/CreatOrUpdate/'/}" class="regQq"></a>
+			</div>
+		</div>
+	</div>
+{//if/}
+
+<script type="text/javascript">
+	var formNumber_verify;
+	hbjs.use('@jobDialog, @confirmBox, @hbCommon, @form', function (m) {
+		var $ = m['product.hbCommon'].extend(m['cqjob.jobDialog'], m['cqjob.jobForm']);
+		var confirmBox = m['widge.overlay.confirmBox'],
+				Dialog = m['widge.overlay.hbDialog'];
+		//切换
+		$('.regCodetab a').click(function () {
+			var index = $(this).index();
+			$(this).addClass('cut').siblings().removeClass('cut');
+			$('.regBankTab .bankTab').eq(index).show().siblings().hide();
+		});
+		//水印
+		$('input:text,input:password').placeHolder();
+		//手机号登录
+		$('.regBtn').click(function () {
+			var formphone = $("input[name='formphone']").val(),
+					phone_pattern = /^[1]\d{10}$/,
+					formNumber = $("input[name='formNumber']").val(),
+					formCode = $("input[name='formCode']").val();
+			if (formphone == '') {
+				errorTip('请输入手机号');
+			} else if (!phone_pattern.test(formphone)) {
+				errorTip('手机号码格式不正确');
+			} else if (formCode == '') {
+				errorTip('请输入短信验证码');
+			}
+			errorTip();
+			var loadingDialog1 = loadingDialog('正在登录...');
+			var url = "{/get_url rule="/resume/PhoneLoginDo"/}",
+					data = {formphone: formphone, formCode: formCode};
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: data,//只要将表单序列化就可以了
+				async: true,//false-同步请求
+				dataType: 'json',
+				success: function (data) {
+					if (data.code == '200') {
+						errorTip('');
+						if (data.data.is_bankPwdx) {
+							$('.bankPhone').hide();
+							$('.bankPwdx').show();
+							$('[name=Pwdx_phone]').val(data.data.phone);
+							$('[name=Pwdx_person_id]').val(data.data.person_id);
+							$('[name=Pwdx_person_id_key]').val(data.data.person_id_key);
+						} else {
+							window.location.href = data.data.to_url;
+						}
+					} else {
+						errorTip(data.msg);
+						login_img();
+					}
+					loadingDialog1.hide();
+				},
+				error: function (request) {
+					loadingDialog1.hide();
+					errorTip("数据请求失败.请稍后重试");
+				}
+			});
+
+		});
+		//发送短信验证码
+		$('.noteCode').click(function () {
+			var formphone = $("input[name='formphone']").val(),
+					phone_pattern = /^[1]\d{10}$/,
+					formNumber = $("input[name='formNumber']").val(),
+					formCode = $("input[name='formCode']").val();
+			if (formphone == '') {
+				return errorTip('请输入手机号');
+			} else if (!phone_pattern.test(formphone)) {
+				return errorTip('手机号码格式不正确');
+			} else if (formNumber == '') {
+//				return errorTip('请输入图片验证码');
+			}
+			errorTip();
+
+			var _this = $(this);
+			var html_data = $(".formNumber_verify").html();
+			var dialog_data = {
+				idName: 'formNumber_verify_but',
+				title: '发送短信验证码',
+				width: 400
+			};
+			var click_fun = {
+				resumeok: function (dialog_tip, data) {
+					var sphere_id = "." + dialog_data.idName;
+					var formNumber = $(sphere_id + " [name=formNumber]").val();
+					if (!formNumber) {
+						return msg_error_box('请输入图片验证码!');
+					}
+					var url = "{/get_url rule="/resume/SendPhoneCode"/}",
+							url_data = {formphone: formphone, formCode: formNumber};
+					$.ajax({
+						type: "POST",
+						url: url,
+						data: url_data,//只要将表单序列化就可以了
+						async: false,//false-同步请求
+						dataType: 'json',
+						success: function (data) {
+							if (data.code == '200') {
+								errorTip('');
+								$('.noteCode').hide();
+								$('.noteSec').show();
+								$('.noteSec em').text(data.data.noteSec);
+								interval = window.setInterval(countdown, 1000);
+								msg_success_box(data.msg);
+								$("." + dialog_data.idName).remove();
+								dialog_tip.hide();
+								return true;
+							} else {
+								errorTip(data.msg);
+								msg_error_box(data.msg);
+							}
+							login_img();
+						},
+						error: function (request) {
+							return msg_error_box('数据请求失败.请稍后重试');
+						}
+					});
+				},
+				btnClose: function (dialog_tip, data) {
+					$("." + dialog_data.idName).remove();
+					dialog_tip.hide();
+				}
+			};
+			formNumber_verify = tip_content({html_data: $(html_data).html()}, dialog_data, click_fun);
+			var sphere_id = "." + dialog_data.idName;
+			var login_verify_img = $(sphere_id + " .login_verify_img");
+			login_verify_img.on('click', function () {
+				login_verify_img.attr("src", login_verify_img.attr('src') + '&v=1');
+			});
+		});
+
+
+		/**
+		 * 公共弹窗
+		 * re_html_id  #dialog
+		 */
+		function tip_content(re_html_id, dialog_data, click_fun) {
+			var ResumeHTML;
+			if (typeof re_html_id != 'object' && typeof re_html_id == 'string') {
+				ResumeHTML = $(re_html_id).html();
+			} else {
+				ResumeHTML = re_html_id['html_data'];
+			}
+			if (!ResumeHTML) {
+				confirmBox.timeBomb("参数错误!", {
+					name: 'fail',
+					timeout: 1000,
+					width: 200
+				});
+			}
+			var default_dialog_data = {
+				idName: 'data_info_dialog',
+				title: '信息',
+				close: 'x',
+				isAjax: false,
+				width: 480
+			};
+			var default_click_fun = $.extend({}, click_fun);
+			default_dialog_data = $.extend(default_dialog_data, dialog_data);
+			if($(".hb_ui_dialog."+default_dialog_data.idName)[0]){
+				$(".hb_ui_dialog."+default_dialog_data.idName).remove();
+			}
+			var dialog_tip = new Dialog(default_dialog_data);
+			dialog_tip.setContent(ResumeHTML);
+			dialog_tip.show();
+			if (default_click_fun) {
+				$.each(default_click_fun, function (key, val) {
+					dialog_tip.query('#' + key).on('click', function (e) {
+						return default_click_fun[key](dialog_tip, e);
+					});
+				})
+			}
+			return dialog_tip;
+		}
+
+		//错误提示 success-成功 fail-错误 warning-警告 question-疑问  info-信息 normal-正常
+		function msg_error_box(msg) {
+			confirmBox.timeBomb(msg ? msg : "参数错误!", {
+				name: 'fail',
+				timeout: 1000,
+				width: 70 + msg.length * 18
+			});
+			return false;
+		}
+
+		//成功提示 success-成功 fail-错误 warning-警告 question-疑问  info-信息 normal-正常
+		function msg_success_box(msg) {
+			confirmBox.timeBomb(msg ? msg : "参数错误!", {
+				name: 'success',
+				timeout: 1000,
+				width: 70 + msg.length * 18
+			});
+			return true;
+		}
+
+
+		function countdown() {
+			var seconds = $('.noteSec').find('em').html();
+			seconds = parseInt(seconds);
+			if (seconds > 0) {
+				seconds--;
+				$('.noteSec').find('em').html(seconds);
+			} else {
+				window.clearInterval(interval);
+				$('.noteCode').show();
+				$('.noteSec').hide();
+				login_img();
+			}
+		}
+
+
+		//账号登录
+		$('.regBtnx').click(function () {
+			var formphoneMail = $("input[name='formphoneMail']").val(),
+					formPwd = $("input[name='formPwd']").val(),
+					Mail_formNumber = $("[name=Mail_formNumber]").val(),
+					mail_seed = $("[name=mail_seed]").val(),
+					is_Mail_formNumber = $("[name=is_Mail_formNumber]").val();
+			if (is_Mail_formNumber == 'true' && !Mail_formNumber) {
+				return errorTipx('请输入验证码');
+			}
+			if (formphoneMail == '') {
+				return errorTipx('请输入手机号/汇博账号');
+			} else if (formPwd == '') {
+				return errorTipx('请输入密码');
+			}
+			errorTipx('');
+			var loadingDialog1 = loadingDialog('正在登录...');
+			var url = "{/get_url rule="/resume/LoginDo"/}",
+					data = {
+						user_name: formphoneMail,
+						password: formPwd,
+						catcha: Mail_formNumber,
+						seed: mail_seed,
+					};
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: data,//只要将表单序列化就可以了
+				async: true,//false-同步请求
+				dataType: 'json',
+				success: function (data) {
+					if (data.code == '200') {
+						errorTipx('');
+						window.location.href = data.data.url;
+					} else {
+						errorTipx(data.msg);
+						if (data.data.needAuthCode) {
+							$('.needAuthCode').show();
+							$("[name=is_Mail_formNumber]").val(data.data.needAuthCode);
+						}
+						if (data.data.need_update_password) {
+							$.showModal('{/get_url rule="/resume/passwordmod/"/}?from=badpassword&token=' + data.data.token + '&code=' + data.data.code, {title: '修改密码'});
+							return;
+						}
+					}
+					Mail_login_img();
+					loadingDialog1.hide();
+				},
+				error: function (request) {
+					loadingDialog1.hide();
+					errorTipx("数据请求失败.请稍后重试");
+				}
+			});
+
+		});
+
+		//首次登录密码设置
+		$('.regBtnz').click(function () {
+			var bankPwd = $("input[name='bankPwd']").val(),
+					bankPwdtest = /^[a-zA-Z0-9]{6,18}$/,
+					bankPwdaff = $("input[name='bankPwdaff']").val();
+			var Pwdx_phone = $('[name=Pwdx_phone]').val(),
+					Pwdx_person_id = $('[name=Pwdx_person_id]').val(),
+					Pwdx_person_id_key = $('[name=Pwdx_person_id_key]').val();
+			if (bankPwd == '') {
+				return errorTipz('请输入密码');
+			} else if (!bankPwdtest.test(bankPwd)) {
+				return errorTipz('密码为6-18位数字+字母组合');
+			} else if (bankPwdaff == '') {
+				return errorTipz('请再次输入密码');
+			} else if (bankPwd != bankPwdaff) {
+				return errorTipz('两次密码输入不一致');
+			}
+
+			errorTipz();
+			var loadingDialog1 = loadingDialog('正在登录...');
+			var url = "{/get_url rule="/resume/PhoneLoginPasswordReg"/}",
+					data = {
+						Pwdx_phone: Pwdx_phone,
+						Pwdx_person_id: Pwdx_person_id,
+						Pwdx_person_id_key: Pwdx_person_id_key,
+						bankPwd: bankPwd,
+						bankPwdaff: bankPwdaff,
+					};
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: data,//只要将表单序列化就可以了
+				async: true,//false-同步请求
+				dataType: 'json',
+				success: function (data) {
+					if (data.code == '200') {
+						errorTipz('');
+						window.location.href = data.data.to_url;
+					} else {
+						errorTipz(data.msg);
+					}
+					loadingDialog1.hide();
+				},error: function (request) {
+					loadingDialog1.hide();
+					errorTipz("数据请求失败.请稍后重试");
+				}
+			});
+
+		});
+
+		function errorTip(msg) {
+			if (msg) {
+				$('.errorTip').css('display', 'block').text(msg);
+			} else {
+				$('.errorTip').css('display', 'none');
+			}
+			return false;
+
+		}
+
+		function errorTipx(msg) {
+			if (msg) {
+				$('.errorTipx').css('display', 'block').text(msg);
+			} else {
+				$('.errorTipx').css('display', 'none');
+			}
+
+		}
+
+		function errorTipz(msg) {
+			if (msg) {
+				$('.errorTipz').css('display', 'block').text(msg);
+			} else {
+				$('.errorTipz').css('display', 'none');
+			}
+
+		}
+
+		function login_img() {
+			$(".login_verify_img").attr("src", $(".login_verify_img").attr('src') + '&v=1');
+//			$("[name=formNumber]").val('');
+		}
+
+		$('.Mail_login_verify_img').click(function () {
+			Mail_login_img();
+		});
+
+		function Mail_login_img() {
+			$(".Mail_login_verify_img").attr("src", $(".Mail_login_verify_img").attr('src') + '&v=1');
+//			$("[name=formNumber]").val('');
+		}
+
+	});
+
+</script>
+</body>
+</html>

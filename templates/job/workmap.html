@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>上班路线</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+            :-moz-placeholder { color:#8c8989; }
+            ::-moz-placeholder { color: #8c8989;}
+            input:-ms-input-placeholder{color: #8c8989;}
+            input::-webkit-input-placeholder{ color: #8c8989;}
+        </style>
+        <script type="text/javascript" src="{/version file='jquery.min.js'/}"></script>
+    </head>
+    <style>
+        .Buttom_refresh{background:#169BD5; width:60px; color:#fff; display: inline-block; height:30px; line-height:30px; text-align: center; border-radius:5px; margin: 0px 5px; cursor: pointer;}
+        .Buttom_close{background:#cccccc; width:60px; color:#fff; display: inline-block; height:30px; line-height:30px; text-align: center; border-radius:5px; margin: 0px 5px; cursor: pointer;}
+        .Buttom_refresh:hover{color:#fff;}
+        .Buttom_close:hover{color:#fff;}
+    </style>
+    <body>
+        <div id="allmap" style="width: 840px;height: 500px;float: left"></div>
+    </body>
+    <script type="text/javascript" language="javascript">
+        var importDialogMsg;
+        var $;
+        hbjs.use('@checkLogin,@dialog',function(m){
+            var checkLogin = m['product.checkLogin'];
+            $ = m['jquery'];
+            var map = new BMap.Map('allmap');
+            var poi = new BMap.Point({/$map_x/},{/$map_y/});
+            map.centerAndZoom(poi, 16);
+            map.enableScrollWheelZoom();
+
+            var marker = new BMap.Marker(poi); //创建marker对象
+            map.addOverlay(marker);
+            var licontent="<b>{/$company_name/}</b><br>";
+            licontent+="<span style='color:#999;display:inline-block;margin:10px 0'>地址：{/$address/}</span><br>";
+            licontent+="<span class=\"input\">起点：<input class=\"outset\" type=\"text\" name=\"origin\" id='suggestId'/><input class=\"outset-but btnsF14 btn1 publish\" type=\"button\" value=\"公交\" onclick='gotobaidu(1)' id='bus_btn' style='margin:0 5px' /><input class=\"outset-but btnsF14 btn1 publish\" type=\"button\" value=\"驾车\"  id='car_btn' onclick='gotobaidu(2)'/><a class=\"gotob\" href=\"url=\"//api.map.baidu.com/direction?destination=latlng:{/$map_y/},{/$map_x/}|name:{/$address/}"+"®ion=重庆市"+"&output=html\"></a></span>";
+
+            var hiddeninput="<input type=\"hidden\" value=\""+'重庆市'+"\" name=\"region\" /><input type=\"hidden\" value=\"html\" name=\"output\" /><input type=\"hidden\" value=\"driving\" name=\"mode\" id='mode' /><input type=\"hidden\" value=\"latlng:{/$map_y/},{/$map_x/}|name:{/$address/}\" name=\"destination\" />";
+
+            var content1 ="<form id='gotobaiduform' action=\"//api.map.baidu.com/direction\" target=\"_blank\" method=\"get\">" + licontent + hiddeninput + "</form>";
+
+            var opts1 = { width: 300 };
+
+            var  infoWindow = new BMap.InfoWindow(content1, opts1);
+            marker.openInfoWindow(infoWindow);
+            marker.addEventListener('click',function(){
+                marker.openInfoWindow(infoWindow);
+            });
+            var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+                    {"input" : "suggestId"
+                        ,"location" : map
+                   });
+            $("#bus_btn").bind("click",function(){
+                $("input[name=mode]").val("transit");
+                $("#gotobaiduform")[0].submit();
+            });
+
+            $("#car_btn").on("click",function(){
+                $("input[name=mode]").val("driving");
+                $("#gotobaiduform")[0].submit();
+            });
+            importDialogMsg = new Dialog({
+                idName: 'click_import_dialog',
+                width: 300,
+                close: '×',
+                title:'举报原因',
+                content: '<div style="text-align: center; padding-bottom:10px;"><div style="padding:20px 0px; "><textarea id="address_report_content" placeholder="请输入举报原因（长度为：5-100）" maxlength="100" style="line-height:20px;"></textarea><p id="report_error" style="color:#f00000; margin-top:5px;"></p></div><a onclick="Buttom_submit();" class="Buttom_refresh" target="_blank">确定</a><a onclick="Buttom_close();" class="Buttom_close" target="_blank">取消</a></div>',
+                isAjax: true,
+                zIndex:9998
+            });
+            $("#jobMapError").click(function(){
+                var islogin = checkLogin.isLogin('ajaxLoginCallback-jobflag-{/$jobflag/}-isReload-true');
+                checkLogin.dialog.resetSize(498);
+                if(islogin){
+
+                    importDialogMsg.show();
+                }
+            });
+            $('body').delegate('.ui_dialog_close','click',function(){
+                $('.hb_ui_ui-mask').css('z-index',9998);
+            });
+        });
+        function Buttom_submit(){
+            var report_content = $('#address_report_content').val();
+            if(report_content.length >100 || report_content.length < 5){
+                $('#report_error').html('内容长度为5-100');return;
+            }else{
+                $('#report_error').html('');
+            }
+            $.post("{/$mobile_url/}/job/SetJobMapError/",{jobflag:"{/$jobflag/}",report_content:report_content}, function(data){
+                if(data.status){
+                    $.anchorMsg(data.msg,{icon: "success"});
+                    window.parent.document.location.reload();
+                    return;
+                }
+                $.anchorMsg(data.msg,{ icon: "fail"});
+            },'json');
+        }
+        function Buttom_close(){
+            $('#address_report_content').val('');
+            $('#report_error').html('');
+            importDialogMsg.hide();
+        }
+        function gotobaidu(type)
+        {
+            if(type==1)
+            {
+                document.getElementById('mode').value = 'transit';
+                document.getElementById("gotobaiduform").submit();
+            }else if(type==2)
+            {
+                document.getElementById('mode').value = 'driving';
+                document.getElementById("gotobaiduform").submit();
+            }
+        }
+    </script>
+</html>

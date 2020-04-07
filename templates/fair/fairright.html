@@ -1,0 +1,29 @@
+    {/if !empty($major_Adv.topic_img_url) && !base_lib_BaseUtils::nullOrEmpty($major_Adv.topic_url)/}
+        <div class="part fairAd">
+            <a target="_blank" href="{/if !empty($major_Adv.topic_img_url) && !base_lib_BaseUtils::nullOrEmpty($major_Adv.topic_url)/}{/$major_Adv.topic_url/}{/else/}javascript:void(0);{//if/}"><img src="{/$ad_path/}{/if !empty($major_Adv) && !base_lib_BaseUtils::nullOrEmpty($major_Adv.topic_img_url)/}{/$major_Adv.topic_img_url/}{//if/}" /></a>
+        </div>
+    {//if/}
+    <div class="part fairAdd">
+        <h3><b></b>招聘会地址</h3>
+        <div class="addCon">
+            <p>重庆.两江新区龙头寺. 狮子坪轻轨站旁.汇博人才市场</p>
+            <a target="_blank" href="http://j.map.baidu.com/mt0Sq" class="map"><img src="{/$siteurl.style/}/img/fair/mapAdd.jpg" /></a>
+        </div>
+    </div>
+    <div class="part fairInfo">
+        <h3><b></b>乘车路线</h3>
+        <div class="infoCon">
+            <p style='height:auto'><b style="font-weight:bold;">轻轨：</b>3号线狮子坪站下车（2号出口左行100米）即到</p>
+            <p style='height:auto'>10号线龙头寺公园站下车（1号出口直走约200米，在第二路口左拐50米过马路）即到</p>
+            <p style='height:auto'><b style="font-weight:bold;">公交：</b>天宫大道站下,过马路100米即到</p>
+        </div>
+    </div>
+    <div class="part fairInfo">
+        <h3><b></b>我是企业，我要订展</h3>
+        <div class="infoCon">
+            <p><b>订展热线：</b>{/$config->CqjobFairs400Tel/}</p>
+            <p><b>手机号码：</b>{/$config->CqjobFairsCellPhone/}</p>
+            <p><b>QQ在线咨询：</b><a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></p>
+            <p class="btn"><a href="{/get_url rule="/zhaopinhui/enterprise" data="sceneid={/$major_Adv.scene_id/}&fairApply=true"/}" class="btn1 btnsF16"><b></b>在线定展</a></p>
+        </div>
+    </div>

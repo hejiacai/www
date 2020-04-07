@@ -1,0 +1,20 @@
+<!--求职-->
+<!--浮层-->
+{/if ($dataitem['isLogin']==true && $dataitem['type']=='p' && $dataitem['jl_refresh']==1) || ($dataitem['isLogin']==false)/}
+<div id="fixed_box" class="fixed_box" style="display:none">
+    <a href="javascript:" class="close">╳</a>
+    <div class="w1100">
+        <dl>
+            <dd><img src="{/$siteurl.style/}/img/jobsearch/ewm.jpg" /></dd>
+            <dt>关注微信</dt><dt style="margin-top: 0px;">推荐好工作</dt>
+        </dl>
+        <span>没发现满意工作？</span>
+        {/if !empty($dataitem['user_id'])/}
+        <a href="{/$siteurl.person/}/person/CreateBasic/" class="butn" target="_blank">1分钟留下信息 >></a>
+        {/else/}
+        <a href="javascript:" class="butn registerResume">1分钟留下信息 >></a>
+        {//if/}
+        <span>免费将你推荐给优秀企业！</span>
+    </div>
+</div>
+{//if/}

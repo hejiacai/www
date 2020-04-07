@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{/version file='v2-reset.css'/}" />
+    <link rel="stylesheet" type="text/css" href="{/version file='v2-header.css'/}" />
+    <link rel="stylesheet" type="text/css" href="{/version file='perback.css'/}" />
+    <link rel="stylesheet" type="text/css" href="{/version file='v2-widge.css'/}" />
+    <link rel="stylesheet" type="text/css" href="{/version file='v2-resume.css'/}" />
+    <link rel="stylesheet" type="text/css" href="{/version file='idangerous.swiper.css'/}" />
+    <!--<link rel="stylesheet" type="text/css" href="{/version file="createPc.css"/}" />-->
+
+	<link rel="stylesheet" type="text/css" href="{/version file='comlogin.css'/}" />
+	<link rel="stylesheet" type="text/css" href="{/version file='topicstatic.css'/}" />
+	<!--<link rel="stylesheet" type="text/css" href="{/version file='cpstyle.css'/}" />-->
+	
+	<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+	<script type="text/javascript" src="{/version file='common.js'/}"></script>
+	<script type="text/javascript" src="{/version file='dialog.js'/}"></script>
+	<script type="text/javascript" src="{/version file='ui_area_mulitiple.js'/}"></script>
+	<script type="text/javascript" src="{/version file='WdatePicker.js'/}"></script>
+	<style>
+		.tablist {
+			width: 30em;
+			margin: 30px auto;
+			font-size: 18px;
+		}
+	</style>
+	</head>
+	<body>
+		<header id="header">
+		    <div class="hdCon">
+		        <div class="logo"><a href="{/$siteurl.main/}"></a></div>
+		    </div>
+		    <h1>带薪实习双选会</h1>
+		</header>
+		<ul class="tablist">
+			{/foreach $all_menu as $menu/}
+				{/if in_array($menu['id'],$menu_ids)/}
+			<li data-type="{/$menu['id']/}" data-url="{/$menu['to_url']/}" {/if $cur_menu_id==$menu['id']/} class="cur"{//if/}>{/$menu['name']/}<u class="underline"></u></li>
+				{//if/}
+            {//foreach/}
+			{/*<li data-type="2">企业信息统计<u class="underline"></u></li>
+			<li  data-type="3">校园招聘会数据统计<u class="underline"></u></li>*/}
+		</ul>
+		<div class="content cur">
+			<form id="dopost" action="{/get_url rule='/topiccompanystatic/StudentStatic/' domain='www'/}" method="get">
+			<div class="search-box">
+				<div class="selectbox contactbox">
+					<input type="hidden" id="contactType" name="contactType" value="{/$poster['search_key_type']/}"/>
+					<div class="selector" data-name="contactType"><span>手机号</span><ul class="option"><li data-value='phone'>手机号</li><li data-value='email'>电子邮箱</li></ul></div>
+					<input placeholder="请输入手机号/邮箱" type="text" id="contactNum" name="contactNum" value="{/$poster['myKeyword']/}"/>
+				</div>
+				<!--<div class="inputbox">-->
+					<!--<label for="enterprise">企业名称</label>-->
+					<!--<input type="text" id="enterprise" name="enterprise"/>-->
+				<!--</div>-->
+				<div class="selectbox committeebox">
+					<span>区团委</span>
+					<input type="hidden" id="committee" name="committee" value="{/$poster['gover_company_id']/}"/>
+					<div class="selector" data-name="committee">
+						<span>不限</span>
+						<ul class="option">
+							<li data-value=''>不限</li>
+							{/foreach $government_list as $key=>$val/}
+								<li data-value="{/$val['company_id']/}">{/$val['company_name']/}</li>
+							{//foreach/}
+						</ul>
+					</div>
+				</div>
+				<div class="inputbox">
+					<label for="school">院校</label>
+					<input type="text" id="school" name="school" value="{/$poster['school_name']/}"/>
+				</div>
+				<br />
+				<br />
+				<div class="inputbox timebox">
+					<span>报名日期</span>
+					<input type="text" onclick="WdatePicker()" name="sTime" value="{/$poster['start_time']/}"/>
+					<span>至</span>
+					<input type="text" onclick="WdatePicker()" name="eTime" value="{/$poster['end_time']/}"/>
+				</div>
+				<div class="selectbox ispoorbox">
+					<span>建卡立档贫困家庭</span>
+					<input type="hidden" id="ispoor" name="ispoor" value="{/$poster['is_poor_family']/}" />
+					<div class="selector" data-name="ispoor"><span>不限</span><ul class="option"><li data-value=''>不限</li><li data-value='1'>是</li><li data-value='0'>否</li></ul></div>
+				</div>
+
+				<div class="inputbox formMod JobCayMod checkMod">
+					<div class='label'>现居地</div>
+					<span class="drop formText jobAddDrop zindex" id="curPlace" value="{/$poster['cur_area_id']/}"></span>
+				</div>
+				<div class="inputbox formMod JobCayMod checkMod">
+					<div class='label'>户籍地</div>
+					<span class="drop formText jobAddDrop zindex" id="orginPlace" value="{/$poster['native_place']/}"></span>
+				</div>
+				<!--<div class="btn redbox">搜索</div>-->
+				<div type="submit" id="_submit" class="btn redbox">搜索</div>
+				<input type="hidden" name="is_download" id="is_download" value="0">
+				<div id="_submit_excel" class="btn">导出excel文档</div>
+			</div>
+			</form>
+			<div class="table-box">
+				<table>
+					<tr>
+						<th>报名时间</th>
+						<th>院校</th>
+						<th>姓名</th>
+						<th>性别</th>
+						<th>年龄</th>
+						<th>户籍地</th>
+						<th>现居地</th>
+						<th>是否为建卡立档<br />贫困家庭</th>
+						<th>投递企业</th>
+						<th>投递岗位</th>
+						<th>面试邀请</th>
+						<th>面试通过</th>
+						<th>面试不通过</th>
+						<th>放弃面试</th>
+						<th>操作</th>
+					</tr>
+					<!--tr的奇数行添加此类名-->
+					{/if !empty($list)/}
+						{/foreach $list as $key=>$val/}
+						<tr {/if $key%2 == 0/}class="bggray"{//if/}>
+							<td>{/$val['create_time']/}</td>
+							<td>{/$val['school_name']/}</td>
+							<td>{/$val['user_name']/}</td>
+							<td>{/$val['sex']/}</td>
+							<td>{/$val['age']/}</td>
+							<td>{/get_name area=$val['native_place_id']/}</td>
+							<td>{/get_name area=$val['cur_area_id']/}</td>
+							<td>{/$val['is_poor_family_str']/}</td>
+							<td>{/$val['apply_company_num']/}</td>
+							<td>{/$val['apply_job_num']/}</td>
+							<td>{/$val['inivte_num']/}</td>
+							<td>{/$val['inivte_pass_num']/}</td>
+							<td>{/$val['invite_notpass_num']/}</td>
+							<td>{/$val['euphemismDecline']/}</td>
+							<td><a href="javascript:void(0);" data-phone="{/$val['mobile_phone']/}" data-email="{/$val['email']/}">联系方式</a></td>
+						</tr>
+						{//foreach/}
+					{/else/}
+						<tr class="bggray">
+							<td colspan="15">暂无数据</td>
+						</tr>
+					{//if/}
+				</table>
+				
+				
+				<div class="pagelist">
+					{/$pager/}
+				</div>
+			</div>
+			
+			
+		</div>
+		
+
+		<script type="text/javascript">
+			$('.selector').each(function(i,e){
+				var val=$(e).siblings("input:hidden").val()
+				if(val){
+					$(e).find('li').each(function(i2,e2){
+						if(val==$(e2).attr('data-value')){
+							$(e).find("span").html($(e2).html())
+							return true
+						}
+					})
+				}
+			})
+			
+			/*$(".tablist li").on('click',function(){
+				if($(this).hasClass('cur')){
+					return
+				}else{
+					location.href='{/get_url rule='/topiccompanystatic/CompanyStatic/' domain="www"/}'
+				}
+			})*/
+			$(".tablist li").on('click',function(){
+				if($(this).hasClass('cur')){
+					return
+				}else{
+					var data_type =  $(this).attr('data-type');
+					var data_url= $(this).attr('data-url');
+					console.log(data_url);
+					window.location.href=data_url;
+				}
+				//$(this).addClass('cur')
+				//$('.content').removeClass('cur').eq($(this).index()).addClass('cur');
+			})
+			$('.selector').on('click',function(){
+				var that=this;
+				if($(this).hasClass('open')){
+					$('.selector').removeClass('open')
+				}else{
+					$('.selector').removeClass('open')
+					$(this).addClass('open')
+				}
+//				$('.open').on('click',function(){
+//					$(this).removeClass('open')
+//				})
+				$(document).on('click',function(){
+					$(that).removeClass('open')
+					$(document).off('click')
+				})
+				return false;
+			})
+			$('.option').on('click','li',function(ev){
+				var name=$(this).parents('.selector').removeClass('open').attr('data-name');
+				$('#'+name).val($(this).attr('data-value'))
+				$(this).parents('.selector').children('span').html($(this).html())
+				return false;
+			})
+			//			var dialog=new Dialog({
+			//				idName : 'contact_dialog',
+			//		        title : '联系方式',
+			//		        width : 400,
+			//		        isOverflow : false,
+			//		        isAjax : true
+			//			});
+			$('.table-box table a').on('click',function(){
+				var phone = $(this).attr("data-phone");
+				var email = $(this).attr("data-email");
+				$.message('手机号：'+phone+'<br><br>电子邮箱：'+email,{title:'联系方式'}).hideButton('Ok');
+
+			});
+			$('#_submit').click(function () {
+				$('#is_download').val(0);
+				$('#dopost').submit();
+				
+			})
+			$('#_submit_excel').click(function(){
+				var committee = $('#committee').val();
+				var school=$('#school').val();
+				if(committee == '' || committee == undefined || committee == 0 || committee == "all"){
+					if(school.length<4){
+						$.message('请选择区团委或输入完整学校名称',{title:'提示'});
+						return false;
+					}
+				}
+			    $('#is_download').val(1);
+	            $('#dopost').submit();
+                
+			});
+			
+			$('#curPlace').multiplearea({max:1,hddName:'hidCurPlace'});
+			
+			{/if $poster['cur_area_id']/}
+				$('#curPlace').setMultipleAreaValue("{/$poster['cur_area_id']/}");
+			{//if/}
+			
+			
+			
+			$('#orginPlace').multiplearea({max:1,hddName:'hidOrginPlace'});
+			{/if $poster['native_place']/}
+				$('#orginPlace').setMultipleAreaValue("{/$poster['native_place']/}");
+			{//if/}
+			
+
+		</script>
+	</body>
+</html>

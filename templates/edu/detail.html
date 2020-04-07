@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+		<link rel="stylesheet" type="text/css" href="{/version file='blue_dialog.css'/}" />
+		<link rel="stylesheet" type="text/css" href="{/version file='v2-widge.css'/}" />
+		<link rel="stylesheet" type="text/css" href="{/version file='wangeditor.css'/}"/>
+		<link rel="stylesheet" type="text/css" href="{/version file='hb_education.css'/}" />
+		<script type="text/javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+		<script type="text/javascript" src="{/version file='m_dialog.js'/}"></script>
+		<script src="{/version file='wangeditor.min.js'/}" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.CONFIG = {
+				HOST: '//assets.huibo.com',
+				COMBOPATH: '/js/v2/'
+			}
+		</script>
+		<script type="text/javascript" src="//assets.huibo.com/min.js?f=/js/v2/hbjs.js,/js/v2/jquery.min.js,/js/v2/base/util.js,/js/v2/base/class.js,/js/v2/base/shape.js,/js/v2/base/event.js,/js/v2/base/aspect.js,/js/v2/base/attribute.js,/js/v2/tools/cookie.js&amp;v=181362724"></script>
+		<script type="text/javascript" src="//assets.huibo.com/js/v2/global.js?v=20160118"></script>
+		<script type="text/javascript">
+			hbjs.loadJS('//assets.huibo.com/js/v2/cqjob/common.js');
+		</script>
+		<style type="text/css">
+			.cancel {margin-right: 15px; display: inline-block;width: 60px;height: 30px;background-color: #eff0f6;border-radius: 4px;text-align: center;line-height: 30px;color: #666666;font-size: 16px;cursor: pointer;}
+			.sure {display: inline-block;width: 60px;height: 30px;background-color: #4da1ff;border-radius: 4px;text-align: center;line-height: 30px;color: #fff;font-size: 16px;cursor: pointer;}
+		</style>
+	</head>
+	<body style="background: #eff0f5">
+		<div class="eduHeadTop">
+			<div class="eduHeadCenter clearfix">
+				<div class="eduHeadLeft">
+					<img src="{/$siteurl.style/}/img/edu/edu_img01.jpg" >
+					<b>精选课程</b>
+				</div>
+				{/if !$is_person_login/}
+				<div class="eduHeadRight">
+					<a href="{/$siteurl.educompany/}/register" target="_blank">培训企业注册</a>
+					<a href="{/$siteurl.educompany/}/login" target="_blank">企业登录</a>
+				</div>
+				{//if/}
+			</div>
+		</div>
+		<div class="eduCrumbs">
+			{/foreach $course_detail['course_sortname'] as $v/}
+			<span>{/$v/}</span>
+			>
+			{//foreach/}
+			<span>课程详情</span>
+		</div>
+		<div class="eduContent clearfix" style="margin-top: 0;">
+			<div class="eduJobDetailTop">
+				<img src="{/$course_detail['p_url']/}" class="eduJobDetailImg" />
+				<div class="eduJobDetailRt">
+					<span class="eduJobDetailTiut">{/$course_detail['course_name']/}{/if $course_detail['train_deposit']==1/}<i title="该企业已缴纳1万元诚信保证金"></i>{//if/}</span>
+					<div class="eduJobDetailCompany">
+						<img src="{/$course_detail['logo_path']/}" >
+						<span>{/$course_detail['company_shortname']/}</span>
+					</div>
+					{/if $course_detail['course_spent_show']/}
+					<div class="eduJobDetailMoney"><em>￥</em><b>{/$course_detail['course_spent']/}</b></div>
+					{/else/}
+					<div class="eduJobDetailMoney"><b>收费</b></div>
+					{//if/}
+					<div class="eduJobDetailFee">{/$course_detail['course_fee_explain']/}</div>
+					<div class="eduJobDetailConsult">
+						{/if $course_detail['is_apply']/}
+						<span class="consultBtn">已预约咨询</span>
+						{/else/}
+						<span class="apply consultBtn" data-id="{/$course_detail['course_id']/}">咨询</span>
+						{//if/}
+
+						{/if $course_detail['course_time_show']/}
+						<span class="">培训时长：{/$course_detail['course_time']/}{/$course_detail['course_time_unit_name']/}</span>
+						{//if/}
+						<span class="eduCourseComplaints">课程投诉</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="detailsCourse">
+				<h2 class="detailsCourseTit">课程详情</h2>
+				<div class="detailsCourseCont">
+					{/$course_detail['course_content']/}
+				</div>
+				{/if $course_detail['is_apply']/}
+				<a href="javascript:void(0);" class="consultBtnx">已预约咨询</a>
+				{/else/}
+				<a href="javascript:void(0);" class="apply consultBtnx" data-id="{/$course_detail['course_id']/}">咨询</a>
+				{//if/}
+
+			</div>
+			<input type="hidden" id="course_id" value="{/$course_detail['course_id']/}">
+		</div>
+
+<!-- 课程投诉弹窗 -->
+<div class="m_master"></div>
+<div class="eduPop">
+	<div class="eduPopTit">
+		<span>课程投诉</span>
+		<em class="eduClose">×</em>
+	</div>
+	<div class="eduComplaintSelect">
+		<span data-id="1"><i></i>乱收费</span>
+		<span data-id="2"><i></i>其他</span>
+		<input type="hidden" name="eduComplaintSelectPut" id="eduComplaintSelectPut" value="" />
+	</div>
+	<textarea id="eduComplaintTextarea" name="eduComplaintTextarea" placeholder="请描述遇到的问题"></textarea>
+	<div class="eduPopbtn">
+		<a href="javascript:void(0);" class="eduCancel">取消</a>
+		<a href="javascript:void(0);" class="eduSure">确定</a>
+	</div>
+</div>	
+<script type="text/javascript">
+	$('.eduComplaintSelect span').click(function(){
+		$(this).addClass('cur').siblings().removeClass('cur');
+		$('#eduComplaintSelectPut').val($(this).attr('data-id'));
+	});
+	var report_count = "{/$report_count/}";
+	var is_person_login = "{/$is_person_login/}";
+	$('.eduCourseComplaints').click(function(){
+		if(is_person_login < 1){
+			alert('您还未登录，需要登录才能举报!');
+			setTimeout(function () {
+				window.location.href = '{/get_url rule="/login/index" domain="person"/}';
+			},2000)
+			return false;
+		}
+		if(report_count > 0){
+			alert('您已经举报过该课程了，请勿重复举报!');
+			return false;
+		}
+		eduSureShow();
+	});
+	$('.eduCancel,.eduClose').click(function(){
+		eduSureHide();
+	});
+	$('.eduSure').click(function(){
+
+		var eduComplaintSelectPut = $("input[name='eduComplaintSelectPut']").val(),
+			eduComplaintTextarea = $("textarea[name='eduComplaintTextarea']").val();
+		var course_id = $("#course_id").val();
+		if(course_id == '' || course_id == undefined){
+			alert('参数错误');
+		}
+		if (eduComplaintSelectPut == '') {
+			 alert('请选择投诉原因');
+		}else if (eduComplaintTextarea == '') {
+			  alert('请描述遇到的问题');
+		}else{
+			$.post("{/$siteurl.main/}/edu/ReportCourse",{course_id:course_id,type:eduComplaintSelectPut,content:eduComplaintTextarea},function (e) {
+				if(e.status){
+					alert('举报成功');
+					setTimeout(function () {
+						window.location.reload();
+					},2000)
+				}else{
+					alert(e.msg);
+					console.log(e);
+					if(e.data.need_login == 1){
+						setTimeout(function () {
+							window.location.href="{/$siteurl.person/}/login";
+						},2000)
+					}
+				}
+			},'json');
+
+		}
+	});
+	
+	function eduSureHide(){
+		$('.m_master,.eduPop').hide();
+		$('#eduComplaintTextarea').val('');
+		$('.eduComplaintSelect span').removeClass('cur');
+	}
+	function eduSureShow(){
+		$('.m_master,.eduPop').show();
+	}
+	
+	hbjs.use('@confirmBox', function(m) {
+		var	ConfirmBox      = m['widge.overlay.confirmBox'],
+			Dialog          = m['widge.overlay.hbDialog'],
+			cookie          = m['tools.cookie'],
+			fontSize = 18,
+			pWidth = 70;
+			var informTraining2 = new Dialog({
+				close : 'X',
+				idName : 'informTraining_dialog',
+				title : '提示',
+				width : 300,
+				height:200,
+				isOverflow : false,
+				isAjax : true
+			});
+			var vmx = '<div class="saveBtnxbg" style="padding: 15px;"><p style="text-align: left;">预约咨询后，培训老师将获取您的电话，是否继续？</p><div style="margin-top: 20px;"><span class="cancel">取消</span><span class="sure">确定</span></div></div>'
+			$('.apply').click(function(){
+				informTraining2.setContent(vmx).show();
+				$('.cancel').click(function(){
+					informTraining2.hide();
+				});
+				$('.sure').click(function(){
+					var id = $('.apply').attr('data-id');
+					$.post("{/$siteurl.main/}/edu/ApplyCourse",{id:id},function (e) {
+						if(e.status){
+						    alert('已预约咨询，课程老师将尽快联系您！');
+						    setTimeout(function () {
+								window.location.reload();
+					        },2000)
+						}else{
+						    alert(e.msg)
+						    if(e.code==2){
+					            setTimeout(function () {
+					                window.location.href="{/$siteurl.person/}/login";
+					            },2000)
+							}
+						}
+					},'json');
+				});
+			});
+	})
+	// $('.apply').click(function () {
+	// 	var id = $(this).attr('data-id');
+	// 	$.post("{/$siteurl.main/}/edu/ApplyCourse",{id:id},function (e) {
+	// 		if(e.status){
+	// 		    alert('已预约咨询，课程老师将尽快联系您！');
+	// 		    setTimeout(function () {
+	// 				window.location.reload();
+ //                },2000)
+	// 		}else{
+	// 		    alert(e.msg)
+	// 		    if(e.code==2){
+ //                    setTimeout(function () {
+ //                        window.location.href="{/$siteurl.person/}/login";
+ //                    },2000)
+	// 			}
+	// 		}
+ //        },'json');
+ //    })
+</script>
+	</body>
+</html>

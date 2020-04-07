@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<style>
+.posRumBox{width:460px;font-size:12px;}
+.posRumBox{color:#6c6c6c; font-size:14px;}
+.posRumBox dl{line-height:22px; border-bottom:1px solid #dadada; padding-bottom:10px; text-align:left; margin-bottom:6px;}
+.posRumBox dl dt{line-height:22px; height:22px;}
+.posRumBox dl dt span{height:22px; line-height:22px;}
+.posRumBox dl dd{font-size:12px; margin-left:17px; margin-bottom:12px;}
+.posRumBox em{color:#999; border-right:1px solid #dadada; padding-right:5px; margin-right:5px; zoom:1;}
+.posRumBox label{height:24px; line-height:24px; font-size:12px;}
+.posRumBox .formRad input.radio{margin:6px 0 0;margin:4px 0 0\9;*margin:0;}
+.posRumBox a{margin:0 3px;}
+.posRumBox .formBtn{margin:15px 0 0 0;}
+.posRumBox .formBtn a.btnsF14{margin:0;}
+.posRumBox dl.noRum{font-size:20px; font-family:"微软雅黑"; text-align:center;line-height:95px; border:0;}
+.posRumBox dl.noRum dt{line-height:40px; height:40px;}
+.posRumBox dl.noRum dt p{line-height:40px;}
+.posRumBox dl.noRum dd{height:auto;}
+.posRumBox dl.noRum i.hbFntWes{font-size:45px; margin-right:8px; color:#f9ae0c; vertical-align:middle;}
+</style>
+<div class="dgBox posRumBox">
+    <div class="posRumForm">	
+	      <dl class="noRum">
+	        	<dt><p><i class="hbFntWes">&#xf06a;</i>{/$message/}</p></dt>
+                        {/if $need_login/}
+	        	<dd><a href="{/$siteurl.person/}/login" class="btnsF14 btn1"  >我知道了</a></dd>
+                        {//if/}
+<!--                        <dd><a href="javascript:void(0);" class="btnsF14 btn1"  id="btnApplyClose">我知道了</a></dd>-->
+	      </dl>
+    </div>
+</div>
+<script>
+
+try{
+	hbjs.use(factory);
+} catch(ex) {
+	factory($);
+}
+function factory($){
+	var btn = $('#btnApplyClose');
+	btn.click(function(e){
+		if($(this)[0].trigger){
+			$(this)[0].trigger('close');
+		} else {
+			$(this).closeDialog();
+		}
+		e.preventDefault();
+	});
+}
+</script>
+</body>
+</html>

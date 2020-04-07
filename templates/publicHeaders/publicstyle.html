@@ -1,0 +1,143 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="keywords" content="{/$page['keyword']/}" />
+<meta name="description" content="{/$page['description']/}" />
+<meta name="mobile-agent" content="format=xhtml; url={/$mobile_agent/}"/>
+<meta name="mobile-agent" content="format=html5; url={/$mobile_agent/}"/>
+<meta name="mobile-agent" content="format=wml; url={/$mobile_agent/}"/>
+<title>{/$title/}</title>
+<!–[if lt IE9]>
+<script src="{/version file="html5.js"/}"></script>
+<![endif]–>
+<!--<link rel="stylesheet" type="text/css" href="{/version file='base.css,v2-widge.css,v2-resume.css,v2-jobsearch.css,login.css'/}" />-->
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='v2-widge.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='v2-resume.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='v2-jobsearch.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='login.css'/}" />
+
+
+<link rel="stylesheet" type="text/css" href="{/version file='v2-header.css'/}" />
+<link rel="alternate" media="only screen and(max-width: 640px)" href="{/$mobile_agent/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='comback.css'/}" />
+<style type="text/css">
+    .person_dialog {padding:0;border-radius:4px;border:0;}
+    .person_dialog .ui_dialog_container {padding:0;}
+    .person_dialog .ui_dialog_close{
+        position: absolute;overflow:hidden;border-radius: 0 4px 0 0;
+        display: block;width: 37px;height: 37px;line-height:200px;right:0;top:0;
+        background: url({/$siteurl.style/}/img/job/newjob/steel05.png) center 9px no-repeat;cursor: pointer;
+    }
+    .partjobPop a.partknowx{display:block;width:65px; height:18px; margin:48px 0 0 480px;background: none;border:none;}
+    .partjobPop a.partknow{ display:block;width:68px; height:28px; border:1px solid #c8c69e; background:#fff; color:#956363; line-height:28px; text-align:center; margin:132px 0 0 135px; border-radius:4px;}
+    .partjobPop a.partknow:hover{ background:#e5ddd5;}
+    .popzLink{ margin:0px -630px 0 0;}
+    .popzSpd{ margin:0px -591px 0 0; bottom:177px;top:auto;height:142px;overflow:hidden}
+    .strawIcon{ display: inline-block;width:15px; height:19px;background: url({/$siteurl.style/}/img/job/newjob/strawIcon.png) no-repeat; margin: -3px 0 0 -40px;position: absolute; }
+    .cur_location a.arr_jobsub{width:85px; height:20px; color: #fff; line-height: 22px; text-indent: 20px; background: url({/$siteurl.style/}/img/webjobsubscribe/icondy.png) 5px center no-repeat #d73937; border-radius:2px;display:inline-block;}
+    .frdLink .linkScroller ul{ position:inherit;width:1029px}
+</style>
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript">
+    window.CONFIG = {
+        HOST: '{/$siteurl.style/}',
+        COMBOPATH: '/js/v2/'
+    }
+</script>
+<!--<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>-->
+<script type="text/javascript" src="{/version file='hbjs.js'/}"></script>
+<script type="text/javascript" src="{/version file='jquery.min.js'/}"></script>
+<script type="text/javascript" src="{/version file='util.js'/}"></script>
+<script type="text/javascript" src="{/version file='class.js'/}"></script>
+<script type="text/javascript" src="{/version file='shape.js'/}"></script>
+<script type="text/javascript" src="{/version file='event.js'/}"></script>
+<script type="text/javascript" src="{/version file='aspect.js'/}"></script>
+<script type="text/javascript" src="{/version file='attribute.js'/}"></script>
+<script type="text/javascript" src="{/version file='cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript">
+    hbjs.config({
+        combos: {
+            '@homeSideSortMenu': [
+                'product.homeSideSortMenu', 'product.sideMenu.sideSortMenuGroup', 'product.sideMenu.sideSortMenu',
+                'product.sideMenu.sideSortMenuData', '@popup'
+            ],
+            '@jobPostipGroup': [
+                'product.jobList.jobPostipGroup', 'product.jobList.jobPostip', '@popup'
+            ]
+        }
+    });
+    hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+
+<style>
+    .bottom_job{
+        font-family: "微软雅黑";
+        font-size: 14px;
+        color: #666;
+        margin-top: 10px;
+        margin-bottom: 48px;
+    }
+    .bottom_job span{
+        display:block;
+        float:left;
+    }
+    .bottom_job a{
+        border-style: solid;
+        border-width: 1px;
+        border-color: #D7D7D7;
+        color:#2161BF;
+    }
+    .bottom_job a:link,.bottom_job a:visited{
+        display:block;
+        float:left;
+        background-color:#ffffff;
+        text-align:center;
+        padding:0px 12px 0px 12px;
+        text-decoration:none;
+        margin-left: 10px;
+    }
+    .bottom_job a:hover,.bottom_job a:active
+    {
+        background-color: #FAFCFC;
+    }
+
+    .login_reg a.newPhone i{
+        background: transparent url("{/$siteurl.style/}/img/newindex/icon_phone.png") no-repeat scroll 0% 0%;
+        display: inline-block;
+        width: 12px;
+        height: 16px;
+        vertical-align: -3px;
+        margin-right: 5px;
+    }
+    .login_reg a.newPhone:hover i{background-position: 0px -26px;}
+
+    .login_reg .personage{width: 80px;}
+    .lgAft ul li a.newPhone i{
+        background: transparent url("{/$siteurl.style/}/img/newindex/icon_phone.png") no-repeat scroll 0% 0%;
+        display: inline-block;
+        width: 12px;
+        height: 16px;
+        vertical-align: -3px;
+        margin-right: 5px;
+    }
+    .lgAft ul li a.newPhone:hover i{background-position: 0px -26px;}
+
+    .nav_login .login_reg{margin-top: -2px;}
+</style>
+<style>
+
+    .checkMod .drop input.text{ background:none;}
+    div.content_body{background: #E9E9E9 none repeat scroll 0% 0%;}
+    div.content{width:1100px;}
+    hgroup{ overflow:inherit;}
+    section.section{ height:480px;}
+
+    .edit-status-box dl {margin-top:20px;}
+    .edit-status-box .sub-btn,.edit-status-box .sub-btn:visited{ padding:0 50px; background:#66bce4; border:1px solid #66bce4;box-shadow:none; outline:none;}
+    .edit-status-box .canl-btn{ padding:0 50px; background:#f0f0f0; color:#898989; margin-left:40px;}
+    .joblit-rt li{ margin-top:30px; background:url({/$siteurl.style/}/img/webjobsubscribe/jobicon03.png) left 6px no-repeat; color:#6c6c6c; line-height:24px; padding-left:24px;}
+</style>
+<!--公用'1分钟留下简历css'-->
+<link rel="stylesheet" type="text/css" href="{/version file='leaveinfo.css'/}" />

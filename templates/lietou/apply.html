@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<style>
+.posRumBox{width:460px;font-size:12px;}
+.posRumBox{color:#6c6c6c; font-size:14px;}
+.posRumBox dl{line-height:22px; border-bottom:1px solid #dadada; padding-bottom:10px; text-align:left; margin-bottom:6px;}
+.posRumBox dl dt{line-height:22px; height:22px;}
+.posRumBox dl dt span{height:22px; line-height:22px;}
+.posRumBox dl dd{font-size:12px; margin-left:17px; margin-bottom:12px;}
+.posRumBox em{color:#999; border-right:1px solid #dadada; padding-right:5px; margin-right:5px; zoom:1;}
+.posRumBox label{height:24px; line-height:24px; font-size:12px;}
+.posRumBox .formRad input.radio{margin:6px 0 0;margin:4px 0 0\9;*margin:0;}
+.posRumBox a{margin:0 3px;}
+.posRumBox .formBtn{margin:15px 0 0 0;}
+.posRumBox .formBtn a.btnsF14{margin:0;}
+.posRumBox dl.noRum{font-size:20px; font-family:"微软雅黑"; text-align:center;line-height:95px; border:0;}
+.posRumBox dl.noRum dt{line-height:40px; height:40px;}
+.posRumBox dl.noRum dt p{line-height:40px;}
+.posRumBox dl.noRum dd{height:auto;}
+.posRumBox dl.noRum i.hbFntWes{font-size:45px; margin-right:8px; color:#f9ae0c; vertical-align:middle;}
+#hasNoMobile{background-color:#999;background-image: none;border:1px solid #999; box-shadow: 0 1px 0 #999 inset;cursor:default};
+</style>
+<form  id="frmApply" action="{/get_url rule="/lietou/jobapplydo/" data="jobflag=$jobflag"/}" method="post" >
+<div class="dgBox posRumBox">
+    <div class="posRumForm">
+        {/section name=resume loop=$resumes/}
+         {/if $smarty.section.resume.first/}
+          <dl>
+         {//if/} 
+              <dt>
+                  <span class="formRad">
+                        <input type="radio" class="radio" id="re{/$smarty.section.resume.iteration/}" name="resumeId" value="{/$resumes[resume].resume_id/}"   {/if $resumes[resume].is_default==1/} checked="checked" {//if/}/>
+                        {/if $resumes[resume].is_default==1/}
+                        <label for="re{/$smarty.section.resume.iteration/}">{/$resumes[resume].resume_name/}<font class="red">(默认简历)</font></label>
+                        {/else/}
+                        <label for="re{/$smarty.section.resume.iteration/}" style="font-weight:normal;">{/$resumes[resume].resume_name/}</label>
+                        {//if/}
+                    </span>
+                </dt>
+
+            <dd>
+                <em>完善度：{/$resumes[resume].completepercent/}</em>
+                <em>最后更新:{/$resumes[resume].refreshtime/}</em>
+                <span class="tipTxt">
+                    <a href="{/get_url domain="person"  rule="/resume/preview/"/}resume_id-{/$resumes[resume].resume_id/}" target="_blank">预览</a>
+                </span>
+            </dd>
+          {/if $smarty.section.resume.last/}
+          </dl>
+          {//if/}
+         {/sectionelse/}
+	      <dl class="noRum">
+	        	<dt><p><i class="hbFntWes">&#xf06a;</i>没有可以投递的简历</p></dt>
+	        	<dd><a href="{/get_url domain="person" rule="/person/CreateBasic/"/}" class="btnsF14 btn1" target="_bank" >立即创建一份新简历</a></dd>
+	      </dl>
+       {//section/} 
+    </div>
+    {/if count($resumes)>0/}
+    	<div class="formBtn"><a href="javascript:void(0)" class="btnsF14 btn1" {/if $hasPhone/}id="btnApply" {/else/}id="hasNoMobile" {//if/}>立即投递</a>
+            {/if !$hasPhone/}<span style="font-size:12px;">您尚未填写手机号码，请<a href="{/$siteurl.person/}/certification" target="_blank" style="color:#50B8D9;text-decoration: underline">填写手机号码</a>后，再投递简历！</a></span>{//if/}
+        </div>
+    {//if/}	
+</div>
+</form>
+<script>
+</script>
+</body>
+</html>

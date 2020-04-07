@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+{/include_php file='app/controller/head.php'/}
+<!--样式-->
+{/include file='./publicHeaders/publicstyle.html'/}
+</head>
+<body style="background:#f0f0f0">
+<!--user_info-->
+{/include file='./publicHeaders/headtop_user_info.html' isIndex=true origin='search'/}
+<!--logo和搜索-->
+{/include file='./publicHeaders/log_serar.html'/}
+<!--菜单-->
+{/include file='./publicHeaders/navigation.html'/}
+
+<!--自定义内容编写-->
+
+
+<style>
+    .newNavbg .w1100,.w1100{width:1000px}
+    .gongzao-desc{background: #f0f0f0;}
+    .gongzao-desc .w1100{background: #fff}
+    .gongzao-desc .descgg{width:1000px;margin:20px auto 0}
+    .gogzao-desc-title{padding:40px 0 20px 0;text-align: center;border-bottom:1px solid #dadada;margin:0 60px}
+    .gogzao-desc-title .name{font-size:24px;color:#444;line-height: 34px;padding:0 140px}
+    .gogzao-desc-title .time{color:#999;margin-top: 10px}
+    .gogzao-desc-box{margin:15px 60px;color:#666;font-size:14px;line-height: 30px;padding-bottom: 45px}
+    .gogzao-desc-box .descmove{margin-top:50px}
+    .gogzao-desc-box .descmove a{color:#3d84b8}
+    .gogzao-desc-box .text{font-size:14px;color:#666;line-height: 35px}
+    .gogzao-desc-box table{width:100%!important;border-top:1px solid #f5f5f5;border-right:1px solid #f5f5f5}
+    .gogzao-desc-box table td,.gogzao-desc-box table th{border-bottom:1px solid #f5f5f5;border-left:1px solid #f5f5f5;padding:5px;font-size:14px;color:#666}
+</style>
+<form id="web_subscribe_form" action="{/$siteurl.main/}/jobsearch/" method="post"><input type="hidden" name="subscribe_origin" value="nosearchpage"></form>
+<div class="gongzao-desc">
+    <p class="cur_location" style="width: 1000px">
+        <a href="{/$siteurl.main/}">首页</a>
+        <i class="arr_right"></i>
+        <a href="{/$siteurl.main/}/gongzhao/">公招信息列表</a>
+        <i class="arr_right"></i>
+        <a href="javascript:;">详情</a>
+    </p>
+    <div class="w1100">
+        <div class="gogzao-desc-title">
+            <h3 class="name">{/$res['title']/}</h3>
+            <p class="time">发布时间：{/date('Y年m月d日',strtotime($res['create_time']))/}      信息来源：{/$res['source']/}</p>
+        </div>
+        <div class="gogzao-desc-box">
+            <div class="text">
+                {/$res['content']/}
+            </div>
+            <div class="descmove">
+                {/if !empty($res['_files'])/}
+                附件下载：
+                {/foreach $res['_files'] as $k=>$v/}
+                <p><a class="file_item" href="javaScript:;" data-href="{/$v['path']/}">{/$v['showname']/}</a></p>
+                {//foreach/}
+                {//if/}
+                <p align="right">{/$res['organization_name']/}</p>
+            </div>
+        </div>
+    </div>
+   <!-- <p class="descgg">
+        <a href=""><img src="{/$siteurl.style/}\img\publicreruit\img3.jpg" /></a>
+    </p>-->
+</div>
+
+<!--右侧：意见，返回顶部共用-->
+{/include file='./publicHeaders/right_public.html'/}
+<!--底部-->
+<style>
+    .footerBm{background: white;padding-top: 20px}
+</style>
+{/include file="footer.html"/}
+<!--共用script-->
+{/include file='./publicHeaders/public_js.html'/}
+
+<!--当前页自定义script-->
+<script>
+    hbjs.use('@checkLogin, @confirmBox, @dialog', function(m) {
+
+        var checkLogin = m['product.checkLogin'],
+                cookie     = m['tools.cookie'],
+                confirmBox = m['widge.overlay.confirmBox'],
+                Dialog     = m['widge.overlay.hbDialog'],
+                $ = m['jquery'],
+
+        isLogin = {/if !empty($ispersonlogin)/} true;{/else/} false;{//if/}
+        $('.file_item').click(function () {
+
+            $.post('{/$siteurl.main/}/index/SetRegSourceAjax',{reg_source:'recruit_pc_down'},function (e) {
+                console.log(e);
+            },'json')
+
+            isLogin = checkLogin.isLogin('ajaxLoginCallback-isReload-true');
+            if(isLogin){
+                $('.file_item').each(function(){
+                    $(this).attr('href',$(this).attr('data-href'));
+                });
+            }
+        });
+    });
+
+
+</script>
+</body>
+</html>

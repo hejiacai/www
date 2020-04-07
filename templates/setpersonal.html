@@ -1,0 +1,482 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<div class="dgBox styleBox">
+    <form id="formPersonal" action="{/get_url rule='/company/SavePersonal/'/}" method="post">
+	<div id="formSave" class="form">
+    	<div class="formMod">
+        	<div class="l">风格颜色</div>
+            <div class="r">
+            	<span class="style" id="style">
+            	{/foreach $colors as $key_color=>$value_color/}
+            		{/if $color_id == $key_color/}
+            			<label class="color sl{/$key_color/} sl{/$key_color/}cu" for="sl{/$key_color/}"></label><input type="radio" id="s1{/$key_color/}" name="radColor" value="{/$key_color/}" checked="checked"/>
+            		{/else/}
+            			<label class="color sl{/$key_color/}" for="sl{/$key_color/}"></label><input type="radio" id="s1{/$key_color/}" name="radColor" value="{/$key_color/}"/>
+            		{//if/}
+				{//foreach/}
+            	</span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="formMod">
+        	<div class="l">头部图片</div>
+            <div class="r">
+            	{/if $template_header != ''/}
+                    <span id="uploadHeader" style="display:none">
+						<span class="tipTxt" style="margin:0;"><a href="javascript:void(0)" id="headerFile" name="headerFile" class="btn3 btnsF12" id="modLnk"></a><em class="gray">或</em><a href="javascript:void(0)" class="btn3 btnsF12">从模板库中选择</a></span>
+	                	<span class="tipTxt gray" style="width:500px;clear:both;margin:0;">支持jpg,png格式，大小不超过512k，标准尺寸1000px*70px</span>
+					</span>
+					<span id="showHeader">
+						<span id="imgHeaderCon" class="formPic">
+							<img id="imgHeader" src="{/$template_header_path/}?{/$smarty.now/}"  />
+							<span id="imgTools" class="picMask">
+								<a id="headerFileRe" name="headerFileRe" href="javascript:void(0)">重新上传</a>
+								<a class="uploadedImageDel" id="delHeader"  name="delHeader" href="javascript:void(0)" ></a>
+							</span>
+						</span>
+					</span>
+					<input type="hidden" id="hidDelHeaderTip" name="hidDelHeaderTip"  />	
+				{/else/}
+					<span id="uploadHeader">
+						<span class="tipTxt" style="margin:0;"><a href="javascript:void(0)" id="headerFile" name="headerFile" class="btn3 btnsF12"></a></span>
+	                	<span class="tipTxt gray" style="width:500px;clear:both;margin:0;">支持jpg,png格式，大小不超过512k，标准尺寸1000px*70px</span>
+					</span>
+					<span id="showHeader">
+						<span id="imgHeaderCon" class="formPic" style="display:none">
+							<img id="imgHeader" src="" style="display:none"  />
+							<span id="imgTools" style="display:none" class="picMask">
+								<a id="headerFileRe" name="headerFileRe" href="javascript:void(0)"></a>
+								<a class="uploadedImageDel" id="delHeader" name="delHeader" href="javascript:void(0)" ></a>
+							</span>
+						</span>
+					</span>
+				{//if/}
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="formMod">
+        	<div class="l">形象图片</div>
+            <div class="r">
+	            <div id="uploadImage" {/if count($company_images)==4/}style="display:none"{//if/}>
+					<div class="tipTxt" style="margin:0;"><a href="javascript:void(0)" id="imageFile" name="imageFile" class="btn3 btnsF12"></a></div><em class="gray">或</em><a href="javascript:void(0)"  class="btn3 btnsF12" id="btnOpenTemplate">从模板库中选择</a>
+                	<div class="tipTxt gray" style="width:500px;clear:both;margin:0;">支持jpg,png格式，大小不超过512k，标准尺寸1000px*300px，最多可上传4张</div>
+				</div>
+				<div id="showImage">
+					{/foreach $company_images as $key_image=>$value_image/}
+						<div id='conImage-{/$value_image["image_id"]/}' class="conImage formPic">
+							<img src="{/$value_image['image_show_path']/}" id="imgImage-{/$value_image['image_id']/}"  />
+							<div class="picMask" id="imgTools-{/$value_image['image_id']/}" >
+								<a id="imageFileRe-{/$value_image['image_id']/}" name="headerFileRe-{/$value_image['image_id']/}" class="uploadedImage" href="javascript:void(0)" i="{/$value_image['image_id']/}"></a>
+								<a id="delImage-{/$value_image['image_id']/}" name="delImage-{/$value_image['image_id']/}" class="uploadedImageDel imageDelBtn" href="javascript:void(0)" i="{/$value_image['image_id']/}"></a>
+							</div>
+						</div>		
+					{//foreach/}
+				</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="formBtn"><a href="javascript:void(0)" id="btnSave" class="btn1 btnsF16">保存</a><a href="javascript:void(0)" id="btnCancel" class="btn3 btnsF16">取消</a></div>
+    </div>
+	</form>
+
+    <div id="tipSave" class="styleRt" style="display:none">
+    	<p>设置尚未保存,需要保存吗?</p>
+        <div class="btn"><a href="javascript:void(0)" id="btnSaveTip" class="btn1 btnsF16">保存</a><a href="javascript:void(0)" id="btnNotSave" class="btn3 btnsF16">不保存</a></div>
+    </div>
+</div>
+<script type="text/javascript">
+$('#modLnk').click(function() {
+	$.showModal('/www/ui/modLnk.html?v=qaaa',{title:'从模板库中选择您喜欢的形象图片'});
+});
+
+var isModed = false;
+var headerIsUploaded = '{/$template_header != ''/}';
+var tempIndex = 0;
+var template = '<div id="conImage-{0}" class="conImage formPic">'+
+'	<img src="{2}" id="imgImage-{0}"  />'+
+'	<div class="picMask" id="imgTools-{0}" >'+
+'		<a id="imageFileRe-{0}" name="headerFileRe-{0}" href="javascript:void(0)"></a>'+
+'		<a class="uploadedImageDel imageDelBtn" id="delImage-{0}" name="delImage-{0}" href="javascript:void(0)" ></a>'+
+'	</div>'+
+'	<input type="hidden" id="hidImagePath-{0}" name="hidImagePath[]" class="hidImagePath" value="{1}" i="{0}" />'+
+'</div>';
+var template2 = '<div id="conImage-{0}" class="conImage formPic">'+
+'	<img src="{2}" id="imgImage-{0}"  />'+
+'	<div class="picMask" id="imgTools-{0}" >'+
+'		<a id="imageFileRe-{0}" name="headerFileRe-{0}" href="javascript:void(0)"></a>'+
+'		<a class="uploadedImageDel imageDelBtn" id="delImage-{0}" name="delImage-{0}" href="javascript:void(0)" ></a>'+
+'	</div>'+
+'	<input type="hidden" id="hidImagePath2-{0}" name="hidImagePath2[]" class="hidImagePath" value="{1}" i="{0}" />'+
+'</div>';
+
+$(function(){
+	$("#btnSave,#btnSaveTip").click(function(){
+		$('#formPersonal').ajaxSubmit({success: savePersonalSuccess});
+	});
+	$('#btnOpenTemplate').click(function(){
+		$.showModal('{/get_url rule="/company/OpenTemplate"/}',{title:'从模板库中选择您喜欢的形象图片'});
+	});
+	$('#btnCancel').click(function(){
+		if(isModed  && $('#tipSave').is(':hidden')){
+			$('#tipSave').show();
+			$('#formSave').hide();
+		}
+		else{
+			$('#btnCancel').closeDialog();
+		}
+	});
+	$('#btnNotSave').click(function(){
+		$('#btnNotSave').closeDialog();
+	});
+	
+	$('#delHeader').click(function(){
+		delHeader(headerIsUploaded=='1');
+	});
+
+	$('.imageDelBtn').click(function(){
+		delImage(true,$(this).attr('i'));
+	});
+
+	$('.color').click(function(){
+		isModed = true;
+		$('.color').each(function(i,n){
+			var cuClassTemp = $(this).attr('for')+'cu';
+			$(this).removeClass(cuClassTemp).next().removeAttr('checked');
+		});
+		var cuClass = $(this).attr('for')+'cu';
+		$(this).addClass(cuClass).next().attr('checked','checked');
+	});
+	
+	$('#headerFile').uploadify({
+		swf:'/swf/uploadify.swf',
+		uploader : '{/get_url rule="/company/saveHeader/"/}',
+		formData: {
+			'upload_cookie_userid': '{/$upload_cookie_userid/}',
+			'upload_cookie_nickname':'{/$upload_cookie_nickname/}',
+			'upload_cookie_usertype':'{/$upload_cookie_usertype/}',
+			'upload_cookie_userkey':'{/$upload_cookie_userkey/}',
+			'upload_cookie_tick':'{/$upload_cookie_tick/}'
+		},
+		fileObjName:'headerFile',
+		fileTypeExts:'*.jpg;*.png;',
+		auto:true,
+		buttonImage:'{/$siteurl.style/}/uploadify/submit.png',
+		fileSizeLimit:1024 * 512,
+		queueSizeLimit:1,
+		method:'post',
+		cancelImage: '{/$siteurl.style/}/uploadify/cancel.png',
+		width:85,
+		height:27,
+		multi:false,
+		removeCompleted:true,
+		overrideEvents:['onSelect'],
+		onUploadSuccess:function(file,data,response){
+			isModed=true;
+			var json = eval("("+data+")");
+			if(json.error){
+				$.anchorMsg(json.errorMsg,{icon:'fail'});
+			}
+			else{
+				//设置图片
+				$('#imgHeader').attr('src',json.path+'?'+Math.random()).show();
+				$('<input type="hidden" name="hidHeaderPath" value="'+json.save_path+'" />').appendTo($('#showHeader'));
+				$('#imgTools').show();
+				$('#imgHeaderCon').show();
+				$('#delHeader').click(function(){
+					delHeader(false);
+				});	
+				//隐藏上传按钮
+				setTimeout(function(){$('#uploadHeader').hide();},1);
+			}
+		},
+		onSelectError:function(file,errorCode,errorMsg){
+			var settings = this.settings;
+			switch(errorCode) {
+				case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
+					$.anchorMsg('抱歉 "' + file.name + '" 文件查过了大小限制 (' + settings.fileSizeLimit + ').',{icon:'warning'});
+					break;
+				case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
+					$.anchorMsg('文件 "' + file.name + '" 为空.',{icon:'warning'});
+					break;
+				case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
+					$.anchorMsg('文件 "' + file.name + '" 类型不支持 (' + settings.fileTypeDesc + ').',{icon:'warning'});
+					break;
+			}
+		}
+	});
+	$('#headerFileRe').uploadify({
+		swf:'/swf/uploadify.swf',
+		uploader : '{/get_url rule="/company/saveHeader/"/}',
+		formData: {
+			'upload_cookie_userid': '{/$upload_cookie_userid/}',
+			'upload_cookie_nickname':'{/$upload_cookie_nickname/}',
+			'upload_cookie_usertype':'{/$upload_cookie_usertype/}',
+			'upload_cookie_userkey':'{/$upload_cookie_userkey/}',
+			'upload_cookie_tick':'{/$upload_cookie_tick/}'
+		},
+		fileObjName:'headerFile',
+		fileTypeExts:'*.jpg;*.png;',
+		auto:true,
+		fileSizeLimit:1024 * 512,
+		queueSizeLimit:1,
+		method:'post',
+		buttonText:'',
+		multi:false,
+		width:'',
+		height:'',
+		removeCompleted:true,
+		overrideEvents:['onSelect'],
+		onUploadSuccess:function(file,data,response){
+			var json = eval("("+data+")");
+			if(json.error){
+				$.anchorMsg(json.errorMsg,{icon:'fail'});
+			}
+			else{
+				//设置图片
+				$('#imgHeader').attr('src',json.path+'?'+Math.random());
+				if($('input[name=hidHeaderPath]').length>0){
+					$('input[name=hidHeaderPath]').val(json.save_path);
+				}
+				else{
+					$('<input type="hidden" name="hidHeaderPath" value="'+json.save_path+'" />').appendTo($('#showHeader'));
+				}
+			}
+		},
+		onSelectError:function(file,errorCode,errorMsg){
+			var settings = this.settings;
+			switch(errorCode) {
+				case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
+					$.anchorMsg('抱歉 "' + file.name + '" 文件查过了大小限制 (' + settings.fileSizeLimit + ').',{icon:'warning'});
+					break;
+				case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
+					$.anchorMsg('文件 "' + file.name + '" 为空.',{icon:'warning'});
+					break;
+				case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
+					$.anchorMsg('文件 "' + file.name + '" 类型不支持 (' + settings.fileTypeDesc + ').',{icon:'warning'});
+					break;
+			}
+		}
+	});
+
+	$('#imageFile').uploadify({
+		swf:'/swf/uploadify.swf',
+		uploader : '{/get_url rule="/company/saveImage/"/}',
+		formData: {
+			'upload_cookie_userid': '{/$upload_cookie_userid/}',
+			'upload_cookie_nickname':'{/$upload_cookie_nickname/}',
+			'upload_cookie_usertype':'{/$upload_cookie_usertype/}',
+			'upload_cookie_userkey':'{/$upload_cookie_userkey/}',
+			'upload_cookie_tick':'{/$upload_cookie_tick/}'
+		},
+		fileObjName:'imageFile',
+		fileTypeExts:'*.jpg;*.png;',
+		auto:true,
+		buttonImage:'{/$siteurl.style/}/uploadify/submit.png',
+		fileSizeLimit:1024 * 512,
+		queueSizeLimit:1,
+		method:'post',
+		cancelImage: '{/$siteurl.style/}/uploadify/cancel.png',
+		width:85,
+		height:27,
+		multi:false,
+		removeCompleted:true,
+		overrideEvents:['onSelect'],
+		onSelectError:function(){
+			var settings = this.settings;
+			switch(errorCode) {
+				case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
+					$.anchorMsg('抱歉 "' + file.name + '" 文件查过了大小限制 (' + settings.fileSizeLimit + ').',{icon:'warning'});
+					break;
+				case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
+					$.anchorMsg('文件 "' + file.name + '" 为空.',{icon:'warning'});
+					break;
+				case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
+					$.anchorMsg('文件 "' + file.name + '" 类型不支持 (' + settings.fileTypeDesc + ').',{icon:'warning'});
+					break;
+			}
+		},
+		onUploadSuccess:function(file,data,response){
+			isModed=true;
+			var json = eval("("+data+")");
+			if(json.error){
+				$.anchorMsg(json.errorMsg,{icon:'fail'});
+			}
+			else{
+				addImage(json.save_path,json.path,1);
+			}
+		}
+	});
+
+	$('.uploadedImage').each(function(i){
+		var item_index =  $(this).attr('i');
+		$(this).uploadify({
+				swf:'/swf/uploadify.swf',
+				uploader : '{/get_url rule="/company/saveImage/"/}',
+				formData: {
+					item_index: item_index,
+					'upload_cookie_userid': '{/$upload_cookie_userid/}',
+					'upload_cookie_nickname':'{/$upload_cookie_nickname/}',
+					'upload_cookie_usertype':'{/$upload_cookie_usertype/}',
+					'upload_cookie_userkey':'{/$upload_cookie_userkey/}',
+					'upload_cookie_tick':'{/$upload_cookie_tick/}'
+				},
+				fileObjName:'imageFile',
+				fileTypeExts:'*.jpg;*.png;',
+				auto:true,
+				fileSizeLimit:1024 * 512,
+				queueSizeLimit:1,
+				width:'',
+				height:'',
+				//formData:{item_index: item_index},
+				method:'post',
+				multi:false,
+				buttonText:'',
+				removeCompleted:true,
+				overrideEvents:['onSelect'],
+				onSelectError:function(){
+					var settings = this.settings;
+					switch(errorCode) {
+						case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
+							$.anchorMsg('抱歉 "' + file.name + '" 文件查过了大小限制 (' + settings.fileSizeLimit + ').',{icon:'warning'});
+							break;
+						case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
+							$.anchorMsg('文件 "' + file.name + '" 为空.',{icon:'warning'});
+							break;
+						case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
+							$.anchorMsg('文件 "' + file.name + '" 类型不支持 (' + settings.fileTypeDesc + ').',{icon:'warning'});
+							break;
+					}
+				},
+				onUploadSuccess:function(file,data,response){
+					isModed=true;
+					var json = eval("("+data+")");
+					if(json.error){
+						$.anchorMsg(json.errorMsg,{icon:'fail'});
+					}
+					else{
+						var index =  json.item_index;
+						$('#imgImage-'+index).attr('src',json.path+'?'+Math.random());
+						$('#hidImagePath-'+index).val(json.save_path);
+						if($('#conImage-'+json.item_index).find('ReUpload').length<=0){
+							$('<input class="ReUpload" type="hidden" name="hidReUploadImage[]" value="'+json.item_index+'|'+json.save_path+'" />').appendTo($('#conImage-'+json.item_index))
+						}
+						else{
+							$('#conImage-'+json.item_index).find('ReUpload').val(json.item_index+'|'+json.save_path);
+						}
+						
+					}
+				}
+		});
+	});
+});
+
+function addImage(save_path,path,type){
+	isModed=true;
+	tempIndex = tempIndex +1;
+	var temp = '';
+	if(type==1){
+		temp = $.format(template,'te'+tempIndex,save_path,path+'?'+Math.random());
+	}
+	else{
+		temp = $.format(template2,'te'+tempIndex,save_path,path+'?'+Math.random());
+	}
+
+	$(temp).appendTo($('#showImage'));
+	$('#showImage').show();
+
+	$('#delImage-'+'te'+tempIndex).click(function(){
+		var index =  $(this).closest('.conImage').find('.hidImagePath').attr('i');
+		delImage(false,index);
+	});	
+	$('#imageFileRe-'+'te'+tempIndex).uploadify({
+			swf:'/swf/uploadify.swf',
+			uploader : '{/get_url rule="/company/saveImage/"/}',
+			formData: {
+				item_index: 'te'+tempIndex,
+				'upload_cookie_userid': '{/$upload_cookie_userid/}',
+				'upload_cookie_nickname':'{/$upload_cookie_nickname/}',
+				'upload_cookie_usertype':'{/$upload_cookie_usertype/}',
+				'upload_cookie_userkey':'{/$upload_cookie_userkey/}',
+				'upload_cookie_tick':'{/$upload_cookie_tick/}'
+			},
+			fileObjName:'imageFile',
+			fileTypeExts:'*.jpg;*.png;',
+			auto:true,
+			fileSizeLimit:1024 * 512,
+			queueSizeLimit:1,
+			width:'',
+			height:'',
+			//formData:{item_index: 'te'+tempIndex},
+			method:'post',
+			multi:false,
+			buttonText:'',
+			removeCompleted:true,
+			overrideEvents:['onSelect'],
+			onSelectError:function(){
+				var settings = this.settings;
+				switch(errorCode) {
+					case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
+						$.anchorMsg('抱歉 "' + file.name + '" 文件查过了大小限制 (' + settings.fileSizeLimit + ').',{icon:'warning'});
+						break;
+					case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
+						$.anchorMsg('文件 "' + file.name + '" 为空.',{icon:'warning'});
+						break;
+					case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
+						$.anchorMsg('文件 "' + file.name + '" 类型不支持 (' + settings.fileTypeDesc + ').',{icon:'warning'});
+						break;
+				}
+			},
+			onUploadSuccess:function(file,data,response){
+				isModed=true;
+				var json = eval("("+data+")");
+				if(json.error){
+					$.anchorMsg(json.errorMsg,{icon:'fail'});
+				}
+				else{
+					var index =  json.item_index;
+					$('#imgImage-'+index).attr('src',json.path+'?'+Math.random());
+					$('#hidImagePath2-'+index).remove();
+					if($('#hidImagePath-'+index).length==0){
+						$('<input type="hidden" id="hidImagePath-'+index+'" name="hidImagePath[]" class="hidImagePath" value="'+json.save_path+'" i="'+index+'" />').appendTo($('#conImage-'+index));
+					}
+				}
+			}
+	});
+
+	//隐藏上传按钮
+	if($('#showImage').find('.conImage').length>=4){
+		setTimeout(function(){$('#uploadImage').hide();},1);
+	}
+}
+
+function delHeader(isUploaded){
+	isModed=true;
+	if(isUploaded && typeof $('#hidDelHeaderTip') != 'undefined'){
+		$('#hidDelHeaderTip').val('1');
+	}
+	$('#imgHeader').attr('src','').hide();
+	$('#showHeader').find('input[name=hidHeaderPath]').remove();
+	$('#imgTools').hide();
+	$('#imgHeaderCon').hide();
+	$('#uploadHeader').show();
+}
+
+function delImage(isUploaded,id){
+	isModed=true;
+	if(isUploaded){
+		$('<input type="hidden" name="hidDelImage[]" value="'+id+'" />').appendTo($('#uploadImage'));
+	}
+	$('#conImage-'+id).remove();
+	if($('#showImage').find('.conImage').length<4){
+		$('#uploadImage').show();
+	}
+}
+
+
+</script>
+</body>
+</html> 

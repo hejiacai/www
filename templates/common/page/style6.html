@@ -1,0 +1,6 @@
+<p class="milpage">
+    <a href="{/if $prepg/}{/$prepg/}{/else/}javascript:void(0);{//if/}" class="arr_l"></a><!--不可点状态class为空-->
+        <span>{/if empty($currpage)/}1{/else/}{/$currpage/}{//if/}</span>/{/$total_page/}
+        <a href="{/if $nextpg/}{/$nextpg/}{/else/}javascript:void(0);{//if/}" class="arr_r"></a>
+</p>
+

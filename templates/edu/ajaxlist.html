@@ -1,0 +1,13 @@
+{/foreach $res as $v/}
+<a href="{/$siteurl.educompany/}/edu/detail/id-{/$v['course_id']/}">
+	<img class="bannerImg" src="{/$v['p_url']/}" >
+	<span class="subTit">{/$v['course_name']/}</span>
+	<p class="eduCompany">
+		<img src="{/$v['logo_path']/}" >
+		<em>{/$v['company_name']/}</em>
+	</p>
+	{/if $v['train_deposit']==1/}
+	<i class="eduGuard"></i>
+	{//if/}
+</a>
+{//foreach/}

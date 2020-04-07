@@ -1,0 +1,144 @@
+<style type="text/css">
+.njmNameImg .njmNameXbox{
+        width:160px;
+        height:160px;
+	overflow:hidden;
+	position:relative;
+	display:table-cell;
+	text-align:center;
+	vertical-align:middle;
+	}
+.njmNameImg .njmNameXbox p {
+	position:static;
+	+position:absolute;
+	top:50%
+}
+.njmNameImg .njmNameXbox p img{
+	position:static;
+	+position:relative;
+	top:-50%;left:-50%;
+        max-width:160px;
+        max-height:160px;
+}
+.njmNameRt span em {
+    background: #f3971f none repeat scroll 0 0;
+    border-radius: 4px;
+    color: #fff;
+    display: inline-block;
+    font-family: "宋体";
+    font-size: 12px;
+    line-height: 24px;
+    margin-left: 5px;
+    padding: 0 8px;
+    vertical-align: middle;
+}
+
+.mentRateProMuil{width:158px; height:80px; background:url({/$siteurl.style/}/img/reversion/mentRate03.png) no-repeat; left:60%;top:73px;z-index: 8;}
+.mentRateProNull{top:73px;}
+.mentRatePro p,.mentRateProMuil p{width:134px; float:left;}
+.mentRatePro p.mentratMag,.mentRateProMuil p.mentratMag{ margin-left:4px;}
+.mentRateProMuil span{font-size: 14px;}
+.newtopLit {float: left;}
+#report_bf {
+    display: block;
+    float: left;
+    width: 130px;
+    height: 40px;
+    border: 1px solid #dbdbdb;
+    border-right: none;
+    color: #3d84b8;
+    line-height: 37px;
+    _line-height: 40px;
+    text-indent: 50px;
+}
+{/if !$can_attention/}.njmNameRt{width: 750px;}{//if/}
+</style>
+<div style="box-shadow:0 0 6px #dbdbdb;width:1000px; height:auto; margin:20px auto;overflow: visible" id="company-infor">
+        <div class="njmName" style="overflow: visible">
+        	{/if ($reversion_rate >= 80) && !($visit_person =='companyself' && $can_company_set)/}
+			    <div class="mentRatePro mentRateProMuil" style="top:-8px;left:70%">
+			        <b>{/$reversion_rate/}%</b>
+			        <span>两周内简历回复率</span>
+			    </div>
+			{//if/}
+            <div class="njmName01" style="margin:0;padding:25px 0 0 30px">
+                  <div class="njmNameImg">
+                	<div class="njmNameMge">
+                            <div class="njmNameXbox">
+                                <p><img src="{/$logo_path/}" /></p>
+                            </div>
+                        </div>
+                </div>
+                <div class="njmNameRt">
+                    <p class="njmNametit1">
+                        <a>{/if !empty($company_shortname)/}{/$company_shortname/}{//if/}</a>
+                        <span style="color: #ffae00;font-size: 14px;line-height: 22px;">
+                             {/if $recruit_type == '2'/}
+                             (该企业为<i> 中介机构</i>，面试职位时可能会向求职者收取介绍费。)
+                            {/else if $recruit_type == '4'/}
+                            (该企业为其他公司招聘人才（承诺不收求职者费用），如发现收费行为请及时向我们举报。)
+                            {/else if $recruit_type == '5'/}
+                            (该企业已承诺发布的为真实招聘职位，不向求职者推销收费培训课程，若发现请举报，我们将进行处理。)
+                            {//if/}
+                        </span>
+                    </p>
+                    <span>{/$company_name/}{/if $is_audit/}<img style="margin-left:8px" title="企业认证" src="{/$siteurl.style/}/img/job/newjob/newJob_10.png" width="15" height="18" />{//if/}
+                        {/if $is_famous == 2/}
+                            <em class="pxjg enterprises">&nbsp;</em>
+                        {/else if $is_famous == 3/}
+                            <em title="明星雇主" style="background: url({/$siteurl.style/}/img/www/star_company.jpg) no-repeat;width:79px;height: 24px;line-height: 24px;color:#c319ee;font-size: 14px;text-align: right;padding-right: 10px;display: inline-block;font-family: 'Microsoft YaHei', '微软雅黑'">明星雇主</em>
+                        {/else if $is_famous == 1/}
+                            <em title="优质企业" style="background: url({/$siteurl.style/}/img/m/new_person/qualityEnterprise.png ) no-repeat;width:79px;height: 24px;line-height: 24px;color:#c8984b;font-size: 14px;text-align: right;padding-left: 10px;padding-right: 10px;display: inline-block;font-family: 'Microsoft YaHei', '微软雅黑';background-size: 20px 18px;border:1px solid #c8984b;background-position: 8px 3px;border-radius: 12px; ">优质企业</em>
+                        {//if/}
+                        {/if $recruit_type == '2' || $recruit_type == '4' || $recruit_type == '6'/}<em>{/$recruit_type_name/}</em>{//if/}
+                        {/if $is_hr/}&nbsp;<span style="color:#666;display:inline">(由 <a href="{/$link_url/}" target="_blank" style="color:#ee6f0e">{/$link_company/}</a> 代为招聘，<img src="{/if $hr_licence/}{/$siteurl.style/}/img/job/newjob/hr_gen.png{/else/}{/$siteurl.style/}/img/job/newjob/hr_gen_valid.png{//if/}" style="vertical-align: bottom; margin-right:1px;" />人力资源许可证)</span>{//if/}
+                        {/if $is_mainhr&&$hr_licence/}&nbsp;<span style="color:#666;display:inline"><img src="{/$siteurl.style/}/img/job/newjob/hr_gen.png" style="vertical-align: bottom; margin-right:1px;" />人力资源许可证</span>{//if/}
+                    </span>
+                    <p class="njmNametit2"><img style="margin-right:8px;" src="{/$siteurl.style/}/img/job/newjob/newJob_58.png" width="11" height="10" /> {/if !empty($company_bright_spot)/}{/$company_bright_spot/}{/else/}公司主营业务以及行业地位暂未填写{//if/}<img style="margin-left:8px;" src="{/$siteurl.style/}/img/job/newjob/newJob_59.png" width="11" height="10" /></p>
+                    {/if $recruit_type == '3'/}
+                    <p class="desc" style="background: #fffdee none repeat scroll 0 0;border: 1px solid #feeeb2;color: #88530d;font-size: 12px;margin-bottom: 10px;padding: 8px 10px;">
+                        <label style="border: 1px solid #f82800;border-radius: 3px;color: #f82800;display: inline-block;font-size:12px;margin-right: 3px;padding: 1px 3px;vertical-align: 2px;">假招聘转招生</label>
+                        该企业存在假借招聘名义进行培训招生的行为，面试时可能会要求付费培训
+                    </p>
+                    {//if/}
+                    {/if count($rewards) > 0 || count($other_rewards) > 0/}
+                    <ul class="newtopLit" style="width:570px;">
+                        {/if count($rewards) > 0/}
+                        {/foreach $rewards as $reward/}
+                        <li>{/$reward/}</li>
+                        {//foreach/}
+                        {//if/}
+                        
+                        {/if count($other_rewards)>0/}
+                        {/foreach $other_rewards as $reward/}
+                        <li>{/$reward/}</li>
+                        {//foreach/}
+                        {//if/}
+                    </ul>
+                    {//if/}
+                
+                </div>
+            </div>
+            {/if $visit_person =='other' || $visit_person =='person'/}
+            <div class="njmNameFcs" style="z-index: 9;width:130px;height: 84px">
+                <div id="attention_msg" class="nFcswin" style='display:none'>
+                    <span>关注成功</span>
+                    <img src="{/$siteurl.style/}/img/job/newjob/newJob_65.png" width="8" height="26" />
+                </div>
+
+                <!------关注成功用awareBtn------>
+                {/if $can_attention/}
+                {/if $attentioncompany.attention_id != ""/}
+                <a id='liCance' href="javascript:;" class="awareBtn att" v='cancel'>已关注</a>
+                <a id='liAdd' href="javascript:;" class="njmNameBtn att" v='add' style="display:none">加关注</a>
+                {/else/}
+                <a id='liCance' href="javascript:;" class="awareBtn att" v='cancel' style="display:none">已关注</a>
+                <a id='liAdd' href="javascript:;" class="njmNameBtn att" v='add'>加关注</a>
+                {//if/}
+                {//if/}
+                <a href="javascript:;" id="report_bf"  style="border-top: 0px;color: #999" >举报</a>
+            </div>
+            {//if/}
+            <div class="clear"></div>
+        </div>
+

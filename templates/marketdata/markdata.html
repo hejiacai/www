@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>总体情况</title>
+    <!-- 引入 echarts.js -->
+    <script src="http://assets.huibo.com/js/jquery-1.8.3.min.js"></script>
+    <script src="{/$siteurl.style/}/js/echarts/echarts.min.js"></script>
+    <script src="{/$siteurl.style/}/js/echarts/countUp.js"></script>
+</head>
+<body style="background: #f4f7fe;margin: 0;font-family:'Microsoft YaHei','微软雅黑';margin: 0">
+<div style="background: #34395b;height: 60px;line-height: 60px;margin: 0;overflow: hidden;position: relative;z-index: 1">
+   <span style="display: inline-block;position: absolute;left:30px;top:0"><img src="{/$siteurl.style/}/img/cp/date_logo.jpg?t=2" /></span>
+   <a href="http://cp.boss.huibo.com/marketdata/map" target="_blank" style="display:block; padding:0 10px; height:40px; line-height:40px; border-radius:4px; background:#74a2ff; font-size:14px; color:#fff; text-decoration:none; position:absolute; right:10px; top:10px;">地图展示</a>
+    <p style="font-size: 24px;color: #74a2ff;text-align: center;margin: 0;letter-spacing:4px">运营数据监控</p>
+</div>
+<div style="font-size: 22px;color: #333;padding-top: 20px;padding-bottom: 10px;text-align: center;height: 40px;overflow: hidden">
+    <span style="margin-right: 50px">求职者累计注册量：<strong id="js_person" style="color: #33398d;font-size: 30px">0</strong></span>
+    <span>累计服务企业：<strong id="js_company" style="color: #33398d;font-size: 30px">0</strong></span>
+</div>
+<div style="padding: 10px;height: 400px;position: relative" class="divheight">
+    <div id="js_login"  class="dayheight" style="width: 33%;height: 400px;float: left;background: #fff"></div>
+    <div  class="divheight" style="width: 34%;height: 400px;float: left">
+        <div id="js_delivery" class="dayheight" style="height: 400px;margin: 0 10px;background: #fff"></div>
+    </div>
+    <div id="js_post" class="dayheight" style="width: 33%;height: 400px;float: left;background: #fff"></div>
+    <div style="position: absolute;top:20px;left:0;width:100%;font-size: 16px;">
+        <p style="width: 33%;height: 400px;float: left;"><span style="padding-left: 30px;display: inline-block;color:#666">今日登录量：<strong id="login_number" style="color: #ff5402;font-size: 18px">0</strong></span></p>
+        <p style="width: 34%;height: 400px;float: left"><span style="padding-left: 30px;display: inline-block;color:#666">今日投递量：<strong id="delivery_number" style="color: #ff5402;font-size: 18px">0</strong></span></p>
+        <p style="width: 33%;height: 400px;float: left;"><span style="padding-left: 30px;display: inline-block;color:#666">今日刷新职位：<strong id="post_number" style="color: #ff5402;font-size: 18px">0</strong></span></p>
+    </div>
+    <div class="suntitle" style="position: absolute;left:0;width:100%">
+        <p style="width: 33%;height: 400px;float: left;text-align: center">近7日登录量</p>
+        <p style="width: 34%;height: 400px;float: left;text-align: center">近7日投递量</p>
+        <p style="width: 33%;height: 400px;float: left;text-align: center">近7日刷新职位</p>
+    </div>
+</div>
+<div class="divheight">
+    <div style="float: left;width: 55%;height: 400px" class="divheight">
+        <div class="divheight" style="margin-right: 5px;background: #fff;height: 400px;margin-left: 5px;">
+            <div id="js_industry" class="divheight" style="width: 50%;float: left;margin-top: 30px"></div>
+            <div id="js_area" class="divheight" style="width: 50%;float: left;margin-top: 30px"></div>
+        </div>
+    </div>
+    <div style="float: left;width: 45%;height: 400px" class="divheight">
+        <div class="divheight" style="margin-left: 5px;background: #fff;height: 400px;margin-right: 5px">
+            <div id="js_position" class="divheight" style="width: 50%;float: left;margin-top: 30px"></div>
+            <div id="js_age" class="divheight" style="width: 50%;float: left;margin-top: 30px"></div>
+        </div>
+    </div>
+</div>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<!--
+<div id="main" style="width: 800px;height:600px;"></div>
+<div id="main2" style="width: 100%;height:600px;"></div>-->
+
+<!--设置DIV高度-->
+<script type="text/javascript">
+    $(".divheight").css("height",(($(window).height() - 170) / 2));
+    $(".dayheight").css({"padding-top":"30px","padding-bottom":"40px","height":(($(window).height() - 170) / 2)-70})
+    $(".suntitle").css({"top":(($(window).height() - 170) / 2)-40});
+</script>
+<!--/设置DIV高度-->
+<!--数字动画-->
+<script type="text/javascript">
+    var js_person = new CountUp("js_person", 24.02, 0, 0, 9),
+        js_company = new CountUp("js_company", 24.02, 0, 0, 9),
+        login_number = new CountUp("login_number", 24.02, 0, 0, 9),
+        delivery_number = new CountUp("delivery_number", 24.02, 0, 0, 9),
+        post_number = new CountUp("post_number", 24.02, 0, 0, 9);
+        js_person.start();
+        js_company.start();
+        login_number.start();
+        delivery_number.start();
+        post_number.start();
+    var i = 1000;
+    /*今日数字*/
+    /*var login_number = $("#login_number");
+    var delivery_number =$("#delivery_number");
+    var post_number = $("#post_number");
+    var js_company = $("#js_company");
+    var js_person = $("#js_person");*/
+    var setSunCont = 1;
+    function setNumber(ajaxgo){
+        if(ajaxgo) return;
+        ajaxgo = true;
+        $.ajax({
+           /* url:"http://cp.boss.huibo.com/marketdata/getdata",*/
+            url:"http://cp.boss.huibo.com/marketdata/GetDataV2",
+            dataType:"json",
+            success:function(json){
+                 /*今日数字*/
+                console.log(json["person_login_num"]["today"]["num"]);
+                login_number.update(json["person_login_num"]["today"]["num"]);
+                delivery_number.update(json["person_apply_num"]["today"]["num"]);
+                post_number.update(json["job_num"]["today"]["num"]);
+                js_company.update(json["company_register_num"]);
+                js_person.update(json["person_register_num"]);
+                if(setSunCont) {
+                    setSun("js_login",
+                            [json["person_login_num"]["day7"]["date"], json["person_login_num"]["day6"]["date"], json["person_login_num"]["day5"]["date"], json["person_login_num"]["day4"]["date"], json["person_login_num"]["day3"]["date"], json["person_login_num"]["day2"]["date"], json["person_login_num"]["day1"]["date"]],
+                            [json["person_login_num"]["day7"]["num"], json["person_login_num"]["day6"]["num"], json["person_login_num"]["day5"]["num"], json["person_login_num"]["day4"]["num"], json["person_login_num"]["day3"]["num"], json["person_login_num"]["day2"]["num"], json["person_login_num"]["day1"]["num"]]
+                    );
+                    /*登录*/
+                    setSun("js_delivery",
+                            [json["person_apply_num"]["day7"]["date"], json["person_apply_num"]["day6"]["date"], json["person_apply_num"]["day5"]["date"], json["person_apply_num"]["day4"]["date"], json["person_apply_num"]["day3"]["date"], json["person_apply_num"]["day2"]["date"], json["person_apply_num"]["day1"]["date"]],
+                            [json["person_apply_num"]["day7"]["num"], json["person_apply_num"]["day6"]["num"], json["person_apply_num"]["day5"]["num"], json["person_apply_num"]["day4"]["num"], json["person_apply_num"]["day3"]["num"], json["person_apply_num"]["day2"]["num"], json["person_apply_num"]["day1"]["num"]]
+                    );
+                    /*投递*/
+                    setSun("js_post",
+                            [json["job_num"]["day7"]["date"], json["job_num"]["day6"]["date"], json["job_num"]["day5"]["date"], json["job_num"]["day4"]["date"], json["job_num"]["day3"]["date"], json["job_num"]["day2"]["date"], json["job_num"]["day1"]["date"]],
+                            [json["job_num"]["day7"]["num"], json["job_num"]["day6"]["num"], json["job_num"]["day5"]["num"], json["job_num"]["day4"]["num"], json["job_num"]["day3"]["num"], json["job_num"]["day2"]["num"], json["job_num"]["day1"]["num"]]
+                    );
+                    /*岗位*/
+                    setSunCont = 0;
+                }
+                ajaxgo = false;
+                setTimeout(function(){
+                    setNumber(ajaxgo);
+                },5000);
+           }/*,
+            error:function(){
+                ajaxgo = false;
+                setNumber(ajaxgo);
+            }*/
+        });
+    }
+    setNumber(false);
+    /*近七日曲线图*/
+    function setSun(id,day,data){
+        var js_post = echarts.init(document.getElementById(id));
+        postoption = {
+            color: ['#74a2ff'],
+            textStyle:{
+                color:'#666'
+            },
+            backgroundColor: '#ffffff',
+            tooltip : {
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : day,
+                    axisTick: {
+                        alignWithLabel: true
+                    },
+                    axisLine:{
+                        lineStyle:{
+                            color:"#f1f1f1"
+                        }
+                    }
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    axisLine:{
+                        lineStyle:{
+                            color:"#f1f1f1"
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: ['#f1f1f1']
+                        }
+                    }
+                }
+            ],
+            series : [
+                {
+                    name:'值',
+                    type:'bar',
+                    barWidth: '20%',
+                    data:data
+                }
+            ]
+        };
+        js_post.setOption(postoption);
+    }
+</script>
+<!--/数字动画-->
+<!--行业分布-->
+<script>
+    var myChart2 = echarts.init(document.getElementById('js_industry'));
+    option2 = {
+        color:["#46b5ac","#50b892","#8bbd6c","#d3bfff","#b595fd","#8c8ffc","#778ff7","#5e83e2","#03a0f2","#03b2eb","#01b7e5"],
+        textStyle:{
+            color:'#666'
+        },
+        borderColor:'#666',
+        title : {
+            text: '企业行业分布',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}:({d}%)"
+        },
+        legend: {
+            x : 'center',
+            y : 'bottom',
+            data:['rose1','rose2','rose3','rose4','rose5','rose6','rose7','rose8']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {
+                    show: true,
+                    type: ['pie', 'funnel']
+                },
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        series: [
+            {
+                type:'pie',
+                selectedMode: '',
+                radius: [0, '30%'],
+
+                label: {
+                    normal: {
+                        position: 'inner'
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                }
+            },
+            {
+                type:'pie',
+                radius: ['40%', '53%'],
+                name:'行业',
+                data:[
+                    {value:2038, name:'IT行业'},
+                    {value:1302, name:'餐饮/酒店/生活服务'},
+                    {value:1526, name:'房地产/建筑'},
+                    {value:1111, name:'广告/文化/传媒'},
+                    {value:175, name:'交通/运输/物流/快递'},
+                    {value:1462, name:'教育/培训/专业服务'},
+                    {value:217, name:'金融/银行'},
+                    {value:1253, name:'汽车/摩托车/机械制造'},
+                    {value:1774, name:'消费品'},
+                    {value:1055, name:'装饰/建材'},
+                    {value:1377, name:'综合行业'}
+                ]
+            }
+        ]/*
+        series : [
+            {
+                name:'行业',
+                type:'pie',
+                radius : [30, 100],
+                center : ['50%', '50%'],
+                roseType : 'area',
+                data:[
+                    {value:42074, name:'餐饮/旅游/酒店/生活服务'},
+                    {value:52635, name:'房地产/建筑/物业/装饰'},
+                    {value:19769, name:'广告/文化/传媒'},
+                    {value:36103, name:'互联网/软件/计算机硬件'},
+                    {value:21592, name:'教育/培训/专业服务'},
+                    {value:12315, name:'金融'},
+                    {value:31516, name:'进出口/物流/其他行业'},
+                    {value:7569, name:'其他'},
+                    {value:32340, name:'机械制造/汽车/摩托车'},
+                    {value:35832, name:'消费品'},
+                    {value:13773, name:'医药/医疗'}
+                ]
+            }
+        ]*/
+    };
+
+    myChart2.setOption(option2);
+</script>
+<!--地区分布-->
+<script>
+    var js_area = echarts.init(document.getElementById('js_area'));
+    areaoption = {
+        color:["#50b892","#8bbd6c","#d3bfff","#b595fd","#8c8ffc","#778ff7","#5e83e2","#03a0f2","#03b2eb","#466db5"],
+        textStyle:{
+            color:'#666'
+        },
+        borderColor:'#666',
+        title : {
+            text: '企业地区分布',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} :({d}%)"
+        },
+        legend: {
+            x : 'center',
+            y : 'bottom',
+            data:['rose1','rose2','rose3','rose4','rose5','rose6','rose7','rose8']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {
+                    show: true,
+                    type: ['pie', 'funnel']
+                },
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        series: [
+            {
+                type:'pie',
+                selectedMode: '',
+                radius: [0, '30%'],
+
+                label: {
+                    normal: {
+                        position: 'inner'
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                }
+            },
+            {
+                type:'pie',
+                radius: ['40%', '53%'],
+                name:'地区',
+                data:[
+                    {value:1324, name:'渝中区'},
+                    {value:1833, name:'江北区'},
+                    {value:1679, name:'九龙坡'},
+                    {value:816, name:'沙坪坝区'},
+                    {value:1431, name:'南岸区'},
+                    {value:211, name:'大渡口区'},
+                    {value:2347, name:'渝北区'},
+                    {value:270, name:'巴南区'},
+                    {value:223, name:'北碚区'},
+                    {value:530, name:'两江新区'},
+                    {value:545, name:'永川区'}
+                ]
+            }
+        ]/*
+        series : [
+            {
+                name:'地区',
+                type:'pie',
+                radius : [30, 100],
+                center : ['50%', '50%'],
+                roseType : 'area',
+                data:[
+                    {value:31162, name:'渝中区'},
+                    {value:38857, name:'江北区'},
+                    {value:39909, name:'九龙坡'},
+                    {value:24482, name:'沙坪坝区'},
+                    {value:28958, name:'南岸区'},
+                    {value:4851, name:'大渡口区'},
+                    {value:41846, name:'渝北区'},
+                    {value:7182, name:'巴南区'},
+                    {value:5338, name:'北碚区'},
+                    {value:14784, name:'两江新区'}
+                ]
+            }
+        ]*/
+    };
+    js_area.setOption(areaoption);
+</script>
+<!--求职者学历分布-->
+<script>
+    var js_position = echarts.init(document.getElementById('js_position'));
+    positionoption = {
+        color:["#af79ff","#8c79ff","#6088f7","#729ffa","#83bdff","#e79eff","#e79eff","#ff95ba"],
+        textStyle:{
+            color:'#666'
+        },
+        lineStyle:{
+            color:'#666'
+        },
+        title : {
+            text: '求职者学历分布',
+            x:'center',
+            borderColor:'#666'
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}:({d}%)"
+        },
+        series: [
+            {
+                type:'pie',
+                selectedMode: '',
+                radius: [0, '30%'],
+
+                label: {
+                    normal: {
+                        position: 'inner'
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                }
+            },
+            {
+                type:'pie',
+                radius: ['40%', '53%'],
+                name:'学历',
+                data:[
+                    {value:96538, name:'本科'},
+                    {value:190, name:'博士'},
+                    {value:19080, name:'初中'},
+                    {value:147499, name:'大专'},
+                    {value:54690, name:'高中'},
+                    {value:3690, name:'硕士'},
+                    {value:52868, name:'中技/中专'}
+                ]
+            }
+        ]
+    };
+
+    js_position.setOption(positionoption);
+</script>
+<!--求职者年龄分布-->
+<script>
+    var js_age = echarts.init(document.getElementById('js_age'));
+
+    ageoption ={
+        color:["#af79ff","#8c79ff","#6088f7","#729ffa","#83bdff"],
+        textStyle:{
+            color:'#666'
+        },
+        borderColor:'#666',
+        title : {
+            text: '求职者年龄分布',
+            x:'center'
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: ({d}%)"
+        },
+        series: [
+            {
+                type:'pie',
+                selectedMode: '',
+                radius: [0, '30%'],
+
+                label: {
+                    normal: {
+                        position: 'inner'
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                }
+            },
+            {
+                type:'pie',
+                radius: ['40%', '53%'],
+                name:'年龄',
+                data:[
+                    {value:126175, name:'20到25岁'},
+                    {value:3984, name:'20岁以下'},
+                    {value:135913, name:'25到30岁'},
+                    {value:95650, name:'30到45岁'},
+                    {value:18699, name:'45以上'}
+                ]
+            }
+        ]
+    };
+    js_age.setOption(ageoption);
+</script>
+</body>
+</html>

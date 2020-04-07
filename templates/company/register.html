@@ -1,0 +1,1619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>汇博网_企业注册</title>
+<meta name="description" content="汇博网为企业提供网络招聘、现场招聘、校园招聘、招聘外包和HR培训等在内的全方位的人力资源服务,根据企业的不同需求提供不同的招聘服务，帮助企业轻松、高效招聘人才。" />
+<!--[if lt IE9] -->
+<script type="text/javascript" language="javascript" src="{/version file='html5.js'/}"></script>
+<!-- [endif] -->
+
+<!--公共-->
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+    window.CONFIG = {
+        HOST: '{/$siteurl.style/}',
+        COMBOPATH: '/js/v2/'
+    }
+</script>
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="common.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="dialog.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="jquery.form.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_validate.js"/}"></script>
+
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript">
+	hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<!--/-->
+<!--以前的-->
+<link rel="stylesheet" type="text/css" href="{/version file='v2-reset.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='v2-icons.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='v2-widge.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='v2-job.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='v2-header.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='index.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='newindex.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='new_step.css'/}" />
+    <style>
+        footer{border: 0;margin: 0}
+        .fm100{width:auto; height:154px;overflow:hidden; background:url({/$siteurl.style/}/img/fm100.jpg) center top no-repeat;}
+        /*=====首页banner图=====*/
+        .home_bannerBg{width:auto; height:121px; background:url({/$siteurl.style/}/img/salary_img/banner_hms02.png) repeat-x;}
+        .homeban_mg{width:1019px; overflow:hidden; position:relative; margin:0 auto;}
+        .home_bannerBg .banBg{ display:block; width:1000px; height:121px; background:url({/$siteurl.style/}/img/salary_img/banner_hms01_new.png) no-repeat; float:left;}
+        .ban_close{ display:block;width:9px; height:9px; background:url({/$siteurl.style/}/img/salary_img/ban_close.png) no-repeat; float:right; margin:10px 0 0 0;}
+        .ban_close:hover{filter:alpha(opacity=60);-moz-opacity:0.6;opacity: 0.6;}
+        /*新版首页样式*/
+        .popzSuspend{ z-index:1000;width:285px;  position:fixed;_position:absolute;  top:50%; right:50%; margin:80px -500px 0 0;*+text-align:left;}
+        .popzSpd{ padding:10px 20px;background:#fff; overflow:hidden; border:1px solid #ececec;width:240px; position:fixed;_position:absolute;  bottom:179px; right:50%; margin:0px -500px 0 0;  *+text-align:left; display:none; z-index:1000; display:none;}
+        .popzSpd p{ display:block;}
+        .popzSpd p img,.popzSpd p span{ display:inline-block; vertical-align:middle; color:#255b77; font-size:16px;}
+        .popzBode{ margin-top:15px;}
+        .popzBode img,.popzBode em{ display:inline-block; vertical-align:middle;}
+        .popzBode em{ height:100px; border-right:1px solid #ccc; margin:0 15px 0 15px;_margin:0 15px 0 0px;*+margin:0 12px 0 12px;}
+        .popzLink{width:39px; overflow:hidden; float:right; height:200px;_position:absolute;_right:0;position:fixed;_position:absolute;  bottom:140px; right:50%; margin:0px -548px 0 0;  *+text-align:left;}
+        .popzLink a{ display:block; margin-bottom:5px;  }
+        .popzLink .popzL{color:#fff; text-decoration:none; background:#999;text-align:center; padding:6px 0;}
+        /*.popzLink .popzOrange{ background:#f98700;}*/
+        .popzLink .backTop{height:40px; line-height: 40px;color:#fff;background:#999;text-align:center;font-size:20px;width:39px}
+        .popzLink .backTop:hover{background: #ccc}
+        .hbTopBanner{ display:block; width:auto; height:154px; background:url({/$siteurl.style/}/img/hbTopBanner.jpg) center top;}
+        .hbFang{ display:block; float:right;width:402px; height:68px;background:url({/$siteurl.style/}/img/hbfang.png) no-repeat;}
+        .topLogobg{width:377px; height:68px; background:url({/$siteurl.style/}/img/hbtopbannerx.jpg) no-repeat; overflow:hidden; float:right;}
+        .topLogobg a{ display:block;width:47px; height:18px; background:#ff6563; font-family:"宋体"; font-size:12px; color:#fff; line-height:18px; text-align:center; border-radius:4px; float:right; margin:41px 0 0 0;}
+        .topLogobg a:hover{ background:#ff8684;}
+
+        .popuLyMain{width:100%; overflow:hidden; text-align:center;height:30px; position:absolute; top:147px; left:0px;}
+        .popuLyMain ul{ overflow:hidden;}
+        .popuLyMain ul li{ height:30px;font-size:14px; font-family:"微软雅黑"; color:#fff;}
+        .popuLyMain ul li img{display:inline-block; vertical-align:middle;}
+        .popuLyMain ul li b{ font-size:14px; font-weight:bold; display:inline-block; vertical-align:middle;}
+        .popuLyMain ul li a{font-size:14px;color:#fff; font-size:14px;display:inline-block; vertical-align:middle; overflow:hidden; color:#3dffd3; text-decoration:none; padding:0 5px;}
+        .popuLyMain ul li a:hover{text-decoration: underline;}
+        input.focus{ background:none; border:none;box-shadow:none;}
+        .newSchtx.focus{ height:32px; line-height:32px;}
+
+        /*新改版样式*/
+        .newHeadArea{ float:left; position:relative; z-index:10; text-align:left;}
+        .newAreaTit span,.newAreaTit a{ display:inline-block; vertical-align:middle; line-height:40px;}
+        .newAreaTit span{ color:#666; font-size:14px; font-weight:bold;padding-right:20px;}
+        .newAreaTit a{ padding-right:8px; color:#666; }
+        .newAreaTit a:hover{ color:#0af;}
+        .newAreaTit a.areaMore{width:38px; padding-right:0px;}
+        .newAreaTit a.areaMore i{ display:inline-block; vertical-align:middle;width:9px; height:5px; background:url({/$siteurl.style/}/img/index/areaIcon.png) 0 -9px no-repeat; margin-left:5px;}
+        .newAreaTit a.areaMore:hover i{ background-position:-9px 0px;}
+        .newAreaTitMore{width:350px;#width:368px;overflow:hidden; border:1px solid #e7e7e7; background:#fff; position:absolute; top:-1px;left:41px; *left:45px;text-align:left; display:none;}
+        .newAreaTithover{ margin-left:10px;}
+        .newAreaTithover a{ line-height:39px;}
+        .newAreaTitx{ overflow:hidden; margin:-5px 0 8px 10px;#margin:-5px 0 8px 10px;}
+        .newAreaTitx a{ display:inline-block; vertical-align:middle; padding-right:8px; color:#666; line-height:24px;}
+        .newAreaTitx a:hover{ color:#0af;}
+        .newAreaTit a.areaMorehov{ color:#0af;}
+        .newAreaTit a.areaMorehov i{ background-position:-9px 0px;}
+        .newjobArea{ background:url({/$siteurl.style/}/img/index/posthot.png) left center no-repeat #f5f5f5;}
+        .newjobArea div{ float:left; padding-left:160px;}
+        .jobAreaTab{ margin:16px 0 0 160px;}
+        .jobAreaTab tr td a{ line-height:24px; color:#666; font-size:14px; font-family:"微软雅黑";}
+        .jobAreaTab tr td a:hover{ color:#0af;}
+        .newBannerbtm li .subBannerMsg{ position:absolute;width:119px;  height:30px; background:#00b9bf; color:#fff; line-height:30px; text-align:center; margin-left:-1px;#margin-left:-59px; display:none;}
+        .newBannerbtm li:hover .subBannerMsg{ display:block;}
+
+        .rec{ background:none; border:1px solid #e6e6e6; height:132px;}
+        .rec .bd{ margin:0px; height:132px;width:998px;}
+        .rec .bd .flex-direction-nav a{width:34px; height:132px; background:url({/$siteurl.style/}/img/index/postprev.png) -1px -1px no-repeat; text-indent:-9999em;}
+        .rec .bd .flex-direction-nav a:hover{ background:url({/$siteurl.style/}/img/index/postprev.png) -73px -1px no-repeat;}
+        .rec .bd .flex-viewport{ height:132px; width:931px; margin-left:34px;}
+        .rec .bd .lst{width:998px;}
+        .rec .bd .lst ul.slides{ height:132px;}
+        .rec .bd .lst ul.slides li{float:left;height:132px; overflow:hidden; border-right:1px solid #e6e6e6;width:132px;}
+        .rec .bd .lst ul.slides li a{display:block;overflow: hidden;position: relative;width:112px;height:112px; padding:10px;}
+        .rec .bd .lst ul.slides li .line{ height:132px;}
+        .rec .bd .flex-direction-nav .flex-next{width:33px; height:132px; background:url({/$siteurl.style/}/img/index/postprev.png) -37px -1px no-repeat; text-indent:-9999em;}
+        .rec .bd .flex-direction-nav .flex-next:hover{ background:url({/$siteurl.style/}/img/index/postprev.png) -109px -1px no-repeat; }
+        .rec .bd .flexslider .slides > li{display:block;}
+        .njmNameflx{width:112px; height:112px;}
+        .njmNameflx p img{ max-width:112px; max-height:112px;}
+        .subBanflx{width:132px; height:132px; display:block; top:132px; background:url({/$siteurl.style/}/img/index/bannerImgflx.png) no-repeat;}
+        .subBanflx h2{width:114px; text-align:center;}
+        .subBanflx span{width:114px; height:74px;}
+
+        /*==导航修改20150716==*/
+        .newheadSch{ #height:93px;}
+        .posJobSort{ min-height:480px; overflow:hidden;}
+        .posJobSort .l{width:700px; margin-left:10px; float:none; margin-top:15px;_height:1px;overflow:hidden;_overflow:visible}
+        .posJobSort .r{width:700px; margin-left:10px; float:none; _height:1px;overflow:hidden;_overflow:visible}
+        .posJobSort .row{
+            _height:1px;overflow:hidden;_overflow:visible;
+            margin-top:10px;
+        }
+        .posJobSort dl{width:700px; overflow:hidden; padding:6px 0 0 0; border-top:1px dashed #ddd;margin:-1px auto 0 auto;}
+        .posJobSort dl dt{width:95px; padding-right:12px; height:18px; line-height:18px; padding-left:0px; border-right:1px solid #ddd; float:left; text-align:right; height:20px; line-height:20px; margin-top:5px;}
+        .posJobSort dl dd{width:570px; padding-left:0px; float:left;}
+        .posJobSort dl dd a{ padding:0 0 0 15px; display:inline-block; white-space: inherit; line-height:30px;}
+        .posBox{ left:239px;}
+        .posJobSort{width:740px;}
+        .posBox{ border:1px solid #fe5a58;}
+        .posJobSort .sideBanner{ margin-bottom:0px;}
+        .subBanner h2{ font-size:14px;margin:17px auto 8px auto;}
+        .subBannerNull h2{ margin:0 auto; height:117px; line-height:117px;}
+        .subBanflxNull{ background:url({/$siteurl.style/}/img/it/bannerImgflxnull.png) no-repeat;}
+        .subBanflxNull h2{ margin:0 auto; height:132px; line-height:132px;}
+        .slidesPage a{box-shadow:0px 0px 8px #fff; border:1px solid #e0e0e0;}
+        .subBanner span{ line-height:19px;}
+        .fair .bd .txt p em.txtIcon03{ height:17px;}
+        .lgAft ul li.user img{width:23px;height: 23px;margin-top: 3px}
+        .lgAft ul li{height:30px; line-height: 30px}
+        .newHeadtop,.newheadMage{height: 30px}
+        .newAreaTit span, .newAreaTit a,.newAreaTithover a{line-height: 30px}
+        .login_reg{margin-top: 0px}
+        #sus{display: none}
+
+        .tips-intro{width:350px; overflow:hidden; position:absolute; top: 40px; left: 200px; z-index: 9999;display: none;}
+        .tips-intro img{ display:block; }
+        .tips-intro div{width:348px; overflow:hidden; border:1px solid #ffd905; border-top:none; background:#fff;}
+        .tips-intro div p{ display:block; color:#666; line-height:24px; padding:10px;}
+
+        .switch-area{ float:left;width:135px; margin-top:36px; position:relative; z-index:5;}
+        .switch-area span.city-area{ display:block; float:left; color:#167ccc; font-size:16px; line-height:26px; width:46px; padding-right:8px; text-align:right;font-family: "微软雅黑"}
+        .switch-area a.area-btn{ display:block; float:right;width:78px; height:24px; line-height:24px;border:1px solid #d2d2d2; text-indent:5px; text-align:left; color:#666;}
+        .switch-area a.area-btn i{ display:inline-block;vertical-align: middle;width:9px;height: 5px;
+            background: url({/$siteurl.style/}/img/index/areaIcon.png) 0 -9px no-repeat; margin-left:10px}
+        .switch-area a.area-btn-cut i{background: url({/$siteurl.style/}/img/index/areaIcon.png) -9px -9px no-repeat;}
+        .city-area-list{width:268px; overflow:hidden; border:1px solid #ccc; background:#fff;position:absolute; top:25px; left:55px; display:none;}
+        .city-area-list div{ overflow:hidden; padding:5px 0 5px 8px; text-align:left; }
+        .city-area-list div a{ display:inline-block; padding-right:8px; line-height:24px; color:#666;}
+        .city-area-list div a:hover{ color:#167ccc;}
+
+        .newLogo{width:255px; position:relative; z-index:5}
+        .newLogo a{width:191px; height:42px; background:url({/$siteurl.style/}/img/country/logo.png) no-repeat;}
+        .newLogo span{width:61px; height:42px; background:url({/$siteurl.style/}/img/country/logo.png) -191px 0 no-repeat;}
+
+        div.newWelcom {float: left;line-height: 30px;color:#999;}
+
+        .sub-famous{width:358px;overflow:hidden;z-index:10; position:absolute; display:none; }
+        .hotjob-famous li:hover a,.keynote .bd ul li:hover a{ color:#167ccc}
+        .hotjob-famous li a:visited {color: #800080}
+        .sub-famous .famous-img01{ display:block; margin-left:20px; position:absolute;}
+        .sub-famous-main{width:340px; overflow:hidden; background:#fff; border:1px solid #ccc; margin-top:7px; border-radius:4px; padding: 8px;}
+        .min-banner-3{ padding-bottom:10px; #padding-bottom:0px;}
+        .famous-img02{ display:block; float:left; margin:5px; border:1px solid #fafafa;}
+        .sub-famous-main div{width:240px; float:right; margin-right:5px; overflow:hidden;}
+        .sub-famous-main div a.sub-name{ display:block; color:#167ccc; font-size:14px;}
+        .sub-famous-main div p{ color:#666; line-height:18px; font-size:12px; white-space: normal;}
+        .sub-famous-main div p.sub-txt{ padding:5px 0px;}
+        .sub-famous-main div p a{ font-size:12px; color:#167ccc; display:inline-block; padding:0 3px;}
+
+        #recommendCompanies li .sub-famous-main div a{color:#167ccc}
+
+        .newNavbg div a{ padding:0 12px;}
+        .newNavbg div a.headhunNew{ padding-right:28px;background:url({/$siteurl.style/}/img/newindex/new.png) 80px 4px no-repeat;}
+        .newNavbg div a.headhunNew:hover{background:url({/$siteurl.style/}/img/newindex/new.png) 80px 4px no-repeat #fe5a58;}
+        .keynote .bd ul li{width:150px}
+
+        /*弹窗样式*/
+        .new-sign-pop{ text-align:left; padding:0px 18px 28px 18px;width:508px; overflow:hidden; background:#fff; margin:0 auto; font-family:"微软雅黑";}
+        .new-sign-pop-company-ver{ text-align:left; padding:0px 18px 28px 18px;overflow:hidden; background:#fff;font-family:"微软雅黑";}
+        .new-sign-tit{height:48px; color:#444; line-height:48px; border-bottom:1px dashed #e9e8e8; font-size:16px;}
+        .new-sign-tab tr th{ color:#999; text-indent:15px;font-size: 14px}
+        .new-sign-tab tr td{ text-indent:15px; color:#444; overflow:hidden;font-size: 14px}
+        .new-sign-tab tr td em{ color:#ff4141;}
+        .new-sign-tab tr.gray td{ background:#fafafa;}
+        .new-sign-char{ display:block; color:#999; font-size:12px; padding:12px 0 16px 0; text-indent:15px;}
+        .new-sign-btnx{overflow:hidden;font-size: 14px}
+        .new-sign-btnx a.sub-btn{ display:block;width:140px; height:40px; line-height:40px; text-align:center; color:#fff; background:#66bce4; border-radius:2px; float:left; margin-left:15px;font-size: 16px}
+        .new-sign-btnx span{ display:block; float:right; color:#999; line-height:40px;margin-right:15px}
+        .new-sign-btnx span a{ color:#4e92c4; padding-left:2px;}
+
+        .new-sign-popx{padding:15px 0 0 0; padding-bottom:0px; overflow:hidden;text-align:left; font-family:"微软雅黑";font-size:14px}
+        .new-sign-popx li{ color:#444; padding-bottom:20px;}
+        .new-sign-popx .name{display:block;margin-left: 70px}
+        .new-sign-popx li .dtit{display: inline-block;width:70px;text-align: right}
+        .new-sign-popx li input{ display:inline-block; vertical-align:middle;width:240px; height:34px; border:1px solid #cfcfcf; text-indent:10px; background:none;line-height: 34px;font-size:14px}
+        .new-sign-popx li a.present,.new-sign-popx li a.gray{width:120px; height:30px; background:#66bce4; color:#fff; text-align:center; line-height:30px; display:inline-block; margin-right:36px;border-radius:2px;}
+        .new-sign-popx li a.gray{ color:#999; background:#f0f0f0;margin-left:30px;margin-right:0px}
+        .new-sign-popx li a.code-btn{ display:inline-block;padding:0 15px;height:26px; border:1px solid #58cbe0; background:#58cbe0; vertical-align:middle; margin-left:20px;  #margin-left:51px;text-align:center; line-height:24px; color:#fff;}
+        .new-sign-popx li.gray2{ color:#999;}
+        .new-sign-popx li a.orange{ color:#ed7f5a; text-decoration:underline;}
+		.new-sign-pop-dialog .new-sign-pop{width:auto;}
+        .new-sign-tab tr td a{ display:inline-block;width:78px; height:26px; border:1px solid #22a2df; text-align:center; line-height:26px; text-indent:0px; border-radius:2px;font-size: 12px}
+		.pact-dialog .ui_dialog_container{padding:20px;line-height:20px;}
+		.formText label.txtLabel{top:6px}
+        .selednew {  position: relative;  z-index: 1;  height: 20px;  line-height: 20px;  display: inline-block;  *display: inline;  zoom: 1;  margin: 7px 5px 0 5px;  background: #e4f5fd;  padding: 0 5px 0 5px;  font-size: 12px;  border: 1px solid #c0dff4;  float: left;  *float: none;  *vertical-align: middle;  }
+
+    </style>
+</head>
+<body>
+    {/include file='./company/company_head.html'/}
+<section class="content step-content" id="content">
+<div class="step-tit"><a href="{/$siteurl.company/}/login" class="login">登录</a>	<i class="icon-write"></i>请填写以下资料</div>
+<form id="formReg" action="{/$siteurl.company/}/register/Post/" method="post">
+      <input type="hidden" name="from" value="new_register"/>
+      	<div class="reg cReg">
+    	<div class="regL">        	
+            <div class="box">
+            	<p class="tit"><u></u><i></i>公司信息</p>
+                <div class="regForm">
+                    <div class="formMod">
+                    	<span class="name">公司名称<font>*</font></span>
+                        <span class="formText">
+                        	<input type="text" id="txtCompanyName" name="txtCompanyName" style="width:370px;" class="text" /> 
+                        </span>
+                        <span class="tipPos">
+                            <span class="tipLay" data-for="txtCompanyName"> 
+                            </span>
+                        </span>
+                        <div class="clear"></div>
+                    </div>
+                    
+                    <div class="formMod addressMod">
+                        <!--<a id="area" name="area"></a>-->
+                        <div class="l" style="margin-right:0px">所在地区<font style="margin:0 10px;color:red">*</font></div>
+                        <div class="r">
+                        	 <!--
+                             <span class="formText zIndex" id="curarea">
+                             </span>
+                             -->
+                             <div class="formText" id="curarea"></div>
+                            <span class="tipPos">
+                                <span class="tipLay" data-for="hidArea"></span>
+                            </span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    
+                    <div class="formMod">
+                        <div class="l" style="margin-right:0px">所处主行业<font style="margin:0 10px;color:red">*</font></div>
+                        <div class="r">
+                            <span id="newCalling" class="drop formText JobIndDrop zIndex" style="width: 250px; border-color: rgb(208, 203, 203); height: 34px; z-index: 999;">
+                                <span>
+                                    <div class="dropSet"><b class="hbFntWes dropIco"></b><span id="addMainCalling"></span>
+                                        <input class="text JobCay" type="text" style="border: 0;height: 25px;line-height: 25px;width: 3px;padding: 0 1px;float: left;">
+                                    </div>
+                                </span>
+                                <input name="main_calling" id="main_calling" value="" style="position:absolute;left:-9999px;top:0;" type="text">
+                            </span>
+                            <span class="tipPos">
+                                <span class="tipLay" data-for="main_calling"></span>
+                            </span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="formMod">
+                    	<span class="name">联系人<font>*</font></span>
+                        <span class="formText">
+                        	<input type="text" id="txtLinkman" name="txtLinkman" style="width:170px;" class="text" />
+                        </span>
+                        <span class="tipPos">
+                            <span class="tipLay" data-for="txtLinkman">
+                            </span>
+                        </span>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="formMod">
+                    	<span class="name">固定电话&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="formText">
+                        	<!--<label for="txtZoneNo" class="txtLabel none">区号</label>--><input type="text" id="txtZoneNo" maxlength="4" value="023" name="txtZoneNo" style="width:50px;" class="text" placeHolder="区号" />
+                        </span>
+                        <span class="tipTxt">&nbsp;</span>
+                        <span class="formText">
+                        	<!--<label for="txtPhoneNo" class="txtLabel">固定电话</label>--><input type="text" id="txtPhoneNo" maxlength="11" name="txtPhoneNo" style="width:158px;" class="text" placeHolder="固定电话" /> 
+                        </span>
+                        <span class="tipTxt">&nbsp;</span>
+                        <span class="formText" id="spanExtNo">
+                        	<!--<label for="txtExtNo" class="txtLabel">分机号</label>--><input type="text" id="txtExtNo" maxlength="6" name="txtExtNo" style="width:50px;" class="text" placeHolder="分机号" /> 
+                        </span>
+                        <span class="tipPos" >
+                            <span class="tipLay" data-for="zoneNo">
+                            </span>
+                        </span>
+                        <div class="clear"></div>
+                    </div>
+                    
+                    <div class="formMod">
+                    	<span class="name">手机号码<font>*</font></span>
+                        <span class="formText">
+                        	<!--<label for="txtMobilePhone" class="txtLabel">请填写手机号码</label>--><input type="text" id="txtMobilePhone" name="txtMobilePhone" style="width:230px;" class="text" placeHolder="请填写手机号码" /> 
+                        </span>
+                        <span class="tipPos">
+                            <span class="tipLay" data-for="txtMobilePhone">
+                            </span>
+                        </span>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="formMod">
+                        <div class="clearfix">
+                            <p class="addTel" style="height: 36px;line-height: 36px;text-align: left; position: relative;width:700px; margin-left: 215px">
+                                <input type="text" name="authCode" id="authCode" style="display:block;text-indent:5px;width: 126px; float: left; height: 36px; line-height: 36px; border:1px solid #cfcfcf; color: #333; font-size: 15px;" value="" placeholder="请输入短信验证码">
+                                <input type="hidden" id="vali_code_count" value="1" />    
+                                <span class="authCodex" style="display:block;float:left;height:36px;line-height:36px;background:#64bce4;padding: 0px 12px;color: #fff;border-radius: 4px;margin-right: 15px; font-size: 15px; margin-left: 15px; cursor: pointer">获取验证码</span>
+                                <span class="authCodetipLay" data-for="authCode">
+                            </span>
+                            </p>
+                        </div>
+                    </div>
+                        
+                    <p class="tit" style="margin-top: 50px"><u style="width:72%"></u><i></i>帐户信息（用于登录汇博网）</p>
+                    <div class="formMod">  
+                    	<span class="name">用户名<font>*</font></span>                  	
+                        <span class="formText">
+                        	<input type="text" id="txtUserID" name="txtUserID" style="width:310px;" class="text" /> 
+                        </span>
+                        <span class="tipPos">
+                            <span class="tipLay" data-for="txtUserID">
+                            </span>
+                        </span>
+                        <div class="clear"></div>
+                    </div>
+                    
+                    <div class="formMod">
+                    	<span class="name">创建密码<font>*</font></span>
+                        <span class="formText"><input type="password" id="txtPassword" name="txtPassword" style="width:310px;" class="text" /></span>
+                        <span class="tipPos">
+                            <span class="tipLay" data-for="txtPassword">
+                            </span>
+                        </span>
+                        <span style="clear:both;width:100%;margin:0 0 0 215px;display:none" id="pwdTipTxt" class="tipTxt">密码强度：<em class="red">弱</em></span>
+                        <div class="clear"></div>
+                    </div>
+                    
+                    <div class="formMod">
+                    	<span class="name">确认密码<font>*</font></span>
+                        <span class="formText"><input type="password" id="txtVerifyPassword" name="txtVerifyPassword" style="width:310px;" class="text" /></span>
+                        <span class="tipPos">
+                            <span class="tipLay" data-for="txtVerifyPassword">
+                            </span>
+                        </span>
+                        <div class="clear"></div>
+                    </div>
+                    {/if empty($flagkey)/}
+                    <div class="formMod" id="PromotionArea" style="display: none;">
+                    	<span class="name">注册推荐码<font>&nbsp;</font></span>
+                        <span class="formText"><input type="text" id="promotion_code" placeholder="请输入邀请码（选填）" name="code" style="width:310px;" class="text" /></span>
+                        <span class="tipPos">
+                            <span class="tipLay" >
+                            </span>
+                        </span>
+                        <div class="clear"></div>
+                    </div>
+                    {//if/}
+                    {/if $_catcha_code == "open"/}
+                        <div class="formMod">
+                            <input type="hidden" name="hidSeed" value="{/$seed/}" />
+                            <span class="name">验证码<font>*</font></span>
+                            <span class="formText">
+                                <input type="text"  placeholder="验证码" style="display:inline-block;vertical-align:middle;width:100px;" id="txtCatcha" name="txtCatcha" class="text" data-seed="{/$seed/}"/><img id="imgCode" src="{/get_url rule="/register/verify/" domain="company" data="seed={/$seed/}"/}" style="display:inline-block;vertical-align:middle;margin:0 10px;"/><a id="btnCode" href="javascript:void(0)" style="display:inline-block;vertical-align:middle;">换一换</a>
+                            </span>
+                            <div class="clear"></div>
+                            <p style="color:#666;font-weight:bold;margin-top:5px;font-size:12px;display:none">验证码请输入颜色相同的4个字符</p>
+                        </div>
+                    {//if/}
+                    <input type="hidden" name="hidSiteType" value="" />
+                    <div class="prot">点击下一步即表示您同意<a href="javascript:void(0)" id="btnPact">《汇博企业会员注册协议》</a></div>
+                    <div class="formBtn" style="padding:10px 0 30px 0"><a href="javascript:void(0)" id="btnRegister" class="btn1 btnsF16">下一步</a></div>
+                </div>
+            </div>
+        </div>
+     </div>
+</form>
+    <!--start：非company站点，不共用-->
+</section>
+{/include file="footer.html"/}
+    <!--END-->
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?fb51309e47424acd6e31c0bd2a65a5a1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<div class="protTxt" id="divPact" style="display:none;">
+	<p class="strong">www.huibo.com所提供的各项服务的所有权和经营权归重庆聚焦人才有限公司所有。</p>
+    <p>招聘单位、信息发布商（统称注册公司）和求职者，三方行为必须接受本协议条款的制约；若您不接受本协议的条款，请勿使用本网站，否则后果自负。该协议一经接受立即生效。</p>
+    <dl>
+        <dt>1.信息的发布</dt>
+        <dd>
+            <p>不得发布任何违反有关法律规定、社会道德的信息； 不得发布任何与本网站求职、招聘目的不相适的信息； 不得发布任何不完整、虚假的信息； 用户对所发布的信息的真实性、正确性及其产生的后果承担完全责任。</p>
+        </dd>
+    </dl>
+    <dl>
+        <dt>2.信息的使用</dt>
+        <dd>
+            <p>招聘单位仅可就本单位招聘目的使用求职者的简历信息，禁止使用本网站进行中介代招； 求职者仅可因应聘某职位，使用招聘单位发布的招聘信息； 本网站提供的其它信息，仅与其相应内容有关的目的而被使用；</p>
+            <p>不得将任何本网站的信息用作任何商业目的。 任何用户不得通过打印、下载、拷贝或其他方式再造其他用户的可辨认的信息。未经特定用户同意的上述任何操作都被严格禁止。</p>
+        </dd>
+    </dl>
+    <dl>
+        <dt>3.信息的公开</dt>
+        <dd>
+            <p>在本网站所登录的任何信息，均有可能被任何本网站的访问者浏览，也可能被错误使用。本网站对此将不予承担任何责任。</p>
+        </dd>
+    </dl>
+    <dl>
+        <dt>4.信息的准确性</dt>
+        <dd>
+            <p>任何在本网站发布的信息，均必须符合合法、准确、及时、完整、真实的原则。但本网站将不能保证所有由第三方提供的信息，或本网站自行采集的信息完全准确。使用者了解，对这些信息的使用，需要经过进一步核实。本网站对访问者未经自行核实误用本网站信息造成的任何损失不予承担任何责任。</p>
+        </dd>
+    </dl>
+    <dl>
+        <dt>5.信息更改与删除</dt>
+        <dd>
+            <p>除了信息的发布者外，任何访问者不得更改或删除他人发布的任何信息。本网站有权根据其判断保留修改或删除任何不适信息之权利。</p>
+        </dd>
+    </dl>
+    <dl>
+        <dt>6.版权、商标权</dt>
+        <dd>
+            <p>本网站的图形、图像、文字、声音、相片及其程序，广告中的全部内容、电子邮件的全部内容等，均属www.huibo.com的版权，受商标法及相关知识产权法律保护。未经www.huibo.com书面许可，任何人不得下载、复制、再使用。在本网发布信息之商标，归其相应的商标所有权人，受商标法保护。</p>
+        </dd>
+    </dl>
+    <dl>
+        <dt>7、注册信息使用</dt>
+        <dd>
+            <p>注册会员所提供的个人资料将会被www.huibo.com统计、汇总，在我们的严格管理下，为www.huibo.com的广告商及合作者提供依据。 为了提供更完善的服务，www.huibo.com会不定期地通过注册会员留下的电子邮箱和电话号码同该会员保持联系。同时，我们会定期发送电子贺卡、资讯或电子杂志给注册会员。</p>
+            <p>www.huibo.com承诺：在未经访问者授权同意的情况下，www.huibo.com不会将访问者的个人资料泄露给第三方。但以下情况除外。</p>
+            <p class="indent">1) 根据执法单位之要求或为公共之目的向相关单位提供个人资料； </p>
+            <p class="indent">2) 由于您将用户密码告知他人或与他人共享注册帐户，由此导致的任何个人资料泄露；</p>
+            <p class="indent">3) 由于黑客攻击、计算机病毒侵入或发作、因政府管制而造成的暂时性关闭等影响网络正常经营之不可抗力而造成的个人资料泄露、丢失、被盗用或被窜改等；</p>
+            <p class="indent">4) 由于与www.huibo.com链接的其它网站所造成之个人资料泄露及由此而导致的任何法律争议和后果；律争议和后果；</p>
+            <p class="indent">5) 为免除访问者在生命、身体或财产方面之急迫危险。</p>
+        </dd>
+    </dl>
+    <dl>
+        <dt>8.自责</dt>
+        <dd>
+            <p>所有使用本网站的用户，对使用本网站信息和在本网站发布信息的被使用，承担完全责任。 用户必须同意独自承担由于登录www.huibo.com或通过www.huibo.com登录到其他站点而形成的全部风险。</p>
+            <p>所有用户独立承担与他人交流信息及发送应聘/招聘意向所造成的后果。本公司不担保用户发送给另一方用户的资料的真实性、精确性与可靠性。用户对所接受的资料的信任纯属个人风险。</p>
+            <p>www.huibo.com一经发现任何有违反本协议或侵犯法律的行为，有权马上解除该用户的会员资格及禁止其再次登录本网站。 www.huibo.com保留删除一切非法的、辱骂性的及不健康的资料的权力。</p>
+        </dd>
+    </dl>
+    <dl>
+        <dt>9.服务终止</dt>
+        <dd>
+            <p>本网站有权在预先通知或不予通知的情况下终止任何免费服务。</p>
+        </dd>
+    </dl>
+    <dl>
+        <dt>10.争议处理</dt>
+        <dd>
+            <p>本网站因正常的系统维护、系统升级，或者因网络拥塞而导致网站不能访问，本网站不承担任何责任。 </p>
+            <p>本协议服从中华人民共和国法律解释；用户与www.huibo.com双方都必须遵守中华人民共和国的司法管辖。如发生本协议相关条款与中华人民共和国法律相抵触时，则该条款将按相关法律重新解释，而其他条款则依旧保持对用户产生法律效力和影响。</p>
+        </dd>
+    </dl>
+    <dl>
+        <dt>11.免责条款</dt>
+        <dd>
+            <p>本网并无随时监视此网址，但保留对其实施实时监视的权利。对于他方输入的，不是本网发布的材料，本网概不负任何法律责任。应聘信息发布方必须对其存入简历中心的个人简历及材料的格式、内容的准确性和合法性独立承担一切法律责任。招聘信息的发布方对其在职位数据库公布的材料独立承担一切法律责任。 本网不保证对某一种职位描述会有一定数目的使用者来浏览，也不保证会有一位特定的使用者来浏览。对于其他网址链接在本网址的内容，本网概不负法律责任。 </p>
+        </dd>
+    </dl>
+	<dl>
+		    <dt>12.责任承担</dt>
+		    <dd>
+		        <p>您理解并同意，您应承担您企业账号下所有活动产生的全部责任。</p>
+	<p>您使用汇博网产品或服务时将遵从国家、地方法律法规、行业惯例和社会公共道德；不会利用汇博网提供的服务进行存储、发布、传播如下信息和内容：违反国家法律法规政策的任何内容（信息）；违反国家规定的政治宣传和/或新闻信息；涉及国家秘密和/或安全的信息；封建迷信和/或淫秽、色情、下流的信息或教唆犯罪的信息；博彩有奖、赌博游戏；违反国家民族和宗教政策的信息；妨碍互联网运行安全的信息；侵害他人合法权益的信息和/或其他有损于社会秩序、社会治安、公共道德的信息或内容;您同时承诺不得为他人发布上述不符合国家规定和/或本服务条款约定的信息内容提供任何便利，包括但不限于设置URL、BANNER链接等;</p>
+	<p>当存在如下情形之一时，汇博网有权对您名下帐号进行冻结：（1）国家法律、法规、政策、法律文书的规定；（2）国家有权机关要求进行冻结的；（3）您使用汇博网服务的行为涉嫌违反国家法律法规及行政规定的；（4）当您的帐号操作、信息读取等存在异常时；（5）您遭到他人投诉，且对方已经提供了一定证据的；（6）当您的账号操作可能产生风险的其他情况。</p>
+	<p>汇博网按照前述规定对您的帐号进行冻结后，将通过邮件、站内信、短信或电话等方式通知您按照相应的程序进行申诉。如果您按要求进行申诉并经汇博网审核通过的，汇博网将立即解除帐号冻结措施；如果您未在规定时间内进行申请，或您的申诉未能通过汇博网审核的，则您确认汇博网有权长期冻结。</p>
+		    </dd>
+		</dl>
+</div>
+
+<script type="text/javascript">
+var callingdialog = null;
+//hbjs.use('@hbCommon, @jobDialog, @validator, @areaDrop, @confirmBox, @areaSimple', function(m){
+hbjs.use('@hbCommon, @jobDialog, @validator, @areaDrop, @confirmBox, @areaDrop', function(m){	
+	//var $ = m['product.hbCommon'].extend(m['cqjob.jobDialog'],m['cqjob.areaSimple']);
+	var $ = m['product.hbCommon'].extend(m['cqjob.jobDialog']);
+	var Dialog = m['widge.overlay.hbDialog'];
+	var AreaDrop = m['product.areaDrop'];
+	var validatorForm = m['widge.validator.form'];
+
+	$('input.text').placeHolder();
+
+    $('#newCalling').on('click',function(){
+        callingdialog = new Dialog({
+            idName: 'apply_job',
+            title: '选择主行业',
+            content: '/company/selectCalling/type-1',
+            isOverflow: true,
+            close:'╳',
+            isAjax : true,
+            width:'710px'
+        });
+        callingdialog.show();
+    });
+    $('#btnSortClose').on('click',function(){
+        callingdialog.hide();
+    });
+
+	$("#btnCode").on("click", function() {
+		$(this).prev('img').attr('src', '{/$siteurl.company/}/register/verify?seed={/$seed/}&r='+Math.random());
+		return false;
+	});
+    var promotionAreaList = [{/$promotion['area_ids']/}];
+    var isAreaInit = true;
+	
+	var areaDrop = new AreaDrop({
+		container: $('#curarea'),
+		hidName: 'hidArea',
+		zIndex: 99999
+	});
+
+	areaDrop.on('updateData', function(e){
+		var area_id = this.getValue();
+		if(!area_id){
+			return;
+		}
+        area_id = area_id.substr(0,4);
+		var promotionCalling = [55];
+		var thisCalling = $("#main_calling").val();
+		var stop = false,
+			thisProArea;
+        //成都地区只判断
+        var area_id_str2 = area_id.substr(0,2);
+        if(area_id_str2 != '03'){
+            for(var i = 0; i < promotionAreaList.length; i++){
+                thisProArea = promotionAreaList[i].toString();
+                area_id = area_id.toString();
+
+                if(stop){
+                    break;
+                }
+                if(thisProArea == area_id){
+                    $('#PromotionArea').show();
+                    stop = true;
+                    break;
+                } else {
+                    $('#promotion_code').val('');
+                    $('#PromotionArea').hide();
+                }
+            }
+        }else{
+            for(var i = 0; i < promotionAreaList.length; i++){
+                thisProArea = promotionAreaList[i].toString();
+                area_id = area_id.toString();
+
+                if(stop){
+                    break;
+                }
+
+                for(var j = 0; j < promotionCalling.length; j++){
+                    if(thisProArea == area_id || promotionCalling[j] == thisCalling){
+                        $('#PromotionArea').show();
+                        stop = true;
+                        break;
+                    } else {
+                        $('#promotion_code').val('');
+                        $('#PromotionArea').hide();
+                    }
+                }
+            }
+        }
+
+		
+		if(e.data.length && !isAreaInit){
+			checkAddress(1);
+		}
+	});
+	areaDrop.on('selectedItem', function(e){
+		isAreaInit = false;
+		formValidator.checkElement(this._hiddenElement);
+	});
+	
+	function getAlertMessage(message){
+		return '<span class="tipLayErr tipw120">' + message +'<span class="tipArr"></span></span>';
+	}
+
+  
+    
+    
+    function coundown(){
+        var seconds=$('.authCodeGray').find('b').text();
+        seconds = parseInt(seconds);
+        if(seconds > 0){
+            seconds--;
+            $('.authCodeGray').find('b').text(seconds);
+        }else{
+            window.clearInterval(interval);
+            $('.authCodex').removeClass('authCodeGray').text('获取验证码');
+        }
+    }
+    
+	function checkAddress(origin){
+		var curarea = areaDrop.get('container'),
+			promptElement = curarea.next().find('.tipLay'),
+			//cityElement = curarea.find('.city'),
+			//countyElement = curarea.find('.county[value="市"]'),
+			//lastElement = curarea.find('.county[value="区/县"]');
+			cityElement = areaDrop._provinceInput,
+			countyElement = areaDrop._cityInput,
+			lastElement = areaDrop._areaInput;
+		
+		if(!areaDrop._selectedAreas[0]){
+			promptElement.html(getAlertMessage('请选择省份或直辖市'));
+			return false;
+		}
+		
+		if(!areaDrop.isProvince()){
+			if(!areaDrop._selectedAreas[1]){
+				promptElement.html(getAlertMessage('请选择城市'));
+				return false;
+			}
+		}
+		if(!areaDrop._selectedAreas[2]){
+			promptElement.html(getAlertMessage('请选择区县'));
+			return false;
+		}
+		
+		//看区县上一级是否隐藏
+		if(origin == 1){
+			if(areaDrop._tradingareaElement.css('display') == 'none'){
+				return true;
+			} else {
+				if(!areaDrop._selectedAreas[3]){
+					promptElement.html(getAlertMessage('请选择街道'));
+                    return false;
+				}
+			}
+		} 
+		
+		return true;
+    }
+	
+	/*
+	$('#curarea').singleArea({
+		hddName:'hidArea',
+		showLevel: 4,
+		onSelect:function(a){
+			isAreaInit = false;
+            formValidator.checkElement($('#hidArea'));
+    	},
+		onData: function(e){
+            var area_id = $('#curarea').find('input[name=hidArea]').val();
+            var promotionCalling = [{/$promotion['calling_ids']/}];
+            var thisCalling = $("#main_calling").val();
+            var stop = false;
+            for(var i = 0 ; i < promotionAreaList.length ; i++ ){
+                var thisProArea = promotionAreaList[i].toString();
+                var area_id = area_id.toString();
+                if(stop){
+                    break;
+                }
+                for(var j = 0 ; j < promotionCalling.length ; j ++){
+                    if(thisProArea == area_id || promotionCalling[j] == thisCalling){
+                        $('#PromotionArea').show();
+                        stop = true;break;
+                    }else{
+                        $('#promotion_code').val('');
+                        $('#PromotionArea').hide();
+                    }
+                }
+
+            }
+
+			if(e.length && !isAreaInit){
+				checkAddress(1);
+			}
+		}
+	});
+	*/
+	
+    /**
+     * 街道验证
+     * @returns boolean
+     */
+	/*
+	function getAlertMessage(message){
+		return '<span class="tipLayErr tipw120">' + message +'<span class="tipArr"></span></span>';
+	}
+	 
+    function checkAddress(origin){
+		
+		var curarea = $('#curarea'),
+			promptElement = curarea.next().find('.tipLay'),
+			cityElement = curarea.find('.city'),
+			countyElement = curarea.find('.county[value="市"]'),
+			lastElement = curarea.find('.county[value="区/县"]');
+        if(cityElement.hasClass('textGray')){
+            promptElement.html(getAlertMessage('请选择城市'));
+            return false;
+        }
+        if(countyElement.hasClass('textGray')){
+            promptElement.html(getAlertMessage('请选择区县'));
+            return false;
+        }
+        */
+        //看区县上一级是否隐藏
+        //console.log($('.county[value="区/县"]').parent().css('display'));
+		/*
+        if(origin == 1) {
+            if (lastElement.parent().css('display') == 'none') {
+                return true;
+            } else {
+                if (lastElement.hasClass('textGray')) {
+                    promptElement.html(getAlertMessage('请选择街道'));
+                    return false;
+                }
+            }
+        } else {
+            //地区选择只验证到第二级
+            return true;
+        }
+
+        return true;
+    }
+	*/
+    
+	var speed;
+	var lis;
+	var divtop;
+	var height;
+	var nav_today;
+	var timer;
+	
+	var validRules = {
+		txtCompanyName:{
+			required:true,
+			range:[6,40]
+		},main_calling:{
+			required:true
+//			range:[1,10]
+		},
+		txtLinkman:{
+			required:true,
+			range: [1, 10]
+		},
+		/*
+		txtZoneNo:{
+			inputRegValiZone:'^[0-9]{3}[0-9]?$'
+		},
+		txtPhoneNo:{
+			required:true,match:'^[0-9]{6,8}$'
+		},
+		txtExtNo:{
+			number:true
+		},
+		txtMobilePhone: 'mobile',
+		*/
+		txtUserID:{
+			required:true,
+			range: [3, 30],
+			match: /^[A-Za-z0-9_]*$/,
+			remote: {
+				url: '/company/checkUserName/',
+				type: 'post',
+				dataType: 'json',
+				data: { txtUserID: function(){
+					return $("#txtUserID").val()
+				}},
+				callback: function(json) {
+					return json && json.state;
+				}
+			}
+		},
+		txtPassword:{
+			required:true,
+			range:[6, 18]
+		},
+        txtMobilePhone: 'mobile',
+		txtVerifyPassword:{
+			required:true, 
+			range:[6, 18],
+			equalTo:"#txtPassword"
+		},
+        hidArea:{required:true}
+	};
+	
+	
+	
+	var validErrorMsg = {
+		txtCompanyName:{
+			required:'<span class="tipLayErr tipw200">请输入贵公司营业执照上的公司名称<span class="tipArr"></span></span>',
+			range:'<span class="tipLayErr tipw120">6-40个字组成<span class="tipArr"></span></span>'
+		},
+        main_calling:{
+			required:'<span class="tipLayErr tipw200">请选择贵公司的主行业<span class="tipArr"></span></span>'
+//			range:'<span class="tipLayErr tipw120">请选择贵公司的主行业<span class="tipArr"></span></span>'
+		},
+		txtLinkman:{
+			required:'<span class="tipLayErr tipw120">请填写联系人<span class="tipArr"></span></span>',
+			range:'<span class="tipLayErr tipw120">1-10位汉字组成<span class="tipArr"></span></span>'
+		},
+		/*
+		txtZoneNo:{inputRegValiZone:'请填写正确的区号<span class="tipArr"></span>'},
+		txtPhoneNo:{required:'请填写联系电话<span class="tipArr"></span>',match:'请输入6-8位的数字<span class="tipArr"></span>'},
+		txtExtNo:{number:'分机号码为数字<span class="tipArr"></span>'},
+		txtMobilePhone:{inputRegValiMobile:'请填写正确的手机号码<span class="tipArr"></span>'},
+		*/
+		//txtMobilePhone:'<span class="tipLayErr tipw180">请填写正确的手机号码<span class="tipArr"></span></span>',
+		txtUserID:{
+			required:'<span class="tipLayErr tipw120">请填写用户名<span class="tipArr"></span></span>',
+			range:'<span class="tipLayErr tipw120">用户名3-30位字符<span class="tipArr"></span></span>',
+			match:'<span class="tipLayErr tipw180">用户名为字母、数字组成<span class="tipArr"></span></span>',
+			remote:'<span class="tipLayErr tipw180">该用户名已被注册，请更换<span class="tipArr"></span></span>'
+		},
+		txtPassword:{
+			required:'<span class="tipLayErr tipw120">请填写密码<span class="tipArr"></span></span>',
+			range:'<span class="tipLayErr tipw220">密码为6-18位数字+字母组合<span class="tipArr"></span></span>'
+		},
+		txtVerifyPassword:{
+			required:'<span class="tipLayErr tipw120">请确认密码<span class="tipArr"></span></span>',
+			range:'<span class="tipLayErr tipw220">密码为6-18位数字+字母组合<span class="tipArr"></span></span>',
+			equalTo:'<span class="tipLayErr tipw120">两次密码不一致<span class="tipArr"></span></span>'
+		},
+        hidArea:{required:'<span class="tipLayErr tipw120">请选择公司地区<span class="tipArr"></span></span>'}
+	};
+	
+	var tipMsg = {
+		txtCompanyName:'<span class="tipLayTxt tipw200">请与贵公司营业执照注册名保持一致<span class="tipArr"></span></span>',
+        main_calling:'<span class="tipLayTxt tipw200">请选择贵公司所处主行业<span class="tipArr"></span></span>',
+		txtLinkman:'<span class="tipLayTxt tipw120">1-10位汉字组成<span class="tipArr"></span></span>',
+		txtUserID:'<span class="tipLayTxt tipw200">3-30位字符字母、数字组成<span class="tipArr"></span></span>',
+		txtMobilePhone:'<span class="tipLayTxt tipw180">手机号码11位数字组成<span class="tipArr"></span></span>',
+		txtPassword:'<span class="tipLayTxt tipw220">密码为6-18位数字+字母组合<span class="tipArr"></span></span>',
+		txtVerifyPassword:'<span class="tipLayTxt tipw220">密码为6-18位数字+字母组合<span class="tipArr"></span></span>'
+	}
+	
+	var zoneNoRules = {
+		txtZoneNo:{
+			match: /^[0-9]{3}[0-9]?$/
+		},
+		txtPhoneNo:{
+			match: /^[0-9]{6,8}$/
+		},
+		txtExtNo: 'number'
+	};
+	var zoneNoErrorMsg = {
+		txtZoneNo:{match:'<span class="tipLayErr tipw120">请输入正确的区号</span>'},
+		txtPhoneNo:{match: '<span class="tipLayErr tipw120">请输入6-8位的数字</span>'},
+		txtExtNo:'<span class="tipLayErr tipw120">分机号码为数字</span>'
+	};
+	var zoneNoRules1 = {
+		txtZoneNo:{
+			match: /^(\s*|[0-9]{3}[0-9]?)$/
+		},
+		txtPhoneNo:{
+			match: /^(\s*|[0-9]{6,8})$/
+		},
+		txtExtNo: 'number'
+	}
+	var zoneNoGroup = {zoneNo: 'txtZoneNo txtPhoneNo txtExtNo'};
+	var zoneNoName = 'zoneNo';
+	
+	var mobileRules = {
+		txtMobilePhone: 'mobile'
+	};
+	var mobileRules1 = {
+		txtMobilePhone: {match: /^(13[0-9]{9,9}|18[0-9]{9,9}|15[0-9]{9,9}|16[0-9]{9,9}|17[0-9]{9,9}|19[0-9]{9,9}|14[0-9]{9,9})$/}
+	};
+	var mobileErrorMsg = {
+		txtMobilePhone:'<span class="tipLayErr tipw180">请填写正确的手机号码<span class="tipArr"></span></span>'
+	};
+	
+	var formValidator = new validatorForm({
+		element: $('#formReg'),
+		rules: validRules,
+		errorMessages: validErrorMsg,
+		//keepBlur: 'zone_infor phone_infor ext_infor',
+		keepKey: true,
+		errorElement: 'span'
+	});
+	
+	orMobile(false);
+	function orMobile(f){
+		formValidator.removeGroup(zoneNoName);
+		formValidator.removeRules('txtMobilePhone');
+		if(f){
+			formValidator.addRules(zoneNoRules);
+			formValidator.addErrorMessages(zoneNoErrorMsg);
+			formValidator.addGroup(zoneNoGroup);
+			formValidator.addRules(mobileRules);
+			formValidator.addErrorMessages(mobileErrorMsg);
+		} else {
+			formValidator.addRules(zoneNoRules1);
+			formValidator.addErrorMessages(zoneNoErrorMsg);
+			formValidator.addGroup(zoneNoGroup);
+			formValidator.addRules(mobileRules1);
+			formValidator.addErrorMessages(mobileErrorMsg);
+		}
+	}
+
+
+	//密码验证规则
+	var regErrMessage;
+	function inputRegValiPwd(element, param){
+		var value = element.val(),
+			userName = (param['user'] && param['user'].val()) || '',
+			patten = new RegExp('^[0-9]+$'),
+			numReg = /^(\d)\1+$/;
+			
+		if(userName == value){
+			regErrMessage = "<span class='tipLayErr tipw120'>密码和用户名不能相同<span class='tipArr'></span></span>";
+			return false;
+		} 
+	
+                var pwd_reg_length = /^\w{6,18}$/; 
+                var pwd_reg_1      = /[0-9]+/;
+                var pwd_reg_2      = /[a-zA-Z]+/;
+                var pwd_reg_3      = /([\w])\1{3,}/;
+                var pwd_reg_4      = /[^\w]/;
+
+                if(!pwd_reg_length.test(value) || pwd_reg_4.test(value)){
+                    regErrMessage = "<span class='tipLayErr tipw220'>密码为6-18位数字+字母组合<span class='tipArr'></span></span>";
+                    return false;
+                }
+                if(!pwd_reg_1.test(value) || !pwd_reg_2.test(value)){
+                    regErrMessage = "<span class='tipLayErr tipw220'>密码为数字+字母组合<span class='tipArr'></span></span>";
+                    return false; //密码为数字、字母、下划线组合 
+                }
+                if(pwd_reg_3.test(value)){
+                    regErrMessage = "<span class='tipLayErr tipw220'>单个字符不能连续重复4次及以上<span class='tipArr'></span></span>";
+                    return false;//密码不能重复4个或以上字符
+                }
+                
+		return true;
+	}
+	
+	formValidator.addMethod('inputRegValiPwd', inputRegValiPwd, function(){
+		return regErrMessage;
+	});
+	formValidator.addRules(
+		'txtPassword', {
+			inputRegValiPwd: {
+				user: $('#txtUserID')
+			}
+		}
+	);
+	
+	var errorClass = 'input_error';
+	formValidator.on('focus', function(e){
+		if(e.name == 'txtZoneNo' || e.name == 'txtPhoneNo' || e.name == 'txtExtNo'){
+			e.target && e.target.removeClass(errorClass);
+		}
+		if(tipMsg[e.name]){
+			e.label.html(tipMsg[e.name]);
+		}
+	});
+	formValidator.on('invalid', function(e){
+		if(e.name === 'txtMobilePhone'){
+			orMobile(false);
+		}
+		if(e.name == 'txtZoneNo' || e.name == 'txtPhoneNo' || e.name == 'txtExtNo'){
+			e.target && e.target.addClass(errorClass);
+		}
+	});
+	formValidator.on('pass', function(e){
+		if(e.name === 'txtMobilePhone' && $.trim(e.target.val())){
+			orMobile(false);
+		}
+//		if(e.name == 'txtZoneNo' || e.name == 'txtPhoneNo' || e.name == 'txtExtNo'){
+//			e.target && e.target.removeClass(errorClass);
+//		}
+	});
+	
+	var register = {
+		formRegValid:null,
+		intervalPwd: null,	
+		init:function(){
+
+			//协议
+			var pactDialog;
+			$('#btnPact').click(function(){
+				if(!pactDialog){
+					pactDialog = new Dialog({
+						idName: 'pact-dialog',
+						width: 1000,
+						content: $('#divPact').html(),
+						close: 'x',
+						title: '注册协议'
+					});
+					$('#divPact').remove();
+				}
+				pactDialog.show();
+				//$.showModal('#divPact',{ contentType: 'selector',showMask: true, dw: "600", title: '注册协议'});
+			});
+            $('#txtCompanyName').blur(function(){
+                //失去焦点判断
+                if($('#txtCompanyName').val().length > 20 || $('#txtCompanyName').val().length < 6){
+                    return false;
+                }
+                // 匹配相似企业
+                companyIme();
+            });
+			//提交
+			$('#btnRegister').click(function(){
+				formValidator.submit(function(){
+					registerCompanyDO();
+				});
+			});
+			//密码强度计算
+			$('#txtPassword').keyup(function(){
+				register.pwdDynamic();
+			});
+		},
+		successCallback:function(json){
+			if (json && json.error) {
+				$.message(json.error,{ icon: 'warning' });
+				if (json.vcodeerr) {
+					$("#txtCatcha").focus();
+					$("#txtCatcha").val('');
+					$("#btnCode").click();
+				}
+				return;
+			}
+			$.anchorMsg(json.successMsg);
+				window.location.href ='/index/';//直接跳转到企业首页 sx 7.20
+			},
+		pwdStrong:function(pwd){
+			//密码强度计算
+			var modes =0,pwd_len =pwd.length,i=0,codeTemp;
+			for(i;i<pwd_len;i++){
+				codeTemp = pwd.charCodeAt(i);
+				if(codeTemp>=48 && codeTemp<=75){
+					modes |=1;
+				}
+				else if(codeTemp>65&&codeTemp<=90){
+					modes |=2;
+				}
+				else if(codeTemp>97 && codeTemp<122){
+					modes |=4;
+				}
+				else{
+					modes |=8;
+				}
+			}
+			var modeNum=0;
+			for(i=0;i<4;i++){
+				if(modes & 1) modeNum++;
+				modes >>>= 1;
+			}
+			return modeNum;
+		},
+		pwdDynamic:function(){
+			var password  = $('#txtPassword').val()
+				,strongBox = $('#pwdTipTxt')
+				,fn = this;
+	
+			if(password == ''){
+				strongBox.hide();
+				return;
+			}
+	
+			strongBox.show();
+	
+			var modeNum = register.pwdStrong(password);
+			
+			if(modeNum <=1){
+				$(strongBox).find('em').removeClass().addClass('red').html('弱');
+			}
+			else if(modeNum == 2){
+				if(password.length<6){
+					$(strongBox).find('em').removeClass().addClass('red').html('弱');
+				}
+				else{
+					$(strongBox).find('em').removeClass().addClass('orange').html('中');
+				}
+			}
+			else if(modeNum >2){
+				if(password.length<6){
+					$(strongBox).find('em').removeClass().addClass('red').html('弱');
+				}
+				else if(password.length > 6 && password.length<10){
+					$(strongBox).find('em').removeClass().addClass('orange').html('中');
+				}
+				else{
+					$(strongBox).find('em').removeClass().addClass('green').html('强');
+				}
+			}
+		}	
+	};
+	register.init();
+
+    //企业认领弹窗
+	var registerDialog;
+	function showRegisterDialog(registerContent){
+		if(!registerDialog){
+			registerDialog = new Dialog({
+				idName: 'new-sign-pop-dialog',
+				width: 650,
+				close: 'x'
+			});
+            //不需要！
+		}
+		registerDialog.query('#registerCompanyBtn').off('click');
+		registerDialog.query('.new-sign-tab').off('click');
+		registerDialog.setContent(registerContent);
+		registerDialog.query('#registerCompanyBtn').on('click', function(){
+			//registerCompanyDO();
+            registerDialog.hide();
+
+		});
+		registerDialog.query('.new-sign-tab').on('click', '.companyVer', function(e){
+			//弹出企业认领窗口
+            var target = $(e.currentTarget);
+            registerDialog.hide();
+            if(target.attr('data-phone') == '*****'){
+                //无手机号，直接弹申诉
+                companyRepresentOrigin = 'list';
+                showCompanyRepresentationsDialog(getComapnyRepresentationsHtml(target.attr('data-id'),$(target.parent().prev().prev().prev()).text()));
+            }else{
+                showCompanyVerDialog(getCompanyVerHtml($(target.parent().prev().prev().prev()).text(),$(target.parent().prev()).text(),target.attr('data-id')));
+            }
+
+		});
+		registerDialog.show();
+	}
+
+    //企业认领详情弹窗
+    var companyVerDialog;
+    function showCompanyVerDialog(content)
+    {
+        if(!companyVerDialog){
+            companyVerDialog = new Dialog({
+                idName: 'new-sign-pop-dialog2',
+                width:400,
+                close: 'x',
+                title:"认领企业"
+            });
+            companyVerDialog.on('closeX', function(){
+                companyVerDialog.hide();
+                registerDialog.show();
+            });
+        }
+        companyVerDialog.query('#getVerfyCode').off('click');
+        companyVerDialog.query('#companyVerCommit').off('click');
+        companyVerDialog.query('#companyVerCancel').off('click');
+        companyVerDialog.query('#companyRepresentations').off('click');
+        companyVerDialog.setContent(content);
+        companyVerDialog.query('#getVerfyCode').on('click', function(e){
+            var target = $(e.currentTarget);
+            getVerifyCode( target.attr('data-id'));
+        });
+        companyVerDialog.query('#companyVerCommit').on('click', function(e){
+            var target = $(e.currentTarget);
+            companyVerCommit( target.attr('data-id'),$('#verify_code_user').val());
+        });
+        companyVerDialog.query('#companyVerCancel').on('click', function(){
+            companyVerDialog.hide();
+            registerDialog.show();
+        });
+        companyVerDialog.query('#companyRepresentations').on('click', function(e){
+            var target = $(e.currentTarget);
+            companyVerDialog.hide();
+            companyRepresentOrigin = 'company_ver';
+            showCompanyRepresentationsDialog(getComapnyRepresentationsHtml(target.attr('data-id'),target.attr('data-company-name')));
+        });
+
+        companyVerDialog.show();
+    }
+
+    //申诉弹窗
+    var companyRepresentOrigin = 'company_ver';//'company_ver' 企业认领窗口来的，'list'企业认领list窗口来的
+    var companyRepresentationsDialog;
+    function showCompanyRepresentationsDialog(content){
+        if(!companyRepresentationsDialog){
+            companyRepresentationsDialog = new Dialog({
+                idName: 'new-sign-pop-dialog2',
+                width: 438,
+                close: 'x',
+                title:"账户申诉"
+            });
+			companyRepresentationsDialog.on('closeX', function(){
+                companyRepresentationsDialog.hide();
+                if(companyRepresentOrigin == 'list'){
+                    registerDialog.show();
+                }else{
+                    companyVerDialog.show();
+                }
+			});
+        }
+        companyRepresentationsDialog.query('#companyRepresCommit').off('click');
+        companyRepresentationsDialog.query('#companyRepresCancel').off('click');
+        companyRepresentationsDialog.setContent(content);
+        companyRepresentationsDialog.query('#companyRepresCommit').on('click', function(e){
+            var target = $(e.currentTarget);
+            companyRepresentationsCommit(target.attr('data-id'),$('#companyRepresLinkPhone').val());
+        });
+         companyRepresentationsDialog.query('#companyRepresCancel').on('click', function(){
+             companyRepresentationsDialog.hide();
+             if(companyRepresentOrigin == 'list'){
+                 registerDialog.show();
+             }else{
+                 companyVerDialog.show();
+             }
+
+        });
+
+        companyRepresentationsDialog.show();
+    }
+
+
+    //输入公司名称判断相似企业逻辑
+    function companyIme()
+    {
+        //数据验证通过,检查是否需要企业认领流程
+        $.post('/company/AlikeCompanyNameByRegister',{company_name:$('#txtCompanyName').val()},function(res){
+            if(res.success){
+                if(res.aliketotal == 0){
+                    //直接注册,非ajax
+                    //document.getElementById("formReg").submit();
+                    //registerCompanyDO();
+                } else {
+                    //认领流程
+                    var head = [
+                        '<div class="new-sign-pop">',
+                        '<h2 class="new-sign-tit">您好！您注册的企业名称与以下企业名称相似</h2>',
+                        '<table class="new-sign-tab" width="610" border="0" cellspacing="0" cellpadding="0">',
+                        '<tr>',
+                        '<th width="175" height="40" align="left" valign="middle">公司名称</th>',
+                        '<th width="98" height="40" align="left" valign="middle">联系人</th>',
+                        '<th width="120" height="40" align="left" valign="middle">联系电话</th>',
+                        '<th height="40" align="left" valign="middle">&nbsp;</th>',
+                        '</tr>'
+                    ].join('');
+
+                    var end = [
+                        '</table>',
+                        '<span class="new-sign-char">以上企业都不是：</span>',
+                        '<div class="new-sign-btnx">',
+                        '<a id="registerCompanyBtn" href="javascript:;" class="sub-btn">继续注册</a><span>',
+                        '我有账户<a href="{/$siteurl.company/}/login">登录</a></span></div></div>'
+                    ].join('');
+                    var body = '';
+                    var tmp = '';
+                    var resLenth = res.alikeCompanyIDs.length;
+                    for(var i = 0;i < resLenth;i++){
+                    	var curClass = '<tr>';
+                    	if(i%2 == 0){
+                    		curClass = '<tr class="gray">';
+                    	}
+                        if(res.alikeCompanyIDs[i]['is_dispaly']){
+                            if(res.alikeCompanyIDs[i]['link_mobile_old'] == '*****'){
+                                tmp = [curClass,
+                                    '<td width="300" height="48" align="left" valign="middle" style="text-indent:0px;padding-left:15px">'+ res.alikeCompanyIDs[i]['company_name'] +'</td>',
+                                    '<td width="98" height="48" align="left" valign="middle">'+ res.alikeCompanyIDs[i]['linkman'] +'</td>',
+                                    '<td width="120" height="48" align="left" valign="middle">'+ res.alikeCompanyIDs[i]['link_mobile'] +'</td>',
+                                    '<td height="48" align="left" valign="middle" style="padding-right:10px"><a data-phone="'+ res.alikeCompanyIDs[i]['link_mobile_old'] +'" data-id="' + res.alikeCompanyIDs[i]['company_id'] + '" class="companyVer" href="javascript:">申述</a></td>',
+                                    '</tr>'
+                                ].join('');
+                            }else{
+                                tmp = [curClass,
+                                    '<td width="300" height="48" align="left" valign="middle" style="text-indent:0px;padding-left:15px">'+ res.alikeCompanyIDs[i]['company_name'] +'</td>',
+                                    '<td width="98" height="48" align="left" valign="middle">'+ res.alikeCompanyIDs[i]['linkman'] +'</td>',
+                                    '<td width="120" height="48" align="left" valign="middle">'+ res.alikeCompanyIDs[i]['link_mobile'] +'</td>',
+                                    '<td height="48" align="left" valign="middle" style="padding-right:10px"><a data-phone="'+ res.alikeCompanyIDs[i]['link_mobile_old'] +'" data-id="' + res.alikeCompanyIDs[i]['company_id'] + '" class="companyVer" href="javascript:">认领企业</a></td>',
+                                    '</tr>'
+                                ].join('');
+                            }
+                        }
+                       else{
+                            tmp = [curClass,
+                                '<td width="300" height="48" align="left" valign="middle" style="text-indent:0px;padding-left:15px">'+ res.alikeCompanyIDs[i]['company_name'] +'</td>',
+                                '<td width="98" height="48" align="left" valign="middle">'+ res.alikeCompanyIDs[i]['linkman'] +'</td>',
+                                '<td width="120" height="48" align="left" valign="middle">'+ res.alikeCompanyIDs[i]['link_mobile'] +'</td>',
+                                '<td height="48" align="left" valign="middle" style="padding-right:10px"></td>',
+                                '</tr>'
+                            ].join('');
+                        }
+                        body = body +  tmp;
+                    }
+
+                    var str = head + body + end;
+                    showRegisterDialog(str);
+                }
+            }else{
+                console.log('params verify failed !');
+            }
+        },'json');
+    }
+
+    //执行注册
+    function registerCompanyDO(){
+        $.ajax({
+            type : "post",
+            async : false,
+            url :"{/$siteurl.company/}/register/Post",
+            cache : false,
+            dataType : "jsonp",
+            data:{from_newregister:'new_register',
+                txtCompanyName:$("#txtCompanyName").val(),
+                main_calling:$("#main_calling").val(),
+                txtLinkman:$("#txtLinkman").val(),
+                txtZoneNo:$("#txtZoneNo").val(),
+                txtPhoneNo:$("#txtPhoneNo").val(),
+                txtExtNo:$("#txtExtNo").val(),
+                txtMobilePhone:$("#txtMobilePhone").val(),
+                authCode:$("#authCode").val(),
+                txtUserID:$("#txtUserID").val(),
+                txtPassword:$("#txtPassword").val(),
+                txtVerifyPassword:$("#txtVerifyPassword").val(),
+                hidArea:$('input[name="hidArea"]').val(),
+                hidSiteType:'{/$site_type/}',
+                is_part:'{/$is_part/}',
+                from:'{/$from/}',
+                referer:'{/$referer/}',
+                code:$('input[name="code"]').val(),
+                flagkey:'{/$flagkey/}'
+                {/if $_catcha_code == "open"/}
+                ,
+                hidSeed:'{/$seed/}',
+                txtCatcha:$("#txtCatcha").val()
+                {//if/}
+        },
+            jsonp: "callbackparam",
+            success : function(json){
+                if(json.successMsg){
+                    //跳转第二部分完善资料
+                    $.anchorMsg(json.successMsg);
+                    setTimeout("window.location.href = '{/$siteurl.company/}/company/ImproveCompanyInfo';",2000);
+                } else {
+                    $.message(json.error,{title:'操作失败！'});
+                    if(json.vcodeerr) {
+                        $("#txtCatcha").focus();
+                        $("#txtCatcha").val('');
+                        $("#btnCode").click();
+                    }
+                }
+                return true;
+            },
+            error:function(e){
+                if (e && e.error) {
+                    //$.message(e.error,{ icon: 'warning' });
+                    $.message(e.error,{title:'操作失败！'});
+                    if(e.vcodeerr) {
+                        $("#txtCatcha").focus();
+                        $("#txtCatcha").val('');
+                        $("#btnCode").click();
+                    }
+                    return;
+                }else{
+                    $.message("注册失败",{title:'操作失败！'});
+                }
+            }
+        });
+    }
+
+    //获取企业认领弹窗html
+    function getCompanyVerHtml(company_name,phone,company_id)
+    {
+        var tmp_str  = [
+            '<div class="new-sign-pop-company-ver">',
+                '<ul class="new-sign-popx">',
+                    '<li style="padding-bottom:10px">',
+                        '<span class="dtit" style="float:left">公司名称：</span><span class="name">'+company_name,
+                    '</span></li>',
+                    '<li>',
+                        '<span class="dtit">联系电话：</span>'+ phone +'<a id="getVerfyCode" data-id="'+ company_id +'" href="javascript:;" class="code-btn">获取验证码</a>',
+                    '</li>',
+                    '<li>',
+                        '<span class="dtit">&nbsp;&nbsp;&nbsp;验证码：</span>',
+                        '<input id="verify_code_user" type="text" name="t" />',
+                    '</li>',
+                    '<li style="padding-bottom:10px">',
+                        '<a id="companyVerCommit" data-id="'+ company_id +'" href="javascript:;" class="present">提  交</a>',
+                        '<a id="companyVerCancel" href="javascript:;" class="gray">取  消</a>',
+                    '</li>',
+                    '<li class="gray2" style="padding-bottom:0px">',
+                        '如果联系电话不是您本人，请<a data-id="'+ company_id +'" data-company-name="'+ company_name +'" id="companyRepresentations" href="javascript:;" class="orange">申诉</a>',
+                    '</li>',
+                '</ul>',
+            '</div>'
+        ].join('');
+        return tmp_str;
+    }
+
+    var getVerifyCodeStatus = true;
+    function getVerifyCode(company_id)
+    {
+        if(!getVerifyCodeStatus){
+            return false;
+        }
+        if(!company_id){
+            $.message('企业ID不能为空',{ icon: 'warning' });
+            return false;
+        }
+        $.post('{/$siteurl.main/}/company/CompanyVerSmsSend',{company_id:company_id},function(res){
+                if(res.status){
+                    $.anchorMsg('短信已发送');
+                    //可再次获取验证码倒计时
+                   $('#getVerfyCode').attr('id','getVerfyCodeHave');
+                   $('#getVerfyCodeHave').removeAttr('href');
+                   $('#getVerfyCodeHave').text("120秒后可再次获取").css({"background":"#f0f0f0","color":"#a0a0a0","border":"1px solid #f0f0f0"});
+                    getVerifyCodeStatus = false;
+                    var t = 120;
+                    var a=setInterval(daojishi,1000);//1000毫秒
+                    function daojishi(){
+
+                        t--;
+                        if(t==0){
+                            clearInterval(a);
+                            //倒计时结束
+                            $('#getVerfyCodeHave').attr('id','getVerfyCode');
+                            $('#getVerfyCode').text('获取验证码').css({"background":"#58cbe0","color":"#fff","border":"1px solid #58cbe0"});
+                            $('#getVerfyCode').attr('href','javascript:;');
+                            getVerifyCodeStatus = true;
+                            return false;
+                        }
+                        //刷新时间显示
+                        $('#getVerfyCodeHave').text(t+"秒后可再次获取").css({"background":"#f0f0f0","color":"#a0a0a0","border":"1px solid #f0f0f0"}).removeAttr('href');
+                        $('#getVerfyCode').text(t+"秒后可再次获取").css({"background":"#f0f0f0","color":"#a0a0a0","border":"1px solid #f0f0f0"}).removeAttr('href');
+                    }
+
+
+                }else{
+                    $.message(res.message,{title:'操作失败！'});
+                }
+        },'json');
+    }
+
+    function companyVerCommit(company_id,verify_code)
+    {
+        if(!company_id){
+            $.message('企业ID不能为空',{ icon: 'warning' });
+            return false;
+        }
+        if(!verify_code){
+            $.message('请输入验证码',{ icon: 'warning' });
+            return false;
+        }
+        $.post('{/$siteurl.main/}/company/CompanyVerSmsVerDo',{company_id:company_id,verify_code:verify_code},function(res){
+            if(res.status){
+                $.anchorMsg('验证成功，已短信告知，请注意查收');
+                setTimeout('window.location.href = "{/$siteurl.company/}/login";',2000);
+            }else{
+                $.message(res.message,{title:'操作失败！'});
+            }
+        },'json');
+    }
+
+    //获取企业申诉弹窗html
+    function getComapnyRepresentationsHtml(company_id,company_name)
+    {
+        var tmp = [
+            '<div class="new-sign-pop-company-ver" style="width:400px;padding-bottom:0px">',
+                '<ul class="new-sign-popx" style="width:400px">',
+                    '<li>',
+                        '请填写以下信息进行申诉，如需帮助请致电：',
+                    '</li>',
+                    '<li>',
+                        '公司名称：'+company_name,
+                    '</li>',
+                    '<li>',
+                        '<span>联系电话：</span>',
+                        '<input id="companyRepresLinkPhone" type="text" name="t" />',
+                        '<p style="color:coral;font-size: 12px;padding: 5px 0">请保证【联系电话】能联系到您本人，客服人员会尽快联系您，处理申述。</p>',
+                    '</li>',
+                    '<li>',
+                        '<a id="companyRepresCommit" data-id="'+ company_id +'" href="javascript:;" class="present">提  交</a>',
+                        '<a id="companyRepresCancel" href="javascript:;" class="gray">取  消</a>',
+                    '</li>',
+                '</ul>',
+            '</div>'
+        ].join('');
+        return tmp;
+    }
+
+    function companyRepresentationsCommit(company_id,phone){
+        if(!company_id){
+            $.message('企业ID不能为空',{ icon: 'warning' });
+            return false;
+        }
+        if(!phone)
+        {
+            $.message('请输入联系电话',{ icon: 'warning' });
+            return false;
+        }
+
+        if(phone.length > 15 || phone.length < 8){
+            $.message('联系电话请输入8-15位',{ icon: 'warning' });
+            return false;
+        }
+
+        $.post('{/$siteurl.main/}/company/CompanyRespreations',{company_id:company_id,mobile:phone},function(res){
+            if(res.status){
+                $.anchorMsg('提交成功');
+                setTimeout(' window.location.href = "{/$siteurl.company/}/login";',2000);
+            }else{
+                $.message(res.message,{title:'操作失败！'});
+            }
+        },'json');
+    }
+});
+//修改行业
+function updateCalling(calling_id,calling_name,type, $){
+    if(type ==1) {
+        $("#addMainCalling").empty();
+        $("#main_calling").val(calling_id);
+        var area_id = $('#curarea').find('input[name=hidArea]').val();
+        var promotionAreaList = [{/$promotion['area_ids']/}];
+        var promotionCalling = [{/$promotion['calling_ids']/}];
+        var stop = false;
+        var thisArea_id = area_id.substr(0,2);
+        if(thisArea_id=='03'){
+            for(var i = 0 ; i < promotionAreaList.length ; i++ ) {
+                var thisProArea = promotionAreaList[i].toString();
+                var area_id = area_id.toString();
+                if (stop) {
+                    break;
+                }
+                for (var j = 0; j < promotionCalling.length; j++) {
+                    if (promotionCalling[j] == calling_id || thisProArea == area_id) {
+                        $('#PromotionArea').show();stop=true;
+                        break;
+                    } else {
+                        $('#promotion_code').val('');
+                        $('#PromotionArea').hide();
+                    }
+                }
+            }
+        }
+
+        var h = "<span class='selednew'>" + calling_name + "</span>"
+        $("#addMainCalling").html(h);
+        callingdialog.hide();
+    }
+}
+
+
+    function coundownV2(){
+        var seconds=$('.authCodeGray').find('b').text();
+        seconds = parseInt(seconds);
+        if(seconds > 0){
+            seconds--;
+            $('.authCodeGray').find('b').text(seconds);
+        }else{
+            window.clearInterval(interval);
+            $('.authCodex').removeClass('authCodeGray').text('获取验证码');
+        }
+    }
+    
+    //如果要用吕诃的方法 就放入 hbjs里面
+    $('.authCodex').click(function(){
+        var fn = this;
+    
+//        if($(this).hasClass("authCodeGray"))
+//            return;
+//        var txtUserPhone = $('#txtMobilePhone').val();
+//
+//        if(txtUserPhone == ''){
+//            $('.authCodetipLay').html(getAlertMessage("请输入手机号"));
+//            return;
+//        }else{
+//            $('.authCodetipLay').html('');
+//        }
+//        
+//        $.post('{/get_url rule="/company/SendAuthCode"/}', {mobile_phone : txtUserPhone}, function (data) {
+//            data = eval("("+data+")");
+//            if(data && !data.status){
+//                alert(data.msg);
+//                return false;
+//            }else{
+//                alert("发送成功");
+//                $('.authCodex').addClass('authCodeGray').html('<b>60</b>秒后重新获取验证码');
+//                interval = window.setInterval(coundown,1000);
+//            }
+//        });
+        
+        var vali_code_count = $('#vali_code_count').val();
+        var mobilePhone     = $('#txtMobilePhone').val();
+        if(mobilePhone !="" && /^[1]\d{10}$/.test(mobilePhone)){
+            $.post('/company/IsBossForbid', {txtMobile: mobilePhone,siet:'register'}, function (e) {
+                if (e.is_forbid) {
+                    $.message(e.msg, {title: '操作失败！'});
+                } else {
+                    $.showModal("{/get_url rule='/company/validate/'/}" + "txtMobile-" + mobilePhone + "-vali_code_count-" + vali_code_count, {title: '请输入验证码'});
+                }
+            }, 'json')
+        }
+        
+    });
+</script>
+</body>
+</html>

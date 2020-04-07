@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!–[if lt IE9]> 
+<script type="text/javascript" language="javascript" src="{/version file="html5.js"/}"></script>
+<![endif]–>
+<title>汇博兼职</title>
+<link href="{/version file="base.css"/}" rel="stylesheet" />
+<link href="{/version file="tJob_style.css"/}" rel="stylesheet" />
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+    HOST: '{/$siteurl.style/}',
+    COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript">
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+</head>
+<body class="tpartDgray">
+{/include file="part_header.html"/}
+<div class="app_banner">
+	<div class="app_butn">
+		<a href="javascript:void(0)" class="android"><i></i>Android下载</a>
+		<a href="javascript:void(0)" class="ios"><i></i></a>
+	</div>
+</div>
+<!--延用以前--->
+<footer class="footer">
+	<div class="footerNav"><a href="{/get_url rule='/about/' domain='main'/}" target="_blank">关于汇博</a>|<a href="{/get_url rule='/about/contact/' domain='main'/}" target="_blank">联系我们</a><!--|<a target="_blank" href="http://www.huibo.com/about/fee/">招聘服务</a>|<a target="_blank" href="http://www.huibo.com">帮助中心</a>-->|<a href="{/get_url rule='/zhaopin/qiye/emkr9733b98xzl6ak.html' domain='main'/}" target="_blank">诚聘英才</a>|<a href="{/get_url rule='/about/links/' domain='main'/}" target="_blank">友情链接</a><!--|<a target="_blank" href="http://www.huibo.com/about/sitemap/">网站地图</a>-->|<a href="{/get_url rule='/about/law/' domain='main'/}" target="_blank">法律声明</a>|<a href="{/get_url rule='/about/privacy/' domain='main'/}" target="_blank">隐私政策</a></div>
+    <div class="copyright">
+    	<p>&copy;2015&nbsp;汇博网&nbsp;版权所有&nbsp;&nbsp;|&nbsp;&nbsp;增值电信业务经营许可证：渝B2-20060063&nbsp;&nbsp;|&nbsp;&nbsp;人才中介服务许可证：渝中人社[2011]216号</p>
+    </div>
+</footer>
+<!--弹窗 宽度420-->
+<style>
+	.formMod .l{width:135px;font-size:14px;color:#666}
+	.formMod .r{width:380px}
+	.assicon label{display: inline-block;width:77px;height: 35px;background-color: #e6e6dc;color:#979691;float:left;margin-right: 2px;line-height: 35px;text-align: center;cursor: pointer}
+	.assicon label i{vertical-align: -2px;margin-right: 5px;font-size:18px}
+	.assicon label.first{border-radius: 5px 0 0 5px}
+	.assicon label.last{border-radius: 0 5px 5px 0}
+	.assicon label.cur1{background-color: #19bdb4;color:#fff}
+	.assicon label.cur2{background-color: #f29e16;color:#fff}
+	.assicon label.cur3{background-color: #fc7958;color:#fff}
+</style>
+<!--/弹窗-->
+</body>
+<script type="text/javascript">
+hbjs.use('widge.overlay.hbDialog', function (Dialog, $) {
+    /* 分享提示 */
+    var shareHTML = [
+        '<div style="text-align: center;padding:10px 0 20px 0">',
+            '<img src="{/$siteurl.style/}/img/part/two_dimension_window.jpg" style="width:98px;height: 98px;border:1px solid #d3d3d3;display: block;margin:10px auto" />直接下载到电脑安装<a href="{/$android_download/}" style="color:#e8912a;font-size:16px">下载到电脑</a>',
+        '</div>'
+    ].join('');
+
+    var shareDialog = new Dialog({
+        close: 'x',
+        idName: 'ui_company_share_dialog',
+        width: 350,
+        title: '请扫描下方二维码，直接下载',
+        content: shareHTML,
+        isAjax: true
+    });
+    
+    $(".android").on("click", function() {
+       shareDialog.show();
+    });
+});
+</script>
+</html>

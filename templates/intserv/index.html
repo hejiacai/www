@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>{/$title/}</title>
+	<link rel="stylesheet" type="text/css" href="{/version file='m_font_style.css'/}" />
+	<link rel="stylesheet" type="text/css" href="{/version file='base.css,v2-reset.css,v2-resume.css,v2-header.css,v2-widge.css,front.css,mobile.swiper.css,job.css,jobnew.css,mainPhoto.css,cpjobnew2018.css,leaveinfo.css,appeal.css'/}" />
+	<link rel="stylesheet" type="text/css" href="{/version file='hrserver.css'/}" />
+	<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='version.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='html5.js'/}"></script>
+	<!--<script type="text/javascript" language="javascript" src="{/version file='min.js'/}"></script>-->
+	<script type="text/javascript" language="javascript" src="{/version file='global.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='companyshow_rs.js'/}"></script>
+
+	<script type="text/javascript">
+		window.CONFIG = {
+			HOST: '{/$siteurl.style/}',
+			COMBOPATH: '/js/v2/'
+		}
+	</script>
+	<style>
+		
+	</style>
+</head>
+
+<body>
+	<input class="need" type="hidden" id="service_type" name="service_type" value="{/$service_type/}">
+	<input class="need" type="hidden" id="area_id" name="area_id" value="{/$area_id/}">
+	<input class="need" type="hidden" id="sourch_type" name="sourch_type" value="{/$sourch_type/}">
+
+<div class='topSearch'>
+	<div class="content">
+		<span><a target="_blank" href="{/$MAIN_URL/}"><img src="{/$siteurl.style/}/img/www/huiboLogo.png" alt="" /></a></span>
+		<div class="searchBox">
+			<input class="need" placeholder="搜索公司或文章" name="key_word" id="key_word" value="{/$key_word/}" type="text" /><button id="sourch_do">搜索</button>
+		</div>
+	</div>
+</div>
+
+<div style="width:1000px;height:auto; margin: 0 auto;overflow: hidden">
+	<div class="filter">
+		<div class="filterType">
+			<strong>服务类型：</strong>
+			<a class="service {/if $service_type==0/}cut{//if/}"  href="javascript:void(0)" data-id="0">不限</a>
+			{/foreach $service_types as $k=>$val/}
+				<a href="javascript:void(0)" class="service {/if $service_type==$k/}cut{//if/}"  data-id="{/$k/}">{/$val.name/}</a>		
+			{//foreach/}
+		</div>
+		<div class="filterArea">
+			<strong>所在地区：</strong>
+			<a class="area {/if $area_id==""/}cut{//if/}"   href="javascript:void(0)">不限</a>
+			{/foreach $area as $k=>$val/}
+				<a  href="javascript:void(0)" class="area {/if $area_id==$k/}cut{//if/}"  data-id="{/$k/}">{/$val.area_name/}</a>
+			{//foreach/}
+		</div>
+	</div>
+	<div class="filterList">
+		{/if count($list)>0/}
+		{/foreach $list as $val/}
+			
+			<div class="filterItem">
+				<a target="_blank" href="{/get_url rule="/companyarticle/detail/" data="article_id={/$val['article_id']/}"/}">
+					<img class="itemLogo" src="{/if $val['logo']/}{/$logo_path/}/{/$val['logo']/}{/else/}{/$siteurl.style/}/{/$service_types[$val['service_type']]['image']/}{//if/}"/>
+				</a>
+				<div class="itemRight">
+					<a target="_blank" href="{/get_url rule="/companyarticle/detail/" data="article_id={/$val['article_id']/}"/}"><h3>{/$val['title']/}</h3></a>
+					<a target="_blank" href="{/get_url rule="/companyarticle/detail/" data="article_id={/$val['article_id']/}"/}"><div class="itemDetail">{/$val['short_content']/}</div></a>
+					<div class="itemContact">
+						<span>{/if $val['mobile']||$val['tel']/}<i class="icon-kuaimi_resume_call_icon"></i>{//if/}{/if $val['contact_person']/}{/$val['contact_person']/}&nbsp;&nbsp;&nbsp;{//if/}{/if $val['mobile']/}{/$val['mobile']/}&nbsp;&nbsp;&nbsp;{//if/}{/if $val['tel']/}{/$val['tel']/}&nbsp;&nbsp;{//if/}</span>
+						{/if $val['qq']/}
+							<a target="_blank" href="//wpa.qq.com/msgrd?v=3&amp;uin={/$val['qq']/}&amp;site=qq&amp;menu=yes">
+								<img border="0" src="//wpa.qq.com/pa?p=2:{/$val['qq']/}:51" alt="点击这里给我发消息" title="点击这里给我发消息" style="vertical-align: -6px;"></a>
+						{//if/}
+					</div>
+				</div>
+			</div>
+			
+		{//foreach/}
+		{/else/}
+		<div class="noData">暂无数据</div>
+		{//if/}
+	</div>
+	<div class="page">
+		{/$pager/}
+	</div>
+
+</div>
+
+
+
+<div id="sus" class="sus"><a class="backTop hbFntWes" title="返回顶部" href="javascript:void(0);" style="display: none;">&#xf0d8;</a></div>
+{/include file="footer.html"/}
+<script type="text/javascript">
+	function factory($){
+		$(window).scroll(function(){
+			if ($(document).scrollTop() > 120){
+				$('#sus').find('a.backTop').css({'display':'inline-block'});
+			}else{
+				$('#sus').find('a.backTop').css({'display':'none'});
+			}
+		});
+		$('#sus').find('a.backTop').click(function(){
+			$('html,body').animate({ scrollTop: 0 });
+		});
+	}
+</script>
+<script type="text/javascript">
+	var phoneImgs = [];
+
+	$("#sourch_do").click(function(){
+		$('#sourch_type').val(1);
+		submit_search();
+	});
+	$(".service").click(function(){
+		var service_type= $(this).attr("data-id");
+		$("#service_type").val(service_type);
+		$('#sourch_type').val(0);
+		submit_search();
+	});
+	$(".area").click(function(){
+		var area_id= $(this).attr("data-id");
+		$('#sourch_type').val(0);
+		$("#area_id").val(area_id);
+		submit_search();
+	});
+	function submit_search(){
+		var para='';
+		$('input.need').each(function(i,e){
+			para+= (i==0 ? '?':'&') + $(e).prop('name') + '=' + $(e).val()
+		})
+		location.href='{/get_url rule="/companyarticle/index"/}'+para
+	}
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<div style="background: #fff">
+    <div class="logo_search w1100">
+        <div id="search_box" class="search">
+            <form>
+                <div class="search_select">
+                    <div class="cur">
+                        <label>{/if $searchtype == "company"/}公司{/elseif $searchtype == "fulltext"/}全文{/else/}职位{//if/}</label>
+                        <i class="arr_stb"></i>
+                    </div>
+                    <ul class="item">
+                        <li data-value="1"><a href="javascript:">职位</a></li>
+                        <li data-value="2"><a href="javascript:">公司</a></li>
+                        <li data-value="3"><a href="javascript:">全文</a></li>
+                    </ul>
+                </div>
+
+                <div class="inputText">
+                    <input class="keys" type="text" placeholder="找一找，总有适合您的工作" value="{/if !empty($keyword)/}{/$keyword/}{//if/}"/>
+                    <div id="ui_hbsug_top" class="ui_hbsug ui_hbsug_top"></div>
+                </div>
+                <input type="button" value="搜索" class="butsub" />
+            </form>
+        </div>
+        <div class="logo"><a href="{/$siteurl.main/}">LOGO</a></div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="topPart">
+    <div class="jobFairBner">
+        <div class="jobFairMag">
+            <h2>春季期间周一至周六上午招聘会</h2>
+            <div style="text-align: left;">
+                <b>重庆.两江新区龙头寺. 狮子坪轻轨站旁.汇博人才市场</b>
+                <p><span>轻轨：</span><span>3号线</span>狮子坪站下车（2号出口走左边直行100米过马路）即到</p>
+                <p style="padding-left: 48px;width: 442px;"><span>10号线</span>龙头寺公园站下车（1号出口直走约200米在第二路口左拐50米过马路）即到</p></p>
+                <p style="text-align: left;"><span>公交：</span>天宫大道站下，过马路100米即到</p>
+            </div>
+        </div>
+    </div>
+    <div class="navFair">
+        <ul class="navBox">
+            <li data-href="index" class="cu"><a href="{/rewrite type="fair"/}">招聘会</a></li>
+            <li data-href="enterprise"><a href="{/get_url rule="/zhaopinhui/enterprise"/}">我是企业</a></li>
+            <li data-href="fairlist"><a href="{/get_url rule="/zhaopinhui/fairlist"/}">招聘会排期</a></li>
+            <li data-href="traffic"><a href="{/get_url rule="/zhaopinhui/traffic"/}">交通指南</a></li>
+            <li data-href="medialist"><a href="{/get_url rule="/zhaopinhui/medialist/"/}">媒体报道</a></li>
+            <li data-href="historylist"><a href="{/get_url rule="/zhaopinhui/historylist/"/}">招聘会回顾</a></li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="{/version file='jquery.min.js'/}"></script>
+<script>
+
+    $(document).ready(function(){
+
+        var str1 = document.location + '';
+
+//        console.log(str1);return false;
+        for(var i=0;i<$('.navBox li').length;i++){
+
+            if(str1.indexOf($($('.navBox li')[i]).attr('data-href')) > 0 ){
+                //you
+                $('.navBox li').removeClass('cu');
+                $($('.navBox li')[i]).addClass('cu');
+            }
+        }
+
+
+        $('.navBox li').click(function(){
+            $(this).addClass('cu').siblings().removeClass('cu');
+        });
+    })
+
+
+
+</script>

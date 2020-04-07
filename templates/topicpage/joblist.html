@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>专题-职位列表</title>
+    <style type="text/css">
+    	.commer_xf{width:500px; max-height: 400px; overflow-y: auto;}
+    	.commer_xf ul{ padding: 20px;}
+    	.commer_xf ul li{ overflow: hidden; padding: 10px 0; border-bottom: 1px solid #f1f1f1;}
+    	.commer_xf ul li a{ display: block; float: left; width:340px; line-height: 22px; color: #3f74c2;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+    	.commer_xf ul li span{ display: block; float: right; width:100px; line-height: 22px; color: #ff5a00; text-align: right;}
+    	
+    </style>
+</head>
+<body>
+<div class="commer_xf">
+    <div>
+        <ul>
+            {/foreach $list as $key=>$job/}
+            <li data-id="{/$job['id']/}"><a href="{/if !empty($job['job_flag'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopin/zhiwei/{/$job['job_flag']/}.html{/else/}{/if stripos($job['job_link'],'http://')=== false/}//{//if/}{/$job['job_link']/}{//if/}" target="_blank">{/$job.station/}</a><span>{/$job.min_salary/}-{/$job.max_salary/}</span></li>
+            {//foreach/}
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>

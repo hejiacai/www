@@ -1,0 +1,32 @@
+{/if !$is_show/}
+<div class="iduatopBtnbg">
+	<a href="javascript:" class="iduatopBtnF">添加自定义图片</a><span>或</span>
+    <a href="javascript:" class="iduatopBtnB">选择模板图片</a><span>(最多可设置{/$maxNum/}张封面图）</span>
+</div>
+<div id="iduaTionImgList">
+{//if/}
+
+<ul class="iduaTionImgList">
+	{/if count($company_images)>0/}
+    	{/foreach $company_images as $k=> $image/}
+        	<li data_type="{/if $image['image_from']==1/}0{/else/}1{//if/}" img_id="{/$image['image_id']/}" {/if $image['template_id']!=0/}template_id ="{/$image['template_id']/}"{//if/}>
+            	<p><img src="{/if $image['image_from'] ==0/}{/$photo_path/}{/else/}{/$template_img_path/}{//if/}/{/$image['image_path']/}" width="320" height="96" /></p>
+                <div class="iduaTionLit"><em>{/$k+1/}</em><a class="swap" href="javascript:">前移</a><a class="red del" href="javascript:">删除</a></div>
+            </li>
+        {//foreach/}
+    {/else/}
+    <div style="color: #ccc; padding: 20px 10px;">您还未添加个性化图片！</div>
+    {//if/}
+</ul>
+
+{/if !$is_show/}
+</div>
+<div class="popJobbd">
+    <a href="javascript:" class="newPopQuit">取 消</a>
+    <a href="javascript:" class="newPopSave">保 存</a>
+</div>
+{//if/}
+
+<script type="text/javascript">
+
+</script>

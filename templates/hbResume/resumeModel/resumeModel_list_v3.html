@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>{/$title/}</title>
+    <meta name="keywords" content="个人简历模板，简历模板，在线制作简历，免费制作简历，简历定制，优秀简历模板，汇博网"/>
+    <meta name="description" content="汇博网（huibo.com）为您提供最新个人简历模板,免费制作优秀个人简历,还有专业简历模板、校园简历模板、创意简历模板等作为参考使用,满足求职者简历制作需求,好简历上汇博"/>
+    <link rel="stylesheet" type="text/css" href="{/version file="base.css"/}">
+    <link rel="stylesheet" type="text/css" href="{/version file="jobRegister.css"/}">
+    <link rel="stylesheet" type="text/css" href="{/version file="layer.css"/}">
+    <link rel="stylesheet" type="text/css" href="{/version file="rule.css"/}">
+    <link rel="stylesheet" type="text/css" href="{/version file="m_font_style.css"/}">
+    <link rel="stylesheet" type="text/css" href="{/version file="jianliHeader.css"/}"/>
+    <link rel="stylesheet" type="text/css" href="{/version file="jianliTemp.css"/}"/>
+    <script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+    <script type="text/javascript" src="{/version file="layer.js"/}"></script>
+    <script type="text/javascript" src="{/version file="base_script.js"/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file="ui_jobsort.js"/}"></script><!--职位类别-->
+    <style type="text/css">
+        /*更改分页样式*/
+        .page a.cu, .page a.cu:hover, .page a:hover {
+            border: 1px solid #07b56d;
+            color: #07b56d;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<!-- 头部 -->
+{/include file="hbResume/public/head_v3.html"/}
+
+<!-- 筛选条件 -->
+<div class="tmpCont tempCategory">
+    <div class="industry cat">
+        <div class="catName fl">行业：<span class="total">（{/$callings_num/}）</span></div>
+        <div class="catOps fl">
+            <a href="javascript:;" onclick="location_href_set_get({job_intension:'',job_intension_more:''})" class="{/if !$job_intension and !$job_intension_more/}active{//if/}">全部</a>
+            {/foreach $job_intension_list as $key => $val/}
+                <a href="javascript:;" onclick="location_href_set_get({job_intension:'{/$key/}',page:1,job_intension_more:''})" class="{/if $key == $job_intension/}active{//if/}">{/$val/}</a>
+            {//foreach/}
+        </div>
+        <div class="catMore fr inB {/if $job_intension_more/}active{//if/}" id="jobsortTrigger"><span>+</span>{/if $job_intension_more/}已选择{/count(explode(',',$job_intension_more))/}项{/else/}更多{//if/}</div>
+        <input type="hidden" name="main_jobsort" id="main_jobsort" value="{/$job_intension_more/}">
+    </div>
+
+    <div class="major cat">
+        <div class="catName fl">专业：<span class="total">（821）</span></div>
+        <div class="catOps fl">
+            <a href="javascript:;" onclick="location_href_set_get({job_professional:'',job_professional_more:''})" class="{/if !$job_professional and !$job_professional_more/}active{//if/}">全部</a>
+            {/foreach $job_professional_list as $key => $val/}
+                <a href="javascript:;" onclick="location_href_set_get({job_professional:'{/$key/}',page:1,job_professional_more:''})" class="{/if $key == $job_professional/}active{//if/}">{/$val/}</a>
+            {//foreach/}
+        </div>
+        <div class="catMore fr inB {/if $job_professional_more/}active{//if/}"" id="jobprofessionalTrigger"><span>+</span>{/if $job_professional_more/}已选择{/count(explode(',',$job_professional_more))/}项{/else/}更多{//if/}</div>
+        <input type="hidden" name="main_professionalSort" id="main_professionalSort" value="{/$job_professional_more/}">
+    </div>
+
+    <div class="style cat">
+        <div class="catName fl">风格：<span class="total">（{/count($model_style_list)/}）</span></div>
+        <div class="catOps fl">
+            <a href="javascript:;" onclick="location_href_set_get({model_style:''})" class="{/if !$model_style/}active{//if/}">全部</a>
+            {/foreach $model_style_list as $key => $val/}
+                <a href="javascript:;" onclick="location_href_set_get({model_style:{/$key/},page:1})" class="{/if $key == $model_style/}active{//if/}">{/$val/}</a>
+            {//foreach/}
+        </div>
+    </div>
+</div>
+
+<!-- 主题模板 -->
+<div class="tmpCont tempMainCont clearfix">
+    {/if $list/}
+        {/foreach $list as $val/}
+            <div class="tmpItem">
+                <div class="tmpHeader pr">
+                    <p class="overtext"  title="{/$val['model_name']/}">{/$val['model_name']/}</p>
+                    <span class="pa useTotal">
+                        <span class="icon-V_icon"></span>
+                        <i class="num">{/$val['pre_download']+$val['download']/}</i>
+                    </span>
+                </div>
+                <div class="tmpBody pr">
+                    <div class="tmpBodyCont">
+                        <img src="{/$val.model_img_temp/}">
+                    </div>
+                    <div class="tmpOperation pa">
+                        <div class="operas">
+                            <a
+                                {/if $val.model_type == 1/}
+                                {/*在线*/}
+                                    {/if $_userid/}
+                                        href="{/get_url rule="/hbResumeModel/ResumeModelDetail/" domain="person"/}?id={/$val.id/}&resume_id={/$resume_id/}" target="_blank"
+                                    {/else/}
+                                        href="{/get_url rule="/hbResumeEditing/ResumeModel/" domain="person"/}?id={/$val.id/}&resume_id={/$resume_id/}" target="_blank"
+                                    {//if/}
+                                {/elseif $val.model_type == 2/}
+                                {/*本地*/}
+                                    href="{/get_url rule="/hbResumeEditing/ResumeModelLocal/" domain="person"/}?id={/$val.id/}&resume_id={/$resume_id/}" target="_blank"
+                                {//if/}
+                                >查看详情 / 免费下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {//foreach/}
+    {/else/}
+        <div class="not_resume_list">
+            <img src="{/$_styleUrl/}/img/common/nodata.png">
+            <span>暂无数据</span>
+        </div>
+    {//if/}
+</div>
+{/$page/}
+
+<!-- 底部 -->
+{/include file="hbResume/public/bottom.html"/}
+
+<style>
+
+    .hbJobSortDialog .jobContentBox .jobSortItems th a:hover, .hbJobSortDialog .jobContentBox .jobSortItems td a:hover{
+        color: #07b56d;
+    }
+
+    /*行业弹窗*/
+    .istryCateBg{width:1021px; overflow: hidden; border: 1px solid #cfcfcf; margin: 0 auto; background: #fff; display: none; position: absolute; top: 10%; left: 50%; margin-left: -510px;z-index: 2;}
+    .allCategoryBg{width:100%; height: 35px; overflow: hidden; border-bottom: 1px solid #cfcfcf;}
+    .allCategory,.categoryx dl dt a,.categoryx dl dd a{ display: block; color: #705a5a; margin-left: 10px; line-height: 25px; margin-top: 5px; cursor: pointer;}
+    .allCategory i,.categoryx dl dt a i,.categoryx dl dd a i{ display: inline-block;width:14px; height: 14px; background: url({/$siteurl.style/}/img/xiaoyuan_checkbox.png) 0 0 no-repeat; vertical-align: -2px; margin-right: 5px; }
+    .allCategory:hover,.categoryx dl dt a:hover,.categoryx dl dd a:hover{ color: #07b56d;}
+    .allCategory:hover i,.categoryx dl dt a:hover i,.categoryx dl dd a:hover i{ background-position: 0 -24px;}
+    .allCategoryCur,.categoryx dl dt a.cur,.categoryx dl dd a.cur{ color: #07b56d;}
+    .categoryx dl dt a:hover i,.categoryx dl dd a:hover i{ background-position: 0 -24px;}
+    .categoryx dl dt a.cur i,.categoryx dl dd a.cur i,.allCategoryCur i,.allCategoryCur:hover i{background-position: 0 -48px;}
+    .categoryx{width:100%; overflow: hidden; background:#fafafa;}
+    .categoryx dl{ overflow: hidden; border-bottom: 1px solid #ddd;}
+    .categoryx dl dt{width:220px; height: 35px; overflow: hidden; float: left; background: #fafafa;  }
+    .categoryx dl dd{width:800px; background: #fff; margin-left: 220px; overflow:hidden;border-left: 1px solid #ddd;}
+    .categoryx dl dd a{ float: left; margin-right: 15px; margin-bottom: 10px;}
+    .categoryBtn{ overflow: hidden; margin-left: 220px; padding: 10px 0;}
+    .categoryBtn a{ height: 24px;  line-height: 24px;border: 1px solid #e0e0e0;padding: 0 20px;  color: #807e7e;  display: inline-block;  background-color: #fff;  margin: 0 5px;  }
+    .categoryBtn a.sureGoryBtn{  background-color: #07b56d;  border: 1px solid #07b56d;  color: #fff;  }
+    .categoryBtn a:hover{ border: 1px solid #c3c3c3;}
+    .categoryBtn a.sureGoryBtn:hover{ background: #07b56d; border: 1px solid #07b56d;}
+    .gateMaster{width:100%; height: 100%; position: fixed; top: 0px; left: 0px; background: #000;opacity:0.4;filter: alpha(opacity=40); display: none;z-index: 1;}
+    .imgs .swiper-slide a.font{font-size: 22px;color: #111c49;overflow: hidden;}
+</style>
+<!--行业弹窗-->
+<div class="gateMaster"></div>
+<div class="istryCateBg">
+    <div class="allCategoryBg">
+        <span class="allCategory" id="callingAll"><i></i>所有行业</span>
+    </div>
+
+    <div class="categoryx">
+        {/foreach $callings as $key=>$val/}
+            <dl>
+                <dt>
+                    <a href="javascript:;" data-value="{/$val['calling_id']/}"><i></i>{/$val['calling_name']/}</a>
+                </dt>
+                <dd>
+                    {/foreach $val['subItem'] as $k=>$v/}
+                        <a href="javascript:;" data-value="{/$v['calling_id']/}" data-fd='{/$val['calling_id']/}'><i></i>{/$v['calling_name']/}</a>
+                    {//foreach/}
+
+                </dd>
+            </dl>
+        {//foreach/}
+
+    </div>
+    <div class="categoryBtn">
+        <a href="javascript:void(0);" class="cancelGoryBtn">取消</a>
+        <a href="javascript:void(0);" class="clearGoryBtn">清除</a>
+        <a href="javascript:void(0);" class="sureGoryBtn">确定</a>
+    </div>
+</div>
+<script type="text/javascript">
+    //所有行业
+    $('.allCategory').click(function(){
+        $('.categoryx a').removeClass('cur');
+        $(this).toggleClass('allCategoryCur');
+    });
+    //全选一级类别
+    $('.categoryx dl dt a').click(function(){
+        $(this).toggleClass('cur');
+        if($(this).hasClass('cur')){
+            $(this).parents('dl').find('dd a').addClass('cur');
+            $('.allCategory').removeClass('allCategoryCur');
+        }else{
+            $(this).parents('dl').find('dd a').removeClass('cur');
+        }
+    });
+    //单独类别
+    $('.categoryx dl dd a').click(function(){
+        $(this).toggleClass('cur');
+        if($(this).hasClass('cur')){
+            $('.allCategory').removeClass('allCategoryCur');
+        }
+        var allLength = $(this).parent().find('a').length;
+        var cgLength = $(this).parent().find('a.cur').length;
+        if(cgLength == allLength){
+            $(this).parents('dl').find('dt a').addClass('cur');
+        }else{
+            $(this).parents('dl').find('dt a').removeClass('cur');
+        }
+    });
+    //点击确定
+    $('.sureGoryBtn').click(function(){
+        var aryGory = [];    //一级
+        var aryGoryx = [];   //二级
+        var aryGoryStrx = [];
+        var aryGoryxStrx = [];
+        //一级选中
+        $('.categoryx dt a').each(function(i,n){
+            if($(n).hasClass('cur')){
+                aryGory.push($(n).attr('data-value'));
+                aryGoryStrx.push($(n).text());
+            }
+        });
+        //二级选中
+        $('.categoryx dd a').each(function(i,n){
+            var value = $(n).attr('data-value');
+            var fd = $(n).attr('data-fd');
+            // if($(n).hasClass('cur') && $.inArray(fd,aryGory) == -1){
+            if($(n).hasClass('cur')){
+                //console.log(value)
+                aryGoryx.push(value);
+                aryGoryxStrx.push($(n).text());
+                //console.log($(n).text())
+            }
+        });
+        if ($(".allCategory").hasClass('allCategoryCur')){
+            aryGoryxStrx.push('所有行业')
+        }
+
+        var aryGoryConcat = aryGory.concat(aryGoryx);
+        var aryGoryStr = aryGoryConcat.join(',');
+        console.log(aryGoryStr)
+
+        var aryGoryConcat2 = aryGoryStrx.concat(aryGoryxStrx);
+        var aryGoryStr2 = aryGoryConcat2.join(',');
+
+        //console.log(aryGoryConcat)
+
+        if(aryGoryConcat == '' && aryGoryConcat2 == ''){
+            location_href_set_get({job_intension:'',job_intension_more:''});
+            return false;
+        }
+
+        $('#main_jobsort').val(aryGoryStr);
+        $('.gateMaster,.istryCateBg').hide();
+
+        //console.log(aryGory,aryGoryx,aryGoryStrx,aryGoryxStrx)
+
+        location_href_set_get({
+            job_intension_more:aryGoryStr,
+            page:1,
+            job_intension:'',
+        });
+    });
+    //清除选中
+    $('.clearGoryBtn').click(function(){
+        $('.categoryx a').removeClass('cur');
+    });
+    //取消
+    $('.cancelGoryBtn').click(function(){
+        $('.gateMaster,.istryCateBg').hide();
+    });
+    //选择类别
+    $('#jobsortTrigger').click(function(){
+        $('.gateMaster,.istryCateBg').show();
+        aalIstryCategory();
+    });
+    //选择已有类别
+    function aalIstryCategory(){
+        var xy01 = $('#main_jobsort').val();
+        var xy02 = xy01.split(',');
+        $('.categoryx a').each(function(i,n){
+            for(x in xy02){
+                if($(n).attr('data-value') == xy02[x]){
+                    $(n).addClass('cur');
+                }
+                if($(n).attr('data-fd') == xy02[x]){
+                    $(n).addClass('cur');
+                }
+            }
+
+        });
+    }
+</script>
+<script type="text/javascript">
+    hbjs.use('@jobSorter, @dialog', function (m) {
+        var $ = m['jquery'],
+            jobSorter = m['product.jobSort.jobSorter'],
+            Dialog = m['widge.overlay.hbDialog'];
+
+        //更多专业弹窗
+        var newProfessionalSort = $('#jobprofessionalTrigger');
+        var newProfessionalSortHidInput = $('input[name=main_professionalSort]');
+        var newProfessionalsort = new jobSorter({
+            dialog: {title: '请选择专业'},
+            trigger: newProfessionalSort,
+            selectedId: newProfessionalSortHidInput.val(),
+            maxLength: 5,
+            search: {
+                dataSource: '{/$siteurl.main/}/profession/searchJobsort?jobSortName={{query}}&pageSize={{pageSize}}&callback=jobsortcallback',
+                size: 10,
+                template: {empty: '<div class="empty">没找到专业，换个关键词试试！</div>'}
+            },
+            url: '{/version file="professionData.js"/}'
+        });
+        //弹窗提交
+        newProfessionalsort.on('submit', function (e) {
+            // console.log(e,e.data.value)
+            var value = e.data.value.join(',');
+            location_href_set_get({
+                job_professional_more:value,
+                page:1,
+                job_professional:'',
+            });
+        });
+    });
+</script>
+
+<!-- 右侧功能按键 -->
+<div class="popzLink">
+    <a href="{/get_url rule='/about/message' domain='main'/}" style="margin-bottom:5px;" target="_blank" class="popzL">意见<br>反馈</a>
+    <a class="backTop hbFntWes" title="返回顶部" href="javascript:void(0);" ></a>
+</div>
+
+<!-- 右侧回到顶部 -->
+<script type="text/javascript">
+    $(window).scroll(function () {
+        if ($(document).scrollTop() > 120) {
+            $('.popzLink .backTop').css({'display': 'inline-block'});
+        } else {
+            $('.popzLink .backTop').css({'display': 'none'});
+        }
+    });
+    $('.popzLink .backTop').click(function () {
+        $('html,body').animate({scrollTop: 0});
+    });
+</script>
+
+<script type="text/javascript">
+    var action_url = '{/$siteurl.style/}';
+    var action_dom = [
+        //0-需要监控的控件 1-log_type (base_service_person_statistics_recordSaveActionLog) 2-log_data
+        ['.resume_model_cv', 69, {}, true],
+    ];
+</script>
+<script type="text/javascript" language="javascript" src="{/version file='action.js'/}"></script>
+</body>
+</html>

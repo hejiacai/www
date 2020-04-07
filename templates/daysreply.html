@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="简历两工作日必回-汇博网" />
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript">
+	hbjs.config({
+		preload: 'mobile, base.util, base.class, base.shape',
+		preCombo: 'jquery, mobile, base.util, base.class, base.shape, base.event, base.attribute, base.aspect, tools.cookie'
+	});
+</script>
+<title>简历两工作日必回-汇博网</title>
+<style>
+	.clear{clear:both;height:0;line-height:0;overflow:hidden;font-size:0;}
+	.clearfix:after{
+		content:".";display:block;height:0;clear:both;visibility:hidden;
+	}
+    body{font-family: "微软雅黑";}
+	.clearfix{zoom:1;}
+	body,html,ul,div,p,li,dl,dt,dd{padding:0px;margin:0px;list-style: none}
+	img{border:0px}
+	body{background-color: #f0f0f0}
+	a:hover,.box .tit a:hover,.getMore a:hover,.box dl dd a:hover{color:#ba0303; text-decoration: underline}
+	.banner{background: url({/$siteurl.style/}/img/daysreply_banner.jpg) center top no-repeat;height: 446px;border-bottom:4px solid #0b6bc2}
+	.banner .logo,.main,.getMore{width:980px;margin:0 auto} 
+	.banner .logo a{display: block;width:182px;height: 88px}
+	.main{margin-top: 20px;position: relative;min-height:633px;}
+	.box{width:49.7%;background-color: #fff;float:left;margin-bottom: 5px}
+	.box .tit{border-bottom:2px solid #f8f8f8;padding:10px 5px;margin:0 10px}
+	.box .tit a{color:#333; text-decoration: none;font-size:16px}
+	.box dl{padding:10px;height: 90px}
+	.box dl dt{width:78px;height:78px;border:1px solid #eaeaea;float:left}
+	.box dl dd{float:left;width:377px;margin-left: 10px}
+	.box dl dd span{display:inline-block;width:33%;font-size:12px;color:#666;float:left}
+	.box dl dd a{font-size:14px;color:#2161bf;text-decoration: none}
+	.box dl dd p{margin: 5px 0;height: 20px;overflow: hidden}
+	.box dl img{vertical-align: middle;margin-right:3px;width: 78px;height: 78px;}
+	.right{float:right}
+	.getMore{padding:12px 0;text-align: center;background-color: #fff}
+	.getMore a{color:#666;font-size:14px; text-decoration: none}
+	.jobType{width:245px;position:absolute;right:-255px;top:0px; background-color: #fff}
+	.jobType span{display: block;background: #d73937;color:#fff;font-size:18px;padding:10px 15px;border-bottom:1px solid #eaacab;text-align: left;}
+	.jobType a{border-bottom: 1px solid #f4f4f4;display: block;padding:10px 15px;background: #fff;font-size:14px;color:#535353;text-decoration: none;text-align: left;}
+	.jobType a:hover{background-color: #fe5a58;color:#fff}
+	.footer{width:100%;border-top:1px solid #dadada;padding:15px 0;background:#fff;font-size:12px;zoom:1;line-height:24px;color:#666;margin:20px 0 0; text-align:center}
+	.footer .footerNav{color:#999; margin:0 auto; width:1000px;}
+	.footer .footerNav a{margin:0 10px;color:#666; text-decoration: none}
+	.footer .footerNav a:hover{color:#0af;}
+	.footer .copyright{width:1000px; margin:0 auto;}
+</style>
+</head>
+
+<body>
+	<div class="banner">
+		<div class="logo"><a href="{/$siteurl.main/}/"></a></div>
+	</div>
+	<div class="main clearfix">
+		<ul class="jobType">
+			<li><span>职位分类</span></li>
+            {/foreach from=$jobsort_arr key=jobsort_key item=jobsort/}
+            <li><a href="{/$siteurl.main/}/daysreply/index/jobsort/{/$jobsort['jobsort']/}">{/'/'|str_replace:'、':$jobsort['jobsort_name']/}</a></li>
+            {//foreach/}
+		</ul>
+        {/foreach from=$company_jobs key=job_key item=company name=jobInfoList/}
+		<div class="box {/if $smarty.foreach.jobInfoList.iteration % 2 == 0/}right{//if/}">
+			<p class="tit"><a href="{/$company['company_url']/}" target="_blank">{/if !empty($company['company_shortname'])/}{/$company['company_shortname']/}{/else/}{/$company['company_name']/}{//if/}</a></p>
+			<dl class="clearfix">
+				<dt>
+                    <a href="{/$company['company_url']/}" target="_blank">
+                        {/if !empty($company['company_logo_path'])/}
+                        <img src="{/$logo_path/}{/$company['company_logo_path']/}"  />
+                        {/else/}
+                        <img src="{/$siteurl.style/}/img/c/new_index/headlogo.png"  />
+                        {//if/}
+                    </a>
+                </dt>
+				<dd>
+                    {/foreach $company['jobs_info'] as $job/}
+                        <p>
+                            <span>
+                                <a href="{/$job['url']/}" target="_blank" title="{/$job['station']/}">{/$job['short_station']/}</a>
+                            </span>
+                            <span>{/if empty($job['salary'])/}面议{/else/}￥{/$job['salary']/}{//if/}</span>
+                            <span {/if $job['re_apply_type']>0/}title="{/$job['re_apply_type']/}工作日必复"{//if/}>
+                                <img src="{/$siteurl.style/}/img/c/new_index/{/$job['re_apply_type']/}.png" / style="width:18px;height:19px;">工作日必复
+                            </span>
+                        </p>
+                    {//foreach/}
+				</dd>
+			</dl>
+		</div>
+        {//foreach/}
+	</div>
+    {/if $count_companys > 30/}
+	<p class="getMore"><a href="{/$siteurl.main/}/jobsearch/?params={/if $current_jobsort/}a{/$current_jobsort/}{//if/}m04">查看更多承诺回复职位>></a></p>
+    {//if/}
+<div class="footer">
+	<div class="footerNav"><a href="{/$siteurl.main/}/about/" target="_blank">关于汇博</a>|<a href="{/$siteurl.main/}/about/contact/" target="_blank">联系我们</a>|<a href="{/$siteurl.main/}/qiye/ent49no58.html" target="_blank">诚聘英才</a>|<a href="{/$siteurl.main/}/about/links/" target="_blank">友情链接</a><!--|<a target="_blank" href="http://www.abc.com/about/sitemap/">网站地图</a>-->|<a href="{/$siteurl.main/}/about/law/" target="_blank">法律声明</a>|<a href="{/$siteurl.main/}/about/privacy/" target="_blank">隐私政策</a></div>
+    <div class="copyright">
+    	<p>©2015&nbsp;汇博网&nbsp;版权所有&nbsp;&nbsp;|&nbsp;&nbsp;增值电信业务经营许可证：渝B2-20060063&nbsp;&nbsp;|&nbsp;&nbsp;人才中介服务许可证：渝中人社[2011]216号</p>
+        <p>招聘单位无权收取任何费用,请求职人员加强自我保护意识,按劳动法规保护自身权益,警惕虚假招聘,避免上当受骗!</p>
+    </div>
+</div>
+<script>
+    window.onscroll = function(){
+        if($(window).scrollTop() >= 450){
+            $(".jobType").css("top",$(window).scrollTop()-470+"px");	
+        }
+    };
+</script>
+
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "http://hm.baidu.com/hm.js?fb51309e47424acd6e31c0bd2a65a5a1";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+
+</script>
+<script type="text/javascript" language="javascript" src="{/version file="track.js"/}"></script>
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		bp.src = '//push.zhanzhang.baidu.com/push.js';
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+
+</body>
+</html>

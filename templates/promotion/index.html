@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>重庆人才网_重庆招聘网_重庆找工作最新招聘信息 - 汇博网</title>
+    <meta name="keywords" content="重庆人才网，重庆招聘网，重庆招聘会，重庆招聘，重庆找工作，最新招聘信息，汇博网，重庆人才市场，重庆人才招聘信息" />
+    <meta name="description" content="汇博网（huibo.com），重庆人才网，重庆招聘网，在重庆找工作的理想选择。汇博人才市场每周二、四、六举办重庆招聘会！查最新重庆人才招聘信息，找重庆人才市场，上汇博网！" />
+
+    <link rel="stylesheet" type="text/css" href="{/version file='base.css'/}"/>
+    <link rel="stylesheet" type="text/css" href="{/version file='spread.css'/}"/>
+    <!--<link rel="stylesheet" type="text/css" href="{/version file='idangerous.swiper.css'/}"/>-->
+    <link rel="stylesheet" type="text/css" href="{/version file='v2-widge.css'/}"/>
+    <script type="text/javascript" language="javascript" src="{/version file='html5.js'/}"></script>
+    <!-- [endif] -->
+
+    <!--公共-->
+    <script type="text/javascript" src="{/version file='version.js'/}"></script>
+    <script type="text/javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+    <script type="text/javascript" src="{/version file='common.js'/}"></script>
+    <script type="text/javascript" src="{/version file='dialog.js'/}"></script>
+    <script type="text/javascript" src="{/version file='jquery.form.js'/}"></script>
+    <script type="text/javascript" src="{/version file='ui_validate.js'/}"></script>
+    <!--<script type="text/javascript" src="{/version file='idangerous.swiper.min.js'/}"></script>-->
+    <!--<script type="text/javascript" src="{/version file='swiper-4.3.5.min.js'/}"></script>-->
+    <style>
+        .register{height: 114px;}
+        .swiper-free-mode > .swiper-wrapper {
+            -webkit-transition-timing-function: linear;    /*之前是ease-out*/
+            -moz-transition-timing-function: linear;
+            -ms-transition-timing-function: linear;
+            -o-transition-timing-function: linear;
+            transition-timing-function: linear;
+            margin: 0 auto;
+        }
+        .person-base{height: 42px;overflow: hidden;}
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="banner-top">
+        </div>
+        <div class="banner-bottom">
+        </div>
+        <div class="banner-center w1100">
+            <img src="{/$siteurl.style/}/img/www/spreed/a_01.png" alt="">
+            <img src="{/$siteurl.style/}/img/www/spreed/a_02.png" alt="">
+            <img src="{/$siteurl.style/}/img/www/spreed/a_03.png" alt="">
+            <img src="{/$siteurl.style/}/img/www/spreed/a_04.png" alt="">
+        </div>
+    </div>
+    <div class="register">
+        <h3>十秒注册，抢人领先一步，从此招聘不求人!</h3>
+        <div class="form-all">
+            <form action="" class="register-form w1100">
+                <label for="" style="margin-left: 40px;">公司名称：<input type="text" name="txtCompanyName" class="companyName" style="width: 210px;"></label>
+                <label for="">手机号：<input type="text" name="txtMobilePhone"  class="companyTel" style="width: 130px;"></label>
+                <a href="javascript:void(0);" class="authCodex senMsg doSend" id="sendMsg">发送验证码</a>
+                <input type="hidden" id="vali_code_count" value="1" />
+                <label for="yzm">验证码：<input type="text" name="authCode" style="width: 113px;"></label>
+                <a href="javascript:void(0);" class="registerBtn" id="doreg">立即注册</a>
+            </form>
+        </div>
+    </div>
+    <div class="chose">
+        <div class="sm-header-bg"></div>
+        <h3 class="sm-header">为什么选择我们</h3>
+        <p class="w1100 chose-tit clearfix">
+            <span class="lf"><strong class="blue">380万求职者</strong>正在汇博网找工作</span>
+            <a href="javascript:void(0);" onclick="toFocus();" class="rf more-resume">查看更多简历</a>
+        </p>
+        <!--<div class="person-info w1100">
+            <div class="swiper-container" style="height: 194px;">
+                <div class="swiper-wrapper">
+                    {/foreach $resumes as $k=>$v/}
+                    <div class="swiper-slide" onclick="toFocus();">
+                        <div class="person-left">
+                            {/foreach $v as $resume/}
+                            <div class="person-one">
+                                <img src="{/$resume['photo_url']/}" alt="" >
+                                <div class="person-base">
+                                    <p><strong>{/$resume['user_name']/}</strong> {/$resume['sex_name']/}，{/$resume['age']/}岁</p>
+                                    <p>{/$resume['degree_name']/}，{/$resume['work_year']/}年经验，{/$resume['school']/}</p>
+                                </div>
+                            </div>
+                            {//foreach/}
+                        </div>
+                    </div>
+                    {//foreach/}
+                </div>
+            </div>
+        </div>-->
+        <div class="person-info w1100 clearfix" style="overflow: hidden;">
+            <div class="person-info-wrap clearfix" style="width:99999px;">
+            {/foreach $resumes as $k=>$v/}
+            <div class="person-left">
+                {/foreach $v as $resume/}
+                <div class="person-one" onclick="toFocus();">
+                    <img src="{/$resume['photo_url']/}" alt="" >
+                    <div class="person-base">
+                        <p><strong>{/$resume['user_name']/}</strong> {/$resume['sex_name']/}，{/$resume['age']/}岁</p>
+                        <p>{/$resume['degree_name']/}，{/$resume['work_year']/}年经验，{/$resume['school']/}</p>
+                    </div>
+                </div>
+                {//foreach/}
+            </div>
+            {//foreach/}
+                {/foreach $resumes as $k=>$v/}
+                <div class="person-left">
+                    {/foreach $v as $resume/}
+                    <div class="person-one" onclick="toFocus();">
+                        <img src="{/$resume['photo_url']/}" alt="" >
+                        <div class="person-base">
+                            <p><strong>{/$resume['user_name']/}</strong> {/$resume['sex_name']/}，{/$resume['age']/}岁</p>
+                            <p>{/$resume['degree_name']/}，{/$resume['work_year']/}年经验，{/$resume['school']/}</p>
+                        </div>
+                    </div>
+                    {//foreach/}
+                </div>
+                {//foreach/}
+            </div>
+        </div>
+        <script>
+            $(function () {
+              var len = parseInt($('.person-info-wrap .person-left').length);
+              var width = parseInt($('.person-left').outerWidth(true));
+              var left = -width*(len-4);
+              var timer = setTimer();
+              function setTimer() {
+                return setInterval(function () {
+                  var length = parseInt($('.person-info-wrap').css('left'));
+                  if(length < left){
+                    $('.person-info-wrap').animate({'left':0+'px'});
+                  }else{
+                    $('.person-info-wrap').animate({'left':(length-50)+'px'},1000,'linear');
+                  }
+                },1000)
+              }
+              $('.person-info').mouseover(function(){
+                window.clearInterval(timer);
+              }).mouseout(function(){
+                timer = setTimer();
+              });
+            })
+        </script>
+        <div class="data w1100 clearfix">
+            <div class="data-item lf">
+                <div class="data-num">
+                    <h4>400万+</h4>
+                    <h6>有效简历</h6>
+                </div>
+                <div class="data-hover">
+                    <p>网站有效简历<em class="yellow">400万+</em>海量优质人才等你来挑</p>
+                    <a href="javascript:void(0);" onclick="toFocus();" class="showMore">查看更多</a>
+                </div>
+            </div>
+            <div class="data-item lf">
+                <div class="data-num">
+                    <h4>200万+</h4>
+                    <h6>日均页面浏览量</h6>
+                </div>
+                <div class="data-hover">
+                    <p>日均页面浏览量<em class="yellow">200万+</em>大大提高您找人才的精确度</p>
+                    <a href="javascript:void(0);" onclick="toFocus();" class="showMore">查看更多</a>
+                </div>
+            </div>
+            <div class="data-item lf">
+                <div class="data-num">
+                    <h4>20万+</h4>
+                    <h6>入驻企业</h6>
+                </div>
+                <div class="data-hover">
+                    <p>入驻企业<em class="yellow">20万+</em>口碑增长，20万企业的共同选择</p>
+                    <a href="javascript:void(0);" onclick="toFocus();" class="showMore">查看更多</a>
+                </div>
+            </div>
+            <div class="data-item lf">
+                <div class="data-num">
+                    <h4>10万+</h4>
+                    <h6>每日有效职位</h6>
+                </div>
+                <div class="data-hover">
+                    <p>每日有效职位<em class="yellow">10万+</em>促进招聘双方线上良性繁荣</p>
+                    <a href="javascript:void(0);" onclick="toFocus();" class="showMore">查看更多</a>
+                </div>
+            </div>
+            <div class="data-item lf">
+                <div class="data-num">
+                    <h4>48%</h4>
+                    <h6>同行业市场份额</h6>
+                </div>
+                <div class="data-hover">
+                    <p>同行业市场份额<em class="yellow">48%</em>要招聘，认准汇博网</p>
+                    <a href="javascript:void(0);" onclick="toFocus();" class="showMore">查看更多</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="company">
+        <h3 class="sm-header white">他们正在汇博招聘，下一个就是你</h3>
+        <div class="company-all w1000 clearfix">
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_01.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">940</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();" class="showregister">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_02.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">766</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_03.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">789</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_04.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">1181</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_05.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">1176</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_06.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">1273</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_07.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">1052</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_08.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">1054</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_09.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">796</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();" >查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_10.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">1494</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_11.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">885</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_12.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">809</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_13.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">716</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_14.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">1389</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_15.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">688</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_16.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">973</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_17.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">818</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_18.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">1184</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_19.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">799</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+            <div class="company-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/c_20.png" alt="">
+                <div class="company-hover">
+                    <p>累计收到简历<em class="yellow">1465</em>份</p>
+                    <a href="javascript:void(0);" onclick="toFocus();">查看更多</a>
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0);" onclick="toFocus();" class="lookMore">查看更多</a>
+    </div>
+    <div class="brand">
+        <h3 class="sm-header">大品牌，有保障</h3>
+        <img src="{/$siteurl.style/}/img/www/spreed/pic_01.jpg" alt="">
+    </div>
+    <div class="re">
+        <h3 class="sm-header">十秒注册，收获人才</h3>
+        <div class="re-item w1100 clearfix">
+            <div class="re-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/r_01.jpg" alt="">
+                <h6>快速注册</h6>
+                <p>只需提交公司名称和联系方式</p>
+            </div>
+            <div class="re-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/r_02.jpg" alt="">
+                <h6>审核通过</h6>
+                <p>专业顾问致电确认并审核</p>
+            </div>
+            <div class="re-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/r_03.jpg" alt="">
+                <h6>搜索海量人才</h6>
+                <p>汇博400万简历库供你挑选</p>
+            </div>
+            <div class="re-one lf">
+                <img src="{/$siteurl.style/}/img/www/spreed/r_04.png" alt="">
+                <h6>获取人才</h6>
+                <p>邀约面试，获取人才</p>
+            </div>
+        </div>
+    </div>
+
+    {/include file="footer.html"/}
+
+</body>
+<script type="text/javascript">
+  /*var mySwiper;
+  window.onload = function() {
+    mySwiper = new Swiper('.swiper-container',{
+      //其他设置
+      autoplay : 1,
+      autoplayDisableOnInteraction : true,
+      speed:5000,
+      loop : true,
+      freeMode:true,
+      slidesPerView : 4,
+      slidesPerGroup : 1
+    });
+    $('.swiper-container').mouseover(function(){
+      mySwiper.stopAutoplay();   //鼠标悬停在跑马灯上时停止滚动
+    }).mouseout(function(){
+      mySwiper.startAutoplay();
+    });
+  }*/
+
+
+  var do_register = true;
+  $("#doreg").click(function () {
+
+      var txtCompanyName = $('input[name=txtCompanyName]').val();
+      var txtMobilePhone = $('input[name=txtMobilePhone]').val();
+      var authCode = $('input[name=authCode]').val();
+      if (!/^[\u4e00-\u9fa50-9a-zA-Z]{6,20}$/.test(txtCompanyName)) {
+          $.anchorMsg('公司名称请输入6-20个字', {icon: 'fail'});
+          return 0;
+      }
+      if (!/^(?:13|15|18|14|17|19|16)[0-9]\d{8}$/.test(txtMobilePhone)) {
+          $.anchorMsg('请输入合法的手机号', {icon: 'fail'});
+          return 0;
+      }
+
+      if (!/^[0-9]{6}$/.test(authCode)) {
+          $.anchorMsg('请输入6位数字的验证码', {icon: 'fail'});
+          return 0;
+      }
+
+      if(do_register){
+          do_register = false;
+      }else{
+          console.log('is lock...waiting');
+          return 0;
+      }
+
+      $.post('/promotion/RegisterDO', {site:'{/$site_id/}',txtCompanyName: txtCompanyName, txtMobilePhone: txtMobilePhone, authCode: authCode},
+          function (e) {
+              do_register = true;
+              if (e.error) {
+                  $.anchorMsg(e.error, {icon: 'fail'});
+                  return 0;
+              }
+
+              $.anchorMsg('你的专属顾问正在赶来的路上,稍等片刻...', {title: "注册成功", icon: "success"});
+              setTimeout(function () {
+                  window.location.href = "{/$siteurl.main/}";
+              }, 3000)
+          }
+      , 'json')
+  })
+
+  $('.register-form').on('click','.doSend',function () {
+      var txtMobilePhone = $('input[name=txtMobilePhone]').val();
+
+      if (!/^(?:13|15|18|14|17|19|16)[0-9]\d{8}$/.test(txtMobilePhone)) {
+          $.anchorMsg('请输入合法的手机号', {icon: 'fail'});
+          return 0;
+      }
+      var vali_code_count = $('#vali_code_count').val();
+      $.post('/company/IsBossForbid', {txtMobile: txtMobilePhone,siet:'register'}, function (e) {
+          if (e.is_forbid) {
+              $.message(e.msg, {title: '操作失败！'});
+              return 0;
+          } else {
+              $.showModal("{/get_url rule='/company/validate/'/}" + "txtMobile-" + txtMobilePhone + "-vali_code_count-" + vali_code_count, {title: '请输入验证码'});
+              return 0 ;
+          }
+      }, 'json')
+
+  })
+
+  function coundownV2(){
+      var seconds=$('.authCodeGray').find('b').html();
+      seconds = parseInt(seconds);
+      if(seconds > 0){
+          seconds--;
+          $('.authCodeGray').find('b').html(seconds);
+      }else{
+          window.clearInterval(interval);
+          $('.authCodex').removeClass('authCodeGray').text('获取验证码');
+      }
+  }
+  var formTop= $(".form-all" ).offset().top;
+
+  showAlert = true;
+  $(window).scroll(function() {
+    if(!showAlert) return;
+    var scrollTop = $(document).scrollTop();
+    if(scrollTop>formTop){
+      $(".form-all" ).addClass('posi-fix');
+    }else{
+      $(".form-all" ).removeClass('posi-fix');
+    }
+  });
+  setInterval(function () {
+    if(!$('.dialogHead').is(':visible')){
+      showAlert = true;
+      $(window).scroll();
+      $('html,body').css({'overflow-y': 'auto'});
+    }
+  },500);
+  function toFocus() {
+    showAlert = false;
+    $(".form-all" ).removeClass('posi-fix');
+    $('html,body').css({'overflow-y': 'hidden'});
+    $.showModal("{/get_url rule='/promotion/registerAlert/'/}" + "siteid-{/$site_id/}", {title: '企业注册'});
+  }
+
+</script>
+</html>

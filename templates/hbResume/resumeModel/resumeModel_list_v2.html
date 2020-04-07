@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{/$title/}</title>
+	<meta name="keywords" content="个人简历模板，简历模板，在线制作简历，免费制作简历，简历定制，优秀简历模板，汇博网"/>
+	<meta name="description" content="汇博网（huibo.com）为您提供最新个人简历模板,免费制作优秀个人简历,还有专业简历模板、校园简历模板、创意简历模板等作为参考使用,满足求职者简历制作需求,好简历上汇博"/>
+	<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}">
+	<link rel="stylesheet" type="text/css" href="{/version file="jobRegister.css"/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file='layer.css'/}">
+	<link rel="stylesheet" type="text/css" href="{/version file='rule.css'/}">
+	<script type="text/javascript" language="javascript" src='{/version file="jquery-1.8.3.min.js"/}'></script>
+	<script type="text/javascript" src="{/version file='layer.js'/}"></script>
+	<script type="text/javascript" src="{/version file='base_script.js'/}"></script>
+
+	<style>
+		body {
+			background: #f8f9fc;
+			outline: none;
+			color: #444;
+			font-family: "Microsoft YaHei";
+		}
+
+		.resume-item:hover .resume-item-cover {
+			display: block;
+		}
+
+		.hb_ui_dialog {
+			outline: none;
+		}
+
+		/*右侧二维码*/
+		.scan_model_weixin {
+			width: 180px;
+			height: 200px;
+			border: 1px solid #eee;
+			border-radius: 2px;
+			position: fixed;
+			width: 180px;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			margin-left: 520px;
+			background: #fff;
+		}
+
+		.scan_model_weixin_img {
+			width: 128px;
+			height: 128px;
+			overflow: hidden;
+			position: relative;
+			margin: 20px auto 14px auto;
+		}
+
+		.scan_model_weixin_img img {
+			width: 128px;
+			height: 128px;
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.scan_model_weixin_img .weixin_bind_img_center {
+			width: 33px;
+			height: 33px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
+		.scan_model_weixin p {
+			font-size: 12px;
+			color: #444;
+		}
+
+		.pay-dialog .header #close {
+			cursor: pointer;
+		}
+
+		pre {
+			white-space: pre-wrap;
+			white-space: -moz-pre-wrap;
+			white-space: -pre-wrap;
+			white-space: -o-pre-wrap;
+			word-wrap: break-word;
+			color: #999;
+		}
+
+		#select-template-app .body-con .l .temp-item .temp-info {
+			padding-right: 120px;
+		}
+
+		#select-template-app .body-con .l .temp-item .temp-info pre {
+			font-family: "Microsoft YaHei", "微软雅黑";
+			color: #444;
+		}
+
+		.to_resume {
+			width: 700px;
+			display: block;
+		}
+
+		.to_resume img {
+			width: 100%;
+			vertical-align: top;
+		}
+
+		#select-template-app .body-con .r {
+			margin-top: -50px;
+		}
+	</style>
+</head>
+<body id="select-template-app">
+{/include file="hbResume/public/head.html"/}
+<div class="types-out-con">
+	<div class="types-con">
+		<div style="overflow: hidden;margin-bottom: 20px;">
+			<h2 style="">求职意向：</h2>
+			<ul class="job-type-list">
+				<li class="{/if !$job_intension/}active{//if/}" onclick="location_href_set_get({job_intension:''})">
+					不限
+				</li>
+				{/foreach $job_intension_list as $key => $val/}
+					<li class="{/if $key == $job_intension/}active{//if/}"
+						onclick="location_href_set_get({job_intension:{/$key/},page:1})">
+						{/$val/}
+					</li>
+				{//foreach/}
+			</ul>
+		</div>
+		<div style="overflow: hidden">
+			<h2 style="">模板风格：</h2>
+			<ul class="resume-style-list">
+				<li class="{/if !$model_style/}active{//if/}" onclick="location_href_set_get({model_style:''})">
+					不限
+				</li>
+				{/foreach $model_style_list as $key => $val/}
+					<li class="{/if $key == $model_style/}active{//if/}"
+						onclick="location_href_set_get({model_style:{/$key/},page:1})">
+						{/$val/}
+					</li>
+				{//foreach/}
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="body-con">
+	<a class="to_resume" target="_blank" href="{/get_url rule="/customPerson/index" domain="person"/}"><img src="{/$_styleUrl/}/img/xiaoyuan/resumemodel.jpg" alt=""></a>
+	<div class="l">
+		{/if $list/}
+			{/foreach $list as $val/}
+				<a class="temp-item clearfix"
+						{/if $_userid/}
+							href="{/get_url rule="/hbResumeModel/ResumeModelDetail/" domain="person"/}?id={/$val.id/}&resume_id={/$resume_id/}" target="_blank"
+						{/else/}
+							href="{/get_url rule="/hbResumeEditing/ResumeModel/" domain="person"/}?id={/$val.id/}&resume_id={/$resume_id/}" target="_blank"
+						{//if/} title="">
+					<div class="temp-img">
+						<img src="{/$val.model_img_temp/}">
+					</div>
+					<div class="temp-info">
+						<h3>{/$val['model_name']/}</h3>
+						<pre>{/$val['model_feature']/}</pre>
+						<h5>模板使用人数：{/$val['pre_download']+$val['download']/}</h5>
+					</div>
+				</a>
+			{//foreach/}
+		{/else/}
+			<div class="not_resume_list">
+				<img src="{/$_styleUrl/}/img/xiaoyuan/resume/job_icon05.png">
+				<span>暂无此类模板</span>
+			</div>
+		{//if/}
+		{/$page/}
+	</div>
+	<div class="r">
+		<div class="con-item public-hire">
+			<div class="title">
+				公招消息
+				<span>更多</span>
+			</div>
+			<div class="item-body">
+				{/foreach $publicrecriuts as $key => $val/}
+					<div class="item">
+						<h4>{/base_lib_BaseUtils::cutstr($val['title'],26,'utf-8','','…')/}</h4>
+						<h5>{/$val['create_time']/}</h5>
+					</div>
+				{//foreach/}
+			</div>
+		</div>
+
+		<div class="con-item school-hire">
+			<div class="title">
+				校招岗位
+				<span>更多</span>
+			</div>
+			<div class="item-body">
+				{/foreach $recommendjobs as $key => $val/}
+					<div class="item">
+						<h4>{/$val['station']/}</h4>
+						<h5>{/$val['companyname']/}</h5>
+					</div>
+				{//foreach/}
+			</div>
+		</div>
+
+		<div class="con-item company-hire">
+			<div class="title">
+				名企招聘
+				<span>更多</span>
+			</div>
+			<div class="item-body">
+				{/foreach $schoolRecruitList as $key => $val/}
+					<div class="item">
+						<h4>{/$val['title']/}</h4>
+						<h5>结束招聘：{/$val['apply_end_time']/}</h5>
+					</div>
+				{//foreach/}
+			</div>
+		</div>
+	</div>
+</div>
+<!--{/if !$weixin_bind_data.open_id && $_userid/}
+<script type="text/javascript">
+    var resumeModel_back_url, weixin_bind;
+    //展示绑定
+    function show_weixin_bind_img(_this) {
+        resumeModel_back_url = $(_this).attr('href');
+        weixin_bind = new Dialog({
+            close: null,
+            idName: 'weixin_bind',
+            title: false,
+            width: 0,
+            content: '{/get_url rule="/resumeModel/BindingWeixin"/}',
+            isAjax: true
+        });
+        weixin_bind.show();
+    }
+
+    //ajax 请求
+    function ajax_function(url, data, success_c, async, type) {
+        success_c = success_c ? success_c : {
+            success: function (data) {
+
+            },
+            error: function (data) {
+
+            }
+        };
+        type = type ? type : 'POST';
+        async = async ? async : false;//是否同步请求  //false-同步请求
+        if (!url || !success_c) {
+            msg_error_box('参数错误');
+        }
+        var re = false;
+        $.ajax({
+            type: type,
+            url: url,
+            data: data,//只要将表单序列化就可以了
+            async: async,//false-同步请求
+            dataType: 'json',
+            success: function (data) {
+                re = success_c.success(data);
+            },
+            error: function (request) {
+                msg_error_box("数据请求失败.请稍后重试");
+                re = success_c.error(request);
+                re = false;
+            }
+        });
+        return re;
+    }
+
+    /**
+     * 公共弹窗
+     * re_html_id  #dialog
+     */
+    function tip_content(re_html_id, dialog_data, click_fun) {
+        var ResumeHTML;
+        if (typeof re_html_id != 'object' && typeof re_html_id == 'string') {
+            ResumeHTML = $(re_html_id).html();
+        } else {
+            ResumeHTML = re_html_id['html_data'];
+        }
+        if (!ResumeHTML) {
+            confirmBox.timeBomb("参数错误!", {
+                name: 'fail',
+                timeout: 1000,
+                width: 200
+            });
+        }
+        var default_dialog_data = {
+            idName: 'data_info_dialog',
+            title: '信息',
+            close: 'x',
+            isAjax: false,
+            width: 480
+        };
+        var default_click_fun = $.extend({}, click_fun);
+        default_dialog_data = $.extend(default_dialog_data, dialog_data);
+        if($(".hb_ui_dialog."+default_dialog_data.idName)[0]){
+            $(".hb_ui_dialog."+default_dialog_data.idName).remove();
+        }
+        var dialog_tip = new Dialog(default_dialog_data);
+        dialog_tip.setContent(ResumeHTML);
+        dialog_tip.show();
+        if (default_click_fun) {
+            $.each(default_click_fun, function (key, val) {
+                dialog_tip.query('#' + key).on('click', function (e) {
+                    return default_click_fun[key](dialog_tip, e);
+                });
+            })
+        }
+        return dialog_tip;
+    }
+
+    //错误提示 success-成功 fail-错误 warning-警告 question-疑问  info-信息 normal-正常
+    function msg_error_box(msg) {
+        confirmBox.timeBomb(msg ? msg : "参数错误!", {
+            name: 'fail',
+            timeout: 1000,
+            width: 18 * msg.length + 70
+        });
+        return false;
+    }
+
+    //成功提示 success-成功 fail-错误 warning-警告 question-疑问  info-信息 normal-正常
+    function msg_success_box(msg) {
+        confirmBox.timeBomb(msg ? msg : "参数错误!", {
+            name: 'success',
+            timeout: 1000,
+            width: 18 * msg.length + 70
+        });
+        return true;
+    }
+
+</script>
+{//if/}-->
+
+<div class="dialog-bg" style="display: none">
+	<div class="pay-dialog">
+		<div class="header">
+			订阅招聘专栏频道
+			<span id="close">X</span>
+		</div>
+		<div class="content">
+			<div class="text-1">
+				错失潜在机遇？不用怕！
+			</div>
+			<div class="text-2">
+				第一时间主动推送最新、最全、最好的校招、公招、名企招信息！
+			</div>
+			<div class="qr-code-con">
+				<img src="{/$code_info['code_url']/}"/>
+				<p>微信扫码即可订阅</p>
+			</div>
+		</div>
+	</div>
+</div>
+{/include file="hbResume/public/bottom.html"/}
+<script>
+
+	$('#close').on('click', function () {
+		$('.dialog-bg').hide();
+	})
+
+
+	$('#select-template-app .body-con .r .con-item .title span').on('click', function () {
+		$('.dialog-bg').show();
+	})
+	$('#select-template-app .body-con .r .con-item .item-body .item').on('click', function () {
+		$('.dialog-bg').show();
+	})
+
+	$(function () {
+		$(window).on('scroll', function () {
+			if ($(document).scrollTop() > $('.m-header').height()) {
+				$('.types-out-con').addClass('fixed-top')
+			} else {
+				$('.types-out-con').removeClass('fixed-top')
+			}
+		})
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!--ajax提交的-->
+{/if $total_page!=0/}
+<div class="page">
+		{/if $prepg/}
+			<a href="javascript:;"  class="page_ajax">&lt;</a>
+		{//if/}
+		
+		{/if $pages/}
+	        {/foreach $pages as $page/}
+				{/if $page.page==1/}
+					<a data-page="1" href="javascript:void(0);" {/if $currpage==1/}  class="cu" {/else/} class="page_ajax" {//if/}>1</a>
+					{/if $currpage>6/}
+					<a href="javascript:void(0)" class="morePage">...</a>
+					{//if/}
+				{//if/}
+	
+				{/if ($page.page>=$page_show_start) && ($page.page<=$page_show_end)/}
+					<a data-page="{/$page.page/}"  href="javascript:void(0);" {/if $currpage==$page.page/} class="cu" {/else/} class="page_ajax" {//if/}>{/$page.page/}</a>
+				{//if/}
+	
+				{/if $page.page == $total_page/}
+					{/if $currpage+4<$total_page/}
+						<a href="javascript:void(0)" class="morePage">...</a>
+					{//if/}
+					
+					{/if $total_page>1/}
+						<a data-page="{/$page.page/}"  href="javascript:void(0);"  {/if $currpage==$page.page/} class="cu" {/else/} class="page_ajax" {//if/}>{/$page.page/}</a>
+					{//if/}
+				{//if/}
+	        {//foreach/}
+	    {//if/}
+        
+        {/if $nextpg/} 
+        	<a data-page="{/$currpage + 1/}" href="javascript:;"  class="page_ajax">&gt;</a>
+        {//if/}
+</div>
+{//if/}
+

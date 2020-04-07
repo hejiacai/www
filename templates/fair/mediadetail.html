@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="重庆招聘会,重庆人才市场,重庆人才招聘会,重庆招聘会信息,重庆近期招聘会,重庆现场招聘会,汇博人才市场" />
+<meta name="Description" content="汇博人才市场，每周二四六在重庆龙头寺举办大型重庆招聘会，{/$config->HuiBoSiteName/}为您提供最新{/date('Y',time())/}年{/date('m',time())/}月重庆招聘会信息,获悉最新重庆招聘会信息请上{/$config->HuiBoSiteName/}" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script src="{/version file='html5.js'/}"></script>
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="fair.css"/}" />
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="dialog.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="common.js"/}"></script>
+</head>
+<body>
+{/include file="header.html"/}
+<!--head-->
+<div class="container">
+	<div class="head">
+    	<h1><a href='{/rewrite type="fair"/}' title="现场招聘会"></a></h1>
+<!--        <div class="headRtScrl" id="headRtScrl">-->
+<!--        	<ul>-->
+<!--            <li title="专业网络招聘+专业现场招聘服务机构！">专业网络招聘+专业现场招聘服务机构！</li>-->
+<!--            <li title="周二：工业、汽车、电子、制造业专场招聘会">周二：工业、汽车、电子、制造业专场招聘会</li>-->
+<!--            <li title="周四：商场百货、酒店餐饮、快消品、物业建材及营销人才专场招聘会">周四：商场百货、酒店餐饮、快消品、物业建材及营销人才专场招聘会</li>-->
+<!--            <li title="周六：特大型招聘会  {/$config->HuiBoFairShowRoom/}家企业  {/$config->HuiBoFairJobNumSat/}岗位">周六：特大型招聘会  {/$config->HuiBoFairShowRoom/}家企业  {/$config->HuiBoFairJobNumSat/}岗位</li>-->
+<!--            </ul>-->
+<!--        </div>-->
+		<div class="headRtScrl" id="headRtScrl">
+        	<ul>
+            <li title="每周二、三、四、六上午（8：30-12：00）定期举办招聘会">每周二、三、四、六上午（8：30-12：00）定期举办招聘会</li>
+            </ul>
+        </div>
+    </div>
+    <div class="pageCon">
+    	<div class="contacFair"><p>咨询热线：{/$config->CqjobFairsPhone/} 在线咨询：<a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></p></div>
+    	<div class="bread">您的位置：<a href='{/rewrite type="fair"/}'>现场招聘会首页</a>&gt;<a href='{/get_url rule="/zhaopinhui/medialist"/}'>媒体报道</a>&gt;<b>媒体报道详情</b></div>
+        <div class="pagePart">
+        	<div class="pagePartL">
+                <div class="textInfo">
+                    <div class="textInfoT">
+                        <h1>{/$the_media.subject/}</h1>
+                        <div class="con"><p>发布时间：{/$the_media.issue_time/}</p><p>来源:[{/$the_media.origin/}]</p><p>链接:<a href='{/if !base_lib_BaseUtils::nullOrEmpty($the_media.outside_url)/}{/$the_media.outside_url/}{/else/}javascript:void(0);{//if/}' target="_blank">{/$the_media.outside_url/}</a></p></div>
+                    </div>
+                    <div class="textInfoCon">
+                        <div class="{/if !base_lib_BaseUtils::nullOrEmpty($the_media.video_url)/}textInfoVedio{/else/}none{//if/}"><embed width="577" height="326" align="middle" type="application/x-shockwave-flash" allowscriptaccess="always" quality="low" allowfullscreen="true" src="{/$the_media.video_url/}"></div>
+                 		{/$the_media.content/}
+                 	</div>
+                </div>
+            </div>
+            <div class="pagePartR">
+                <div class="rightBanner">
+                	{/if !empty($major_Adv) && count($major_Adv)>0/}
+           			{/foreach $major_Adv as $item=>$value/}
+           				<p><a href="{/$value.topic_url/}" target="_blank"><img src="{/$ad_path/}{/$value.topic_img_url/}" /></a></p>
+           			{//foreach/}
+  					{//if/}
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!--head-->
+{/include file="footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script type="text/javascript">
+	
+(function($){ 
+$.fn.extend({ 
+        Scroll:function(opt,callback){ 
+                //参数初始化  
+                if(!opt) var opt={}; 
+                var _this=this.eq(0).find("ul:first"); 
+                var lineH=_this.find("li:first").height(), //获取行高  
+                    line=opt.line?parseInt(opt.line,10):parseInt(this.height()/lineH,10), //每次滚动的行数，默认为一屏，即父容器高度
+                    speed=opt.speed?parseInt(opt.speed,10):500, //卷动速度，数值越大，速度越慢（毫秒）  
+                    timer=opt.timer?parseInt(opt.timer,10):3000; //滚动的时间间隔（毫秒）  
+                if(line==0) line=1; 
+                var upHeight=0-line*lineH; 
+                //滚动函数  
+                scrollUp=function(){ 
+                        _this.animate({ 
+                                marginTop:upHeight 
+                        },speed,function(){ 
+                                for(i=1;i<=line;i++){ 
+                                        _this.find("li:first").appendTo(_this); 
+                                } 
+                                _this.css({marginTop:0}); 
+                        }); 
+                } 
+                //鼠标事件绑定  
+                _this.hover(function(){ 
+                        clearInterval(timerID); 
+                },function(){ 
+                        timerID=setInterval("scrollUp()",timer); 
+                }).mouseout(); 
+        }         
+}) 
+})(jQuery); 
+$(document).ready(function(){ 
+<!--        $("#headRtScrl").Scroll({line:1,speed:500,timer:3000}); -->
+}); 
+	
+</script>
+</body>
+</html>
+
+

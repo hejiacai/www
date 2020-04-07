@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{/$title/}</title>
+<meta name="keywords" content="{/$keyword/}">
+<meta name="description" content="{/$description/}">
+<meta name="mobile-agent" content="format=xhtml; url={/$mobile_agent/}"/>
+<meta name="mobile-agent" content="format=html5; url={/$mobile_agent/}"/>
+<meta name="mobile-agent" content="format=wml; url={/$mobile_agent/}"/>
+
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="v2-reset.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="v2-resume.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="v2-header.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="v2-widge.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="job.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="jobnew.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="mainPhoto.css"/}" />
+<link rel="alternate" media="only screen and(max-width: 640px)" href="{/$mobile_agent/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='leaveinfo.css'/}" />
+<script type="text/javascript" src="{/version file="version.js"/}"></script>
+<!–[if lt IE9]> 
+<script type="text/javascript" language="javascript" src="{/version file="html5.js"/}" ></script>  
+<![endif]–>
+
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+
+
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+
+<!--
+<script type="text/javascript" src="{/version file='hbjs.js'/}"></script>
+<script type="text/javascript" src="{/version file='jquery.min.js'/}"></script>
+<script type="text/javascript" src="{/version file='util.js'/}"></script>
+<script type="text/javascript" src="{/version file='class.js'/}"></script>
+<script type="text/javascript" src="{/version file='shape.js'/}"></script>
+<script type="text/javascript" src="{/version file='event.js'/}"></script>
+<script type="text/javascript" src="{/version file='aspect.js'/}"></script>
+<script type="text/javascript" src="{/version file='attribute.js'/}"></script>
+<script type="text/javascript" src="{/version file='cookie.js'/}"></script>
+-->
+
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript">
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+</head>
+<body>
+{/include_php file='app/controller/head.php'/}
+{/include file='new_headsearch_2015.html'/}
+<style>
+	body{font-family:"微软雅黑"}
+    #re_apply_type{color: red;font-size: 12px;}
+    .topHeader .header_fix{width:980px !important;}
+    .search_box_a{width:370px;}
+    .search_box_a .searchInput{width:225px;}
+</style> 
+{/$header/}
+ <div class="nJobMainBg">
+    <div class="nJobMainCont">
+    	<div class="nJobmcLf">
+          	<div class="newTytit" style="padding-top:0px;">
+            	<h2 style="margin-bottom:5px;">公司简介</h2>
+                <div class="njmTit" id="info" >&nbsp;&nbsp;&nbsp;&nbsp;{/html_encode content=$company_info/}</div>
+            </div>
+            <div class="newTytit">
+                <h2 style="margin-bottom:5px;">详细地址</h2>
+                <p class="njmTit2"><span>{/$company['address']/}</span>{/if !empty($company['address'])/}<a target='_blank' href="http://api.map.baidu.com/geocoder?address={/$company['address']/}&output=html">查看地图</a>{//if/}</p>
+            </div>
+            <div class="newTytit">
+                    <h2 style="margin-bottom:5px;" class="newTyClock">招聘职位<span>{/if $hasjob/}（共有{/count($job_list)/}个职位正在招聘中）{/else/}(该单位还没有正在招聘的职位){//if/}</span></h2>  
+                    {/if $hasjob/}
+                    <div class="njmJoinUs">
+                        <ul>
+                        {/foreach $job_list as $job/}
+                        <li>
+                            <a href="{/$job['job_link']/}" target='_blank'>
+                                <p><span>{/$job['station']/}</span>{/if $job['is_urgent']/}<b></b>{//if/}{/if $job['job_type_name']!='全职'/}<em>{/$job['job_type_name']/}</em>{//if/}{/if $job['re_apply_type']>0/}<span id="re_apply_type">[{/$job['re_apply_type']/}工作日必复]</span>{//if/}<i>{/$job['issue_time']/}</i></p>
+                            	<span class="nUcolor">{/if $job['min_salary'] == $job['max_salary']/}{/$job['min_salary']/}{/else/}{/$job['min_salary']/}-{/$job['max_salary']/}{//if/}元 / 月 {/if $job['salary_type'] == 1/}（底薪：{/if $job['base_min_salary'] == $job['base_max_salary']/}{/$job['base_min_salary']/}{/else/}{/$job['base_min_salary']/}-{/$job['base_max_salary']/}{//if/}元/月+提成）{//if/} &nbsp;  {/$job['degree_name']/} / {/$job['work_year']/} / {/$job['area_name']/}</span>
+                            </a>
+                       </li>
+                        {//foreach/}
+                        </ul>
+                    </div>
+                    {//if/}
+            </div>
+       </div>
+		<div class="nJobmcRt">
+        	<ul class="nrtLit nrtLitMain">
+                	<li>
+                    	<span>行业</span><em title="{/$company_callings/}">{/$company_callings/}</em>
+                    </li>
+                    <li>
+                    	<span>性质</span><em>{/$company_property/}</em>
+                    </li>
+                    <li>
+                    	<span>规模</span><em>{/$company_size/}</em>
+                    </li>
+                {/if !empty($company['redirect_homepage'])/}
+                    <li>
+                    	<span>网址</span><a {/if !$is_preg_url/}rel="nofollow"{//if/} href="{/$company['redirect_homepage']/}" target="_blank">{/$company['redirect_homepage']/}</a>
+                    </li>
+                {//if/}
+             </ul>
+             
+             <div class="newMessage newMessagex">
+                	<h2>给我留言</h2>
+                    <textarea rows="" cols="" name="msgContent" id="msg" data-tip="请输入您对该职位的疑问。比如所在地、年薪、福利等等，我会及时给您回复！期待与您合作。">请输入您对该职位的疑问。比如所在地、年薪、福利等等，我会及时给您回复！期待与您合作。</textarea>
+                    <div class="newLeaveB">
+                    	<span>0</span>
+                    	<em>/200</em>
+                        
+                        <a href="javascript:void(0)" id="submitMessage" data-cid="{/$company['company_id']/}">发 送</a>
+                    </div>
+             </div>
+             
+                {/if count($company_photos) >0/}
+                <script type="text/javascript">
+                	var phoneImgs = [];
+                </script>
+                <div class="njmBanner">
+               		 <!------图片滚动开始-------->
+                        <div class="infopicBg">
+                           <div class="infopic">
+                               <div class="picbox">
+                                  <ul class="gallery piclist">
+                                  	  <!--
+                                      {/foreach $company_photos as $photo/}
+                                      <li><a href="{/$photo_path/}{/$photo['photo_path']/}" rel="prettyPhoto[]"><img src="{/$photo_path/}{/$photo['photo_path1']/}"></a></li>
+                                      {//foreach/}
+                                      -->
+                                      
+                                      {/foreach $company_photos as $photo/}
+                                      <li style="background:url({/$siteurl.style/}/img/common/loadBox.gif) no-repeat center center">
+                                      		<a href="{/$photo_path/}{/$photo['photo_path']/}" rel="prettyPhoto[]"><img /></a>
+                                            <script type="text/javascript">
+                                            	phoneImgs.push("{/$photo_path/}{/$photo['photo_path1']/}"); 
+                                            </script>
+                                      </li>
+                                      {//foreach/}
+                                      
+                                  </ul>
+                               </div>
+                           </div>
+                           <div class="newMainpicBg">
+                               <div class="pic_prev"></div>
+                               <div class="pic_next"></div>
+                           </div>
+                       </div>			
+                     <style type="text/css">
+					 	.picList{width:1080px}
+					 	.piclist li{width:270px}
+						#pp_full_res img{ display:block; margin:0 auto;}
+						.pp_hoverContainer{ top:30px;}
+						div.pp_default .pp_content_container .pp_details{ margin:0;}
+						div.pp_default .pp_close{ margin:0px 0px 0 0;}
+						div.pp_default .pp_nav .currentTextHolder{ left:0px;}
+						.pp_gallery{ margin-top:40px;}
+						div.pp_default .pp_gallery ul li a{ border:1px solid #fff;}
+						div.pp_default .pp_gallery ul li a:hover,div.pp_default .pp_gallery ul li.selected a{ border:1px solid #0f0;}
+						#pp_full_res{ clear:both;}
+						
+						.pp_pic_holder.pp_default{ cursor:pointer;}
+						div.ppt,div.pp_default .pp_top,div.pp_default .pp_bottom,div.pp_default .pp_expand{ display:none;}
+						div.pp_default .pp_content_container .pp_left,div.pp_default .pp_content_container .pp_right{ background:none;}
+						.pp_pic_holder.pp_default,div.pp_default .pp_content, div.light_rounded .pp_content{ background:none;}
+						div.pp_default .pp_nav .currentTextHolder{ color:#fff; padding-left:0px; left:inherit; right:0px;}
+						.pp_nav{ margin-top:0px; margin-right:30px;}
+						div.pp_default .pp_close{ position:fixed; top:150px; right:50%; margin-right:-500px;}
+                       
+                     </style>
+					 <script type="text/javascript">
+						hbjs.use('@jobPrettyPhoto, @imgLoader', function(m){
+																		 										 
+						   var $ = m['cqjob.jobPrettyPhoto'],
+						   	   imgLoader = new m['tools.imgLoader']();
+						//var imgLoader = new imageLoader();
+						   var m1, r, s,
+							   picList = $('.piclist'),
+							   picListItem = picList.children('li'),
+							   lw = picListItem.width(),
+							   liw = lw * picListItem.length,
+							   curIndex = 0,
+							   imgs = [],
+							   loadImgs = {},
+							   isAnimated = false;
+							   
+							   
+						   picList.width( liw + 'px' );
+						   
+						   loadPhone();
+						   function loadPhone(index){
+								index || (index = curIndex);
+								if(loadImgs[index]) return;
+								phoneImgs && phoneImgs[index] && imgLoader.load(phoneImgs[index], {imgIndex: index});
+						   }
+						   imgLoader.on('load', function(e){
+							   	loadImgs[e.imgIndex || 0] = true;
+								picListItem.eq(e.imgIndex || 0).css('background', 'none').find('img').attr('src', e.src);
+						   });
+						   
+						   $('.pic_next').click(function(){
+							   	if(isAnimated || curIndex >= picListItem.length - 1) return;
+							    isAnimated = true;
+							    /*
+								if(picList.is(':animated')){
+									picList.stop(true,true);
+								}*/ /* 避免点击事件重复 */
+								
+								ml = parseInt(picList.css('left'));
+								r = liw - (lw - ml);  /* 700为外部区块.infopic的宽度，15为li之间的距离，即.piclist li的margin-right的值 */
+								if(r < lw){
+									s = r - 0;
+								} else {
+									s = lw;
+								}
+								if(curIndex < picListItem.length - 1){
+									curIndex++;
+								}
+								picList.stop(true, false).animate({left: ml - s + 'px'}, 'slow', function(){
+									isAnimated = false;
+									loadPhone(curIndex);
+								});			
+						  });
+						  
+						  $('.pic_prev').click(function(){
+							    if(isAnimated || curIndex < 0) return;
+							    isAnimated = true;
+							    /*
+								if(picList.is(':animated')){
+									picList.stop(true,true);
+								}*/ /* 避免点击事件重复 */
+								
+								ml = parseInt(picList.css('left'));
+								if(ml > -lw){
+									s = ml;
+								} else {
+									curIndex--;
+									s = -lw;
+								}
+								picList.stop(true, false).animate({left: ml - s + 'px'}, 'slow', function(){
+									isAnimated = false;
+									loadPhone(curIndex);
+								});			
+						  });
+						   
+						  $(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({
+							  animation_speed:'fast',
+							  slideshow: 10000, 
+							  hideflash: true,
+							  initcallback: function(){	
+							  	  $.each(phoneImgs, function(index){
+								  		loadPhone(index);
+								  });
+							  },
+							  ajaxcallback:function(){							  	
+							  	var fimg = $("#fullResImage").hide();							  	
+							  	setTimeout(function(){
+							  	 if(fimg.width() > 800){
+							  	 	fimg.css("width","800px");
+							  	 }
+							  	 fimg.show();
+							  	},500);
+							  }
+						  });
+						});
+                    </script>
+                </div>
+                {//if/}
+            </div>
+       </div>
+    </div>
+</div>
+
+{/include file="leaveinfo.html"/}
+
+{/include file="footer.html"/}
+
+<!--消息提醒的那个啥-->
+{/include file="tipmsg.html"/}
+
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+
+<script type="text/javascript">
+
+</script>
+
+<script> 
+hbjs.use('@checkLogin, @confirmBox', function(m){
+	
+	
+	var $ = m['jquery'],
+		checkLogin = m['product.checkLogin'],
+		ConfrimBox = m['widge.overlay.confirmBox'],
+		fontSize = 18,
+		cookie = m['tools.cookie'],
+		pWidth = 70;
+
+	//一分钟留下简历
+	var win = $(window);
+	var fixed_box = $('#fixed_box');
+	var falg_leav_info = false;
+	if(cookie.get('isBottomClose') == undefined) {
+		falg_leav_info = true;
+		win.on('scroll', function () {
+			if(falg_leav_info){
+				var scrollTop = $(document).scrollTop() + win.height();//类似当前文档的高度
+                var other1 = 0;
+                {/if !empty($herader)/}
+                other1 = $('.flex-viewport').height();
+                {//if/}
+				var w1 = $('.nJobMainCont').height() + $('.njmName').height() + other1;
+				if (scrollTop >= w1) {
+					fixed_box.show();
+				}
+			}
+		});
+	}
+	fixed_box.on('click', '.close', function(e){
+		var target = $(e.currentTarget);
+		cookie.set('isBottomClose', 1);
+		falg_leav_info = false;
+		fixed_box.hide();
+	});
+
+	$('.registerResume').on('click', function(e){
+		checkLogin.dialog.set('title', null);
+		checkLogin.dialog._updateHeader();
+		var isLogin = checkLogin.isPersonLogin(null, 'person_dialog', '/personregister/applyreg/success-ajaxLoginCallback-fromurl-jobsearch');
+		return false;
+	});
+
+
+	
+	$("textarea").keyup(function(){ 
+		var max = 200;
+		var len = $(this).val().length;
+		if(0 ==len){
+			$(this).removeClass('textAreaChanged');
+		}else{
+			$(this).addClass('textAreaChanged');
+		}
+		if(max>=len){
+			$(this).parents(".newMessage").find("span").text(len);
+		}else{
+			ConfrimBox.timeBomb("留言长度不能超过200字", {
+				width : 250,
+				name : 'warning'
+			});
+			$(this).parents(".newMessage").find("span").text(200);
+			$(this).val($(this).val().substr(0,max));
+		}
+	});
+
+	$("textarea").focus(function(){
+		/* var islogin = checkLogin.isLogin('ajaxLoginCallback');
+        checkLogin.dialog.resetSize(498);
+        if(islogin){
+        	if(!$(this).hasClass('textAreaChanged')){
+    			$(this).val("");
+    			$(this).addClass('textAreaChanged');
+    		}	
+        } */
+        
+		if(!$(this).hasClass('textAreaChanged')){
+			$(this).val("");
+			$(this).addClass('textAreaChanged');
+		}
+	});
+	
+	$("textarea").blur(function(){
+    	if($(this).val().replace(/^\s*$/g,'')  == ''){
+    		$(this).val($(this).attr('data-tip'));
+    		$(this).removeClass('textAreaChanged');
+    	}
+    });
+	
+	$(window).scroll(function(){
+        if ($(document).scrollTop() > 120){
+            $('#sus').find('a.backTop').css({'display':'inline-block'});
+        }else{
+            $('#sus').find('a.backTop').css({'display':'none'});
+        }
+    });
+    $('#sus').find('a.backTop').click(function(){
+        $('html,body').animate({ scrollTop: 0 });
+    });
+	
+	$('#show_short_info').click(function(){
+		$('#short_info').hide();
+		$('#info').show();
+	})
+	
+	$(document).ready(function(){
+		var oldMsg = getCookie(window.location.href+"_msg");// alert(oldMsg);
+		if(oldMsg != null){
+			$("textarea").val(oldMsg).addClass("textAreaChanged");
+			$(".newLeaveB span").html(oldMsg.length);
+		}
+	});
+	
+	//提交留言
+	$('#submitMessage').click(function(){
+		if($('textarea').val().replace(/^\s*$/g,'')  != '' && ($('textarea').hasClass('textAreaChanged'))){
+    		setCookie(window.location.href+"_msg",$('textarea').val());
+		}
+		var islogin = checkLogin.isLogin('ajaxLoginCallback');
+        checkLogin.dialog.resetSize(498); 
+        if(islogin){
+        	var message = $('textarea').val();
+    		var url = "{/get_url rule='/company/ajaxSubmitMessage'/}";
+    		if(message.replace(/^\s*$/g,'')  == '' || !($('textarea').hasClass('textAreaChanged'))){
+    			ConfrimBox.timeBomb("留言内容不能为空！", {
+					width : 240,
+					name : 'warning'
+				});
+    			return false;	
+    		}else{
+    			$.post(url,{'company_id':$(this).attr('data-cid'),'content':message,'from':'12'},function(result){ 
+    				delCookie(window.location.href+"_msg");
+    				if((typeof result.status !='undefined') && parseInt(result.status)>0) { 
+    					ConfrimBox.timeBomb(result.message, {
+							width : (result.message.length)*32,
+							name : 'success'
+						});
+    					$("textarea").val($("textarea").attr('data-tip')).removeClass('textAreaChanged');
+						$(".newLeaveB span").html("0");
+    				}else if(parseInt(result.status) == 0){
+						ConfrimBox.timeBomb(result.message, {
+							width : (result.message.length)*21,
+							name : 'warning'
+						});
+    					setTimeout(function(){window.location.href = result.url;},1000);
+    				}else if(parseInt(result.status) == -7){
+    					checkLogin.dialog.resetSize(498);
+    				}else { 
+    					 ConfrimBox.timeBomb(result.message, {
+							width : (result.message.length)*21,
+							name : 'warning'
+						});
+    				}
+    			},'json');
+    		}
+        }		
+	});
+	
+	   function setCookie(name,value)
+	    {
+	        var exp = new Date();
+	        exp.setTime(exp.getTime() + 60*1000);
+	        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+	    }
+
+	    //读取cookies
+	    function getCookie(name)
+	    {
+	        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+	     
+	        if(arr=document.cookie.match(reg))
+	     
+	            return unescape(arr[2]);
+	        else
+	            return null;
+	    }
+
+	    //删除cookies
+	    function delCookie(name)
+	    {
+	        var exp = new Date();
+	        exp.setTime(exp.getTime() - 1);
+	        var cval=getCookie(name);
+	        if(cval!=null)
+	            document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+	    }  	
+	//添加关注
+	$('.att').click(function(){
+		var islogin = checkLogin.isLogin('ajaxLoginCallback');
+                 checkLogin.dialog.resetSize(498);
+		if(islogin){
+			var company_flag ="{/$company_flag/}";
+			var operate = $(this).attr('v');
+			var data = {operate:operate,company_flag:company_flag};
+			$.post('/company/attention/',data,function(json){
+				if(json && json.error){
+					ConfirmBox.timeBomb(json.error, {
+						name : "warning",
+						timeout : 1000,
+						width: fontSize * json.error.length + pWidth
+					});
+					return;
+				}
+				if(operate == 'add'){
+					$('#liAdd').hide();
+					$('#liCance').show();
+                                        $('.nFcswin span').html("关注成功");
+                                          $('.nFcswin').show();
+				} else {
+					$('#liAdd').show();
+					$('#liCance').hide();
+                                         $('.nFcswin span').html("取消关注成功");
+                                         $('.nFcswin').show();
+				}
+				ConfirmBox.timeBomb(json.info, {
+					name : "success",
+					timeout : 1000,
+					width: fontSize * json.info.length + pWidth
+				});
+				return;
+			},'json');
+		}
+	});
+	$.getJSON('/company/CompanyVisit/company_flag-{/$company_flag/}');
+	
+});
+
+function ajaxLoginCallback() {
+    window.location.href = window.location.href ; 
+}
+/*
+     $.setIndex("zindex");
+     
+    $('#ajaxlogin').click(function() {
+            $.showModal('/www/ui/ajaxlogin.html?v=qaaa',{title:'您尚未登录'});
+    }); 
+
+var attention={
+	init:function(){
+		$('.att').click(function(){
+			var islogin = ajaxCheckPersonLogin();
+			if(islogin){
+				var company_flag ="ent5y2wf5c";
+				var operate = $(this).attr('v');
+				var data = {operate:operate,company_flag:company_flag};
+				$.post('/company/attention/',data,function(json){
+					if(json&&json.error){
+						$.message(json.error,{icon:'warning'});
+						return;
+					}
+                                        console.log(operate);
+					if(operate=='add'){
+						$('#liAdd').hide();
+						$('#liCance').show();
+						$.anchorMsg(json.info);
+					}else{
+						$('#liAdd').show();
+						$('#liCance').hide();
+						$.anchorMsg(json.info);
+					}
+					//$('#attCount').text(json.attentioncount);
+					return;
+				},'json');
+			}
+		});
+//		$('#map_address').click(function(){
+//			var map_x = "107";
+//			var map_y = "30";
+//			var address ="北京东城区";
+//			if(map_x=="" || map_y==""){
+//				$('#map_address').attr('href','http://api.map.baidu.com/geocoder?address='+address+'&output=html');
+//				}
+//			else{
+//				$('#map_address').attr('href','http://api.map.baidu.com/marker?location='+map_y+','+map_x+'&title=无敌、&content='+address+'&output=html&');	
+//				}
+//		});
+	
+		$.getJSON('/company/CompanyVisit/company_flag-ent5y2wf5c');
+	}
+}
+	attention.init();
+*/
+</script> 
+
+
+</body>
+</html>

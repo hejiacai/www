@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>视频招聘会</title>
+    <link rel="stylesheet" type="text/css" href="{/version file='base.css'/}"/>
+    <link rel="stylesheet" type="text/css" href="{/version file="v2-widge.css"/}"/>
+    <link rel="stylesheet" type="text/css" href="{/version file='videjobfair.css'/}"/>
+    <link rel="stylesheet" type="text/css" href="{/version file='mobile.swiper.css'/}"/>
+    <script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='mobile.swiper.js'/}"></script>
+    <script type="text/javascript" src="{/version file='jquery.cookie.js'/}"></script>
+    <script type="text/javascript" src="{/version file='layer.js'/}"></script>
+    <link type="text/css" href="{/version file='layer.css'/}">
+    <script type="text/javascript" src="{/version file='base_script.js'/}"></script>
+    <link rel="stylesheet" type="text/css" href="{/version file='v2-reset.css,v2-widge.css,v2-header.css,newindex2018.css'/}" />
+    <link rel="stylesheet" type="text/css" href="{/version file='newHeader2019.css'/}" />
+    <script type="text/javascript" src="{/version file='version.js'/}"></script>
+    <script type="text/javascript">
+        window.CONFIG = {
+            HOST: '{/$siteurl.style/}',
+            COMBOPATH: '/js/v2/',
+        };
+    </script>
+    <script type="text/javascript"
+            src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+    <script type="text/javascript" src="{/version file='global.js'/}"></script>
+    <script type="text/javascript">
+        hbjs.config({
+            combos: {
+                '@homeSideSortMenu': [
+                    'product.homeSideSortMenu', 'product.sideMenu.sideSortMenuGroup', 'product.sideMenu.sideSortMenu',
+                    'product.sideMenu.sideSortMenuData', '@popup'
+                ]
+            }
+        });
+        hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+    </script>
+    <style type="text/css">
+        .huiboJob{ overflow: hidden;}
+        .huiboJob a{ display:block;width:100%; height: 60px; background:url({/$siteurl.style/}/img/zhaopinhui2020.jpg) center top no-repeat;}
+
+        a.enterprise_qiye i {background: url({/$siteurl.style/}/img/newindex/enterCompany.png) no-repeat;display: inline-block;width: 18px;height: 17px;vertical-align: -4px;vertical-align: -2px\9;margin-right: 5px;}
+        .newHeadtop .newheadMage .log_new a.enterprise_qiye:link {color: #999;cursor: pointer;}
+        #userEnterBox .reg_new .jobWanted {margin-right: 0;}
+        .jobWanted i {background: url({/$siteurl.style/}/img/newindex/login_register.png) no-repeat;display: inline-block;width: 14px;height: 16px;vertical-align: -4px;vertical-align: -2px\9;margin-right: 5px;}
+    </style>
+</head>
+<body>
+{/include_php file='app/controller/head.php'/}
+<div class="newHeadtop clearfix">
+    <div class="newheadMage">
+        <div id="userEnterBox" class="login_reg">
+            <a class="newPhone" href="{/get_url rule='/topicpage/mobile/app/' domain='main'/}index.html" style="margin-right: 15px;float: left;line-height: 28px;padding-top:2px\9;display:inline-block;color:#999"  target="_blank"><i></i>手机招聘</a>
+            <u>|</u>
+            <a class="newPhone" href="/app/p/" style="margin-right:15px; margin-left:15px; float: left;line-height: 28px;padding-top:2px\9;display:inline-block;color:#999"  target="_blank"><i></i>手机求职</a>
+            <u>|</u>
+            <div class="jobDingYue" style="margin-right: 15px;float: left;line-height: 28px;margin-left:15px;padding-top:2px\9;">
+                <a href="javascript:;" style="color:rgb(153, 153, 153)" onclick="web_sub()">职位订阅</a>
+            </div>
+            <u>|</u>
+            <div class="log_new">
+                <!-- <a href="javascript:">企业:</a> -->
+                <a class="enterprise_qiye" href="{/$siteurl.company/}/login"><i></i>企业入口</a>
+                <!-- <span class="slash">/</span> -->
+                <!-- <a class="cur" href="{/$siteurl.main/}/company/register">注册</a> -->
+            </div>
+            <u>|</u>
+            <div class="reg_new">
+                <a href="javascript:" class="jobWanted"><i></i>求职</a>
+                <a class="cur" href="{/$siteurl.person/}/login">登录</a>
+                <span class="slash">/</span>
+                <a class="cur" href="{/$siteurl.person/}/register">注册</a>
+            </div>
+        </div>
+        <div class="lgAft" style="padding-top: 0px">
+            <div id="user_info_ajax"></div>
+            <div class="comLg" style="display:none">
+                <ul>
+                    <li><a href="javascript:void(0);" class="userOut">退出</a></li>
+                    <li class="line">|</li>
+                    <li class="user">
+                        <img src="{/$siteurl.style/}/img/c/new_index/headlogo.png" width="28" height="28" id="comHeadphoto">
+                        <a target="_blank" href="{/$siteurl.company/}"><span class="comUserName">企业招聘中心</span></a>
+                    </li>
+                    <li class="line">|</li>
+                    <li><a class="newPhone" href="/app/p/" style="margin-right: 0px"><i></i>手机求职</a></li>
+                    <li class="line">|</li>
+                    <li><a class="newPhone" href="/topicpage/mobile/app/index.html" style="margin-right: 0px"><i></i>手机招聘</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="new-city-switch" id="js-switch-city">
+            <p class="city-defalut"  id="nearCity">
+                <span class="cur-city" id="js-city"><font id="area_name"></font><a href=""> [ 切换城市</a></span>
+            </p>
+            <div class="city-box" id="js-citybox" style="display: none">
+                <p class="city-title"><i class="city-icon"></i>当前选择城市<a class="cur-city" href="" id="area_name1"></a></p>
+                {/foreach $AreaList as $AreaItem/}
+                <dl class="city-item">
+                    <dt class="city-onelevel"><u></u><a>{/$AreaItem['abbreviation']/}</a></dt>
+                    <dd class="city-twolevel">
+                        {/foreach $AreaItem['findcity'] as $cityval/}
+                        <a{/if $cityval['area_id']!=$areainfo['area_id']/} href="//{/$cityval['alias']/}{/$yuming/}{/if $cityval['area_id']=='0300'/}/?area=chongqing{//if/}"{//if/} {/if $cityval['area_id']==$areainfo['area_id']/}class="cur" style="cursor:default;"{//if/}>{/$cityval['abbreviation']/}</a>
+                        {//foreach/}
+                    </dd>
+                </dl>
+                {//foreach/}
+
+                <p class="outer-text">其他城市正在开通中，敬请期待～</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--弹窗切换城市-->
+<div class="dialog-city" id="js-dialog-city" style="margin-left: -350px;display: none">
+    <div class="dialog-city-title">
+        <a class="close" href="">×</a>
+        <h3 class="title">切换城市</h3>
+    </div>
+    <div class="city-box">
+        <p class="city-title"><i class="city-icon"></i>当前定位城市<a class="cur-city" href="">{/$areainfo['abbreviation']/}</a></p>
+        {/foreach $AreaList as $AreaItem/}
+        <dl class="city-item">
+            <dt class="city-onelevel"><a href="">{/$AreaItem['abbreviation']/}</a></dt>
+            <dd class="city-twolevel">
+                {/foreach $AreaItem['findcity'] as $cityval/}
+                <a {/if $cityval['area_id']!=$areainfo['area_id']/} href="//{/$cityval['alias']/}{/$yuming/}{/if $cityval['area_id']=='0300'/}/?area=chongqing{//if/}"{//if/} {/if $cityval['area_id']==$areainfo['area_id']/}class="cur" style="cursor:default;"{//if/}>{/$cityval['abbreviation']/}</a>
+                {//foreach/}
+            </dd>
+        </dl>
+        {//foreach/}
+
+        <p class="outer-text">其他城市正在开通中，敬请期待～</p>
+    </div>
+    <div class="city-mask"></div>
+</div>
+<div id="js-dialog-city2" class="hb_ui_ui-mask" style="width: 100%; height: 100%; display: none; position: fixed; top: 0px; left: 0px; background: rgb(0, 0, 0); opacity: 0.2;filter:alpha(opacity=20);z-index: 998;"></div>
+<div class="newheadSch clearfix" style="position: relative;margin-bottom: 0px;z-index: 99;height: 0px;overflow: hidden;padding: 0px;margin: 0px;">
+    <div class="newLogo" style="position:relative;">
+        <a href="{/$siteurl.main/}">LOGO</a>
+    </div>
+    <div class="newSch clearfix" style="width:730px">
+        <div class="newSchy clearfix">
+            <div class="newfree-bdx">
+                <a id="free_put_job" href="{/$siteurl.main/}/company/register" class="newfree-post">发布职位</a>
+                <a id="new_hight_search" class="newschHigh" href="/jobsearch/advanced/" style="display: none;"></a>
+                <a id="go_register_person" href="{/$siteurl.person/}/register/" class="newfree-lgn">登记简历</a>
+            </div>
+
+            <div id="search_box" class="hb_ui_v2_searchbox">
+
+                <form>
+
+                    <div class="search_tab">
+
+                        <a href="javascript:" class="cur" data-value="1">职位</a>
+                        <a href="javascript:" data-value="2">公司</a>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="inputText">
+                        <input class="keys" type="text" placeholder="春季期间周一至周六上午招聘会" value="{/if !empty($keyword)/}{/$keyword/}{//if/}"/>
+                        <label class="hb_ui_checkbox" data-value="3"><em></em>职位全文</label>
+                        <div id="ui_hbsug_top" class="ui_hbsug ui_hbsug_top"></div>
+
+                    </div>
+                    <input type="button" value="" class="butsub" />
+
+                </form>
+
+            </div>
+        </div>
+        <p class="newSchTit">
+        </p>
+    </div>
+    <span style="position: absolute; color:#d73937; top:8px; right: 0px; font-size: 20px;bottom:5px\9">{/$phone400/}</span>
+
+
+</div>
+
+
+<div class="videoJobFairTop">
+    <div>
+        <a>视频招聘会</a>
+    </div>
+</div>
+<div class="videoJobFairMain">
+    <div class="videoJobFairTit">
+        <i></i>视频招聘会列表
+    </div>
+    <div class="videoJobFairList">
+        {/if !empty($list)/}
+            {/foreach $list as $key=>$val/}
+                <div class="videoJobFairListx">
+                    <a href="{/get_url rule='/schoolnet/JobFairList'/}?sid={/$val.id/}" target="_blank">{/if $val.list_poster/}<img src="{/$val.list_poster_info/}" class="videoJobImg" />{/else/}<img src="{/$siteurl.style/}/img/mobile/moren_pic.png" class="videoJobImg" />{//if/}</a>
+                    <div class="videoJobCenter">
+                        <a href="{/get_url rule='/schoolnet/JobFairList'/}?sid={/$val.id/}" target="_blank"><span class="videoJobName">{/$val.title/}{/if $val.school_type==1/}<i>校园</i>{//if/}</span></a>
+                        <span class="videoJobTime">{/$val.start_time|date_format:'Y.m.d H:i'/}  ～ {/$val.end_time|date_format:'Y.m.d H:i'/}  </span>
+                        <span class="videoJobPox">企业<em>{/$val.count_data.company_num/}</em>家<i></i>岗位<em>{/$val.count_data.job_num/}</em>个<i></i>参与<em>{/$val.count_data.person_num/}</em>人</span>
+                    </div>
+                    <div class="videoJobRight">
+                        <div class="videoJobVenue">
+                            <a href="{/get_url rule='/schoolnet/JobFairList'/}?sid={/$val.id/}" class="enterAssemblyHallBtn"  target="_blank">进入会场</a>
+                            {/if $val.activity_ing_status!=2/}<a  class="enterpriseFairBtn" data-id="{/$val.id/}" data-phone="{/$val.enter_phone_desc/}" data-sign="{/$val.is_company_signup/}">企业定展</a>{//if/}
+                        </div>
+                        <span class="videoJobState {/if $val.activity_ing_status==0/}videoJobStateGreen{/elseif $val.activity_ing_status==1/}videoJobStateOrange{/else/}videoJobStateGray{//if/}"></span>
+                    </div>
+                </div>
+            {//foreach/}
+        {//if/}
+    </div>
+    {/$pager/}
+</div>
+
+<!-- 企业报名弹窗 -->
+<div class="m_master"></div>
+<div class="companySignx">
+	<div class="companySignTit">
+		<span class="companySignPhone">报名联系电话：{/$shaungxuan_net_info.enter_phone_desc/}</span>
+		<i class="companySignClose"></i>
+	</div>
+	<span class="companyNameTit">企业报名</span>
+	<div class="signPut">
+		<img src="{/$siteurl.style/}/img/company/video/videi_job_img20.jpg"/>
+		<input type="text" name="companyName" id="companyName" placeholder="请输入企业名称" value="">
+	</div>
+	<div class="signPut">
+		<img src="{/$siteurl.style/}/img/company/video/videi_job_img21.jpg"/>
+		<input type="text" name="companyPhone" id="companyPhone" placeholder="请输入联系电话" value="">
+		<input type="hidden" name="sid" id="sid" />
+        <input type="hidden" name="is_company_signup" id="is_company_signup" />
+	</div>
+	<a href="javascript:void(0);" class="companySignBtn">提交</a>
+</div>
+<form id="web_subscribe_form" action="//www.huibo.com/jobsearch/" method="post"><input type="hidden" name="subscribe_origin" value="nosearchpage"></form>
+{/include file="footer.html"/}
+</body>
+<script>
+    hbjs.use('@confirmBox', function (m) {
+
+        var ConfirmBox = m['widge.overlay.confirmBox'],
+            Dialog = m['widge.overlay.hbDialog'],
+            cookie = m['tools.cookie'],
+            fontSize = 18,
+            pWidth = 70;
+
+
+        // 填写企业报名信息
+        $(document).on('click','.companySignClose',function () {
+            $('.m_master,.companySignx').hide();
+        });
+        $('.enterpriseFairBtn').click(function () {
+            $('.m_master,.companySignx').show();
+            var sid = $(this).attr('data-id');
+            var enter_phone_desc = $(this).attr('data-phone');
+            var is_company_signup = $(this).attr('data-sign');
+            $('.companySignPhone').html('报名联系电话：'+enter_phone_desc);
+            $('#sid').val(sid);
+            $('#is_company_signup').val(is_company_signup);
+        });
+        $('body').on('click', '.companySignBtn', function () {
+            var companyName = $('#companyName').val();
+            var companyPhone = $('#companyPhone').val();
+            var is_company_signup = $('#is_company_signup').val();
+            var sid = $('#sid').val();
+
+            var msg = '';
+            if (companyName == '') {
+                msg = '请输入企业名称';
+                return ConfirmBox.timeBomb(msg, {
+                    name: 'fail',
+                    width: fontSize * msg.length + pWidth,
+                });
+            }
+            if (companyPhone == '') {
+                msg = '请输入联系电话';
+                return  ConfirmBox.timeBomb(msg, {
+                    name: 'fail',
+                    width: fontSize * msg.length + pWidth,
+                });
+            }
+            if (is_company_signup == 0) {
+                msg = '该场活动需线下人工审核，请直接联系工作人员电话报名。';
+                return ConfirmBox.timeBomb(msg, {
+                    name: 'fail',
+                    width: fontSize * msg.length + pWidth,
+                });
+            }
+            // else if (!(/^1\d{10}$/.test(companyPhone))) {
+            //     msg = '请输入正确手机号';
+            //     ConfirmBox.timeBomb(msg, {
+            //         name: 'fail',
+            //         width: fontSize * msg.length + pWidth,
+            //     });
+            // }
+            var url = "{/get_url rule='/schoolnet/ApplyCompanyPost'/}",
+                data = {sid: sid,company_name:companyName,link_tel:companyPhone};
+            ajax_request_function(url, data, {
+                success: function (data) {
+                    ConfirmBox.timeBomb(data.msg, {
+                        name: 'success',
+                        width: fontSize * data.msg.length + pWidth,
+                    });
+                    setTimeout(function () {
+                        $('.m_master,.companySignx').hide();
+                    }, 800);
+                }
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    //刷新明星雇主
+    var refreshStarEpy = '{/base_lib_Constant::MAIN_URL_NO_HTTP/}';
+    var starEpyImg = '{/$ad_logo_path/}';
+    //{/$siteurl.main/}www.huibo.com
+    var homeLink = '{/$siteurl.main/}';
+    //{/$siteurl.style/}样式目录
+    var homeStyle = '{/$siteurl.style/}';
+    //{/$siteurl.person/}跳转到个人
+    var personLink = '{/$siteurl.person/}';
+    //{/$siteurl.company/}跳转到企业
+    var companyLink = '{/$siteurl.company/}';
+
+    var feedBackLink        = '{/$siteurl.main/}/personplan/GetFeedBackData/';
+    var feedBackSetLink     = '{/$siteurl.main/}/personplan/setFeedBackData/';
+    hbjs.use('@jobDialog, @actions', function(m){
+        var $ = m['cqjob.actions'].extend(m['cqjob.jobDialog']);
+        $('.slider_ad_item').on('click', function () {
+            var url = '{/get_url rule="/ad/PersonVisit"/}';
+            var parent_a = $(this).parent();
+            $.ajax({
+                url: url,
+                type: "post",
+                data: {advert_id:parent_a.attr('advert_id')},
+                dataType: "json",
+                success: function (json) {
+                },
+            });
+        });
+    });
+
+</script>
+<script type="text/javascript" src="{/version file='home_rs.js'/}"></script>
+</html>

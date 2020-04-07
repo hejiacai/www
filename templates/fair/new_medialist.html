@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="重庆招聘会,重庆人才市场,招聘会资讯,人才需求信息,现场招聘会报道,汇博人才市场" />
+<meta name="Description" content="汇博人才市场每周二四六在重庆龙头寺举办大型重庆招聘会，汇博人才市场为您提供最新的招聘会资讯媒体报道，分析最新人才需求信息，找好工作到汇博人才市场" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script src="{/version file='html5.js'/}"></script>  
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="fairNew.css"/}" />
+
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+<script type="text/javascript">
+    window.CONFIG = {
+        HOST: '{/$siteurl.style/}',
+        COMBOPATH: '/js/v2/'
+    }
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file="global.js"/}"></script>
+<script type="text/javascript">
+        hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<style>
+ .jobFairBner{width:auto;font-family:"微软雅黑"; height:200px; background:url({/$siteurl.style/}/img/fair/new_fair/jobFairBner.jpg) center top no-repeat;}
+ .jobFairMag{width:1000px; overflow:hidden;margin:0 auto;}
+ .jobFairMag h2{ display:block; text-align:left; float:left; font-size:20px; color:#b62a2a; padding-top:120px; padding-left:0;}
+ .jobFairMag div{width:490px; text-align:right; float:right; padding-top:50px;}
+ .jobFairMag div b,.jobFairMag div p{ color:#333; font-size:16px; display:block;width:490px; overflow:hidden; }
+ .jobFairMag div b{ color:#333; font-size:21px; padding-bottom:8px;}
+ .jobFairMag div p span{ font-weight:bold; }
+</style>
+</head>
+<body>
+{/include file="new_headsearch_2015.html"/}
+{/include file="./fair/fairhead.html"/}
+<div class="content">
+	<div class="conL">
+    	<div class="part medRep" {/if empty($the_list) || count($the_list)==0/}style="display:none;"{//if/}>
+        	<ul class="medLst">
+        		{/if !empty($the_list) && count($the_list)>0/}
+            		{/foreach $the_list as $item=>$value/}
+            			<li><a target="_blank" href='{/get_url rule="/zhaopinhui/MediaDetail/" data="mediaid={/$value.media_id/}"/}' title="{/$value.subject/}"><b>【{/$value.origin/}】</b>{/$value.subject/}</a><span class="time">{/$value.the_time/}</span></li>
+                	{//foreach/}
+        		{//if/}
+            </ul>
+            {/$pager/}
+        </div>
+        <div class="noData" {/if !empty($the_list) && count($the_list)>0/}style="display:none;"{//if/}>对不起,暂无相关报道!</div>
+    </div>
+    <div class="conR">
+        {/*{/if !empty($major_Adv.topic_img_url) && !base_lib_BaseUtils::nullOrEmpty($major_Adv.topic_url)/}
+    	<div class="part fairAd">
+        	<a target="_blank" href="{/if !empty($major_Adv.topic_img_url) && !base_lib_BaseUtils::nullOrEmpty($major_Adv.topic_url)/}{/$major_Adv.topic_url/}{/else/}javascript:void(0);{//if/}"><img src="{/$ad_path/}{/if !empty($major_Adv) && !base_lib_BaseUtils::nullOrEmpty($major_Adv.topic_img_url)/}{/$major_Adv.topic_img_url/}{//if/}" /></a>
+        </div>
+        {//if/}
+        <div class="part fairAdd">
+        	<h3><b></b>招聘会地址</h3>
+            <div class="addCon">
+                <p>重庆.两江新区龙头寺. 狮子坪轻轨站旁.汇博人才市场</p>
+                <a target="_blank" href="http://j.map.baidu.com/mt0Sq" class="map"><img src="{/$siteurl.style/}/img/fair/mapAdd.jpg" /></a>
+            </div>
+        </div>
+        <div class="part fairInfo">
+        	<h3><b></b>乘车路线</h3>
+            <div class="infoCon">
+            	<p style='height:auto'><b style="font-weight:bold;">轻轨：</b>3号线狮子坪站下车（2号出口左行100米）即到</p>
+                <p style='height:auto'>10号线龙头寺公园站下车（1号出口直走约200米，在第二路口左拐50米过马路）即到</p>
+                <p style='height:auto'><b style="font-weight:bold;">公交：</b>天宫大道站下,过马路100米即到</p>
+            </div>
+        </div>
+        <div class="part fairInfo">
+        	<h3><b></b>我是企业，我要订展</h3>
+            <div class="infoCon">
+            	<p><b>订展热线：</b>{/$config->CqjobFairs400Tel/}</p>
+                <p><b>手机号码：</b>{/$config->CqjobFairsCellPhone/}</p>
+                <p><b>QQ在线咨询：</b><a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></p>
+                <p class="btn"><a href="{/get_url rule="/zhaopinhui/enterprise" data="sceneid={/$major_Adv.scene_id/}&fairApply=true"/}" class="btn1 btnsF16"><b></b>在线定展</a></p>
+            </div>
+        </div>*/}
+        {/include file="./fair/fairright.html"/}
+    </div>
+    <div class="clear"></div>
+</div>
+{/include file="footer.html"/}
+<section class="qqTalk">
+	<a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:53" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+</section>
+</body>
+</html>

@@ -1,0 +1,623 @@
+<!doctype html>
+<html> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title>高级搜索 - 汇博网</title>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="v2-icons.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="v2-widge.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="v2-adsearch.css"/}" />
+<!–[if lt IE9]> 
+<script type="text/javascript" language="javascript" src="{/version file="html5.js"/}" ></script>  
+<![endif]–>
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript">
+hbjs.config({
+	combos: {
+		'@jobSorter':[
+			'@confirmBox', '@autoComplete', 'product.jobSort.jobSorter', 
+			'product.jobSort.jobSortDialog', 'product.jobSort.jobSortSearch', 
+			'product.jobSort.jobSortMenu', 'product.sideMenu.sideSortMenuData'
+		]
+	}
+});
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<style type="text/css">
+.mutilpleSelectBox{padding:0}
+</style>
+</head>
+<body>
+<!--同首页导航条结构一样-->
+<div class="headerC clearfix">
+<div class="headerC">
+    	<div class="headerCon" id="jobsearchHeader">
+            <div class="headL">
+                <p><a target="_blank" href="{/get_url rule='/app/p'/}">手机客户端</a></p>
+                <p class="line">|</p>
+                <p><a target="_blank" href="{/get_url rule='/xiaoyuan/'/}">校园招聘</a></p>
+                <p class="line">|</p>
+                <p><a target="_blank" href="{/get_url rule='/zhaopinhui/'/}">重庆招聘会</a></p>
+                <p class="line">|</p>
+                <p><a target="_blank" href="{/get_url rule='/hrcollege/'/}">HR学院</a></p>
+                <p class="line">|</p>
+                <p><a target="_blank" href="{/get_url rule='/zhichang/'/}">职场指南</a></p>
+                <p class="line">|</p>
+                <p><a target="_blank" href="{/$userInfo["companyUrl"]/}/login">企业服务</a></p>
+            </div>
+            <div class="headR">    
+                <div class="lgBefor" id="noLoginContainer" {/if $isLogin/}style="display:none;" {//if/}>
+                    <ul>
+                    <li class="enter" style="margin-left:10px"><a href="{/$siteurl.company/}/register">企业注册</a></li>
+                    <li class="enter" ><a href="{/$siteurl.person/}/register">求职注册</a></li>
+                    <li class="line">|</li>
+                    <li class="comEn"><a href="{/$userInfo["companyUrl"]/}/login">企业登录</a></li>
+                     <li class="userLogin">
+                        <a href="{/$userInfo["personUrl"]/}/login" class="showPanel" id="btnIndexHeaderLogin">求职者登录</a>
+                    </li>                  
+                    </ul>
+                </div>
+                <div class="lgAft" id="loginContainer" {/if !$isLogin/}style="display:none;" {//if/}>
+                    <div class="psnLg">
+                        <ul>
+                        <li>
+                            <a href="javascript:;" class="userOut">退出</a>
+                        </li>
+                        <li class="line">|</li>
+                        <li class="user">
+                            <a href="{/if $userType=='p'/}{/$userInfo["personUrl"]/}{/else/}{/$userInfo["companyUrl"]/}{//if/}"><span class="psnUserName">{/$userName/}</span></a>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!--/-->
+<!--主体-->
+<div class="w1000 clearfix">
+	<div class="logo clearfix">
+		<a href="{/$siteurl.main/}"><img src="{/$siteurl.style/}/img/common/flogo.png" /></a>
+		<u class="hr"></u>
+		<a href="javascript:void(0)" class="name">高级搜索</a>
+	</div>
+	<form action="{/get_url rule='/jobsearch'/}" method="get" id="frmJobsearch">
+		<input type="hidden" name="params" id="hddParams" />
+		<input type="hidden" name="key" id="hddKeyword" />
+	</form>
+	<form  method="post" class="search-box formText">
+		<dl class="search-item mt30">
+			<dt class="name">关键词：</dt>
+			<dd class="input-box">
+				<input type="text" class="text" id="tSchJob" />
+			</dd>
+		</dl>
+		<dl class="search-item mt30">
+			<dt class="name">招聘行业：</dt>
+			<dd class="input-box checkMod clearfix">
+				<span id="dropCalling" class="drop formText JobIndDrop" style="z-index:4 "></span>
+			</dd>
+		</dl>	
+		<dl class="search-item mt30">
+			<dt class="name">工作地点：</dt>
+			<dd class="input-box checkMod clearfix">
+				<span id="dropAreaMultiple" class="zIndex drop formText jobAddDrop" style="z-index: 3"></span>
+			</dd>
+		</dl>
+		<dl class="search-item mt30">
+			<dt class="name">福利亮点：</dt>
+			<dd class="input-box welfare">
+			    {/foreach $rewards as $key =>$value/}
+				<label for="ckbreward{/$key/}"><input type="checkbox" name="reward" value="{/$key/}" id="ckbreward{/$key/}"/>{/$value['reward_name']/}</label>
+				{//foreach/}
+			</dd>
+		</dl>
+		<dl class="search-item mt30">
+			<dt class="name">薪资范围：</dt>
+			<dd class="input-box salary" id="salary">
+				<input type="text" class="text" id="txtMinSalary" /><span class="gray"> - </span><input type="text" class="text" id="txtMaxSalary" />
+				<span class="desc">元/月</span>
+				<span class="msg-box" style="display: none"></span><!--默认class=msg-box,错误时为msg-err-->
+			</dd>
+		</dl>
+        <!--
+		<dl class="search-item mt30">
+			<dt class="name">岗位级别：</dt>
+			<dd class="input-box job">
+			    {/foreach $joblevels as $key =>$value/}
+				<label for="ckblevel{/$key/}"><input type="checkbox" name="joblevel" value="{/$key/}" id="ckblevel{/$key/}"/>{/$value/}</label>
+				{//foreach/}			
+			</dd>
+		</dl>
+        -->
+		<p class="hr"></p>
+		<dl class="search-item mt30">
+			<dt class="name">职位类别：</dt>
+			<dd class="input-box checkMod clearfix">
+            	<!--
+				<span id="jobsort" class="drop formText JobCayDrop" style="z-index:2"></span>  &nbsp;
+                -->
+                
+                <div id="dropJobsort" class="formText mutilpleSelectBox" style="margin-right:10px">
+                    <b class="hbFntWes icon">&#xf03a;</b>
+                    <ul class="label">
+                        {/foreach $expect_jobsort as $jobsortid=>$jobsort/}
+                        <li data-id="{/$jobsortid/}"><a href="javascript:">{/$jobsort['jobsort_name']/}<span class="close">×</span></a></li>
+                        {//foreach/}
+                    </ul>
+                </div>
+                
+				<label for="chkCharac01" style="padding-top: 5px;display: inline-block;">
+					<input style="vertical-align: middle;" type="checkbox" name="charac" value="01" id="chkCharac01" />
+					<img src="{/$siteurl.style/}/img/company/jobimg.png" width="9" height="16" style="vertical-align: middle;">
+					<label>急聘职位</label>
+				</label>
+			</dd>
+		</dl>
+		<dl class="search-item mt30">
+			<dt class="name">公司性质：</dt>
+			<dd class="input-box nature">
+				{/foreach $compropertypes as $key =>$value/}
+				<label for="ckbcompropertype{/$key/}"><input type="checkbox" name="compropertype" value="{/$key/}" id="ckbcompropertype{/$key/}"/>{/$value/}</label>
+				{//foreach/}
+			</dd>
+		</dl>
+		<dl class="search-item mt20">
+			<dt class="name">公司规模：</dt>
+			<dd class="input-box scale">
+				{/foreach $comsizes as $key =>$value/}
+				<label for="ckbcomsize{/$key/}"><input type="checkbox" name="comsize" value="{/$key/}" id="ckbcomsize{/$key/}"/>{/$value/}</label>
+				{//foreach/}
+			</dd>
+		</dl>
+		<dl class="search-item mt30">
+			<dt class="name">学历要求：</dt>
+			<dd class="input-box clearfix">
+				<span class="drop zindex">
+                    <span class="">
+                    	<b class="hbFntWes dropIco">&#xf0d7;</b>
+                    	<span class="dropSeld cu gray" style="width: 105px;">不限</span>
+                        <div class="dropLst">
+                        	<div class="dropLstCon" style="width:113px;">
+                            	<ul id="degreeContainer">
+				 				{/foreach $degrees as $key =>$value/}
+				 					<li v="{/$key/}">{/$value/}</li>
+								{//foreach/}                           		
+                            	</ul>
+                        	</div>
+                       </div>
+                   </span>
+                   <input type="hidden"  name="begindegree" id="hddBegindegree">
+                </span>
+			</dd>
+		</dl>
+		<dl class="search-item mt30">
+			<dt class="name">工作经验：</dt>
+			<dd class="input-box clearfix">
+				<span class="drop zindex">
+                    <span class="">
+                    	<b class="hbFntWes dropIco">&#xf0d7;</b>
+                    	<span class="dropSeld cu gray" style="width: 105px;">不限</span>
+                        <div class="dropLst">
+                        	<div class="dropLstCon" style="width:113px;">
+                            	<ul id="workyearContainer">
+                            	<li v="099">无要求</li>
+                            	<li v="088">应届生</li>
+								{/foreach $workyears as $key =>$value/}
+				 					<li v="{/$key/}">&ge;{/$value|intval/}年</li>
+								{//foreach/} 
+                            	</ul>
+                        	</div>
+                       </div>
+                   </span>
+                   <input type="hidden" id="hddBeginworkyear" name="beginworkyear">
+                </span>
+			</dd>
+		</dl>
+        <!--
+		<dl class="search-item mt30">
+			<dt class="name">工作类型：</dt>
+			<dd class="input-box type">
+			    {/foreach $jobtypes as $key =>$value/}
+				<label for="ckbjobtype{/$key/}"><input type="checkbox" name="jobtype" value="{/$key/}" id="ckbjobtype{/$key/}"/>{/$value/}</label>
+				{//foreach/}
+			</dd>
+		</dl>
+		<dl class="search-item mt30">
+			<dt class="name">发布时间：</dt>
+			<dd class="input-box clearfix">
+				<span class="drop zindex">
+                    <span class="">
+                    	<b class="hbFntWes dropIco">&#xf0d7;</b>
+                    	<span class="dropSeld cu gray" style="width: 105px;">近30天</span>
+                        <div class="dropLst">
+                        	<div class="dropLstCon" style="width:113px;">
+                            	<ul>
+                            		<li v="04">近30天</li>
+                            		<li v="01">近一天</li>
+                            		<li v="02">近三天</li>
+                            		<li v="03">近七天</li>
+                            	</ul>
+                        	</div>
+                       </div>
+                   </span>
+                   <input type="hidden" id="hddIssuetime" name="issuetime" value="04">
+                </span>
+			</dd>
+		</dl>
+		<dl class="search-item mt30">
+			<dt class="name">特色职位：</dt>
+			<dd class="input-box charac">
+				<label for="chkCharac"><input type="radio" name="charac" checked="checked" id="chkCharac"  value=""/>不限</label>
+				<label for="chkCharac01"><input type="radio" name="charac" value="01" id="chkCharac01" />急聘职位<em class="icons16_jipin"></em></label>
+				<label for="chkCharac03"><input type="radio" name="charac"  value="03" id="chkCharac03" />名优企业<i class="icons15_xing"></i></label>
+			</dd>
+		</dl>
+        -->
+		<dl class="search-item mt80">
+			<dt class="name">&nbsp;</dt>
+			<dd class="input-box">
+				<a href="javascript:void(0)" class="btn2 btnsF16" id="btnSearchjob">开始搜索</a>
+				<a href="javascript:void(0)" class="btn3 btnsF16" id="btnAttention">+关注</a>
+				<a href="javascript:void(0)" class="clear-sect" id="reset"><em class="hbIconMoon">&#xe0a8;</em>清空搜索条件</a>
+			</dd>
+		</dl>
+	</form>
+</div>
+{/include file="footer.html"/}
+<script type="text/javascript">
+
+	hbjs.use('@calling, @areaMulitiple, @jobSorter', function(m){
+		
+		var $ = m['jquery'].extend(m['cqjob.calling'], m['cqjob.areaMulitiple']),
+			jobSorter = m['product.jobSort.jobSorter'];
+		
+		var jobsortBox = new jobSorter({
+			triger: $('#jobsort'),
+			search: {
+				dataSource: 'http://www.huibo.com/jobsort/searchJobsort?jobSortName={{query}}&pageSize={{pageSize}}&callback=jobsortcallback',
+				size: 10
+			}
+		});
+		
+		/*
+		$('#jobsort').jobsort({
+			isLimit:true,unLimitedLevel:3,type:'multiple',max:3,hddName:'hddJobsort'
+		});
+		*/
+		
+		$("#dropAreaMultiple").multiplearea({hddName:'hddAreaName',max:3});
+		$('#dropCalling').calling({hddName:'hddCallingName',max:3});
+		
+		//下拉
+		var drop = $(".drop");
+
+		$("body").click(function(e){
+			for(var i=0;i<drop.length;i++){
+				if(drop[i] === e.target || $.contains(drop[i],e.target)){
+					drop.eq(i).css("z-index",4).find("span").addClass("dropShow");		
+				}else{
+					drop.eq(i).css("z-index",1).find(".dropShow").removeClass("dropShow");
+				}
+			}
+		});
+		drop.find("li").hover(function(){
+			$(this).addClass("hov");
+		},function(){
+			$(this).removeClass("hov");
+		}).click(function(){
+			var _this = $(this);
+			var show = _this.parents(".dropShow");
+				show.find(".dropSeld").html(_this.html()).removeClass("gray");
+				show.removeClass("dropShow");
+				show.parent(".drop").find("input[type='hidden']").val(_this.attr("v"));
+			return false;
+		});
+		//重置
+		$("#reset").click(function(){
+			$(this).parents("form")[0].reset();
+			$('#jobsort').resetJobsortValue();
+			$("#dropAreaMultiple").resetMultipleareaValue();
+			$('#dropCalling').resetCallingValue();
+			
+			drop.addClass("gray").css("z-index",1).find(".dropShow").removeClass("dropShow");
+			drop.find(".dropSeld").html("不限");
+			drop.find("input[type='hidden']").val("");
+			return false;
+		});
+		
+	});
+
+	hbjs.use('@jobAutocomplete, @checkLogin, @verifier, @confirmBox, @form', function(m){
+		
+		var $ = m['jquery'];
+		$.fn.extend({
+			multipleVal: function() {
+				// 获取多个复选框的值 
+				var arr = [];
+				this.each(function() {
+					 arr.push($(this).val()); 
+				});
+				return arr;
+			}
+		});
+		var jobsearch = {
+			getFiterCondition:function(vseparator,bool) {
+				var params = [],
+				separator = '_',
+				jobsort = $('#jobsort').find('input[name="hddJobsort"]').val(),
+				calling = $('#dropCalling').find('input[name="hddCallingName"]').val(),
+				area = $('#dropAreaMultiple').find('input[name="hddAreaName"]').val(),
+				reward = $('input[name="reward"]:checked').multipleVal(),
+				minsalary = $('#txtMinSalary').val(),
+				maxsalary  = $('#txtMaxSalary').val(),
+//				joblevel  =$('input[name="joblevel"]:checked').multipleVal(),
+				compropertype = $('input[name="compropertype"]:checked').multipleVal(),
+				comsize = $('input[name="comsize"]:checked').multipleVal(),
+				begindegree = $('#hddBegindegree').val(),
+//				enddegree = $('#hddEnddegree').val(),
+				beginworkyear = $('#hddBeginworkyear').val(),
+//				endworkyear = $('#hddEndworkyear').val(),
+//				jobtype = $('input[name="jobtype"]:checked').multipleVal(),
+//				issuetime = $('#hddIssuetime').val(),
+				jobcategory = $('input[name="charac"]:checked').val();//急聘
+				// 职位类别
+				if(jobsort) {
+					params.push('a'+vseparator+jobsort.replace(/,/g,separator));
+				}
+				// 行业
+				if(calling) {
+					params.push('c'+vseparator+calling.replace(/,/g,separator));	
+				}
+				//地区
+				if(area) {
+					params.push('b'+vseparator+area.replace(/,/g,separator));	
+				}
+				// 福利
+				if(reward.length>0) {
+					params.push('d'+vseparator+reward.join(separator));
+				}
+				// 薪资 
+				if(isNaN(minsalary)||isNaN(maxsalary)){
+					return;
+				}
+				if(minsalary||maxsalary) {
+					if(!minsalary) {
+						minsalary = 0;
+					}
+					if(!maxsalary) {
+						maxsalary = 0;
+					}				
+					params.push('e'+vseparator+minsalary+separator+maxsalary);	
+				}
+				// 岗位级别 
+                /*
+				if(joblevel.length>0) {
+					params.push('f'+vseparator+joblevel.join(separator));
+				}
+                */
+				// 公司性质
+				if(compropertype.length>0) {
+					params.push('g'+vseparator+compropertype.join(separator));
+				}
+				// 公司规模
+				if(comsize.length>0) {
+					params.push('h'+vseparator+comsize.join(separator));
+				}			
+				// 学历 
+                /*
+				var degrees = [];
+				$('#degreeContainer').find('li').each(function(){
+					degrees.push($(this).attr('v'));
+				});
+				if(begindegree||enddegree) {
+					params.push('i'+vseparator+arrayUtity.slice(degrees,begindegree,enddegree).join(separator));
+				}
+                */
+                if(begindegree){
+                    params.push('i'+vseparator+begindegree);
+                }
+				// 工作经验			
+                /*
+				var workyears = [];
+				$('#workyearContainer').find('li').each(function(){
+					workyears.push($(this).attr('v'));
+				});
+				if(beginworkyear||endworkyear) {
+					params.push('j'+vseparator+arrayUtity.slice(workyears,beginworkyear,endworkyear).join(separator));
+				}
+                */
+               if(beginworkyear){
+                   params.push('j'+vseparator+beginworkyear);
+               }
+				// 岗位级别 
+                /*
+				if(jobtype.length>0) {
+					params.push('k'+vseparator+jobtype.join(separator));
+				}
+                */
+				if(bool) {  // 是否需要记录发布时间和查询类别
+					// 发布时间
+                    /*
+					if(issuetime) {
+						params.push('l'+vseparator+issuetime);
+					}
+                    */
+					// 类别 
+					if(jobcategory) {
+						params.push('m'+vseparator+jobcategory);
+					}
+				}
+				return params;		
+			}
+		};
+		
+		
+		var text = $(".text");
+		text.focus(function(){
+			$(this).addClass("focus");
+		}).blur(function(){
+			$(this).removeClass("focus");
+		}).eq(0).focus();
+		
+		//薪资范围
+		var salary = $("#salary"),
+			sText = salary.find(".text");
+		sText.blur(function(){
+			var val = sText.eq(0).val(),
+				val2 = sText.eq(1).val(),
+				msg = salary.find(".msg-box");
+			if(isNaN(val) || val < 0 || val > 999999 || isNaN(val2) || val2 < 0 || val2 > 999999){
+				msg.html('<i class="arr"></i>请输入正确的数值').addClass("msg-err").show();	
+			}else{
+				msg.hide();
+			}
+		});
+		//职位自动补全
+		$("#tSchJob").autocomplete("/index/autocomplete",{
+			resultsClass:"tSchJobAut",
+			max: 12,
+			minChars: 1,
+			matchContains: true,
+			scroll:false,
+			width:269,
+			autoFill: false,
+			dataType:"jsonp",
+			extraParams:{type:"job",key:escape($.trim($("#tSchJobText").val()))},
+			formatItem:function(row){
+				return '<span class="autTempJob"><span class="autTempL">'+row.item+'</span><span class="autTempR">共<em>'+row.count+'</em>条</span></span>';
+			},
+			formatMatch:function(row){
+				return row.item;
+			},
+			formatResult:function(row){
+				return row.item;
+			}
+		});
+		
+		// 查询
+		$('#btnSearchjob').click(function(){
+			var params = jobsearch.getFiterCondition('',true),
+				keyword  = $('#tSchJob').val();
+			$('#hddParams').val(params.join(''));
+			if(keyword) {
+				$('#hddKeyword').val(keyword);
+			}else {
+				$('#hddKeyword').remove();
+			}
+			$('#frmJobsearch').get(0).submit();
+		});
+		// 登出
+	    $(".userOut").click(function(){
+	        $.ajax({
+	            'url':'/index/signOut',
+	            'type':'get',
+	            'dataType':'json',
+	            'success':function(json){
+	                if(json.success){
+	                    $('#noLoginContainer').show();
+	                    $('#loginContainer').hide();
+	                    $.anchorMsg("退出成功");
+	                }else{
+	                    $.message("退出失败");
+	                }
+	            }
+	        });
+	        return false;
+	    });
+		var checkLogin = m['product.checkLogin']; //验证登录
+		//关注窗口
+		var dialog = m['widge.overlay.hbDialog'],
+			confirmBox = m['widge.overlay.confirmBox'],
+			follower = new dialog({
+				idName: 'follow_dialog',
+				title: '添加关注',
+				close: 'x',
+				isAjax: true,
+				initHeight: 100,
+				width: 480
+			});	    
+		$('#btnAttention').click(function(){
+			var islogin = checkLogin.isLogin('ajaxLoginCallback');
+			if(islogin){
+				var separator ='::',
+				 	params = jobsearch.getFiterCondition(separator),
+			    keyword  = $('#tSchJob').val();
+				if(!keyword&&params.length<0) {
+					return;
+				}
+				if(keyword) {
+					params.push('key'+separator+keyword);
+				}
+				$.getJSON('/jobsearch/AddAttention/condition-' + params.join('@@'), function(e){
+					if(e.error){
+						confirmBox.timeBomb(e.error, {
+							name:'fail',
+							width:270
+						});
+					} else {
+						follower.setContent('/jobsearch/AddAttentionSuccess').show()
+						.off('loadComplete').on('loadComplete', function(){
+							var attention_name = this.query('input[name=attention_name]'),
+								attention_id = this.query('input[name=attention_id]'),
+								self = this;
+							attention_name.val(e.attention_name);
+							attention_id.val(e.attention_id);
+							this.query('#btnAttentClose').one('click', function(){
+								self.hide();
+							});
+							this.query('#btnAttentYes').one('click', function(){
+								if(verifier.range(attention_name, [1, 10])){
+									var url = '/jobsearch/UpdateAttentionName?attention_name=' +
+												attention_name.val() + '&attention_id=' + 
+												e.attention_id;
+												
+									$.getJSON(url, function(e){
+										if(e.error){
+											confirmBox.timeBomb(e.error, {
+												name:'fail',
+												width:300
+											});
+										} else {
+											confirmBox.timeBomb(e.error, {
+												name:'success',
+												width:300
+											});
+											self.hide();
+										}
+									});
+								} else {
+									confirmBox.timeBomb('关注名称应为1-10字符', {
+										name:'fail',
+										width:250
+									});
+								}
+							});
+						});
+					}
+				});
+			}
+		});
+	});
+	function ajaxLoginCallback() {
+		window.location.href = window.location.href ; 
+	}
+
+	
+</script>
+</body>
+</html>

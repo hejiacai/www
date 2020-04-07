@@ -1,0 +1,48 @@
+{/include_php file='app/controller/head.php'/}
+<header>
+    <div class="tpartHeadBg">
+        <div class="tpartHead clearfix">
+            <div class="tpartLogo">
+                <a href="{/$siteurl.www/}/partjob/search/">LOGO</a>
+            </div>
+            <div class="tpartMember">
+                <a href="{/get_url rule="/partjob/detail/"/}" class="tpartPhone">手机版</a>
+                <p {/if $dataitem['isLogin']/}class="userinfor"{//if/}>
+                {/if $dataitem['isLogin'] && $dataitem['type'] == "c"/}
+                <a href="{/$siteurl.company/}/part/"><img src="{/$dataitem['logo_path']/}" />{/$dataitem['username']/}</a>
+                <u>|</u>
+                <a href="javascript:void(0)" id="btnUserOut">退出</a>
+                {/else/}
+                <a href="{/$siteurl.company/}/login/index/?type=part">企业登录</a>
+                <span>|</span>
+                <a href="{/$siteurl.company/}/register/index/?type=part">企业注册</a>
+                {//if/}
+                </p>
+            </div>
+        </div>
+    </div>
+</header>
+<script type="text/javascript">
+    hbjs.use('@confirmBox', function(m){
+        var $ = m['jquery'],
+            cookie = m['tools.cookie'],
+            ConfirmBox = m['widge.overlay.confirmBox'];
+        //退出
+        $("#btnUserOut").click(function(){
+            $.ajax({
+                'url':'/index/signOut',
+                'type':'get',
+                'dataType':'json',
+                'success':function(json){
+                    if(json.success){
+                        $('#userContainer').empty().append('<a class="b" href="{/$siteurl.person/}/login">求职者登录</a><a class="b" href="{/$siteurl.company/}/login">企业登录</a> |<a href="{/get_url rule='/index/regist'/}">免费注册</a>');
+                        ConfirmBox.timeBomb('退出成功', 'success');
+                        window.location.reload();
+                    } else {
+                        ConfirmBox.timeBomb('退出失败', 'fail');
+                    }
+                }
+            });
+        });
+    })
+</script>

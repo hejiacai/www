@@ -1,0 +1,1089 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="重庆招聘会,重庆人才市场,重庆人才招聘会,重庆招聘会信息,重庆近期招聘会,重庆现场招聘会,汇博人才市场" />
+<meta name="Description" content="汇博人才市场，每周二四六在重庆龙头寺举办大型重庆招聘会，{/$config->HuiBoSiteName/}为您提供最新{/date('Y',time())/}年{/date('m',time())/}月重庆招聘会信息,获悉最新重庆招聘会信息请上{/$config->HuiBoSiteName/}" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script src="{/version file='html5.js'/}"></script>
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="fair.css"/}" />
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="dialog.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="common.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_inputFocus.js"/}"></script>
+</head>
+<body>
+<!--top begin-->
+{/include file="header.html"/}
+<!--top end-->
+<!--head-->
+<div class="container">
+	<div class="head">
+    	<h1><a href='{/rewrite type="fair"/}' title="现场招聘会"></a></h1>
+<!--        <div class="headRtScrl" id="headRtScrl">-->
+<!--        	<ul>-->
+<!--            <li title="专业网络招聘+专业现场招聘服务机构！">专业网络招聘+专业现场招聘服务机构！</li>-->
+<!--            <li title="周二：工业、汽车、电子、制造业专场招聘会">周二：工业、汽车、电子、制造业专场招聘会</li>-->
+<!--            <li title="周四：商场百货、酒店餐饮、快消品、物业建材及营销人才专场招聘会">周四：商场百货、酒店餐饮、快消品、物业建材及营销人才专场招聘会</li>-->
+<!--            <li title="周六：特大型招聘会  {/$config->HuiBoFairShowRoom/}家企业  {/$config->HuiBoFairJobNumSat/}岗位">周六：特大型招聘会  {/$config->HuiBoFairShowRoom/}家企业  {/$config->HuiBoFairJobNumSat/}岗位</li>-->
+<!--            </ul>-->
+<!--        </div>-->
+		<div class="headRtScrl" id="headRtScrl">
+        	<ul>
+            <li title="每周二、三、四、六上午（8：30-12：00）定期举办招聘会">每周二、三、四、六上午（8：30-12：00）定期举办招聘会</li>
+            </ul>
+        </div>
+    </div>
+    <div class="nav">
+    	<div class="navL"></div>
+        <div class="navC">
+        	<div class="navCon"><a href='{/rewrite type="fair"/}'>招聘会首页</a><a href='{/get_url rule="/zhaopinhui/enterprise"/}'>我是企业</a><a href='{/get_url rule="/zhaopinhui/Notified"/}'>参会须知</a><a href='{/get_url rule="/zhaopinhui/traffic"/}' class="cu">交通指南</a></div>
+            <div class="navRtTxt">咨询热线：{/$config->CqjobFairsPhone/}   在线咨询：<a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></div>
+        </div>
+        <div class="navR"></div>
+    </div>
+    
+    <div class="pageCon">
+    	
+        <div class="part">
+            <div class="partT"><h2>交通查询及展示</h2></div>
+            <div class="partC">
+            	<div class="traffic">
+                    <div class="trafficQuery">
+                        <div class="trafficQueryL">
+                            <a title="切换两点" class="changeTraffic" id="changeTraffic" href="javascript:void(0)"></a>
+                            <p class="tit">线路查询</p>
+                            <div id="divPanelOne" class="formLst">
+                            	<div class="formMod">
+                                	<div class="l">&nbsp;</div>
+                                    <div class="r"><span class="formText"><label for="txtStart" class="txtLabel">起点</label><input type="text" class="text" id="txtStart" /></span></div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="formMod">
+                                	<div class="l">&nbsp;</div>
+                                    <div class="r"><span class="formText"><label for="txtEnd" class="txtLabel">终点</label><input type="text" class="text" id="txtEnd" /></span></div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="btn"><a class="btn1 btnsF12" target="_blank" id="btnSearch" href="javascript:void(0)">查询</a></div>
+                        </div>
+                        <div class="trafficQueryR">
+                            <dl>
+                            <dt>汇博人才市场地址：</dt>
+                            <dd>
+                                <p>汇博人才市场（原聚焦人才市场）位于两江新区龙头寺。<span class="orange font14">轻轨3号线狮子坪车站</span>下车即到！</p>
+                                
+                            </dd>
+                            <dt>到达方式：</dt>
+                            <dd>
+                                <p class="hot">1.乘坐轻轨3号线狮子坪站下</p>
+                                <p>2.乘坐公交车  公交下车站点：天宫大道站、北城中央站、龙头寺火车北站[汽车站]（非广场站）</p>
+                            </dd>
+                            </dl>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+<div class="busRide" id="busRide">
+    <div class="busRideT"><h6>公交线路展示</h6><div class="busRideTab"><a href="javascript:void(0)" class="cu">江北区</a> <a href="javascript:void(0)" class="">渝北区</a><a href="javascript:void(0)" class="">渝中区</a><a class="" href="javascript:void(0)">沙坪坝区</a><a href="javascript:void(0)" class="">南岸区</a><a href="javascript:void(0)" class="">九龙坡区</a><a href="javascript:void(0)" class="">大渡口区</a><a href="javascript:void(0)" class="">巴南区</a></div><div class="clear"></div></div>
+    <div class="busRideC" id="busRideC">
+<!--江北区begin-->
+        <div class="busRideLst" style="display: block;">
+<ul>
+<li class=""><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3DBRT01" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">快速公交BRT01</span>起点:<span class="mgr10">香港城[轻轨新山村站]</span>终点：<span class="mgr10">龙头寺火车北站[汽车站]</span>下车站点：<span class="red mgr10">天宫大道</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">香港城[轻轨新山村站] → 翠华园小区[春晖路] → 轻轨大渡口站[阳光花园西] → 绿云石都[西区](双龙小区) → 巴国城[九龙坡法院] → 二郎科城路[同天绿岸] → 石新路口[巴山] → 柏林[美茵河谷] → 联芳花园[小区] → 六店子[阿卡迪亚] → 虎头岩[电影机厂] → 李家坪立交 → 香皂厂 → 黄桷园(蚂蝗梁) → 电子校[龙溪镇] → 龙湖西苑[十字路口] → 新牌坊(龙湖花园) → 市公安局[转盘] → <span class="red strong">天宫大道</span> → 龙头寺火车北站[汽车站]</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D288" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">288</span>起点:<span class="mgr10">重庆房地产学院[大学城校区]</span>终点：<span class="mgr10">龙头寺火车北站[汽车站]</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">43</span>公里
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">重庆房地产学院[大学城校区] → 重庆电子工程职业学院[大学城校区] → 东桥郡(小区) → 重庆警官学校[大学城校区] → 大学城医疗高专[南门] → 大学城重医大 → 大学城重师大 → 大学城重师大[南门] → 熙街 → 大学城重大北门[川美大门] → 虎溪 → 大学城科技学院 → 大学城南路[大学城三医大校区] → 大学城消防支队 → 冯玉祥旧居[文物景点] → 陈家桥路口[科技大道] → 渝德[科技](路口) → 寨山坪 → 惠普园北 → 团结村[科技大道东路口] → 微电园(西永路口) → 保税东区A卡[富士康] → 保税东区[大道] → 西永收费站[富士康路口] → 渝遂高速 → 北环[红星美凯龙] → 北环[水晶郦城南] → 龙湖西苑[十字路口] → 新牌坊(龙湖花园) → 新牌坊(新溉路口) → 市公安局[转盘] → 红唐路新溉路[转盘] → <span class="red strong">天宫大道</span> → 龙头寺火车北站广场 → 龙头寺火车北站[汽车站]</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class=""><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D461" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">461</span>起点:<span class="mgr10">朝天门(广场)</span>终点：<span class="mgr10">市老干中心[后门]</span>下车站点：<span class="red mgr10">新溉路</span>全程<span class="red">16.8公里</span>约<span class="red">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">朝天门(广场) → 重庆饭店 → 小什字家乐福[罗汉寺] → 重庆宾馆[临江门] → 七星岗 → 观音岩 → 文化宫[儿科医院] → 中山支路[文化宫] → 上清寺(嘉陵桥路) → 华新街 → 观音桥(405车站) → 江北区中医院[观农贸市场] → 北城天街[海洋公园] → 洋河路[望海花市] → 洋河路[沃尔玛] → 北汽城[长安华都] → 无专厂[转盘] → 黄泥磅(皇冠东和) → 皇冠东和中学 → 中瑞方园[小区] → 紫荆路[市公安局南门] → <span class="red strong">新溉路</span> → 市民政局[老干中心] → 市老干中心[后门]</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D119" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">119</span>起点:<span class="mgr10">南坪枢纽站</span>终点：<span class="mgr10">人和医院</span>下车站点：<span class="red mgr10">龙头寺火车北站[汽车站]</span>全程<span class="red">17.2公里</span>约<span class="red">1小时</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南坪枢纽站 → 工贸[天桥] → 重庆会展中心[南坪] → 石板坡[北桥头] → 双溪沟[黄花园] → 北桥头[黄花园大桥] → 大湾 → 五里店(转盘) → 渝鲁大道[鲁能星城东门] → 龙塔花园[街道] → 龙头寺火车北站广场 → <span class="red strong">龙头寺火车北站[汽车站]</span> → 保利香槟园[轻轨站] → 红唐路新溉路[转盘] → 市公安局[转盘] → 市民政局[老干中心] → 江北车管所(中央美地) → 人和路口[交通事故快赔中心] → 人和场口 → 人和医院</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class=""><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D841" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">841</span>起点:<span class="mgr10">八公里</span>终点：<span class="mgr10">火车北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">26.9公里</span>约<span class="red">1小时50分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">花溪工业园 → 建设集团新厂 → 新屋村委会 → 川渝精工 → 先锋村 → 融汇半岛 → 巨星花园[小区] → 花溪隧道南 → 红光(工学院花溪校区) → 清华中学 → 土桥 → 土桥岔路口 → 九公里 → 江南车管所 → 八公里(家具市场) → 七公里(重庆交通大学) → 学府六十九号[小区] → 六公里 → 渝能国际[小区] → 五公里(重庆工商大学) → 四公里[青龙路口] → 南坪南路(海德酒店) → 响水路口[南坪长途站] → 工贸[工商银行] → 工贸[天桥] → 重庆会展中心[南坪] → 石板坡[北桥头] → 双溪沟[黄花园] → 北桥头[黄花园大桥] → 大湾 → 红土地(金科花园) → 无专厂[转盘] → 龙头寺[天江鼎城] → 红唐路新溉路[转盘] → 保利香槟园[轻轨站] → <span class="red strong">天宫大道</span> → 龙头寺火车北站广场 → 龙头寺火车北站[汽车站]</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D611" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">611</span>起点:<span class="mgr10">南泉</span>终点：<span class="mgr10">鲁能星城</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">34.1公里</span>约<span class="red">2小时</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南泉→小泉 → 提坎 → 炒油场 → 十一公里→ 十公里 → 九公里 → 九公里 → 八公里 → 七公里 → 学府六十九号→六公里 → 渝能国际→五公里 → 四公里 → 南坪南路 → 响水路口→南坪 → 会展中心→北桥头 → 菜园坝 → 牛角沱 → 上清寺 → 华新街 → 观音桥 → 建新北路→海关 → 红旗河沟 → 黄泥塝 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站 → 新溉路 → 鲁能新城</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class=""><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D168" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">168</span>起点:<span class="mgr10">南坪枢纽站</span>终点：<span class="mgr10">龙头寺火车北站[汽车站]</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">18公里</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南坪 → 嘉德数码→ 长江村 → 会展中心 → 北桥头 → 菜园坝 → 牛角沱 → 上清寺 → 华唐路 → 蚂蝗梁 → 建新西路 → 中医院 → 农贸市场 → 北城天街→ 洋河路 → 洋河路 → 北汽城 → 长安大道 → 无专厂 → 龙头寺 → 红唐路 → 新溉路 → 鲁能新城 → <span class="red strong"> 天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D354" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">354</span>起点:<span class="mgr10">南坪中学</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">19.6公里</span>约<span class="red">1小时20分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南坪中学→ 南湖路 → 金山路 → 南岸老区府 → 大浪淘沙 → 响水路 → 南坪东路→ 福利社 → 海棠晓月 → 海棠溪 → 港口医院 → 上新街 → 房管所→ 下浩 → 觉林寺 → 五院 → 鞋业城 → 东海长洲→ 大石坝 → 十一中 → 弹子石 → 大桥北 → 红土地 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D166" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">166</span>起点:<span class="mgr10">重庆图书馆</span>终点：<span class="mgr10">鲁能新城</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">21.7公里</span>约<span class="red">1小时20分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">重庆图书馆 → 西南医院→ 天马路 → 制药三厂→ 石碾盘 → 汉渝路 → 肿瘤医院 → 石门 → 九村 → 盘溪 → 玉带山 → 盘溪路 → 五洲新村 → 新城丽都 → 华渝 → 紫都星座 → 武警总队 → 松石支路 → 边防总队 → 龙湖西苑→ 新牌坊 → 新溉路口 → 市公安局→ 新溉路 → <span class="red strong"> 天宫大道</span> → 龙塔花园 → 鲁能新城</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D245" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">245</span>起点:<span class="mgr10">站西路</span>终点：<span class="mgr10">龙头寺公交枢纽站</span>下车站点：<span class="red mgr10">龙头寺公交枢纽站</span>全程<span class="red">21.7公里</span>约<span class="red">1小时20分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">站西路 → 沙坪坝火车站 → 汉渝路 → 肿瘤医院 → 石门 → 九村 → 观农贸→ 盘溪 → 中合建材 →→ 新城丽都 → 北环 → 金科第三空间 → 龙湖西苑 → 新牌坊 → 新溉大道 → 市公安局→ 无专厂 → 龙头寺 → 重庆北站 → <span class="red strong">龙头寺公交枢纽站</span></div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D270" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">270</span>起点:<span class="mgr10">新桥</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">18.8公里</span>约<span class="red">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">新桥 → 四标 → 高滩岩 → 天星桥 → 制药三厂 → 石碾盘 → 小龙坎 → 汉渝路 → 肿瘤医院 → 石门 → 大石坝 → 大庆村 航天职大 → 建材市场 → 松树桥 → 红旗河沟 → 黄泥塝 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站
+</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D821" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">821</span>起点:<span class="mgr10">杨家山</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">龙头寺公交枢纽站</span>全程<span class="red">18公里</span>约<span class="red">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">杨家山 → 川外 → 西政 → 烈士墓 → 烈士墓 → 林泉雅舍 → 杨公桥 → 半月楼 → 沙杨路 → 沙中路 → 重大中门 → 肿瘤医院 → 石门 → 大石坝 → 大庆村 → 航天职大 → 建材市场 → 松树桥 → 红旗河沟 → 渝通 → 新牌坊 → 新溉大道 → 新溉路 → <span class="red strong"> 天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D138" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">138</span>起点:<span class="mgr10">南方花园D区</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">22.5公里</span>约<span class="red strong">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南方花园d区 → 陈家坪 → 科园四路 → 科园路口→ 歇台子 → 河运校 → 石油路→ 大坪 → 肖家湾 → 鹅岭 → 国际村 → 中山支路 → 上清寺 → 华新街 → 建新东路→ 大兴村 → 茶园 → 灯饰城 → 五里店 → 渝鲁大道 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D419" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">419</span>起点:<span class="mgr10">大堰</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">重庆北站</span>全程<span class="red">21.6公里</span>约<span class="red strong">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">大堰 → 跃进村 → 渝钢村 → 丁家垭口 → 锦冠明珠 → 毛线沟 → 毛线沟 → 九龙坡区府 → 西郊 → 杨家坪 → 谢家湾 → 谢家湾 → 袁家岗 → 草坪 → 苗圃 → 黄沙溪 → 皮革市场 → 水果市场 → 菜园坝 → 北桥头 → 双溪沟 → 桥头 → 大湾 → 红土地 → 无专厂 → 无专厂 → 黄泥塝 → 工业园区 → 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D421" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">421</span>起点:<span class="mgr10">杨家坪</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">16.3公里</span>约<span class="red strong">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">杨家坪 → 石坪桥 → 石坪桥 → 隆鑫 → 科园四路 → 科园四路 →科园路口 → 歇台子 → 河运校 → 石油路 → 大坪 → 大坪 → 肖家湾 → 鹅岭 → 国际村 → 中山支路 → 上清寺 → 大礼堂 → 大溪沟 → 黄花园 → 桥头 → 大湾 → 红土地 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong"> 天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D820" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">820</span>起点:<span class="mgr10">上江城</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">重庆北站</span>全程<span class="red">16.3公里</span>约<span class="red strong">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">上江城 → 珠江花园 → 直港大道 → 团结路口 → 杨家坪 → 谢家湾 → 华亿 → 草坪 →白马凼 → 联芳园 → 马家岩(李文锁城) → 小龙坎 → 电子学院 → 松树桥 → 红旗河沟 → 海关 → 建新西路 → 大兴村 → 茶园 → 灯饰城 → 五里店 → 鲁能新城 → 天宫殿 → <span class="red strong">
+重庆北站</span></div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D879" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">879</span>起点:<span class="mgr10">南桥寺</span>终点：<span class="mgr10">重庆龙头寺长途汽车站</span>下车站点：<span class="red mgr10">重庆龙头寺长途汽车站</span>全程<span class="red">17.2公里</span>约<span class="red strong">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南桥寺 → 五洲新村 → 新城丽都 → 华渝 → 紫都星座 → 武警总队 → 金岛医院 → 花园新村 → 松树桥 → 红旗河沟 → 海关 → 小苑 → 建新东路 → 大兴村 → 茶园 → 灯饰城 → 五里店 → 渝鲁大道 → 重庆北站 → <span class="red strong">重庆龙头寺长途汽车站</span></div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D323" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">323</span>起点:<span class="mgr10">大佛寺</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">12.8公里</span>约<span class="red strong">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">大佛寺 → 窍角沱 → 王家沱 → 武警医院 → 弹子石 → 十一中 → 大石坝 → 东海长洲 → 五院 → 觉林寺 → 下浩 → 房管所 → 上新街 → 港口医院 → 海棠溪 → 海棠晓月 → 阳光华庭 → 福利社 → 南坪东路 → 工贸 → 会展中心→ 北桥头 → 双溪沟 → 桥头 → 大湾 → 红土地 → 无专厂 → 黄泥塝 → 皇冠东和 → 工业园区 → 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D202" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">202</span>起点:<span class="mgr10">双碑</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">22.1公里</span>约<span class="red">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">双碑 → 莲光校 → 天桥 → 石井坡 → 磁器口 → 三陵大厦 → 劳动路 → 七中 → 重大 → 欣阳广场 → 南开中学 → 沙坪坝火车站 → 汉渝路 → 肿瘤医院 → 石门 → 大石坝 → 大庆村 → 航天职大 → 建材市场 → 松树桥 → 红旗河沟 → 黄泥塝 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D105" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">105</span>起点:<span class="mgr10">新华路</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">9.7公里</span>约<span class="red strong">40分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">新华路 → 五一路 → 临江门 → 一号桥 → 桥头 → 大湾 → 五江路 → 五里店 → 渝鲁大道 → 新溉路 → <span class="red strong"> 天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D141" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">141</span>起点:<span class="mgr10">朝天门</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">14.7公里</span>约<span class="red strong">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">朝天门 → 道门口 → 望龙门 → 储奇门 → 药材市场 → 石板坡 → 双溪沟 → 桥头 → 大湾 → 五里店 → 万丰路 → 红土地 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D439" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">439</span>起点:<span class="mgr10">菜园坝</span>终点：<span class="mgr10">龙头寺火车站</span>下车站点：<span class="red mgr10">龙头寺火车站</span>全程<span class="red">9.9公里</span>约<span class="red strong">40分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">菜园坝 → 双溪沟 → 桥头 → 大湾 → 渝鲁大道 → 天宫殿 → <span class="red strong">龙头寺火车站</span></div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D601" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">601</span>起点:<span class="mgr10">解放碑</span>终点：<span class="mgr10">龙头寺公交枢纽站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">16公里</span>约<span class="red strong">1小时</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">解放碑 → 七星岗 → 观音岩 → 中山支路 → 上清寺 → 华新街 → 观音桥 → 建新北路 → 海关 → 红旗河沟 → 黄泥塝 → 黄泥塝 → 无专厂 → 无专厂 → 龙头寺 → 红唐路 → 新溉路 → 鲁能新城 → <span class="red strong">天宫大道</span> → 重庆北站 → 龙头寺公交枢纽站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D818" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">818</span>起点:<span class="mgr10">湖榕路</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">24.6公里</span>约<span class="red strong">1小时40分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">湖榕路 → 九宫庙 → 翠楼 → 钢花 → 新山村 → 建设村 → 朵力名都 → 马王场 → 水碾 → 荒沟 → 石坪桥 → 石坪桥 → 大公馆 → 袁家岗 → 马家堡 → 大坪 → 肖家湾 → 鹅岭 → 国际村 → 中山支路 → 上清寺 → 华新街 → 观音桥 → 建新北路 → 海关 → 渝通 → 新牌坊 → 新溉路口 → 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+</ul>
+        </div>
+<!--江北区end-->
+
+<!--渝北区begin-->
+        <div class="busRideLst none" style="display: none;">
+<ul>
+<li class=""><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3DBRT01" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">快速公交BRT01</span>起点:<span class="mgr10">香港城[轻轨新山村站]</span>终点：<span class="mgr10">龙头寺火车北站[汽车站]</span>下车站点：<span class="red mgr10">天宫大道</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">香港城[轻轨新山村站] → 翠华园小区[春晖路] → 轻轨大渡口站[阳光花园西] → 绿云石都[西区](双龙小区) → 巴国城[九龙坡法院] → 二郎科城路[同天绿岸] → 石新路口[巴山] → 柏林[美茵河谷] → 联芳花园[小区] → 六店子[阿卡迪亚] → 虎头岩[电影机厂] → 李家坪立交 → 香皂厂 → 黄桷园(蚂蝗梁) → 电子校[龙溪镇] → 龙湖西苑[十字路口] → 新牌坊(龙湖花园) → 市公安局[转盘] → <span class="red strong">天宫大道</span> → 龙头寺火车北站[汽车站]</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D461" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">461</span>起点:<span class="mgr10">朝天门(广场)</span>终点：<span class="mgr10">市老干中心[后门]</span>下车站点：<span class="red mgr10">新溉路</span>全程<span class="red">16.8公里</span>约<span class="red">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">朝天门(广场) → 重庆饭店 → 小什字家乐福[罗汉寺] → 重庆宾馆[临江门] → 七星岗 → 观音岩 → 文化宫[儿科医院] → 中山支路[文化宫] → 上清寺(嘉陵桥路) → 华新街 → 观音桥(405车站) → 江北区中医院[观农贸市场] → 北城天街[海洋公园] → 洋河路[望海花市] → 洋河路[沃尔玛] → 北汽城[长安华都] → 无专厂[转盘] → 黄泥磅(皇冠东和) → 皇冠东和中学 → 中瑞方园[小区] → 紫荆路[市公安局南门] → <span class="red strong">新溉路</span> → 市民政局[老干中心] → 市老干中心[后门]</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class=""><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D119" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">119</span>起点:<span class="mgr10">南坪枢纽站</span>终点：<span class="mgr10">人和医院</span>下车站点：<span class="red mgr10">龙头寺火车北站[汽车站]</span>全程<span class="red">17.2公里</span>约<span class="red">1小时</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南坪枢纽站 → 工贸[天桥] → 重庆会展中心[南坪] → 石板坡[北桥头] → 双溪沟[黄花园] → 北桥头[黄花园大桥] → 大湾 → 五里店(转盘) → 渝鲁大道[鲁能星城东门] → 龙塔花园[街道] → 龙头寺火车北站广场 → <span class="red strong">龙头寺火车北站[汽车站]</span> → 保利香槟园[轻轨站] → 红唐路新溉路[转盘] → 市公安局[转盘] → 市民政局[老干中心] → 江北车管所(中央美地) → 人和路口[交通事故快赔中心] → 人和场口 → 人和医院</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D841" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">841</span>起点:<span class="mgr10">八公里</span>终点：<span class="mgr10">火车北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">26.9公里</span>约<span class="red strong">1小时50分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">花溪工业园 → 建设集团新厂 → 新屋村委会 → 川渝精工 → 先锋村 → 融汇半岛 → 巨星花园[小区] → 花溪隧道南 → 红光(工学院花溪校区) → 清华中学 → 土桥 → 土桥岔路口 → 九公里 → 江南车管所 → 八公里(家具市场) → 七公里(重庆交通大学) → 学府六十九号[小区] → 六公里 → 渝能国际[小区] → 五公里(重庆工商大学) → 四公里[青龙路口] → 南坪南路(海德酒店) → 响水路口[南坪长途站] → 工贸[工商银行] → 工贸[天桥] → 重庆会展中心[南坪] → 石板坡[北桥头] → 双溪沟[黄花园] → 北桥头[黄花园大桥] → 大湾 → 红土地(金科花园) → 无专厂[转盘] → 龙头寺[天江鼎城] → 红唐路新溉路[转盘] → 保利香槟园[轻轨站] → <span class="red strong">天宫大道</span> → 龙头寺火车北站广场 → 龙头寺火车北站[汽车站]
+</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class=""><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D611" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">611</span>起点:<span class="mgr10">南泉</span>终点：<span class="mgr10">鲁能星城</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">34.1公里</span>约<span class="red strong">2小时</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南泉→小泉 → 提坎 → 炒油场 → 十一公里→ 十公里 → 九公里 → 九公里 → 八公里 → 七公里 → 学府六十九号 → 六公里 → 渝能国际→五公里 → 四公里 → 南坪南路 → 响水路口→南坪 → 会展中心→北桥头 → 菜园坝 → 牛角沱 → 上清寺 → 华新街 → 观音桥 → 建新北路→海关 → 红旗河沟 →黄泥塝→ 无专厂→ 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站→ 新溉路 →鲁能新城</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D168" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">168</span>起点:<span class="mgr10">南泉</span>终点：<span class="mgr10">鲁能星城</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">33公里</span>正线
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南坪 → 嘉德数码→ 长江村 → 会展中心 → 北桥头 → 菜园坝 → 牛角沱 → 上清寺 → 华唐路 → 蚂蝗梁 → 建新西路 → 中医院 → 农贸市场 → 北城天街→ 洋河路 → 洋河路 → 北汽城 → 长安大道 → 无专厂 → 龙头寺 → 红唐路 → 新溉路 → 鲁能新城 → <span class="red strong"> 天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class=""><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D323" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">323</span>起点:<span class="mgr10">大佛寺</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">12.8公里</span>约<span class="red strong">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">大佛寺 → 窍角沱 → 王家沱 → 武警医院 → 弹子石 → 十一中 → 大石坝 → 东海长洲 → 五院 → 觉林寺 → 下浩 → 房管所 → 上新街 → 港口医院 → 海棠溪 → 海棠晓月 → 阳光华庭 → 福利社 → 南坪东路 → 工贸 → 会展中心→ 北桥头 → 双溪沟 → 桥头 → 大湾 → 红土地 → 无专厂 → 黄泥塝 → 皇冠东和 → 工业园区 → 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D354" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">354</span>起点:<span class="mgr10">南坪中学</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">19.6公里</span>约<span class="red">1小时20分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南坪中学→ 南湖路 → 金山路 → 南岸老区府 → 大浪淘沙 → 响水路 → 南坪东路→ 福利社 → 海棠晓月 → 海棠溪 → 港口医院 → 上新街 → 房管所→ 下浩 → 觉林寺 → 五院 → 鞋业城 → 东海长洲→ 大石坝 → 十一中 → 弹子石 → 大桥北 → 红土地 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D166" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">166</span>起点:<span class="mgr10">重庆图书馆</span>终点：<span class="mgr10">鲁能新城</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">21.7公里</span>约<span class="red">1小时20分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">重庆图书馆 → 西南医院→ 天马路 → 制药三厂→ 石碾盘 → 汉渝路 → 肿瘤医院 → 石门 → 九村 → 盘溪 → 玉带山 → 盘溪路 → 五洲新村 → 新城丽都 → 华渝 → 紫都星座 → 武警总队 → 松石支路 → 边防总队 → 龙湖西苑→ 新牌坊 → 新溉路口 → 市公安局→ 新溉路 → <span class="red strong"> 天宫大道</span> → 龙塔花园 → 鲁能新城</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D202" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">202</span>起点:<span class="mgr10">双碑</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">22.1公里</span>约<span class="red">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">双碑 → 莲光校 → 天桥 → 石井坡 → 磁器口 → 三陵大厦 → 劳动路 → 七中 → 重大 → 欣阳广场 → 南开中学 → 沙坪坝火车站 → 汉渝路 → 肿瘤医院 → 石门 → 大石坝 → 大庆村 → 航天职大 → 建材市场 → 松树桥 → 红旗河沟 → 黄泥塝 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D245" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">245</span>起点:<span class="mgr10">站西路</span>终点：<span class="mgr10">龙头寺公交枢纽站</span>下车站点：<span class="red mgr10">龙头寺公交枢纽站</span>全程<span class="red">21.7公里</span>约<span class="red">1小时20分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">站西路 → 沙坪坝火车站 → 汉渝路 → 肿瘤医院 → 石门 → 九村 → 观农贸→ 盘溪 → 中合建材 →→ 新城丽都 → 北环 → 金科第三空间 → 龙湖西苑 → 新牌坊 → 新溉大道 → 市公安局→ 无专厂 → 龙头寺 → 重庆北站 → <span class="red strong">龙头寺公交枢纽站</span></div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D270" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">270</span>起点:<span class="mgr10">新桥</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">18.8公里</span>约<span class="red">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">新桥 → 四标 → 高滩岩 → 天星桥 → 制药三厂 → 石碾盘 → 小龙坎 → 汉渝路 → 肿瘤医院 → 石门 → 大石坝 → 大庆村 航天职大 → 建材市场 → 松树桥 → 红旗河沟 → 黄泥塝 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站
+</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D821" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">821</span>起点:<span class=" mgr10">杨家山</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">龙头寺公交枢纽站</span>全程<span class="red">18公里</span>约<span class="red">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">杨家山 → 川外 → 西政 → 烈士墓 → 烈士墓 → 林泉雅舍 → 杨公桥 → 半月楼 → 沙杨路 → 沙中路 → 重大中门 → 肿瘤医院 → 石门 → 大石坝 → 大庆村 → 航天职大 → 建材市场 → 松树桥 → 红旗河沟 → 渝通 → 新牌坊 → 新溉大道 → 新溉路 → <span class="red strong"> 天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D622" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">622</span>起点:<span class=" mgr10">渝北空港</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">北城中央</span>全程<span class="red">26公里</span>约<span class="red">1小时40分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">渝北空港 → 空港广场 → 开元 → 水果市场 → 实验小学 → 晚晴园 → 规划局 → 碧津公园 → 民俗文化村 → 双龙湖 → 绿梦广场 → 一碗水 → 三峡联大 → 奇缘名居 → 伴山名都 → 工业园区 → 兴科二路 → 兴科三路 → 兴科四路 → 木鱼石小小岛 → 李尔厂 → 湖云街 → 绿地翠谷 → 青河世家  → 金童路 → 汽博中心 → 出口加工区 → 人和车管所 → 比华利花园 → <span class="red strong">北城中央</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D419" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">419</span>起点:<span class="mgr10">大堰</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">重庆北站</span>全程<span class="red">21.6公里</span>约<span class="red strong">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">大堰 → 跃进村 → 渝钢村 → 丁家垭口 → 锦冠明珠 → 毛线沟 → 毛线沟 → 九龙坡区府 → 西郊 → 杨家坪 → 谢家湾 → 谢家湾 → 袁家岗 → 草坪  苗圃 → 黄沙溪 → 皮革市场 → 水果市场 → 菜园坝 → 北桥头 → 双溪沟 → 桥头 → 大湾 → 红土地 → 无专厂 → 无专厂 → 黄泥塝 → 工业园区 → 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D421" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">421</span>起点:<span class="mgr10">杨家坪</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">16.3公里</span>约<span class="red strong">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">杨家坪 → 石坪桥 → 石坪桥 → 隆鑫 → 科园四路 → 科园四路 →科园路口 → 歇台子 → 河运校 → 石油路 → 大坪 → 大坪 → 肖家湾 → 鹅岭 → 国际村 → 中山支路 → 上清寺 → 大礼堂 → 大溪沟 → 黄花园 → 桥头 → 大湾 → 红土地 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong"> 天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D820" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">820</span>起点:<span class="mgr10">上江城</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">重庆北站</span>全程<span class="red">16.3公里</span>约<span class="red strong">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">上江城 → 珠江花园 → 直港大道 → 团结路口 → 杨家坪 → 谢家湾 → 华亿 → 草坪 →白马凼 → 联芳园 → 马家岩(李文锁城) → 小龙坎 → 电子学院 → 松树桥 → 红旗河沟 → 海关 → 建新西路 → 大兴村 → 茶园 → 灯饰城 → 五里店 → 鲁能新城 → 天宫殿 → <span class="red strong"> 重庆北站</span></div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D869" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">869</span>起点:<span class="mgr10">金竹苑</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">北城中央</span>全程<span class="red">13.6公里</span>约<span class="red strong">1小时</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR"> 水竹苑 → 斑竹路 → 镇政府 → 渝江厂 → 天山大道西段 → 沙堡 → 川仪厂 → 软件园 → 高新园 → 高新园 → 中华坊 → 消防基地 → 古木峰 → 人和 → 北回归线 → 中央美地 → <span class="red strong">北城中央</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D818" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">818</span>起点:<span class="mgr10">湖榕路</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">24.6公里</span>约<span class="red strong">1小时40分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">湖榕路 → 九宫庙 → 翠楼 → 钢花 → 新山村 → 建设村 → 朵力名都 → 马王场 → 水碾 → 荒沟 → 石坪桥 → 石坪桥 → 大公馆 → 袁家岗 → 马家堡 → 大坪 → 肖家湾 → 鹅岭 → 国际村 → 中山支路 → 上清寺 → 华新街 → 观音桥 → 建新北路 → 海关 → 渝通 → 新牌坊 → 新溉路口 → 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D138" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">138</span>起点:<span class="mgr10">南方花园D区</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">22.5公里</span>约<span class="red strong">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南方花园d区 → 陈家坪 → 科园四路 →→ 科园路口→ 歇台子 → 河运校 → 石油路→ 大坪 → 肖家湾 → 鹅岭 → 国际村 → 中山支路 → 上清寺 → 华新街 → 建新东路→ 大兴村 → 茶园 → 灯饰城 → 五里店 → 渝鲁大道 → 新溉路 → <span class="red strong">天宫大道</span>
+→ 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D105" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">105</span>起点:<span class="mgr10">新华路</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">9.7公里</span>约<span class="red strong">40分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">新华路 → 五一路 → 临江门 → 一号桥 → 桥头 → 大湾 → 五江路 → 五里店 → 渝鲁大道 → 新溉路 → <span class="red strong"> 天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D141" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">141</span>起点:<span class="mgr10">朝天门</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">14.7公里</span>约<span class="red strong">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">朝天门 → 道门口 → 望龙门 → 储奇门 → 药材市场 → 石板坡 → 双溪沟 → 桥头 → 大湾 → 五里店 → 万丰路 → 红土地 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D439" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">439</span>起点:<span class="mgr10">菜园坝</span>终点：<span class="mgr10">龙头寺火车站</span>下车站点：<span class="red mgr10">龙头寺火车站</span>全程<span class="red">9.9公里</span>约<span class="red strong">40分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">菜园坝 → 双溪沟 → 桥头 → 大湾 → 渝鲁大道 → 天宫殿 → <span class="red strong">龙头寺火车站</span></div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D419" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">419</span>起点:<span class="mgr10">大堰</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">重庆北站</span>全程<span class="red">21.6公里</span>约<span class="red strong">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">大堰 → 跃进村 → 渝钢村 → 丁家垭口 → 锦冠明珠 → 毛线沟 → 毛线沟 → 九龙坡区府 → 西郊 → 杨家坪 → 谢家湾 → 谢家湾 → 袁家岗 → 草坪 → 苗圃 → 黄沙溪 → 皮革市场 → 水果市场 → 菜园坝 → 北桥头 → 双溪沟 → 桥头 → 大湾 → 红土地 → 无专厂 → 无专厂 → 黄泥塝 → 工业园区 → 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D601" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">601</span>起点:<span class="mgr10">解放碑</span>终点：<span class="mgr10">龙头寺公交枢纽站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">16公里</span>约<span class="red strong">1小时</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">解放碑 → 七星岗 → 观音岩 → 中山支路 → 上清寺 → 华新街 → 观音桥 → 建新北路 → 海关 → 红旗河沟 → 黄泥塝 → 黄泥塝 → 无专厂 →  龙头寺 → 红唐路 → 新溉路 → 鲁能新城 → <span class="red strong">天宫大道</span> → 重庆北站 → 龙头寺公交枢纽站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D879" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">879</span>起点:<span class="mgr10">南桥寺</span>终点：<span class="mgr10">重庆龙头寺长途汽车站</span>下车站点：<span class="red mgr10">重庆龙头寺长途汽车站</span>全程<span class="red">17.2公里</span>约<span class="red strong">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南桥寺 → 五洲新村 → 新城丽都 → 华渝 → 紫都星座 → 武警总队 → 金岛医院 → 花园新村 → 松树桥 → 红旗河沟 → 海关 → 小苑 → 建新东路 → 大兴村 → 茶园 → 灯饰城 → 五里店 → 渝鲁大道 → 重庆北站 → <span class="red strong">重庆龙头寺长途汽车站</span></div>
+<div class="clear">
+</div>
+</div>
+</li>
+</ul>
+        </div>
+<!--渝北区end-->
+
+<!--渝中区begin-->
+        <div class="busRideLst none" style="display: none;">
+<ul>
+<li class=""><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3DBRT01" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">快速公交BRT01</span>起点:<span class="mgr10">香港城[轻轨新山村站]</span>终点：<span class="mgr10">龙头寺火车北站[汽车站]</span>下车站点：<span class="red mgr10">天宫大道</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">香港城[轻轨新山村站] → 翠华园小区[春晖路] → 轻轨大渡口站[阳光花园西] → 绿云石都[西区](双龙小区) → 巴国城[九龙坡法院] → 二郎科城路[同天绿岸] → 石新路口[巴山] → 柏林[美茵河谷] → 联芳花园[小区] → 六店子[阿卡迪亚] → 虎头岩[电影机厂] → 李家坪立交 → 香皂厂 → 黄桷园(蚂蝗梁) → 电子校[龙溪镇] → 龙湖西苑[十字路口] → 新牌坊(龙湖花园) → 市公安局[转盘] → <span class="red strong">天宫大道</span> → 龙头寺火车北站[汽车站]</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D461" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">461</span>起点:<span class="mgr10">朝天门(广场)</span>终点：<span class="mgr10">市老干中心[后门]</span>下车站点：<span class="red mgr10">新溉路</span>全程<span class="red">16.8公里</span>约<span class="red">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">朝天门(广场) → 重庆饭店 → 小什字家乐福[罗汉寺] → 重庆宾馆[临江门] → 七星岗 → 观音岩 → 文化宫[儿科医院] → 中山支路[文化宫] → 上清寺(嘉陵桥路) → 华新街 → 观音桥(405车站) → 江北区中医院[观农贸市场] → 北城天街[海洋公园] → 洋河路[望海花市] → 洋河路[沃尔玛] → 北汽城[长安华都] → 无专厂[转盘] → 黄泥磅(皇冠东和) → 皇冠东和中学 → 中瑞方园[小区] → 紫荆路[市公安局南门] → <span class="red strong">新溉路</span> → 市民政局[老干中心] → 市老干中心[后门]</div>
+<div class="clear"></div>
+</div>
+</li>
+<li class=""><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D119" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">119</span>起点:<span class="mgr10">南坪枢纽站</span>终点：<span class="mgr10">人和医院</span>下车站点：<span class="red mgr10">龙头寺火车北站[汽车站]</span>全程<span class="red">17.2公里</span>约<span class="red">1小时</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南坪枢纽站 → 工贸[天桥] → 重庆会展中心[南坪] → 石板坡[北桥头] → 双溪沟[黄花园] → 北桥头[黄花园大桥] → 大湾 → 五里店(转盘) → 渝鲁大道[鲁能星城东门] → 龙塔花园[街道] → 龙头寺火车北站广场 → <span class="red strong">龙头寺火车北站[汽车站]</span> → 保利香槟园[轻轨站] → 红唐路新溉路[转盘] → 市公安局[转盘] → 市民政局[老干中心] → 江北车管所(中央美地) → 人和路口[交通事故快赔中心] → 人和场口 → 人和医院</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D841" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">841</span>起点:<span class="mgr10">八公里</span>终点：<span class="mgr10">火车北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">26.9公里</span>约<span class="red strong">1小时50分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">花溪工业园 → 建设集团新厂 → 新屋村委会 → 川渝精工 → 先锋村 → 融汇半岛 → 巨星花园[小区] → 花溪隧道南 → 红光(工学院花溪校区) → 清华中学 → 土桥 → 土桥岔路口 → 九公里 → 江南车管所 → 八公里(家具市场) → 七公里(重庆交通大学) → 学府六十九号[小区] → 六公里 → 渝能国际[小区] → 五公里(重庆工商大学) → 四公里[青龙路口] → 南坪南路(海德酒店) → 响水路口[南坪长途站] → 工贸[工商银行] → 工贸[天桥] → 重庆会展中心[南坪] → 石板坡[北桥头] → 双溪沟[黄花园] → 北桥头[黄花园大桥] → 大湾 → 红土地(金科花园) → 无专厂[转盘] → 龙头寺[天江鼎城] → 红唐路新溉路[转盘] → 保利香槟园[轻轨站] → <span class="red strong">天宫大道</span> → 龙头寺火车北站广场 → 龙头寺火车北站[汽车站]
+</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D611" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">611</span>起点:<span class="mgr10">南泉</span>终点：<span class="mgr10">鲁能星城</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">34.1公里</span>约<span class="red strong">2小时</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南泉→小泉 → 提坎 → 炒油场 → 十一公里→ 十公里 → 九公里 → 九公里 → 八公里 → 七公里 → 学府六十九号 → 六公里 → 渝能国际→五公里 → 四公里 → 南坪南路 → 响水路口→南坪 → 会展中心→北桥头 → 菜园坝 → 牛角沱 → 上清寺 → 华新街 → 观音桥 → 建新北路→海关 → 红旗河沟 →黄泥塝→ 无专厂→ 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站→ 新溉路 →鲁能新城</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D168" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">168</span>起点:<span class="mgr10">南泉</span>终点：<span class="mgr10">鲁能星城</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">33公里</span>正线
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南坪 → 嘉德数码→ 长江村 → 会展中心 → 北桥头 → 菜园坝 → 牛角沱 → 上清寺 → 华唐路 → 蚂蝗梁 → 建新西路 → 中医院 → 农贸市场 → 北城天街→ 洋河路 → 洋河路 → 北汽城 → 长安大道 → 无专厂 → 龙头寺 → 红唐路 → 新溉路 → 鲁能新城 → <span class="red strong"> 天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D323" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">323</span>起点:<span class="mgr10">大佛寺</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">12.8公里</span>约<span class="red strong">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">大佛寺 → 窍角沱 → 王家沱 → 武警医院 → 弹子石 → 十一中 → 大石坝 → 东海长洲 → 五院 → 觉林寺 → 下浩 → 房管所 → 上新街 → 港口医院 → 海棠溪 → 海棠晓月 → 阳光华庭 → 福利社 → 南坪东路 → 工贸 → 会展中心→ 北桥头 → 双溪沟 → 桥头 → 大湾 → 红土地 → 无专厂 → 黄泥塝 → 皇冠东和 → 工业园区 → 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D354" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">354</span>起点:<span class="mgr10">南坪中学</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">19.6公里</span>约<span class="red">1小时20分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南坪中学→ 南湖路 → 金山路 → 南岸老区府 → 大浪淘沙 → 响水路 → 南坪东路→ 福利社 → 海棠晓月 → 海棠溪 → 港口医院 → 上新街 → 房管所→ 下浩 → 觉林寺 → 五院 → 鞋业城 → 东海长洲→ 大石坝 → 十一中 → 弹子石 → 大桥北 → 红土地 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D419" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">419</span>起点:<span class="mgr10">大堰</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">重庆北站</span>全程<span class="red">21.6公里</span>约<span class="red strong">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">大堰 → 跃进村 → 渝钢村 → 丁家垭口 → 锦冠明珠 → 毛线沟 → 毛线沟 → 九龙坡区府 → 西郊 → 杨家坪 → 谢家湾 → 谢家湾 → 袁家岗 → 草坪 → 苗圃 → 黄沙溪 → 皮革市场 → 水果市场 → 菜园坝 → 北桥头 → 双溪沟 → 桥头 → 大湾 → 红土地 → 无专厂 → 无专厂 → 黄泥塝 → 工业园区 → 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D421" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">421</span>起点:<span class="mgr10">杨家坪</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">16.3公里</span>约<span class="red strong">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">杨家坪 → 石坪桥 → 石坪桥 → 隆鑫 → 科园四路 → 科园四路 →科园路口 → 歇台子 → 河运校 → 石油路 → 大坪 → 大坪 → 肖家湾 → 鹅岭 → 国际村 → 中山支路 → 上清寺 → 大礼堂 → 大溪沟 → 黄花园 → 桥头 → 大湾 → 红土地 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong"> 天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D820" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">820</span>起点:<span class="mgr10">上江城</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">重庆北站</span>全程<span class="red">16.3公里</span>约<span class="red strong">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">上江城 → 珠江花园 → 直港大道 → 团结路口 → 杨家坪 → 谢家湾 → 华亿 → 草坪 →白马凼 → 联芳园 → 马家岩(李文锁城) → 小龙坎 → 电子学院 → 松树桥 → 红旗河沟 → 海关 → 建新西路 → 大兴村 → 茶园 → 灯饰城 → 五里店 → 鲁能新城 → 天宫殿 → <span class="red strong"> 重庆北站</span></div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D138" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">138</span>起点:<span class="mgr10">南方花园D区</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">22.5公里</span>约<span class="red strong">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南方花园d区 → 陈家坪 → 科园四路 →→ 科园路口→ 歇台子 → 河运校 → 石油路→ 大坪 → 肖家湾 → 鹅岭 → 国际村 → 中山支路 → 上清寺 → 华新街 → 建新东路→ 大兴村 → 茶园 → 灯饰城 → 五里店 → 渝鲁大道 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D818" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">818</span>起点:<span class="mgr10">湖榕路</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">24.6公里</span>约<span class="red strong">1小时40分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">湖榕路 → 九宫庙 → 翠楼 → 钢花 → 新山村 → 建设村 → 朵力名都 → 马王场 → 水碾 → 荒沟 → 石坪桥 → 石坪桥 → 大公馆 → 袁家岗 → 马家堡 → 大坪 → 肖家湾 → 鹅岭 → 国际村 → 中山支路 → 上清寺 → 华新街 → 观音桥 → 建新北路 → 海关 → 渝通 → 新牌坊 → 新溉路口
+→ 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D105" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">105</span>起点:<span class="mgr10">新华路</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">9.7公里</span>约<span class="red strong">40分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">新华路 → 五一路 → 临江门 → 一号桥 → 桥头 → 大湾 → 五江路 → 五里店 → 渝鲁大道 → 新溉路 → <span class="red strong"> 天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D141" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">141</span>起点:<span class="mgr10">朝天门</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">14.7公里</span>约<span class="red strong">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">朝天门 → 道门口 → 望龙门 → 储奇门 → 药材市场 → 石板坡 → 双溪沟 → 桥头 → 大湾 → 五里店 → 万丰路 → 红土地 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D439" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">439</span>起点:<span class="mgr10">菜园坝</span>终点：<span class="mgr10">龙头寺火车站</span>下车站点：<span class="red mgr10">龙头寺火车站</span>全程<span class="red">9.9公里</span>约<span class="red strong">40分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">菜园坝 → 双溪沟 → 桥头 → 大湾 → 渝鲁大道 → 天宫殿 → <span class="red strong">龙头寺火车站</span></div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D601" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">601</span>起点:<span class="mgr10">解放碑</span>终点：<span class="mgr10">龙头寺公交枢纽站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">16公里</span>约<span class="red strong">1小时</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">解放碑 → 七星岗 → 观音岩 → 中山支路 → 上清寺 → 华新街 → 观音桥 → 建新北路 → 海关 → 红旗河沟 → 黄泥塝 → 黄泥塝 → 无专厂 → 无专厂 → 龙头寺 → 红唐路 → 新溉路 → 鲁能新城 → <span class="red strong">天宫大道</span> → 重庆北站 → 龙头寺公交枢纽站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+</ul>
+        </div>
+<!--渝中区end-->
+
+<!--沙坪坝begin-->
+        <div class="busRideLst none" style="display: none;">
+<ul>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3DBRT01" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">快速公交BRT01</span>起点:<span class="mgr10">香港城[轻轨新山村站]</span>终点：<span class="mgr10">龙头寺火车北站[汽车站]</span>下车站点：<span class="red mgr10">天宫大道</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">香港城[轻轨新山村站] → 翠华园小区[春晖路] → 轻轨大渡口站[阳光花园西] → 绿云石都[西区](双龙小区) → 巴国城[九龙坡法院] → 二郎科城路[同天绿岸] → 石新路口[巴山] → 柏林[美茵河谷] → 联芳花园[小区] → 六店子[阿卡迪亚] → 虎头岩[电影机厂] → 李家坪立交 → 香皂厂 → 黄桷园(蚂蝗梁) → 电子校[龙溪镇] → 龙湖西苑[十字路口] → 新牌坊(龙湖花园) → 市公安局[转盘] → <span class="red strong">天宫大道</span> → 龙头寺火车北站[汽车站]</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D288" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">288</span>起点:<span class="mgr10">重庆房地产学院[大学城校区]</span>终点：<span class="mgr10">龙头寺火车北站[汽车站]</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">43</span>公里
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">重庆房地产学院[大学城校区] → 重庆电子工程职业学院[大学城校区] → 东桥郡(小区) → 重庆警官学校[大学城校区] → 大学城医疗高专[南门] → 大学城重医大 → 大学城重师大 → 大学城重师大[南门] → 熙街 → 大学城重大北门[川美大门] → 虎溪 → 大学城科技学院 → 大学城南路[大学城三医大校区] → 大学城消防支队 → 冯玉祥旧居[文物景点] → 陈家桥路口[科技大道] → 渝德[科技](路口) → 寨山坪 → 惠普园北 → 团结村[科技大道东路口] → 微电园(西永路口) → 保税东区A卡[富士康] → 保税东区[大道] → 西永收费站[富士康路口] → 渝遂高速 → 北环[红星美凯龙] → 北环[水晶郦城南] → 龙湖西苑[十字路口] → 新牌坊(龙湖花园) → 新牌坊(新溉路口) → 市公安局[转盘] → 红唐路新溉路[转盘] → <span class="red strong">天宫大道</span> → 龙头寺火车北站广场 → 龙头寺火车北站[汽车站]</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D166" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">166</span>起点:<span class="mgr10">重庆图书馆</span>终点：<span class="mgr10">鲁能新城</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">21.7公里</span>约<span class="red">1小时20分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">重庆图书馆 → 西南医院→→ 天马路 → 制药三厂→ 石碾盘 → 汉渝路 → 肿瘤医院 → 石门 → 九村 → 盘溪 → 玉带山 → 盘溪路 → 五洲新村 → 新城丽都 → 华渝 → 紫都星座 → 武警总队 → 松石支路 → 边防总队 → 龙湖西苑→ 新牌坊 → 新溉路口 → 市公安局→ 新溉路 → <span class="red strong"> 天宫大道</span> → 龙塔花园 → 鲁能新城</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D202" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">202</span>起点:<span class="mgr10">双碑</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">22.1公里</span>约<span class="red">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">双碑 → 莲光校 → 天桥 → 石井坡 → 磁器口 → 三陵大厦 → 劳动路 → 七中 → 重大 → 欣阳广场 → 南开中学 → 沙坪坝火车站 → 汉渝路 → 肿瘤医院 → 石门 → 大石坝 → 大庆村 → 航天职大 → 建材市场 → 松树桥 → 红旗河沟 → 黄泥塝 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D245" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">245</span>起点:<span class="mgr10">站西路</span>终点：<span class="mgr10">龙头寺公交枢纽站</span>下车站点：<span class="red mgr10">龙头寺公交枢纽站</span>全程<span class="red">21.7公里</span>约<span class="red">1小时20分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">站西路 → 沙坪坝火车站 → 汉渝路 → 肿瘤医院 → 石门 → 九村 → 观农贸→ 盘溪 → 中合建材 →→ 新城丽都 → 北环 → 金科第三空间 → 龙湖西苑 → 新牌坊 → 新溉大道 → 市公安局→ 无专厂 → 龙头寺 → 重庆北站 → <span class="red strong">龙头寺公交枢纽站</span></div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D270" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">270</span>起点:<span class="mgr10">新桥</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">18.8公里</span>约<span class="red">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">新桥 → 四标 → 高滩岩 → 天星桥 → 制药三厂 → 石碾盘 → 小龙坎 → 汉渝路 → 肿瘤医院 → 石门 → 大石坝 → 大庆村 航天职大 → 建材市场 → 松树桥 → 红旗河沟 → 黄泥塝 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站
+</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D821" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">821</span>起点:<span class="mgr10">杨家山</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">龙头寺公交枢纽站</span>全程<span class="red">18公里</span>约<span class="red">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">杨家山 → 川外 → 西政 → 烈士墓 → 烈士墓 → 林泉雅舍 → 杨公桥 → 半月楼 → 沙杨路 → 沙中路 → 重大中门 → 肿瘤医院 → 石门 → 大石坝 → 大庆村 → 航天职大 → 建材市场 → 松树桥 → 红旗河沟 → 渝通 → 新牌坊 → 新溉大道 → 新溉路 → <span class="red strong"> 天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+</ul>
+        </div>
+<!--沙坪坝end-->
+
+<!--南岸区begin-->
+        <div class="busRideLst none" style="display: none;">
+<ul>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D119" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">119</span>起点:<span class="mgr10">南坪枢纽站</span>终点：<span class="mgr10">人和医院</span>下车站点：<span class="red mgr10">龙头寺火车北站[汽车站]</span>全程<span class="red">17.2公里</span>约<span class="red">1小时</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南坪枢纽站 → 工贸[天桥] → 重庆会展中心[南坪] → 石板坡[北桥头] → 双溪沟[黄花园] → 北桥头[黄花园大桥] → 大湾 → 五里店(转盘) → 渝鲁大道[鲁能星城东门] → 龙塔花园[街道] → 龙头寺火车北站广场 → <span class="red strong">龙头寺火车北站[汽车站]</span> → 保利香槟园[轻轨站] → 红唐路新溉路[转盘] → 市公安局[转盘] → 市民政局[老干中心] → 江北车管所(中央美地) → 人和路口[交通事故快赔中心] → 人和场口 → 人和医院</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D841" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">841</span>起点:<span class="mgr10">八公里</span>终点：<span class="mgr10">火车北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">26.9公里</span>约<span class="red strong">1小时50分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">花溪工业园 → 建设集团新厂 → 新屋村委会 → 川渝精工 → 先锋村 → 融汇半岛 → 巨星花园[小区] → 花溪隧道南 → 红光(工学院花溪校区) → 清华中学 → 土桥 → 土桥岔路口 → 九公里 → 江南车管所 → 八公里(家具市场) → 七公里(重庆交通大学) → 学府六十九号[小区] → 六公里 → 渝能国际[小区] → 五公里(重庆工商大学) → 四公里[青龙路口] → 南坪南路(海德酒店) → 响水路口[南坪长途站] → 工贸[工商银行] → 工贸[天桥] → 重庆会展中心[南坪] → 石板坡[北桥头] → 双溪沟[黄花园] → 北桥头[黄花园大桥] → 大湾 → 红土地(金科花园) → 无专厂[转盘] → 龙头寺[天江鼎城] → 红唐路新溉路[转盘] → 保利香槟园[轻轨站] → <span class="red strong">天宫大道</span> → 龙头寺火车北站广场 → 龙头寺火车北站[汽车站]
+</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D611" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">611</span>起点:<span class="mgr10">南泉</span>终点：<span class="mgr10">鲁能星城</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">34.1公里</span>约<span class="red strong">2小时</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南泉→小泉 → 提坎 → 炒油场 → 十一公里→ 十公里 → 九公里 → 九公里 → 八公里 → 七公里 → 学府六十九号 → 六公里 → 渝能国际→五公里 → 四公里 → 南坪南路 → 响水路口→南坪 → 会展中心→北桥头 → 菜园坝 → 牛角沱 → 上清寺 → 华新街 → 观音桥 → 建新北路→海关 → 红旗河沟 →黄泥塝→ 无专厂→ 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站→ 新溉路 →鲁能新城</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D168" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">168</span>起点:<span class="mgr10">南坪枢纽站</span>终点：<span class="mgr10">龙头寺火车北站[汽车站]</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">18公里</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南坪 → 嘉德数码→ 长江村 → 会展中心 → 北桥头 → 菜园坝 → 牛角沱 → 上清寺 → 华唐路 → 蚂蝗梁 → 建新西路 → 中医院 → 农贸市场 → 北城天街→ 洋河路 → 洋河路 → 北汽城 → 长安大道 → 无专厂 → 龙头寺 → 红唐路 → 新溉路 → 鲁能新城 → <span class="red strong"> 天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D323" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">323</span>起点:<span class="mgr10">大佛寺</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">12.8公里</span>约<span class="red strong">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">大佛寺 → 窍角沱 → 王家沱 → 武警医院 → 弹子石 → 十一中 → 大石坝 → 东海长洲 → 五院 → 觉林寺 → 下浩 → 房管所 → 上新街 → 港口医院 → 海棠溪 → 海棠晓月 → 阳光华庭 → 福利社 → 南坪东路 → 工贸 → 会展中心→ 北桥头 → 双溪沟 → 桥头 → 大湾 → 红土地 → 无专厂 → 黄泥塝 → 皇冠东和 → 工业园区 → 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D354" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">354</span>起点:<span class="mgr10">南坪中学</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">19.6公里</span>约<span class="red">1小时20分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南坪中学→ 南湖路 → 金山路 → 南岸老区府 → 大浪淘沙 → 响水路 → 南坪东路→ 福利社 → 海棠晓月 → 海棠溪 → 港口医院 → 上新街 → 房管所→ 下浩 → 觉林寺 → 五院 → 鞋业城 → 东海长洲→ 大石坝 → 十一中 → 弹子石 → 大桥北 → 红土地 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+</ul>
+        </div>
+<!--南岸区end-->
+
+<!--九龙坡begin-->
+        <div class="busRideLst none" style="display: none;">
+<ul>
+<li class=""><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3DBRT01" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">快速公交BRT01</span>起点:<span class="mgr10">香港城[轻轨新山村站]</span>终点：<span class="mgr10">龙头寺火车北站[汽车站]</span>下车站点：<span class="red mgr10">天宫大道</span>
+<div class="busRideWay">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">香港城[轻轨新山村站] → 翠华园小区[春晖路] → 轻轨大渡口站[阳光花园西] → 绿云石都[西区](双龙小区) → 巴国城[九龙坡法院] → 二郎科城路[同天绿岸] → 石新路口[巴山] → 柏林[美茵河谷] → 联芳花园[小区] → 六店子[阿卡迪亚] → 虎头岩[电影机厂] → 李家坪立交 → 香皂厂 → 黄桷园(蚂蝗梁) → 电子校[龙溪镇] → 龙湖西苑[十字路口] → 新牌坊(龙湖花园) → 市公安局[转盘] → <span class="red strong">天宫大道</span> → 龙头寺火车北站[汽车站]</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D818" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">818</span>起点:<span class="mgr10">湖榕路</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">24.6公里</span>约<span class="red strong">1小时40分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">湖榕路 → 九宫庙 → 翠楼 → 钢花 → 新山村 → 建设村 → 朵力名都 → 马王场 → 水碾 → 荒沟 → 石坪桥 → 石坪桥 → 大公馆 → 袁家岗 → 马家堡 → 大坪 → 肖家湾 → 鹅岭 → 国际村 → 中山支路 → 上清寺 → 华新街 → 观音桥 → 建新北路 → 海关 → 渝通 → 新牌坊 → 新溉路口 → 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D138" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">138</span>起点:<span class="mgr10">南方花园D区</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">22.5公里</span>约<span class="red strong">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南方花园d区 → 陈家坪 → 科园四路 →→ 科园路口→ 歇台子 → 河运校 → 石油路→ 大坪 → 肖家湾 → 鹅岭 → 国际村 → 中山支路 → 上清寺 → 华新街 → 建新东路→ 大兴村 → 茶园 → 灯饰城 → 五里店 → 渝鲁大道 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D421" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">421</span>起点:<span class="mgr10">杨家坪</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">16.3公里</span>约<span class="red strong">1小时10分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">杨家坪 → 石坪桥 → 石坪桥 → 隆鑫 → 科园四路 → 科园四路 →科园路口 → 歇台子 → 河运校 → 石油路 → 大坪 → 大坪 → 肖家湾 → 鹅岭 → 国际村 → 中山支路 → 上清寺 → 大礼堂 → 大溪沟 → 黄花园 → 桥头 → 大湾 → 红土地 → 无专厂 → 龙头寺 → 红唐路 → <span class="red strong"> 天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D820" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">820</span>起点:<span class="mgr10">上江城</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">重庆北站</span>全程<span class="red">16.3公里</span>约<span class="red strong">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">上江城 → 珠江花园 → 直港大道 → 团结路口 → 杨家坪 → 谢家湾 → 华亿 → 草坪 →白马凼 → 联芳园 → 马家岩(李文锁城) → 小龙坎 → 电子学院 → 松树桥 → 红旗河沟 → 海关 → 建新西路 → 大兴村 → 茶园 → 灯饰城 → 五里店 → 鲁能新城 → 天宫殿 → <span class="red strong"> 重庆北站</span></div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D419" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">419</span>起点:<span class="mgr10">大堰</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">重庆北站</span>全程<span class="red">21.6公里</span>约<span class="red strong">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">大堰 → 跃进村 → 渝钢村 → 丁家垭口 → 锦冠明珠 → 毛线沟 → 毛线沟 → 九龙坡区府 → 西郊 → 杨家坪 → 谢家湾 → 谢家湾 → 袁家岗 → 草坪 →→ 苗圃 → 黄沙溪 → 皮革市场 → 水果市场 → 菜园坝 → 北桥头 → 双溪沟 → 桥头 → 大湾 → 红土地 → 无专厂 → 无专厂 → 黄泥塝 → 工业园区 → 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+</ul>
+        </div>
+<!--九龙坡end-->
+
+<!--大渡口begin-->
+<div class="busRideLst none" style="display: none;">
+<ul>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3DBRT01" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">快速公交BRT01</span>起点:<span class="mgr10">香港城[轻轨新山村站]</span>终点：<span class="mgr10">龙头寺火车北站[汽车站]</span>下车站点：<span class="red mgr10">天宫大道</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">香港城[轻轨新山村站] → 翠华园小区[春晖路] → 轻轨大渡口站[阳光花园西] → 绿云石都[西区](双龙小区) → 巴国城[九龙坡法院] → 二郎科城路[同天绿岸] → 石新路口[巴山] → 柏林[美茵河谷] → 联芳花园[小区] → 六店子[阿卡迪亚] → 虎头岩[电影机厂] → 李家坪立交 → 香皂厂 → 黄桷园(蚂蝗梁) → 电子校[龙溪镇] → 龙湖西苑[十字路口] → 新牌坊(龙湖花园) → 市公安局[转盘] → <span class="red strong">天宫大道</span> → 龙头寺火车北站[汽车站]</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D818" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">818</span>起点:<span class="mgr10">湖榕路</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">24.6公里</span>约<span class="red strong">1小时40分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">湖榕路 → 九宫庙 → 翠楼 → 钢花 → 新山村 → 建设村 → 朵力名都 → 马王场 → 水碾 → 荒沟 → 石坪桥 → 石坪桥 → 大公馆 → 袁家岗 → 马家堡 → 大坪 → 肖家湾 → 鹅岭 → 国际村 → 中山支路 → 上清寺 → 华新街 → 观音桥 → 建新北路 → 海关 → 渝通 → 新牌坊 → 新溉路口 → 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D419" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">419</span>起点:<span class="mgr10">大堰</span>终点：<span class="mgr10">重庆北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">24.6公里</span>约<span class="red strong">1小时30分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">大堰 → 跃进村 → 渝钢村 → 丁家垭口 → 锦冠明珠 → 毛线沟 → 毛线沟 → 九龙坡区府 → 西郊 → 杨家坪 → 谢家湾 → 谢家湾 → 袁家岗 → 草坪 → 苗圃 → 黄沙溪 → 皮革市场 → 水果市场 → 菜园坝 → 北桥头 → 双溪沟 → 桥头 → 大湾 → 红土地 → 无专厂 → 无专厂 → 黄泥塝 → 工业园区 → 市公安局 → 新溉路 → <span class="red strong">天宫大道</span> → 重庆北站</div>
+<div class="clear">
+</div>
+</div>
+</li>
+</ul>
+</div>
+<!--大渡口end-->
+<!--巴南begin-->
+<div class="busRideLst none" style="display: none;">
+<ul>
+<li><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D841" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">841</span>起点:<span class="mgr10">八公里</span>终点：<span class="mgr10">火车北站</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">26.9公里</span>约<span class="red strong">1小时50分钟</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">花溪工业园 → 建设集团新厂 → 新屋村委会 → 川渝精工 → 先锋村 → 融汇半岛 → 巨星花园[小区] → 花溪隧道南 → 红光(工学院花溪校区) → 清华中学 → 土桥 → 土桥岔路口 → 九公里 → 江南车管所 → 八公里(家具市场) → 七公里(重庆交通大学) → 学府六十九号[小区] → 六公里 → 渝能国际[小区] → 五公里(重庆工商大学) → 四公里[青龙路口] → 南坪南路(海德酒店) → 响水路口[南坪长途站] → 工贸[工商银行] → 工贸[天桥] → 重庆会展中心[南坪] → 石板坡[北桥头] → 双溪沟[黄花园] → 北桥头[黄花园大桥] → 大湾 → 红土地(金科花园) → 无专厂[转盘] → 龙头寺[天江鼎城] → 红唐路新溉路[转盘] → 保利香槟园[轻轨站] → <span class="red strong">天宫大道</span> → 龙头寺火车北站广场 → 龙头寺火车北站[汽车站]</div>
+<div class="clear">
+</div>
+</div>
+</li>
+<li class="int"><a href="//map.baidu.com/?newmap=1&amp;ie=utf→8&amp;s=s%26wd%3D611" target="_blank" class="btn3 btnsF12">查看地图</a><a href="javascript:void(0);" class="btn3 btnsF12 busRideWayLink">途经站点</a><span class="red strong font14 mgr10">611</span>起点:<span class="mgr10">南泉</span>终点：<span class="mgr10">鲁能星城</span>下车站点：<span class="red mgr10">天宫大道</span>全程<span class="red">34.1公里</span>约<span class="red strong">2小时</span>
+<div class="busRideWay none">
+<div class="busRideWayL">途经站点：</div>
+<div class="busRideWayR">南泉→小泉 → 提坎 → 炒油场 → 十一公里→ 十公里 → 九公里 → 九公里 → 八公里 → 七公里 → 学府六十九号 → 六公里 → 渝能国际→五公里 → 四公里 → 南坪南路 → 响水路口→南坪 → 会展中心→北桥头 → 菜园坝 → 牛角沱 → 上清寺 → 华新街 → 观音桥 → 建新北路→海关 → 红旗河沟 →黄泥塝→ 无专厂→ 龙头寺 → 红唐路 → <span class="red strong">天宫大道</span> → 重庆北站→ 新溉路 →鲁能新城</div>
+<div class="clear">
+</div>
+</div>
+</li>
+</ul>
+</div>
+    <!--巴南end-->
+    </div>
+</div>
+
+
+                    <div class="plane" id="fairArea">
+                         <ul>
+                        <li><a href="javascript:void(0);"><img src="{/base_lib_Constant::UPLOAD_FILE_URL/}img/fair/map3dS.jpg"><p>3D地图</p></a></li>
+                        <li><a href="javascript:void(0);"><img src="{/base_lib_Constant::UPLOAD_FILE_URL/}img/fair/mapS.jpg"><p>求职地图</p></a></li>
+                        <li><a href="javascript:void(0);"><img src="{/base_lib_Constant::UPLOAD_FILE_URL/}img/fair/railmapS.jpg"><p>轻轨线路</p></a></li>
+                        <li><a href="javascript:void(0);"><img src="{/base_lib_Constant::UPLOAD_FILE_URL/}img/fair/topologyS.jpg"><p>展位分布图</p></a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div>
+                        <img id="map3dS" style="display:none" src="{/base_lib_Constant::UPLOAD_FILE_URL/}img/fair/map3d.jpg">
+                        <img id="mapS" style="display:none" src="{/base_lib_Constant::UPLOAD_FILE_URL/}img/fair/map.jpg">
+                        <img id="railmapS" style="display:none" src="{/base_lib_Constant::UPLOAD_FILE_URL/}img/fair/railmap.jpg">
+                        <img id="topologyS" style="display:none" src="{/base_lib_Constant::UPLOAD_FILE_URL/}img/fair/topology.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="javascript:void(0);" class="fairAreaImg" id="fairAreaImg" />
+<div class="fairAreaMask" id="fairAreaMask"></div>
+</div>
+<!--head-->
+<img src="javascript:void(0);" class="fairAreaImg" id="fairAreaImg" />
+<div class="fairAreaMask" id="fairAreaMask"></div>
+{/include file="footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+	$.focusblur('input.text');
+    traffic.showImage();
+});
+var traffic={
+    busride_tab_con:$('#busRideC .busRideLst'),
+    init:function(){
+       traffic.showRoute(); 
+       traffic.swithPanel();
+       traffic.searchRoute();
+       traffic.showImage();
+    }, 
+    showRoute:function(){
+        $('.table .tBody ul li').hover(function(){
+		    $(this).addClass('hov');
+		    $(this).find('.bubble').show();
+	    },function(){
+		    $(this).removeClass('hov');
+		    $(this).find('.bubble').hide();
+	    });
+	    var _self = $('.busRideWayLink');
+	    _self.each(function()
+	    {
+		    $(this).click(function()
+		    {
+			    if ($(this).parent().find('.busRideWay').hasClass('none'))
+			    {
+				    $(this).parents("ul").find("li").find(".busRideWay").addClass('none');
+				    $(this).parents("li").find(".busRideWay").removeClass("none");
+			    }
+			    else
+			    {
+				    $(this).parents("ul").find("li").find(".busRideWay").addClass('none');
+			    }
+		    });
+	    });//公交途经线路展开
+	    $(".busRideT").find("a").hover(function()
+	    {
+		    traffic.switchTab(this, $(".busRideT").find("a").index(this));
+	    });
+	    $('#busRide').find('li').hover(function(){
+		    $(this).addClass('hov')
+	    },function(){
+		    $(this).removeClass('hov');
+	    });
+    },
+    switchTab:function(obj,index){
+        traffic.busride_tab_con.hide(); // 隐藏全部窗口
+	    traffic.busride_tab_con.eq(index).show(); // 显示与单击相对应的那个窗口
+	    $(".busRideT").find("a").removeClass("cu"); // 清除全部的 cu
+	    $(obj).addClass("cu");
+    },
+    searchRoute:function(){
+       $('#btnSearch').click(function(){
+            var start=$('#txtStart').val();
+            var end=$('#txtEnd').val();
+        	$('#btnSearch').attr('href','http://api.map.baidu.com/direction?region=重庆市&origin='+start+'&destination='+end+'&mode=transit&output=html');
+       });
+    },
+    swithPanel:function(){
+       $('#changeTraffic').toggle(function(){
+            $(this).siblings('#divPanelOne').find('.formText:eq(0)').find('.txtLabel').html('终点');
+            $(this).siblings('#divPanelOne').find('.formText:eq(1)').find('.txtLabel').html('起点');
+            var tempArea = $(this).siblings('#divPanelOne').find('.formText:eq(0)').find('#txtStart').val();
+            $(this).siblings('#divPanelOne').find('.formText:eq(0)').find('#txtStart').val($(this).siblings('#divPanelOne').find('.formText:eq(1)').find('#txtEnd').val());
+            $(this).siblings('#divPanelOne').find('.formText:eq(1)').find('#txtEnd').val(tempArea);
+       },function(){
+            $(this).siblings('#divPanelOne').find('.formText:eq(0)').find('.txtLabel').html('起点');
+            $(this).siblings('#divPanelOne').find('.formText:eq(1)').find('.txtLabel').html('终点');
+            var tempArea = $(this).siblings('#divPanelOne').find('.formText:eq(0)').find('#txtStart').val();
+            $(this).siblings('#divPanelOne').find('.formText:eq(0)').find('#txtStart').val($(this).siblings('#divPanelOne').find('.formText:eq(1)').find('#txtEnd').val());
+            $(this).siblings('#divPanelOne').find('.formText:eq(1)').find('#txtEnd').val(tempArea);
+       });
+    },
+    showImage:function(){
+        $('#fairArea ul li a').click(function(){
+            var clientHeight=$('#fairAreaImg').height();
+            var clientWidth=$('#fairAreaImg').width();
+		    var dcHeight = $(document).height();
+		    var dcWidth = $(document).width();
+		    var magin_top=0; 
+		    if (document.documentElement.scrollTop >170) {
+                magin_top = (window.screen.availHeight - clientHeight) / 2 + document.documentElement.scrollTop + document.body.scrollTop - 67 + "px";
+            } else {
+                magin_top = (window.screen.availHeight - clientHeight) / 2 + document.documentElement.scrollTop + document.body.scrollTop + "px";
+            }
+		    var magin_left = (document.body.clientWidth - clientWidth) / 2 + "px";
+		    var oldImgSrc=$(this).find('img').attr('src');
+		    var theIndex = $('#fairArea').find('a').index($(this));
+		    //var indexOf1=oldImgSrc.indexOf("fair/");
+		    //var indexOf2=oldImgSrc.indexOf(".");
+		    //var newImgSrc =$('#'+oldImgSrc.substring(indexOf1+5,indexOf2)).attr('src');
+		    var newImgSrc =$('#fairArea').next('div').find('img').eq(theIndex).attr('src');
+		    $('#fairAreaMask').css({height:dcHeight,width:dcWidth}).fadeIn('500').click(function(){
+			    $('#fairAreaImg').fadeOut('500');
+			    $('#fairAreaMask').fadeOut('500');
+		    });
+		    $('#fairAreaImg').css({ top: magin_top, left: magin_left,position:'absolute'});
+		    $('#fairAreaImg').fadeIn('500');
+		    $('#fairAreaImg').attr({src:newImgSrc}).click(function(){
+			    $('#fairAreaImg').fadeOut('500');
+			    $('#fairAreaMask').fadeOut('500');
+		    });
+	    });
+    }
+}
+traffic.init();
+</script>
+<script language="javascript" type="text/javascript">
+    (function($){ 
+    $.fn.extend({ 
+            Scroll:function(opt){ 
+                    //参数初始化  
+                    if(!opt) var opt={}; 
+                    var _this=this.eq(0).find("ul:first"); 
+                    var lineH=_this.find("li:first").height(), //获取行高  
+                        line=opt.line?parseInt(opt.line,10):parseInt(this.height()/lineH,10), //每次滚动的行数，默认为一屏，即父容器高度  
+                        speed=opt.speed?parseInt(opt.speed,10):500, //卷动速度，数值越大，速度越慢（毫秒）  
+                        timer=opt.timer?parseInt(opt.timer,10):3000; //滚动的时间间隔（毫秒）  
+                    if(line==0) line=1; 
+                    var upHeight=0-line*lineH; 
+                    //滚动函数  
+                    scrollUp=function(){ 
+                            _this.animate({ 
+                                    marginTop:upHeight 
+                            },speed,function(){ 
+                                    for(i=1;i<=line;i++){ 
+                                            _this.find("li:first").appendTo(_this); 
+                                    } 
+                                    _this.css({marginTop:0}); 
+                            }); 
+                    } 
+                    //鼠标事件绑定  
+                    _this.hover(function(){ 
+                            clearInterval(timerID); 
+                    },function(){ 
+                            timerID=setInterval("scrollUp()",timer); 
+                    }).mouseout(); 
+            }         
+    }) 
+    })(jQuery); 
+    $(document).ready(function(){ 
+<!--            $("#headRtScrl").Scroll({line:1,speed:500,timer:3000}); -->
+    });
+    var HbZhaoPinHuiMaster = {
+        initialize: function()
+        {
+            this.services.initialize();
+        },
+        services:{
+            initialize: function()
+            {
+                $(window).scroll(function()
+                {
+                    if ($(document).scrollTop() > 0)
+                    {
+                        $('#scrolltop').show();
+                    }
+                    else
+                    {
+                        $('#scrolltop').hide();
+                    }
+                });
+                $('#scrolltop').click(function()
+                {
+                    $('html,body').animate({ scrollTop: 0 });
+                });
+            }
+        }
+    }
+    HbZhaoPinHuiMaster.initialize();
+</script>
+</body>
+</html>

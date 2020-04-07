@@ -1,0 +1,388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="keywords" content="产品吐槽，重庆人才网，重庆招聘，重庆招聘网，重庆找工作，汇博网" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='v2-widge.css'/}" />
+<link href="{/version file="tucao.css"/}" rel="stylesheet" type="text/css" />
+
+<!–[if lt IE9]>
+<script type="text/javascript" src="{/version file='html5.js'/}"></script>
+<![endif]–>
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<style type="text/css">
+body{text-align:left}
+.hotList{width:100%}
+.hotList th{width:40px}
+.banner1{background:url({/$siteurl.style/}/img/tucao/banner1.jpg) no-repeat scroll left top}
+.banner2{background:url({/$siteurl.style/}/img/tucao/banner2.jpg) no-repeat scroll left top}
+.banner3{background:url({/$siteurl.style/}/img/tucao/banner3.jpg) no-repeat scroll left top}
+.hotList .number .zhan{background: url({/$siteurl.style/}/img/tucao/zhan_gray.jpg) left top no-repeat;margin-right:15px}
+.hotList .number .zhan:hover,.hotList .number .cur{background: url({/$siteurl.style/}/img/tucao/zhan.jpg) left top no-repeat;color:#ff9400}
+.hotList .number .low{background: url({/$siteurl.style/}/img/tucao/no_gray.jpg) left bottom no-repeat}
+.hotList .number .low:hover,.hotList .number .cur1{background: url({/$siteurl.style/}/img/tucao/no.jpg) left bottom no-repeat;color:#ff9400}
+
+.textA p #login.hover,.textA p .hover{background-color: #02c9bf;padding-left:10px;width:90px!important;text-align: left}
+#login.hover img,.hover img{display: none}
+.login_type{border:1px solid #00c9bf;border-top:3px solid #02c9bf;position: absolute;background-color: #fff;left:357px;top:73px;width:98px;display: none;#left:356px}
+.login_type a{display: block;padding:7px 10px;color:#666}
+.login_type a:hover{background-color: #edf5f3;color:#00bab1}
+</style>
+</head>
+<body>
+	<div class="banner1"></div>
+	<div class="banner2"></div>
+	<div class="banner3"></div>
+	<div class="title">盘点2015年汇博大事件</div>
+	<div class="w990">
+		<ul class="dsjBox clearfix">			
+			{/foreach $productLst as $k=>$product/}
+			<li>
+				<div class="item1 {/$product.product_bgclass/}">
+					<h3>{/$product.product_name/}</h3>
+					<p>{/$product.product_desc/}</p>
+				</div>
+				<div class="item2">
+					<p><img src="{/$siteurl.style/}{/$product.product_thumb/}" /></p>
+					<p class="oper">
+						<span class="good" ><a href="javascript:;" class="operate  {/if $product.spraise/}cur{//if/}" data-val='1' data-id="{/$product.product_id/}" data-type="1">干得漂亮</a><font data-value="{/$product.praiseCount|default:0/}">（{/$product.praiseCount|default:0/}）</font></span>
+						<span class="bad"><a  class="operate   {/if $product.sstep/}cur{//if/}" data-val='2'  data-id="{/$product.product_id/}" data-type="1" href="javascript:;">拍砖</a><font data-value="{/$product.stepCount|default:0/}">（{/$product.stepCount|default:0/}）</font></span>
+						<span class="ord"><a  class="operate {/if $product.snouse/}cur{//if/}" data-val='3'  data-id="{/$product.product_id/}" data-type="1" href="javascript:;">爷没用过</a><font data-value="{/$product.nouseCount|default:0/}">（{/$product.nouseCount|default:0/}）</font></span>
+					</p>
+				</div>
+			</li>
+			{//foreach/}			
+		</ul>
+	</div><font id="upnumber">+1</font>
+	<div class="w940">
+		<form id="commentForm">
+		<div class="textA">
+			<textarea placeholder="小伙伴们，让产品经理在你们处女座模式下颤抖吧！" name='content'></textarea>
+			
+			<p style="{/if $isLogin || $youkeShow/} display: none; {//if/}" id="mask">
+				<a href="javascript:;" class="login" id="login" style="width:100px;overflow: hidden">登录/注册<img src="{/$siteurl.style/}/img/tucao/tuc_arr.png" style="vertical-align: middle;margin-left: 8px" /></a>
+				<a href="javascript:;" class="youke" id="youke" style="overflow: hidden;width:101px">游客吐槽</a>										
+			</p>
+			<ul class="login_type">
+				<li><a href="{/get_url rule='/login' domain='person'/}">求职者登录</a></li>
+				<li><a href="{/get_url rule='/register' domain='person'/}">求职者注册</a></li>
+				<li><a href="{/get_url rule='/login' domain='company'/}">企业登录</a></li>
+				<li><a href="{/get_url rule='/register' domain='company'/}">企业注册</a></li>
+			</ul>
+
+		</div>
+		<div class="sbmtBox">
+			<input type="button" style="float: right;margin-left:30px" id="submitComment" class="submit" value="发表">
+			<p style="float:left"><span style="font-weight: bold;color:red" id="number">200</span>字以内</p>
+			<div class="formMod" id="divcode" style="">请输入验证码：
+                <span><input type="text" id="txtAuthCode" class="text" name="txtAuthCode" style="width:80px;padding:5px;height:18px"></span>
+                <span><input type="hidden" name="hddseed" value="{/$seed/}"></span>
+                <span class="yzImg"><img id="imgAuthCode" onclick="this.src='/tucao/verify?seed={/$seed/}&'+Math.random()" style="vertical-align: -9px;height:28px;height:30px\9" src="/tucao/verify?seed={/$seed/}"></span>
+                <div class="clear"></div>
+            </div>
+		</div>
+		</form>
+		<p class="hotTitle"><img src="{/$siteurl.style/}/img/tucao/title1.jpg" />热门吐槽</p>
+		<table class="hotList">
+			{/foreach $hotComment as $k=>$comment/}
+			<tr>
+				<th valign="top"><a href="javascript:;"><img style="width: 32px;height: 32px;" src="{/if !empty($comment['photo'])/}{/$comment['photo']/}{/else/}{/$siteurl.style/}/img/tucao/defalut.jpg{//if/}" onerror="javascript:this.src='{/$siteurl.style/}/img/tucao/defalut.jpg'"/></a></th>
+				<td>
+					<div>
+						<p class="number">
+							<span>{/$comment.friend_create_time/}</span>
+							<a href="javascript:;" class="zhan operate {/if $comment.spraise/}cur{//if/}" data-val='1' data-id="{/$comment.comment_id/}" data-type="2">{/$comment.praise|default:0/}</a>
+							<u>|</u>
+							<a href="javascript:;" class="low operate {/if $comment.sstep/}cur1{//if/}" data-val='2' data-id="{/$comment.comment_id/}" data-type="2">{/$comment.step|default:0/}</a>
+						</p>
+						<span>{/$comment.user_name/}</span>
+						<span class="clear"></span>
+						<div class="textbox">
+							{/$comment.content/}
+						</div>
+					</div>
+				</td>
+			</tr>
+			{//foreach/}
+		</table>
+		<p class="hotTitle"><img src="{/$siteurl.style/}/img/tucao/title2.jpg" />最新吐槽<span>（共{/$totalCount|default:0/}条）</span></p>
+		<table class="hotList" id="newComments">
+			
+			{/foreach $comments as $k=>$comment/}
+			<tr>
+				<th valign="top"><a href="javascript:;"><img style="width: 32px;height: 32px;" src="{/if !empty($comment['photo'])/}{/$comment['photo']/}{/else/}{/$siteurl.style/}/img/tucao/defalut.jpg{//if/}" onerror="javascript:this.src='{/$siteurl.style/}/img/tucao/defalut.jpg'"/></a></th>
+				<td>
+					<div>
+						<p class="number">
+							<span>{/$comment.friend_create_time/}</span>
+							<a href="javascript:;" class="zhan operate {/if $comment.spraise/}cur{//if/}" data-val='1' data-id="{/$comment.comment_id/}" data-type="2">{/$comment.praise|default:0/}</a>
+							<u>|</u>
+							<a href="javascript:;" class="low operate {/if $comment.sstep/}cur1{//if/}" data-val='2' data-id="{/$comment.comment_id/}" data-type="2">{/$comment.step|default:0/}</a>
+						</p>
+						<span>{/$comment.user_name/}</span>
+						<span class="clear"></span>
+						<div class="textbox">
+							{/$comment.content/}
+						</div>
+					</div>
+				</td>
+			</tr>
+			{//foreach/}
+
+		</table>
+		<p class="loading loadingCur" data-cupage='{/$curPage|default:1/}' data-topage='{/$totalPage|default:0/}' data-time="{/time()/}">点击或滚动加载更多</p>
+	</div>
+{/include file="footer.html"/}
+<script type="text/javascript">
+hbjs.use('product.checkLogin,cqjob.jobsort,cqjob.jobFlexSlider,product.hbCommon,tools.cookie', function(checkLogin,jobsort,jobFlexSlider,hbCommon,cookie, $){
+	$  = $.extend(jobsort,jobFlexSlider,hbCommon);
+	$('textarea').placeHolder("小伙伴们，让产品经理在你们处女座模式下颤抖吧！");
+	//提交吐槽
+	$("#submitComment").click(function() {
+		if(!$('#mask').is(':hidden')){
+			$.anchorMsg('请先登录或选择游客吐槽', {icon:'info'});
+			return;
+		}
+		var content = $('textarea').val().replace(/^\s+|\s+$/g,""),
+			vcode = $('#txtAuthCode').val();
+		if(content.length<1 || content.length>200) {
+			$.anchorMsg('请输入吐槽内容', {icon:'info'});
+			return;
+		}if(vcode.length!=4) {
+			$.anchorMsg('验证码错误', {icon:'info'});
+			$('#imgAuthCode').click();
+			return;
+		}
+		$.ajax({
+			url: "{/geturl rule='tucao/addComment'/}",
+			type: 'post',
+			dataType: 'json',
+			data: $('#commentForm').serialize(),
+			success:function(json) {
+				if(parseInt(json.status)==0){
+					$.anchorMsg(json.msg, { icon: 'fail' });
+				}else if(parseInt(json.status)==-1){
+					$.anchorMsg(json.msg, { icon: 'warning' });
+					$('#imgAuthCode').click();
+				}else{
+					$.anchorMsg(json.msg);
+					setTimeout("location.reload()",1000);
+				}
+			}
+		});		
+	})
+
+	$("#login,.login_type").hover(function(){
+		$(".login_type").show();
+		$("#login").addClass("hover");
+	},function(){
+		$(".login_type").hide();			
+		$("#login").removeClass("hover");
+	});
+
+	//游客
+	$("#youke").click(function(){
+		var date = new Date();
+		date.setTime(date.getTime() + 10*60*1000);
+		cookie.set('_youke', 1, {expires:date,path:'/',domian:'{/base_lib_Constant::COOKIE_DOMAIN/}'});
+		ajaxLoginCallback();
+		return false;
+	});	
+
+	// {/if !$isLogin/}
+	// var t = cookie.get('_youke');
+	// if(t==1) {
+	// 	ajaxLoginCallback();
+	// 	return false;
+	// }
+	// {//if/}
+
+	function ajaxLoginCallback() {
+		$("#login").parent("p").hide().prev("textarea").val("").focus();
+	}
+	//输入字数
+	$("textarea").keyup(function(){
+		var _val = $(this).val();
+		if(_val.length >= 200){
+			$(this).val(_val.substr(0,200));
+			$("#number").html(0);
+		}else{
+			$("#number").html(200-_val.length);
+		}		
+	});
+	//大事件翻转效果针对IE
+	$(".dsjBox li").hover(function(){
+		var userAgent = navigator.userAgent;
+		var isOpera = userAgent.indexOf("Opera") > -1;
+		 if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+	       var _this = $(this);
+			_this.find(".item1").stop().animate({"top":-280});
+	    }; 
+		
+	},function(){
+		var userAgent = navigator.userAgent;
+		var isOpera = userAgent.indexOf("Opera") > -1;
+		 if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+	       var _this = $(this);
+			_this.find(".item1").stop().animate({"top":0});
+	    }; 
+	});
+	//评论点赞
+	var upn = $("#upnumber");
+	$(".hotList").delegate(".number a","click",function(){
+	// $(".number").delegate("a","click",function(){
+
+		var _this = $(this),
+			_top = _this.offset().top,
+			_left = _this.offset().left;
+
+
+		if(_this.hasClass('cur1')) {
+			_this.siblings('a').removeClass('cur');
+			return;
+		}if(_this.hasClass('cur')) {
+			_this.siblings('a').removeClass('cur1');
+			return;
+		}
+		// _this.parents('.number').find('a').removeClass('_locked');
+		_this.addClass('_locked');
+		var data = {type:_this.attr('data-type'),id:_this.attr('data-id'),operate:_this.attr('data-val')};
+		$.post('/tucao/addPraise', data, function(json, textStatus) {
+			
+			if(parseInt(json.status)>0) {
+				upn.css({top: _top,left:_left+5,opacity:1});
+				_this.html(parseInt(_this.html())+1);
+				setUpn(_top-30);
+				
+				if(_this.hasClass("zhan")){
+					if(_this.nextAll(".low").hasClass("cur1")) {
+						var _low = _this.nextAll(".low").removeClass("cur1");
+						var num = parseInt(_low.html())-1;
+						_low.html(num > 0 ? num : 0);
+					}					
+					_this.addClass("cur");
+				}else{
+					if(_this.prevAll(".zhan").hasClass("cur")) {
+						var _zhan = _this.prevAll(".zhan").removeClass("cur");
+						var num = parseInt(_zhan.html())-1;
+						_zhan.html(num > 0 ? num : 0);
+					}
+					_this.addClass("cur1");
+				}
+				// _this.parent('.number').find('.zhan').html(json.data.praiseCount);
+				// _this.parent('.number').find('.low').html(json.data.stepCount);
+			}else{
+				$.anchorMsg(json.msg);
+			}
+
+		},'json');
+
+		_this.removeClass('_locked');
+		return false;
+	});
+	function setUpn(top){
+		upn.html("+1").show().stop().animate({top:top,opacity:0},1000,function(){upn.hide()});
+	}
+	//大事件点击
+	$(".dsjBox").delegate("a","click",function(){
+		var _this = $(this),
+		_top = _this.offset().top,
+		_left = _this.offset().left;
+
+		if(_this.hasClass('cur')) {
+			// $.anchorMsg('您已经点评过啦！', {icon:'warning'});
+			return;
+		} 
+		// _this.parent().siblings().find('a').removeClass('_locked');
+		_this.addClass('_locked');
+		var data = {type:_this.attr('data-type'),id:_this.attr('data-id'),operate:_this.attr('data-val')};
+		_this.addClass('_locked');
+		$.post('/tucao/addPraise', data, function(json, textStatus) {
+			
+			if(parseInt(json.status)>0) {
+				// $.anchorMsg(json.msg);
+
+				upn.css({top: _top-20,left:_left+35,opacity:1});
+				
+				var _font = _this.next("font");				
+				_font.html("（"+(parseInt(_font.attr("data-value"))+1)+"）");
+				_font.attr("data-value",parseInt(_font.attr("data-value"))+1);
+				
+				var hisCur = _this.parents(".oper").find(".cur");
+				if(hisCur.length){
+					var _font2 = hisCur.removeClass("cur").next("font");
+					var num = (parseInt(_font2.attr("data-value"))-1) > 0 ? (parseInt(_font2.attr("data-value"))-1) : 0;
+					_font2.html("（"+num+"）");
+					_font2.attr("data-value",num);
+				}		
+				// _this.parents(".oper").find(".cur").removeClass("cur");
+				// var paren = _this.parents(".oper").find('span');
+				// paren.each(function(){
+				// 	if($(this).hasClass('good')) {
+				// 		$(this).find('a').attr('data-value',json.data.praiseCount);
+				// 		$(this).find('font').html('（'+json.data.praiseCount+'）');
+				// 	} else if ($(this).hasClass('bad')) {
+				// 		$(this).find('a').attr('data-value',json.data.stepCount);
+				// 		$(this).find('font').html('（'+json.data.stepCount+'）');
+				// 	} else {
+				// 		$(this).find('a').attr('data-value',json.data.nouseCount);
+				// 		$(this).find('font').html('（'+json.data.nouseCount+'）');
+				// 	}
+				// })
+				_this.addClass("cur");
+				setUpn(_top-50);
+			}else{
+				$.anchorMsg(json.msg, {icon:'fail'});
+			}
+
+		},'json');
+
+		_this.removeClass('_locked');				
+		return false;
+	});
+	//加载更多
+	var load = $(".loading");
+	$(window).scroll(function () {
+	    if ($(document).scrollTop() + $(window).height() >= $(document).height()) {
+	       getMove();
+	    }
+	});
+	load.click(function(){
+		getMove();
+		return false;
+	});
+	function getMove(){
+		var curPage = parseInt(load.attr('data-cupage')),
+       		totalPage = parseInt(load.attr('data-topage')),
+       		time = load.attr('data-time'),
+       		page = parseInt(curPage)+1;
+       	if(curPage<totalPage) {
+       		load.html('<img src="{/$siteurl.style/}/img/part/loading.gif" /><span>正在加载...</span>').show();
+       		$.getJSON("{/geturl rule='/tucao/ajaxLoadComment'/}", {page: page,time:time}, function(json, textStatus) {
+       			if(json.html != '') {
+       				$('#newComments').append(json.html);
+       				
+       				if(load.attr("data-cupage") == load.attr("data-topage")){
+       					load.html("没有更多评论了哦！").removeClass("loadingCur");
+       				}	       				
+       			}
+       		});
+       		load.attr('data-cupage',page).html("点击或滚动加载更多");
+       	}
+	}
+});
+</script>
+</body>
+</html>

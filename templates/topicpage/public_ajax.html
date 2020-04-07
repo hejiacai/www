@@ -1,0 +1,44 @@
+<script>
+    var continue_page = true, page = 1;
+
+    function page_ajax(_page, url, _dom, scrollTop, not_html) {
+        if (!url || !$(_dom).length) {
+            return false;
+        }
+        page = _page || 1;
+        not_html = not_html || "<span style='color:black;font-size: 14px;'>到底了,没有更多数据了</span>";
+        scrollTop = scrollTop || 50;
+        var doc = $(document),
+            win = $(window),
+            is_ajax = false;
+        //开始滚动
+        win.on('scroll', function () {
+            if (is_ajax && continue_page) {
+                return true;
+            }
+            var c = doc.scrollTop() + win.height() >= doc.height() - scrollTop;
+            console.log(c);
+            if (!c) {
+                return true;
+            }
+            is_ajax = true;
+            page++;
+            $.getJSON(url, {is_ajax: 1, p: page}, function (data) {
+                if (data.code == '200') {
+                    data = data.data;
+                    is_ajax = !data.dataLst.length;
+                    if (data.dataLst.length && data.re_html) {
+                        $(_dom).append(data.re_html);
+                    } else {
+                        $(_dom).append(not_html);
+                    }
+                } else {
+                    if (data.msg) {
+                        // alert(data.msg);
+                    }
+                }
+            });
+
+        });
+    }
+</script>

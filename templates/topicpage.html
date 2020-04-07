@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>汇博网_互联网产业园</title>
+<style>
+body{ margin:0; padding:0; font-size:12px; list-style:none; font-family:"微软雅黑"; }
+a{ text-decoration:none;}
+a:hover{ text-decoration:underline}
+a img{border:0px}
+body,ul,li,p,div,dd,dt,dl{margin:0px;padding:0px;list-style: none}
+.clear{clear:both;height:0;line-height:0;overflow:hidden;font-size:0;}
+.clearfix:after{
+	content:".";display:block;height:0;clear:both;visibility:hidden;
+}
+.clearfix{zoom:1;}
+body{background-color: #f2f2f2}
+.banner{background: url({/$styleurl/}/banner.jpg) center top no-repeat;height: 800px}
+.banner a{width:207px;height: 99px;display: block}
+.w1000{width: 1000px;margin:0 auto;position: relative}
+.yuanqu-box{background-color: #1c80d0;height: 230px}
+.yuanqu-box dt{float: left;color:#fff;font-size:24px;padding:45px 24px;width:30px;background-color: #4eb0ff}
+.yuanqu-box dd{padding:20px;float:left;width:870px;font-size:14px;color:#d4effc;line-height: 22px}
+.footer{padding:45px 0;text-align: center;background-color: #38749e;color:#b2e7ff;line-height: 25px;margin-top: 30px}
+.list-box dl{border:1px solid #d7e3ed;padding:20px;background-color: #fff;margin-top: 30px;border-radius: 5px}
+.list-box dt{width:140px;float:left}
+.list-box dt img{border:1px solid #dbdbdb;display: block}
+.list-box dt p a{width:140px;height: 40px;background: url({/$styleurl/}/more.jpg) no-repeat;display: inline-block;margin-top: 10px}
+.list-box dt p a:hover{background: url({/$styleurl/}/more_focus.jpg) no-repeat}
+.list-box dd{width: 255px;float:left;margin-left: 17px;font-size:14px!important;line-height: 25px}
+.list-box dd .desc{height: 130px}
+.list-box dd .tit{height: 24px;overflow: hidden;text-overflow:ellipsis;white-space:nowrap;}
+.list-box dd .tit a{font-size:18px;color:#333}
+.list-box dd .yellow{color:#ff7c16;font-size:16px;display: block}
+.list-box dd .gray9{color:#999}
+.list-box dd .more{color:#1c80d0}
+.flex-box{position: absolute;right:-220px;width:210px;top:0px}
+.flex-box a{border: 1px solid #d7e3ed;color:#1c80d0;display: block;padding:10px;margin-bottom: 10px;font-size:14px;border-radius: 3px;background:#ffffff url({/$styleurl/}/hover_icon1.jpg) 10px center no-repeat;padding-left: 45px }
+.flex-box a:hover{background:#ffffff url({/$styleurl/}/hover_icon.jpg) 10px center no-repeat;border:1px solid #1c80d0;text-decoration: none}
+</style>
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+</head>
+
+<body>
+<div class="banner"><div class="w1000"><a href="{/get_url rule='/' domain='main'/}"></a></div></div>
+<div class="yuanqu-box">
+	<dl class="w1000 clearfix">
+		<dt>园区简介</dt>
+		<dd>
+		2009年，由渝中区人民政府根据我区产业转型升级和互联网发展导向打造的重庆市环球互联网产业园区，座落在重庆母城渝中区上清寺地区，
+是西部地区第一个以互联网产业为主体的产业园区，涵盖互联网服务、软件开发、信息安全、互联网应用、动漫游戏、移动会联网以及互联网
+人才培训等相关企业，以信息技术广泛应用为特征的现代服务业经济体系正在形成。经过四年的飞速发展，园区共有包括环球广场、广发大厦、
+港天大厦、华安大厦和中邮大厦五座商务楼宇近6万平方米，入驻互联网企业共190家，员工超6000余人，2014年年交易额达135亿元。园区
+设施齐全，功能完善，电信，网通、移动等通讯及网络齐备。园区同时搭建了互联网产业公共服务平台，通过整合政策咨询、科技项目申报、
+创业培训、科技成果登记、知识产权、投融资及金融服务、软件评测、运营商基础服务、市区相关行业协会、云平台业务咨询、云计算及会议
+服务系统相关科技资源等服务，打造了互联网产业一条龙服务体系。培育了在国内外具有较大知名度及影响力的大龙网、猪八戒网、祥维科技、
+君盾科技、中国缴费网等互联网企业。环球互联网产业园正以飞快速度发展，欢迎互联网企业到来！
+		</dd>
+	</dl>
+</div>
+{/if !empty($companys)/}
+<div class="w1000 list-box">
+    {/foreach $companys as $company/}
+    <dl class="clearfix" {/if count($company.jobs)==0/}style="display:none"{//if/}>
+            <dt>
+                <a href="{/$company.company_url/}" target="_blank"><img src="{/$company.logo_path/}" style="width:140px;height:140px;"/></a>
+                <p><a href="{/$company.company_url/}" target="_blank"></a></p>
+            </dt>
+            {/if !empty($company['jobs'])/}
+                {/foreach $company['jobs'] as $job/}
+                    <dd>
+                            <div class="desc">
+                                    <p class="tit"><a href="{/$job.joblink/}" target='_blank' title="{/$job.station/}">{/$job.station/}</a></p>
+                                    <span class="yellow">月薪：{/$job.min_salary/}-{/$job.max_salary/}</span>
+                                    <span class="gray9">经验：</span>{/$job.workyear/}<br />
+                                    {/if !empty($job.rewards)/}<span class="gray9">职位福利：</span>{/foreach $job.rewards as $i=>$rew/}{/if $i<=4/}{/$rew/} &nbsp;&nbsp;{//if/}{//foreach/}<br />{//if/}
+                            </div>
+                            <a href="{/$job.joblink/}"  target = "_blank" class="more">更多细节>></a>
+                    </dd>
+                {//foreach/}
+            {//if/}
+    </dl>
+    {//foreach/}
+        <div class="flex-box" id="flex">
+            <a href="http://www.sojump.com/jq/5316654.aspx" target="_blank">前端工程师调查问卷  优渥工作等你来“填”  ！</a>
+            <a href="http://www.sojump.com/jq/5340133.aspx" target="_blank">2015年HR调查问卷  助您招到合适人才！</a>
+        </div>
+</div>
+{//if/}
+
+	
+<div class="footer">
+	©2015 汇博网 版权所有  |  增值电信业务经营许可证：渝B2-20060063  |  人才中介服务许可证：渝中人社[2011]216号<br />
+        招聘单位无权收取任何费用,请求职人员加强自我保护意识,按劳动法规保护自身权益,警惕虚假招聘,避免上当受骗!
+</div>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "http://hm.baidu.com/hm.js?fb51309e47424acd6e31c0bd2a65a5a1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+window.onscroll = function(){
+	var winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+	if(winScroll > 1050){
+		$("#flex").css({"top":winScroll-1050});
+	}else{
+		$("#flex").css({"top":"0"});
+	}
+};
+</script>
+</body>
+</html>

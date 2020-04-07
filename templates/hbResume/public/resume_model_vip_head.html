@@ -1,0 +1,95 @@
+{/if $order_data && strtotime($order_data.model_validity)/}
+	<!---付费会员-->
+	<style>
+		.pay-mony {
+			position: relative;
+			/*right: 130px;*/
+			/*top: 16px;*/
+			float: right;
+			margin-top: 15px;
+			margin-right: 5px;
+		}
+
+		.pay-mony img {
+			vertical-align: -2px;
+		}
+
+		.pay-mony p {
+			font-size: 14px;
+			color: #666;
+			line-height: 24px;
+		}
+
+		.pay-mony h1 {
+			font-weight: bold;
+			font-size: 14px;
+			color: #ffb745;
+			line-height: 24px;
+			text-align: left;
+		}
+
+		.pay-mony p {
+			font-size: 12px;
+			color: #bbbcc0;
+		}
+
+		.pay-detail {
+			display: none;
+			border: 1px solid #f1f1f1;
+			padding: 20px 30px;
+			position: absolute;
+			right: 5px;
+			top: 52px;
+			background: #fff;
+			z-index: 111;
+			width: 130px;
+		}
+
+		.pay-detail img {
+			position: absolute;
+			right: 30px;
+			top: -7px;
+		}
+
+		.pay-detail p {
+			font-size: 14px;
+			color: #666;
+			line-height: 28px;
+		}
+
+		.pay-detail h6 {
+			font-size: 14px;
+			color: #666;
+			margin-bottom: 5px;
+			line-height: 24px;
+			text-align: left;
+		}
+
+		.pay-detail.pay-detail-show {
+			display: block;
+		}
+	</style>
+	<div class="pay-mony">
+		<h1><img src="{/$siteurl.style/}/img/xiaoyuan/V.png" alt="">
+			付费会员
+			<img src="{/$siteurl.style/}/img/xiaoyuan/edit/hbresume-tit.png" alt="" style="cursor:pointer;" id="showDetail"></h1>
+		<p>到期时间：{/$order_data.model_validity|date_format:'%Y-%m-%d'/}</p>
+		<div class="pay-detail">
+			<img src="{/$siteurl.style/}/img/xiaoyuan/edit/hbresume_border.png" alt="">
+			<h6>付费会员权益：</h6>
+			<p>1.全站模板免费下载</p>
+			<p>2.全站模板免费使用
+			<p>
+		</div>
+	</div>
+	<script>
+		$(function () {
+			$('#showDetail').on('mouseenter', function () {
+				$('.pay-detail').addClass('pay-detail-show');
+			}).on('mouseleave', function () {
+				$('.pay-detail').removeClass('pay-detail-show');
+			});
+		});
+	</script>
+	<!---付费会员 END-->
+{//if/}

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+        <link rel="stylesheet" type="text/css" href="{/version file='maleRecruit.css'/}"/>
+        <link rel="stylesheet" type="text/css" href="{/version file='m_font_style.css'/}"/>
+        <link rel="stylesheet" type="text/css" href="{/version file='base.css'/}"/>
+        <link rel="stylesheet" type="text/css" href="{/version file='layer.css'/}">
+        <script type="text/javascript" language="javascript" src='{/version file="jquery-1.8.3.min.js"/}'></script>
+        <script type="text/javascript" src="{/version file='layer.js'/}"></script>
+        <style type="text/css">
+        	.areaRightList span{ color: #ccc;}
+        	.areaRightList span.list,.areaRightList span.all_list{ color: #333;}
+        </style>
+	</head>
+	<body>
+		<div class="addSubscribePop">
+			<div class="typeTitle" style="display: none;">
+				<span>订阅管理</span>
+				<em>×</em>
+			</div>
+		<div style="padding: 30px;">
+			<div class="scrType">
+				<span>订阅类型</span>
+				<em class="cur"></em>
+				<input type="hidden" name="scrTypePut" id="scrTypePut" value="1" />
+			</div>
+			<div class="scrTypex">
+				<span class="gzType01">招聘地区：</span>
+				<div class="gzType02" id="gzjobArea">
+					<div class="gaTypeLeft">
+                        {/foreach $person_config['recruit_areas'] as $v/}
+						<span data-id="{/$v['area_id']/}">{/$v['area_name']/}<i>×</i></span>
+                        {//foreach/}
+                    </div>
+					<span class="gaTypeAdd">多选</span>
+					<input type="hidden" name="gzjobAreaPut" id="gzjobAreaPut" value="{/$person_config['recruit_area_ids_str']/}" />
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<!--招聘地区-->
+			<div class="gzjobAreax" id="gzjobidAreax" style="display: none;">
+				<div style="position: relative;">
+				<div class="gzjobAreaScroll">
+				<div class="jobAreaLeft" id="jobAreaidLeft">
+                    {/foreach $common_area as $k=>$v/}
+					<span {/if !$k/}class="cur"{//if/}>{/$v['label']/}<i class="icon-uniE603"></i></span>
+                    {//foreach/}
+				</div>
+				</div>
+				<div class="jobAreaRight" id="jobAreaidRight">
+                    {/foreach $common_area as $k=>$v/}
+					<div class="areaRightList" {/if !$k/}style="display: block;"{//if/}>
+						<span data-id='{/$v["value"]/}' class="all_list {/if in_array($v["value"],$person_config['recruit_area_ids'])/}cur{//if/}">{/$v['label']/}</span>
+                        {/foreach $v['second'] as $v1/}
+						<span data-id="{/$v1['area_id']/}" class='{/if !in_array($v["value"],$person_config['recruit_area_ids'])/}list{//if/}'>{/$v1['area_name']/}</span>
+                        {//foreach/}
+					</div>
+                    {//foreach/}
+				</div>
+				</div>
+				<div class="areaFrom">
+					<span class="areaCancelBtn" id="areaCancelidBtn">取消</span>
+					<span class="areaClearBtn" id="areaClearidBtn">清除</span>
+					<span class="areaSureBtn" id="areaSureidBtn">确定</span>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+			<!--报考分类开始-->
+			<div class="scrTypex">
+				<span class="gzType01">报考分类：</span>
+				<div class="gzClassifyPop" style="display: block;">
+                    {/foreach $apply_catetory as $k=>$v/}
+					<span data-id="{/$v['value']/}" {/if $v['selected']/}class='cur'{//if/}>{/$v['name']/}</span>
+                    {//foreach/}
+					<input type="hidden" name="gzClassifyPut" id="gzClassifyPut" value="{/$person_config['apply_catetory_ids_str']/}" />
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+			<div class="scrTypex">
+				<span class="gzType01">适合专业：</span>
+				<div class="gzType02" id="gzFitSpecialty">
+					<div class="gaTypeLeft">
+                        {/foreach $person_config['professions'] as $v/}
+						<span data-id="{/$v['professional_id']/}">{/$v['professional_name']/}<i>×</i></span>
+                        {//foreach/}
+					</div>
+					<span class="gaTypeAdd">多选</span>
+					<input type="hidden" name="gzFitSpecialtyPut" id="gzFitSpecialtyPut" value="{/$person_config['professions_ids']/}" />
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<!--适合专业开始-->
+			<div class="gzjobAreax" id="gzjobidProfes" style="display: none;">
+				<div style="position: relative;">
+				<div class="gzjobAreaScroll">
+				<div class="jobAreaLeft" id="jobProfesLeft">
+                    {/foreach $professions as $v/}
+					<span class="list">{/$v['professional_name']/}<i class="icon-uniE603"></i></span>
+                    {//foreach/}
+				</div>
+				</div>
+				<div class="jobAreaRight" id="jobProfesRight">
+                    {/foreach $professions as $k=>$v/}
+					<div class="profesRightList" {/if !$k/}style="display: block;"{//if/}>
+                         {/foreach $v['sub_items'] as $v1/}
+						<div class="list">
+							<b>{/$v1['professional_name']/}</b>
+							<p>
+                                {/foreach $v1['sub_items'] as $v2/}
+								<span data-id="{/$v2['professional_id']/}" {/if $v2['selected']/}class='cur'{//if/}>{/$v2['professional_name']/}</span>
+                                {//foreach/}
+							</p>
+						</div>
+                         {//foreach/}
+					</div>
+                    {//foreach/}
+				</div>
+				</div>
+				<div class="areaFrom">
+					<span class="areaCancelBtn" id="profesCancelidBtn">取消</span>
+					<span class="areaClearBtn" id="profesClearidBtn">清除</span>
+					<span class="areaSureBtn" id="profesSureidBtn">确定</span>
+				</div>
+				<div class="clear"></div>
+			</div>
+			
+			<!--适合专业结束-->
+			<div class="gzSetting">
+				<span class="gzSetx01">订阅设置</span>
+				<div class="gzSetx02">
+					<span>推送方式：</span>
+					<em {/if in_array(1,$person_config['push_way'])/}class='cur'{//if/} data-id="1">短信</em>
+					<em {/if in_array(2,$person_config['push_way'])/}class='cur'{//if/} data-id="2">邮件</em>
+				</div>
+				<div class="gzSetx03"  {/if in_array(1,$person_config['push_way'])/}style="display:block;"{//if/}>
+					<span>接收手机：</span>
+					<em>{/$person_config['mobile_phone']/}</em>
+				</div>
+				<div class="gzSetx04" {/if in_array(2,$person_config['push_way'])/}style="display:block;"{//if/}>
+					<span>邮件地址：</span>
+					<input type="text" name="gzMail" id="gzMail" value="{/$person_config['email']/}" />
+				</div>
+				<div class="gzSetx05">
+					<span>推送周期：</span>
+					<em {/if $person_config['push_type'] == 1/}class="cur"{//if/} data-id='1'>3天</em>
+					<em {/if $person_config['push_type'] == 2/}class="cur"{//if/} data-id='2'>5天</em>
+					<input type="hidden" name="gzDeliveryCycle" id="gzDeliveryCycle" value="{/$person_config['push_type']/}" />
+				</div>
+				<div class="gzBtn">确定</div>
+			</div>
+			</div>
+		</div>
+<div class="sub_success" data-explain="do not delete!" style="display: none"></div>
+<script  type="text/javascript">
+	var action_url = '{/$siteurl.style/}';
+	action_dom = [
+		['.sub_success', 21]
+	];
+</script>
+<script type="text/javascript" language="javascript" src="{/version file='action.js'/}"></script>
+<script type="text/javascript">
+	$('.scrType em').click(function(){
+		$(this).toggleClass('cur');
+		if(!$(this).hasClass('cur')){
+            layer.confirm('确定要取消订阅吗？', {
+              btn: ['确定','取消'] //按钮
+            }, function(){
+              $.ajax({
+                url:'{/get_url rule="/subscribe/SetSubscribeDo"/}',
+                type:"post",
+                data: {is_effect : 0},
+                dataType:"json",
+                success:function(json){
+                    
+                    if(!json.status)	
+                        layer.msg(json.msg);
+                    else
+                        layer.msg(json.msg, function(){
+                            parent.location.reload();
+                        });
+
+//                    $('.sub_success').click();
+    //                var mylayer= parent.layer.getFrameIndex(window.name);
+    //                parent.layer.close(mylayer);
+                    
+                    }
+                });
+            }, function(){
+                $('.scrType em').toggleClass('cur');
+            });
+            
+        }
+	});
+	//推送方式
+	$('.gzSetx02 em').click(function(){
+		$(this).toggleClass('cur');
+		
+		if($(this).attr('data-id') == '1'){
+			$('.gzSetx03').show();
+		}
+		if($(this).attr('data-id') == '2'){
+			$('.gzSetx04').show();
+		}
+		if(!$(this).hasClass('cur')){
+			if($(this).attr('data-id') == '1'){
+				$('.gzSetx03').hide();
+			}
+			if($(this).attr('data-id') == '2'){
+				$('.gzSetx04').hide();
+			}
+		}
+		
+	
+	});
+	//推送周期
+	$('.gzSetx05 em').click(function(){
+		$(this).addClass('cur').siblings().removeClass('cur');
+		$('#gzDeliveryCycle').val($(this).attr('data-id'));
+	});
+	//地区选择
+	$('#gzjobArea').click(function(e){
+		e.stopPropagation();
+		gzAreax();
+		$('#gzjobidAreax').show();
+	});
+	$('#jobAreaidLeft span').hover(function(){
+		$('#jobAreaidRight .areaRightList').hide();
+		$(this).addClass('cur').siblings().removeClass('cur');
+		var thisId = $(this).index();
+		$('#jobAreaidRight .areaRightList').eq(thisId).show();
+	});
+	var gzjobAreaStr = [];
+	var gzjobAreaAry = [];
+	var gzjobAreaHtml = '';
+	
+	$('#jobAreaidRight span.all_list').click(function(){
+		
+		$(this).toggleClass('cur');
+		if($(this).hasClass('cur')){
+			$(this).parent().find('span.list').attr('class','');
+		}else{
+			$(this).parent().find('span:not(.all_list)').addClass('list');
+		}
+		
+		
+	});
+	
+	$("#gzjobidAreax").on('click', '#jobAreaidRight span.list', function(){
+		if($(this).hasClass('list')){
+			$(this).toggleClass('cur');
+			if($('#jobAreaidRight span.cur').length > 5){
+				layer.msg('最多只能选择5个');
+				$(this).removeClass('cur');
+			}
+		}
+	});
+	//取消
+	$('#areaCancelidBtn').click(function(){
+		$('#gzjobidAreax').hide();	
+	});
+	//清除
+	$('#areaClearidBtn').click(function(){
+		$('#jobAreaidRight span').removeClass('cur');
+		$('#jobAreaidRight span:not(.all_list)').addClass('list');
+		
+	});
+	//确定
+	$('#areaSureidBtn').click(function(){
+		gzjobAreaStr = [];
+		gzjobAreaAry = [];
+		gzjobAreaHtml = '';
+		if($('#jobAreaidRight span.cur').length < 1){
+			layer.msg('请选择地区');
+			return false;
+		}
+		$('#jobAreaidRight span.cur').each(function(i,n){
+			gzjobAreaAry.push($(n).attr('data-id'));
+			gzjobAreaStr.push($(n).text());
+			gzjobAreaHtml += '<span data-id="'+$(n).attr("data-id")+'">'+$(n).text()+'<i>×</i></span>';
+		});
+		var gzjobAreaAryJoin = gzjobAreaAry.join(',');
+		$('#gzjobAreaPut').val(gzjobAreaAryJoin);
+		$('#gzjobArea .gaTypeLeft').html(gzjobAreaHtml);
+		$('#gzjobidAreax').hide();
+	});
+	//删除招聘地区选中项
+	var gzjobAreaDel = [];
+	$('#gzjobArea').on('click','.gaTypeLeft span i', function(e){
+		e.stopPropagation();
+		gzjobAreaDel = [];
+		$(this).parent('span').remove();
+		$('#gzjobArea .gaTypeLeft span').each(function(i,n){
+			gzjobAreaDel.push($(n).attr('data-id'));
+		});
+		var thisParentId = $(this).parent('span').attr('data-id');
+		
+			$('#jobAreaidRight span').each(function(x,y){
+				if(thisParentId == $(y).attr('data-id') && thisParentId == $(y).parent().find('.all_list').attr('data-id')){
+					$(y).removeClass('cur');
+					$(y).nextAll().addClass('list');
+				}
+			});
+		
+		
+		var gzjobAreaDelStr = gzjobAreaDel.join(',');
+		$('#gzjobAreaPut').val(gzjobAreaDelStr);
+	});
+	//适合专业
+	$('#gzFitSpecialty').click(function(e){
+		e.stopPropagation();
+		gzDomain();
+		$('#gzjobidProfes').show();
+	});
+	$('#jobProfesLeft span.list').hover(function(){
+		$('#jobProfesRight .profesRightList').hide();
+		$(this).addClass('cur').siblings().removeClass('cur');
+		var thisId = ($(this).index());
+		$('#jobProfesRight .profesRightList').eq(thisId).show();
+	});
+	var gzjobProfesStr = [];
+	var gzjobProfesAry = [];
+	var gzjobProfesHtml = '';
+	$('#jobProfesRight span').click(function(){
+		
+		$(this).toggleClass('cur');
+		if($('#jobProfesRight span.cur').length > 5){
+			layer.msg('最多只能选择5个');
+			$(this).removeClass('cur');
+		}
+		
+		
+	});
+	//取消
+	$('#profesCancelidBtn').click(function(){
+		$('#gzjobidProfes').hide();	
+	});
+	//清除
+	$('#profesClearidBtn').click(function(){
+		$('#jobProfesRight span').removeClass('cur');
+	});
+	//确定
+	$('#profesSureidBtn').click(function(){
+		gzjobProfesStr = [];
+		gzjobProfesAry = [];
+		gzjobProfesHtml = '';
+		if($('#jobProfesRight span.cur').length < 1){
+			layer.msg('请选择地区');
+			return false;
+		}
+		$('#jobProfesRight span.cur').each(function(i,n){
+			gzjobProfesAry.push($(n).attr('data-id'));
+			gzjobProfesStr.push($(n).text());
+			gzjobProfesHtml += '<span data-id="'+$(n).attr("data-id")+'">'+$(n).text()+'<i>×</i></span>';
+		});
+			
+		
+		var gzjobProfesAryJoin = gzjobProfesAry.join(',');
+		$('#gzFitSpecialtyPut').val(gzjobProfesAryJoin);
+		$('#gzFitSpecialty .gaTypeLeft').html(gzjobProfesHtml);
+		$('#gzjobidProfes').hide();
+	});
+	//删除适合专业选中项
+	var gzjobProfesDel = [];
+	$('#gzFitSpecialty').on('click','.gaTypeLeft span i', function(e){
+		e.stopPropagation();
+		gzjobProfesDel = [];
+		$(this).parent('span').remove();
+		$('#gzFitSpecialty .gaTypeLeft span').each(function(i,n){
+			gzjobProfesDel.push($(n).attr('data-id'));
+		});
+		var gzjobProfesDelStr = gzjobProfesDel.join(',');
+		$('#gzFitSpecialtyPut').val(gzjobProfesDelStr);
+	});
+	//报考分类
+	var gzjobClassifyAry = [];
+	$('.gzClassifyPop span').click(function(){
+		gzjobClassifyAry = [];
+		$(this).toggleClass('cur');
+		$('.gzClassifyPop span.cur').each(function(i,n){
+			gzjobClassifyAry.push($(n).attr('data-id'));
+		});
+		if(gzjobClassifyAry.length > 5){
+			layer.msg('最多只能选择5个');
+			$(this).removeClass('cur');
+			return false;
+		}
+		var gzjobClassifyStr = gzjobClassifyAry.join(',');
+		$('#gzClassifyPut').val(gzjobClassifyStr);
+	});
+	
+	$('.gzBtn').on('click', function(){
+		var scrTypePut = $('#scrTypePut').val();
+		var gzjobAreaPut = $('#gzjobAreaPut').val();
+		var gzClassifyPut = $('#gzClassifyPut').val();
+		var gzFitSpecialtyPut = $('#gzFitSpecialtyPut').val();
+		var regemail = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+		var gzMail = $('#gzMail').val();
+		if(scrTypePut == ''){
+			layer.msg('请选择订阅类型');return false;
+		}else if(gzjobAreaPut == ''){
+			layer.msg('请选择招聘地区');return false;
+		}else if(gzClassifyPut == ''){
+			layer.msg('请选择报考分类');return false;
+		}else if(gzFitSpecialtyPut == ''){
+			layer.msg('请选择适合专业');return false;
+		}else if(!$('.gzSetx02 em').hasClass('cur')){
+			layer.msg('请选择推送方式');return false;
+		}else if($('.gzSetx04').is(':visible') && gzMail == ''){
+			layer.msg('请填写邮件地址');return false;
+		}else if($('.gzSetx04').is(':visible') && !regemail.test(gzMail)){
+			layer.msg('邮件格式不正确');return false;
+		}
+        var push_way = new Array();
+        $('.gzSetx02 em').each(function(i,n){
+            if($(n).hasClass('cur'))
+                push_way.push($(n).attr('data-id'));
+        });
+        if(push_way.length > 0){
+            push_way = push_way.join(',');
+        }
+        var post_data = {
+            is_effect : $('#scrTypePut').val(),
+            recruit_area_ids : $("#gzjobAreaPut").val(),
+            apply_catetory_ids : $("#gzClassifyPut").val(),
+            professions : $("#gzFitSpecialtyPut").val(),
+            push_way : push_way,
+            push_type : $('#gzDeliveryCycle').val(),
+            email : $('#gzMail').val(),
+            mobile_phone : '{/$person_config["mobile_phone"]/}',
+        };
+        $.ajax({
+            url:'{/get_url rule="/subscribe/SetSubscribeDo"/}',
+            type:"post",
+            data: post_data,
+            dataType:"json",
+            success:function(json){
+                if(!json.status)	
+                        layer.msg(json.msg);
+                    else{
+                         $('.sub_success').click();
+                        layer.msg(json.msg, function(){
+                            parent.location.reload();
+                        });
+                    }
+                
+               
+//                var mylayer= parent.layer.getFrameIndex(window.name);
+//                parent.layer.close(mylayer);
+            }
+        });
+	});
+	
+	//编辑适合专业
+	function gzDomain(){
+		var gzFitSpecialtyPut = $('#gzFitSpecialtyPut').val();
+		var gzFitSpecialtyPutJoin = gzFitSpecialtyPut.split(',');
+		$('#jobProfesRight span').removeClass('cur');
+		$('#jobProfesRight span').each(function(i,n){
+			for(x in gzFitSpecialtyPutJoin){
+				if(gzFitSpecialtyPutJoin[x] == $(n).attr('data-id')){
+					$(n).addClass('cur');
+				}
+			}
+		});
+	}
+	
+	//编辑招聘地区
+	function gzAreax(){
+		var gzjobAreaPut = $('#gzjobAreaPut').val();
+		var gzjobAreaPutJoin = gzjobAreaPut.split(',');
+		$('#jobAreaidRight span').removeClass('cur');
+		$('#jobAreaidRight span').each(function(i,n){
+			for(x in gzjobAreaPutJoin){
+				if(gzjobAreaPutJoin[x] == $(n).attr('data-id')){
+					$(n).addClass('cur');
+				}
+			}
+		});
+	}
+	
+	
+	
+	
+</script>
+	</body>
+</html>

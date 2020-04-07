@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<style>
+.sendPhoneBox{width:450px;font-size:12px; padding-bottom:25px;}
+.sendPhoneBox .formMod .l{width:440px; text-align:left;}
+.sendPhoneBox .formMod .r{width:440px;}
+.sendPhoneBox .formMod .formText img{height:26px;margin:0 20px 0 0;vertical-align:middle; width:81px;}
+.sendPhoneBox .formBtn{text-align:left; margin-top:25px; }
+.sendPhoneBox .formBtn a.btnsF14{margin:0;}
+</style>
+
+<form id="frmNote" action="{/get_url rule="/company/Note/" data="operate=send&companyflag=$company_flag"/}" method="post" >
+<div class="dgBox sendPhoneBox">
+<input type="hidden" value="{/$seed/}" name="hidSeed" />
+	<div class="sendPhoneBoxForm">
+        <div class="formMod">
+            <div class="l">短信内容</div>
+            <div class="r">
+                <span class="formTextarea">
+                    <textarea class="textarea" style="width:440px; height:60px;" readonly>{/$note/}</textarea>
+                </span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="formMod">
+            <div class="l">接收短信手机号码</div>
+            <div class="r">
+                <span class="formText">
+                    <input type="text" class="text" value="{/$persontel/}" style="width:240px;" name="txtPhone"/>
+                </span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="formMod">
+            <div class="l">验证码<i>&nbsp;</i></div>
+            <div class="r">
+                <span class="formText">
+                    <input type="text" id="comN" class="text" style="width:55px;" name="txtPhoneCode">
+                </span>
+                <span class="formText" style="margin:2px 0 0 10px;">
+                    <a  href="javascript:void(0)" id="btnVerify"><img src="{/get_url rule="/security/GenerateCode/" data="seed={/$seed/}"/}" />看不清？换一张</a>
+                </span>
+                <span class="tipPos" style="display:none;">
+                    <span class="tipLay">
+                        <span class="tipArr"></span>
+                        <span class="tipLayTxt tipw100">请填写验证码！</span>
+                    </span>
+                </span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="formBtn"><a href="javascript:void(0)" class="btnsF14 btn1" id="btnSendNote">发送到手机</a></div>
+</div>
+</form>
+<script type="text/javascript">
+var frmNote = $("#frmNote").validate({
+	rules:{
+		txtPhone:{
+			required:true,
+			tel:true
+		},
+		txtPhoneCode:{
+			required:true,
+			rangelength:[4,4]
+		}
+	},
+	messages:{
+		txtPhone:{
+			required:'请输入电话号码<span class="tipArr"></span>',
+			tel:'请输入正确的联系电话<span class="tipArr"></span>'
+		},
+		txtPhoneCode:{
+			required:'请输入验证码<span class="tipArr"></span>',
+			rangelength:'请输入正确的验证码<span class="tipArr"></span>'
+		}
+	},
+	errorClasses:{
+		txtPhone:{
+			required:'tipLayErr tipw120',
+			tel:'tipLayErr tipw150'
+		},
+		txtPhoneCode:{
+			required:'tipLayErr tipw120',
+			rangelength:'tipLayErr tipw150'
+		}
+	},
+	tipClasses:{
+		txtPhone:'tipLayTxt tipw120',
+		txtPhoneCode:'tipLayTxt tipw120'
+	},
+	tips:{
+		txtPhone:'请输入电话号码<span class="tipArr"></span>',	
+		txtPhoneCode:'请输入验证码<span class="tipArr"></span>'
+	},
+	errorElement:'span',
+	errorPlacement:function(error,element){
+		element.closest('div.formMod').find('.tipPos .tipLay').empty().append(error);
+	},
+	success:function(label){
+		label.text(" ");
+	}
+});
+
+$('#btnSendNote').click(function(){
+	$(this).submitForm({ beforeSubmit: $.proxy(frmNote.form, frmNote),success:function(result){
+ 		if(result.error){
+			 $.message(result.error,{title:'操作失败！'});
+		}
+ 		else if(result.success){
+ 			$('#btnSendNote').closeDialog();
+			$.anchorMsg(result.success,{title: "操作成功", icon: "success"});
+		}
+	},clearForm:false});
+});	
+$('#btnVerify').click(function(){
+	$(this).find('img').attr('src','{/get_url rule="/security/GenerateCode/" data="seed={/$seed/}&r='+Math.random()+'"/}');
+});
+
+</script>
+</body>
+</html>

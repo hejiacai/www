@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<style>
+.messBox{width:560px;font-size:12px;}
+.messBox .formMod{height:100px;}
+.messBox .formTextarea textarea.textarea{height:100px;}
+.messBox .formBtn{text-align:right; margin-right:8px;}
+.messBox .messSuc{padding:10px 0 10px 15px; zoom:1;}
+.messBox .messSuc p{padding-left:48px;}
+.messBox .messSuc p.tit{font-family:"微软雅黑"; font-size:20px; overflow:hidden; padding-left:5px;}
+.messBox .messSuc p.tit i.hbFntWes{font-size:36px; float:left; display:inline; margin-right:12px;}
+</style>
+<form id="frmGuestBook" action="{/get_url rule="/company/Guestbook/" data="operate=save&companyflag=$company_flag"/}" method="post">
+<div class="dgBox messBox">
+	<div class="messForm">
+        <div class="formMod">
+            <span class="formTextarea">
+            	<textarea class="textarea" style="width:540px;" name="txtContent"></textarea>
+            </span>
+            <span class="tipPos">
+                <span class="tipLay tipError">
+                   
+                </span>
+            </span>
+        </div>
+        <div class="formBtn"><a href="javascript:void(0)" class="btnsF14 btn1" id="btnSaveMessage">提交留言</a></div>
+    </div>
+    <!-- 
+    <div class="messPos" style="display:none;">
+    	<div class="messSuc">
+      	  <p class="tit green"><i class="hbFntWes">&#xf058;</i>留言提交成功！</p>
+          <p>当留言有回复时，可在“求职中心>消息>留言”中查看，请注意查收！</p>
+        </div>
+        <div class="formBtn"><a href="#" class="btnsF14 btn1">我知道了</a></div>
+    </div>
+    --> 
+</div>
+</form>
+<script type="text/javascript">
+var frmGuestBook = $("#frmGuestBook").validate({
+	rules:{
+	txtContent:{
+			required:true,
+			rangelength:[1,1000]
+		}
+	},
+	messages:{
+		txtContent:{
+			required:'请输入留言<span class="tipArr"></span>',
+			rangelength:'请输入正确的联系电话<span class="tipArr"></span>'
+		}
+	},
+	errorClasses:{
+		txtContent:{
+			required:'tipLayErr tipw120',
+			rangelength:'tipLayErr tipw150'
+		}
+	},
+	tipClasses:{
+		txtContent:'tipLayTxt tipw120'
+	},
+	tips:{
+		txtContent:'请输入留言<span class="tipArr"></span>'
+	},
+	errorElement:'span',
+	errorPlacement:function(error,element){
+		element.closest('div.formMod').find('.tipPos .tipLay').empty().append(error);
+	},
+	success:function(label){
+		label.text(" ");
+	}
+});
+
+$('#btnSaveMessage').click(function(){
+	$(this).submitForm({ beforeSubmit: $.proxy(frmGuestBook.form, frmGuestBook),success:function(result){
+		if(result.error){
+			 $.message(result.error,{title:'操作失败！'});
+		}
+ 		else if(result.success){
+ 			$('#btnSaveMessage').closeDialog();
+			$.anchorMsg(result.success,{title: "操作成功", icon: "success"});
+		}
+	},clearForm:false});
+});	
+
+</script>
+</body>
+</html>

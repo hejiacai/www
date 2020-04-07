@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="重庆招聘会,重庆人才市场,重庆人才招聘会,重庆招聘会信息,最新重庆招聘会,汇博人才市场" />
+<meta name="Description" content="找重庆招聘会信息上汇博人才市场，每周二四六在重庆龙头寺举办大型重庆招聘会，另有更多招聘会时间、介绍、报名在汇博人才市场。汇博人才市场为您提供重庆招聘会信息" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script src="{/version file='html5.js'/}"></script>  
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="fairNew.css"/}" />
+
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+<script type="text/javascript">
+    window.CONFIG = {
+        HOST: '{/$siteurl.style/}',
+        COMBOPATH: '/js/v2/'
+    }
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file="global.js"/}"></script>
+<script type="text/javascript">
+        hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+
+
+    <!--[if (gte IE 6)&(lte IE 8)]>
+	<script type="text/javascript">
+		$(document).ready(function(){
+            $('#slidesLst').find('a:nth-child(4n+1)').css({'margin-left':'0'});
+            $('#slidesLst').find('a:nth-child(4n+4)').css({'margin-right':'0'});
+        });
+	</script>
+<![endif]--> 
+<style>
+ .jobFairBner{width:auto;font-family:"微软雅黑"; height:200px; background:url({/$siteurl.style/}/img/fair/new_fair/jobFairBner.jpg) center top no-repeat;}
+ .jobFairMag{width:1000px; overflow:hidden;margin:0 auto;}
+ .jobFairMag h2{ display:block; text-align:left; float:left; font-size:20px; color:#b62a2a; padding-top:120px; padding-left:0;}
+ .jobFairMag div{width:490px; text-align:right; float:right; padding-top:50px;}
+ .jobFairMag div b,.jobFairMag div p{ color:#333; font-size:16px; display:block;width:490px; overflow:hidden; }
+ .jobFairMag div b{ color:#333; font-size:21px; padding-bottom:8px;}
+ .jobFairMag div p span{ font-weight:bold; }
+  .notFair dl.subFirst{ border-bottom:1px solid #18d5db;}
+ .notFair dl.subFirst dt{ background:#15bcc2;}
+ .notFair dl.subFirst dt p{color:#fff;}
+ .notFair dl.subFirst dt p.date{ border-bottom:1px solid #18d5db;}
+ .notFair dl.subFirst dd p.num a{ color:#14adb3; font-size:16px;}
+</style>
+</head>
+<body>
+{/include file="new_headsearch_2015.html"/}
+{/include file="./fair/fairhead.html"/}
+<div class="conPart">
+	<div class="part">
+    	<h1><b></b>重庆最近招聘会排期</h1>
+        <div class="aloneFair alonleT" style="display:none">
+        	<div class="aloneTop aloneT">
+            	<dl>
+                    <dt>
+                        <p class="month">{/if !empty($topscene)/}{/$topscene.the_month/}{//if/}</p>
+                        <p class="date">{/if !empty($topscene)/}{/$topscene.the_day/}{//if/}</p>
+                        <p class="week">{/if !empty($topscene)/}{/$topscene.the_weekday/}{//if/}</p>
+                    </dt>
+                    <dd>
+                        <a href='{/rewrite type="fairScene" date="{/date("Ymd", strtotime($topscene["date"]))/}"/}' target="_blank">{/if !empty($topscene)/}{/$topscene.subject/}{//if/}</a>
+                        <p {/if base_lib_BaseUtils::nullOrEmpty($topscene.describe)/}style="display: none;"{//if/} title="{/if !empty($topscene)/}{/$topscene.describe/}{//if/} class="con">{/if !empty($topscene)/}{/$topscene.describe/}{//if/}"</p>
+                        <p class="txt">预计企业：{/if !empty($topscene) && !base_lib_BaseUtils::nullOrEmpty($topscene.predict_extent)/}{/$topscene.predict_extent/}{/else/}0{//if/}家，预计岗位：{/if !empty($topscene) && !base_lib_BaseUtils::nullOrEmpty($topscene.predict_jobcount)/}{/$topscene.predict_jobcount/}{/else/}0{//if/}个</p>
+                        <!--<p class="time">
+                        <span>离开始还有</span>
+                        <span class="date"><b class="l"></b><i>1</i><b class="r"></b></span>
+                        <span>天</span>
+                        <span class="hours"><b class="l"></b><i>23</i><b class="r"></b></span>
+                        <span>小时</span>
+                        <span class="minute"><b class="l"></b><i>28</i><b class="r"></b></span>
+                        <span>分</span>
+                        </p>-->
+                    </dd>
+                </dl>
+                <a class="btn1 btnsF16" href="{/get_url rule="/zhaopinhui/enterprise" data="sceneid={/$topscene.scene_id/}&fairApply=true"/}">在线定展</a>
+            </div>
+        </div>
+        <div class="notFair alFair">
+            {/if  count($fairscenes)>0/}
+                {/$first_fair = $fairscenes[0]/}
+                <dl class="sub subFirst {/if $first_fair.is_send_emphasis/}jobx-li{//if/}">
+                    <dt><p class="date">{/$first_fair.the_date/}</p><p class="week">{/$first_fair.the_weekday/}</p></dt>
+                    <dd style="margin-left:10px;">
+                        <img src="{/$siteurl.style/}/img/fair/new_fair/jobFairBner2.png" width="43" height="41" />
+                    </dd>
+                    <dd style="width:550px; margin-left:16px;">
+                        <p class="num">
+                            <a href='{/rewrite type="fairScene" date="{/date("Ymd", strtotime($first_fair.date))/}{/$first_fair.scene_id/}"/}' target="_blank">{/$first_fair.subject/}</a>
+                        </p>
+                        <p class="subTxt">{/$first_fair.describe/}</p>
+                    </dd>
+                    <dd style="margin-left:160px;"><a href='{/get_url rule="/zhaopinhui/enterprise" data="sceneid={/$first_fair.scene_id/}&fairApply=true"/}' class="btn3 btnsF14">在线定展</a></dd>
+                 </dl>
+                {//if/}
+        	{/if !empty($fairscenes) && count($fairscenes)>0/}
+       			{/foreach $fairscenes as $item=>$value/}
+                                {/if $item !=0/}
+       				<dl class="{/if !base_lib_BaseUtils::nullOrEmpty($value.describe)/}sub {//if/}{/if $value.is_send_emphasis/}jobx-li{//if/}">
+                                    {/if $value['scene_id'] == 1211/}
+                                    <dt><p class="date">3-30</p><p class="week">星期六</p></dt>
+                                    {/else/}
+                                    <dt><p class="date">{/$value.the_date/}</p><p class="week">{/$value.the_weekday/}</p></dt>
+                                    {//if/}
+                                    <dd>
+                                    <p class="num"><a href='{/rewrite type="fairScene" date="{/date("Ymd", strtotime($value.date))/}{/$value.scene_id/}"/}' target="_blank">{/$value.subject/}</a></p>
+                                    {/if !base_lib_BaseUtils::nullOrEmpty($value.describe)/}<p class="subTxt">{/$value.describe/}</p>{//if/}
+                                    </dd>
+                                    <dd><a href='{/get_url rule="/zhaopinhui/enterprise" data="sceneid={/$value.scene_id/}&fairApply=true"/}' class="btn3 btnsF14">在线定展</a></dd>
+                                </dl>
+                                {//if/}
+           		{//foreach/}
+         	{//if/}
+        </div>
+    </div>
+</div>
+{/include file="footer.html"/}
+<section class="qqTalk">
+	<a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:53" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+</section>
+<script type="text/javascript" language="javascript">
+$.setIndex("zindex")
+$(document).ready(function(){
+	$.focusblur('input.text');
+});
+</script>
+</body>
+</html>

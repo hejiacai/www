@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="keywords" content="{/$company.company_name/}招聘信息,{/$sitetitle/}" />
+ <meta name="description" content="{/$sitetitle/}为您提供：{/$company.company_name/}最新招聘信息,{/$company.company_name/}招聘职位大全,{/$company.company_name/}待遇,电话,地址,邮箱等" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script src="{/version file="html5.js"/}"></script>  
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="comPlain.css"/}"/>
+
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="common.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="dialog.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_validate.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="jquery.form.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_tooltip.js"/}"></script><!--气泡提示-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_inputFocus.js"/}"></script><!--输入框获取焦点-->
+<style>
+  /*=======企业主页======*/
+.job_list_table{ overflow:inherit;}
+.jobs .bd .table table tbody tr td .jobsNm{width:225px;}
+.table td{ overflow:inherit;}
+.ax_push{ height:19px;color:#999; line-height:19px; text-align:center;}
+.ax_pushS,.ax_pushR{width:auto; height:42px; display:block;}
+.ax_pushR{margin:-42px auto 0 auto;position:absolute;_margin:-84px auto 0 auto;}
+.ax_pushS span,.ax_pushR span{ display:block;width:auto; height:36px; background:#333; color:#fff; line-height:36px; padding:0 5px;}
+.ax_pushS i,.ax_pushR i{ display:block;width:11px; height:6px; margin-left:50px; background:url({/$siteurl.style/}/img/salary/imgrNavR.gif) center 0 no-repeat;}  
+</style>
+
+</head>
+<body>
+{/include file='header.html'/}
+<div class="content" id="content">
+    <section class="secTip">
+    	<dl>
+        <dt><i class="hbFntWes">&#xf11a;</i></dt>
+        <dd>
+        	<p class="tit">HI，{/$company_name/}，<span class="strong">致电<em class="red">{/$phone400/}</em>开通“企业个性化招聘主页”，立即享受以下服务：</span></p>
+            <p>1、可更换主页的颜色；</p>
+            <p>2、可展示企业风彩照片及视频；</p>
+            <p>3、可上传并展示幻灯片；</p>
+            <p>4、可展示您的企业LOGO；</p>
+            <p>5、可个性化招聘主页顶部</p>
+        </dd>
+        </dl>
+        <div class="clear"></div>
+        <a href="javascript:void(0)" id="cloceMe" class="closeThs">×</a>
+    </section>
+	<section>
+    	<div class="comTop">
+        	<h2>{/$company_name/}</h2>
+        </div>
+        <div class="part comInfo" id="p1">
+            <div class="hd">
+        	<h3><b></b>公司简介</h3><div class="rtLnk"><a target="_blank" href="{/get_url rule='/company/modify' domain='company'/}" class="btn3 btnsF12"><i class="hbFntWes">&#xf013;</i><span>修改简介/企业风采</span></a></div>
+        </div>
+            <div class="bd">
+        	<div class="basic">
+        		所处行业：
+        		{/if $company_callings[0]!=""/}<em>
+		        	{/foreach $company_callings as $key_callings=>$value_callings/}
+						{/get_name calling = $value_callings/}
+					{//foreach/}
+				{/else/}
+					<span class="gray">未填写</span>
+				{//if/}
+				</em><i>|</i>
+				
+				单位性质：<em>
+				{/if $property_id != ""/}
+					{/get_name com_property = $property_id/}
+				{/else/}
+					<span class="gray">未填写</span>
+				{//if/}
+				</em><i>|</i>
+				
+				公司规模：<em>
+				{/if $size_id != ""/}
+					{/get_name com_size=$size_id/}
+				{/else/}
+					<span class="gray">未填写</span>
+				{//if/}</em><i>|</i>
+				
+				公司网址：<em>{/if $homepage != ""/}
+					<a href="{/$redirect_homepage/}" target="_blank" rel="nofollow">{/$homepage/}</a></em>
+				{/else/}
+					<span class="gray">未填写</span>
+				{//if/}
+	        	</div>
+            <div class="txt">
+            	<p>{/html_encode content=$info/}</p>
+            </div>
+        	</div>
+        </div>
+        <div class="part jobs" id="p2">
+    	<div class="hd"><h3><b></b>正在招聘的职位</h3><div class="rtLnk"><a target="_blank" href="{/get_url rule='/job/' domain='company'/}" class="btn3 btnsF12"><i class="hbFntWes">&#xf013;</i><span>管理职位</span></a></div>
+        </div>
+        {/if count($jobs)==0/}
+        <div class="noData" >没有正在招聘的职位<a target="_blank" href="{/get_url rule='/job/add/' domain='company'/}">立即发布职位</a>或<a target="_blank" href="{/get_url rule='/job/' domain='company'/}">管理职位</a></div>
+        {/else/}
+        <div class="bd">
+        	<div class="table">
+            	<table cellpadding="0" cellspacing="0" width="100%" border="0">
+                	<thead>
+                    	<tr>
+                        	<td valign="middle" align="left">职位名称</td>
+                            <td valign="middle" align="left">工作地点</td>
+                            <td valign="middle" align="left">月薪</td>
+                            <td valign="middle" align="left">招聘人数</td>
+                            <td valign="middle" align="left">工作经验</td>
+                            <td valign="middle" align="left">学历要求</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {/foreach $jobs as $key_job=>$value/}
+                    	<tr>
+                        	<td valign="middle" align="left"><div class="jobsNm">
+                        	    <a href="{/$value['job_link']/}" title="{/$value['station']/}" target="_blank" >{/if $value.job_type=="2"/}
+                        		<em>[兼职]</em>
+                        		{/else if $value.job_type=="3"/}
+                        		<em>[实习]</em>
+                        		{//if/}{/$value.station/}</a>{/$value.is_urgent/}
+                        	</div>
+                        	</td>
+                            <td valign="middle" align="left"><div class="jobAdd">{/$value.area_name/}  </div></td>
+                            <td valign="middle" align="left">
+                                {/if $value.is_salary_show ==0/}
+                                    {/if $value.salary_type==1/}
+                                        <div class="ax_pushR" style="display:none">
+                                          <span>平均收入（底薪+提成）：{/if $value.min_salary == $value.max_salary/}{/$value.min_salary/}{/else/}{/$value.min_salary/}-{/$value.max_salary/}{//if/} 
+                                          &nbsp;底薪：{/if $value.base_min_salary == $value.base_max_salary/}{/$value.base_min_salary/}{/else/}{/$value.base_min_salary/}~{/$value.base_max_salary/}{//if/}
+                                            </span>
+                                               <i></i>
+                                        </div>
+                                    <span class="ax_pushL">￥{/if $value.min_salary == $value.max_salary/}{/$value.min_salary/}{/else/}{/$value.min_salary/}-{/$value.max_salary/}{//if/}
+                                        （{/if $value.base_min_salary == $value.base_max_salary/}{/$value.base_min_salary/}{/else/}{/$value.base_min_salary/}~{/$value.base_max_salary/}{//if/}）</span>
+                                    {/else/}
+                                         <span class="ax_pushL">￥{/if $value.min_salary == $value.max_salary/}{/$value.min_salary/}{/else/}{/$value.min_salary/}-{/$value.max_salary/}{//if/}</span>
+                                    {//if/}
+                                {/else/}
+                                    面议
+                                {//if/}
+                                                </td>
+                            <td valign="middle" align="left"><div class="jobPeo">{/if $value.quantity=="0"/}若干{/else/}{/$value.quantity/}人{//if/}</div></td>
+                            <td valign="middle" align="left"><div class="jobExp">
+	                            {/if $value.work_year ==""/}
+									不限
+								{/else/}
+									{/$value.work_year/}
+								{//if/}</div></td>
+                            <td valign="middle" align="left"><div class="jobRec">
+	                            {/if $value.degree_name ==""/}
+									不限
+								{/else/}
+									{/$value.degree_name/}
+								{//if/}
+								</div>
+							</td>
+                        </tr>
+                    {//foreach/}
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {//if/}
+    </div>
+    <div class="part contac" id="p3">
+    	<div class="hd">
+        	<h3></h3><div class="rtLnk"></div>
+        </div>
+        <div class="bd">
+            <p>公司地址：{/$address|default:'<span class="gray">未填写</span>'/}</p>
+        </div>
+    </div>
+    </section>
+</div>
+{/include file='footer.html'/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script>
+$.setIndex("zindex");
+$('.hbTip').tooltip({
+	selector: "a[data-toggle=tooltip]",html:true  
+});
+
+$('#cloceMe').click(function() {
+	$('.secTip').hide();
+}); 
+$(document).ready(function(e) {
+    $('.ax_push').hover(function(){
+            $(this).prev().toggle();								
+        });
+        $('.ax_pushL').hover(function(){
+            $(this).prev().toggle();								
+        })
+});
+</script> 
+</body>
+</html>

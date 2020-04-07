@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>重庆猎头公司-重庆互联网猎头-重庆IT猎头-重庆金融猎头-重庆房地产猎头-汇博猎头</title>
+<meta name="keywords" content="重庆猎头公司,重庆知名猎头公司,重庆互联网猎头公司、重庆金融猎头公司、重庆房地产猎头公司、汇博猎头">
+<meta name="description" content="汇博猎头，重庆知名专业猎头公司，主要服务于IT互联网、金融、汽车、房地产、快消品、通讯、医药、制造等领域，资源丰富、寻访速度快。">
+<link rel="stylesheet" type="text/css" href="{/version file='base.css,headhunter.css,headhunterglobal.css,v2-widge.css'/}" />
+<!–[if lt IE9]>
+<script src="{/version file='html5.js'/}"></script>
+<![endif]–>
+
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = { 
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript">
+    hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<style>
+    .footerBm{
+        text-align: center;
+    }
+</style>
+</head>
+
+<body>
+{/include file='./lietou/header.html' currenturl="/lietou"/}
+{/include file='./lietou/slidebanner.html'/}
+<div class="htingMain">
+	<div class="htingLf">
+    	<h2 class="htingTit">最新招聘信息</h2>
+        {/foreach from=$jobs item=job/}
+            <div class="htingLit">
+                <p class="htLit01"><span><a href="{/$job['url']/}" target="_blank">{/$job['station']/}</a></span><em>{/$job['area']/}</em></p>
+                <div class="htLit02">
+                    <p>{/$job['content']/}</p>
+                </div>
+                <a href="javascript:void(0)" class="applystatus {/if empty($job['have_apply'])/}jobapply{/else/}haveapply{//if/}" jobflag="{/$job['job_flag']/}">{/if empty($job['have_apply'])/}投递简历{/else/}已申请{//if/}</a>
+            </div>
+        {//foreach/}
+        <div class="htingLine"></div>
+        {/if !empty($jobs)/}
+            <a href="/lietou/newjob" class="htingMore">查看更多职位详情</a>
+        {//if/}
+    </div>
+    <div class="htingRt">
+        <div class="htingContact">
+            <img src="{/$siteurl.style/}/img/headhunter/htTactus14.jpg" class="hcTact" width="229" height="80" />
+            <p>汇博猎头，旨在帮助优秀的企业猎寻中高级人才，为企业提供全面、系统、精准、高效、专业的人才资源构建服务。</p>
+        </div>
+    	<div class="htingContact">
+        	<img src="{/$siteurl.style/}/img/headhunter/htTactus01.png" class="hcTact" width="229" height="80" />
+            <p>地址：重庆市江北区观音桥北城天街富力海洋广场网商产业园-2楼</p>
+            <p>咨询电话：<em></em>023—63528965 </p>
+            <p>网址：<a href="{/$siteurl.main/}">www.huibo.com</a></p>
+            <p>邮箱: lietou@huibo.com</p>
+            <p>咨询：<a target="_blank" href="//wpa.qq.com/msgrd?v=3&amp;uin=3348331073&amp;site=qq&amp;menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:3348331073:51" alt="点击这里给我发消息" title="点击这里给我发消息"></a></p>
+        </div>
+        <div class="htingContact02">
+        	<img src="{/$siteurl.style/}/img/headhunter/htTactpro02.png" class="hcTact" width="229" height="80" />
+            <ul>
+            	<li>
+                	<p>
+                    	<b>01</b>
+                        <span>职位分析</span>
+                    </p>
+                    <img src="{/$siteurl.style/}/img/headhunter/htTactus03.png" width="34"  height="21" />
+                </li>
+                <li>
+                	<p>
+                    	<b>02</b>
+                        <span>搜寻策略制订</span>
+                    </p>
+                    <img src="{/$siteurl.style/}/img/headhunter/htTactus03.png" width="34"  height="21" />
+                </li>
+                <li>
+                	<p>
+                    	<b>03</b>
+                        <span>侯选人资料分析</span>
+                    </p>
+                    <img src="{/$siteurl.style/}/img/headhunter/htTactus03.png" width="34"  height="21" />
+                </li>
+                <li>
+                	<p>
+                    	<b>04</b>
+                        <span>专业面试和推荐</span>
+                    </p>
+                    <img src="{/$siteurl.style/}/img/headhunter/htTactus03.png" width="34"  height="21" />
+                </li>
+                <li>
+                	<p>
+                    	<b>05</b>
+                        <span>客户面试</span>
+                    </p>
+                    <img src="{/$siteurl.style/}/img/headhunter/htTactus03.png" width="34"  height="21" />
+                </li>
+                <li>
+                	<p>
+                    	<b>06</b>
+                        <span>服务跟踪</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{/include file="footer.html"/}
+<script type="text/javascript">
+
+    function ajaxLoginCallback() {
+        window.location.href = window.location.href; 
+    }
+    hbjs.use('@checkLogin, @confirmBox, @dialog, @jobSlides',function(m){
+
+        var checkLogin = m['product.checkLogin'],
+            cookie     = m['tools.cookie'],
+            confirmBox = m['widge.overlay.confirmBox'],
+            Dialog     = m['widge.overlay.hbDialog'],
+            $ = m['jquery'].extend(m['cqjob.jobSlides']),
+            //$ = m['jquery'],
+            pWidth = 70,
+            fontWidth = 18;
+        
+		$('#slides').slides({
+            preload: true,
+            preloadImage: '{/$siteurl.style/}/img/headhunter/loading.gif',
+            play: 3000,
+            pause: 2500,
+            hoverPause: true,
+            navigation: false,
+            animationStart: function(current){
+
+            },
+            animationComplete: function(current){
+
+            }
+        });	
+		
+        $('.jobapply').click(function(){
+            var applyBtn = $(this);
+            var job_flag = applyBtn.attr('jobflag');
+            var islogin = checkLogin.isLogin('ajaxLoginCallback');
+            checkLogin.dialog.resetSize(498);
+            if(islogin){
+                var dialog = new Dialog({
+                    idName : 'apply_job',
+                    title : '投个简历',
+                    content : '/lietou/jobapply/jobflag-'+job_flag+'-v-'+Math.random(),
+                    isOverflow : true,
+                    close : 'x',
+                    isAjax : true
+                });
+                dialog.resetSize(586).show();
+                $(".apply_job").find("input[type='radio'][class='radio'][id^='re']").removeAttr("checked");
+                $(".apply_job").find("input[type='radio'][class='radio'][id^='re']").eq(0).attr("checked","checked");
+                $(".apply_job").on("click", "input[type='radio'][class='radio'][id^='re']", function (e) {
+                    $(".apply_job").find("input[type='radio'][class='radio'][id^='re']").removeAttr("checked");
+                    $(this).attr("checked","checked");
+                });
+                $(".apply_job").on("click", "#btnApply", function(e) {
+                    var resume_id = $(".apply_job").find("input[name='resumeId']:checked").val();
+                    $.getJSON('/lietou/jobapplydo/jobflag-'+job_flag+'-v-'+Math.random(),{"resumeId":resume_id},function(result) {
+                        if(result.error){
+                             confirmBox.timeBomb(result.error, {
+                                name: 'fail',
+                                width: pWidth + result.error.length * fontWidth
+                            });
+                        } else if(result.success){
+                            confirmBox.timeBomb(result.success, {
+                                name: 'success',
+                                width: pWidth + result.success.length * fontWidth
+                            });
+                            dialog.hide();
+                            applyBtn.unbind('click').removeClass('jobapply').text('已申请');
+                        }
+                    });
+                });
+                return;
+            }
+            return;
+        });
+    });
+</script>
+</body>
+</html>

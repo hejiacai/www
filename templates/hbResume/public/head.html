@@ -1,0 +1,338 @@
+<!--头部-->
+<link rel="stylesheet" type="text/css" href="{/version file="v2-widge.css"/}"/>
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+	window.CONFIG = {
+		HOST: '{/$siteurl.style/}',
+		COMBOPATH: '/js/v2/'
+	}
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript">
+	hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<div class="m-header">
+	<div class="inner-header">
+		<a href="{/get_url rule="/resume" domain="main"/}" class="huiboLogo"></a>
+		{/if !$_userid/}
+			<!--未登录-->
+			<a href="javascript:;" class="noReglog">登录/注册</a>
+		{/else/}
+			<div id="user_choose" class="user-choose" tabindex="1" style="outline:none ">
+				<a href="{/get_url rule="/hbPerson/index" domain="person"/}" id="my_resume" style="background: url({/$style_url/}/img/xiaoyuan/resume/resume.png) 15px no-repeat;cursor:pointer; margin: 20px 0 25px 0;">
+					我的简历
+				</a>
+                <a target="_blank" href="{/get_url rule="/apply/" domain="person"/}"  id="quit" style="background: url({/$style_url/}/img/xiaoyuan/resume/quit.png) 15px no-repeat;cursor:pointer;margin: 20px 0 25px 0" >
+                我的投递
+                </a>
+				<a href="{/get_url rule="/hbLogin/DoLogout" domain="person"/}?DoLogout_url={/$DoLogout_url/}" id="quit" style="background: url({/$style_url/}/img/xiaoyuan/resume/quit
+						.png) 15px
+						no-repeat;cursor:pointer">
+					安全退出
+				</a>
+			</div>
+			<div id="user" class="user">
+				{/$_nickname|default:'我的'/}
+				<span class="icon"></span>
+
+			</div>
+			{/if $_headphoto/}
+				<img src="{/$_headphoto/}" class="avatar">
+			{/else/}
+				<img src="{/$_styleUrl/}//img/v2/resumeM/name.png" class="avatar">
+			{//if/}
+		{//if/}
+		{/ModelOrder_CreateModelMember data=null/}
+	</div>
+</div>
+<style type="text/css">
+	.m-header {
+		height: 72px;
+		background-color: #4b4c54;
+		width: 100%;
+	}
+
+	.hb_ui_dialog {
+		background: white;
+		border: none;
+		border-radius: 4px;
+	}
+	.hb_ui_dialog .ui_dialog_close{ font-size: 25px;}
+
+	.m-header .inner-header {
+		width: 1000px;
+		margin: 0 auto;
+		height: 100%;
+		background: url({/$siteurl.style/}/img/xiaoyuan/resume/logo.png) 0 10px no-repeat;
+		line-height: 72px;
+		position: relative;
+	}
+
+	.m-header .inner-header a {
+		float: right;
+		color: white;
+		font-size: 18px;
+	}
+
+	.m-header .inner-header .avatar {
+		background-color: #4b4c54;
+		float: right;
+		width: 40px;
+		height: 40px;
+		border: none;
+		margin-top: 16px;
+		border-radius: 50%
+	}
+
+	.m-header .inner-header .user {
+		float: right;
+		color: #fff;
+		font-size: 18px;
+		margin-left: 10px;
+		display: block;
+		position: relative
+	}
+
+	.m-header .inner-header .user .icon {
+		margin-left: 5px;
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		background: url({/$siteurl.style/}/img/xiaoyuan/resume/icon-down.png) 0px -2px no-repeat
+	}
+
+	.m-header .inner-header a.huiboLogo {
+		display: block;
+		width: 140px;
+		height: 72px;
+		float: left;
+	}
+
+	/*下拉框*/
+	.m-header .inner-header .user-choose {
+		position: absolute;
+		top: 80px;
+		right: -30px;
+		height: 156px;
+		width: 134px;
+		display: none;
+		background-color: #fff;
+		z-index: 2;
+		border-radius: 5px;
+		box-shadow: 0 0 2px #ddd;
+	}
+
+	.m-header .inner-header .user-choose > a {
+		color: #444;
+		height: 20px;
+		line-height: 20px;
+		padding-left: 18px;
+		font-size: 14px;
+		display: block;
+		float: none;
+	}
+
+	.m-header .inner-header .user-choose > a:hover {
+		color: #16caa4;
+	}
+
+	.ui_company_dialog {
+		background: none;
+		border: none;
+	}
+
+	.ui_login_dialog .ui_dialog_loading {
+		top: 50%;
+		margin-top: -55px;
+	}
+</style>
+<script type="text/javascript">
+	var login_dialog;
+	var REQUEST_URI = '{/$smarty.server.REQUEST_URI/}';
+	$(function () {
+		$('#user').hover(function () {
+			$('#user_choose').css('display', 'block');
+		});
+		$("#user_choose").mouseleave(function () {
+			$(this).css('display', 'none');
+		});
+
+		$('#my_resume').click(function (e) {
+			e.stopPropagation();
+		});
+
+		$('#quit').click(function (e) {
+			e.stopPropagation();
+		});
+	});
+
+	var confirmBox, Dialog;
+
+	hbjs.use('@jobDialog, @confirmBox, @hbCommon, @form', function (m) {
+		var $ = m['product.hbCommon'].extend(m['cqjob.jobDialog'], m['cqjob.jobForm']);
+		confirmBox = m['widge.overlay.confirmBox'];
+		Dialog = m['widge.overlay.hbDialog'];
+		login_dialog = new Dialog({
+			close: '×',
+			idName: 'ui_login_dialog',
+			title: false,
+			width: 380,
+			content: '{/get_url rule="/resumeModel/AjaxLogin1"/}/?success=' + encodeURIComponent(REQUEST_URI),
+			isAjax: false
+		});
+		$('.noReglog').on('click', function () {
+			login_dialog.set('initHeight', 380);
+			login_dialog.setContent({content:  '{/get_url rule="/resumeModel/AjaxLogin1"/}/?success=' + encodeURIComponent(REQUEST_URI)});
+			login_dialog._addLoading();
+			login_dialog._body.find('.ui_dialog_loading').css({position: 'absolute', width: '99%'});
+//			login_dialog._close.css({background: 'none', 'line-height': 1.5,'font-family': 'Verdana,"宋体"'});
+			login_dialog.on('loadComplete', function () {
+				login_dialog._removeLoading();
+			});
+			login_dialog.show();
+		});
+		$('.hb_ui_ui-mask').on('click', function () {
+			login_dialog.hide();
+//			formNumber_verify.hide();
+			$('.weixin_bind').remove();
+//			clearInterval(_scan_status);
+		});
+	});
+
+	//ajax 请求
+	function ajax_function(url, data, success_c, async, type) {
+		success_c = success_c ? success_c : {
+			success: function (data) {
+
+			},
+			error: function (data) {
+
+			}
+		};
+		type = type ? type : 'POST';
+		async = async ? async : false;//是否同步请求  //false-同步请求
+		if (!url || !success_c) {
+			msg_error_box('参数错误');
+		}
+		var re = false;
+		$.ajax({
+			type: type,
+			url: url,
+			data: data,//只要将表单序列化就可以了
+			async: async,//false-同步请求
+			dataType: 'json',
+			success: function (data) {
+				if ('success' in success_c) {
+					re = success_c.success(data);
+				}
+			},
+			error: function (request) {
+				msg_error_box("数据请求失败.请稍后重试");
+				if ('error' in success_c) {
+					re = success_c.error(request);
+				}
+				re = false;
+			}
+		});
+		return re;
+	}
+
+	/**
+	 * 公共弹窗
+	 * re_html_id  #dialog
+	 */
+	function tip_content(re_html_id, dialog_data, click_fun) {
+		var ResumeHTML;
+		if (typeof re_html_id != 'object' && typeof re_html_id == 'string') {
+			ResumeHTML = $(re_html_id).html();
+		} else {
+			ResumeHTML = re_html_id['html_data'];
+		}
+		if (!ResumeHTML) {
+			confirmBox.timeBomb("参数错误!", {
+				name: 'fail',
+				timeout: 1000,
+				width: 200
+			});
+		}
+		var default_dialog_data = {
+			idName: 'data_info_dialog',
+			title: '信息',
+			close: 'x',
+			isAjax: false,
+			width: 480
+		};
+		var default_click_fun = $.extend({}, click_fun);
+		default_dialog_data = $.extend(default_dialog_data, dialog_data);
+		if ($(".hb_ui_dialog." + default_dialog_data.idName)[0]) {
+			$(".hb_ui_dialog." + default_dialog_data.idName).remove();
+		}
+		var dialog_tip = new Dialog(default_dialog_data);
+		dialog_tip.setContent(ResumeHTML);
+		dialog_tip.show();
+		if (default_click_fun) {
+			$.each(default_click_fun, function (key, val) {
+				dialog_tip.query('#' + key).on('click', function (e) {
+					return default_click_fun[key](dialog_tip, e);
+				});
+			})
+		}
+		return dialog_tip;
+	}
+
+	//等待
+	var loadingDialog_1;
+	function loadingDialog(msg) {
+		msg = msg ? msg : '正在加载...';
+		var loading = '<div class="ui_dialog_loading">' + msg + '</div>';
+		if (!loadingDialog_1) {
+			loadingDialog_1 = new Dialog({
+				close: null,
+				idName: 'loadingDialog_1',
+				title: null,
+				content: loading,
+				isAjax: true
+			});
+			loadingDialog_1.hide_old = loadingDialog_1.hide;
+			loadingDialog_1.hide = function () {
+				loadingDialog_1.hide_old();
+				if ($('.hb_ui_dialog:not(:hidden)').length) {
+					$('.hb_ui_ui-mask').show();
+				}
+			};
+		} else {
+			loadingDialog_1.setContent({
+				content: loading,
+			});
+		}
+		loadingDialog_1.show();
+		$('.loadingDialog_1').css({border: '1px solid #a3a3a3', 'z-index': 100000});
+		return loadingDialog_1;
+	}
+
+
+	//错误提示 success-成功 fail-错误 warning-警告 question-疑问  info-信息 normal-正常
+	function msg_error_box(msg) {
+		confirmBox.timeBomb(msg ? msg : "参数错误!", {
+			name: 'fail',
+			timeout: 1000,
+			width: 18 * msg.length + 70
+		});
+		return false;
+	}
+
+	//成功提示 success-成功 fail-错误 warning-警告 question-疑问  info-信息 normal-正常
+	function msg_success_box(msg) {
+		confirmBox.timeBomb(msg ? msg : "参数错误!", {
+			name: 'success',
+			timeout: 1000,
+			width: 18 * msg.length + 70
+		});
+		return true;
+	}
+</script>
+<!--END头部-->

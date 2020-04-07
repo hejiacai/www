@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=7" /> 
+<title>百强榜单</title>
+<link href="{/version file='hbpopular.css'/}" rel="stylesheet" />
+</head>
+<div style="display:none">
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fb51309e47424acd6e31c0bd2a65a5a1";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</div>
+<body>
+<div class="hbPopular01">
+    <div class="hbPopuMag">
+        <a href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}" class="hbPopLogo"></a>
+        <span class="hbPMagT02">更新时间：{/date("n月j日 H:i", strtotime($update_time))/}</span>
+    </div>
+</div>
+<div class="hbPopular04">
+    <div class="hbPopMing">
+        <img src="{/$siteurl.style/}/img/new_ranking/left.png" width="215" height="6" />
+        <em class="hbPopMg{/$calling_id/}"></em>
+        <img src="{/$siteurl.style/}/img/new_ranking/right.png" width="209" height="6" />
+    </div>
+	<div class="hbPopuMag" style="width:1032px;">
+    	<ul class='hbGht'>
+            {/foreach (array)$topCallings[$calling_id] as $key => $company/}
+        	<li class="{/if $key < 5/}hbGht{//if/}">
+                <em class="{/if $key < 3/}figure0{/$key + 1/}{/elseif $key < 5/}figure0{/$key + 1/} fiGureMage{/elseif $key < 9/}figure0{/$key+1/}{/else/}figure{/$key+1/}{//if/}">{/if $key > 23/}{/$key + 1/}{//if/}</em>
+                <a href="{/get_url rule="/zhaopin/qiye/"/}{/$company['company_flag']/}.html" target="_blank">
+                    <p><img src="{/$company['logo_path']/}" /></p>
+                    <span>{/$company['company_name']/}</span>
+                    <b>{/$company['company_bright_spot']/}</b>
+                </a>
+                <div>
+                    <p>共<b>{/$company['likes_all_num']/}</b>人认为值得加入</p>
+                    <p>最近15天<b>{/$company['likes_num']/}</b>人认为值得加入</p>
+                </div>
+            </li>
+            {//foreach/}
+        </ul>
+    </div>
+</div>
+</body>
+</html>

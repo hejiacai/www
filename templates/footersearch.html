@@ -1,0 +1,31 @@
+{/include_php file='app/controller/footer.php'/}
+<div id="sus" class="sus"><a class="backTop hbFntWes" title="返回顶部" href="javascript:void(0);" style="display: none;">&#xf0d8;</a></div>
+<div class="footer-box">
+	<div class="footerNav"><a target="_blank" href="{/$domainUrl/}{/get_url rule="/about"/}">关于汇博</a>|<a target="_blank" href="{/$domainUrl/}{/get_url rule="/about/contact"/}">联系我们</a>|<a target="_blank" href="{/$domainUrl/}/qiye/emkr9733b98xzl6ak.html">诚聘英才</a>|<a target="_blank" href="{/$domainUrl/}{/get_url rule="/about/links"/}">友情链接</a><!--|<a target="_blank" href="{/$domainUrl/}{/get_url rule="/about/sitemap/"/}">网站地图</a>-->|<a target="_blank" href="{/$domainUrl/}{/get_url rule="/about/law/"/}">法律声明</a>|<a target="_blank" href="{/$domainUrl/}{/get_url rule="/about/privacy/"/}">隐私政策</a></div>
+    <div class="copyright">
+    	<p>&copy;{/$year/}&nbsp;{/$huibo_title/}&nbsp;版权所有&nbsp;&nbsp;|&nbsp;&nbsp;增值电信业务经营许可证：渝B2-20060063&nbsp;&nbsp;|&nbsp;&nbsp;人才中介服务许可证：渝中人社[2011]216号</p>
+        <p>招聘单位无权收取任何费用,请求职人员加强自我保护意识,按劳动法规保护自身权益,警惕虚假招聘,避免上当受骗!</p>
+    </div>
+</div>
+<script type="text/javascript">
+if(!hbjs){
+	$(document).ready(function(){
+		factory($);
+	});
+} else {
+	hbjs.use(factory);
+}
+function factory($){
+	$(window).scroll(function(){
+        if ($(document).scrollTop() > 120){
+            $('#sus').find('a.backTop').css({'display':'inline-block'});
+        }else{
+            $('#sus').find('a.backTop').css({'display':'none'});
+        }
+    });
+    $('#sus').find('a.backTop').click(function(){
+        $('html,body').animate({ scrollTop: 0 });
+    });
+}
+</script>
+{/include file="statistics.html"/}

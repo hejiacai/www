@@ -1,0 +1,177 @@
+{/include_php file='app/controller/head.php'/}
+<link rel="stylesheet" type="text/css" href="{/version file='v2-header.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='newHeader2019.css'/}">
+<div id="header" class="topHeader">
+	<div class="header_fix">
+        <div class="header_cont">
+            <div class="header_left">
+                <a class="logo" href="{/$siteurl.main/}"><img src="{/$siteurl.style/}/img/common/smLogo.jpg" alt="" /></a>
+                <div class="nav">
+                    <a href="{/get_url domain="main"/}">首页</a>
+                    <a id="browser" target="_blank" href="{/get_url rule='/qiuzhi/' domain='main'/}"><i class="hbFntWes">&#xf03a;</i>浏览</a>
+                </div>
+            </div>    
+                {/if $dataitem['isLogin']/}
+                <div class="lgAft" id="userLoginBox">
+                    <ul>
+                        <li><a class="userOut" id="userOut" href="javascript:void(0);">退出</a></li>
+                        <li class="line">|</li>
+                        <li class="user">
+                            <img width="23" height="23" id="headphoto" style="margin-top: 3px;" src="{/$dataitem['photo']/}">
+                            <a href="{/if $dataitem['type']=='c'/}{/get_url domain="company"/}{/else/}{/get_url domain="person"/}{//if/}" target="_blank"><span class="comUserName">{/if $dataitem['type']=='c'/}企业招聘中心{/else/}我的汇博{//if/}</span></a>
+                        </li>
+                    </ul>
+                </div>
+                {//if/}
+                <div id="userEnterBox" class="login_reg"  {/if $dataitem['isLogin']/}style="display:none"{//if/} >
+                <div class="log_new">
+                    <a href="javascript:">企业:</a>
+                    <a class="cur" href="{/$siteurl.company/}/login">登录</a>
+                    <span class="slash">/</span>
+                    <a class="cur" href="{/$siteurl.main/}/company/register">注册</a>
+                </div>
+                <u>|</u>
+                <div class="reg_new">
+                    <a href="javascript:">求职:</a>
+                    <a class="cur" href="{/$siteurl.person/}/login">登录</a>
+                    <span class="slash">/</span>
+                    <a class="cur" href="{/$siteurl.person/}/register">注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="boxNav" class="navBox panelBox">
+    <div class="navBoxC">
+        <div class="l">
+            <div class="navLst">
+                <p><a href="{/get_url rule='/xiaoyuan/'/}">校园招聘</a></p>
+                <p><a href="{/get_url rule='/zhaopinhui/'/}">重庆招聘会</a></p>
+                <p><a href="{/get_url rule='/hrcollege/'/}">HR学院</a></p>
+                <p><a href="{/get_url rule='/zhichang/'/}">职场指南</a></p>
+                <p><a href="{/$siteurl.company/}/login/">企业服务</a></p>
+            </div>
+            <div class="navPhone"><p>下载手机客户端</p><p class="lnk"><a href="{/$siteurl.main/}/app/p"></a></p></div>
+         </div>
+        <div class="r">
+            <div class="hd"><h3>热门导航</h3></div>
+            <div class="bd">
+                <ul>
+                <li><a href="{/$siteurl.main/}/xiaoshou/">销售</a></li>
+                <li><a href="{/$siteurl.main/}/kuaiji/">会计</a></li>
+                <li><a href="{/$siteurl.main/}/renshi/">人力资源</a></li>
+                <li><a href="{/$siteurl.main/}/xingzhengwenyuan/">文员</a></li>
+                <li><a href="{/$siteurl.main/}/qiantaiwenyuan/">前台</a></li>
+                <li><a href="{/$siteurl.main/}/wangluotuiguang/">网络推广</a></li>
+                <li><a href="{/$siteurl.main/}/ruanjiankaifa/">软件开发</a></li>
+                <li><a href="{/$siteurl.main/}/meigong/">美工</a></li>
+                <li><a href="{/$siteurl.main/}/wangzhanyunying/">网站运营</a></li>
+                <li><a href="{/$siteurl.main/}/zongjingli/">总经理</a></li>
+                <li><a href="{/$siteurl.main/}/itxiangmujingli/">项目经理</a></li>
+                <li><a href="{/$siteurl.main/}/daqujingli/">大区经理</a></li>
+                <li><a href="{/$siteurl.main/}/yingxiaozongjian/">营销总监</a></li>
+                <li><a href="{/$siteurl.main/}/xingzheng/">行政</a></li>
+                <li><a href="{/$siteurl.main/}/guanggaosheji/">广告设计</a></li>
+                <li><a href="{/$siteurl.main/}/pingmian/">平面</a></li>
+                <li><a href="{/$siteurl.main/}/jianli/">监理</a></li>
+                <li><a href="{/$siteurl.main/}/shigongyuan/">施工员</a></li>
+                <li><a href="{/$siteurl.main/}/zhiyeguwen/">置业顾问</a></li>
+                <li><a href="{/$siteurl.main/}/fuwuyuan/">服务员</a></li>
+                <li><a href="{/$siteurl.main/}/ershoufangxiaoshou/">二手房销售</a></li>
+                <li><a href="{/$siteurl.main/}/pingmianmote/">平面模特</a></li>
+                <li><a href="{/$siteurl.main/}/hulishi/">护理师</a></li>
+                <li class="hot"><a href="{/$siteurl.main/}/jobsearch/?params=d01_02">五险一金</a></li>
+                <li class="hot"><a href="{/$siteurl.main/}/jobsearch/?params=d05">周末双休</a></li><li class="hot"><a  href="{/$siteurl.main/}/jobsearch/?v=d03_04">包吃住</a></li>
+                <li class="hot"><a href="{/$siteurl.main/}/jobsearch/?params=e8000_0">高薪职位</a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <b class="arr"></b>
+    </div>
+</div>
+{/if $showSecondMenu !== false/}
+<div class="htNav">
+	<div class="navMag">
+    	<a href="{/$siteurl.main/}/lietou" class="htLogo">LOGO</a>
+        <ul>
+        	<li {/if $currenturl=='/lietou'/}class="cut"{//if/}><a href="/lietou">汇博猎头</a></li>
+            <!--<li {/if $currenturl=='/lietou/companyinfo'/}class="cut"{//if/}><a href="/lietou/companyinfo">公司介绍</a></li>-->
+            <li {/if $currenturl=='/lietou/process'/}class="cut"{//if/}><a href="/lietou/process">服务流程</a></li>
+            <li {/if false!==strpos($currenturl,'/lietou/newjob')/}class="cut"{//if/}><a href="/lietou/newjob">最新职位</a></li>
+            <li {/if $currenturl=='/lietou/contact'/}class="cut"{//if/}><a href="/lietou/contact">联系方式</a></li>
+        </ul>
+    </div>
+</div>
+{//if/}
+<script type="text/javascript">
+	hbjs.use('@search', function(m){
+		var $ = m['jquery'],
+			trigger = $('#browser'),
+			popup = m['widge.popup'],
+			p = new popup({
+				idName: 'navBox panelBox',
+				width: 550,
+				height: 'auto',
+				align: {
+					baseElement: trigger,
+					baseXY: ['-50%', '100%+10']
+				}
+			}),
+			hideTimer,
+			element = p.get('element');
+			
+		$($('#boxNav').remove().html()).appendTo(element);
+		trigger.on('mouseenter', enterHandle).on('mouseleave', leaveHandle); 
+		element.on('mouseenter', enterHandle).on('mouseleave', leaveHandle);
+		
+		function enterHandle(){
+			hideTimer && clearTimeout(hideTimer);
+			p.show();
+		}
+		function leaveHandle(){
+			hideTimer && clearTimeout(hideTimer);
+			hideTimer = setTimeout(function(){
+				p.hide();
+			}, 120);
+		}
+		var confirmBox = m['widge.overlay.confirmBox'],
+            userEnterBox = $('#userEnterBox');
+        userEnterBox.on('mouseenter mouseleave', '.login', function(e){
+            var target = $(e.currentTarget);
+            target.toggleClass('hover');
+        });
+        /*退出按钮*/
+        $("#userOut").click(function(){
+            $.ajax({
+                'url':'/index/signOut',
+                'type':'get',
+                'dataType':'json',
+                'success':function(json){
+                    if(json.success){
+                        userEnterBox.show();
+                        $("#userLoginBox").hide();
+                        var msg = '退出成功';
+                        confirmBox.timeBomb(msg, {
+                            name: 'success',
+                            width: 150,
+                            timeout: 1000
+                        });
+                    }else{
+                        var msg = '退出失败';
+                        confirmBox.timeBomb(msg, {
+                            name: 'fail',
+                            width: 150,
+                            timeout: 1000
+                        });                    
+                    }
+                }
+            });
+            return false;
+        });
+
+	});
+	
+</script>

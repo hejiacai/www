@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!--[if lt IE9]  --> 
+<script src="{/version file='html5.js'/}"></script>  
+<!-- [endif] -->
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='front.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='hrcollege.css'/}" />
+
+    <script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+    <script type="text/javascript">
+        window.CONFIG = {
+            HOST: '{/$siteurl.style/}',
+            COMBOPATH: '/js/v2/'
+        }
+    </script>
+    <script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+    <script type="text/javascript" src="{/version file="global.js"/}"></script>
+    <script type="text/javascript">
+            hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+    </script>
+<script type="text/javascript"  src="{/version file="ui_dropdownlist.js"/}"></script>
+<style>
+    .newBd .newCon .l .tipTxtContent p{text-indent:0}
+</style>
+</head>
+<body id="body">
+	{/include file="new_headsearch_2015.html"/}
+<section>
+    <hgroup class="layout">
+    	<div class="bread">
+        	<div class="breadC">当前位置：<a href="{/get_url rule="/hrcollege/"/}">HR学院</a>&gt;&nbsp;最新活动</div>
+        </div>
+        <div class="newBd">
+        	<div class="newT">本期主题</div>
+            <div class="newB">
+            	<div class="newBox">
+                	<div class="actBtn">
+                    	<p><em>推荐指数：</em><span class="starBar"><i class="lv{/$activity['recommend_exponent']/}"></i></span></p>
+                        <a style="display:none" {/if $is_new_activity=='1'/}onclick="ac_detail.signUp();"{//if/} class="btn6 btnsF16 {/if $is_new_activity!='1'/}btn6Unclick{//if/}" href="javascript:void(0)">我要报名</a>
+                    </div>
+                	<div class="newAct">
+                    	<p class="tit">{/$activity['subject']/}</p>
+                        <div class="detail">
+                        	<p>主讲嘉宾：{/$lecturer_resume['user_name']/}    {/$lecturer_resume['specialties']/}</p>
+                        	<p>举&nbsp; 办&nbsp;方：{/$activity['organizers']/}</p>
+                            <p>举办地点：{/$activity['address']/}</p>
+                            <p>举办时间：{/$activity['date']/}</p>
+                            <p>适合对象：{/$activity['audience']/}</p>
+                        </div>
+                        <div class="detail">
+                        	{/$activity['recommended_reason']/}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="newBd">
+        	<div class="newT">课程大纲</div>
+            <div class="newC">
+            	<div class="newCon">
+                	<div class="l">
+                		<div class="mark">标签：{/$activity['course_label']/}</div>
+                    	<div class="newDes">
+                        	{/html_encode content=$activity['course_content']/}
+                        </div>
+                        <div class="tipTxt tipTxtContent">
+                                <img style="display:block;width:120px;height:120px;float:left" src="{/$siteurl.style/}/img/hr/cli_300px.jpg"/>
+                                <span style="display:block;float:left;width:390px; margin:8px 0 0 18px; line-height:24px;">
+                                {/html_encode content=$activity['participants_matters']/}
+                                </span>
+                        </div>
+                    </div>
+                    <div class="r">
+                    	<div class="lecHd">
+                        	<h2>讲师介绍</h2>
+                            <dl>
+                            	<dt><img src="{/if $lecturer_resume['picture_url']!=''/}{/$lecturer_vir_path/}{/$lecturer_resume['picture_url']/}{/else/}{/$siteurl.style/}/img/common/user100_125.jpg{//if/}"/></dt>
+                                <dd>
+                                	<a href="{/get_url rule="/hrcollege/leturerDetail/" data="resume_id={/$lecturer_resume['resume_id']/}"/}" class="name">{/$lecturer_resume['user_name']/}</a>
+                                    <p>擅长领域：{/$lecturer_resume['resume_signorys']/}</p>
+                                    <p>擅长行业：{/$lecturer_resume['calling']/}</p>
+                                    <p>授课特点：{/$lecturer_resume['teach_features']/}</p>
+                                    <p>主讲课程：{/$lecturer_resume['curriculum']/}</p>
+                                </dd>
+                            </dl>
+                            <div class="clear"></div>
+                        </div>
+                      <div class="lecBd">
+                        	<dl>
+                            	<dt><h3>讲师资历</h3></dt>
+                                <dd>
+                                    {/$lecturer_resume['qualifications']/}
+                                </dd>
+                            </dl>
+                            <dl>
+                            	<dt><h3>服务客户</h3></dt>
+                                <dd>
+                                   {/$lecturer_resume['customer_service']/}
+                                </dd>
+                            </dl>
+                            {/if count($lecturer_video_arr)>0/}
+                            <dl>
+                            	<dt><h3>视频片段</h3></dt>
+                                <dd>
+                                	{/foreach $lecturer_video_arr as $key=>$value/}
+                                    <div class="video"><a target="_blank" href="{/$value['video_url']/}"><img alt="{/$value['video_name']/}" src="{/if $value['video_picture_url']!=''/}{/$lecturer_vir_path/}{/$value['video_picture_url']/}{/else/}{/$siteurl.style/}/img/common/c_nopic.jpg{//if/}"/></a></div>
+                                    {//foreach/}
+                                </dd>
+                            </dl>
+                            {//if/}
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </hgroup>
+</section>
+{/include file="footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script type="text/javascript">
+var ac_detail={
+	signUp:function(){
+		$.showModal('{/get_url rule="/hrcollege/signup/" data="activity_id={/$activity["activity_id"]/}"/}', { title: '报名' });
+	}		
+}
+</script>
+</body>
+</html>

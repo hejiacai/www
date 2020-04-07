@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	{/include_php file='app/controller/head.php'/}
+	<link rel="stylesheet" type="text/css" href="{/version file='m_font_style.css'/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file='maleRecruit.css'/}" />
+	<script type="text/javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+	<script type="text/javascript" src="{/version file='layer.js'/}"></script>
+	<!--样式-->
+	{/include file='./publicHeaders/publicstyle.html'/}
+	</head>
+	<body style="background:#f0f0f0">
+		<div id="job_list_table" style="display: none;"><div class="des_title"></div></div>
+	<!--user_info-->
+	{/include file='./publicHeaders/headtop_user_info.html' isIndex=true origin='search'/}
+	<!--logo和搜索-->
+	{/include file='./publicHeaders/log_serar.html'/}
+	<!--菜单-->
+	{/include file='./publicHeaders/navigation.html'/}
+	<style>
+		.newNavbg .w1100,.w1100{width:1000px}
+		.gongzao-desc{background: #f0f0f0;}
+		.gongzao-desc .w1100{background: #fff}
+		.gongzao-desc .descgg{width:1000px;margin:20px auto 0}
+		.gogzao-desc-title{padding:40px 0 20px 0;text-align: center;border-bottom:1px solid #dadada;margin:0 60px}
+		.gogzao-desc-title .name{font-size:24px;color:#444;line-height: 34px;padding:0 140px}
+		.gogzao-desc-title .time{color:#999;margin-top: 10px}
+		.gogzao-desc-box{margin:15px 60px;color:#666;font-size:14px;line-height: 30px;padding-bottom: 45px}
+		.gogzao-desc-box .descmove{margin-top:50px}
+		.gogzao-desc-box .descmove a{color:#3d84b8}
+		.gogzao-desc-box .text{font-size:14px;color:#666;line-height: 35px}
+		.gogzao-desc-box table{width:100%!important;border-top:1px solid #f5f5f5;border-right:1px solid #f5f5f5}
+		.gogzao-desc-box table td,.gogzao-desc-box table th{border-bottom:1px solid #f5f5f5;border-left:1px solid #f5f5f5;padding:5px;font-size:14px;color:#666}
+	</style>
+	<form id="web_subscribe_form" action="{/$siteurl.main/}/jobsearch/" method="post"><input type="hidden" name="subscribe_origin" value="nosearchpage"></form>
+	<body>
+		<div class="maleMain">
+			<p class="cur_location">
+				<a href="{/$siteurl.main/}">首页</a>
+				<i class="arr_right"></i>
+				<a href="{/$siteurl.main/}/gongzhao/">公招信息列表</a>
+				<i class="arr_right"></i>
+				<a href="javascript:;">详情</a>
+            </p>
+			<div class="crcruti_detail" data-explain="do not delete!" style="display: none"></div>
+			<div class="crcruti_detail_sub" data-explain="do not delete!" style="display: none"></div>
+            <div class="gzDetails_wrap">
+            	<div class="detTitx">
+            		<span class="detTx01">{/$info.title/}</span>
+            		<span class="detTx02">信息来源：{/$info.source/}  <em>发布于：{/$info.create_time/}</em></span>
+            		<p class="detTx03">
+            			<em>报考类型：{/$info.apply_category_str/}</em>
+						{/if $info.is_subscribe/}
+            				<a href='javascript:void(0)' class="subscriptionBtn">已订阅</a>
+						{/else/}
+							<a href='javascript:;' class="subscriptionBtn">订阅</a>
+						{//if/}
+						{/if $info.is_collect/}
+						<a href="javascript:void(0)" class="collectBtn collectBtnCur" data-id="{/$info.recruit_id/}">已收藏</a>
+						{/else/}
+						<a href="javascript:void(0)" class="collectBtn crcruti_collect" data-id="{/$info.recruit_id/}">收藏</a>
+						{//if/}
+
+            		</p>
+            	</div>
+            	<div class="detTitz">
+            		<i></i>
+            		<b>概览</b>
+            		<em>地区：{/$info.area_name/} </em>
+            		<em>总招聘人数：{/$info.recruit_number/}人</em>
+            		<em>学历：{/if empty($info.degree_str)/}不限{/else/}{/$info.degree_str/}{//if/}</em>
+            	</div>
+            	<div class="detTitz">
+            		<i></i>
+            		<b>岗位信息</b>
+            	</div>
+            	<ul class="pInformationList" style="{/if count($info.job_list) < 4/} height:auto {//if/}">
+					{/if $info.job_list/}
+					{/foreach $info.job_list as $key => $val/}
+            		<li>
+            			<span>{/$val.job_name/}<em>{/$val.job_num/}人</em></span>
+            			<p>{/$val.job_require/}</p>
+            		</li>
+					{//foreach/}
+					{//if/}
+            	</ul>
+				{/if count($info.job_list) > 3/}
+            	<span class="pInformationWhether">展开其他{/count($info.job_list) - 3/}岗位<i class="icon-svg122"></i></span>
+            	{//if/}
+            	<div class="detTitz">
+            		<i></i>
+            		<b>报名时间</b>
+            		<em>{/$info.apply_time_start/}~{/$info.apply_time_end/}</em>
+            	</div>
+            	
+            	<div class="detTitz">
+            		<i></i>
+            		<b>单位简介</b>
+            	</div>
+            	<div class="detTitm">
+            		<p>{/$info.introduce/}</p>
+            	</div>
+            	
+            	<div class="detTitz">
+            		<i></i>
+            		<b>报考事项</b>
+            	</div>
+            	<div class="detTitm">
+            		<p>{/$info.content/}</p>
+            	</div>
+				{/if $info.file_list/}
+            	<div class="gzAccessory">
+            		<span>报名所需附件下载</span>
+					{/foreach $info.file_list as $key => $val/}
+					<a class="file_item crcruti_down" href="javaScript:;" data-href="{/$val['down_path']/}" >{/$val['wanna']/}</a>
+					{//foreach/}
+
+            	</div>
+				{//if/}
+            </div>
+        </div>
+		<!--右侧：意见，返回顶部共用-->
+		{/include file='./publicHeaders/right_public.html'/}
+		<!--底部-->
+		<style>
+			.footerBm{background: white;padding-top: 20px}
+		</style>
+		{/include file="footer.html"/}
+		<!--共用script-->
+		{/include file='./publicHeaders/public_js.html'/}
+
+<script  type="text/javascript">
+	var action_url = '{/$siteurl.style/}';
+	action_dom = [
+		['.crcruti_detail', 10],
+		['.crcruti_collect', 12],
+		['.crcruti_morejob', 14],
+		['.crcruti_comment', 15],
+		['.crcruti_hot_job', 16],
+		['.crcruti_down', 17],
+		['.crcruti_sub_success', 21],
+		['.crcruti_detail_sub', 19],
+	];
+</script>
+<script type="text/javascript" language="javascript" src="{/version file='action.js'/}"></script>
+
+<script type="text/javascript">
+	//展开岗位
+	$('.pInformationWhether').click(function(){
+		var job_num = '{/count($info.job_list) - 3/}';
+		$(this).toggleClass('active');
+		if($(this).hasClass('active')){
+			$('.pInformationList').addClass('pInformationAuto');
+			$('.pInformationWhether').html('收起其他'+job_num+'个岗位<i class="icon-svg132"></i>');
+		}else{
+			$('.pInformationList').removeClass('pInformationAuto');
+			$('.pInformationWhether').html('展开其他'+job_num+'个岗位<i class="icon-svg122"></i>');
+		}
+	});
+
+	hbjs.use('@checkLogin, @confirmBox, @dialog', function(m) {
+
+		var checkLogin = m['product.checkLogin'],
+				cookie     = m['tools.cookie'],
+				confirmBox = m['widge.overlay.confirmBox'],
+				Dialog     = m['widge.overlay.hbDialog'],
+				$ = m['jquery'],
+            	isLogin = parseInt('{/$is_login/}');
+
+        $('.crcruti_detail').click();//访问量统计
+
+			$('.file_item').click(function () {
+                if(isLogin==0){
+                    $.post('{/$siteurl.main/}/index/SetRegSourceAjax',{reg_source:'recruit_pc_subscrib',login_action_source:'recruit_pc_subscrib'},function (e) {
+                    },'json')
+                }
+
+			    isLogin = checkLogin.isLogin('ajaxLoginCallback-isReload-true');
+				if(isLogin){
+					$('.file_item').each(function(){
+						$(this).attr('href',$(this).attr('data-href'));
+					});
+				}
+			});
+
+            //收藏公招信息
+            $('.collectBtn').click(function(){
+                var  _this = this;
+                if(isLogin==0){
+                    $.post('{/$siteurl.main/}/index/SetRegSourceAjax',{reg_source:'recruit_pc_subscrib',login_action_source:'recruit_pc_subscrib'},function (e) {
+                    },'json')
+                }
+                isLogin = checkLogin.isLogin('ajaxLoginCallback-isReload-true');
+                if(isLogin){
+                    var recruit_id = $(this).attr("data-id");
+                    $.getJSON('{/get_url rule="/pulicrecruitcollect/SetCollectStatus/"/}'+'-recruit_id-'+recruit_id,function(res){
+                        if(res && res.status) {
+                            if($(_this).hasClass('collectBtnCur')){
+                                $(_this).toggleClass('collectBtnCur');
+                                $(_this).text('收藏');
+
+							}else{
+                                $(_this).toggleClass('collectBtnCur');
+                                $(_this).text('已收藏');
+							}
+                            layer.msg(res.msg);
+
+                        }else {
+                            layer.msg(res.msg);
+                        }
+                    });
+
+
+            	}
+
+            });
+
+            //订阅
+            $('.subscriptionBtn').click(function(){
+				$('.crcruti_detail_sub').click();
+                if(isLogin==0){
+                    $.post('{/$siteurl.main/}/index/SetRegSourceAjax',{reg_source:'recruit_pc_subscrib',login_action_source:'recruit_pc_subscrib'},function (e) {
+                    },'json')
+                }
+                isLogin = checkLogin.isLogin('ajaxLoginCallback-isReload-true');
+                if(isLogin){
+                    console.log(layer);
+                    layer.open({
+                        type: 2,
+                        title: '订阅管理',
+                        shadeClose: true,
+                        shade: 0.8,
+                        area: ['850px', '550px'],
+                        content: '{/get_url rule="/subscribe/SetSubscribe" data="recruit_id={/$info.recruit_id/}"/}'
+                    });
+                }
+
+            });
+
+
+        });
+</script>
+	</body>
+</html>

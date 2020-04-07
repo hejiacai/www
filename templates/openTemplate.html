@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script src="{/version file="html5.js"/}"></script>   
+<![endif]–>
+<script type="text/javascript" language="javascript" src="{/version file='jquery.lazyload.js'/}"></script>
+</head>
+<body>
+<style>
+.modLnkBox{width:600px;height:472px}
+.modLnkBox .formBtn{margin:0 auto; text-align:center;}
+.modLnkBox .formMod{margin:10px 0 20px 0;padding:0 40px;zoom;1;}
+.modLnkBox .formMod ul li{float:left; display:inline; margin:0 5px 10px 5px; vertical-align:bottom; width:250px; height:75px;}
+.modLnkBox .formMod ul li a{display:block; height:250px; height:75px;}
+.modLnkBox .formMod ul li a img{width:250px;height:75px;}
+.modLnkBox .formMod ul li.hov{border:2px solid #ff6600; width:246px; height:71px;}
+.modLnkBox .formMod ul li.hov a{display:block; width:246px; height:71px;}
+.modLnkBox .formMod ul li.hov a img{width:246px; height:71px;}
+.modLnkBox .formMod ul li.checked{border:2px solid #ff6600; width:246px; height:71px;}
+.modLnkBox .formMod ul li.checked a{display:block; width:246px; height:71px;}
+.modLnkBox .formMod ul li.checked a img{width:246px; height:71px;}
+
+.modLnkBox .styleRt{ text-align:center;padding:40px 0;zoom:1;}
+.modLnkBox .styleRt p{font-size:16px;font-family:"微软雅黑","SimHei";margin-bottom:10px;}
+
+</style>
+<div class="dgBox modLnkBox">
+	<div class="form">
+        <div class="formMod" id="modLst">
+        	<ul id="ul1">
+        		{/foreach $librarys as $key=>$value/}
+	        		{/if ($key % 8 ==0) && $key!=0/}
+	        		<div class="clear"></div>
+	        		</ul><ul style="display:none" id="ul{/($key/8)+1/}">
+	        		<li><a href="javascript:void(0)" v="{/$value['image_path']/}"><img src="{/$value['img_src']/}" /></a></li>
+	        		{/else/}
+	        		<li><a href="javascript:void(0)" v="{/$value['image_path']/}"><img src="{/$value['img_src']/}" /></a></li>
+	        		{//if/}
+                {//foreach/}
+                <div class="clear"></div>
+            </ul>
+
+            <div class="page">
+                <a href="javascript:void(0)" class="cu pageButton" v="1">1</a>
+                {/foreach $librarys as $key=>$value/}
+	        		{/if ($key % 8 ==0) && $key!=0/}
+						<a href="javascript:void(0)" class="pageButton" v="{/($key/8)+1/}" >{/($key/8)+1/}</a>
+	        		{//if/}
+                {//foreach/}
+            </div>
+        </div>
+        <div class="formBtn"><a href="javascript:void(0)" id="btnOpenSave" class="btn1 btnsF16">保存</a><a href="javascript:void(0)" id="btnOpenCancel" class="btn3 btnsF16">取消</a></div>
+    </div>
+</div>
+<script>
+var curIndex = 1;
+$(document).ready(function(){
+	$('#modLst').find('li').hover(function(){
+		$(this).addClass('hov');
+	},function(){
+		$(this).removeClass('hov');
+	})
+
+	$('#modLst').find('a').click(function(){
+		$('#modLst').find('li').removeClass('checked');
+		$(this).parent().addClass('checked');
+	})
+
+	$('#btnOpenSave').click(function(){
+		var save_path = $('.checked').find('a').attr('v');
+		var show_path = $('.checked').find('img').attr('src');
+		addImage(save_path,show_path,2);
+		$('#btnOpenSave').closeDialog();
+	});
+	$('#btnOpenCancel').click(function(){
+		$('#btnOpenCancel').closeDialog();
+	});
+
+	$('.pageButton').click(function(){
+		$('.pageButton').removeClass('cu');
+		$(this).addClass('cu');
+		if( $('#ul'+$(this).attr('v')).is(':hidden')){
+			$('#modLst').find('ul').hide();
+			$('#ul'+$(this).attr('v')).show();
+			
+		}
+	});
+});
+</script> 
+</body>
+</html>

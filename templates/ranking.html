@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>汇博人气企业100强</title>
+<link rel="stylesheet" type="text/css" href="{/version file="v2-reset.css"/}" />
+<link href="{/version file='hbpopular.css'/}" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{/version file="v2-widge.css"/}" />
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+  HOST: '{/$siteurl.style/}',
+  COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript">
+  hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<style type="text/css">
+.pTityewBg{width:800px; height:70px; overflow:hidden; background:url({/$siteurl.style/}/img/ranking/hbpopular08.jpg) left top no-repeat;}
+.pTityewBg p{ padding-left:22px; color:#0a8fbc; line-height:normal;}
+.pTityewBg p em{ color:#333;}
+.pTityewxBg{ overflow:hidden; padding-bottom:10px;}
+.pTityewxBg p{ color:#666; font-size:14px; line-height:24px;}
+.pTityewxBg p span{ color:#ff6563; padding-right:8px;}
+.pTityewxBg p em{ color:##0cd3b9;}
+
+.ui_company_share_dialog{
+	text-align:left;
+}
+.ui_company_share_dialog .ui_dialog_container{
+	padding:15px 20px;
+}
+.ui_company_share_dialog .pTityewBg{
+	background: url({/$siteurl.style/}/img/ranking/hbpopular08.jpg) left -126px no-repeat;
+	padding:0 22px;height:auto;width:auto;
+}
+.ui_company_share_dialog .pTityewBg p{
+	line-height:16px;padding:0 0 6px;color:#0a8fbc;
+}
+.ui_company_share_dialog .pTityewBg p em{ color:#333;}
+.ui_company_share_dialog .img{text-align:center;}
+</style>
+</head>
+<div style="display:none">
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fb51309e47424acd6e31c0bd2a65a5a1";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</div>
+<body>
+<div class="hbPopular01">
+	<div class="hbPopuMag">
+    	<a href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}" class="hbPopLogo"></a>
+        <span class="hbPMagT02">更新时间：{/date("n月j日 H:i", strtotime($update_time))/}</span>
+    </div>
+</div>
+<div class="hbPopular02">
+    <div class="hbPopuMag">
+        <ul>
+            {/for $i = 0; $i < 5; $i++/}
+            {/if (!empty($topHundreds[$i]['company_name']))/}
+            <li>
+                <img src="{/$siteurl.style/}/img/ranking/{/$i + 1/}.png" class="subMagImg" width="11" height="16" />
+                <a href="{/get_url rule="/qiye/"/}{/$topHundreds[$i]['company_flag']/}.html"><p><img  src="{/$topHundreds[$i]['logo_path']/}" /></p></a>
+                <span>{/$topHundreds[$i]['company_name']/}</span>
+            </li>
+            {//if/}
+            {//for/}
+        </ul>
+    </div>
+</div>
+<div class="hbPopuMain">
+    <div id="searchPop" class="popupTc" style="display:none">
+        <ul class="mainList" style="width:382px;">
+            <li class="subMlit02" style="width:168px;">公司名</li>
+            <li class="subMlit01">排名</li>
+            <li class="subMlit01">获赞数</li>
+            <li class="subMlit01">宣传片</li>
+        </ul>
+        <table width="382" class="hbPopTab" border="0" cellspacing="0" cellpadding="0">
+        </table> 
+    </div>
+	<div class="hbPopuMlf">
+    	<h2 class="mainTit"></h2>
+        <ul class="mainList">
+        	<li class="subMlit01">排名</li>
+            <li class="subMlit01">获赞数</li>
+            <li class="subMlit02">公司名称</li>
+            <li class="subMlit03">公司行业</li>
+        </ul>
+        <table width="500" class="hbPopTab" border="0" cellspacing="0" cellpadding="0">
+            {/if !empty($topHundreds)/}
+            {/foreach $topHundreds as $key => $company/}
+            <tr class="{/if $key % 2 == 0/}subPopyew{//if/}">
+                <td width="70" height="60" align="center" valign="middle" class="{/if $key < 10/}red{//if/}">{/if $key < 3/}<em>{/$key + 1/}</em>{/else/}{/$key + 1/}{//if/}</td>
+                <td width="71" height="60" align="center" valign="middle">{/$company['likes_num']/}</td>
+                <td width="179" height="60" align="center" valign="middle"><a href="{/get_url rule="/qiye/"/}{/$company['company_flag']/}.html" target="_blank">{/base_lib_BaseUtils::cutstr($company['company_name'], 11, 'utf-8', '', '...')/}</a></td>
+                <td width="180" height="60" align="center" valign="middle" class="gray">{/get_name calling=$company['main_calling']/}</td>
+            </tr>
+            {//foreach/}
+            {/else/}
+            <tr><td height="60" align="center" colspan='4'>暂无数据，请等待每天9点更新</td></tr>
+            {//if/}
+        </table>
+    </div>
+    <div class="hbPopuMrt">
+    	<div class="hbPopTrt">
+        	<img class="hbPopTimg" src="{/$siteurl.style/}/img/ranking/hbpopular04.png" width="480" height="75" />
+            <div>
+                <p style="padding-bottom:10px;"><em>1</em><span>在下方搜索企业，分享企业宣传页到微信朋友圈</span></p>
+                <p><em class="hbPopIcon">2</em><span>在分享到朋友圈的宣传页末页点击“赞！值得加入”即可增加一个赞</span></p>
+            </div>
+            <div class="popSearchBg" style="padding-top:0px;">
+                <input type="text" name="t" class="popBoder" value="请输入你想查找的公司名" onfocus="if(this.value=='请输入你想查找的公司名'){this.value=''}" onblur="if(this.value==''){this.value='请输入你想查找的公司名'}" id="searchText" />
+                <input type="button" name="smt" class="popSch" id="search" value="" />
+            </div>
+        </div>
+        {/foreach $callingCommon as $common/}
+        {/if !empty($topCalling[$common['calling_id']])/}
+        <div class="popMrtList popMrtListx">
+        	<h2>{/$common['calling_name']/}</h2>
+            <ul class="mainList">
+                <li class="subMlit01">排名</li>
+                <li class="subMlit01">获赞数</li>
+                <li class="subMlit02">公司名称</li>
+                <li class="subMlit03">公司行业</li>
+            </ul>
+            <table width="480" class="hbPopTab" border="0" cellspacing="0" cellpadding="0">
+                {/foreach (array)$topCalling[$common['calling_id']] as $key => $company/}
+                <tr class="{/if $key % 2 == 0/}subPopyew{//if/}">
+                    <td width="71" height="{/if ($key < 3)/}60{/else/}40{//if/}" align="center" valign="middle" class="{/if $key < 3/}red{//if/}">{/$key + 1/}</td>
+                    <td width="71" height="{/if ($key < 3)/}60{/else/}40{//if/}" align="center" valign="middle">{/$company['likes_num']/}</td>
+                    <td width="171" height="{/if ($key < 3)/}60{/else/}40{//if/}" align="center" valign="middle"><a href="{/get_url rule="/qiye/"/}{/$company['company_flag']/}.html" target="_blank">{/base_lib_BaseUtils::cutstr($company['company_name'], 11, 'utf-8', '', '...')/}</a></td>
+                    <td width="167" height="{/if ($key < 3)/}60{/else/}40{//if/}" align="center" valign="middle" class="gray">{/get_name calling=$company['main_calling']/}</td>
+                </tr>
+                {//foreach/}
+            </table>
+        </div>
+        {//if/}
+        {//foreach/}
+    </div>
+</div>
+</body>
+</html>
+<script>
+hbjs.use('widge.overlay.hbDialog, widge.overlay.confirmBox',function(Dialog, confirmBox, $, util) {
+	
+	var isHidden = true,
+		shareDialog = new Dialog({
+            close: 'x',
+            idName: 'ui_company_share_dialog',
+            width: 400
+        });
+	var shareHTML = [
+		"<div class='pTityewBg'>",
+		"<p>用微信扫描下方的二维码，分享到朋友圈</p>",
+		"<p>让朋友点击最后一页的<em> “赞，值得加入” </em>即可</p></div>",
+		"<div class='img'><img src='{src}' /></div>"
+	].join('');
+    $("#searchPop").on("click", ".share", function() {
+		isHidden = false;
+        var src = $(this).attr("data-url");
+        shareDialog.setContent({
+			content: util.string.replace(shareHTML, {src: src}) 
+		}).show();
+    });
+	shareDialog.after('hide', function(){
+		setTimeout(function(){
+			isHidden = true;
+		}, 100);
+	});
+
+    $("body").not("#searchPop").on("click", function() {
+        isHidden && $("#searchPop").hide();
+    })
+    
+    $("#search").on("click", function() {
+        $.ajax({
+            url : "{/get_url rule='/ranking/autocomplete/'/}",
+            type : "POST",
+            dataType : "JSON",
+            data : {
+                val : $("#searchText").val()
+            },
+            success : function(data) {
+                if (data.state) {
+                    var html = "";
+                    for (var i = 0; i < data.company.length; i++) {
+                        html += "<tr class='" + ((i % 2 == 0) ? "subPopyew" : "") + "'>"
+                            + '<td width="169" height="40" align="left" valign="middle" style="padding-left:8px;">' +data.company[i].company_name + '</td>'
+                            + '<td width="72" height="40" align="center" valign="middle">' + data.company[i].main_count + '</td>'
+                            + '<td width="70" height="40" align="center" valign="middle">' + data.company[i].likes_num + '</td>'
+                            + '<td width="71" height="40" align="right" valign="middle" class="gray" style="padding-right:8px;"><a data-url="' + "{/base_lib_Constant::MOBILE_URL/}/companylikes/qrcode/flag-" + data.company[i].company_flag + '" href="javascript:void(0)" class="share">分享</a></td></tr>'
+                    }
+                    $("#searchPop table").empty().append(html);
+                    $("#searchPop").show();
+                } else {
+                    confirmBox.timeBomb("没有相应的搜索结果，请更换关键词重新搜索", {
+                        name : 'fail',
+                        width : 320
+                    });
+                }
+            }
+        });
+    });
+});
+</script>

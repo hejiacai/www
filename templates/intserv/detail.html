@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{/$title/}</title>
+<meta name="keywords" content="{/$keyword/}">
+<meta name="description" content="{/$description/}">
+<meta name="mobile-agent" content="format=xhtml; url={/$mobile_agent/}"/>
+<meta name="mobile-agent" content="format=html5; url={/$mobile_agent/}"/>
+<meta name="mobile-agent" content="format=wml; url={/$mobile_agent/}"/>
+<link rel="stylesheet" type="text/css" href="{/version file='base.css,v2-reset.css,v2-resume.css,v2-header.css,v2-widge.css,front.css,mobile.swiper.css,job.css,jobnew.css,mainPhoto.css,cpjobnew2018.css,leaveinfo.css,appeal.css'/}" />
+<link rel="alternate" media="only screen and(max-width: 640px)" href="{/$mobile_agent/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='hrserver.css'/}" />
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<!–[if lt IE9]>
+<script type="text/javascript" language="javascript" src="{/version file='html5.js'/}" ></script>
+<![endif]–>
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+
+<script type="text/javascript">
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=33f9256a1a1ba5a80eb40f8ed45bce3c"></script>
+<script type="text/javascript" language="javascript" src="{/version file='idangerous.swiper.min.js'/}"></script>
+<style>
+	
+</style>
+</head>
+
+<body>
+	<div class="headNav"><a href="{/get_url rule='/companyarticle/index'/}">首页</a><em>></em>企业详情</div>
+<div style="box-shadow:0 0 6px #dbdbdb;width:1000px;height:auto; margin: 0 auto;overflow: visible" id="company-infor">
+    <div class="appeal-jobMain-cont clearfix">
+        <div class="jobMain-left">
+            <div class="articleBox">
+                <h1>{/$companyarticle['title']/}</h1>
+                <div>
+                    {/html_entity_decode($companyarticle['contents'])/}
+                </div>
+            </div>
+
+        </div>
+        <div class="jobMain-right">
+            <div class="companyInfo">
+                <img class="companInfo-left" src="{/if $companyarticle['logo']/}{/$logo_path/}/{/$companyarticle['logo']/}{/else/}{/$siteurl.style/}/{/$service_type[$companyarticle['service_type']]['image']/}{//if/}" alt="" /><div class="companyInfo-right">
+                    <h2>{/$companyarticle['company_shortname']/}</h2>
+                    <h3>{/$companyarticle['company_name']/}</h3>
+                </div>
+            </div>
+            <div class="companyContact">
+                {/if $companyarticle['contact_person']/}
+                    <div class="contactItem">
+                        <span>联系人</span>{/$companyarticle['contact_person']/}
+                    </div>
+                {//if/}
+                {/if $companyarticle['tel']/}
+                    <div class="contactItem">
+                        <span>电话</span>{/$companyarticle['tel']/}
+                    </div>
+                {//if/}
+                {/if $companyarticle['mobile']/}
+                    <div class="contactItem">
+                        <span>手机</span>{/$companyarticle['mobile']/}
+                    </div>
+                {//if/}
+                {/if $companyarticle['qq']/}
+                    <div class="contactItem">
+                        <span>QQ</span>
+                        <a target="_blank" href="//wpa.qq.com/msgrd?v=3&amp;uin={/$companyarticle['qq']/}&amp;site=qq&amp;menu=yes">
+                            <img border="0" src="//wpa.qq.com/pa?p=2:{/$companyarticle['qq']/}:51" alt="{/$companyarticle['qq']/}" title="{/$companyarticle['qq']/}"></a>
+                    </div>
+                {//if/}
+            </div>
+            
+            {/if $companyarticle['article_images']/}
+                <div class="appeal-companyp-profile">
+                    <div class="njmBanner">
+                        <!------图片滚动开始-------->
+                        <div class="infopicBg">
+                            <div class="infopic">
+                                <div class="picbox">
+                                    <ul class="gallery piclist" style="width: 2160px;">
+                                        {/foreach $images as $val/}
+                                        <li><a target="_blank" href="{/$path/}/{/$val/}" rel="prettyPhoto[]"><img src="{/$path/}/{/$val/}"></a></li>
+                                        {//foreach/}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+						
+                        <div class="pic_prev"><i></i></div>
+                        <div class="pic_next"><i></i></div>
+                    </div>
+                </div>
+            {//if/}
+        </div>
+
+    </div>
+</div>
+
+
+
+<div id="sus" class="sus"><a class="backTop hbFntWes" title="返回顶部" href="javascript:void(0);" style="display: none;">&#xf0d8;</a></div>
+{/include file="footer.html"/}
+<script type="text/javascript">
+    function factory($){
+        $(window).scroll(function(){
+            if ($(document).scrollTop() > 120){
+                $('#sus').find('a.backTop').css({'display':'inline-block'});
+            }else{
+                $('#sus').find('a.backTop').css({'display':'none'});
+            }
+        });
+        $('#sus').find('a.backTop').click(function(){
+            $('html,body').animate({ scrollTop: 0 });
+        });
+    }
+</script>
+<script type="text/javascript">
+    var phoneImgs = [];
+    var addCompanyFlag=false;
+    var resumeLeave=false;
+</script>
+<script type="text/javascript" language="javascript" src="{/version file='companyshow_rs.js'/}"></script>
+
+</body>
+</html>

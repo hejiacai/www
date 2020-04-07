@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!--[if lt IE9]  --> 
+<script src="{/version file='html5.js'/}"></script>  
+<!-- [endif] -->
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='front.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='about.css'/}" />
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+	<script type="text/javascript">
+		window.CONFIG = {
+			HOST: '{/$siteurl.style/}',
+			COMBOPATH: '/js/v2/'
+		}
+	</script>
+	<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+	<script type="text/javascript" src="{/version file="global.js"/}"></script>
+	<script type="text/javascript">
+			hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+	</script>
+</head>
+<body>
+{/include file="new_headsearch_2015.html"/}
+
+<section class="oth">
+	<div class="othLft">
+    	{/include file="about/leftlink.html" link="links"/}
+    </div>
+    <hgroup class="othRht">
+    	<div class="hd"><h2>友情链接</h2></div>
+        <div class="bd frdLnk">
+            <div class="txt">
+            	<p>链接交换要求：</p>
+                <p>1、网站健康度良好，不得弄虚作假，没有违规内容，无被惩罚记录</p>
+                <p>2、首页交换要求BR5及以上，收录&gt;10000，人才招聘相关网站优先，出站链接不超过40条
+</p>
+				<p>3、内页、二级域名交换要求BR1及以上，收录＞1000，人才招聘相关网站优先，出站链接不超过30条</p>
+                <p>4、域名年龄1年以下新站、没有备案网站不予交换</p>
+                <p>只接受直接文字连接，下拉框、脚本、页面跳转、嵌入页、翻页等均不换。</p>
+                <p>联系方式：400-1010-970转7403，QQ：2851501226 <a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin=2851501226&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:2851501226:51" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></p>
+            	<!--
+                <p>链接要求：行业网站，内容健康，日均IP&gt;{/if $ip_count!=''/}{/$ip_count/}{/else/}5000{//if/}，百度收录量&gt;{/if $baidu_count!=''/}{/$baidu_count/}{/else/}10000{//if/}，未被搜索引擎封站。</p>
+                <p>名称汇博网，链接地址www.huibo.com，只接受直接文字连接，下拉框、脚本、页面跳转、嵌入页、翻页等均不换。</p>
+                <p>联系电话：{/if $show_ser_phone!=''/}{/$show_ser_phone/}{/else/}4001010970转7403（9：00－18：30）{//if/}，联系邮件：{/if $company_ser_email!=''/}{/$company_ser_email/}{/else/}2851501226@qq.com{//if/}<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2851501226&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:2352775876:51" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></p>
+                -->
+            </div>
+        </div>
+    </hgroup>
+    <div class="clear"></div>
+</section>
+{/include file="./about/footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+</body>
+</html>

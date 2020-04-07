@@ -1,0 +1,68 @@
+ {/if !empty($recommendcomleft)/}
+    <div class="mContBm">
+        <h2 class="mContit"><b></b>推荐企业</h2>
+        <div class="flexslider carousel">
+          <ul class="slides">
+                 {/foreach $recommendcomleft as $item=>$value/}
+                       <li>
+                        <a title="{/$value.company_name/}" href='{/rewrite type="fairSceneCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}" company_flag="{/$value.service_scene_id/}"/}' target="_blank"><img src="{/$logo_path/}{/$value.company_logo_path/}" /></a>
+                       </li>
+                
+                {//foreach/}
+          </ul>
+        </div>
+    </div>
+ {//if/}
+		<div class="jobBox">
+			<div class="jobBoxT">
+				<div class="jobLstTab">
+					{/if !empty($fair_calling) && count($fair_calling) > 0/}
+             		{/foreach $fair_calling as $item=>$value/}
+             			<a href="javascript:;" onclick="getFairInfo('{/date("Ymd", strtotime($current_scene.date))/}',{/$item/})" class="{/if $select_calling == $item/}cu{//if/}" theval="{/$item/}">{/$value['calling']/}</a>
+             		{//foreach/}
+             		{//if/}
+				</div>
+			</div>
+			<div class="jobBoxW">
+				<div class="jobBoxleft">
+                                    {/if !empty($left_companys) && count($left_companys)>0/}
+                                        {/foreach $left_companys as $item=>$value/}
+                                            <div class="jobBoxList">
+                                                <div><a href='{/rewrite type="fairSceneCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}" company_flag="{/$value.service_scene_id/}"/}' target="_blank" class="comName">{/$value.company_name/}</a><i class="pag" style="display:none">{/$value.mark/}</i><span {/if empty($value.booth_ids)/}style="display:none"{//if/}>-展位号：{/$value.booth_ids/}</span><a {/if count($value.jobs)<=0/}style="display:none"{//if/} href='{/rewrite type="fairSceneCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}" company_flag="{/$value.service_scene_id/}"/}' class="jbBtn" target="_blank">预约参会</a></div>
+                                            <p>
+                                            {/if !empty($value.jobs) && count($value.jobs)>0/}
+                                                    {/foreach $value.jobs as $it=>$val/}
+                                                            {/if $it < 20/}
+                                                                    <a href='{/rewrite type="fairSceneCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}" company_flag="{/$value.service_scene_id/}"/}#{/$val.job_id/}' target="_blank">{/$val.station/}</a>
+                                                            {/else/}
+                                                                    <a class="more" href='{/rewrite type="fairSceneCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}" company_flag="{/$value.service_scene_id/}"/}' target="_blank">更多&gt;&gt;</a>
+                                                            {//if/}
+                                                    {//foreach/}
+                                            {//if/}
+                                            </p>
+                                            </div>
+                                        {//foreach/}
+                                     {//if/}
+				</div>
+				<div class="jobBoxright">
+                                     {/if !empty($right_companys) && count($right_companys)>0/}
+                                        {/foreach $right_companys as $item=>$value/}
+                                            <div class="jobBoxList">
+                                                <div><a href='{/rewrite type="fairSceneCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}" company_flag="{/$value.service_scene_id/}"/}' target="_blank" class="comName">{/$value.company_name/}</a><i class="pag" style="display:none">{/$value.mark/}</i><span {/if empty($value.booth_ids)/}style="display:none"{//if/}>-展位号：{/$value.booth_ids/}</span><a {/if count($value.jobs)<=0/}style="display:none"{//if/} href='{/rewrite type="fairSceneCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}" company_flag="{/$value.service_scene_id/}"/}' class="jbBtn" target="_blank">预约参会</a></div>
+                                            <p>
+                                            {/if !empty($value.jobs) && count($value.jobs)>0/}
+                                                    {/foreach $value.jobs as $it=>$val/}
+                                                            {/if $it < 20/}
+                                                                    <a href='{/rewrite type="fairSceneCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}" company_flag="{/$value.service_scene_id/}"/}#{/$val.job_id/}' target="_blank">{/$val.station/}</a>
+                                                            {/else/}
+                                                                    <a class="more" href='{/rewrite type="fairSceneCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}" company_flag="{/$value.service_scene_id/}"/}' target="_blank">更多&gt;&gt;</a>
+                                                            {//if/}
+                                                    {//foreach/}
+                                            {//if/}
+                                            </p>
+                                            </div>
+                                        {//foreach/}
+                                     {//if/}
+				</div>
+			</div>
+		</div>

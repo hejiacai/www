@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="{/$keywords/}" />
+<meta name="Description" content="{/$description/}" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script type="text/javascript" language="javascript" src="{/version file="html5.js"/}" ></script>
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="salary.css"/}" />
+    <script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+    <script type="text/javascript">
+        window.CONFIG = {
+            HOST: '{/$siteurl.style/}',
+            COMBOPATH: '/js/v2/'
+        }
+    </script>
+    <script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+    <script type="text/javascript" src="{/version file="global.js"/}"></script>
+    <script type="text/javascript">
+            hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+    </script>
+</head>
+<body>
+{/include file='new_headsearch_2015.html' searchItem='salary'/}
+<section class="salary">
+	<hgroup class="pageHd">
+    	<h1><em>重庆</em>平均工资收入</h1>
+        <div class="share">
+            <b>分享到：</b>
+            <a title="分享至新浪微博" id="shareSina" class="sina" href="javascript:void(0);"></a>
+            <a title="分享至腾讯微博" id="shareTengXun" class="txweibo" href="javascript:void(0);"></a>
+            <a title="分享至QQ空间"  id="shareQQ" class="qzone" href="javascript:void(0);"></a>
+            <a title="分享至人人网" id="shareRenRen" class="renren" href="javascript:void(0);"></a>
+		</div>
+    </hgroup>
+    <hgroup class="pageBd">
+    	<div class="left">
+        	<div class="fixrst">
+                <div class="rstCon">
+                   
+                    <div class="l">
+                    {/if !empty($companyavgsalary)/}
+                        <p class="cash"><em>￥{/$companyavgsalary/}</em></p>
+                        <p>该数据为平均值，仅限于重庆地区</p>
+                        <p>截止{/$salarytime/}</p>
+                    {//if/}    
+                    </div>
+                    <div class="r">
+                        <div class="exl">
+                            <div class="bod">
+                                <div class="con"><div class="exlBar" style="width:{/$lowestsalaryPercent/};" id="mixBar"><b>2013年重庆市最低工资标准：￥{/$lowestsalary/}</b></div></div>
+                                <div class="con"><div class="exlBar" style="width:{/$highestsalaryPercent/};" id="maxBar"><b>2013年重庆市社会平均工资：￥{/$highestsalary/}</b></div></div>
+                            </div>
+                            <div class="bot"><p class="first">1000</p><p>2000</p><p>4000</p><p>6000</p><p>8000</p><p>10000</p><p class="last">12000+</p><div class="clear"></div></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="rel" id="rel">
+            	<h4>重庆热门岗位平均工资收入</h4>
+                <div class="bd">
+                	<div class="exl">
+                    	<div class="bod">
+                    		 {/foreach $newestsalarys as $salary/}
+                        	<div class="con">
+                            	<div class="mixExlBar" style="width:{/$salary['minsalarypercent']/};"></div>
+                            	<div class="exlBar" style="width:{/$salary['maxsalarypercent']/};"><b>￥{/$salary['minsalary']/}-￥{/$salary['maxsalary']/}</b><p><a href="{/$salary['salaryjoblink']/}">{/$salary['station']/}</a></p></div>
+                            </div>
+                            {//foreach/}
+                        </div>
+                        <div class="bot"><p class="first">1000</p><p>2000</p><p>4000</p><p>6000</p><p>8000</p><p>10000</p><p class="last">12000+</p><div class="clear"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+			{/if !empty($advert)/}
+        	<div class="ad"><a href="{/$advert['companylink']/}" target='_blank'><img src="{/$advertPath/}{/$advert["img"]/}" /></a></div>
+            {//if/}
+            <div class="newjob" style="padding-bottom:0px;">
+            	<h4>最新职位推荐</h4>
+                <div class="lst">
+                	<ul>
+                	{/foreach $recommendJobs as $job/}
+                    <li>
+                    	<p class="jobNm"><a href="{/$job['joblink']/}" target="_blank">{/$job['station']/}</a></p>
+                        <p class="comNm"><a href="{/$job['companylink']/}" target="_blank">{/$job['companyname']/}</a></p>
+                        <p><em>{/$job['salary']/}</em><i>-</i><em>{/$job['address']/}</em></p>
+                    </li>
+                    {//foreach/}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </hgroup>
+</section>
+{/include file='footer.html'/}
+ <!--分享-->              
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script language="javascript" type="text/javascript">
+    var info;
+    $(document).ready(function() {
+   		 info = '重庆地区平均薪酬为“￥{/$companyavgsalary/}元/月”,想了解您的薪酬该在什么水平吗？立即登录huibo.com查询。';
+		//            shareSina,shareTengXun,shareQQ,shareRenRen
+        //分享到新浪微博
+        $('#shareSina').click(function() {
+            var href = 'http://service.weibo.com/share/share.php?title=' + encodeURIComponent(info) + '&url=' + encodeURIComponent(window.location.href) + '&source=bookmark';
+            $(this).attr({ target: '_blank', href: href });
+        });
+        //腾讯微博
+        $('#shareTengXun').click(function() {
+            var href = 'http://v.t.qq.com/share/share.php?title=' + encodeURIComponent(info) + '&url=' + encodeURIComponent(window.location.href);
+            $(this).attr({ target: '_blank', href: href });
+        });
+        //QQ空间
+        $('#shareQQ').click(function() {
+            var href = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?title=' + encodeURIComponent(info) + '&summary=' + encodeURIComponent(info) + '&url=' + encodeURIComponent(window.location.href);
+            $(this).attr({ target: '_blank', href: href });
+        });
+        //人人网 
+        $('#shareRenRen').click(function() {
+            var href = 'http://share.renren.com/share/buttonshare.do?link=' + encodeURIComponent(window.location.href) + '&title=' + encodeURIComponent(info);
+            $(this).attr({ target: '_blank', href: href });
+        });
+    });
+</script>
+</body>
+</html>

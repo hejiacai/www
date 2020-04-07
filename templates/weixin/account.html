@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="yes" name="apple-touch-fullscreen"/>
+<meta content="telephone=no" name="format-detection"/>
+<meta name="apple-mobile-web-app-title" content="汇博网">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta property="wb:webmaster" content="c51923015ca19eb1" />
+<link rel="apple-touch-icon-precomposed" href="{/$siteurl.style/}/img/75x75.png" >
+<title>登录-汇博网触屏版</title>
+<meta name="revisit-after"  content="1 days" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+</head>
+<body>
+<style type="text/css">
+html{font-family:sans-serif;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;overflow-y:scroll;}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display: block;}
+audio,canvas,video{display: inline-block;}
+audio:not([controls]){display: none;height: 0;}
+[hidden]{display: none;}
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,select,textarea,th,td,div{margin:0;padding:0;}
+body,button,input,select,textarea{font:1rem 'Microsoft Yahei',Arial,Verdana,Helvetica,sans-serif;line-height:1.5;}
+h1,h2,h3,h4,h5,h6{font-weight:400;}
+address,cite,dfn,em,var,caption,code,dfn,th{font-style:normal;font-weight:400;}
+code,kbd,pre,samp{font-family:courier new,courier,monospace;}
+i{font-style:normal;}
+ul,ol{list-style:none}
+a{text-decoration:none;color:#424242;}
+a:hover{text-decoration:underline;color:#404040;}
+a:focus{outline:thin dotted;}
+a:active,a:hover{outline:0;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+fieldset,img{border:0;}
+button,input,select,textarea{font-size:100%;}
+table{border-collapse:0;border-spacing:0;border-collapse:collapse;}
+q:before,q:after{content:'';}
+b,strong{font-weight: bold;}
+body{font:0.8rem 'Microsoft Yahei',Arial,Verdana,Helvetica,sans-serif;line-height:1.5;text-align:center;background:#e8ecef;color:#444;word-wrap:break-word;word-break:break-all;word-break:normal;}
+textarea{resize:none;}
+textarea:focus,input:focus{outline: none;}
+
+section.layout{margin:0 10px;}
+.part{background:#fff;border:1px solid #ddd;margin-bottom:15px; text-align:left;}
+.part .partT{height:40px;line-height:40px;padding-left:10px;font-size:1rem;font-weight:bold;background:#f1f1f1;}
+.part .partC{}
+
+/*按钮*/
+
+a.btnsF16{height:43px;line-height:43px;font-size:1.2rem;border-radius:3px;display:block;width:100%;}
+
+a.btn4:link,a.btn4:visited{color:#fff;background:#65be63;box-shadow:0 1px 0 #7ee77c inset;border:1px solid #51b94f;
+background-image: -moz-linear-gradient(top, #65be63, #43a341);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #65be63), color-stop(1, #43a341));
+}
+a.btn4:hover{background:#44a241;border:1px solid #349a32;}
+a.btn4:active{background:#358a33;border:1px solid #358a33;box-shadow:0 3px 3px #155214 inset;}
+
+
+a.btn5:link,a.btn5:visited{color:#fff;background:#d56400;box-shadow:0 1px 0 #ff9435 inset;border:1px solid #c85e00;
+background-image: -moz-linear-gradient(top, #f47300, #d56400);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f47300), color-stop(1, #d56400));
+}
+a.btn5:hover{background:#c65d00;border:1px solid #b85600;}
+a.btn5:active{background:#c65400;border:1px solid #c65400;box-shadow:0 3px 3px #c65400 inset;}
+
+
+/*输入表单*/
+.mod{position:relative; z-index:1;}
+.mod input.text{width:100%;font-size:0.8rem;}
+.mod label.txtLabel{position:absolute;left:5px;top:0;color:#999;font-size:0.8rem;}
+.mod textarea.textarea{width:100%; height:80px;font-size:0.8rem; padding-top:10px; border:0;}
+
+/*---------------表单-----------------*/
+.form{margin-top:30px;margin-bottom:30px;}
+.form ul li{border-bottom:1px solid #ddd; position:relative; z-index:1; text-align:left; padding:12px 0;}
+.form ul li:last-child{border-bottom:0;}
+.form ul li .mod{padding:0 5px;}
+.form ul li input.text{border:0;width:100%; font-size:0.8rem;}
+.form ul li label.txtLabel{}
+
+/*---------------登录-----------------*/
+.lgBox{}
+.lgBoxHd{background:#e74c3c;box-shadow:0 1px 2px #888 inset;height:50px;position:relative;z-index:1;margin-bottom:15px;}
+.lgBoxHd a.closeLog{font-size:0.8rem;color:#fff;position:absolute;left:10px;top:8px;height:30px;line-height:30px;border:1px solid #d62e1b;background:#e85d4e; border-radius:3px; text-align:center;width:55px;}
+.lgBoxHd p{height:50px;line-height:50px;font-size:1.2rem;color:#fff; text-align:center;}
+.lgBox .btns .btnsF16{display:inline-block;width:46%;margin:0 3px;}
+.lgBox .form ul li .othMod{padding:2px 155px 0 5px;}
+.lgBox .form ul li .othMod .userCode{ position:absolute;right:5px;top:2px; z-index:10;width:140px;}
+.lgBox .form ul li .othMod .userCode img{width:80px;height:35px; vertical-align:middle;}
+.lgBox .form ul li .othMod .userCode a{ vertical-align:middle;color:#39f;font-size:0.8rem;margin:0 0 0 5px;}
+</style>
+<section class="lgBox" id="lgBox">
+    <section class="layout">
+    	<form method="post" id="frmLogin" action="{/get_url rule="/weixin/"/}" >
+	        <div class="part form">
+	            <ul>
+	            <li><div class="mod"><input type="text" class="text" value="{/$name/}"  /></div></li>
+	            <li><div class="mod"><label class="txtLabel" for="txtUserID">邮箱/手机号/用户名</label><input type="text" class="text" name="txtUserID" id="txtUserID" /></div></li>
+	            <li><div class="mod"><label class="txtLabel" for="txtPassword">密码</label><input type="password" class="text" name="txtPassword" id="txtPassword"/></div></li>
+	            </ul>
+	        </div>       
+	        <div class="btns"><a href="javascript:void(0);" id="btnLogin" class="btnsF16 btn4" onclick="doSubmit();">提交</a></div>
+   		</form>
+    </section>
+</section>
+<script type="text/javascript">
+function doSubmit() {
+	document.getElementById('frmLogin').submit();
+}
+</script>
+</body>
+</html>

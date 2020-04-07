@@ -1,0 +1,16 @@
+{/if !$is_show/}
+<div id="iduaPageContainer">
+{//if/}
+<ul class="iduaTemplate">
+    {/foreach $images as $image/}
+        <li><a data-type="image" {/if in_array(intval($image['template_id']),$template_data)/}data-old=1 data-imageid={/$template_img_ids[intval($image['template_id'])]/}{//if/} data-name="{/$image['template_name']/}"  data-id="{/intval($image["template_id"])/}" data-index="" href="javascript:;"><i></i><img src="{/$image_path/}{/$image['template_name']/}" width="320" height="96"></a></li>
+    {//foreach/}
+</ul>
+{/$pager/}
+{/if !$is_show/}
+</div>
+<div class="popJobbd" style="margin-top:20px;">
+    <a href="javascript:;" class="newPopQuit">取 消</a>
+    <a href="javascript:;" class="newPopSave">保 存</a>
+</div>
+{//if/}

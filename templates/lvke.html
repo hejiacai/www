@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{/version file='v2-reset.css,v2-header.css,v2-icons.css,v2-widge.css,v2-job.css'/}" />
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<style type="text/css">
+.dropList{
+	border:1px #666 solid;width:200px;height:300px;float:left;margin-right:5px;
+}
+.dropList li{
+	height:23px;line-height:23px;padding:0 5px;
+}
+.dropList li.select{
+	background:#0CF;color:#fff;
+}
+.dropList li.hover{
+	background:#CCC;color:#fff;
+}
+#msg{height:22px;line-height:22px;padding:3px 0;margin-bottom:5px;}
+#msg div{float:left;margin-right:3px;display:inline-block;padding:0 3px;border:1px #F00 solid;background:#FFC;}
+#msg div em{float:right;font-size:14px;cursor:pointer}
+</style>
+<title>注册</title>
+
+</head>
+<body>
+
+<div id="msg"><div class="label" data-value="0101"><em>x</em>沙坪坝区</div></div>
+<div id="dropListGroup">
+<div class="dropList"></div>
+<div class="dropList"></div>
+</div>
+
+<script type="text/javascript">
+
+	hbjs.use('widge.combobox.comboBoxer', function(comboBoxer, $, util){
+		
+		var comboBox = new comboBoxer();
+		comboBox.addCombos({
+			element: '.dropList:eq(0)',
+			dataSource: [
+				{label: '重庆', value: '0100', name: 'province'},
+				{label: '成都', value: '0200', name: 'province'}
+			]
+		}).addCombos({
+			element: '.dropList:eq(1)',
+			dataSource: {
+				'0100': [
+					{label: '沙坪坝区', value: '0101', name: 'city'},
+					{label: '渝中区', value: '0102', name: 'city'}
+				],
+				'0200': [
+					{label: '金牛区', value: '0201', name: 'city'},
+					{label: '双流区', value: '0202', name: 'city'}
+				]
+			}
+			/* Array类型的数据 
+			dataSource: [
+				[
+					{label: '沙坪坝区', value: '0101', name: 'city'},
+					{label: '渝中区', value: '0102', name: 'city'}
+				], 
+				[
+					{label: '金牛区', value: '0201', name: 'city'},
+					{label: '双流区', value: '0202', name: 'city'}
+				]
+			]*/
+			/*
+			dataSource: [
+				'http://www.huibo.com?value={{query}}&c=province',
+				'http://www.huibo.com?value={{query}}&c=city'
+			]
+			*/
+		});
+		var msg = $('#msg'),
+			lastCombo = comboBox.getCombos();
+			children = msg.children().length ? msg.children() : [];
+			
+		lastCombo.on('change', function(e){
+			msg.html('<div class="label" data-value="' + e.value + '"><em>x</em>' + e.label + '</div>');
+		}).on('rended', function(e){
+			var self = this;
+			children.length && children.each(function(index, val){
+				if(e.data.value === $(this).attr('data-value')){
+					e.data.className = self.get('selectClassName');
+					children.splice(e.index, 1);
+					return false;
+				}
+			});
+		}).on('renderComplete', function(e){
+			children = msg.children().length ? msg.children() : [];
+		});
+		msg.on('click', 'em', function(e){
+			var target = $(e.currentTarget),
+				parent = target.parent();
+			
+			parent.remove();
+			children = msg.children().length ? msg.children() : [];
+			lastCombo.get('items').removeClass(lastCombo.get('selectClassName'));
+		});
+		
+		
+	});
+
+</script>
+
+</body>
+</html>

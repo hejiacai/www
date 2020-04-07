@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>职位搜索列表</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <!–[if lt IE9]>
+    <script src="{/version file="html5.js"/}"></script>
+    <![endif]–>
+    <link rel="stylesheet" type="text/css" href="{/version file='base.css,v2-widge.css,v2-resume.css,v2-jobsearch.css,login.css'/}" />
+    <link rel="stylesheet" type="text/css" href="{/version file='new-headsearch-2015.css'/}" />
+    <link rel="stylesheet" type="text/css" href="{/version file="v2-reset.css"/}">
+    <link rel="stylesheet" type="text/css" href="{/version file='xiaoyuan.css'/}" />
+    <script type="text/javascript" src="{/version file='version.js'/}"></script>
+    <script type="text/javascript">
+    window.CONFIG = {
+        HOST: '{/$siteurl.style/}',
+        COMBOPATH: '/js/v2/'
+    }
+    </script>
+    <script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+    <script type="text/javascript" src="{/version file='global.js'/}"></script>
+    <script type="text/javascript">
+    hbjs.config({
+        combos: {
+            '@homeSideSortMenu': [
+                'product.homeSideSortMenu', 'product.sideMenu.sideSortMenuGroup', 'product.sideMenu.sideSortMenu',
+                'product.sideMenu.sideSortMenuData', '@popup'
+            ],
+            '@jobPostipGroup': [
+                'product.jobList.jobPostipGroup', 'product.jobList.jobPostip', '@popup'
+            ]
+        }
+    });
+    hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+    </script>
+    <style>
+        .campusNavCont, .searchNavCont{width: 1121px;}
+        .topHeader .header_fix{width: 1121px !important;}
+        .accound_icon{ margin-right: -428px!important;}
+        .many_status .title{ overflow: hidden;}
+        #proPopup.idunt_float, #proPopup.idunt_float_select{width: 772px !important;}
+        .idunt_float dd.small{width: 650px !important;}
+        .JobIndDrop .dropLst{width: 480px !important;}
+        .idunt_float dd.small  ul{min-width: 633px !important;}
+        .icons7_talk {
+            background: url({/$siteurl.style/}/img/www/talk_tip.png);
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            vertical-align: -3px;
+        }
+    </style>
+</head>
+<body style="background: #fff;">
+{/include file='schoolserachhead.html' headkeyword=$keyword searchItem='job' from='search'/}
+ <div class="noData mgb10" >对不起，没有找到您想要查找的职位</div>
+</body>
+<script type="text/javascript">
+  
+</script>
+</html>

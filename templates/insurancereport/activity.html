@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>举报保险公司送红包_{/$huibo_homepage/}</title>
+<link rel="stylesheet" type="text/css" href="{/version file='insurancereport.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='perback.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='icons.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='v2-widge.css'/}" />
+
+<!–[if lt IE9]> 
+<script type="text/javascript" src="{/version file='html5.js'/}"></script> 
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="v2-reset.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="v2-widge.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="perback.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="v2-resume.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="resumeTate.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="prettyPhoto.css"/}" />
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+
+
+</script>
+
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file="global.js"/}"></script>
+<script type="text/javascript">
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<style>
+body{ background: #4ab2b3;}
+*{ text-align: left;}    
+.hb_ui_dialog .ui_dialog_close{
+	position: absolute;
+	right: 15px;
+	top: 5px;
+	font-size: 20px;
+	color: #676767;
+}
+.hb_ui_dialog .ui_dialog_title{}
+#insuranceReportForm .promptMsg{display:none}
+#insuranceReportForm .errorMsg{display:block}
+.infopic{width:700px;height:130px;position:relative;overflow:hidden;margin:15px auto 15px 35px;}
+.piclist{height:auto;position:absolute;top:0;left:0;}
+.piclist li{height:auto;margin-right:15px;float:left;overflow:hidden;}
+.piclist li a{ display:block; text-align:center; line-height:30px; color:#333;}
+.piclist li img{ display:block;width:148px; height:98px;}
+.piclistY li img{ height:148px;}
+.piclist li span{display:block;width:148px; overflow: hidden; line-height: 16px; text-align: center; padding-top: 6px;}
+</style>
+</head>
+
+<body style="background:#f5f5f5;">
+<div class="reportNce01">
+	<div>
+    	<a href="#" class="logo"></a>
+            {/if $isLogin == false/}
+                <p>
+                    <a href="{/$person_url/}/login" target="_blank">求职者登录</a>
+                    <b>|</b>
+                    <a href="{/$company_url/}/login" target="_blank">企业登录</a>
+                    <b>|</b>
+                    <a href="{/$person_url/}/register">求职者注册</a>
+                    <b>|</b>
+                    <a href="{/$company_url/}/register">企业注册</a>
+                </p>
+            {/else/}
+                <p>
+                    {/if $userType=='c'/}
+                        <a href="{/$userInfo["companyUrl"]/}">我的汇博</a>
+                    {/else if $userType=='p'/}
+                        <a href="{/$userInfo["personUrl"]/}">我的汇博</a>
+                    {//if/}
+                    <b>|</b>
+                    <a href="javascript:void(0);" id="userOut" class="userOut">退出</a>
+                </p>
+            {//if/}
+   </div>
+</div>
+<div class="reportNce05">
+	<div class="reLeft">
+    	<h2 class="reLTit">活动视频</h2>
+        <div class="reLRadio">
+        	<object CLASSID="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" width="500" height="306" CODEBASE="";>
+            <param name="src" value="http://player.youku.com/player.php/sid/XMTI2OTM0ODIyOA==/v.swf">
+            <param name="autoplay" value="true">
+            <param name="loop" value="true">
+            <param name="controller" value="true">
+            <embed src="http://player.youku.com/player.php/sid/XMTI2OTM0ODIyOA==/v.swf" allowFullScreen="true" quality="high" width="500" height="306" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+            </object>
+        </div>
+        <h2 class="reLTit">活动照片</h2>
+        <div class="infopic">
+            <div class="picbox">
+                <ul class="gallery piclist piclistY">
+                    <li><a href="{/$siteurl.style/}/img/insurancereport/1.jpg" rel="prettyPhoto[]"><img src="{/$siteurl.style/}/img/insurancereport/1.jpg" /></a></li>
+                    <li><a href="{/$siteurl.style/}/img/insurancereport/2.jpg" rel="prettyPhoto[]"><img src="{/$siteurl.style/}/img/insurancereport/2.jpg" /></a></li>
+                    <li><a href="{/$siteurl.style/}/img/insurancereport/3.jpg" rel="prettyPhoto[]"><img src="{/$siteurl.style/}/img/insurancereport/3.jpg" /></a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2 class="reLTit">其他活动</h2>
+        <div class="infopic" style="height:150px">
+            <div class="picbox">
+                <ul class="gallery2 piclist">
+                    <li><a href="{/$siteurl.style/}/img/insurancereport/activity201506301.png" rel="prettyPhoto[]"><img src="{/$siteurl.style/}/img/insurancereport/activity201506301.png" /><span>2015•渝中区互联网产业园人才网络专场招聘会</span></a></li>
+                    <li><a href="{/$siteurl.style/}/img/insurancereport/activity201506302.jpg" rel="prettyPhoto[]"><img src="{/$siteurl.style/}/img/insurancereport/activity201506302.jpg" /><span>本土具有上市潜力互联网公司集结招</span></a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    <div class="reRight">
+    	<h2 class="reLTit">动态资讯</h2>
+        <ul class="reListY">
+        	<li>
+                <a href="{/get_url rule='/zhichang/8728.html' domain='main'/}">
+            	<h2>毕业生找工作：警惕3类招聘陷阱</h2>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;又到了大学毕业生找工作的旺季，为了找到理想的工作，毕业生们做简历、跑招聘会，到处奔波面试，一些不法分子抓住毕业生着急找工作的心态，借机设下了多种招聘陷阱。</p>
+                </a>
+            </li>
+            <li>
+                <a href="{/get_url rule='/zhichang/8726.html' domain='main'/}">
+            	<h2>汇博网:将拒绝“保险”行动进行到底</h2>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“你好，我在你们网站上发现了保险公司假借其它企业名义发布保险代理人招聘信息的行为，看到官网有个举报属实就有200元现金奖励的活动，现在还有吗？”6月5日下午，汇博网客服部接到了求职者用户赵先生的举报电话。</p>
+                </a>
+            </li>
+            <li>
+                <a href="{/get_url rule='/zhichang/8727.html' domain='main'/}">
+            	<h2>求职者警惕：这些虚假招聘要多留个心眼</h2>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家住南岸区的高考毕业生赵某，因为考虑暑假时间太长，6月15日在某网站上找了一份手工兼职工作，并交了200元押金，可是昨天带着自己的手工成品到店里领取工钱并退押金时，却被告知不但领不了工钱退不了押金，还要倒扣赵某100元钱。这是为什么呢？</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="reportFooter">
+©2015 汇博网 版权所有  |  增值电信业务经营许可证：渝B2-20060063  |  人才中介服务许可证：渝中人社[2011]216号<br />
+招聘单位无权收取任何费用,请求职人员加强自我保护意识,按劳动法规保护自身权益,警惕虚假招聘,避免上当受骗!
+</div>
+<script type="text/javascript">
+    hbjs.use('@jobPrettyPhoto, @hbCommon, @jobDialog', function(m){
+		
+        var $ = m['product.hbCommon'].extend(m['cqjob.jobDialog'], m['cqjob.jobPrettyPhoto']);
+		
+        $(".gallery a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:3000, hideflash: true});
+        $(".gallery2 a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:3000, hideflash: true});
+        var liw = 0, ml, r, s;
+        $('.piclist li').each(function(){
+            liw += $(this).width()+0;
+            $(this).css('width',$(this).width()+'px');
+        });
+        $('.piclist').width( liw + 'px');
+
+        $('.pic_next').click(function(){
+
+            if($('.piclist').is(':animated')){
+                $('.piclist').stop(true,true);
+            }/* 避免点击事件重复 */
+
+            ml = parseInt($('.piclist').css('left'));
+            r = liw - (208 - ml);  /* 700为外部区块.infopic的宽度，15为li之间的距离，即.piclist li的margin-right的值 */
+            if(r<208){
+                s = r - 0;
+            }else{
+                s = 208;
+            }
+            $('.piclist').animate({left: ml - s + 'px'},'slow');			
+        });
+
+        $('.pic_prev').click(function(){
+
+            if($('.piclist').is(':animated')){
+                $('.piclist').stop(true,true);
+            }/* 避免点击事件重复 */
+
+            ml = parseInt($('.piclist').css('left'));
+            if(ml>-208){
+                s = ml;
+            } else {
+                s = -208;
+            }
+            $('.piclist').animate({left: ml - s + 'px'},'slow');			
+        });
+		
+		//退出
+		$("#userOut").click(function(){
+			$.ajax({
+				'url':'/index/signOut',
+				'type':'get',
+				'dataType':'json',
+				'success':function(json){
+					if(json.success){
+						$.anchorMsg('退出成功',{title: "操作成功", icon: "success",onclose:function(){
+								location.reload();
+							}
+						});
+					}else{
+						$.message('退出失败', { title: "系统提示", icon: "fail" });
+					}
+				}
+			});
+			return false;
+		});
+
+    });
+</script>
+</body>
+</html>

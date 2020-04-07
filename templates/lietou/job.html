@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{/$title/}</title>
+<meta name="keywords" content="重庆猎头公司,重庆知名猎头公司,重庆互联网猎头公司、重庆金融猎头公司、重庆房地产猎头公司、汇博猎头">
+<meta name="description" content="汇博猎头，重庆知名专业猎头公司，主要服务于IT互联网、金融、汽车、房地产、快消品、通讯、医药、制造等领域，资源丰富、寻访速度快。">
+<link rel="stylesheet" type="text/css" href="{/version file='base.css,v2-widge.css,headhunter.css,headhunterglobal.css'/}" />
+<!–[if lt IE9]>
+<script src="{/version file='html5.js'/}"></script>
+<![endif]–>
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+    HOST: '{/$siteurl.style/}',
+    COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript">
+    hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<style>
+.footerBm{text-align: center;}
+</style>
+</head>
+
+<body>
+{/include file='./lietou/header.html' currenturl="/lietou/newjob"/}
+
+<div class="htingMain" style="margin-top:0px;">
+    <div class="flowListBd">
+    	<div class="jobDline">
+    		<h2 class="jobDtit">{/$job['station']/}</h2>
+            <p><i></i>发布于{/$job['create_time']/}</p>
+        </div>
+        <div class="jobDlinex">
+        	<p>
+            	<i class="jobIcon01"></i>
+                <span>{/$job['area']/}</span>
+                {/if !empty($job['add_info'])/}
+                <b>（{/base_lib_BaseUtils::cutstr($job['add_info'],23,'utf-8','','…')/}）</b>
+                {//if/}
+                <a target="_blank" rel="nofollow" href="http://api.map.baidu.com/geocoder?address={/if !empty($job['add_info'])/}{/$job['add_info']/}{/else/}{/$job['area']/}{//if/}&output=html">查看地图</a>
+            </p>
+            <p>
+            	<i class="jobIcon02"></i><span>lietou@huibo.com</span><a target="_blank" href="//wpa.qq.com/msgrd?v=3&amp;uin=3348331073&amp;site=qq&amp;menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:3348331073:51" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
+            </p>
+        </div>
+        <div class="htLit02 htLitD">
+            <p>{/$job['content']/}</p>
+        </div>
+        <a href="javascript:" class="flowSend {/if empty($job['have_apply'])/}jobapply{//if/}" jobflag="{/$job['job_flag']/}"><i></i>{/if empty($job['have_apply'])/}投递简历{/else/}已申请{//if/}</a>
+    </div>
+</div>
+{/include file="footer.html"/}
+<script>
+    function ajaxLoginCallback() {
+        window.location.href = window.location.href; 
+    }
+    hbjs.use('@checkLogin, @confirmBox, @dialog',function(m){
+        var checkLogin = m['product.checkLogin'],
+            cookie     = m['tools.cookie'],
+            confirmBox = m['widge.overlay.confirmBox'],
+            Dialog     = m['widge.overlay.hbDialog'],
+            $ = m['jquery'],
+            pWidth = 70,
+            fontWidth = 18;
+            $('.jobapply').click(function(){
+                var applyBtn = $(this);
+                var job_flag = applyBtn.attr('jobflag');
+                var islogin = checkLogin.isLogin('ajaxLoginCallback-jobflag-'+job_flag);
+                checkLogin.dialog.resetSize(498);
+                if(islogin){
+                    var dialog = new Dialog({
+                        idName : 'apply_job',
+                        title : '投个简历',
+                        content : '/lietou/jobapply/jobflag-'+job_flag+'-v-'+Math.random(),
+                        isOverflow : true,
+                        close : 'x',
+                        isAjax : true
+                    });
+                    dialog.resetSize(586).show();
+                    $(".apply_job").find("input[type='radio'][class='radio'][id^='re']").removeAttr("checked");
+                    $(".apply_job").find("input[type='radio'][class='radio'][id^='re']").eq(0).attr("checked","checked");
+                    $(".apply_job").on("click", "input[type='radio'][class='radio'][id^='re']", function (e) {
+                        $(".apply_job").find("input[type='radio'][class='radio'][id^='re']").removeAttr("checked");
+                        $(this).attr("checked","checked");
+                    });
+                    $(".apply_job").on("click", "#btnApply", function(e) {
+                        var resume_id = $(".apply_job").find("input[name='resumeId']:checked").val();
+                        $.getJSON('/lietou/jobapplydo/jobflag-'+job_flag+'-v-'+Math.random(),{"resumeId":resume_id},function(result) {
+                            if(result.error){
+                                 confirmBox.timeBomb(result.error, {
+                                    name: 'fail',
+                                    width: pWidth + result.error.length * fontWidth
+                                });
+                            } else if(result.success){
+                                confirmBox.timeBomb(result.success, {
+                                    name: 'success',
+                                    width: pWidth + result.success.length * fontWidth
+                                });
+                                dialog.hide();
+                                applyBtn.unbind('click').removeClass('jobapply').html('<i></i>已申请');
+                            }
+                        });
+                    });
+                    return;
+                }
+                return;
+            });
+    });
+</script>
+</body>
+</html>

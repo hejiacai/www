@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="重庆兼职，重庆兼职网，重庆兼职招聘，校园兼职，汇博网" />
+<meta name="description" content="汇博网重庆兼职频道提供最新的重庆兼职、重庆兼职招聘信息，您可以免费查询大学生兼职、周末兼职、网络兼职、兼职家教等重庆兼职信息，重庆兼职工作上汇博网。靠谱！" />
+<meta http-equiv="x-ua-compatible" content="ie=7" /> <!------兼容ie8写的------>
+<title>重庆兼职_重庆兼职网_重庆兼职招聘_校园兼职_汇博网</title>
+<title>汇博兼职</title>
+<link href="{/version file="base.css"/}" rel="stylesheet" />
+<link href="{/version file="tJob_style.css"/}" rel="stylesheet" />
+<!–[if lt IE9]> 
+<script type="text/javascript" language="javascript" src="{/version file="html5.js"/}" ></script>  
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+    HOST: '{/$siteurl.style/}',
+    COMBOPATH: '/js/v2/'
+}
+</script>
+
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript">
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+</head>
+<body>
+{/include file="part_header.html"/}
+<div class="tpartschBg">
+	<div class="tpartMag">
+        <form>
+        	<div class="tpartSum">
+            	<input type="text" value="{/$station/}" name="k" class="tpartTxt">
+                <input type="submit" value="搜索" class="tpartBtnsch" style="cursor:pointer">
+                <input type="button" value="免费发布兼职" class="tpartBtn" onClick="javascript:window.location.href='{/$siteurl.company/}/partjob/job/'" style="cursor:pointer">
+            </div>
+        </form>
+    </div>
+    <div class="tpartnavBg">
+	<div class="tpartnavX">
+    	<span>兼职类型：</span>
+        <a href="{/$jobsorts_all['url']/}" class="tpartUted {/if $jobsorts_all['selected']/}tpartUtedCut{//if/}">{/$jobsorts_all['name']/}</a>
+        <p>
+            {/foreach $jobsorts as $jobsort/}
+        	<a href="{/$jobsort['url']/}" class="{/if $jobsort['selected']/}tpartUtedCut{//if/}">{/$jobsort['name']/}</a>
+            {//foreach/}
+        </p>
+    </div>
+    <div class="tpartnavX tpartnavXbm">
+    	<span>工作地点：</span>
+        <a href="{/$areas_all['url']/}" class="tpartUted {/if $areas_all['selected']/}tpartUtedCut{//if/}">{/$areas_all['name']/}</a>
+        <p class="tpartnavBm">
+            {/foreach $areas as $area/}
+        	<a href="{/$area['url']/}" class="{/if $area['selected']/}tpartUtedCut{//if/}">{/$area['name']/}</a>
+            {//foreach/}
+        </p>
+    </div>
+    <div class="tpartnavX" style="margin-bottom:0px;">
+    	<span>结算方式：</span>
+        <a href="{/$salary_types_all['url']/}" class="tpartUted {/if $salary_types_all['selected']/}tpartUtedCut{//if/}">{/$salary_types_all['name']/}</a>
+        <p>
+            {/foreach $salary_types as $type/}
+        	<a href="{/$type['url']/}" class="{/if $type['selected']/}tpartUtedCut{//if/}">{/$type['name']/}</a>
+            {//foreach/}
+        </p>
+    </div>
+</div>
+</div>
+<div class="tpartMain">
+	<div class="tpartMleft">
+    	<ul class="tpartMList">
+            {/if empty($jobs)/}
+            <div class="no_data">
+                <img src="{/$siteurl.style/}/img/part/error_icon.png" />
+                <p>很抱歉<br />没有您要找的信息</p>
+            </div>
+            {/else/}
+            {/foreach $jobs as $key => $job/}
+        	<li class="{/if ($key % 2) == 0/}graylistBg{//if/}">
+                <a href="{/get_url rule="/partjob/index/" data="job_flag={/$job['job_flag']/}"/}" target="_blank">{/$job['station']/}</a>
+                <span>{/$job['area']/}</span>
+                <span>{/$job['salary']/}</span>
+                <span>{/$job['salary_type']/}</span>
+                <span class="gray">{/$job['refresh_time']/}</span>
+            </li>
+            {//foreach/}
+            {//if/}
+        </ul>
+        {/$pager/}
+    </div>
+    <div class="tpartMright">
+    	<img src="{/$siteurl.style/}/img/part/tpartbanner.jpg" class="tpartScan" width="260" height="265" />
+        <div class="tpartRlist">
+        	<div>
+                <dl>
+                    <dt><img src="{/$siteurl.style/}/img/part/tparticon01.jpg" /></dt>
+                    <dd>
+                        <h2>免费</h2>
+                        <p>免费使用客户端，不收任何中介费</p>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><img src="{/$siteurl.style/}/img/part/tparticon02.jpg" /></dt>
+                    <dd>
+                        <h2>丰富</h2>
+                        <p>海量兼职信息供你选，不愁没兼职</p>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><img src="{/$siteurl.style/}/img/part/tparticon03.jpg" /></dt>
+                    <dd>
+                        <h2>安全</h2>
+                        <p>执照验证、职位审核多重人工把关</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+{/include file="footer.html"/}
+</body>
+</html>

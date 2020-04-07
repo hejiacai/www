@@ -1,0 +1,52 @@
+<script type="text/javascript" language="javascript" src='{/version file="jquery-1.8.3.min.js"/}'></script>
+<div class="allSubscriptionx" style="padding-top: 0;">
+    <div>
+        <div class="sptionNot" {/if $has_subscribe/}style='display:none;'{//if/}>
+            <span>当前无订阅</span>
+            <a href="javascript:void(0);" id="addSubBtn">添加订阅</a>
+            <em>订阅后，定期为你推送最新公招信息</em>
+        </div>
+        {/if !empty($list)/}
+        {/foreach $list as $v/}
+        <div class="sptionList">
+            <a target="_blank" href="/gongzhao/{/$v['recruit_id']/}">
+                <span class="sptionx01">
+                    <b>{/$v['title']/}</b>
+                    报名时间：<em>{/$v['apply_time']/}</em>
+                </span>
+                <span class="sptionx02">{/$v['recruit_number']/}人<em></em>{/$v['area_name']/}<em></em>{/$v['degree_name']/}</span>
+                <span class="sptionx03">
+                    {/foreach $v['job_names'] as $key=>$job_name/}
+                    {/if $key < 5/}
+                    <em>{/$job_name/}</em>
+                    {/else if $key == 5/}
+                    <em>...</em>
+                    {//if/}
+                    {//foreach/}
+                    <i>{/$v['last_mod_time']/}</i>
+                </span>
+            </a>
+        </div>
+        {//foreach/}
+        {/$pager/}
+        {/else if $has_subscribe/}
+        <div class='noData' style="margin-top: 0;">
+            <i class="iconfont icon-evaluate-none"></i>
+            <span>没有数据</span>
+        </div>
+        {//if/}
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+$("#addSubBtn").on('click', function(){
+    layer.open({
+      type: 2,
+      title: '订阅管理',
+      shadeClose: true,
+      shade: 0.8,
+      area: ['850px', '550px'],
+      content: '{/get_url rule="/subscribe/SetSubscribe"/}'
+    }); 
+});
+</script>

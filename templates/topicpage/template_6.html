@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>{/$seo_title/} - {/$title/}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="{/$seo_key/}"/>
+    <meta name="description" content="{/$seo_desc/}"/>
+    <style type="text/css">
+        /* CSS Document */
+        @charset "utf-8";
+        * {
+            padding: 0px;
+            margin: 0px;
+            font-family: "微软雅黑";
+            font-size: 14px;
+            list-style: none;
+        }
+		a:hover{ color: #1081d1;}
+
+        .head {
+            width: 1000px;
+            overflow: hidden;
+            height: 88px;
+            background: url({/$siteurl.style/}/img/topicPage/topic/ctlogo.png) left top no-repeat;
+            margin: 0 auto;
+        }
+
+        .banner {
+            width: auto;
+            background: url({/$siteurl.style/}/img/topicPage/topic/commercial01.jpg) center top no-repeat;
+            height: 338px;
+        }
+
+        .head a.logo {
+            display: block;
+            float: left;
+            width: 188px;
+            height: 40px;
+            margin-top: 26px;
+        }
+
+        .head div {
+            float: right;
+        }
+
+        .head div a, .head div span {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 88px;
+        }
+
+        .head div a:hover {
+            text-decoration: underline;
+        }
+
+        .head div span {
+            padding: 0 5px;
+            color: #ccc;
+            font-family: "微软雅黑";
+        }
+
+        .head div a {
+            text-decoration: none;
+            color: #666;
+        }
+
+        .commerBg {
+            width: 100%;
+            overflow: hidden;
+            padding-top: 48px;
+            background: #fdf6e9;
+            padding-bottom: 110px;
+        }
+
+        .commerMage {
+            width: 1200px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .commer {
+            width:383px;
+            height: 299px;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            float: left;
+            margin-bottom: 22px;
+            background: #fff;
+			border: 1px solid #ebefee;
+        }
+		.commer3n{ margin: 0 22px;}
+
+        .commerList {
+            width: 383px;
+            height: 249px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .commerList dl {
+            overflow: hidden;
+            padding: 24px 0 24px 16px;
+        }
+
+        .commerList dt {
+            width: 55px;
+            height: 55px;
+            overflow: hidden;
+            float: left;
+            background: #fff;
+            
+        }
+
+        .commerList dt img {
+            display: block;
+            width: 55px;
+            height: 55px;
+			border-radius: 50%;
+        }
+
+        .commerList dd {
+            width: 290px;
+            overflow: hidden;
+            float: left;
+            margin-left: 12px;
+        }
+
+        .commerList dd a {
+            text-decoration: none;
+            display: block;
+            width: 290px;
+            line-height: 24px;
+            color: #222;
+            font-size: 20px;
+            margin: 5px 0 5px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .commerList dd span {
+            display: block;
+            color: #888;
+        }
+
+        .commerList ul {
+            overflow: hidden;
+            padding: 0 16px;
+            margin-top: 20px;
+        }
+
+        .commerList ul li {
+            height: 42px;
+            line-height: 42px;
+            overflow: hidden;
+        }
+
+        .commerList ul li a, .commerList ul li span {
+            display: block;
+            float: left;
+            line-height: 36px;
+            color: #002643;
+            text-decoration: none;
+            height: 36px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .commerList ul li a {
+            width: 230px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .commerList ul li a:hover {
+            color: #004880;
+            text-decoration: underline;
+        }
+
+        .commerList ul li span {
+            text-align: right;
+            float: right;
+            width: 115px;
+            color: #f00;
+            font-size: 14px;
+        }
+
+        .commer .tit {
+            display: block;
+            position: absolute;
+            top: 196px;
+            left: 0px;
+            width: 232px;
+            height: 42px;
+            background: url({/$siteurl.style/}/img/topicPage/topic/commercial02.png) no-repeat;
+            line-height: 46px;
+            color: #fff;
+            font-weight: bold;
+            text-indent: 1.5em;
+            overflow: hidden;
+        }
+
+        .commer .more {
+            display: block;
+            width: 383px;
+			height: 50px;
+			line-height: 50px;
+            color: #999;
+            font-size: 14px;
+            text-decoration: none;
+            background: #f9f9fa;
+			border-radius:0 0 4px 4px;
+			text-indent: 255px;
+        }
+
+        .commer .more:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0px;
+            text-align: center;
+            line-height: 24px;
+            color: #999;
+            font-size: 12px;
+        }
+		.activityIntro{width:1152px; overflow: hidden; position: relative; padding: 24px; background: #fff; box-shadow: 0 0 18px #f7fafc; margin: 0 auto;}
+		.activityIntro .introduceleft,.activityIntro .introduceright{display: inline-block;width:23px; height: 19px; position: absolute;}
+		.activityIntro .introduceleft{ top: 16px; left: 24px; background: url({/$siteurl.style/}/img/topicPage/tempalte5/videi_job_img11.jpg) no-repeat;}
+		.activityIntro .introduceright{ bottom: 16px; right: 24px; background: url({/$siteurl.style/}/img/topicPage/tempalte5/videi_job_img12.jpg) no-repeat;}
+		.activityIntro p{ font-size: 16px; color: #444; line-height: 30px; padding: 0px 40px 0 40px;}
+		.activityIntro p a{ color: #1081d1; text-decoration: underline;}
+		.activityIntro p a:hover{ color: #0f8bff;}
+		.activityIntroBtn{width:1200px; margin: 0 auto; overflow: hidden; padding: 45px 0 55px 0; text-align: center;}
+		.activityIntroBtn a{ display: inline-block;width:480px; height: 60px; line-height: 60px; text-indent: 42px; border-radius: 2px; text-decoration: none; font-size: 20px; font-weight: bold; color: #fff;}
+		.activityIntroBtn a.resumeEntry{ background: url({/$siteurl.style/}/img/topicPage/tempalte5/videi_job_img13.png) 140px center no-repeat #30cc71;}
+		.activityIntroBtn a.onlinePortal{ background: url({/$siteurl.style/}/img/topicPage/tempalte5/videi_job_img14.png) 140px center no-repeat #21b59b; margin-left: 40px;}
+		.activityIntroBtn a.resumeEntry:hover {background: url({/$siteurl.style/}/img/topicPage/tempalte5/videi_job_img13.png) 140px center no-repeat #27ba64;}
+		.activityIntroBtn a.onlinePortal:hover{background: url({/$siteurl.style/}/img/topicPage/tempalte5/videi_job_img14.png) 140px center no-repeat #1da990;}
+		.newJob{width:1200px;font-family: "微软雅黑"; overflow: hidden; margin: 0 auto; border-bottom: 1px solid #f1f1f1; height: 38px; line-height: 38px; font-size: 16px; font-weight: bold; color: #444;}
+		.newJob i{ display: inline-block;width:5px; height: 18px; background: #046db7; margin: 0 10px 0 18px; vertical-align: -3px;border-radius: 10px;}
+    </style>
+    <link rel="stylesheet" type="text/css" href="{/$siteurl.style/}/css/topic/{/$topic_name/}.css?t={/uniqid()/}">
+</head>
+
+<body>
+<!-- <div style="width:1021px;margin:0 auto;position: relative">
+    <div style="position:absolute;top:345px;right: -200px; width:198px;height:347px;background: url('{/$siteurl.style/}/img/topicPage/topic/zhuantiiewm.png')" id="Jsewm"></div>
+</div> -->
+<div class="banner" style="background:#fff url({/if empty($main_pic)/}{/$siteurl.style/}/img/topicPage/topic/commercial01.jpg{/else/}{/$pic_base/}{/$main_pic/}{//if/}) no-repeat scroll center top;"></div>
+<div class="activityIntro" {/if $hidden_area == 1/}style="display:none;"{//if/}>
+	<i class="introduceleft"></i>
+	<i class="introduceright"></i>
+	<p>为切实做好疫情防控期间的引才工作，市人力社保局开展“百万英才兴重庆”线上引才活动，为我市各用人单位的人才引进提供有力支撑。此次活动提供“简历提取”和“网络招聘”两项活动。我市有引才需求的用人单位、有意愿参与线上引才活动的人力资源服务机构和有意愿来渝就业创业的人才均可参与。符合活动相应标准，可享受定额补贴。活动具体内容详见。<a href="//www.cqtalent.com/cqrcwnew/tzgg/20200218/31500000099371.html" target="_blank">《重庆市人才交流服务中心关于开展“百万英才兴重庆”线上引才活动的通知》</a></p>
+	<div class="clear"></div>
+</div>
+<div class="activityIntroBtn" {/if $hidden_area == 1/}style="display:none;"{//if/}>
+	<a href="//company.huibo.com/login" target="_blank" class="resumeEntry">“简历提取”入口</a>
+	<a href="//m.netfair.huibo.com/fairList/sid-60" target="_blank" class="onlinePortal">“网络招聘”入口</a>
+</div>
+<div class="newJob" {/if $hidden_area == 1/}style="display:none;"{//if/}><i></i>最新职位</div>
+<div class="commerBg" style="background: {/$bg_color/} url({/$pic_base/}{/$bg_img/}) no-repeat scroll center 0;">
+    <div class="commerMage">
+        {/foreach $dataLst as $k=>$list/}
+        <div class="commer" style="border:1px solid {/if !empty($job_border_color)/} {/$job_border_color/};{/else/}#f1f1f1;{//if/} ">
+            <div class="commerList">
+                <dl>
+                    <dt>
+                        <img src="{/if !empty($list['company_logo_path'])/}{/$logo_base/}{/$list['company_logo_path']/}{/else/}{/$siteurl.style/}/img/job/newjob/newJob_57.png{//if/}"/>
+                    </dt>
+                    <dd>
+                        <a href="{/if !empty($list['company_id'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiye/{/$list['company_flag']/}.html{/else/}{/if stripos($list['company_link'],'http://')=== false/}//{//if/}{/$list['company_link']/}{//if/}">{/if empty($list['company_shortname'])/}{/base_lib_BaseUtils::cutstr($list['company_name'],10)/}{/else/}{/$list['company_shortname']/}{//if/}</a>
+                        <span>{/$list['size_text']/}</span>
+                    </dd>
+                </dl>
+                <ul>
+                    {/foreach $list['jobLst'] as $key=>$job/}
+                    {/if $key<3/}
+                    <li data-id="{/$job['id']/}"><a href="{/if !empty($job['job_flag'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopin/zhiwei/{/$job['job_flag']/}.html{/else/}{/if stripos($job['job_link'],'http://')=== false/}//{//if/}{/$job['job_link']/}{//if/}" target="_blank">{/$job.station/}</a><span>{/$job.min_salary/}-{/$job.max_salary/}</span></li>
+                    {//if/}
+                    {//foreach/}
+                </ul>
+            </div>
+            {/if $is_force_login!=1/}
+            <a href="{/if !empty($list['company_id'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiye/{/$list['company_flag']/}.html{/else/}{/if stripos($list['company_link'],'http://')=== false/}//{//if/}{/$list['company_link']/}{//if/}?seejob=true" target="_blank" class="more">查看更多职位>></a>
+            {/else/}
+            <a href="javascript:;" data-topic="{/$list['topic_id']/}" data-tcompanyid="{/$list['tcompany_id']/}"  class="more showMoreJobs">查看更多职位>></a>
+            {//if/}
+               </div>
+        {//foreach/}
+    </div>
+</div>
+<div class="footer"  style="{/if !empty($bottow_footer_color)/}background: {/$bottow_footer_color/};{//if/}">©{/date('Y')/} 汇博网 版权所有<br/>招聘单位无权收取任何费用，请求职人员加强自我保护意识，按劳动法规保护自身权益，警惕虚假招聘，避免上当受骗!</div>
+
+<script type="text/javascript" language="javascript" src="{/version file="track.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='track.js'/}"></script>
+
+<script>
+	$('.commerMage .commer:nth-child(3n+2)').addClass('commer3n');
+    window.onscroll = function () {
+        $("#Jsewm").css("top", $(document).scrollTop() + 345);
+    }
+</script>
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "http://hm.baidu.com/hm.js?fb51309e47424acd6e31c0bd2a65a5a1";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+{/if $is_force_login==1/}
+<script type="text/javascript">
+    window.CONFIG = {
+        HOST: '{/$siteurl.style/}',
+        COMBOPATH: '/js/v2/'
+    }
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<link rel="stylesheet" type="text/css" href="{/version file='v2-reset.css,v2-header.css,v2-widge.css,jobnew2018.css,leaveinfo.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='topictemplatelogin.css'/}" />
+<script type="text/javascript" src="{/version file='topictemplatelogin.js'/}"></script>
+<script>
+    hbjs.use('widge.overlay.hbDialog, widge.fileUploader, widge.overlay.confirmBox', function (Dialog, fileUploader, confirmBox, $) {
+        var dialog = new Dialog({
+            idName: 'add-black',
+            close: 'x',
+            title: '职位列表',
+            isAjax: true
+
+        });
+
+		
+		
+        $(".showMoreJobs").click(function () {
+            var tcompany_id = $(this).attr('data-tcompanyid');
+            var topic_id = $(this).attr('data-topic');
+            var url = '{/get_url rule="/topic/GetMorJob/"/}' + '?topic_id='+topic_id + "&tcompany_id=" +tcompany_id;
+            dialog.setContent({
+                content: url
+            });
+
+            dialog.show();
+        })
+
+
+
+    })
+
+</script>
+{//if/}
+</body>
+</html>

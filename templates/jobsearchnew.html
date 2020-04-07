@@ -1,0 +1,1526 @@
+<!doctype html>
+<html> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="keywords" content="{/$page['keyword']/}" />
+<meta name="description" content="{/$page['description']/}" />
+<title>{/$page['title']/}</title>
+<link rel="stylesheet" type="text/css" href="{/version file='v2-reset.css,v2-header.css,v2-icons.css,v2-widge.css,v2-job.css'/}" />
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript">
+hbjs.config({
+	combos: {
+		'@jobMenu': [
+			'product.jobMenu', '@changeClass', 'product.sideMenu.sideSortMenuGroup', 'product.sideMenu.sideSortMenu',
+			'product.sideMenu.sideSortMenuData', '@popup'
+		],
+		'@jobPostipGroup': [
+			'product.jobList.jobPostipGroup', 'product.jobList.jobPostip', '@popup'
+		],
+		'@followTemplate': 'template.follow',
+		'@jobSortActions': 'product.jobSortActions'
+	}
+});
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<style>
+/*=======职位搜索-合并公司======*/
+.job{background-color: #ededed}
+.topHeader{ border-bottom:1px solid #d7d7d7; box-shadow:none;}
+.job_nav{  background:#fafafa;}
+.job_filter_box .filter_bottom{ background:#fafafa;} 
+.job_list_table, .firm_box{overflow:inherit;}
+.firm_box .firm-list td{ overflow:inherit; }
+.ax_push{ height:19px;color:#999; line-height:19px; text-align:center; position:absolute; right:10px; top:12px;}
+.ax_pushS,.ax_pushR{width:auto; height:42px; display:block;}
+.ax_pushR{margin:-32px auto 0 478px;}
+.ax_pushS span,.ax_pushR span{ display:block;width:auto; height:36px; background:#333; color:#fff; line-height:36px; padding:0 5px;}
+.ax_pushS i,.ax_pushR i{ display:block;width:11px; height:6px; margin-left:50px; background:url({/$siteurl.style/}/img/salary/imgrNavR.gif) center 0 no-repeat;} 
+
+/*=======职位搜索列表======*/
+.job_img_list,.job_sort_list{ border: 1px solid #d6d6d6;}
+.batch-butn{ margin: 10px;}
+.job_list_table{ overflow:inherit; border: 1px solid #fff; background: #fff;box-shadow:0 0 5px 2px #e5e5e5;}
+.job_list_table table td{overflow:inherit}
+.side_msg_list{ border:1px solid #d6d6d6;}
+.ax_push{ height:19px;color:#999; line-height:19px; text-align:center;}
+.ax_pushS,.ax_pushR{width:auto; height:42px;display:block;}
+.ax_pushR{position:absolute;_margin:-84px auto 0 auto;}
+.ax_pushS span,.ax_pushR span{ display:block;width:auto; height:36px; background:#333; color:#fff; line-height:36px; padding:0 5px;}
+.ax_pushS i,.ax_pushR i{ display:block;width:11px; height:6px; margin-left:50px; background:url({/$siteurl.style/}/img/salary/imgrNavR.gif) center 0 no-repeat;}  
+
+.pageBot{border-top:1px solid #bbb; height:auto;width:100%; overflow:hidden;zoom:1; background:#fff;margin-top:20px;}
+.pageBotCon{width:1000px;margin:0 auto; text-align:left; border-bottom:1px solid #bbb; padding-bottom:10px;}
+.footer-box{ margin-top:0; border-top:none;}
+.frdLink{position:relative;z-index:10;height:50px;overflow:hidden;}
+.footer{margin-top:0;}
+.frdLink b{float:left;display:inline;height:35px;font-size:12px;line-height:35px;width:70px;font-weight:normal;color:#999;}
+.frdLink .linkScroller{float:left;display:inline;line-height:25px;width:930px; height:50px; overflow:hidden;position:relative;}
+.frdLink .linkScroller ul{width:930px;position:absolute;left:0px;margin:5px 0 0;top:0px;}
+.frdLink .linkScroller ul li{float:left; display:inline-block; *display:inline;zoom:1; height:25px; line-height:25px;margin:0 10px 0 0;}
+.frdLink .linkScroller ul li a{color:#424242; display:inline; height:25px; line-height:25px;white-space:nowrap;font-size:12px;}
+.frdLink .linkScroller ul li a:hover{color:#0af;}
+.frdLink .linkScroller{ height:auto;}
+.frdLink .linkScroller ul{ position:inherit;}
+
+body{ background:#fafafa; font-size:14px;}
+*{ font-family:"微软雅黑";}
+.postSearchBg{width:1172px; margin:20px auto;}
+.postSearchLeft{width:936px; float:left;}
+.postSearchRight{width:222px; float:right;}
+.postSchList{width:936px; height:42px; border-bottom:1px solid #ccc;}
+.zList{ height:42px; float:left;}
+.zList a{ display:block;width:140px; height:40px;font-size:17px; color:#333; float:left; text-align:center; line-height:40px; font-size:16px;}
+.zList a.cut{color:#149c95; font-weight:bold; border-bottom:3px solid #2abbb4;}
+.zwPost{ display:block; float:right; margin-top:15px;}
+.zwPost i,.zwPost img,.zwPost span{ display:inline-block; font-family:"宋体"; vertical-align:middle;}
+.zwPost i{width:14px; height:14px; background:url({/$siteurl.style/}/img/company/radioimg.png) no-repeat;}
+.zwPost i.cut{background:url({/$siteurl.style/}/img/company/radioimghover.png) no-repeat;}
+.zwPost img{ margin:0 2px 0 4px;}
+.postIntroBg{ width:936px; margin-top:20px;}
+.postIntro{width:936px;background:#fff; margin-bottom:12px; box-shadow:0 0 5px 2px #e5e5e5;}
+.postIntro dl{ padding:10px 20px 10px 15px; overflow:hidden; border-bottom:1px solid #e6e6e6; position:relative;width:901px; background:#fafafa;}
+.postIntro dl dt{ float:left;}
+.postIntro dl dt span{ display:block;_width:70px; text-align:right; color:#989898; position:absolute; right:10px; top:12px;}
+.postIntro dl dt img{ display:block;}
+.postIntro dl dd {width: 825px;float: left;}
+.postIntro dl dd .subIntrox{width:770px; height:20px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.postIntro dl dd .subIntrox a{ color:#666; font-size:15px; cursor:default;}
+.postIntro dl dd .subIntrox span{ color:#666;margin-left: 8px}
+.postIntro dl dd .subIntroz span{ display:inline-block; height:21px; line-height:21px; padding:0 10px; color:#6a99af; background:#d9f2ff; margin-right:5px;margin-bottom: 8px;}
+.postIntro dl dd .subIntroz{ margin-top:8px;}
+.postIntroL{width:936px;position: relative;background:url({/$siteurl.style/}/img/company/dashed.png) left bottom no-repeat; }
+.postIntroL.more.hidden {display: none}
+.postIntroLcut{ background:url({/$siteurl.style/}/img/company/dashed.png) left bottom no-repeat #e8f9fa;}
+.postIntroLast{ background:none;}
+.postIntroLast:hover{background:#e8f9fa;}
+.postIntroLx{ height:40px; line-height:40px;}
+.postIntroLx .postIntroLxIcon{width: 34px; float: left;height: 42px;text-align: right;}
+.postIntroLxIcon .urgent{padding-right: 10px;padding-top: 12px;}
+.postIntroLxIcon .icons7_new{padding-top: 0px; padding-right:5px; #margin-top:17px;}
+
+.ptCheck{ display:block;width:14px; height:14px; float:left;background:url({/$siteurl.style/}/img/company/radioimg.png) left center no-repeat; margin:14px 12px 0 0; }
+.ptCheckcut{background:url({/$siteurl.style/}/img/company/radioimghover.png) left center no-repeat;}
+.postIntroLx .des_name{float:left;width:215px;}
+.postIntroLx a { font-weight:bold;}
+.postIntroLx a span{max-width:210px;_width:210px; height:40px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap; color:#2161bf; font-size:15px; }
+.postIntroLx a em,.postIntroLx a span,.postIntroLx a img{ cursor:pointer; display:inline-block; vertical-align:middle;}
+.postIntroLx a:hover span{ text-decoration:underline;}
+.postIntroLx a img{ padding-left:7px;}
+.postIntroLx p{ float:left;width: 650px; height:40px; overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
+.postIntroLx p span{ color:#444;}
+.postIntroLx p span.issueTime{ float: right;}
+.postIntroLx p b{ color:#e6e6e6; padding:0 8px;font-weight: normal;font-family: "宋体";}
+.postIntroLx p span i{ color:#999;}
+
+.subIntrom {}
+.allResume{ display:block; text-align: left; height:40px; line-height:40px; color:#999; margin-left:6px; border-bottom:1px solid #f5f5f5; padding-left:28px;}
+.allResume.hide {display: none}
+
+.postIntro dl dt em{ display:block;width:53px; height:37px; background:url({/$siteurl.style/}/img/company/stick.png) no-repeat; position:absolute; top:0px; right:10px;}
+.postItoStick{}
+
+.hide {display:none}
+.job-fam-arrs { background:#fff;overflow: hidden;}
+.job-fam-arrs .line { background:#fff;overflow: hidden; border-top: 1px #fafafa solid}
+.job-fam-arrs dt {width: 48px; height: 48px; float: left; border:1px solid #dbdbdb; margin-top:4px;}
+.job-fam-arrs dd {width: 145px; float: right;}
+.job-fam-arrs dd a.com-name {display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; width:150px;}
+.job-fam-arrs dd a.station {display:block; color: #333;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width: 150px; padding: 0px;}
+.job-fam-arrs dd p em {display:block;}
+
+.icons15_famous {background: url({/$siteurl.style/}/img/job/newjob/newJob_12.png) 0 0 no-repeat;width:16px;height:18px;display: inline-block;}
+i.urgentIcon {display: inline-block; border-radius: 4px; border: 1px #FF282B solid; line-height: 12px;#line-height: 18px; padding: 2px 4px;color: #FF282B; margin-left:5px; overflow:hidden; vertical-align:-3px;}
+.job_filter_box{ border:1px #d6d6d6 solid;}
+.side_menu_items .child_item dd a{ white-space:inherit; display:inline-block; padding:0 8px;}
+.postIntro dl dd .subIntrox em{ display:inline-block; padding:0 5px; height:18px; line-height:18px; border-radius:4px; vertical-align:5px;#vertical-align:0px; background:#f3971f; color:#fff; font-size:12px; font-family:"宋体";}
+.postIntro dl dd .subIntrox a,.postIntro dl dd .subIntrox span{max-width:255px; display:inline-block; overflow: hidden;}
+.postIntro dl dd .subIntrox span{max-width:435px;}
+</style>
+
+</head>
+<body class="job">
+{/include file="jobsearchHeader.html" headkeyword="{/$keyword/}" searchItem="{/$searchtype/}"/}
+{/if $total_found<=0 && !$is_filter && count($toplist)<=0/}
+<div class="job_main mgb20">
+	<div class="tabCon mgt15">
+	    <div class="table">
+	         <div class="noData">对不起，没有找到“<font class="red">{/$hotkeyword/}
+	          {/if empty($hotkeyword)/}
+		          {/if count($value['jobsort_ids'])>0/}
+			          {/foreach $selectJobsortids as $key_jobsort=>$value_jobsort/}
+		                  {/if $value_jobsort@last/}
+		                      {/if $words!=''/}{/searchhighlight key="{/$words/}" content="{/{/get_name jobsort=$value_jobsort/}/}"/}{/else/}{/get_name jobsort=$value_jobsort/}{//if/}
+		                  {/else/}
+		                      {/if $words!=''/}{/searchhighlight key="{/$words/}" content="{/{/get_name jobsort=$value_jobsort/}/}"/}{/else/}{/get_name jobsort=$value_jobsort/}{//if/}；
+		                  {//if/}
+			          {//foreach/}
+			      {/else/}
+			      		{/$keyword/}
+		          {//if/}
+	          {//if/}
+	         </font>”相关的职位</div>
+	    </div>
+	</div>
+</div>
+{/else/}
+<div class="job_main mgb20">
+ 	<div id="job_filter_box" class="job_filter_box mgb10 mgt15">
+		<div class="job_nav">
+	    	<div id="side_menu" class="side_menu">
+	        	<a class="title" href="javascript:" style="#width:108px;"><i class="more-type" title="点击显示"></i>全部职位类别</a>            
+                <div class="side_menu_container">
+                    <div class="side_menu_list">
+                        <div class="loader"></div> 
+                        <div class="side_menu_list_cont">                 
+                            <div class="actions">                    
+                                <a id="mutil_btn" class="multi" href="javascript:">多选<i class="hbFntWes">&#xf067;</i></a><a href="{/$jobsort['url']/}">全选</a>
+                            </div>
+                            <ul></ul>
+                        </div>
+                    </div>
+                    <div class="mutil_select_group" style="display:none">
+                        <div class="group-box clearfix" id="mutil_select_group" ></div>
+                        <div class="actions">
+                        <form action="{/$jobsort['url']/}" method="get" id="frmJobsort">
+                            {/if !empty($keyword)/}<input type="hidden" name="key" value="{/$keyword/}">{//if/} 
+                            {/if !empty($jobsearchtype)/}<input type="hidden" name="u" value="{/$jobsearchtype/}" />{//if/}
+                            <input type="hidden" name="v" id="hddJobsort">
+                        </form>     
+                        <button class="button_a button_a_red" id="btnSubmitJobsort">确定</button>
+                        <button class="button_a" id="cancel_btn">取消</button>
+                                                
+                        </div>
+                    </div>
+                </div>
+	        </div>
+            <a id="followBtn" class="followBtn" href="javascript:"><i class="hbFntWes">&#xf004;</i>加关注</a> 
+            <div class="side_nav">
+             {/foreach $selectJobsort as $sort/}
+            	<i class="hbFntWes">&#xf105;</i>
+                <a href="{/$sort['url']/}">{/$sort['jobsort_name']/}</a>
+             {//foreach/}   
+             {/foreach $filterCondition as $condtion/}
+             	{/if $condtion@first/}
+                 <i class="hbFntWes">&#xf105;</i>
+                {//if/}
+                <a class="label" href="{/$condtion['url']/}" title="{/$condtion['name']/}">{/$condtion['title']/}：<font>{/base_lib_BaseUtils::cutstr($condtion['name'], 10,'utf-8','','...')/} ×</font></a>
+              {//foreach/}  
+              {/if count($selectJobsort) > 0 || count($filterCondition) > 0/}<i class="hbFntWes">&#xf105;</i>{//if/}
+                <div class="simple_search_bar">
+               		<form action="{/$keySearchUrl['url']/}" id="frmKeywordSearch" method="get">
+               		{/foreach $keySearchUrl['params'] as $key=>$value/}
+    					<input type="hidden" name="{/$key/}" value="{/$value/}" />
+    				{//foreach/}
+                	<button class="hbFntWes" type="submit" id="btnKeywordSearch">&#xf002;</button>
+                	<span class="def-text" {/if !empty($keyword)/}style="display:none"{//if/}>在结果中搜索</span>
+                	<input type="text" name="key" class="key" value="{/$keyword/}" />
+                	</form>
+                </div>
+                {/if count($filterCondition)>0/}
+                	<a href="{/$clearConditionUrl/}" class="empty_select"><em class="hbIconMoon">&#xe0a8;</em>清空条件</a>
+                {//if/}
+                <input type="hidden" id="conditionStr" name="conditionStr" value="{/$condition_str/}" />
+            </div>
+        </div>
+        <div id="side_menu_items" class="side_menu_items">
+        	<div class="side_menu_items_arrow"></div>
+        </div>
+    	<table cellpadding="0">
+            <tr class="first">                 
+                <th>招聘行业</th>
+                <td>                     
+                    <div class="one_sort">                         
+                        <div class="actions">                                                     
+                            <a class="more" href="#"><i class="hbFntWes">&#xf0d7;</i></a>
+                            <a class="mutil" href="javascript:">多选<i class="hbFntWes">&#xf067;</i></a>
+                        </div>
+                        <ul>
+                            <li class="first">
+                            	<a class="sub_link {/if empty($selectCallingids)/}dft_checked cur{//if/}" href="{/$calling['url']/}">不限</a>
+                            </li>
+                            {/foreach $calling['callings'] as $c/}
+                            <li {/if !empty($c['isSelect'])||!empty($c['isSubSelect'])/}class="current"{//if/}>
+                            	<a class="sub_link {/if !empty($c['isSelect'])||!empty($c['isSubSelect'])/} cur{//if/}" href="{/$c['url']/}" data-value="{/$c['calling_id']/}">{/$c['calling_name']/}</a>
+                                <div class="sub_sort">
+                                	<a class="first {/if !empty($c['isSelect'])/}dft_checked cur{//if/}" href="{/$c['url']/}">全部</a>
+                                	{/foreach $c['callings'] as $childC/}
+                                    <a class="{/if !empty($childC['isSelect'])/}dft_checked cur{//if/}" href="{/$childC['url']/}" data-value="{/$childC['calling_id']/}">{/$childC['calling_name']/}</a>
+									{//foreach/}				
+                                </div>
+                            </li>
+                           {//foreach/}
+                        </ul>
+                     </div>
+                    <div class="actions-oper">
+						<form action="{/$calling['formUrl']['url']/}" method="get" id="frmCalling">
+							{/foreach $calling['formUrl']['params'] as $key=>$value/}
+								<input type="hidden" name="{/$key/}" value="{/$value/}" />
+							{//foreach/}
+							<input type="hidden" name="v" id="hddcallingid" class="many-hidden" type-value="c">                       
+	                    	<button class="button_a button_a_red" id="btnSubmitCalling" type="button" data-type="submit">确定</button>
+	                    	<button type="button" class="button_a resetbtn" id="btnResetCalling" data-type="remove">清除</button>
+	                        <button type="button" class="button_a cancelbtn" id="btnCancelCalling" data-type="cancel">取消</button>
+	                     </form>
+                    </div>      
+                </td>
+        	</tr>
+            <tr class="jobadd">
+                <th>工作地点</th>
+                <td>
+                    <div class="one_sort">
+                        <div class="actions">
+                        	<a class="mutil" href="javascript:">多选<i class="hbFntWes">&#xf067;</i></a>
+                        </div>
+                        <ul>
+                        
+                            <li class="first">
+                            	<a class="sub_link {/if empty($area['isSubSelect'])/}dft_checked cur{//if/}" href="{/$area['url']/}">不限</a>
+                            </li>
+                           {/foreach $area['subAreas'] as $a/}
+                            <li {/if !empty($a['isSelect'])||!empty($a['isSubSelect'])/}class="current"{//if/}>
+                            	<a class="sub_link {/if !empty($a['isSelect'])||!empty($a['isSubSelect'])/}dft_checked cur{//if/}" href="{/$a['url']/}" data-value="{/$a['area_id']/}">{/$a['area_name']/}<i class="hbFntWes n">&#xf107;</i><i class="hbFntWes c">&#xf106;</i></a>
+                                <div class="sub_sort">
+                                	<a class="first {/if !empty($a['isSelect'])/}dft_checked cur{//if/}" href="{/$a['url']/}">全部</a>
+                                	{/foreach $a['subAreas'] as $childA/}
+                                    <a class="{/if !empty($childA['isSelect'])/}dft_checked cur{//if/}" href="{/$childA['url']/}" data-value="{/$childA['area_id']/}">{/$childA['area_name']/}</a>
+                                    {//foreach/}
+                                </div>
+                            </li>
+                           {//foreach/}
+                        </ul>
+                    </div>
+                    <div class="actions-oper">
+						<form action="{/$area['formUrl']['url']/}" method="get" id="frmArea">
+							{/foreach $area['formUrl']['params'] as $key=>$value/}
+								<input type="hidden" name="{/$key/}" value="{/$value/}" />
+							{//foreach/}
+							<input type="hidden" name="v" id="hddArea" class="many-hidden" type-value="b">
+							 <!-- {/if !empty($jobsearchtype)/}<input type="hidden" name="u" value="{/$jobsearchtype/}" />{//if/}-->                                                
+	                    	<button class="button_a button_a_red" id="btnSubmitArea" data-type="submit">确定</button>
+	                    	<button type="button" class="button_a resetbtn" id="btnResetArea" data-type="remove" >清除</button>
+	                        <button type="button" class="button_a cancelbtn" id="btnCancelArea" data-type="cancel">取消</button>
+	                    </form>
+                    </div>              
+            	</td>
+        	</tr>
+            <tr class="last">
+                <th>福利亮点</th>
+                <td>
+                    <div class="one_sort">  
+                        <div class="actions">
+                        	<a class="mutil" href="javascript:">多选<i class="hbFntWes">&#xf067;</i></a>
+                        </div>
+                        <ul>
+                            <li class="first">
+                            	<a class="link {/if empty($allReward['isSubSelect'])/}dft_checked cur{//if/}" href="{/$allReward['url']/}">不限</a>
+                            </li>
+                            {/foreach $allReward['rewards'] as $value/}
+                           	 <li>
+                            	<a class="link {/if !empty($value['isSelect'])/}dft_checked cur{//if/}" href="{/$value['url']/}" data-value="{/$value['reward_id']/}">{/$value['reward_name']/}</a>
+                             </li>
+                            {//foreach/}
+                        </ul>
+                    </div>                    
+                    <div class="actions-oper">
+	                    <form action="{/$allReward['formUrl']['url']/}" method="get" id="frmReward">
+	                    	{/foreach $allReward['formUrl']['params'] as $key=>$value/}
+								<input type="hidden" name="{/$key/}" value="{/$value/}" />
+							{//foreach/}
+							<input type="hidden" name="v" id="hddReward" class="many-hidden" type-value="d">
+	                    	<button class="button_a button_a_red" id="btnSubmitReward" data-type="submit">确定</button>
+	                        <button type="button" class="button_a cancelbtn" id="btnCancelReward" data-type="cancel">取消</button>
+	                    </form>
+                    </div>
+            	</td>
+        	</tr>
+            <tr class="filter_bottom">
+            	<th>更多筛选</th>
+                <td>
+                	<div id="filter_group" class="filter_group">
+                    	<div class="filter_menu">
+                            <a class="sub_filter {/if !empty($allSalary['isSubSelect'])/}dft_checked cur{//if/}" href="javascript:">薪资范围<i class="hbFntWes n">&#xf107;</i><i class="hbFntWes c">&#xf106;</i><s class="hr"></s></a>
+                            <ul class="filter_options price_list">
+                                <li><a href="{/$allSalary['url']/}">不限</a></li>
+                                {/foreach $allSalary['salarys'] as $salary/}
+                                <li><a href="{/$salary['url']/}" {/if !empty($salary['isSelect'])/} class="dft_checked cur" {//if/}>{/$salary['salary_name']/}</a></li>
+                                {//foreach/}
+                                <li class="price_group">   
+                                <form action="{/$allSalary['formUrl']['url']/}" method="get" id="frmSalary">                            
+                                {/if !empty($allSalary['custom'])/}<input type="text" value="{/$selectSalary[0]/}" name="txtminSalary" />-<input type="text" value="{/$selectSalary[1]/}" name="txtmaxSalary"/>{/else/}<input type="text" name="txtminSalary"/>-<input type="text" name="txtmaxSalary" /> {//if/} 
+		                           <input name="params" type="hidden" />
+		                            {/foreach $allSalary['formUrl']['params'] as $key=>$value/}
+										<input type="hidden" name="{/$key/}" value="{/$value/}" />
+									{//foreach/}
+                                 	<input type="hidden" name="v" id="hddSalary"> 
+                                    <button class="button_a button_a_red" id="btnSubmitSalary">确定</button>
+                                 </form>   
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="filter_menu">
+                            <a class="sub_filter {/if !empty($comproperty['isSelect'])||!empty($comproperty['isSubSelect'])/}dft_checked cur{//if/}" href="javascript:">公司性质<i class="hbFntWes n">&#xf107;</i><i class="hbFntWes c">&#xf106;</i><s class="hr"></s></a>
+                            <div class="filter_options">
+                            
+                            	<div class="normal_list">
+                                    <a class="mutil" href="javascript:">多选<i class="hbFntWes">&#xf067;</i></a>
+                                    <a href="{/$comproperty['url']/}" class="hide">不限</a>
+                                    {/foreach $comproperty['properties'] as $value/}
+                                      <a href="{/$value['url']/}" {/if !empty($value['isSelect'])/}class="dft_checked cur"{//if/} data-value="{/$value['property_id']/}">{/$value['property_name']/}</a>
+                                    {//foreach/}
+                                </div>
+                                <div class="actions-oper">
+								  <form action="{/$comproperty['formUrl']['url']/}" method="get" id="frmComproperty">
+		                            {/foreach $comproperty['formUrl']['params'] as $key=>$value/}
+										<input type="hidden" name="{/$key/}" value="{/$value/}" />
+									{//foreach/}										  	
+									<input type="hidden" name="v" id="hddComproperty" class="many-hidden" type-value="g">  
+                                    <button class="button_a button_a_red" id="btnSubmitComproperty" data-type="submit" type="submit">确定</button>
+                                    <button class="button_a resetbtn" type="button" id="btnResetComproperty" data-type="remove">清除</button>
+                                    <button class="button_a cancelbtn" type="button" id="btnCancelComproperty" data-type="cancel">取消</button>
+                                  </form>
+                               </div>                            
+                            </div>
+                        </div>
+                        <div class="filter_menu">
+                            <a class="sub_filter {/if !empty($joblevel['isSubSelect'])/}dft_checked cur{//if/}" href="javascript:">岗位级别<i class="hbFntWes n">&#xf107;</i><i class="hbFntWes c">&#xf106;</i><s class="hr"></s></a>
+                            <div class="filter_options">
+                            
+                            	<div class="normal_list">
+                                    <a class="mutil" href="javascript:">多选<i class="hbFntWes">&#xf067;</i></a>
+                                    <a class="{/if !empty($joblevel['isSelect'])/}dft_checked cur{//if/} hide" href="{/$joblevel['url']/}">不限</a>
+                                    {/foreach $joblevel['joblevels'] as $value/}
+                                    <a href="{/$value['url']/}" {/if !empty($value['isSelect'])/} class="dft_checked cur" {//if/} data-value="{/$value['level_id']/}">{/$value['level_name']/}</a>
+  									{//foreach/}
+                                </div>
+                                <div class="actions-oper">
+						            <form action="{/$joblevel['formUrl']['url']/}" method="get" id="frmJoblevel">
+			                            {/foreach $joblevel['formUrl']['params'] as $key=>$value/}
+											<input type="hidden" name="{/$key/}" value="{/$value/}" />
+										{//foreach/}	
+										<input type="hidden" name="v" id="hddJoblevel" class="many-hidden" type-value="f">                      
+	                                    <button class="button_a button_a_red" id="btnSubmitJoblevel" data-type="submit" type="submit">确定</button>
+	                                    <button class="button_a resetbtn" type="button" id="btnResetJoblevel" data-type="remove">清除</button>
+	                                    <button class="button_a cancelbtn" type="button" id="btnCancelJoblevel" data-type="cancel">取消</button>
+	                                </form> 
+                                </div>
+                            
+                            </div>
+                        </div>
+                        <div class="filter_menu">
+                            <a class="sub_filter {/if !empty($comsize['isSubSelect'])/}dft_checked cur{//if/}" href="javascript:">公司规模<i class="hbFntWes n">&#xf107;</i><i class="hbFntWes c">&#xf106;</i><s class="hr"></s></a>
+                            <div class="filter_options">
+                            
+                            	<div class="normal_list">
+                                    <a class="mutil" href="javascript:">多选<i class="hbFntWes">&#xf067;</i></a>
+                                    <a class="{/if !empty($comsize['isSelect'])/}dft_checked cur{//if/} hide"  href="{/$comsize['url']/}">不限</a>
+                                    {/foreach $comsize['comsizes'] as $value/}
+                                    	<a {/if !empty($value['isSelect'])/} class="dft_checked cur" {//if/}   href="{/$value['url']/}" data-value="{/$value['size_id']/}">{/$value['size_name']/}</a>
+									{//foreach/}	
+                                </div> 
+                                <div class="actions-oper">
+									  <form action="{/$comsize['formUrl']['url']/}" method="get" id="frmComsize">
+			                            {/foreach $comsize['formUrl']['params'] as $key=>$value/}
+											<input type="hidden" name="{/$key/}" value="{/$value/}" />
+										{//foreach/}										  	
+										<input type="hidden" name="v" id="hddComsize" class="many-hidden" type-value="h">
+	                                    <button class="button_a button_a_red" id="btnSubmitComsize" data-type="submit" type="submit">确定</button>
+	                                    <button class="button_a resetbtn" type="button" id="btnResetComsize" data-type="remove">清除</button>
+	                                    <button class="button_a cancelbtn" type="button" id="btnCancelComsize" data-type="cancel">取消</button>
+	                                 </form>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="filter_menu">
+                            <a class="sub_filter  {/if !empty($degree['isSubSelect'])/}dft_checked cur{//if/}" href="javascript:">学历要求<i class="hbFntWes n">&#xf107;</i><i class="hbFntWes c">&#xf106;</i><s class="hr"></s></a>
+                            <div class="filter_options">
+                            	<div class="normal_list">
+                                    <a class="mutil" href="javascript:">多选<i class="hbFntWes">&#xf067;</i></a>
+                                    <a class="{/if !empty($degree['isSelect'])/}dft_checked cur{//if/} hide" href="{/$degree['url']/}">不限</a>
+                                    {/foreach $degree['degrees'] as $value/}
+                                    <a {/if !empty($value['isSelect'])/} class="dft_checked cur" {//if/}   href="{/$value['url']/}" data-value="{/$value['degree_id']/}">{/$value['degree_name']/}</a>        
+                                    {//foreach/}   
+                                </div>                                
+                                <div class="actions-oper">
+									 <form action="{/$degree['formUrl']['url']/}" method="get" id="frmDegree">
+			                            {/foreach $degree['formUrl']['params'] as $key=>$value/}
+											<input type="hidden" name="{/$key/}" value="{/$value/}" />
+										{//foreach/}										 	
+										<input type="hidden" name="v" id="hddDegree" class="many-hidden" type-value="i">                                      
+	                                    <button class="button_a button_a_red" id="btnSubmitDegree" data-type="submit" type="submit">确定</button>
+	                                    <button class="button_a resetbtn" type="button" id="btnResetDegree" data-type="remove">清除</button>
+	                                    <button class="button_a cancelbtn" type="button" id="btnCancelDegree" data-type="cancel">取消</button>
+	                                 </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter_menu">
+                            <a class="sub_filter  {/if !empty($workyear['isSubSelect'])/}dft_checked cur{//if/}" href="javascript:">工作经验<i class="hbFntWes n">&#xf107;</i><i class="hbFntWes c">&#xf106;</i><s class="hr"></s></a>
+                            <div class="filter_options filter_options_right">
+                            	<div class="normal_list">
+                                    <a class="mutil" href="javascript:">多选<i class="hbFntWes">&#xf067;</i></a>
+                                    <a class="{/if !empty($workyear['isSelect'])/}dft_checked cur{//if/} hide" href="{/$workyear['url']/}">不限</a>
+                                    {/foreach $workyear['workyears'] as $value/}
+                                    	<a {/if !empty($value['isSelect'])/} class="dft_checked cur" {//if/}   href="{/$value['url']/}" data-value="{/$value['workyear_id']/}">{/$value['workyear_name']/}</a>
+                                    {//foreach/}
+                                </div>                                
+                                <div class="actions-oper">
+									<form action="{/$workyear['formUrl']['url']/}" method="get" id="frmWorkyear">
+			                            {/foreach $workyear['formUrl']['params'] as $key=>$value/}
+											<input type="hidden" name="{/$key/}" value="{/$value/}" />
+										{//foreach/}	
+										<input type="hidden" name="workyearid">
+										<input type="hidden" name="v" id="hddWorkyear" class="many-hidden" type-value="j">                         
+	                                    <button class="button_a button_a_red" id="btnSubmitWorkyear" data-type="submit" type="submit">确定</button>
+	                                    <button class="button_a resetbtn" type="button" id="btnResetWorkyear" data-type="remove">清除</button>
+	                                    <button class="button_a cancelbtn" type="button" id="btnCancelWorkyear" data-type="cancel">取消</button>
+	                                </form>
+                             	</div>                            
+                            </div>
+                        </div>
+                        <div class="filter_menu">
+                            <a class="sub_filter  {/if !empty($jobtype['isSubSelect'])/}dft_checked cur{//if/}" href="javascript:">工作类型<i class="hbFntWes n">&#xf107;</i><i class="hbFntWes c">&#xf106;</i><s class="hr"></s></a>
+                            <div class="filter_options filter_options_right">
+                            	<div class="normal_list">
+                                    <a class="mutil" href="javascript:">多选<i class="hbFntWes">&#xf067;</i></a>
+                                    <a class="{/if !empty($jobtype['isSelect'])/}dft_checked cur{//if/} hide"  href="{/$jobtype['url']/}">不限</a>
+                                    {/foreach $jobtype['jobtypes'] as $value/}
+                                    <a {/if !empty($value['isSelect'])/} class="dft_checked cur" {//if/}   href="{/$value['url']/}" data-value="{/$value['jobtype_id']/}">{/$value['jobtype_name']/}</a>
+                                    {//foreach/}
+                                </div>                                
+                                <div class="actions-oper">
+									<form action="{/$jobtype['formUrl']['url']/}" method="get" id="frmJobtype">
+			                            {/foreach $jobtype['formUrl']['params'] as $key=>$value/}
+											<input type="hidden" name="{/$key/}" value="{/$value/}" />
+										{//foreach/}	
+										<input type="hidden" name="v" id="hddJobtype" class="many-hidden" type-value="k">                                        
+	                                    <button class="button_a button_a_red" id="btnSubmitJobtype" data-type="submit" type="submit">确定</button>
+	                                    <button class="button_a resetbtn" type="button" id="btnResetJobtype" data-type="remove">清除</button>
+	                                    <button class="button_a cancelbtn" type="button" id="btnCancelJobtype" data-type="cancel">取消</button>
+	                                </form>    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter_menu">
+                            <a class="sub_filter {/if !empty($issuetime['isSubSelect'])/}dft_checked cur{//if/}" href="javascript:">刷新时间<i class="hbFntWes n">&#xf107;</i><i class="hbFntWes c">&#xf106;</i><s class="hr"></s></a>
+                            <ul class="filter_options price_list filter_options_right">
+                                {/foreach $issuetime['issuetimes'] as $value/}
+                                <li><a {/if !empty($value['isSelect'])/} class="dft_checked cur" {//if/}   href="{/$value['url']/}">{/$value['issuetime_name']/}</a></li>
+                                {//foreach/}   
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+    	</table>
+    </div>
+
+    <!-- 职位搜索结果部分 -->
+    <div class="job_list_container mgb10">
+        <div class="postSearchBg">
+
+            <!-- 搜索结果左半部分 -->
+            <div class="postSearchLeft">
+
+                <!-- 结果tab页 -->
+                <div class="postSchList">
+                    <div class="zList">
+                        {/foreach $jobsearchsort['sorts'] as $value/}          
+                        <a href="{/$value['url']/}" class="{/if !empty($value['isSelect'])/}cut{//if/}">{/$value['sort_name']/}{/if $value['sort_name'] == "人气热度"/}<em class="icons7_new" style="vertical-align: 5px; margin-left:2px;"></em>{//if/}</a>
+                        {//foreach/}
+                    </div>
+                    <a data-urgent-src="{/$urgent_url/}" data-src="{/$no_urgent_url/}" class="zwPost" href="javascript:void(0)" id="urgentSelect">
+                        <i class="{/if $urgent_select/}cut{//if/}"></i>
+                        <img src="{/$siteurl.style/}/img/company/jobimg.png" width="9" height="16" />
+                        <span>急聘职位</span>
+                    </a>
+                </div>
+
+                <!-- 搜索结果 -->
+                <div class="postIntroBg" id="job_list_main">
+                    <!--没有查找到职位时-->
+                    {/if $total_found <=0 && count($toplist)<=0/}
+                    <div class="noData mgb10">对不起，没有找到您想要查找的职位</div>
+                    {/else/}
+                    <div id="job_list_table">
+
+                        <!-- 置顶职位 -->
+                        {/foreach $toplist as $_value/}
+                        <div class="postIntro postItoStick">
+                            <dl>
+                                <dt>
+                                    <em></em>
+                                </dt>
+                                <dd>
+                                    <p class="subIntrox subIntrom">
+                                        <a href="{/$_value['company_url']/}" target="_blank" style="cursor:pointer" class="tit" title="{/$_value['company_name']/}">{/base_lib_BaseUtils::cutstr($_value['company_name'], 25, 'utf-8', '', '...')/}</a>
+                                        {/if $_value['is_famous']/}<i class="icons15_famous" title="名优企业"></i>{//if/}
+                                        <span style="text-overflow: ellipsis;">{/if (!empty($_value['company_bright_spot']))/} ~ {//if/}{/$_value['company_bright_spot']/}</span>
+                                         {/if $_value['recruit_type'] == '2' || $_value['recruit_type'] == '3' || $_value['recruit_type'] == '4'/}<em>{/$_value['recruit_type_name']/}</em>{//if/}
+                                    </p>
+                                </dd>
+                            </dl>
+                            <div class="postIntroList">
+                                <!--职位列表页显示-->
+                                {/foreach (array)$_value['data'] as $key => $value/}
+                                <div class="postIntroL {/if $key + 1 == count($_value['data'])/}postIntroLast{//if/}">
+                                    <div class="postIntroLx">
+                                        <div class="postIntroLxIcon">
+                                            {/if $value['is_new']/}<em class="icons7_new" title="最近发布"></em>{//if/}
+                                        </div>
+                                        <label class="pos check-default ptCheck" data-value="{/$value['job_flag']/}" data-name="pos"></label>
+                                        <div class="des_name">
+                                        	<a target="_blank" href="{/$value['job_link']/}" class="des_title">
+                                                {/if $value['is_urgent'] && $value['station_type']/}{/base_lib_BaseUtils::cutstr($value['station'], 8,'utf-8','','...')/}{/$value['station_type']/}<i class="urgentIcon">急聘</i>
+                                                {/else if $value['is_urgent']/}{/base_lib_BaseUtils::cutstr($value['station'], 10,'utf-8','','...')/}<i class="urgentIcon">急聘</i>
+                                                {/else if $value['station_type']/}{/base_lib_BaseUtils::cutstr($value['station'], 10,'utf-8','','...')/}{/$value['station_type']/}
+                                                {/else/}{/base_lib_BaseUtils::cutstr($value['station'], 12,'utf-8','','...')/}
+                                                {//if/}
+                                            </a>
+                                        </div>
+                                        {/if $value.salary_type == 1/}
+                                        <div class="ax_pushR" style="display:none">
+                                            <span>平均收入（底薪+提成）：
+                                                {/if $value.min_salary == $value.max_salary/}
+                                                    {/$value.min_salary/}
+                                                {/else/}
+                                                    {/$value.min_salary/}-{/$value.max_salary/}
+                                                {//if/} &nbsp;底薪：{/if $value.base_min_salary == $value.base_max_salary/}
+                                                    {/$value.base_min_salary/}
+                                                {/else/}
+                                                    {/$value.base_min_salary/}~{/$value.base_max_salary/}
+                                                {//if/}
+                                            </span>
+                                            <i></i>
+                                        </div>
+                                        {//if/}
+                                        <p>
+                                            <span>{/$value['work_area']/}</span>
+                                            <b>|</b>
+                                            <span class='ax_pushL'>
+                                                <i>月薪：</i>
+                                                {/if $value.min_salary == $value.max_salary/}
+                                                    {/$value.min_salary/}
+                                                {/else/}
+                                                    {/$value.min_salary/}-{/$value.max_salary/}
+                                                {//if/}
+                                                {/if $value.salary_type ==1/}
+                                                    ({/if $value.base_min_salary == $value.base_max_salary/}
+                                                        {/$value.base_min_salary/}
+                                                    {/else/}
+                                                        {/$value.base_min_salary/}~{/$value.base_max_salary/}
+                                                    {//if/})
+                                                {//if/}
+                                            </span>
+                                            <b>|</b>
+                                            <span><i>经验：</i>{/$value['work_year']/}</span>
+                                            <b>|</b>
+                                            <span><i>学历：</i>{/if (empty($value['degree_id']))/}不限{/else/}{/get_name degree=$value['degree_id']/}{//if/}</span>
+                                        </p>
+                                    </div>
+                                    <div style="clear:both"></div>
+                                </div>
+                                <!--职位浮层显示-->
+                                <div class="pos_overlay job-pop">
+                                    <div class="job-tit">
+                                        <p class="right" style="margin-top: 7px">
+                                            <a class="btn5 btnsF12 btnApply"  data-value="{/$value['job_flag']/}" href="javascript:void(0)">投递职位</a>
+                                            <a class="btn3 btnsF12" target="_blank" href="{/$value['job_link']/}">查看详情</a>
+                                        </p>
+                                        <span class="f14c9">{/if $words!='' && $searchtype=='company'/}{/searchhighlight key="{/$words/}" content="{/$value['company_name']/}"/}{/else/}{/$value['company_name']/}{//if/}</span>
+                                        <h3 class="name">{/if $words!='' && $searchtype=='job'/}{/searchhighlight key="{/$words/}" content="{/$value["station"]/}"/}{/else/}{/$value['station']/}{//if/}<span>{/$value['station_type']/}</span></h3>
+                                    </div>
+                                    <div class="clearfix job-detail">
+                                        <ul class="one">
+                                            <li>
+                                                <label>薪资待遇：</label>
+                                                <span class='red'>
+                                                    {/if $value.min_salary == $value.max_salary/}
+                                                        ￥{/$value.min_salary/}
+                                                    {/else/}
+                                                        ￥{/$value.min_salary/}-{/$value.max_salary/}
+                                                    {//if/}   
+                                                </span>
+                                                {/if $value.salary_type ==1/}
+                                                <span style="font-weight:normal; color:#999;">
+                                                    （底薪：{/if $value.base_min_salary == $value.base_max_salary/}{/$value.base_min_salary/}{/else/}{/$value.base_min_salary/}-{/$value.base_max_salary/}{//if/}元/月+提成）
+                                                </span>
+                                                {//if/}
+                                            </li>
+                                            <li>
+                                                <label>工作地点：</label>
+                                                {/$value['work_area']/}
+                                            </li>
+                                            <li>
+                                                <label>工作经验：</label>
+                                                {/$value['work_year']/}{/if $value['allow_graduate']!=''&&$value['allow_graduate']=='1'/}（可接受应届生）{//if/}
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <label>职位类别：</label>
+                                                {/if count($value['jobsort_ids'])>0/}
+                                                    {/foreach $value['jobsort_ids'] as $key_jobsort=>$value_jobsort/}
+                                                        {/if $value_jobsort@last/}
+                                                            {/if $words!='' && $searchtype=='job'/}{/searchhighlight key="{/$words/}" content="{/{/get_name jobsort=$value_jobsort/}/}"/}{/else/}{/get_name jobsort=$value_jobsort/}{//if/}
+                                                        {/else/}
+                                                            {/if $words!='' && $searchtype=='job'/}
+                                                                {/searchhighlight key="{/$words/}" content="{/{/get_name jobsort=$value_jobsort/}/}"/}
+                                                            {/else/}
+                                                                {/get_name jobsort=$value_jobsort/}
+                                                            {//if/}；
+                                                        {//if/}
+                                                    {//foreach/}
+                                                {//if/}
+                                            </li>
+                                            <li>
+                                                <label>所属行业：</label>
+                                                {/if count($value['calling_ids'])>0/}
+                                                    {/foreach $value['calling_ids'] as $key_calling=>$value_calling/}
+                                                        {/if $value_calling@last/}
+                                                            {/get_name calling=$value_calling/}
+                                                        {/else/}
+                                                            {/get_name calling=$value_calling/}；
+                                                        {//if/}
+                                                    {//foreach/}
+                                                {//if/}
+                                            </li>
+                                            <li>
+                                                <label>学历要求：</label>
+                                                {/if $value['degree_id']!=''&&$value['degree_id']!=0/}{/get_name degree=$value['degree_id']/}{/else/}不限{//if/}
+                                            </li>
+                                            <li>
+                                                <label>年龄要求：</label>
+                                                {/$value['age_sex']/}
+                                            </li>
+                                            <li>
+                                                <label>招聘人数：</label>
+                                                {/if $value['quantity']==''||$value['quantity']=='0'/}若干{/else/}{/$value['quantity']/}人{//if/}
+                                            </li>
+                                        </ul>
+                                    </div> 
+                                    {/if (!empty($value['job_rewards']))/}
+                                    <p class="job-welf">
+                                        {/foreach $value['job_rewards'] as $reward/}
+                                        <span>{/$reward/}</span>
+                                        {//foreach/}
+                                    </p>
+                                    {//if/}                                             
+                                    <strong class="job-detTit">岗位职责：</strong>    
+                                    <div class="job-detList">
+                                        {/html_encode content=$value['content']/}                                       
+                                    </div>
+                                    {/if !empty($value['other_need'])/}
+                                    <strong class="job-detTit">任职资格：</strong>    
+                                    <div class="job-detList">
+                                         {/html_encode content=$value['other_need']/}                               
+                                    </div>
+                                    {//if/}
+                                </div>
+                                {//foreach/}
+                            </div>
+                        </div>
+                        {//foreach/}
+
+                        <!-- 无完全匹配结果提示 -->
+                        {/if $no_full_match/}
+                        <div class="prompt_orange mgb10">对不起，没有找到“{/$keyword/}”的职位信息，我们找到了“
+                            {/foreach (array)$words_list as $key => $word/}
+                            {/if $key > 0/}，{//if/}
+                            <a href="{/$word['url']/}">{/$word['name']/}</a>
+                            {//foreach/}
+                            ”相关的职位信息
+                        </div>
+                        {//if/}
+
+                        <!-- 职位搜索结果列表 -->
+                        {/foreach $job_arr as $_key => $_value/}
+                        <!-- 完全匹配/部分匹配分隔 -->
+                        {/if $_key == $full_part && $full_part != ""/}
+                        <div class="prompt_orange mgb10">我们还为您找到了“
+                            {/foreach (array)$words_list as $key => $word/}
+                            {/if $key > 0/}，{//if/}
+                            <a href="{/$word['url']/}">{/$word['name']/}</a> 
+                            {//foreach/}
+                        ”的相关职位
+                        </div>
+                        {//if/}
+                        <!-- 公司搜索部分 -->
+                        <div class="postIntro">
+                            <dl>
+                                <dt>
+                                    <span>{/$_value['issue_time']/}</span>
+                                </dt>
+                                <dd>
+                                    <p class="subIntrox subIntrom">
+                                        <a href="{/$_value['company_url']/}" target="_blank" style="cursor:pointer" class="tit" title="{/$_value['company_name']/}">{/base_lib_BaseUtils::cutstr($_value['company_name'], 25, 'utf-8', '', '...')/}</a>
+                                        {/if $_value['is_famous']/}<i class="icons15_famous" title="名优企业"></i>{//if/}
+                                        <span style="text-overflow: ellipsis;">{/if (!empty($_value['company_bright_spot']))/} ~ {//if/}{/$_value['company_bright_spot']/}</span>
+                                        {/if $_value['recruit_type'] == '2' || $_value['recruit_type'] == '3' || $_value['recruit_type'] == '4'/}<em>{/$_value['recruit_type_name']/}</em>{//if/}
+                                    </p>
+                                </dd>
+                            </dl>
+
+                            <!-- 职位列表 -->
+                            <div class="postIntroList ">
+                                {/foreach (array)$_value['data'] as $key => $value/}
+                                <div class="postIntroL {/if $key > 2/}more hidden{//if/} {/if $key + 1 == count($_value['data'])/}postIntroLast{//if/}">
+                                    <div class="postIntroLx">
+                                        <div class="postIntroLxIcon">
+                                            {/if $value['is_new']/}<em class="icons7_new" title="最近发布"></em>{//if/}
+                                        </div>
+                                        <label class="pos check-default ptCheck" data-value="{/$value['job_flag']/}" data-name="pos"></label>
+                                        <div class="des_name">
+                                            <a target="_blank" href="{/$value['job_link']/}" class="des_title">
+                                                <span style="font-weight:bold">
+                                                {/if $value['is_urgent'] && $value['station_type']/}{/base_lib_BaseUtils::cutstr($value['station'], 8,'utf-8','','...')/}{/$value['station_type']/}<i class="urgentIcon">急聘</i>
+                                                {/else if $value['is_urgent']/}{/base_lib_BaseUtils::cutstr($value['station'], 10,'utf-8','','...')/}<i class="urgentIcon">急聘</i>
+                                                {/else if $value['station_type']/}{/base_lib_BaseUtils::cutstr($value['station'], 10,'utf-8','','...')/}{/$value['station_type']/}
+                                                {/else/}{/base_lib_BaseUtils::cutstr($value['station'], 12,'utf-8','','...')/}
+                                                {//if/}
+                                                </span>
+                                            </a>
+                                        </div>
+                                        {/if $value.salary_type ==1/}
+                                        <div class="ax_pushR" style="display:none">
+                                            <span>平均收入（底薪+提成）：
+                                                {/if $value.min_salary == $value.max_salary/}
+                                                    {/$value.min_salary/}
+                                                {/else/}
+                                                    {/$value.min_salary/}-{/$value.max_salary/}
+                                                {//if/} &nbsp;底薪：{/if $value.base_min_salary == $value.base_max_salary/}
+                                                    {/$value.base_min_salary/}
+                                                {/else/}
+                                                    {/$value.base_min_salary/}~{/$value.base_max_salary/}
+                                                {//if/}
+                                            </span>
+                                            <i></i>
+                                        </div>
+                                        {//if/}
+                                        <p>
+                                            <span>{/$value['work_area']/}</span>
+                                            <b>|</b>
+                                            <span class='ax_pushL'>
+                                                <i>月薪：</i>
+                                                {/if $value.min_salary == $value.max_salary/}
+                                                    {/$value.min_salary/}
+                                                {/else/}
+                                                    {/$value.min_salary/}-{/$value.max_salary/}
+                                                {//if/}
+                                                {/if $value.salary_type ==1/}
+                                                    ({/if $value.base_min_salary == $value.base_max_salary/}
+                                                        {/$value.base_min_salary/}
+                                                    {/else/}
+                                                        {/$value.base_min_salary/}~{/$value.base_max_salary/}
+                                                    {//if/})
+                                                {//if/}
+                                            </span>
+                                            <b>|</b>
+                                            <span><i>经验：</i>{/$value['work_year']/}</span>
+                                            <b>|</b>
+                                            <span><i>学历：</i>{/if (empty($value['degree_id']))/}不限{/else/}{/get_name degree=$value['degree_id']/}{//if/}</span>
+                                        </p>
+                                    </div>
+                                    <div style="clear:both"></div>
+                                </div>
+
+                                <!-- 职位列表浮层 -->
+                                <div class="pos_overlay job-pop">
+                                    <div class="job-tit">
+                                        <p class="right" style="margin-top: 7px">
+                                            <a class="btn5 btnsF12 btnApply"  data-value="{/$value['job_flag']/}" {/if !empty($value['auto_filter'])/}data-autofilter="true"{/else/}data-autofilter="false"{//if/} href="javascript:void(0)">投递职位</a>
+                                            <a class="btn3 btnsF12" target="_blank" href="{/$value['job_link']/}">查看详情</a>
+                                        </p>
+                                        <span class="f14c9">{/if $words!='' && $searchtype=='company'/}{/searchhighlight key="{/$words/}" content="{/$value['company_name']/}"/}{/else/}{/$_value['company_name']/}{//if/}</span>
+                                        <h3 class="name">{/if $words!='' && $searchtype=='job'/}{/searchhighlight key="{/$words/}" content="{/$value["station"]/}"/}{/else/}{/$value['station']/}{//if/}<span>{/$value['station_type']/}</span></h3>
+                                    </div>
+                                    <div class="clearfix job-detail">
+                                        <ul class="one">
+                                            <li>
+                                                <label>薪资待遇：</label>
+                                                {/if $value.salary_type ==1/}
+                                                <span style="ax_pushR" style="display:none">
+                                                    （底薪：{/if $value.base_min_salary == $value.base_max_salary/}{/$value.base_min_salary/}{/else/}{/$value.base_min_salary/}-{/$value.base_max_salary/}{//if/}元/月+提成）
+                                                </span>
+                                                {//if/}
+                                                <span class='ax_pushL' >
+                                                    {/if $value.min_salary == $value.max_salary/}
+                                                        ￥{/$value.min_salary/}
+                                                    {/else/}
+                                                        ￥{/$value.min_salary/}-{/$value.max_salary/}
+                                                    {//if/}
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <label>工作地点：</label>
+                                                {/$value['work_area']/}
+                                            </li>
+                                            <li>
+                                                <label>工作经验：</label>
+                                                {/$value['work_year']/}{/if $value['allow_graduate']!=''&&$value['allow_graduate']=='1'/}（可接受应届生）{//if/}
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <label>职位类别：</label>
+                                                {/if count($value['jobsort_ids'])>0/}
+                                                    {/foreach $value['jobsort_ids'] as $key_jobsort=>$value_jobsort/}
+                                                        {/if $value_jobsort@last/}
+                                                            {/if $words!='' && $searchtype=='job'/}{/searchhighlight key="{/$words/}" content="{/{/get_name jobsort=$value_jobsort/}/}"/}{/else/}{/get_name jobsort=$value_jobsort/}{//if/}
+                                                        {/else/}
+                                                            {/if $words!='' && $searchtype=='job'/}{/searchhighlight key="{/$words/}" content="{/{/get_name jobsort=$value_jobsort/}/}"/}{/else/}{/get_name jobsort=$value_jobsort/}{//if/}；
+                                                        {//if/}
+                                                    {//foreach/}
+                                                {//if/}
+                                            </li>
+                                            <li>
+                                                <label>所属行业：</label>
+                                                {/if count($value['calling_ids'])>0/}
+                                                    {/foreach $value['calling_ids'] as $key_calling=>$value_calling/}
+                                                        {/if $value_calling@last/}
+                                                            {/get_name calling=$value_calling/}
+                                                        {/else/}
+                                                            {/get_name calling=$value_calling/}；
+                                                        {//if/}
+                                                    {//foreach/}
+                                                {//if/}
+                                            </li>
+                                            <li>
+                                                <label>学历要求：</label>
+                                                {/if $value['degree_id']!=''&&$value['degree_id']!=0/}{/get_name degree=$value['degree_id']/}{/else/}不限{//if/}
+                                            </li>
+                                            <li>
+                                                <label>年龄要求：</label>
+                                                {/$value['age_sex']/}
+                                            </li>
+                                            <li>
+                                                <label>招聘人数：</label>
+                                                {/if $value['quantity']==''||$value['quantity']=='0'/}若干{/else/}{/$value['quantity']/}人{//if/}
+                                            </li>
+                                        </ul>
+                                    </div> 
+                                    {/if (!empty($value['job_rewards']))/}
+                                    <p class="job-welf">
+                                        {/foreach $value['job_rewards'] as $reward/}
+                                        <span>{/$reward/}</span>
+                                        {//foreach/}
+                                    </p>
+                                    {//if/}                                             
+                                    <strong class="job-detTit">岗位职责：</strong>    
+                                    <div class="job-detList">
+                                        {/html_encode content=$value['content']/}
+                                    </div>
+                                    {/if !empty($value['other_need'])/}
+                                    <strong class="job-detTit">任职资格：</strong>    
+                                    <div class="job-detList">
+                                         {/html_encode content=$value['other_need']/}
+                                    </div>
+                                    {//if/}
+                                </div>  
+                                {//foreach/}
+                            </div>
+                            {/if count($_value['data']) > 3/}
+                            <a href="javascript:void(0)" class="allResume">还有{/count($_value['data']) - 3/}条相关职位 ↓ </a>
+                            <a href="javascript:void(0)" class="allResume hide">收起相关职位 ↑ </a>
+                            {//if/}
+                        </div>
+                        {//foreach/}
+                    </div>
+                    {//if/}
+                </div>
+
+                <!-- 投递职位弹出层 -->
+                <div class="job_list_table">
+                    {/if $total_found>0/}
+                    <div class="batch-butn">
+                        <!--<a class="btn5 btnsF12" id="btnApplyJob" href="javascript:void(0)">批量投递职位（<span class="batch_num">0</span>）</a>--><a class="btn3 btnsF12" id="btnFavJob" href="javascript:void(0)">收藏</a>
+                    </div>
+                    {//if/}
+                    <div class="page">
+                        {/$pager/}
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧栏 -->
+            <div class="postSearchRight">
+                <div class="job_list_side">
+                     <div class="side_banner_list mgb10" id="jobsearchAdvert">
+                      <!-- <p class="mgb5"><a href="#"><img src="{/$siteurl.style/}/img/v2/temp/2.jpg" alt="" /></a></p> -->
+                    </div> 
+                    <div class="side_msg_list mgb10 hide" id="job_famous">
+                        <div class="title">
+                            <h4>这些公司正在招</h4>
+                        </div>
+                        <dl class="job-fam-arrs modal hide">
+                            <dt><img src="{/$siteurl.style/}/img/company/jobimgt.png" class="icon" width="48" height="48"/></dt>
+                            <dd>
+                                <a href="javascript:void(0)" target="_blank" class="com-name">公司名称</a>
+                                <a href="javascript:void(0)" class="station" target="_blank">职位名称</a>
+                                <p><em class="salary">1000-6000</em></p>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="side_msg_list mgb10" id="job_recommend">
+                        <div class="title">
+                            <h4>智能推荐</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+
+    <!--底部-->
+    <div class="job_img_list mgb10">
+    	<div class="title">
+        	<h3>{/$recommendtitle/}</h3>
+        </div>
+        <div class="cont">
+        <table style="width:auto">
+        	<tr id="company_recommend">
+            </tr>
+        </table>
+        </div>
+    </div>
+    <div class="job_sort_list">
+    	<div class="header">
+        	{/$description/}
+        </div>
+        {/if count($correlationJobs)>0/}	
+        <dl>
+        	<dt>相关职位招聘：</dt>
+            <dd>
+            	{/foreach $correlationJobs as $correlationJob/}
+            	<a href="{/$correlationJob['url']/}">重庆{/$correlationJob['station']/}招聘</a>
+            	{//foreach/}
+            </dd>
+        </dl>
+        {//if/}
+        <dl>
+        	<dt style="width:98px">周边地区招聘：</dt>
+            <dd>
+            	{/foreach $nearAreas as $neararea/}
+            	<a href="{/$neararea['url']/}">{/$neararea['area_name']/}{/$neararea['keyword']/}招聘</a>
+            	{//foreach/}
+            </dd>
+        </dl>
+        <dl>
+            <dt style="width:98px">招聘频道：</dt>
+            <dd>
+                {/foreach $channelAreas as $area/}
+                <a href="{/$area['url']/}">{/$area['area_name']/}招聘{/if $area['type']==2/}网{//if/}</a>
+                {//foreach/}
+            </dd>
+        </dl>
+        <dl>
+        	<dt style="width:98px">热门招聘：</dt>
+            <dd>
+                <a target="_blank" href="/xiaoshou/">销售招聘</a>
+                <a target="_blank" href="/kehufuwu/">客户服务招聘</a>
+                <a target="_blank" href="/kuaiji/">会计招聘</a>
+                <a target="_blank" href="/chuna/">出纳招聘</a>
+                <a target="_blank" href="/xingzheng/">行政招聘</a>
+                <a target="_blank" href="/caigou/">采购招聘</a>
+                <a target="_blank" href="/pingmiansheji/">平面设计招聘</a>
+                <a target="_blank" href="/zhiyeguwen/">置业顾问招聘</a>
+                <a target="_blank" href="/shichang/">市场招聘</a>
+                <a target="_blank" href="/qiantai/">前台招聘</a>
+                <a target="_blank" href="/wenyuan/">文员招聘</a>
+                <a target="_blank" href="/renliziyuan/">人力资源招聘</a>
+                <a target="_blank" href="/ruanjiankaifa/">软件开发招聘</a>
+                <a target="_blank" href="/cehua/">策划招聘</a>
+                <a target="_blank" href="/dianhuayingxiao/">电话营销招聘</a>
+                <a target="_blank" href="/jishuzhichi/">技术支持招聘</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt style="width:98px">热门搜索：</dt>
+            <dd>
+                <a target="_blank" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiuzhi/">招聘</a>
+                <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/jianzhi/">兼职</a>
+                <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiuzhi/">求职</a>
+                <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiuzhi/">找工作</a>
+                <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}">人才网</a>
+                <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}">招聘会</a>
+                <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}">重庆招聘</a>
+                <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/jianzhi/">重庆兼职</a>
+                <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}">重庆求职</a>
+                <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiuzhi/">重庆找工作</a>
+                <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}">重庆人才网</a>
+                <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/shuangxuan/">校园双选会</a>
+                <!-- <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopinhui/">重庆招聘会</a> -->
+                <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiuzhi/">重庆最新招聘信息</a>
+            </dd>
+        </dl>
+    </div>
+</div>
+{//if/}
+<div id="scrollFun" class="scrollFun">
+     <div class="scrollFunBox">
+         <div class="conR">
+             <span class="decPic"><img src="{/$siteurl.style/}/img/job/liantu.png"></span>
+             <span class="decTxt">扫一扫，下载汇博手机版<br>随时看，随时投</span>	
+         </div>
+         <div class="conL">
+             <!--<a id="btnApply1" href="javascript:void(0)" class="btn5 btnsF16">批量投递职位（<font class="batch_num">0</font>）</a>-->
+             <a id="btnFav" href="javascript:void(0)" class="btn3 btnsF16">收藏</a>
+         </div>
+     </div>
+     <div class="scrollFunBg"></div>
+</div>
+{/if count($links->items) > 0/}
+<section class="pageBot">
+    <div class="pageBotCon">
+        <div class="frdLink" style=" height: auto;">
+            <b style="font-weight: bolder;">友情链接:</b>
+            <div id="linkScroller" class="linkScroller" style="overflow: visible;">
+                <ul>
+                      {/foreach from=$links->items item=link/}
+                       <li><a style="color:#999" target="_blank" href="{/$link["url"]/}">{/$link["site_name"]/}</a></li>
+                {//foreach/}
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+   </div>
+</section>
+{//if/}
+<!--问题反馈-->
+<div class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></div>
+{/include file="footersearch.html"/}
+
+<script type="text/javascript">	
+	
+	hbjs.use('@hbCommon, @jobsort2, @jobSortActions', function(m){
+		
+		var $ = m['cqjob.jobsort2'];
+		
+		$('.x_push').hover(function(){
+			$(this).prev().toggle();								
+		});
+		$('.ax_push').hover(function(){
+			$(this).prev().toggle();								
+		});
+		$('.ax_pushL').hover(function(){
+			$(this).parent().prevAll(".ax_pushR").toggle();								
+		});
+		
+		$('.postIntroList .postIntroL').hover(function(){
+			$(this).toggleClass('postIntroLcut');                           
+		});
+		
+		$('#mutil_select_group').jobsort({target:"#mutil_select_group",type:"multiple",max:5,hddName:'hidJobsort',isLimit:true});
+		{/if isset($selectJobsortids)/}
+			$('#mutil_select_group').setJobSortValue('{/implode(',',$selectJobsortids)/}');
+		{//if/}
+		$('#btnSubmitJobsort').click(function(){
+			var $jobsort = $('#mutil_select_group').find('input[name="hidJobsort"]').val();
+			if($jobsort){
+				$('#hddJobsort').val('a'+ $jobsort.replace(/,/g,'_'));
+			}
+			$('#frmJobsort').get(0).submit();	
+			});
+			$("#btnSubmitSalary").click(function(){
+			var frm = $("#frmSalary"),
+				txt1 = frm.find("[name='txtminSalary']"),
+				txt2 = frm.find("[name='txtmaxSalary']");
+				
+			frm.find("[name='params']").val('e'+txt1.val()+"_"+txt2.val());
+			txt1.remove();txt2.remove();
+			frm.submit();
+			return false;
+		});
+		// 搜索广告
+		$.getJSON('{/get_url rule="/jobsearch/GetSearchAdvert/" data="keyword=$advertKeyword"/}',function(result){
+			var arr = [];
+			if(result.data) {
+				$.each(result.data,function(i,n){
+				   arr.push('<p class="mgb5"><a href="'+n.com_link+'" company_flag="'+n.company_flag+'" class="ad_jobsearch" advert_id="'+n.advert_id+'" area="img_jobsearch" target="_blank"><img src="'+n.img+'" title="'+n.subject+'" alt="'+n.subject+'" /></a></p>');
+				});
+			}
+			$('#jobsearchAdvert').append(arr.join(''));
+
+			//广告位跳转
+			$('#jobsearchAdvert').on('click', 'a', function(e){
+				var self = $(e.currentTarget);
+				var advert_id = self.attr('advert_id');
+				var area = self.attr('area');
+				var company_flag = self.attr('company_flag');
+				var data = {advert_id:advert_id,area:area,company_flag:company_flag};
+				$.post('{/get_url rule="/ad/adverVisit"/}',data);
+			});
+			
+			//临时加的手机APP推广广告
+			//$('#jobsearchAdvert').append('<p class="mgb5"><a target="_blank" href="/app/p/"><img style="height:300px" alt="手机APP推广广告" title="手机APP推广广告" src="{/$siteurl.style/}/img/adTemp/appAd.jpg"></a></p>');
+		});
+		//智能推荐
+		$.getJSON('{/get_url rule="/jobsearch/recomend/" data="keyword=$advertKeyword"/}',function(data){
+			var objcom = $('#company_recommend');
+			var objjob = $('#job_recommend');
+			var company = data.company_recommend_arr;
+			if(company){
+				var com_arr = [];
+				$.each(company,function(i,n){
+					com_arr.push('<td>'+
+					   '<a  href="'+n.company_url+'" target="_blank" class="img">'+                   
+					   '    <img src="'+n.company_logo+'" alt="'+n.company_name+'" /> '+          
+					   '</a>'+
+					   '<a  href="'+n.company_url+'" target="_blank" title="'+n.company_name+'" class="name">'+n.company_name+
+					   '</a>'+
+					   '</td>'
+					 );
+				});
+				objcom.append(com_arr.join(''));
+			}else{
+				objcom.remove();
+			}
+
+			var job = data.intelligent_recomment_arr;
+			if(job){
+				var job_arr = [],is_urgent;
+				$.each(job,function(i,n){
+					is_urgent = n.is_urgent?n.is_urgent:'';
+					job_arr.push('<dl>'+
+		                   	'<dt><a target="_blank" href="'+n.url+'" title="'+n.station+'">'+n.station+'</a></dt>'+
+		                    '<dd>'+
+		                    '	<div>'+is_urgent+
+		                    '       <a target="_blank" title="'+n.company_name+'" href="'+n.company_url+'">'+n.company_name+'</a>'+
+		                    '    </div>'+
+		                    '    <p>'+n.salary+' - '+n.area+'</p>'+
+		                    '</dd>'+
+		                '</dl>');
+				});
+				objjob.append(job_arr.join(''));
+			} else {
+				objjob.remove();
+			}
+		});
+
+        $.getJSON("{/$famoussearchurl/}", function(data) {
+            var objjob = $('#job_famous');
+            if (data.length > 0) {
+                $.each(data, function(i, n) {
+                    var $modal = $("#job_famous").find(".modal").clone();
+                    $modal.find(".com-name").text(n.company_name).attr("href", n.company_url);
+                    $modal.find(".station").text(n.station).attr("href", n.job_url).attr("title", n.station);
+                    $modal.find(".salary").text(n.min_salary + "-" + n.max_salary);
+                    if (n.logo_path) {
+                        $modal.find(".icon").attr("src", n.logo_path);
+                    }
+                    objjob.append($modal);
+                    $modal.removeClass("hide").removeClass("modal");
+                });
+                objjob.removeClass("hide");
+            }
+        });
+		
+		//xiaomi
+		/*mj beign*/
+		
+		//默认文字 搜索
+		$.extend($, m['product.hbCommon']);
+		$(".simple_search_bar").textDefault();
+		/*end*/	
+	});
+	
+	hbjs.use('@checkLogin, @verifier, @checkBoxer, @confirmBox, @form, @changeClass, @jobPostipGroup, @dialog', function(m){
+		
+		var $ = m['jquery'],
+			CheckBoxer = m['widge.checkBoxer'], //列表勾选
+			checkLogin = m['product.checkLogin'], //判断是否登录，是则弹出层
+			verifier = m['module.verifier'],
+			Dialog = m['widge.overlay.hbDialog'],
+			listBoxer = new CheckBoxer({
+				className : "ptCheckcut check-checked",
+				hoverClassName:"check-hover",
+				maxLength:1000,
+				element: $('#job_list_main').find('.pos')
+			}),
+			srlfun = $("#scrollFun");
+		//悬浮窗
+		m['tools.fixed'].pin(srlfun, 0, 0, false, true);
+		
+		//关注窗口
+		var dialog = m['widge.overlay.hbDialog'],
+			confirmBox = m['widge.overlay.confirmBox'],
+			follower = new dialog({
+				idName: 'follow_dialog',
+				title: '添加关注',
+				close: 'x',
+				isAjax: true,
+				initHeight: 100,
+				width: 480
+			});
+		
+		$('#followBtn').click(function(){
+			var islogin = checkLogin.isLogin('ajaxLoginCallback');
+                            checkLogin.dialog.resetSize(498);
+			if(islogin){
+				var val = $('#conditionStr').val();
+				if(!verifier.required($('#conditionStr'))){
+					confirmBox.timeBomb('搜索条件不能为空', {
+						name:'fail',
+						width: 200
+					});
+					return;
+				}
+				$.getJSON('/jobsearch/AddAttention?condition=' + val, function(e){
+					var pWidth = 70,
+						fontWidth = 18;
+					if(e.error){
+						confirmBox.timeBomb(e.error, {
+							name: 'fail',
+							width: pWidth + e.error.length * fontWidth
+						});
+					} else {
+						var url = '/jobsearch/AddAttentionSuccess?attention_name=' + encodeURIComponent(e.attention_name) + 
+									'&attention_id=' + e.attention_id;
+						follower.setContent(url).show()
+						.off('loadComplete').on('loadComplete', function(){
+							var attention_name = this.query('input[name=attention_name]'),
+								attention_id = this.query('input[name=attention_id]'),
+								self = this;
+							this.after('hide', function(){
+								this.query('#btnAttentYes').off('click');
+							});
+							this.query('#btnAttentClose').one('click', function(){
+								self.hide();
+							});
+							this.query('#btnAttentYes').on('click', function(){
+								if(verifier.range(attention_name, [1, 10])){
+									url = '/jobsearch/UpdateAttentionName?attention_name=' +
+											attention_name.val() + '&attention_id=' + 
+											attention_id.val();
+												
+									$.getJSON(url, function(e){
+										if(e.error){
+											confirmBox.timeBomb(e.error, {
+												name:'fail',
+												width: pWidth + e.error.length * fontWidth
+											});
+										} else {
+											confirmBox.timeBomb('保存成功', {
+												name:'success',
+												width: pWidth + 4 * fontWidth
+											});
+											self.hide();
+										}
+									});
+								} else {
+									confirmBox.timeBomb('关注名称应为1-10字符', {
+										name: 'fail',
+										width: 240
+									});
+								}
+							});
+						});
+					}
+				});
+			}
+		});
+		$('#shield').click(function(){
+			var islogin = checkLogin.isLogin('ajaxshield');
+			if(!islogin){
+				return false;
+			}
+		});		
+		//列表勾选
+		listBoxer.on('select', function(e){
+			var value = listBoxer.getValue(true)['pos'],
+				leth = value && value.length;
+			if(leth){
+				srlfun.show();
+			} else {
+				srlfun.hide();
+			}
+			$(".batch_num").html(leth);
+		});
+		
+		//职业预览层
+		new m['product.jobList.jobPostipGroup']({
+			container:$("#job_list_table, #firm_box"),
+			width:670
+		});
+		$('.hb_ui_jobPostip').eq(0).on('click', '.btnApply', function(){
+			var islogin = checkLogin.isLogin('ajaxLoginCallback');
+			if(islogin){
+				var OverplusApplycount={/if !empty($OverplusApplycount)/}{/$OverplusApplycount/};{/else/}0;{//if/};
+				var jobflag = $(this).attr('data-value');
+				var auto_filter=$(this).attr('data-autofilter');
+				if(jobflag.length){	
+					//已达投递上线限弹窗提示    
+			        if(OverplusApplycount==0){
+		               var dialog_limit = new Dialog({
+						idName: 'apply_limit',
+						title: '提示',
+						content: '{/get_url rule="/job/Applylimit/"/}'+'-v-'+Math.random(),
+						isOverflow: true,
+						close:'x',
+						isAjax : true
+						});
+		                dialog_limit.resetSize(360).show();
+						$(".apply_limit").on("click", "#btnCloseLimitMsg", function (e) {
+							dialog_limit.hide();
+						});
+		                return false;
+		            }
+
+			        //未达投递上限 显示投递弹窗
+					var dialog = new Dialog({
+						idName: 'apply_job',
+						title: '投个简历<label style="font-size:14px;color:#000000">&nbsp;&nbsp;(今日还可投递</label><label style="font-size:16px;color:red">'+OverplusApplycount+'</label><label style="font-size:14px;color:#000000">个职位)</label>',
+						content: '{/get_url rule="/apply/index/" data="jobflag='+jobflag+'&success=postSuccess"/}'+'-v-'+Math.random(),
+						isOverflow: true,
+						close:'x',
+						isAjax : true
+					});
+					dialog.resetSize(586).show();
+					$(".apply_job").find("input[type='radio'][class='radio'][id^='re']").removeAttr("checked");
+					$(".apply_job").find("input[type='radio'][class='radio'][id^='re']").eq(0).attr("checked","checked");
+					$(".apply_job").on("click", "input[type='radio'][class='radio'][id^='re']", function (e) {
+						$(".apply_job").find("input[type='radio'][class='radio'][id^='re']").removeAttr("checked");
+						$(this).attr("checked","checked");
+					});
+								
+					//checkLogin.dialog.setContent('{/get_url rule="/apply/index/" data="jobflag='+jobflag+'&success=postSuccess"/}').resetSize(542).show().off('loadComplete').on('loadComplete',function(){
+					//	this.oneCloseEvent('#btnApplyClose');
+					//});
+
+					//立即投递
+					$(".apply_job").on("click", "#btnApply", function(e) {
+						if(auto_filter=="false"){
+							//未开启职位自动过滤
+							$(".apply_job").find("#frmApply")[0].submit();
+		                	return false;
+						}else{
+							//已开启职位自动过滤
+							dialog.hide();
+							var sle_resumeId= $(".apply_job").find("input[type='radio'][class='radio'][name='resumeId'][checked]").val();
+							//投递职位信息匹配
+							$.ajax({
+								url:'{/get_url rule="/job/MatchingApplyResume"/}',
+								type:"post",
+							    data:'jobflag={/$jobflag/}&resume_id='+sle_resumeId,
+								dataType:"json",
+								success:function(json){
+					                if(json.status==false){
+						                //具有和投递职位不匹配信息进行弹窗提示
+						                var msg=json.msg;
+					                	var dialog2 =new Dialog({
+					    					idName: 'apply_mismatching',
+					    					title: '投递确认',
+					    					content: encodeURI('{/get_url rule="/job/ApplyMismatching/" data="msg='+msg+'"/}'+'-v-'+Math.random()),
+					    					isOverflow: true,
+					    					close:'x',
+					    					isAjax : true
+					    				});
+					    				dialog2.resetSize(400).show();
+
+					                    //确认投递
+					    				$(".apply_mismatching").on("click", "#btnvYes", function (e) {
+					    					$(".apply_job").find("#frmApply")[0].submit();
+					    				    return false;
+					    				});
+			                            //放弃投递
+					    				$(".apply_mismatching").on("click", "#btnvClose", function (e) {
+					    					dialog2.hide();
+					    				});
+					                }else{
+					                	$(".apply_job").find("#frmApply")[0].submit();
+					                	return false;
+						            }
+								}
+							});
+					    }	
+					});
+				}
+			}
+		});
+		
+		var posValue;
+		$('#btnApplyJob,#btnApply1').click(function(e){
+			var islogin = checkLogin.isLogin(); //判断登陆
+                         checkLogin.dialog.resetSize(498);
+			if(islogin){
+				var value = listBoxer.getValue(true)['pos'];
+				if(value && value.length){
+					checkLogin.dialog.setContent('/apply/index/jobflag-'+value.join(',')+'-success-postSuccess').resetSize(498).show().off('loadComplete').on('loadComplete',function(){
+						this.oneCloseEvent('#btnApplyClose');
+					});
+				}
+			}
+		});
+        
+		$('#btnFavJob,#btnFav').on('click', function(){
+			var islogin = checkLogin.isLogin('ajaxLoginCallback');	
+                         checkLogin.dialog.resetSize(498);
+			if(islogin){
+				var value = listBoxer.getValue(true)['pos'];
+				if(value && value.length){
+					$.getJSON('/job/favoriteJobs/jobflag-'+value.join(',')+'-success-favSuccess',function(data){
+						if(data.error){
+							confirmBox.timeBomb(data.error, 'fail');
+							return;
+						}
+						confirmBox.timeBomb(data.success, 'success');
+					});
+				}
+			}
+		});
+
+        $(".allResume").on("click", function () {
+            $(this).addClass("hide").siblings(".allResume").removeClass("hide");
+            $(this).closest(".postIntro").find(".more").toggleClass("hidden");
+        });
+
+        $('.zwPost').click(function(){
+            $('.zwPost i').toggleClass('cut');
+            if ($('.zwPost i').hasClass('cut'))
+                window.location.href = $(this).attr("data-urgent-src");
+            else
+                window.location.href = $(this).attr("data-src");                
+        });
+	});
+	
+	//左侧菜单
+	hbjs.use('@jobMenu', function(m){
+        
+        var url = '{/get_url domain="main"/}';
+		var job = new m['product.jobMenu']({
+			menuGroup: {
+			url: {
+				host: url.substring(0, url.length - 1),
+				path: 'jobsearch/',
+				param:{/if !empty($keyword)/}"key={/$keyword/}"{/else/}null{//if/},
+				alias: 'alias',
+				selectId: {/if isset($selectJobsortids)/}{/json_encode($selectJobsortids)/}{/else/}[]{//if/}}
+			}
+		});
+	});
+
+	function ajaxLoginCallback() {
+		window.location.href = window.location.href ; 
+	}
+	function ajaxshield(){
+		window.location.href = document.getElementById("shield").href; 
+	}
+
+</script>
+ 
+</body>
+
+</html>
+
+

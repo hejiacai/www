@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{/version file='base.css'/}"/>
+    <link rel="stylesheet" type="text/css" href="{/version file='spread.css'/}"/>
+    <link rel="stylesheet" type="text/css" href="{/version file='v2-widge.css'/}"/>
+    <style>
+        .register-alert{margin: 30px;}
+        .form-input{margin-top: 15px;}
+        .form-input input{height: 32px;line-height: 32px;border: 1px solid #e8e8e8;outline: none;}
+        .form-input label{ width: 90px;text-align: right;display: inline-block;}
+        .form-btn{margin-top: 25px;text-align: center;}
+        #sendMsgAlert{margin-left:10px;}
+        .form-btn a{border-radius: 4px;}
+    </style>
+</head>
+<body>
+
+<div class="register-alert">
+    <form action="" class="register-form">
+        <div class="form-input">
+            <label for="">公司名称：</label><input type="text" name="txtCompanyNameAlert" class="companyName" style="width: 210px;">
+        </div>
+        <div class="form-input">
+            <label for="">手机号：</label><input type="text" name="txtMobilePhoneAlert"  class="companyTel" style="width: 210px;">
+        </div>
+        <div class="form-input">
+            <label for="yzm">短信验证码：</label><input type="text" name="authCodeAlert" style="width: 113px;">
+            <a href="javascript:void(0);" class="authCodex senMsg doSend doSend1" id="sendMsgAlert">发送验证码</a>
+        </div>
+        <div class="form-btn">
+            <a href="javascript:void(0);" class="registerBtn" id="doregalert">立即注册</a>
+        </div>
+    </form>
+</div>
+<script>
+    $('.register-form').on('click','.doSend1',function () {
+        var txtMobilePhone = $('input[name=txtMobilePhoneAlert]').val();
+
+        if (!/^(?:13|15|18|14|17|19|16)[0-9]\d{8}$/.test(txtMobilePhone)) {
+            $.anchorMsg('请输入合法的手机号', {icon: 'fail'});
+            return 0;
+        }
+        var vali_code_count = $('#vali_code_count').val();
+        $.post('/company/IsBossForbid', {txtMobile: txtMobilePhone,siet:'register'}, function (e) {
+            if (e.is_forbid) {
+                $.message(e.msg, {title: '操作失败！'});
+                return 0;
+            } else {
+                $.showModal("{/get_url rule='/company/validate/'/}" + "txtMobile-" + txtMobilePhone + "-vali_code_count-" + vali_code_count, {title: '请输入验证码'});
+                return 0 ;
+            }
+        }, 'json')
+
+    })
+
+
+    var do_register = true;
+    $("#doregalert").click(function () {
+
+        var txtCompanyName = $('input[name=txtCompanyNameAlert]').val();
+        var txtMobilePhone = $('input[name=txtMobilePhoneAlert]').val();
+        var authCode = $('input[name=authCodeAlert]').val();
+        if (!/^[\u4e00-\u9fa50-9a-zA-Z]{6,20}$/.test(txtCompanyName)) {
+            $.anchorMsg('公司名称请输入6-20个字', {icon: 'fail'});
+            return 0;
+        }
+        if (!/^(?:13|15|18|14|17|19|16)[0-9]\d{8}$/.test(txtMobilePhone)) {
+            $.anchorMsg('请输入合法的手机号', {icon: 'fail'});
+            return 0;
+        }
+
+        if (!/^[0-9]{6}$/.test(authCode)) {
+            $.anchorMsg('请输入6位数字的验证码', {icon: 'fail'});
+            return 0;
+        }
+
+        if(do_register){
+            do_register = false;
+        }else{
+            console.log('is lock...waiting');
+            return 0;
+        }
+
+        $.post('/promotion/RegisterDO', {site:'{/$site_id/}',txtCompanyName: txtCompanyName, txtMobilePhone: txtMobilePhone, authCode: authCode},
+            function (e) {
+                do_register = true;
+                if (e.error) {
+                    $.anchorMsg(e.error, {icon: 'fail'});
+                    return 0;
+                }
+
+                $.anchorMsg('你的专属顾问正在赶来的路上,稍等片刻...', {title: "注册成功", icon: "success"});
+                setTimeout(function () {
+                    window.location.href = "{/$siteurl.main/}";
+                }, 3000)
+            }
+            , 'json')
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,690 @@
+<style type="text/css">
+.ui_company_dialog .iduatopBtnbg{margin:0 0 40px 0;}
+.dropImage{
+	width: 660px;height: 330px;background: #f1f1f1;overflow:hidden;margin-bottom:20px;
+}
+.iduaTionImgList:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.iduaTionImgList{zoom:1;}
+.iduaTionImgList li{
+	float:left;width:320px;padding:0 10px 20px;
+}
+.iduaTionImgList li p{
+	display:block;height:96px;overflow:hidden;
+}
+.iduaTionImgList .iduaTionLit{
+	height:30px;line-height:30px;border-top:1px #fff solid;
+	background:#f5f5f5;overflow:hidden;text-align:right;
+}
+.iduaTionImgList .iduaTionLit em{
+	float:left;height:16px;line-height:16px;color:#fff;
+	padding:0 8px;border-radius:8px;background:#ccc;font-size: 12px;
+	margin:7px 0 0 7px;font-family: Arial, Helvetica, sans-serif;
+}
+.iduaTionImgList .iduaTionLit a{
+	width: 50px;height: 30px;line-height: 30px;text-align: center;display:inline-block;
+	color: #3d84ba;font-size: 12px;font-family: "宋体";border-left: 1px solid #fefefe;
+}
+.iduaTionImgList .iduaTionLit .red{
+	color:#f36865
+}
+.iduaTionImgList .iduaTionLit a:hover{
+	background:#3e84ba;color:#fff;
+}
+.iduaTionImgList .iduaTionLit a.red:hover{
+	background:#f36865;color:#fff;
+}
+
+.notPopMaster{top:108px}
+.njmNameImg .njmNameXbox{
+	width:160px;
+    height:160px;
+	overflow:hidden;
+	position:relative;
+	display:table-cell;
+	text-align:center;
+	vertical-align:middle;
+}
+.njmNameImg .njmNameXbox p {
+	position:static;
+	+position:absolute;
+	top:50%
+}
+.njmNameMge{
+	width: 160px;
+	height: 160px;
+	overflow: hidden;
+}
+.njmNameImg .njmNameXbox p img{
+	position:static;
+	+position:relative;
+	top:-50%;left:-50%;
+	max-width:160px;
+  	max-height:160px;
+}
+.njmNameRt span em {
+    background: #f3971f none repeat scroll 0 0;
+    border-radius: 4px;
+    color: #fff;
+    display: inline-block;
+    font-family: "宋体";
+    font-size: 12px;
+    line-height: 24px;
+    margin-left: 5px;
+    padding: 0 8px;
+    vertical-align: middle;
+}
+.mentRateProMuil{width:158px; height:80px; background:url({/$siteurl.style/}/img/reversion/mentRate03.png) no-repeat; left:60%;top:373px;z-index: 8;}
+.mentRateProNull{top:73px;}
+.mentRatePro p,.mentRateProMuil p{width:134px; float:left;}
+.mentRatePro p.mentratMag,.mentRateProMuil p.mentratMag{ margin-left:4px;}
+.mentRateProMuil span{font-size: 14px;}
+#report_bf {
+	display: block;
+	float: left;
+	width: 130px;
+	height: 40px;
+	border: 1px solid #dbdbdb;
+	border-right: none;
+	color: #3d84b8;
+	line-height: 37px;
+	_line-height: 40px;
+	text-indent: 50px;
+}
+</style>
+<script type="text/javascript">
+	var bannerImgs = [];
+</script>
+{/if count($company_images) >0/}
+<div class="topMainBanner">
+	<div class="banner" id="banner">
+		<div class="lst flexslider2">
+            <ul class="slides">
+                {/foreach $company_images as $image/}
+                <li><img rel="{/if $image['image_from'] ==0/}{/$host/}/{/$VirtualName/}/{/$TemplateImageFolder/}/{/$company_id/}{/else/}{/$template_img_path/}{//if/}/{/$image['image_path']/}" src="{/if $image['image_from'] ==0/}{/$host/}/{/$VirtualName/}/{/$TemplateImageFolder/}/{/$company_id/}{/else/}{/$template_img_path/}{//if/}/{/$image['image_path']/}" /></li>
+                {//foreach/}
+            </ul>
+        </div>
+	</div>
+</div>
+<div style="box-shadow:0 0 6px #dbdbdb;width:1000px;height:auto; margin: 0 auto;overflow: visible" id="company-infor">
+{/else/}
+<div style="box-shadow:0 0 6px #dbdbdb;width:1000px;height:auto; margin: 20px auto;overflow: visible" id="company-infor">
+{//if/}
+<div class="njmName" style="overflow: visible">
+	{/if ($reversion_rate >= 80) && !($visit_person =='companyself' && $can_company_set)/}
+	     <div class="mentRatePro mentRateProMuil" style="top:-8px;left:70%"><!-- {/if count($company_images) == 0/}style="top:-8px;"{//if/}-->
+	        <b>{/$reversion_rate/}%</b>
+	        <span>两周内简历回复率</span>
+	     </div>
+	{//if/}
+    <div class="njmName01" style="margin:0;padding:25px 0 0 30px">
+        <div class="njmNameImg">
+        	<div class="njmNameMge">
+                <div class="njmNameXbox">
+                    <p><img src="{/$logo_path/}" /></p>
+                </div>
+            </div>
+        </div>
+        <div class="njmNameRt">
+           <p class="njmNametit1"><a>{/if !empty($company_shortname)/}{/$company_shortname/}{//if/}</a></p>
+           
+           <span>{/$company_name/}{/if $is_audit/}<img title="企业认证" style="margin-left:8px" src="{/$siteurl.style/}/img/job/newjob/newJob_10.png" width="15" height="18" />{//if/}
+           {/if $is_famous == 2/}
+               <em class="pxjg enterprises">&nbsp;</em>
+           {/else if $is_famous == 3/}
+               <em title="明星雇主" style="background: url({/$siteurl.style/}/img/www/star_company.jpg) no-repeat;width:79px;height: 24px;line-height: 24px;color:#c319ee;font-size: 14px;text-align: right;padding-right: 10px;display: inline-block;font-family: 'Microsoft YaHei', '微软雅黑'">明星雇主</em>
+               {/else if $is_famous == 1/}
+               <em title="优质企业" style="background: url({/$siteurl.style/}/img/m/new_person/qualityEnterprise.png ) no-repeat;width:79px;height: 24px;line-height: 24px;color:#c8984b;font-size: 14px;text-align: right;padding-left: 10px;padding-right: 10px;display: inline-block;font-family: 'Microsoft YaHei', '微软雅黑';background-size: 20px 18px;border:1px solid #c8984b;background-position: 8px 3px;border-radius: 12px; ">优质企业</em>
+               {//if/}
+           {/if $recruit_type == '2' || $recruit_type == '4' || $recruit_type == '6'/}<em>{/$recruit_type_name/}</em>{//if/}
+		   {/if $is_mainhr&&$hr_licence/}<img src="{/$siteurl.style/}/img/job/newjob/hr_gen.png" style="vertical-align: bottom; margin-right:1px;" />人力资源许可证{//if/}
+           </span>
+           <p class="njmNametit2"><img style="margin-right:8px;" src="{/$siteurl.style/}/img/job/newjob/newJob_58.png" width="11" height="10" /> {/if !empty($company_bright_spot)/}{/$company_bright_spot/}{/else/}公司主营业务以及行业地位暂未填写{//if/}<img style="margin-left:8px;" src="{/$siteurl.style/}/img/job/newjob/newJob_59.png" width="11" height="10" /></p>
+			{/if $recruit_type == '3'/}
+			<p class="desc" style="background: #fffdee none repeat scroll 0 0;border: 1px solid #feeeb2;color: #88530d;font-size: 12px;margin-bottom: 10px;padding: 8px 10px;">
+				<label style="border: 1px solid #f82800;border-radius: 3px;color: #f82800;display: inline-block;font-size:12px;margin-right: 3px;padding: 1px 3px;vertical-align: 2px;">假招聘转招生</label>
+				该企业存在假借招聘名义进行培训招生的行为，面试时可能会要求付费培训
+			</p>
+			{//if/}
+           {/if count($rewards)>0 || count($other_rewards)>0/}
+            <ul class="newtopLit" style="width:570px;">
+                {/if count($rewards)>0/}
+                    {/foreach $rewards as $reward/}
+                    	<li>{/$reward/}</li>
+                    {//foreach/}
+                {//if/}
+                {/if count($other_rewards)>0/}
+                    {/foreach $other_rewards as $reward/}
+                        <li>{/$reward/}</li>
+                    {//foreach/}
+                {//if/}
+            </ul>
+            {//if/}
+        </div>
+    </div>
+    {/if $visit_person =='other' || $visit_person =='person'/}
+    <div class="njmNameFcs" style="z-index: 9;width:130px;height: 84px">
+            <div class="nFcswin" style='display:none'>
+                <span>关注成功</span>
+            <img src="{/$siteurl.style/}/img/job/newjob/newJob_65.png" width="8" height="26" />
+            </div>
+        <!------关注成功用awareBtn------>
+        
+        {/if $can_attention/}
+        {/if $attentioncompany.attention_id != ""/}
+        <a id='liCance' href="javascript:;" class="awareBtn att" v='cancel'>已关注</a>
+        <a id='liAdd' href="javascript:;" class="njmNameBtn att" v='add' style="display:none">加关注</a>
+        {/else/}
+        <a id='liCance' href="javascript:;" class="awareBtn att" v='cancel' style="display:none">已关注</a>
+        <a id='liAdd' href="javascript:;" class="njmNameBtn att" v='add'>加关注</a>
+        {//if/}
+        {//if/}
+		<a href="javascript:;" id="report_bf"  style="border-top: 0px;color: #999" >举报</a>
+    </div>
+    {//if/}
+    {/if $visit_person =='companyself' && $can_company_set/}
+    <div class="dressUp">
+		<img src="{/$siteurl.style/}/img/job/newjob/newJob_78.png" width="171" height="40" />
+		<a id="designBtn" href="javascript:"></a>
+	</div>
+    {//if/}
+    <div class="clear"></div>
+</div>
+<script type="text/javascript">
+hbjs.use('@confirmBox, @imageEditor, @jobFlexSlider, @css3', function(m){
+	
+	var $ = m['cqjob.jobFlexSlider'],
+		Dialog = m['widge.overlay.hbDialog'],
+		ConfirmBox = m['widge.overlay.confirmBox'],
+		imageEditor = m['widge.imageEditor'],
+		imgLoader = new m['tools.imgLoader'](),
+		util = m['base.util'],
+		curIndex = 0,
+		loadImgs = {};
+		
+	/*
+	{/if $show_short_info/}
+		$("#show_short_info").click(function(){
+			$("#short_info").hide();
+			$("#info").show();
+		});
+	{//if/}*/
+	var flexslider = $('.flexslider2'),
+		sliderList = flexslider.find('li');
+		
+	flexslider.flexslider({
+	    animation: "slide",
+	    directionNav:false,
+	    pauseOnAction: false,
+	    pauseOnHover: true,  
+	    move: 1,
+		after: function(slider){
+			//curIndex = slider.currentSlide;
+			//loadBanner(curIndex);
+		}
+	});
+	
+	/*
+	loadBanner();
+	function loadBanner(index){
+		index || (index = curIndex);
+		if(loadImgs[index]) return;
+		bannerImgs && bannerImgs[index] && imgLoader.load(bannerImgs[index], {imgIndex: index});
+	}
+	imgLoader.on('load', function(e){
+		loadImgs[e.imgIndex || 0] = true;
+		sliderList.eq(e.imgIndex || 0).css('background', 'none').find('img').attr('src', e.src);
+	});*/
+	
+	var imageCaches = {/$cacheData/},
+		imageCachesClone = imageCaches.concat(),
+		delImageCaches = [],
+		fontSize = 18,
+		pWidth = 70,
+		isRepeated = false,
+		imageCacheSize = 4,
+		uploadHTML = [
+			'<div id="newJobCustum" class="newJobCustum">',
+			'<label id="fileBtn" for="imageFile">选择图片</label>',
+			'<p>支持jpg、png图片文件，且文件小于2MB</p>',
+			'<p>请选择尺寸大于1000*300px的图片</p>',
+			'</div>',
+			'<div id="dropImageContainer" style="display:none">',
+			'<div id="dropImage" class="dropImage">',
+			'<div id="dragDiv">',
+			'<div id="dragDivBg" style="display:block"></div>',
+			'<div id="rRightDown"> </div>',
+			'<div id="rLeftDown"> </div>',
+			'<div id="rRightUp"> </div>',
+			'<div id="rLeftUp"> </div>',
+			'<div id="rRight"> </div>',
+			'<div id="rLeft"> </div>',
+			'<div id="rUp"> </div>',
+			'<div id="rDown"></div></div></div>',
+			'<div class="popJobbd"><a href="javascript:" class="newPopQuit">取 消</a><a id="newPopSave" href="javascript:" class="newPopSave">保 存</a></div>',
+			'</div>'
+		].join(''),
+		designBtnNames = [
+			'.iduatopBtnF',
+			'.iduatopBtnB',
+			'.swap',
+			'.del',
+			'.newPopQuit',
+			'.newPopSave'
+		];
+	
+	var designDialog = new Dialog({
+			close: 'x',
+			idName: 'ui_company_dialog',
+			title: '个性化装扮',
+			width:700,
+			content: '{/$siteurl.main/}/company/personal',
+			isAjax: true
+		}),
+		uploadDialog = new Dialog({
+			close: 'x',
+			idName: 'ui_company_dialog',
+			title: '添加自定义图片',
+			width: 700,
+			content: uploadHTML
+		}),
+		selectDesginDialog = new Dialog({
+			close: 'x',
+			idName: 'ui_company_dialog',
+			title: '选择模板图片',
+			width: 707,
+			content: '{/$siteurl.main/}/company/templateImages',
+			isAjax: true
+		}),
+		imgEditor, dropImageContainer, uploadPanel;
+	
+	$('#designBtn').on('click', function(){
+		designDialog.show();
+	});
+	designDialog.on('loadComplete noRequest', util.bind(designDialogEvent, designDialog)).after('hide', function(){
+		this.get('element').off('click');
+	});
+	function designDialogEvent(){
+		this.get('element').on('click', designBtnNames.join(','), function(e){
+			var target = $(e.currentTarget);
+			if(target.hasClass(normailzeClass(designBtnNames[0]))){
+				if(isImageSize(imageCaches)){
+					return;
+				}
+				designDialog.hide(false);
+				uploadDialog.show();
+			} else if(target.hasClass(normailzeClass(designBtnNames[1]))){
+				if(isImageSize(imageCaches)){
+					return;
+				}
+				designDialog.hide(false);
+				selectDesginDialog.show(false);
+			} else if(target.hasClass(normailzeClass(designBtnNames[2]))){
+				var li = target.closest('li'),
+					index = li.index(),
+					minIndex, prevLi;
+				
+				if(index) {
+					if(repeated()){
+						return;
+					}
+					isRepeated = true;
+					minIndex = index - 1;
+					prevLi = li.prev();
+					
+					var tempCache = imageCaches[minIndex];
+					
+					$.ajax({
+						url: '{/$siteurl.main/}/company/savaOrderNo/is_show-1',
+						data: {
+							this_image_id: li.attr('img_id'),
+							this_order_no: index + 1,
+							prev_image_id: prevLi.attr('img_id'),
+							prev_order_no: minIndex + 1
+						},
+						dataType: 'json',
+						success: function(e){
+							isRepeated = false;
+							if(e && e.state){
+								designDialog.query('#iduaTionImgList').html(e.msg);
+								imageCaches[minIndex] = imageCaches[index];
+								imageCaches[index] = tempCache;
+							} else {
+								ConfirmBox.timeBomb(e.msg, {
+									name : "fail",
+									timeout : 1000,
+									width: fontSize * e.msg.length + pWidth
+								});
+							}
+						}
+					});
+				}
+					
+			} else if(target.hasClass(normailzeClass(designBtnNames[3]))){
+				var li = target.closest('li'),
+					index = li.index();
+					
+				if(repeated()){
+					return;
+				}
+				isRepeated = true;
+				$.ajax({
+					url: '{/$siteurl.main/}/company/delete/is_show-1',
+					data: {
+						imageid: li.attr('img_id'),
+						image_type: li.attr('data_type')
+					},
+					dataType: 'json',
+					success: function(e){
+						isRepeated = false;
+						if(e && e.state){
+							designDialog.query('#iduaTionImgList').html(e.msg);
+							imageCaches.splice(index, 1);
+							for(var i=index, len=imageCaches.length; i< len; i++){
+								imageCaches[i].order -= 1;
+							}
+						} else {
+							ConfirmBox.timeBomb(e.msg, {
+								name : "fail",
+								timeout : 1000,
+								width: fontSize * e.msg.length + pWidth
+							});
+						}
+					}
+				});
+			} else if(target.hasClass(normailzeClass(designBtnNames[4]))){
+				designDialog.hide();
+			} else {
+				var msg = '正在保存中'
+				ConfirmBox.timeBomb('正在保存中', {
+					name : "success",
+					timeout : 1000,
+					width: fontSize * msg.length + pWidth
+				}).after('hide', function(){
+					designDialog.hide();
+				});
+				window.location.reload();
+			}
+		});
+	}
+	function isImageSize(arr){
+		if(arr && (arr.length >= imageCacheSize)){
+			var msg = '最多可设置4张封面图'
+			ConfirmBox.timeBomb(msg, {
+				name : 'fail',
+				timeout : 1000,
+				width: fontSize * msg.length + pWidth
+			})
+			return true;
+		}
+		return false;
+	}
+	function repeated(){
+		if(isRepeated){
+			var msg = "正在操作中";
+			ConfirmBox.timeBomb(msg, {
+				name : "fail",
+				timeout : 1000,
+				width: fontSize * msg.length + pWidth
+			});
+			return true;
+		}
+		return false;
+	}
+	function normailzeClass(name){
+		return name.replace('.', '');
+	}
+	uploadDialog.after('show',function(){
+		if(!imgEditor){
+			dropImageContainer = this.query('#dropImageContainer');
+			uploadPanel = this.query('#newJobCustum');
+		
+			var dropImage = this.query('#dropImage'),
+				uploadingDialog;
+				
+			imgEditor = new imageEditor({
+				imageCroperConfig: {
+					element: dropImage,//目标
+					handle: '#dragDiv',
+					color: '#f1f1f1',
+					width: dropImage.width(),
+					height: dropImage.height()
+				},
+				fileUploaderConfig: {
+					imageURL: '{/$template_temp_dir_path/}'
+				},
+				trigger: this.query('#newPopSave')
+			});
+			
+			imgEditor.on('startUpload', function(e){
+				var msg = "正在上传...";
+				uploadingDialog = ConfirmBox.timeBomb(msg, {
+					name : "warning",
+					timeout : 100000,
+					width: fontSize * msg.length + pWidth
+				});
+			}).on('progresed', function(e){
+				this._imgFileName = e.data.name;
+				this._imgType = e.data.thumb_type;
+				this._imgRatio = e.data.thumb_ratio;
+				this.loadImage(e.url);
+				uploadingDialog && uploadingDialog.hide();
+			}).on('progressError', function(e){
+				ConfirmBox.timeBomb(e.data.errorMsg, {
+					name : "fail",
+					timeout : 1000,
+					width: fontSize * e.data.errorMsg.length + pWidth
+				});
+			}).on('save', function(e){
+				var self = this;
+				if(repeated()){
+					return;
+				}
+				isRepeated = true;
+				$.ajax({
+					url: '{/$siteurl.main/}/company/saveImage',
+					data: {
+						cropX: e.cropX,
+						cropY: e.cropY,
+						cropH: e.cropH,
+						cropW: e.cropW,
+						cropPH: e.cropPH,
+						cropPW: e.cropPW,
+						url: e.url,
+						name: this._imgFileName,
+						thumb_type: this._imgType,
+						thumb_ratio: this._imgRatio
+					},
+					dataType: 'json',
+					success: function(e){
+						isRepeated = false;
+						if(e && e.state){
+							designDialog.query('#iduaTionImgList').html(e.data);
+							imageCaches.push({
+								name: e.name,
+								isUpload: 1,
+								index: imageCaches.length,
+								order: imageCaches.length + 1
+							});
+							uploadDialog.hide();
+							delete self._imgFileName;
+							delete self._imgType;
+							delete self._imgRatio;
+						}
+					}
+				});
+			});
+			dropImageContainer.find('.newPopQuit').on('click', function(e){
+				uploadDialog.hide();
+			});
+			
+			imgEditor.imageCroper.on('loadSuccess', function(){
+				uploadPanel.hide();
+				dropImageContainer.show();
+			}).on('loadError', function(){
+				delete this._imgFileName;
+				delete this._imgType;
+				delete this._imgRatio;
+				uploadPanel.show();
+				dropImageContainer.hide();
+				var msg = '加载图片失败';
+				ConfirmBox.timeBomb(msg, {
+					name : "fail",
+					timeout : 1000,
+					width: fontSize * msg.length + pWidth
+				});
+			});
+		}
+	});
+	uploadDialog.before('hide', function(){
+		dropImageContainer.hide();
+		uploadPanel.show();
+	});
+	uploadDialog.after('hide', function(){
+		imgEditor && imgEditor.destory();
+		imgEditor = null;
+		designDialog.show(false);
+	});
+	
+	selectDesginDialog.on('loadComplete noRequest', util.bind(selectDialogEvent, selectDesginDialog)).
+	after('hide', function(){
+		this.get('element').off('click');
+		this.query('.newPopSave').off('click');
+		this.query('.newPopQuit').off('click');
+	});
+	
+	var selectTemplateNames = [
+		'.iduaTemplate a', 
+		'.newpopPage a'
+	];
+	function selectDialogEvent(){
+		var imageList = this.query(selectTemplateNames[0]),
+			pageList = this.query(selectTemplateNames[1]),
+			container = this.query('#iduaPageContainer'),
+			self = this;
+
+		imageCachesClone = imageCaches.concat();
+		renderPage.call(this);
+		this.get('element').on('click', selectTemplateNames.join(','), function(e){
+			var target = $(e.currentTarget),
+				type = target.attr('data-type');
+				
+			switch(type){
+				case 'image':
+					if(!target.hasClass('current')){
+						if(isImageSize(imageCachesClone)){
+							return;
+						}
+						target.addClass('current');
+						imageCachesClone.push({
+							name: target.attr('data-name'),
+							isUpload: 0,
+							id: target.attr('data-id'),
+							index: imageList.index(target),
+							order: imageCaches.length + 1
+						});
+					} else {
+						target.removeClass('current');
+						imageCachesClone = util.array.filter(imageCachesClone, function(val){
+							if(val.name !== target.attr('data-name')){
+								return true;
+							} else {
+								delImageCaches.push(val);
+								return false;
+							}
+							return val.name !== target.attr('data-name');
+						});
+					}
+					break;
+				case 'page':
+					$.ajax({
+						url: target.attr('data-url'),
+						success: function(html){
+							container.html(html);
+							imageList = self.query(selectTemplateNames[0]);
+							renderPage.call(self);
+						}
+					});
+					break;
+			}
+		});
+		this.query('.newPopSave').off('click').on('click', function(){
+			if(repeated()){
+				return;
+			}
+			isRepeated = true;
+			$.ajax({
+				url:'/company/savaTemplate',
+				data: {
+					data: imageCachesClone,
+					delData: delImageCaches
+				},
+				dataType: 'json',
+				type: 'post',
+				success: function(e){
+					if(e && e.status){
+						$.ajax({
+							url: '{/$siteurl.main/}/company/personal/is_show-1',
+							success: function(html){
+								isRepeated = false;
+								imageCaches = imageCachesClone.concat();
+								self.hide();
+								designDialog.show().query('#iduaTionImgList').html(html);
+							}
+						});
+					}
+				}
+			});
+		});
+		this.query('.newPopQuit').on('click', function(){
+			self.hide(false);
+			designDialog.show(false);
+		});
+		this.on('closeX', function(){
+			this.setReload(false);
+			designDialog.show(false);
+		});
+	}
+
+	function renderPage(){
+		var list = this.query(selectTemplateNames[0]),
+			target;
+			
+		list.removeClass('current');
+		$.each(imageCachesClone, function(index, val){
+			if(val.isUpload || !val.id){
+				return;
+			}
+			var orderIndex = val.index;
+			target = orderIndex != undefined ? list.eq(orderIndex) : list;
+			target.each(function(){
+				if($(this).attr('data-id') == val.id){
+					orderIndex != undefined && (imageCachesClone[index].index = list.index($(this)));
+					$(this).addClass('current');
+					return false;
+				}
+			});
+		});
+	}
+        
+        {/if $visit_person =='companyself' && $can_company_set && $personal_show_flag ==true/}
+            $('.popMaster').hide();
+            $(".master").hide();
+            $('#setPersonal').on('click', function(){
+                 $('.popMaster').hide();
+                 $(".master").hide();
+                designDialog.show();
+                $.getJSON('/company/ajaxModPersonalShow');
+            });
+        {//if/}
+});
+
+</script>
+{/if $visit_person =='companyself' && $can_company_set && $personal_show_flag ==true/}
+<!------透明背景个性化弹窗------>
+<div class="master" style="display:none;"></div>
+<div class="popMaster {/if count($company_images)==0/}notPopMaster{//if/}" style="display:none;">
+    <img src="{/$siteurl.style/}/img/job/newjob/newJob_76.png" width="626" height="273" />
+    <a id='setPersonal' href="javascript:;"></a>
+</div>
+{//if/}

@@ -1,0 +1,36 @@
+{/if $dataLst/}
+	{/foreach $dataLst as $k=>$list/}
+		<div style="border:1px solid {/if !empty($job_border_color)/}{/$job_border_color/}{/else/}#f1f1f1{//if/};" class="park_list">
+			<div class="park_litop">
+				<img src="{/if !empty($list['company_logo_path'])/}{/$logo_base/}{/$list['company_logo_path']/}{/else/}{/$siteurl.style/}/img/job/newjob/default_logo.png{//if/}"/>
+				<div class="park_lirt">
+					<!--<a href="#" target="_blank">{/$list['company_short_info']|default:$list['company_name']/}</a>-->
+					<a href="{/if !empty($list['company_id'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopin/qiye/{/$list['company_flag']/}.html{/else/}{/if stripos($list['company_link'],'http://')=== false/}//{//if/}{/$list['company_link']/}{//if/}" class="park_click" target="_blank">{/$list['company_name']/}</a>
+					<p class="park_p">
+						{/if !empty($list['company_desc'])/}{/base_lib_BaseUtils::cutstr($list['company_desc'],45, 'utf-8', '', '...')/}{/else/}{/base_lib_BaseUtils::cutstr($list['info'],45, 'utf-8', '', '...')/}{//if/}
+					</p>
+					<ul class="sub_listbd">
+						{/foreach $list['jobLst'] as $key=>$job/}
+							{/if $key<4/}
+								<li>
+									<a target="_blank" href="{/if !empty($job['job_flag'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopin/zhiwei/{/$job['job_flag']/}.html{/else/}{/if stripos($job['job_link'],'http://')=== false/}//{//if/}{/$job['job_link']/}{//if/}">
+										<span style="font-size: 14px">{/$job.station/}</span>
+										<em style="font-size: 14px">{/if $job['min_salary']%1000==0/}{/($job['min_salary']/1000)/}{/else/}{/sprintf("%.1f",($job['min_salary']/1000))/}{//if/}
+											K-{/if $job['max_salary']%1000==0/}{/($job['max_salary']/1000)/}{/else/}{/sprintf("%.1f",($job['max_salary']/1000))/}{//if/}K
+										</em>
+									</a>
+								</li>
+							{//if/}
+						{//foreach/}
+					</ul>
+				</div>
+
+			</div>
+			{/if $is_force_login!=1/}
+				<a href="{/if !empty($list['company_id'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiye/{/$list['company_flag']/}.html{/else/}{/if stripos($list['company_link'],'http://')=== false/}//{//if/}{/$list['company_link']/}{//if/}?seejob=true" class="park_more" target="_blank">查看更多职位<i></i></a>
+			{/else/}
+				<a href="javascript:;" data-topic="{/$list['topic_id']/}" data-tcompanyid="{/$list['tcompany_id']/}" class="park_more showMoreJobs">查看更多职位<i></i></a>
+			{//if/}
+		</div>
+	{//foreach/}
+{//if/}

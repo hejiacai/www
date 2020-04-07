@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!--[if lt IE9]  --> 
+<script src="{/version file='html5.js'/}"></script>  
+<!-- [endif] -->
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='front.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='hrcollege.css'/}" />
+    <script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+    <script type="text/javascript">
+        window.CONFIG = {
+            HOST: '{/$siteurl.style/}',
+            COMBOPATH: '/js/v2/'
+        }
+    </script>
+    <script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+    <script type="text/javascript" src="{/version file="global.js"/}"></script>
+    <script type="text/javascript">
+            hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+    </script>
+
+</head>
+<body id="body">
+	{/include file="new_headsearch_2015.html"/}
+<section>
+    <hgroup class="layout">
+    	<div class="bread">
+        	<div class="breadC">当前位置：<a href="{/get_url rule="/hrcollege/"/}">HR学院</a>&gt;&nbsp;讲师列表</div>
+        </div>
+        <div class="lstBd">
+        	<div class="l">
+        		{/if count($lecturer_arr)>0/}
+            	<div class="lecBox">
+                	<h2>讲师风采</h2>
+                    <div class="lecLst">
+                        <ul>
+                        	{/foreach $lecturer_arr as $key=>$value/}
+                            <li>
+                                <div class="pic"><a target="_blank" href="{/get_url rule="/hrcollege/lecturerDetail" data="lecturer_id={/$value['resume_id']/}"/}"><img src="{/if $value['picture_url']!=''/}{/$lecturer_vir_path/}{/$value['picture_url']/}{/else/}{/$siteurl.style/}/img/common/user100_125.jpg{//if/}"/></a></div>
+                                <div class="lstC">
+                                    <h3><a target="_blank" href="{/get_url rule="/hrcollege/lecturerDetail" data="lecturer_id={/$value['resume_id']/}"/}"><span class="name">{/$value['user_name']/}</span>{/$value['specialties']/}</a></h3>
+                                    <p class="signory"><i class="exL">擅长领域：</i><em class="exR">{/$value['resume_signorys']/}</em></p>
+                                    <p class="calling"><i class="exL">擅长行业：</i><em class="exR">{/$value['calling']/}</em></p>
+                                    <p class="features"><i class="exL">授课特点：</i><em class="exR">{/$value['teach_features']/}</em></p>
+                                    <p class="curriculum"><i class="exL">主讲课程：</i><em class="exR">{/$value['curriculum']/}</em></p>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                            {//foreach/}
+                        </ul>
+                    </div>
+                    <div class="page">
+                        {/$pager/}
+                    </div>
+                </div>
+                {/else/}
+                <div class="noData">暂无数据</div>
+                {//if/}
+            </div>
+            <div class="r">
+            	<div class="newBox">
+                    <h3>最新活动</h3>
+                    <ul>
+                    	{/foreach $activity_arr as $key=>$value/}
+                    	<li><span class="time">{/$value['activity_time']/}</span><a target="_blank" href="{/get_url rule="/hrcollege/activitydetail/" data="activity_id={/$value['activity_id']/}"/}" title="{/$value['subject']/}">{/if mb_strlen($value['subject'])>8/}{/mb_substr($value['subject'],0,8)/}...{/else/}{/$value['subject']/}{//if/}</a></li>
+                        {//foreach/}
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </hgroup>
+</section>
+{/include file="footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+</body>
+</html>

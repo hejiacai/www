@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>汇博网-电商招聘</title>
+<link href="{/version file="dianshang.css"/}" type="text/css" rel="stylesheet" />
+</head>
+
+<body class="html2">
+<div class="newheadSch clearfix">
+	<div class="newLogo">
+		<!-- <p><a href="{/base_lib_Constant::PERSON_URL_NO_HTTP/}/login" style="font-weight: bold">求职者登录</a><u>|</u><a href="{/base_lib_Constant::COMPANY_URL_NO_HTTP/}/login" style="font-weight: bold">企业登录</a><u>|</u><a href="{/base_lib_Constant::PERSON_URL_NO_HTTP/}/register">求职者注册</a><u>|</u><a href="{/base_lib_Constant::COMPANY_URL_NO_HTTP/}/register">企业注册</a></p> -->
+        <a href="/" class="logo"></a>
+    </div>
+</div>
+	<div class="banner2">
+		<p>左手PS ，右手AI ，<br />追求像素完美，融合设计与内容，为美而代言！</p>
+	</div>
+	<div class="html_box">
+		<ul class="clearfix">
+			{/foreach $dataLst as $k=>$job/}
+			<li data-jid="{/$job.job_id/}">
+				<p class=""><a href="/zhaopin/zhiwei/{/$job.job_flag/}.html">{/$job.station/}</a><strong> {/$job.min_salary|default:'0'/}-{/$job.max_salary|default:'0'/}</strong></p>
+				<a href="/zhaopin/qiye/{/$job.company_flag/}.html" class="gray3">{/$job.company_name/}</a>
+				<span class="gray6">{/$job.area_name/}</span>
+			</li>
+			{//foreach/}
+		</ul>
+	</div>
+	<div class="box_outer"><a href="/dianshang/yunying"><img src="{/$siteurl.style/}/img/topicPage/dianshang/img1.jpg" /></a><a href="/dianshang/kefu"><img src="{/$siteurl.style/}/img/topicPage/dianshang/img3.jpg" /></a><a href="/dianshang/wuliu"><img src="{/$siteurl.style/}/img/topicPage/dianshang/img4.jpg" /></a></div>
+	<div class="footer">©2015 汇博网 版权所有<br />招聘单位无权收取任何费用，请求职人员加强自我保护意识，按劳动法规保护自身权益，警惕虚假招聘，避免上当受骗! </div>
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "http://hm.baidu.com/hm.js?fb51309e47424acd6e31c0bd2a65a5a1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>

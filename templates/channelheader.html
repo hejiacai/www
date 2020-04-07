@@ -1,0 +1,76 @@
+{/include_php file='app/controller/head.php'/}
+<link rel="stylesheet" type="text/css" href="{/version file='newHeader2019.css'/}">
+<link rel="stylesheet" type="text/css" href="{/version file='v2-header.css'/}" />
+<div class="newHeadtop clearfix">
+    <div class="newheadMage newheadPage">
+        <span class="newHeadtit">欢迎进入汇博网</span>
+        {/if $dataitem['isLogin']/}
+        <div class="lgAft" id="userLoginBox">
+            <ul>
+                <li><a class="userOut" id="userOut" href="javascript:void(0);">退出</a></li>
+                <li class="line">|</li>
+                <li class="user">
+                    <img width="18" height="18" id="headphoto" src="{/$dataitem['photo']/}"/>
+                    <a href="{/if $dataitem['type']=='c'/}{/get_url domain="company"/}{/else/}{/get_url domain="person"/}{//if/}" target="_blank"><span class="comUserName">{/if $dataitem['type']=='c'/}企业招聘中心{/else/}我的汇博{//if/}</span></a>
+                </li>
+            </ul>
+        </div>
+        {//if/}
+        <div id="userEnterBox" class="login_reg"  {/if $dataitem['isLogin']/}style="display:none"{//if/} >
+            <div class="log_new">
+                <a href="javascript:">企业:</a>
+                <a class="cur" href="{/$siteurl.company/}/login">登录</a>
+                <span class="slash">/</span>
+                <a class="cur" href="{/$siteurl.main/}/company/register">注册</a>
+            </div>
+            <u>|</u>
+            <div class="reg_new">
+                <a href="javascript:">求职:</a>
+                <a class="cur" href="{/$siteurl.person/}/login">登录</a>
+                <span class="slash">/</span>
+                <a class="cur" href="{/$siteurl.person/}/register">注册</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    	hbjs.use('@dialog,@confirmBox', function(m){
+            var $ = m['jquery'],
+                confirmBox = m['widge.overlay.confirmBox'],
+                trigger = $('#browser'),
+                userEnterBox = $('#userEnterBox'),
+                userLoginBox = $("#userLoginBox");
+            userEnterBox.on('mouseenter mouseleave', '.login', function(e){
+                var target = $(e.currentTarget);
+                target.toggleClass('hover');
+            });
+            /*退出按钮*/
+            $("#userOut").click(function(){
+                $.ajax({
+                    'url':'/index/signOut',
+                    'type':'get',
+                    'dataType':'json',
+                    'success':function(json){
+                        if(json.success){
+                            userEnterBox.show();
+                            userLoginBox.hide();
+                            var msg = '退出成功';
+                            confirmBox.timeBomb(msg, {
+                                name: 'success',
+                                width: 150,
+                                timeout: 1000
+                            });
+                        }else{
+                            var msg = '退出失败';
+                            confirmBox.timeBomb(msg, {
+                                name: 'fail',
+                                width: 150,
+                                timeout: 1000
+                            });                    
+                        }
+                    }
+                });
+                return false;
+            });
+        });
+</script>

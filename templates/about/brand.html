@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!--[if lt IE9]  --> 
+<script src="{/version file='html5.js'/}"></script>  
+<!-- [endif] -->
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='front.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='about.css'/}" />
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+    <script type="text/javascript">
+        window.CONFIG = {
+            HOST: '{/$siteurl.style/}',
+            COMBOPATH: '/js/v2/'
+        }
+    </script>
+    <script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+    <script type="text/javascript" src="{/version file="global.js"/}"></script>
+    <script type="text/javascript">
+            hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+			$(function(){
+				$('.media_ul li').hover(function(){
+					$(this).find('.subCop03').slideToggle();
+				});
+			});
+    </script>
+<style>
+.aboutTit01{ color:#444; font-size:30px; overflow:hidden; line-height:50px; padding-top:20px;}
+.aboutTit01 span{ display:inline-block; vertical-align:middle; #vertical-align:bottom; color:#cfcfcf; font-size:20px; padding-left:5px;}
+.aboutTxt01{ line-height:24px; color:#444; text-indent:4em;}
+.us dl dt{width:160px; height:40px; background:#f2f2f2; line-height:40px; color:#444; font-size:18px; font-weight:normal; margin:10px 0 0px 0;}
+.us dl dd img{ display:block;}
+
+.us-brand dl dt{ background:#52689b; color:#fff;width:790px;}
+.us_brand-list{width:770px; padding:38px 0 20px 30px;box-sizing: border-box; overflow:hidden;border: 1px solid #ebebeb;margin-bottom: 63px;}
+.brand-left{margin-right: 22px; float:left; overflow:hidden;}
+.brand-line{width:1px; height:126px; background:#dadada; float:left; margin:10px 40px 0 40px;}
+.brand-right{display: inline-block; float:left; overflow:hidden;max-width: 496px;}
+.brand-right h2{font-size: 16px!important;color: #444444!important;font-weight: bold;margin-bottom: 17px;}
+.brand-tit{ font-size:14px; font-weight:bold; color:#52689b; padding-bottom:0px;}
+.brand-list{ padding-bottom:26px;}
+.brand-list li{color:#444; font-size:14px; background:url({/$siteurl.style/}/img/about/brank-dian.png) left 8px no-repeat; padding-left:18px; overflow:hidden;}
+.brand-tit2{ overflow:hidden; line-height:24px;}
+.brand-tit2 b,.brand-tit2 span{ display:inline-block;}
+.brand-tit2 b{ color:#444; font-size:22px; font-weight:normal;}
+.brand-tit-yow{ color:#52689b;}
+.brand-tit-blue{ color:#52689b;}
+.brand-dark-blue{ color:#52689b;}
+.brand-intro{ color:#444; line-height:24px; font-size: 14px;margin-bottom: 26px;}
+.brand-contact{ overflow: hidden;}
+.brand-contact .relation_type_s,.brand-contact .relation_bg_icon{float: left;}
+.brand-contact p i{color: #e73535!important;}
+.brand-contact .relation_type_s {margin-right: 17px;}
+.relation_type_s{font-size: 16px;font-weight: bold;}
+.brand-contact h2{ font-size:18px; padding-bottom:20px;}
+.brand-contact p{ line-height:24px; font-size: 18px; color:#444;margin-top: 3px;}
+.brand-contact .bg_icon i,.brand-contact .bg_icon em{margin-top: 3px; display: inline-block;width:23px; height: 24px; background: url({/$siteurl.style/}/img/about/relation_03.jpg) no-repeat; margin-right: 9px; vertical-align: -5px;}
+.brand-contact .bg_icon em{background: url({/$siteurl.style/}/img/about/relation_06.jpg) no-repeat;}
+.bg_icon{margin-bottom: 19px;overflow: hidden;}
+.bg_icon i,.bg_icon span,.bg_icon em{float: left;}
+.brandContact{width:803px; overflow: hidden; padding: 18px 0;   font-size: 18px;  color: #858585; margin: 40px 0 65px 0; text-align: center; border-radius: 4px;}
+.relation_t{margin-right: 24px;font-weight: bold;}
+.brandContact span{color: #444444;font-size: 18px;float: left;}
+.brandContact i,.brandContact em{float: left; display: inline-block;width:37px; height: 37px; background: url({/$siteurl.style/}/img/about/relation_type_03.jpg) no-repeat; vertical-align: -5px; vertical-align: -11px; margin-right: 15px;}
+.brandContact em{background: url({/$siteurl.style/}/img/about/relation_type_05.jpg) no-repeat; margin-left: 50px;}
+.brandResource,.brandCooper{width:100%; overflow: hidden;}
+.brandResource li{width:250px; overflow: hidden; float: left; border: 1px solid #ebebeb; margin-right: 25px;}
+.brandResource li:nth-child(3n+3){margin-right: 0!important;}
+.brandResource li span{ display: block;width:230px; height: 90px; text-align: center; font-size: 14px; line-height: 28px; color: #999999; margin: 24px auto 10px auto; text-align: left;}
+.brandResource li b{ display: block;width:100%; height: 30px; line-height: 30px; background: #52689b; color: #fff; text-align: center; font-weight: bold; font-size: 14px;}
+.brandResourceTips{ display: block; margin: 33px auto 20px auto;}
+.brandResource li.last{ margin-right: 0;}
+.brandResource li span.pd_borand{ line-height: 90px; text-align: center;}
+.brandCooper li{width:250px; height: 200px; overflow: hidden; float: left; background: #f8f8f8; margin:0 25px 15px 0;}
+.brandCooper li.last{ margin-right: 0;}
+.brandCooper li i{ display: block;width:52px; height: 52px; margin:40px auto 24px auto;}
+.brandCooper li i.cooperIcon01{ background: url({/$siteurl.style/}/img/about/resouce_team_03.png) no-repeat;}
+.brandCooper li i.cooperIcon02{ background: url({/$siteurl.style/}/img/about/resu_team_serach_03.jpg) no-repeat;}
+.brandCooper li i.cooperIcon03{ background: url({/$siteurl.style/}/img/about/resu_team_serach_06.jpg) no-repeat;}
+.brandCooper li i.cooperIcon04{width:57px; background: url({/$siteurl.style/}/img/about/resu_team_serach_11.jpg) no-repeat;}
+.brandCooper li i.cooperIcon05{ background: url({/$siteurl.style/}/img/about/resu_team_serach_13.jpg) no-repeat;}
+.brandCooper li i.cooperIcon06{ background: url({/$siteurl.style/}/img/about/resu_team_serach_16.png) no-repeat;}
+.brandCooper li span{ display: block; text-align: center;font-size: 16px;color: #444444;}
+.brandCooper li span.cooper01{ line-height: 19px;}
+.section_box{margin-top: 60px; }
+.brandCooper_title{margin-bottom: 30px; width: 100%; text-align: center; font-size: 26px;font-weight: bold;color: #444444;}
+.media_ul{overflow: hidden;}
+.media_ul li{position: relative; width: 250px;height: 333px;float: left;margin-right: 25px;border: 1px solid #ebebeb;}
+.media_ul li:nth-child(3n+3){margin-right: 0!important;}
+.media_title{margin-bottom: 30px; margin-top: 40px; font-size: 18px;font-weight: bold;color: #444444;width: 100%;text-align: center;}
+.media_content{margin-bottom: 40px; font-size: 16px;text-align: center;padding: 0 38px;width: 100%;box-sizing: border-box;}
+.media_content em{color: #dd100d;font-weight: bold;}
+.mediaIcon01{background: url({/$siteurl.style/}/img/about/partner_21.jpg) no-repeat;}
+.mediaIcon02{background: url({/$siteurl.style/}/img/about/partner_23.jpg) no-repeat;}
+.mediaIcon03{background: url({/$siteurl.style/}/img/about/partner_25.jpg) no-repeat;}
+.media_ul li i{display: block; width: 170px;height: 130px;margin: 0 auto;}
+.brandResource li .brandResource_title{font-size: 18px;font-weight: bold;color: #444444;text-align: center;}
+.brandResource li i{margin: 0 auto; display: block; width: 77px;height: 50px;margin-bottom: 15px;margin-top: 42px;}
+.brandResource .brandResource_1{background: url({/$siteurl.style/}/img/about/partner_31.jpg) no-repeat;}
+.brandResource .brandResource_2{background: url({/$siteurl.style/}/img/about/partner_34.jpg) no-repeat;}
+.brandResource .brandResource_3{background: url({/$siteurl.style/}/img/about/partner_37.jpg) no-repeat;}
+.section_box .partener_type li{height: 280px;border-bottom: 3px solid #474444;margin-right: 0!important;}
+.partener_type li i{margin-top: 24px!important;}
+.brand_type_1{background: url({/$siteurl.style/}/img/about/partner_43.jpg) no-repeat;}
+.brand_type_2{background: url({/$siteurl.style/}/img/about/partner_46.jpg) no-repeat;}
+.brand_type_3{background: url({/$siteurl.style/}/img/about/partner_48.jpg) no-repeat;}
+.searc_teamwoner{font-size: 26px;font-weight: bold;color: #333333;margin-bottom: 30px;text-align: center;}
+.brand_active{border-bottom: 3px solid #e73535!important;}
+.subCop03{display: none; overflow: hidden; height: 190px; background: url({/$siteurl.style/}/img/about/media/media_img21.png); padding: 30px 25px; padding-bottom: 0px; position: absolute; bottom: 0px; left: 0px; border-radius: 0 0 4px 4px;}
+.subCop03 span{ display: block; font-size: 16px; color: #fff; padding-bottom: 30px;}
+.subCop03 span b{ display: inline-block;}
+</style>
+</head>
+<body>
+
+{/include file="new_headsearch_2015.html"/}
+<section class="oth">
+	<div class="othLft">
+    	{/include file="about/leftlink.html" link="brand"/}
+    </div>
+    <hgroup class="othRht">
+        <div class="bd us us-brand">
+        	<img src="{/$siteurl.style/}/img/about/brand.jpg" alt="" class="brandResourceTips" style="margin: 10px 0 32px 0;width:100%;" />
+        	<!-- <dl>
+            <dt>我们正在寻找资源置换合作</dt>
+            </dl> -->
+            <div>
+				<div class="section_box">
+				<div class="brandCooper_title">可合作项目资源</div>
+            	<!-- <img src="{/$siteurl.style/}/img/about/brand_img02.jpg" alt="" class="brandResourceTips" style="margin-top: 47px;" /> -->
+            	<ul class="brandCooper">
+            		<li>
+            			<i class="cooperIcon01"></i>
+            			<span>大型培训活动/</span>
+						<span>小型精品沙龙</span>
+            		</li>
+            		<li>
+            			<i class="cooperIcon02"></i>
+            			<span>企业客户签单</span>
+						<span>送礼活动</span>
+            		</li>
+            		<li class="last">
+            			<i class="cooperIcon03"></i>
+            			<span>汇博人才市场、</span>
+						<span>校园地推活动</span>
+            		</li>
+            		<li>
+            			<i class="cooperIcon04"></i>
+            			<span class="cooper01">汇博网、汇博人才市场</span>
+					<span>校园双选会招聘服务</span>
+            		</li>
+            		<li>
+            			<i class="cooperIcon05"></i>
+            			<span>汇博网首页广告位</span>
+            		</li>
+            		<li class="last">
+            			<i class="cooperIcon06"></i>
+            			<span>汇博网、汇博招聘</span>
+						<span>微信公众平台</span>
+            		</li>
+            	</ul>
+				</div>
+				<div class="section_box">
+					<div class="brandCooper_title">媒体资源</div>
+					<ul class="media_ul">
+						<li>
+							<div class="media_title">线上资源</div>
+							<div class="media_content">日均<em>600万</em>浏览量，日均<br/>访问人数<em>30万+</em></div>
+							<i class="mediaIcon01"></i>
+							<p class="subCop03">
+								<span>汇博网PC端、汇博网移动端、汇博APP</span>
+							</p>
+						</li>
+						<li>
+							<div class="media_title">线下资源</div>
+							<div class="media_content">拥有大量<em>广告位</em>资源和庞大的<em>用户群体</em></div>
+							<i class="mediaIcon02"></i>
+							<p class="subCop03">
+								<span>汇博人才市场<b>2300平方米</b>会场，平均每场求职者<b>3000余人</b>。</span>
+							</p>
+						</li>
+						<li>
+							<div class="media_title">新媒体资源</div>
+							<div class="media_content">微信粉丝用户<em>50万</em>，微博订阅用户<em>5万+</em></div>
+							<i class="mediaIcon03"></i>
+							<p class="subCop03">
+								<span><b>微信公众号—</b>汇博人才网、汇博招聘、汇博HR、汇博校园</span>
+								<span><b>自媒体—</b>今日头条，一点资讯，搜狐，网易等</span>
+							</p>
+						</li>
+					</ul>
+				</div>
+				<div class="section_box">
+					<div class="brandCooper_title">需求资源</div>
+				   <!-- <img src="{/$siteurl.style/}/img/about/brand_img03.jpg" alt="" class="brandResourceTips" /> -->
+				   <ul class="brandResource">
+						<li>
+							<i class="brandResource_1"></i>
+							<div class="brandResource_title">礼品类</div>
+							<span>如消费卡、美食券、电影票、美容券、摄影券、健身券等，实物如小电器、日用品、服装、 小样品等</span>
+							<!-- <b>●&nbsp;&nbsp;礼品类&nbsp;&nbsp;●</b> -->
+						</li>
+						<li>
+							<i class="brandResource_2"></i>
+							<div class="brandResource_title">资源类</div>
+							<span class="pd_borand">互联网广告、户外广告等</span>
+							<!-- <b>●&nbsp;&nbsp;资源类&nbsp;&nbsp;●</b> -->
+						</li>
+						<li class="last">
+							<i class="brandResource_3"></i>
+							<div class="brandResource_title">服务类</div>
+							<span class="pd_borand">如场地、讲师培训等</span>
+							<!-- <b>●&nbsp;&nbsp;服务类&nbsp;&nbsp;●</b> -->
+						</li>
+				   </ul>
+				</div>
+				<div class="section_box">
+					<div class="brandCooper_title">合作形式</div>
+				   <!-- <img src="{/$siteurl.style/}/img/about/brand_img03.jpg" alt="" class="brandResourceTips" /> -->
+				   <ul class="brandResource partener_type">
+						<li>
+							<i class="brand_type_1"></i>
+							<div class="brandResource_title">广告互换</div>
+							<span>双方利用现有的广告资源（如线上线下广告位，新媒体文末贴片等）进行免费互换。在资源互补，合作共赢的前提下，为彼此带来流量和品牌提升。</span>
+							<!-- <b>●&nbsp;&nbsp;礼品类&nbsp;&nbsp;●</b> -->
+						</li>
+						<li class="brand_active">
+							<i class="brand_type_2"></i>
+							<div class="brandResource_title">内容互推</div>
+							<span class="">双方各自提供资源，进行相互推广，也可以进行内容输出或内容互换。</span>
+							<!-- <b>●&nbsp;&nbsp;资源类&nbsp;&nbsp;●</b> -->
+						</li>
+						<li class="last">
+							<i class="brand_type_3"></i>
+							<div class="brandResource_title">其他合作方式</div>
+							<span class="">品牌营销推广合作，其他资源互换，联合活动等。</span>
+							<!-- <b>●&nbsp;&nbsp;服务类&nbsp;&nbsp;●</b> -->
+						</li>
+				   </ul>
+				</div>
+            <div class="brandContact">
+				<span class="relation_t">联系方式：</span>
+            	<i></i>
+				<span>1762311187 / 15123309864</span>
+            	<em></em>
+				<span>2851501259 / 2851501397</span>
+            </div>
+            <!-- <dl>
+            <dt class="yow">我们正在寻找机构合作</dt>
+            </dl> -->
+			<div class="serach_team">
+			<div class="searc_teamwoner">我们正在寻找机构合作</div>
+            <div class="us_brand-list">
+				<div class="brand-left">
+					<img src="{/$siteurl.style/}/img/about/team_03.jpg" alt="">
+				</div>
+            	<div class="brand-right">
+                	<h2 class="brand-tit brand-tit-yow">如果您是</h2>
+                    <div class="brand-intro">
+                    工商部门注册的正规公司并具有一定规模和行业知名度，而且拥有专业的讲师团队,擅长人力资源相关领域的专业授课,对合作的课程内容有版权的使用或转授权的资格，欢迎联系我们！
+                    </div>
+					<div class="brand-contact">
+						<div class="relation_type_s">联系方式：</div>
+					    <div class="relation_bg_icon">
+					    	<div class="bg_icon"><i></i>
+					    		<span>1762311187 / 15123309864</span>
+					    	</div>
+					    	<div class="bg_icon"><em></em>
+					    		<span>2851501259 / 2851501397</span>
+					        </div>
+					    	
+					    	<!-- <i></i>17302351624 <em></em>2851501275 -->
+					    </div>
+					</div>
+                    <!-- <h2 class="brand-tit brand-tit-yow"></h2> -->
+                </div>
+                <!-- <div class="brand-line"></div> -->
+                <!-- <div class="">
+                	<div class="brand-contact">
+                    	<h2>联系方式</h2>
+                        <p>
+                        	<i></i>17302351624 <em></em>2851501275 
+                        </p>
+                    </div>
+                </div> -->
+            </div>
+			</div>
+            <!-- <dl>
+            <dt class="blue">我们正在寻找讲师合作</dt>
+            </dl>
+            <dl> -->
+			<div class="serach_team">
+			<div class="searc_teamwoner">我们正在寻找讲师合作</div>
+            <div class="us_brand-list">
+				<div class="brand-left">
+					<img src="{/$siteurl.style/}/img/about/team_06.jpg" alt="">
+				</div>
+            	<div class="brand-right">
+                	<h2 class="brand-tit brand-tit-blue">如果您是</h2>
+                    <div class="brand-intro">
+                    在人力资源相关领域有开发课程和讲授能力，并且有丰富的培训授课经验，并且愿意帮助他人提升该领域的专业素养, 传道解惑!欢迎联系我们！
+                    </div>
+					<div class="brand-contact">
+						<div class="relation_type_s">联系方式：</div>
+					    <div class="relation_bg_icon">
+					    	<div class="bg_icon"><i></i>
+					    		<span>1762311187 / 15123309864</span>
+					    	</div>
+					    	<div class="bg_icon"><em></em>
+					    		<span>2851501259 / 2851501397</span>
+					        </div>
+					    	
+					    	<!-- <i></i>17302351624 <em></em>2851501275 -->
+					    </div>
+					</div>
+                    <!-- <h2 class="brand-tit brand-tit-blue"></h2> -->
+                </div>
+                <!-- <div class="brand-line"></div> -->
+                <!-- <div class="">
+                	<div class="brand-contact">
+                    	<h2>联系方式</h2>
+                        <p>
+                        	<i></i>17302351624 <em></em>2851501275 
+                        </p>
+                    </div>
+                </div> -->
+            </div>
+			</div>
+           <!-- <dl>
+            <dt class="dark-blue">我们正在寻找课件合作</dt>
+            </dl> -->
+			<div class="serach_team">
+			<div class="searc_teamwoner">我们正在寻找课件合作</div>
+            <div class="us_brand-list">
+				<div class="brand-left">
+					<img src="{/$siteurl.style/}/img/about/team_08.jpg" alt="">
+				</div>
+            	<div class="brand-right">
+                	<h2 class="brand-tit brand-dark-blue">如果您是</h2>
+                    <div class="brand-intro">
+                    人力资源相关领域专业的课件制作服务商，且拥有丰富的课件规划、设计、制作经验, 课件质量优质，且服务过10家以上知名企业，课后口碑不错，并且对合作课件有版权的使用或转授权的资格。欢迎联系我们！
+                    </div>
+					<div class="brand-contact">
+						<div class="relation_type_s">联系方式：</div>
+					    <div class="relation_bg_icon">
+							<div class="bg_icon"><i></i>
+								<span>1762311187 / 15123309864</span>
+							</div>
+							<div class="bg_icon"><em></em>
+								<span>2851501259 / 2851501397</span>
+						    </div>
+							
+					    	<!-- <i></i>17302351624 <em></em>2851501275 -->
+					    </div>
+					</div>
+                    <!-- <h2 class="brand-tit brand-dark-blue"></h2> -->
+                </div>
+                <!-- <div class="brand-line"></div> -->
+                <!-- <div class="">
+                	<div class="brand-contact">
+                    	<h2>联系方式</h2>
+                        <p>
+                        	<i></i>17302351624 <em></em>2851501275 
+                        </p>
+                    </div>
+                </div> -->
+            </div>
+			</div>
+        </div>
+    </hgroup>
+    <div class="clear"></div>
+</section>
+{/include file="./about/footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+</body>
+</html>

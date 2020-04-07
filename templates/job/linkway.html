@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<style>
+.contBox{width:560px;font-size:14px; padding-bottom:25px;}
+.contBox .contBoxForm{}
+.contBox .contBoxForm ul li{padding:5px 0; zoom:1;}
+.contBox .contBoxForm ul li .l{float:left; display:inline; text-align:right; width:70px;}
+.contBox .contBoxForm ul li .r{float:left; display:inline; text-align:left;}
+.contBox .contBoxForm ul li .r b{margin-right:10px;}
+.contBox .contBoxForm ul li .r em{margin-left:10px; font-weight:bold;}
+.contBox .contBoxForm ul li .r p.tipTxt{font-size:12px; color:#999;}
+.contBox .contBoxForm ul li .r p img.linkPhone{vertical-align:middle;height:25px;}
+.contBox .contBoxForm ul li .r i.hbIconMoon{font-size:14px; margin-right:3px;}
+.contBox .contBoxForm ul li .r a{margin-left:5px; font-size:12px;}
+</style>
+<div class="dgBox contBox">
+	<div class="contBoxForm">
+    	<ul>
+    	   {/if count($linkmans)>0/}
+        	<li>
+                <span class="l">联系方式：</span>
+                <span class="r">
+                 	{/foreach $linkmans as $linkman/}
+                	  <div class="tiptxt"></div>
+               		  <p>({/$linkman['linkman']/})<img src="{/get_url rule="/job/LinkTel/"/}jobflag-{/$jobflag/}-type-{/$linkman['linktel']/}" class="linkPhone" /></p>
+                   	  {/if $linkman@last/}<p class="tipTxt">联系我时请说明是在汇博网上看到的</p>{//if/}
+           			{//foreach/}     	
+                </span>
+                <div class="clear"></div>
+            </li>
+           {//if/}
+            <li>
+                <span class="l">公司地址：</span>
+                <span class="r"><p>{/$address/}
+                    <a  id="btnlinkWayMap" target="_blank"><i class="hbIconMoon">&#xe042;</i>具体位置</a>
+                    <a href="javascript:void(0)" id="sendPhone"><i class="hbIconMoon">&#xe054;</i>发送到手机</a>
+                </p></span>
+                <div class="clear"></div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+$('#sendPhone').click(function() {
+	$.showModal('{/get_url rule="/job/Note/" data="operate=preview&jobflag=$jobflag"/}',{title:'免费发送到手机'});
+});
+
+/**
+ * 查看地图
+ */
+if({/$hasMap/} == 1) {
+	$('#btnlinkWayMap').attr('href','http://api.map.baidu.com/marker?location={/$mapy/},{/$mapx/}&title={/$companyname/}&output=html&');
+}else {
+	$('#btnlinkWayMap').attr('href','http://api.map.baidu.com/geocoder?address={/$address/}&output=html');
+}
+
+</script>
+</body>
+</html>

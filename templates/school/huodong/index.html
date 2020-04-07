@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script type="text/javascript"  src="{/version file="html5.js"/}" ></script>
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="campus.css"/}" />
+    <script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+    <script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+    <script type="text/javascript">
+        window.CONFIG = {
+            HOST: '{/$siteurl.style/}',
+            COMBOPATH: '/js/v2/'
+        }
+    </script>
+    <script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+    <script type="text/javascript" src="{/version file="global.js"/}"></script>
+    <script type="text/javascript">
+            hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+    </script>
+</head>
+<body>
+{/include file='new_headsearch_2015.html'/}
+<div class="content">
+	<div class="bread"><a href="/">汇博人才</a>&gt;<a href="{/get_url rule="/xiaoyuan/"/}">校园招聘</a>&gt;<span>活动&amp;专题</span></div>
+    <div class="campus">
+    	<div class="left">
+        	<div class="meetingLst artLst leftPart">
+            	<div class="hd">
+                	<h3>活动&amp;专题</h3>
+                </div>
+                <div class="bd" id="lst">
+                 {/if count($huodongs)<=0/}
+                  	 <div class="noData">没有信息哦！</div>
+                 {/else/}
+                	<ul>
+                	{/foreach $huodongs as $huodong/}
+                    <li class="{/if $huodong['hasCover']==false/} noPic{//if/}" title='{/$huodong['title']/}'>
+                        <h2><a href="{/get_url rule="/huodong/detail/"/}infoid-{/$huodong['info_id']/}" target='_blank'>{/$huodong['title']/}</a></h2>
+                        <dl>
+                        <dt><a> <img src="{/$huodong['small_cover']/}" /></a></dt>
+                        <dd>
+                        	<div class="txt">
+                            	<p>{/$huodong['content']/}</p>
+                            </div>
+                            <div class="bot">
+                            	<p class="time"><i class="hbFntWes">&#xf017;</i><span>{/$huodong['issue_time']/}</span></p>
+                                <div class="share"><a href="javascript:void(0);" class="sina" id="shareSina" title="分享至新浪微博"></a><a href="javascript:void(0);" class="txweibo" id="shareTengXun" title="分享至腾讯微博"></a><a href="javascript:void(0);" class="qzone" id="shareQQ" title="分享至QQ空间"></a><a href="javascript:void(0);" class="renren" id="shareRenRen" title="分享至人人网"></a></div>
+                                <p class="rTo"><a href="{/get_url rule="/huodong/detail/"/}infoid-{/$huodong['info_id']/}" target='_blank'>查看详情&gt;&gt;</a></p>
+                            </div>
+                        </dd>
+                        <div class="clear"></div>
+                        </dl>
+                    </li>
+					{//foreach/}
+                    </ul>
+				  {/$pager/}
+				{//if/}
+                </div>
+            </div>
+        </div>
+        <div class="right">
+        	<div class="rightPart">
+                <div class="rec">
+                    <div class="hd">热门推荐</div>
+                    <div class="bd">
+                        <ul>
+                        {/foreach $hasCoverInfors as $information/}       
+                        <li><a href="{/get_url rule="/huodong/detail/"/}infoid-{/$information['info_id']/}" target='_blank'><div class="pic"><img src="{/$information['small_cover']/}" /></div><p>{/$information['title']/}</p></a></li>
+                        {//foreach/}
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="txtLst">
+                	<ul>
+                	{/foreach $notHasCoverInfors as $information/} 
+                   	 <li><a href="{/get_url rule="/huodong/detail/"/}infoid-{/$information['info_id']/}" target='_blank'>{/$information['title']/}</a></li>
+                    {//foreach/} 
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+{/include file='footer.html'/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script>
+$(document).ready(function(){
+	$('#lst').find('li').hover(function(){
+		$(this).addClass('hov');
+	},function(){
+		$(this).removeClass('hov');
+	});
+	
+});
+
+$(document).ready(function(){
+	function createTips(){
+  	    var strArray = ['赶紧推荐给您的朋友阅读吧。', '分享一下，推荐阅读。'];
+  	    return  strArray[Math.round(Math.random())];
+	}
+     //分享到新浪微博
+     $('#lst .sina').click(function()
+     {
+         var tip =  createTips(),
+         	acttitle = $(this).closest('li').attr('title'),
+         	info = '【这篇文章还不错】' + '“'+ acttitle + '”'+ '（来自huibo.com 校园招聘 -> 活动专题)，'
+          var href = 'http://service.weibo.com/share/share.php?title=' + encodeURIComponent(info + tip) + '&url=' + encodeURIComponent(window.location.href) + '&source=bookmark';
+         $(this).attr({ target: '_blank', href: href });
+     });
+     //腾讯微博
+     $('#lst .txweibo').click(function()
+     {
+         var tip =  createTips(),
+         acttitle = $(this).closest('li').attr('title'),
+     	 info = '【这篇文章还不错】' + '“'+ acttitle + '”'+ '（来自huibo.com 校园招聘 -> 活动专题)，'
+         var href = 'http://v.t.qq.com/share/share.php?title=' + encodeURIComponent(info + tip) + '&url=' + encodeURIComponent(window.location.href);
+         $(this).attr({ target: '_blank', href: href });
+     });
+     //QQ空间
+     $('#lst .qzone').click(function()
+     {
+         var tip =  createTips(),
+         acttitle = $(this).closest('li').attr('title'),
+     	 info = '【这篇文章还不错】' + '“'+ acttitle + '”'+ '（来自huibo.com 校园招聘 -> 活动专题)，'
+         var href = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?title=' + encodeURIComponent(info + tip) + '&summary=' + encodeURIComponent(info + tip) + '&url=' + encodeURIComponent(window.location.href);
+         $(this).attr({ target: '_blank', href: href });
+     });
+     //人人网 
+     $('#lst .renren').click(function()
+     {
+         var tip =  createTips(),
+         acttitle = $(this).closest('li').attr('title'),
+     	 info = '【这篇文章还不错】' + '“'+ acttitle + '”'+ '（来自huibo.com 校园招聘 -> 活动专题)，'
+         var href = 'http://share.renren.com/share/buttonshare.do?link=' + encodeURIComponent(window.location.href) + '&title==' + encodeURIComponent(info + tip);
+         $(this).attr({ target: '_blank', href: href });
+     });
+});
+
+</script>
+</body>
+</html>

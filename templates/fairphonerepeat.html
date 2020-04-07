@@ -1,0 +1,103 @@
+<style>
+.ajaxlogin{width:290px;}
+.ajaxlogin .formMod .l{width:25px;}
+.ajaxlogin .formMod .r{width:250px;}
+.ajaxlogin .formMod .r .formChb{margin:0;}
+.ajaxlogin .formMod .r .formText input.text{width:197px;}
+.ajaxlogin .formBtn{margin:0 0 20px 30px;}
+.ajaxlogin .formBtn a.btn1{width:168px; text-align:center;}
+.ajaxlogin .txt{font-size:12px;margin:0 0 0 35px;color:#666;}
+.ajaxlogin .txt p{line-height:24px;}
+.ajaxlogin .txt p i{margin:0 10px;}
+</style>
+<form  id="frmUserLogin"  action="{/$main_url/}/login/AjaxLogin/" method="post">
+<div class="dgBox ajaxlogin">
+	<div class="form">
+	   <div  class="formMod" style="color:#DD4722; font-size:14px; padding-left:28px; width:300px;"><label style="color:#DD4722;font-weight:bold;">{/if !empty($username)/}[{/$username/}]{//if/}</label>您已经在我们<label style="color:#DD4722;font-weight:bold;">汇博人才市场</label>注册过了哦,直接登录就可以了</div>
+        <div class="formMod">
+            <div class="l">&nbsp;</div>
+            <div class="r"><span class="formText"><input placeHolder="手机号" type="text" class="text " style="width:300px"  id="id" name="txtUserName" /></span></div>
+            <div class="clear"></div>
+        </div>
+        <div class="formMod">
+            <div class="l">&nbsp;</div>
+            <div class="r"><span class="formText"><input placeHolder="密码" type="password" class="text " style="width:300px" id="pass"  name="txtPassword"/></span></div>
+            <div class="clear"></div>
+        </div>
+        <div class="formMod">
+            <div class="l">&nbsp;</div>
+            <div class="r"><span class="formChb"><input type="checkbox" class="chb" id="dl" name="chkSave"  value="true"/><label for="dl">一周内自动登录</label></span><span class="tipTxt" style="margin-left:40px;"><a href="{/$person_url/}/login/findpassword/">忘记密码</a></span></div>
+            <div class="clear"></div>
+        </div>
+        <div class="formBtn"><a href="javascript:void(0);" class="btn1 btnsF14" style="width:260px;"  id="btnLogin">登录</a></div>
+    </div>
+</div>  
+</form>
+<script type="text/javascript">
+/*
+hbjs.use('cqjob.jobDialog, cqjob.jobValidate, cqjob.jobForm, cqjob.actions', function(jobDialog, jobValidate, jobForm, $){
+	$.extend(jobDialog, jobValidate, jobForm);
+	$.focusblur('input.text'); 
+	var frmUserLogin = $("#frmUserLogin").validate({
+		rules:{
+			txtUserName:{
+				required:true
+			},
+			txtPassword:{
+				required:true
+			}
+		},
+		messages:{
+			txtUserName:{
+				required:'请输入用户名 <span class="tipArr"></span>'
+			},
+				txtPassword:{
+				required:'请输入密码<span class="tipArr"></span>'
+			}
+		},
+		errorClasses:{
+			txtUserName:{
+				required:'tipLayErr tipw120'
+			},
+			txtPassword:{
+				required:'tipLayErr tipw120'
+			}
+		},
+		tipClasses:{
+			txtUserName:'tipLayTxt tipw120',
+			txtPassword:'tipLayTxt tipw120'
+		},
+		errorElement:'span',
+		errorPlacement:function(error,element){
+			element.closest('div.formMod').find('.tipPos .tipLay').empty().append(error);
+		},
+		success:function(label){
+			label.text(" ");
+		}
+	});
+	var login ={
+		init:function() {
+			$("#id,#pass").keydown(function(e){
+		    	if(e.keyCode == 13){
+		            $("#btnLogin").click();
+		        }
+		    });
+			$('#btnLogin111').click(function(){
+				$(this).submitForm({ beforeSubmit: $.proxy(frmUserLogin.form, frmUserLogin),success:function(result){
+			 		if(result.error){
+						 $.message(result.error,{title:'登录失败 '});
+					}
+			 		else if(result.success){
+			 			$('#btnLogin111').closeDialog();
+						$.anchorMsg(result.success,{title: "登录成功", icon: "success"});
+						 window.location.href="{/$person_url/}";
+					}
+				},clearForm:false});			 	
+			});
+		}
+	};
+	
+	login.init();
+});
+*/
+</script>

@@ -1,0 +1,310 @@
+
+<!--公共-->
+{/include_php file='app/controller/head.php'/}
+<link rel="stylesheet" type="text/css" href="{/version file='newHeader2019.css'/}">
+<form id="web_subscribe_form" action="{/$siteurl.main/}/jobsearch/" method="post"><input type="hidden" name="subscribe_origin" value="nosearchpage"></form>
+<div class="newHeadtop clearfix">
+    <div class="newheadMage">
+        <div class="newWelcom">欢迎访问汇博网！</div>
+        <ul class="newHeadList lgBefor" style="display: none">
+            <li><a href="/app/p/" class="newPhone" target="_blank"><i></i>手机版</a></li>
+            <li><a href="{/$siteurl.person/}/login" class="newHweigt" id="btnIndexHeaderLogin">求职者登录</a><span>|</span></li>
+            <li><a href="{/$siteurl.company/}/login" class="newHweigt">企业登录</a><span>|</span></li>
+            <li><a href="{/$siteurl.person/}/register">求职者注册</a><span>|</span></li>
+            <li><a href="{/$siteurl.company/}/register">企业注册</a></li>
+        </ul>
+        <div style="display: block;" class="login_reg" id="userEnterBox">
+            <a class="newPhone" href="/app/p/" style="margin-right: 15px;float: left;line-height: 28px;color:#999"  target="_blank"><i></i>手机版</a>
+            <u>|</u>
+            <div class="jobDingYue" style="margin-right: 15px;float: left;line-height: 28px;margin-left:15px;">
+                <a id="jobDingYueBtn" href="javascript:;" style="color:rgb(153, 153, 153)">职位订阅</a>
+            </div>
+            <u>|</u>
+            <div class="log_new">
+                <a href="javascript:">企业:</a>
+                <a class="cur" href="{/$siteurl.company/}/login">登录</a>
+                <span class="slash">/</span>
+                <a class="cur" href="{/$siteurl.main/}/company/register">注册</a>
+            </div>
+            <u>|</u>
+            <div class="reg_new">
+                <a href="javascript:">求职:</a>
+                <a class="cur" href="{/$siteurl.person/}/login">登录</a>
+                <span class="slash">/</span>
+                <a class="cur" href="{/$siteurl.person/}/register">注册</a>
+            </div>
+        </div>
+        <div class="lgAft" style="padding-top: 0px">
+            <div id="user_info_ajax"></div>
+            <div class="comLg" style="display:none">
+                <ul>
+                    <li><a href="javascript:void(0);" class="userOut">退出</a></li>
+                    <li class="line">|</li>
+                    <li class="user">
+                        <img src="{/$siteurl.style/}/img/c/new_index/headlogo.png" width="28" height="28" id="comHeadphoto">
+                        <a target="_blank" href="{/$siteurl.company/}"><span class="comUserName">企业招聘中心</span></a>
+                    </li>
+                    <li class="line">|</li>
+                    <li><a class="newPhone" href="/app/p/" style="margin-right: 0px"><i></i>手机版</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/-->
+
+<!--新写的-->
+<div class="step-logo">
+    <div class="w1000">
+        <a href="{/$siteurl.main/}"><img src="{/$siteurl.style/}/img/www/company/logo.jpg" /></a>
+    </div>
+</div>
+<div class="step-nav">
+    <ul class="clearfix"><!--sing = 正在，sye = 已经-->
+        <li class="first sing">
+            <p>
+                <i class="">1</i>
+                <u></u>
+            </p>
+            <span>第一步：企业注册</span>
+        </li>
+        <li class="">
+            <p>
+                <i class="">2</i>
+                <u></u>
+            </p>
+            <span>第二步：完善资料</span>
+        </li>
+        <li>
+            <p>
+                <i class="">3</i>
+                <u></u>
+            </p>
+            <span>第三步：完善企业风采</span>
+        </li>
+        <li>
+            <p>
+                <i class="">4</i>
+                <u></u>
+            </p>
+            <span>第四步：发布职位</span>
+        </li>
+        <li class="last">
+            <p>
+                <i class="">5</i>
+                <u></u>
+            </p>
+            <span>第五步：企业认证</span>
+        </li>
+    </ul>
+</div>
+<!--/-->
+
+
+<!--头部需要的ajax-->
+<script type="text/javascript">
+    hbjs.use('@jobDialog, @actions', function(m) {
+        var cookie = m['tools.cookie'];
+        var $ = m['cqjob.actions'].extend( m['cqjob.jobDialog']);
+        var confirmBox = m['widge.overlay.confirmBox'];
+		var Dialog = m['widge.overlay.hbDialog'];
+        var userEnterBox = $('#userEnterBox,.login_regAge');
+        userEnterBox.on('mouseenter mouseleave', '.login,.personage', function(e){
+            var target = $(e.currentTarget);
+            if(e.type === "mouseenter"){
+                target.addClass('hover');
+            } else {
+                target.removeClass('hover');
+            }
+        });
+
+        $(".userOut").click(function(){
+            $.ajax({
+                'url':'/index/signOut',
+                'type':'get',
+                'dataType':'json',
+                'success':function(json){
+                    if(json.success){
+                        $(".befor,.login_reg").css("display","block");
+                        $(".comAfter,.psnAfter,.psnLg,.comLg").css("display","none");
+                        $(".panelBox").css("display","none");
+                        $('#loginRight').removeClass('rightAfter').addClass('right');
+                        $.anchorMsg("退出成功");
+                    }else{
+                        $.message("退出失败");
+                    }
+                }
+            });
+            return false;
+        });
+
+        function checkUser(){
+            //判断用户类型
+            var type = cookie.get("usertype");
+            var isLogin = !!type;
+            var userName = type == "c" ? '企业招聘中心' : '我的汇博';//cookie.get("nickname") === undefined ? '我的汇博' : decodeURI(cookie.get("nickname"));
+            var userID = cookie.get("userid");
+            var headphoto = decodeURIComponent(cookie.get("headphoto"));
+            if(!type){
+                $(".befor,.login_reg").css("display","block");
+                $(".comAfter,.comLg,.psnAfter,.psnLg,.psnLg_new").css("display","none");
+            }
+            if(type == "c"){
+                $(".comAfter,.comLg").css("display","block");
+                $(".befor,.login_reg,.psnAfter,.psnLg").css("display","none");
+                $('#loginRight').removeClass('right').addClass('rightAfter');
+                if(headphoto !== undefined && headphoto !== '' && headphoto !== 'undefined'){
+                    $('#comHeadphoto').attr("src",headphoto);
+                }
+            } else if(type == "p"){
+                $(".psnAfter,.psnLg_new").css("display","block");
+                $(".befor,.login_reg,.comAfter,.comLg").css("display","none");
+                $(".login_regAge").css("display","block");
+                $('#loginRight').removeClass('right').addClass('rightAfter');
+                //$(".psnUserName").html(userName);
+                if(headphoto !== undefined && headphoto !== '' && headphoto !== 'undefined'){
+                    $('#psnHeadphoto').attr("src",headphoto);
+                }
+                //获取用户信息
+                $.post("{/$siteurl.main/}/loginindex/getinfo",{},function(data){
+                    document.getElementById('user_info_ajax').innerHTML = data.content;
+                    var userEnterBox1 = $('.login_regAge');
+                    userEnterBox1.on('mouseenter mouseleave', '.personage', function(e){
+                        var target = $(e.currentTarget);
+                        if(e.type === "mouseenter"){
+                            target.addClass('hover');
+                        } else {
+                            target.removeClass('hover');
+                        }
+                    });
+                    user_jianli_status = document.getElementById('user_jianli_1').value;
+                    //注册用户退出登录
+                    $(".userOut").click(function(){
+                        $.ajax({
+                            'url':'/index/signOut',
+                            'type':'get',
+                            'dataType':'json',
+                            'success':function(json){
+                                if(json.success){
+                                    $(".befor,.login_reg").css("display","block");
+                                    $(".comAfter,.psnAfter,.psnLg,.comLg").css("display","none");
+                                    $(".panelBox").css("display","none");
+                                    $(".psnLg_new").css("display","none");
+                                    $('#loginRight').removeClass('rightAfter').addClass('right');
+                                    $.anchorMsg("退出成功");
+                                }else{
+                                    $.message("退出失败");
+                                }
+                            }
+                        });
+                        return false;
+                    });
+                },'json');
+
+
+            }
+        }
+
+        checkUser();
+
+        $('#jobDingYueBtn').on('click', function(){
+            document.getElementById("web_subscribe_form").submit()
+        });
+        refresh_index('ajaxlogin');
+
+        function refresh_index(src){
+            // alert(src);return;
+            var src = src || 'index';
+                if(src == 'index'){
+                    _checkRefesh('index');
+                } else {
+                    var _isLogin = (cookie.get("usertype") == 'p') ? true : false;
+                    var _showRefeshConfirm = cookie.get('_hideRefeshConfirm');
+
+
+                    if(_isLogin && (_showRefeshConfirm != 1)&&{/$dataitem['auto_refresh']/}==1){
+                        setRefeshConfirmCookie();
+                        _checkRefesh('ajaxlogin');
+                    }
+                }
+
+                function setRefeshConfirmCookie(){
+                    var tomorrow = new Date("{/date('Y/m/d 00:00:00',strtotime('+1 day'))/}");
+                    cookie.set('_hideRefeshConfirm',1,{expires:tomorrow,path:'/',domain:"{/base_lib_Constant::COOKIE_DOMAIN/}"});
+                }
+
+                function doRefresh() {
+                    $.ajax({
+                        type : "get",
+                        url :"{/$siteurl.person/}/resume/refresh",
+                        dataType : "jsonp",
+                        jsonp: "callbackparam",
+                        success : function(json){
+                            if(json.status){
+                                confirmBox.timeBomb("刷新成功", {
+                                    name : 'success',
+                                    timeout : 2000
+                                });
+                                $('#jian_li_shuaxin').hide();
+                                $('#jianlishuaxin_line').hide();
+                            } else {
+                                confirmBox.timeBomb("每天只能刷新一次简历", {
+                                    name : 'warning',
+                                    width : 240,
+                                    timeout : 2000
+                                });
+                            }
+                        },
+                        error:function(e){
+                            console.log('ajax fail');
+                        }
+                    });
+                }
+
+                function _checkRefesh(src1){
+                    var _src = src1 || 'index';
+                    $.ajax({
+                        type : "get",
+                        url :"{/$siteurl.person/}/index/checkrefesh?src="+_src,
+                        dataType : "jsonp",
+                        jsonp: "jsonpCallback",
+                        success : function(json){
+                            if(json.status) {
+                                var tdialog = new Dialog({
+                                    close: 'x',
+                                    idName: 'refresh_dialog',
+                                    title: '温馨提示',
+                                    width: 500
+                                });
+                                tdialog.setContent(json.html).show();
+                                tdialog.after('hide', function(){
+                                    tdialog.destory();
+                                });
+                            } else {
+                                if(_src != 'ajaxlogin') {
+                                    if({/$dataitem['open_mode']/} == 1) {
+                                        doRefresh();return;
+                                    }
+                                    confirmBox.confirm('简历当前为未公开状态，确认刷新后，将自动被公开', null, function () {
+                                        this.hide();doRefresh();return;
+                                    }, function() {
+                                        this.hide();
+                                    }, {
+                                        confirmBtn: '<button class="button_a button_a_red">确定</button>',
+                                        cancelBtn: '<button class="button_a cancelbtn">取消</button>',
+                                        width : 320
+                                    });
+                                }
+                            }
+                        },
+                        error:function(e){
+                            console.log('ajax fail');
+                        }
+                    });
+                }
+        }
+
+    });
+
+
+</script>

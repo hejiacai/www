@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+		<link rel="stylesheet"  type="text/css" href="{/version file='v2-reset.css,v2-header.css,v2-widge.css,v2-resume.css'/}" />
+		<link rel="stylesheet"  type="text/css" href="{/version file='perback.css'/}" />
+		<link rel="stylesheet"  type="text/css" href="{/version file='idangerous.swiper.css'/}" />
+		<link rel="stylesheet"  type="text/css" href="{/version file='createPc.swiper.css'/}" />
+		<link rel="stylesheet" type="text/css" href="{/version file='comlogin.css'/}" />
+		<link rel="stylesheet" type="text/css" href="{/version file='topicstatic.css'/}" />
+		<script type="text/javascript" src="{/version file='common.js'/}"></script>
+		<script type="text/javascript" src="{/version file='dialog.js'/}"></script>
+		<style>
+			.tablist {
+				width: 30em;
+				margin: 30px auto;
+				font-size: 18px;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="header">
+		    <div class="hdCon">
+		        <div class="logo"><a href="{/$siteurl.main/}"></a></div>
+		    </div>
+		    <h1>带薪实习双选会</h1>
+		</header>
+		<ul class="tablist">
+			{/foreach $all_menu as $menu/}
+				{/if in_array($menu['id'],$menu_ids)/}
+					<li data-type="{/$menu['id']/}" data-url="{/$menu['to_url']/}" {/if $cur_menu_id==$menu['id']/} class="cur"{//if/}>{/$menu['name']/}<u class="underline"></u></li>
+				{//if/}
+			{//foreach/}
+		</ul>
+		
+		<div class="content cur">
+			<form id="dopost" method="get">
+			<div class="search-box">
+				<div class="selectbox committeebox">
+					<span>区团委</span>
+					<div class="selector" data-name="committee2">
+						<span>{/if $condition['gover_company_id']/}{/$gover_companys[$condition['gover_company_id']]['company_name']/}{/else/}不限{//if/}</span>
+						<ul class="option">
+							<li data-id="0" data-value='不限' id="nolimit">不限</li>
+							{/foreach $gover_companys as $g_company_id=>$g_company/}
+							<li data-id="{/$g_company_id/}" data-value="{/$g_company['company_name']/}">{/$g_company['company_name']/}</li>
+							{//foreach/}
+						</ul>
+						<input type="hidden" id="gcompany_id" name="gcompany_id" value="{/$condition['gover_company_id']/}"/>
+					</div>
+				</div>
+				<div class="inputbox">
+					<label for="enterprise2">企业名称</label>
+					<input type="text" id="enterprise2" name="c_name" value="{/$condition['company_name']/}"/>
+				</div>
+
+				<input type="hidden" name="type" value="0">
+				<div id="_submit" class="btn redbox">搜索</div>
+				<div id="_submit_excel" class="btn">导出excel文档</div>
+			</div>
+			</form>
+			<div class="table-box">
+				<table>
+					<tr>
+						<th>区团委</th>
+						<th>企业名称</th>
+						<th>发布职位</th>
+						<th>招聘人数</th>
+						<th>收到投递</th>
+						<th>面试通过</th>
+						<th>面试不通过</th>
+						<th>放弃面试</th>
+					</tr>
+					<!--tr的奇数行添加此类名-->
+					{/if !empty($companys)/}
+						{/foreach $companys as $key=>$company/}
+							<tr {/if $key%2 == 0/}class="bggray"{//if/}>
+								<td>
+									{/$company['goverment_name']/}
+								</td>
+								<td>{/$company['company_name']/}</td>
+								<td>{/$company['pub_job_num']/}</td>
+								<td>{/$company['fair_person_num']/}</td>
+								<td>{/$company['apply_num']/}</td>
+								<td>{/$company['accept_num']/}</td>
+								<td>{/$company['refuse_num']/}</td>
+								<td>{/$company['giveup_num']/}</td>
+							</tr>
+						{//foreach/}
+					{/else/}
+						<tr class="bggray">
+							<td colspan="8">暂无数据</td>
+						</tr>
+					{//if/}
+				</table>
+
+				{/$page/}
+			</div>
+			
+			
+		</div>
+		<script type="text/javascript">
+			$('.selector').each(function(i,e){
+				var val=$(e).siblings("input:hidden").val()
+				console.log(val)
+				if(val){
+					$(e).find('li').each(function(i2,e2){
+						console.log($(e2).attr('data-value'))
+						if(val==$(e2).attr('data-value')){
+							$(e).find("span").html($(e2).html())
+							return true
+						}
+					})
+				}
+			})
+			/*$(".tablist li").on('click',function(){
+				if($(this).hasClass('cur')){
+					return
+				}else{
+					location.href='{/get_url rule='/topiccompanystatic/StudentStatic/' domain="www"/}'
+				}
+				$(this).addClass('cur')
+				$('.content').removeClass('cur').eq($(this).index()).addClass('cur');
+			})*/
+			$(".tablist li").on('click',function(){
+				if($(this).hasClass('cur')){
+					return
+				}else{
+					var data_type =  $(this).attr('data-type');
+					var data_url= $(this).attr('data-url');
+					console.log(data_url);
+					window.location.href=data_url;
+				}
+				//$(this).addClass('cur')
+				//$('.content').removeClass('cur').eq($(this).index()).addClass('cur');
+			})
+			$('.selector').on('click',function(){
+				var that=this;
+				if($(this).hasClass('open')){
+					$('.selector').removeClass('open')
+				}else{
+					$('.selector').removeClass('open')
+					$(this).addClass('open')
+				}
+				$(document).on('click',function(){
+					$(that).removeClass('open')
+					$(document).off('click')
+				})
+				return false;
+			})
+			$('.option').on('click','li',function(ev){
+				var name=$(this).parents('.selector').removeClass('open').attr('data-name');
+				$('#'+name).val($(this).attr('data-value'))
+				$(this).parents('.selector').children('span').html($(this).html())
+				$('#gcompany_id').val($(this).attr('data-id'))
+                $('#enterprise2').val('');
+				return false;
+			})
+
+
+            $('#enterprise2').change(function () {
+
+                $("#nolimit").parents('.selector').children('span').html($("#nolimit").html())
+                $('#gcompany_id').val($("#nolimit").attr('data-id'))
+            })
+
+
+//			var dialog=new Dialog({
+//				idName : 'contact_dialog',
+//		        title : '联系方式',
+//		        width : 400,
+//		        isOverflow : false,
+//		        isAjax : true
+//			});
+//			$('.table-box tr a').on('click',function(){
+//				$.message('手机号：12345678910<br>电子邮箱：123@123.com',{title:'联系方式'})
+//			})
+			$('#_submit').click(function () {
+                $('input[name=type]').val(0);
+				$('#dopost').submit();
+            })
+			$('#_submit_excel').click(function(){
+				if($('#gcompany_id').val()=="0"||$('#gcompany_id').val()=="all"){
+					$.message('请选择区团委',{title:'提示'});
+				}else{
+				    $('input[name=type]').val(1);
+	                $('#dopost').submit();
+                }
+			})
+		</script>
+	</body>
+</html>

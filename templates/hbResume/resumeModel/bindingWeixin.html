@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}">
+	<link rel="stylesheet" type="text/css" href="{/version file="jobRegister.css"/}"/>
+	<link rel="stylesheet" type="text/css" href="//assets.huibo.com/js/layer/skin/layer.css?v=201609192">
+	<script type="text/javascript" language="javascript" src="//assets.huibo.com/js/jquery-1.8.3.min.js?v=20150226"></script>
+	<script type="text/javascript" src="//assets.huibo.com/js/layer/layer.js?v=20180703"></script>
+	<script type="text/javascript" src="//assets.huibo.com/js/boss/base_script.js?v=20180703"></script>
+	<style>
+		body {
+			background: #f8f9fc;
+		}
+
+		.resume-item:hover .resume-item-cover {
+			display: block;
+		}
+	</style>
+	<style type="text/css">
+		.m-header {
+			height: 72px;
+			background-color: #4b4c54;
+			width: 100%;
+		}
+
+		.m-header .inner-header {
+			width: 1000px;
+			margin: 0 auto;
+			height: 100%;
+			background: url({/$siteurl.style/}/img/xiaoyuan/resume/logo.png) 0 10px no-repeat;
+			line-height: 72px;
+			position: relative;
+		}
+
+		.m-header .inner-header a {
+			float: right;
+			color: white;
+			font-size: 18px;
+		}
+
+		.m-header .inner-header .avatar {
+			background-color: #4b4c54;
+			float: right;
+			width: 40px;
+			height: 40px;
+			border: none;
+			margin-top: 16px;
+			border-radius: 50%
+		}
+
+		.m-header .inner-header .user {
+			float: right;
+			color: #fff;
+			font-size: 18px;
+			margin-left: 10px;
+			display: block;
+			position: relative
+		}
+
+		.m-header .inner-header .user .icon {
+			margin-left: 5px;
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			background: url({/$siteurl.style/}/img/xiaoyuan/resume/icon-down.png) 0px -2px no-repeat
+		}
+
+		.m-header .inner-header a.huiboLogo {
+			display: block;
+			width: 140px;
+			height: 72px;
+			float: left;
+		}
+
+		/*下拉框*/
+		.m-header .inner-header .user-choose {
+			position: absolute;
+			top: 80px;
+			right: -30px;
+			height: 104px;
+			width: 134px;
+			display: none;
+			background-color: #fff;
+			z-index: 2;
+			border-radius: 5px;
+			box-shadow: 0 0 2px #ddd;
+		}
+
+		.m-header .inner-header .user-choose > a {
+			color: #444;
+			height: 20px;
+			line-height: 20px;
+			padding-left: 18px;
+			font-size: 14px;
+			display: block;
+			float: none;
+		}
+
+		.m-header .inner-header .user-choose > a:hover {
+			color: #16caa4;
+		}
+
+		.ui_company_dialog {
+			background: none;
+			border: none;
+		}
+
+		/*绑定微信*/
+		.master_weixin {
+			width: 360px;
+			background: #fff;
+			border-radius: 4px;
+			padding: 20px;
+		}
+
+		.master_weixin_top {
+			background: #1ccd88;
+			padding: 10px 20px;
+			width: 320px;
+		}
+
+		.master_weixin_top i {
+			display: inline-block;
+			width: 60px;
+			height: 60px;
+			background: url("{/$siteurl.style/}/img/xiaoyuan/resume/images/weixin.png") no-repeat -205px 0;
+			float: left;
+		}
+
+		.master_weixin_top h1 {
+			float: left;
+			margin-top: 3px;
+			margin-left: 24px;
+			font-size: 16px;
+			font-weight: bold;
+			width: 220px;
+			color: #fff;
+			line-height: 26px;
+		}
+
+		.master_weixin_tit {
+			font-size: 16px;
+			line-height: 26px;
+			color: #444;
+		}
+
+		.master_weixin_erweima {
+			position: relative;
+			width: 180px;
+			height: 180px;
+			overflow: hidden;
+			background: #000;
+			margin: 20px auto 25px auto;
+		}
+
+		.master_weixin_erweima img {
+			width: 180px;
+			height: 180px;
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+		}
+
+		.master_weixin_erweima_success {
+			color: #fff;
+			position: absolute;
+			width: 180px;
+			height: 180px;
+			z-index: 2;
+			background: rgba(0, 0, 0, .5);
+		}
+
+		.master_weixin_erweima_success i {
+			display: inline-block;
+			width: 26px;
+			height: 26px;
+			margin-top: 40px;
+			background: url("{/$siteurl.style/}/img/xiaoyuan/resume/images/weixin.png") no-repeat -163px 0;
+		}
+
+		.master_weixin_erweima_success h1 {
+			font-size: 16px;
+			font-weight: normal;
+			margin: 4px 0 2px 0;
+		}
+
+		.master_weixin_erweima_success p {
+			font-size: 12px;
+		}
+
+		.master_weixin_bottom {
+			margin-top: 48px;
+		}
+	</style>
+</head>
+<body>
+<div class="master_weixin">
+	<div class="master_weixin_top clearfix">
+		<i></i>
+		<h1>微信扫码绑定，解锁所有模板 所有模板终生免费，任意切换</h1>
+	</div>
+	<div class="master_weixin_erweima">
+		{/if !$weixin_bind_data.open_id/}
+			<img src="{/$weixin_bind_img/}" alt="">
+			<div class="master_weixin_erweima_success" style="display: none">
+				<i></i>
+				<h1>绑定成功</h1>
+				<p>页面自动跳转中...</p>
+			</div>
+			<script>
+				var _scan_status;
+				var _scan_status_count = 0;//请求10次 间隔3秒再次请求
+				//检测扫描状态
+				function scan_status() {
+					_scan_status = setInterval(function () {
+						if ($('.weixin_bind').length == 0)
+							clearInterval(_scan_status);
+						var url = "{/get_url rule="/resumeModel/BindingWeixinChange"/}",
+								data = {};
+						ajax_request_function(url, data, {
+							success: function (data) {
+//								console.log(data);
+								if (data.data.change_code == 200) {
+									clearInterval(_scan_status);
+									$('.master_weixin_erweima_success').show();
+									if (resumeModel_back_url) {
+										window.location.href = resumeModel_back_url;
+									}
+									setTimeout(function () {
+										weixin_bind.hide();
+										$('.weixin_bind').remove();
+										window.document.location.reload();
+									}, 800);
+								} else if (data.data.change_code == 201) {
+									//绑定其它账号 停止扫描
+									_scan_status_count = 0;
+									clearInterval(_scan_status);
+									weixin_bind.hide();
+									$('.weixin_bind').remove();
+								}
+							}
+						});
+						if (++_scan_status_count % 10 == 0) {
+							console.log(_scan_status_count);
+							if (_scan_status_count >= 40) {
+								_scan_status_count = 0;
+								clearInterval(_scan_status);
+								weixin_bind.hide();
+								$('.weixin_bind').remove();
+							}
+							clearInterval(_scan_status);
+							setTimeout(function () {
+								scan_status();
+							}, 4000);
+						}
+					}, 2500);
+				}
+				function scan_status_close() {
+					clearInterval(_scan_status);
+				}
+				$(function () {
+					scan_status();
+				});
+			</script>
+		{/else/}
+			<div class="master_weixin_erweima_success">
+				<i></i>
+				<h1>已绑定微信</h1>
+				<p>页面自动跳转中...</p>
+			</div>
+			<script>
+				$(function () {
+					$('.master_weixin_erweima_success').show();
+					if (resumeModel_back_url) {
+						window.location.href = resumeModel_back_url;
+					}
+					setTimeout(function () {
+						weixin_bind.hide();
+						$('.weixin_bind').remove();
+						window.document.location.reload();
+					}, 800);
+				});
+			</script>
+		{//if/}
+	</div>
+	<p class="master_weixin_tit">微信扫码关注公众号，即可免费使用所 <br> 有模板体验更多简历服务</p>
+	<div class="master_weixin_bottom">
+		<img src="{/$siteurl.style/}/img/xiaoyuan/resume/images/wexin_step.png" alt="">
+	</div>
+</div>
+</body>
+</html>

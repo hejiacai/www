@@ -1,0 +1,16 @@
+<div class="page">
+		{/if $prepg/}
+			<a href="{/if $prepg/}{/$prepg/}{/else/}javascript:void(0);{//if/}">&lt;</a>
+		{//if/}
+		
+		{/if $pages_all/}
+        {/foreach $pages_all as $page/}
+        <a {/if $currpage==$page.page/} href="{/$page.url/}" class="cu" {/else/} href="{/$page.url/}" {//if/}>{/$page.page/}</a>
+        {//foreach/}
+        {//if/}
+
+        {/if $nextpg/} 
+        	<a href="{/if $nextpg/}{/$nextpg/}{/else/}javascript:void(0);{//if/}">&gt;</a>
+        {//if/}
+</div>
+

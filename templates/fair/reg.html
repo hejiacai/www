@@ -1,0 +1,700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<title>汇博人才市场入场快速验证</title>
+<link rel="stylesheet" type="text/css" href="{/version file='fairreg.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='icons.css'/}" />
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_date.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_dropdownlist.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='WdatePicker.js'/}"></script>
+</head>
+<body>
+<form action="/fairreg" method="post" name="fair_reg" id="fair_reg" >
+<input type="hidden" id="act" value="checkuser">
+<div class="content">
+	<div class="sdBox">
+    	<div class="logForm">
+        	<h2>请认真填写以下信息，以便能尽快入场！</h2>
+			<em  style="margin-top: -10px;display: block;padding-bottom: 10px;color:red">(在求职者微信扫码入场异常的情况下使用)</em>
+        	<div class="formMod">
+                <div class="l">手机号码<i>*</i></div>
+                <div class="r"><span class="formText jobCat zindex"><input value="" type="text" class="text" style="width:235px;" id="mobile_phone" name="mobile_phone"></span><span class="verJudgePass" style="display:none"></span></div>
+                <div class="clear"></div>
+                <div class="l">求职类型<i>*</i></div>
+                <div class="r">
+                    <span class="formRad"><input type="radio" value="1" name="site_source" class="radio site_radio" ><label for="sexMale">白领（汇博）</label><input type="radio" value="2" name="site_source" class="radio site_radio" checked="checked"><label for="sexFemale">蓝领（快米）</label></span>
+                </div>
+                <span class="verJudgePass" style="display:none"></span></div>
+                <div class="clear"></div>
+            </div>
+            <div class="formMod" style='display:none'>
+                <div class="l">身份证号<i>*</i></div>
+                <div class="r"><span class="formText jobCat zindex"><input value="" type="text" class="text" style="width:235px;" id="idcard" name="idcard"></span><span class="verJudgePass" style="display:none"></span><span class="tipTxt gray">如果您忘记了自己的身份证号码，请联系工作人员</span></div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="hasId" id="div_password" style="display:none">
+				<p class="txt">您已经在<em id="site_source_name">huibo.com</em>注册过，现在可以入场了！</p>
+            </div>
+
+            <div class="noId" id="div_reg" style="display: none">
+            	<p class="txt">您需要完善以下信息，方可入场</p>
+
+				<div class="formMod">
+					<div class="l">真实姓名<i>*</i></div>
+					<div class="r"><span class="formText jobCat zindex"><input value="" type="text" class="text" style="width:235px;" id="user_name" name="user_name"></span><span class="verJudgePass" style="display:none"></span></div>
+					<div class="clear"></div>
+				</div>
+
+            	<div class="formMod">
+                    <div class="l">性别<i>*</i></div>
+                    <div class="r">
+                        <span class="formRad"><input type="radio" value="1" name="sex" class="radio" id="sexMale" checked="checked"><label for="sexMale">男</label><input type="radio" value="2" name="sex" class="radio" id="sexFemale"><label for="sexFemale">女</label></span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                
+                <div class="formMod">
+                    <div class="l">出生日期<i>*</i></div>
+                    <div class="r">
+                        <span class="formText">
+							<input name="birthday" type="text" value="1991" size="12" id="txtSDate" class="Wdate" onclick="WdatePicker({dateFmt:'yyyy'})" />
+						</span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                
+                <div class="formMod">
+                    <div class="l">求职意向<i>*</i></div>
+                    <div class="r">
+                        <span class="formText jobCat">
+                        <input type="text" class="text" style="width:235px;" id="jobsort" name="jobsort" readonly="readonly" />
+						<div style="display:none;" id="jobcatBox" class="jobCatBox">
+							<div class="jobCatLst">
+								<dl>
+								<dt>通用类：</dt>
+								<dd><a href="javascript:void(0);">销售</a><a href="javascript:void(0);">文员</a><a href="javascript:void(0);">前台接待</a><a href="javascript:void(0);">会计</a><a href="javascript:void(0);">出纳</a><a href="javascript:void(0);">平面设计</a><a href="javascript:void(0);">网管</a><a href="javascript:void(0);">幼儿教师</a><a href="javascript:void(0);">驾驶员</a><a href="javascript:void(0);">库管员</a></dd>
+								</dl>
+								<dl>
+								<dt>物业类：</dt>
+								<dd><a href="javascript:void(0);">保安</a><a href="javascript:void(0);">保洁</a><a href="javascript:void(0);">水电工</a><a href="javascript:void(0);">物管员</a></dd>
+								</dl>
+								<dl>
+								<dt>技工类：</dt>
+								<dd><a href="javascript:void(0);">车工</a><a href="javascript:void(0);">数控车工</a><a href="javascript:void(0);">钳工</a><a href="javascript:void(0);">焊工</a><a href="javascript:void(0);">铣工</a><a href="javascript:void(0);">模具钳工</a><a href="javascript:void(0);">钣金工</a><a href="javascript:void(0);">锅炉工</a><a href="javascript:void(0);">叉车工</a><a href="javascript:void(0);">印刷工</a><a href="javascript:void(0);">油漆工</a><a href="javascript:void(0);">冲压工</a><a href="javascript:void(0);">木工</a><a href="javascript:void(0);">管道工</a><a href="javascript:void(0);">维修电工</a><a href="javascript:void(0);">设备维修工</a><a href="javascript:void(0);">缝纫工</a></dd>
+								</dl>
+								<dl>
+								<dt>商超类：</dt>
+								<dd><a href="javascript:void(0);">营业员</a><a href="javascript:void(0);">收银员</a><a href="javascript:void(0);">促销员</a><a href="javascript:void(0);">送货员</a><a href="javascript:void(0);">导购员</a><a href="javascript:void(0);">快递员</a><a href="javascript:void(0);">理货员</a></dd>
+								</dl>
+								<dl>
+								<dt>餐饮类：</dt>
+								<dd><a href="javascript:void(0);">厨师</a><a href="javascript:void(0);">服务员</a><a href="javascript:void(0);">传菜员</a></dd>
+								</dl>
+                                <dl>
+                                	<dt>其他：</dt>
+                                    <dd class="fairRows" >
+                                       
+                                        <input id="otherJobsort" name="otherJobsort" type="text" class="text" style="width:200px" />
+                                         <a href="javascript:" id="fairJobsortBtn" class="btn1 btnsF16">确&nbsp;定</a>
+                                    </dd>
+                                </dl>
+							</div>
+						</div>
+                        
+                        </span>
+                        <div class="tipTxt">（可以自己填写）</div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                
+                
+                <div id="_huibo_salary" class="formMod cashMod">
+                    <div class="l">期望月薪<i>&nbsp;</i></div>
+                    <div class="r">
+                        <span class="drop formText">
+                            <input type="text" id="salary_min" name="salary_min" class="text" style="width:50px;"><div class="dropLst">
+                                <div class="dropLstCon">
+                                    <ul>
+                                        <li><a href="#">1000</a></li>
+                                        <li><a href="#">2000</a></li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </span>
+                        <span style="margin-right:10px;" class="tipTxt font14">至</span>
+                        <span class="drop formText"><input type="text" id="salary_max" name="salary_max" class="text textGray" style="width:50px;"><div class="dropLst">
+                                <div class="dropLstCon">
+                                    <ul>
+                                        <li><a href="#">1000</a></li>
+                                        <li><a href="#">2000</a></li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </span>
+                        <span class="tipTxt font14">元/月</span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <!--kuai米-->
+                <div id="_kuaimi_salary" class="formMod cashMod">
+                    <div class="l">期望月薪<i>&nbsp;</i></div>
+                    <div class="r">
+                        <span class="drop formText">
+                           <select name="exp_salary">
+                               {/foreach $exp_salary as $k=>$v/}
+                               <option value="{/$k/}" {/if $k==2/}selected{//if/}>{/$v/}</option>
+                               {//foreach/}
+                           </select>
+                        </span>
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+
+                <div class="formMod welMod">
+                    <div class="l">意向地区<i>&nbsp;</i></div>
+                    <div class="r">
+                        <span style="margin:0;width:635px;" class="tipTxt">最多选5个，不选即全重庆</span>
+                        <span style="margin:0;" class="formChb">
+                            <input type="checkbox" value="0301" class="chb" id="wel1" name="area[]"><label for="wel1">渝中区</label>
+                            <input type="checkbox" value="0302" class="chb" id="wel2" name="area[]"><label for="wel2">江北区</label>
+                            <input type="checkbox" value="0303" class="chb" id="wel3" name="area[]"><label for="wel3">九龙坡</label>
+                            <input type="checkbox" value="0304" class="chb" id="wel4" name="area[]"><label for="wel4">沙坪坝</label>
+                            <input type="checkbox" value="0309" class="chb" id="wel5" name="area[]"><label for="wel5">北碚区</label>
+                            <input type="checkbox" value="0305" class="chb" id="wel6" name="area[]"><label for="wel6">南岸区</label>
+                            <input type="checkbox" value="0306" class="chb" id="wel7" name="area[]"><label for="wel7">大渡口</label>
+                            <input type="checkbox" value="0307" class="chb" id="wel8" name="area[]"><label for="wel8">渝北</label>
+                            <input type="checkbox" value="0308" class="chb" id="wel9" name="area[]"><label for="wel9">巴南区</label>
+                        </span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                
+                
+                <div class="formMod">
+                    <div class="l">开始工作时间<i>*</i></div>
+                    <div class="r">
+                        <span class="formText dateText">
+                            <input type="text" id="inpPosYear" name="begin_work_year" style="width:60px;" class="text"><div class="dateDrop dateYear">
+                                <ul class="yearLst">
+                                </ul>
+                                <div class="pro"><a href="#"><i class="hbFntWes">&#xf053;</i></a></div>
+                                <div class="next"><a href="#"><i class="hbFntWes">&#xf054;</i></a></div>
+                            </div>
+                        </span>
+                        <span style="margin:0 5px;" class="tipTxt font14">年</span>
+                        <span class="formText dateText">
+                            <input type="text" id="inpPosMonth" name="begin_work_month" style="width:32px;" class="text"><div class="dateDrop dateMon">
+                                <ul class="MonLst">
+                                </ul>
+                            </div>
+                        </span>
+                        <span style="margin:0 5px;" class="tipTxt font14">月</span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!--<div class="formMod">-->
+                    <!--<div class="l">QQ<i>&nbsp;</i></div>-->
+                    <!--<div class="r">-->
+                        <!--<span class="formText"><input type="text" class="text" style="width:100px;" name="qq" id="qq"></span>-->
+                        <!--<span class="tipTxt"></span>-->
+                    <!--</div>-->
+                    <!--<div class="clear"></div>-->
+                <!--</div>-->
+                <div class="formMod">
+                    <div class="l">身高<i>&nbsp;</i></div>
+                    <div class="r">
+                        <span class="formText"><input type="text" class="text" style="width:100px;" name="stature" id="stature"></span>
+                        <span class="tipTxt">厘米</span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+
+            </div>
+            <div class="formBtn"><a href="javascript:" id="btnSubmit" class="btn1 btnsF16">下一步</a> <a href="/fairreg" id="sub_return" class="btn1 btnsF16" style="display: none">返回</a></div>
+        </div>
+    </div>
+</div>
+</form>
+
+<div class="dgBox box1" id="passwordOk" style="display:none;">
+	<dl>
+    <dt><i class="hbFntWes green">&#xf058;</i></dt>
+    <dd><p>验证成功，可以入场了</p></dd>
+    </dl>
+    <div class="botBtn"><em class="orange" id="countDown">60</em>秒后关闭该窗口<a href="#" id="next" class="btn3 btnsF12">立即开始下一位</a></div>
+</div>
+
+
+<div class="dgBox box2" id="idcardOk" style="display:none;">
+	<dl>
+    <dt><i class="hbFntWes green">&#xf058;</i></dt>
+    <dd><p>验证成功，可以入场了</p></dd>
+    </dl>
+    <div class="botBtn"><em class="orange" id="countDown">60</em>秒后关闭该窗口<a href="#" id="next" class="btn3 btnsF12">立即开始下一位</a></div>
+</div>
+
+<div class="dgBox box3" id="idcardOktelErr" style="display:none;">
+	<dl>
+    <dt><i class="hbFntWes green">&#xf058;</i></dt>
+    <dd><p>验证成功，可以入场了</p><p class="txt">我们发现，您在huibo.com的手机号码并不是<em class="orange" id="box_mobile"></em>，记得登录huibo.com更改哟！</p></dd>
+    </dl>
+    <div class="botBtn"><em class="orange" id="countDown">60</em>秒后关闭该窗口<a href="#" id="next" class="btn3 btnsF12">立即开始下一位</a></div>
+</div>
+
+<div class="dgBox box4" id="regOk" style="display:none;">
+	<dl>
+    <dt><i class="hbFntWes green">&#xf058;</i></dt>
+    <dd><p>验证成功，可以入场了</p></dd>
+    </dl>
+    <div class="botBtn"><em class="orange" id="countDown">60</em>秒后关闭该窗口<a href="#" id="next" class="btn3 btnsF12">立即开始下一位</a></div>
+</div>
+
+
+<div class="dgBox passBox" id="findPassBox" style="display:none;">
+	<form action="/fairreg" method="post" name="find_pass" id="find_pass" >
+	<div class="form">
+        <p class="txt">第1步：请点击下面的“免费获取验证码“按钮”</p>
+        
+        <div class="formMod">
+            <div class="l">&nbsp;</div>
+            <div class="r">
+                <span class="tipTxt"><a href="#" class="btn3 btnsF14" id="btnGetCode">免费获取验证码</a>
+				<a href="#" class="btn3 btnsF14 btn3Unclick" id="btnReGetCode" style="display:none"><em id="countDown">60</em>秒后重新获取</a></span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        
+        <p class="txt">第2步：<em id="box_mobile"></em>将收到一条短信，将短信内6位数字输入到下面框中</p>
+        
+        <div class="formMod">
+            <div class="l">&nbsp;</div>
+            <div class="r">
+                <span class="formText"><input type="text" class="text" style="width:100px;" id="code" name="code"></span>
+                <span class="verJudgeError" id="box_vali_err" style="display:none">验证码错误</span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="formBtn"><a href="#" id="btnFindpass" class="btn1 btnsF14">确定</a></div>
+    </div>
+	</form>
+</div>
+
+
+<script language="javascript" type="text/javascript">
+
+$('#btnFindpass').click(function() {
+	var mobile_phone = $('#mobile_phone').val();
+	var code = findPassBox.find("#code").val();
+	var user_name = $('#user_name').val();
+	var idcard = $('#idcard').val();
+	$.ajax(
+	{
+		url: '/fairreg/?act=valiCodeCheck&mobile_phone=' + mobile_phone + '&user_name=' + escape(user_name) + '&idcard=' + idcard + '&code=' + code + '&d=' + new Date(),
+		dataType: 'json',
+		async: false,
+		success: function(json) { 
+			if(json.state=="true"){
+				findPassBox.close();
+				var modal = $.showModal("#idcardOk", { contentType: 'selector',title:'验证成功', showMask: true, onclose: function()
+						{clareInput();goFirst();}
+					});
+				modal.find("#next").click(function(){modal.close();});
+				countDownInterval(modal.find("#countDown"),function(){
+						modal.close();
+					});
+			}
+			else{
+				findPassBox.find("#box_vali_err").css({display:"block"});
+			}
+		},
+		error: function() {  }
+	});
+});
+
+$('#btnGetCode').click(function() {
+	var mobile_phone = $('#mobile_phone').val();
+	var user_name = $('#user_name').val();
+	
+	$.ajax(
+	{
+		url: '/fairreg/?act=sendValiCode&mobile_phone=' + mobile_phone + '&user_name=' + escape(user_name) + '&d=' + new Date(),
+		dataType: 'json',
+		async: false,
+		success: function(json) { 
+			if(json.state=="true"){
+				findPassBox.find("#btnGetCode").css({display:"none"});
+				findPassBox.find("#btnReGetCode").css({display:"block"});
+
+
+				countDownInterval(findPassBox.find("#btnReGetCode").find("#countDown"),function(){
+					findPassBox.find("#countDown").text("60");
+					findPassBox.find("#btnGetCode").css({display:"block"});
+					findPassBox.find("#btnReGetCode").css({display:"none"});	
+					return;
+				});
+			}
+			else{
+				alert("发送失败！");
+			}
+		},
+		error: function() {  }
+	});
+});
+
+var findPassBox = null;
+
+$('#findPass').click(function() {
+	findPassBox = $.showModal("#findPassBox", { contentType: 'selector', showMask: true,title:'找回密码'});
+	var mobile = $("#mobile_phone").val();
+	findPassBox.find("#box_mobile").text(mobile);
+	
+});
+
+function goFirst()
+{
+	$("#act").val("checkuser");	
+	var rd = Math.floor(Math.random()*100000);
+	location.href = "/fairreg/?rd=" + rd;
+//	document.location.reload();
+}
+
+function countDownInterval(cl,onTimeout)
+{ 
+	var interval;  
+	function run() {  
+		interval = setInterval(countDown, "1000");  
+	}  
+	function countDown() {  
+			
+	   var cd =  cl.text();
+	   if(cd == "1")
+	   {
+			clearTimeout(interval);
+			onTimeout();
+			return;
+	   }
+	   cl.text(parseInt(cd)-1);
+	}  
+    run();
+}
+
+function clareInput()
+{
+	 $("#idcard").val("");
+	 $("#mobile_phone").val("");
+	 $("#user_name").val("");
+}
+
+$(document).ready(function(){
+    $.focusblur('.text');
+	$.setIndex("zindex");
+	
+	var jobcatBox = $("#jobcatBox"),
+		jobsort = $("#jobsort");
+	jobsort.focus(function(){
+		jobcatBox.show();
+	});
+	
+	$(this).on('click', function(e){
+		var target = $(e.target);
+		if(target.closest('#jobsort').length){
+			return;
+		}
+		if(jobcatBox.is(':visible')){
+			if(target.closest('.jobCatBox').length){
+				if(target.hasClass('btn1')){
+					jobsort.val($('#otherJobsort').val());
+					jobcatBox.hide();
+				} else if(target[0].nodeName.toLowerCase() === 'a'){
+					jobsort.val(target.html());
+					jobcatBox.hide();
+				}
+			} else {
+				jobcatBox.hide();
+			}
+		}
+	});
+
+	$("#idcard").blur(function(){
+           var info = idInfoParser($(this).val());
+			if(info.sex=="1"){
+				$('#sexMale').attr("checked",'checked'); 
+			}else{
+				$('#sexFemale').attr("checked",'checked'); 
+			}
+		    $('#birthday').val(info.birthday);
+
+    });
+	
+	$("#salary_min").blur(function(){
+		   var rate = 1.5;		   
+           var max = $("#salary_max").val();
+		   var min = $(this).val();
+		   if(max.length==0 && !isNaN(min)){
+				 $("#salary_max").val(parseInt(min*rate));
+		   }
+    });
+	
+//	//验证身份证号码
+//    $.validator.addMethod("idcardVali", function() {
+//        var idcard = $("#idcard").val();
+//        if (idcard.length==15 || idcard.length==18) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//
+//    }, '身份证号码必须为15位或18位');
+
+
+
+});
+
+	var fair_reg = {
+        initialize: function() {
+            this.band._btnReg();
+        },
+        band: {
+            _btnReg: function() {
+                $("#btnSubmit").click(function() {
+					var phone = $('input[name=mobile_phone]');
+					if(!phone.val()){
+						alert('请填写手机号');
+						return false;
+					}
+					var reg = /^0?1[0-9][0-9]\d{8}$/;
+					if (!reg.test(phone.val())) {
+						return false;
+					}
+					$('#sub_return').show();
+					$(this).html('确&nbsp;定');
+					var act = $("#act").val();
+                    var data = { act: act };
+					if(act == "checkuser")
+					{
+						$("#btnSubmit").submitForm({ beforeSubmit: $.proxy(userCheckValid.form, userCheckValid), data: data, success: fair_reg.band._checkUserSuccess, clearForm: false });					
+					}
+					else if(act == "userAccoutCheck")
+					{
+						$("#btnSubmit").submitForm({ beforeSubmit: $.proxy(userCheckValid.form, userCheckValid), data: data, success: fair_reg.band._accountSuccess, clearForm: false });						
+					}
+					else if(act == "register")
+					{
+						$("#btnSubmit").submitForm({ beforeSubmit: $.proxy(userCheckValid.form, userCheckValid), data: data, success: fair_reg.band._regSuccess, clearForm: false });						
+					}
+                    
+                    return false;
+                });
+            },
+            _checkUserSuccess: function(result) {
+                if (result && result.error) {
+					alert(result.error);
+                    return;
+                }
+				switch(result.state)
+				{
+					case "1":
+						var modal = $.showModal("#idcardOk", { contentType: 'selector',title:'验证成功', showMask: true, onclose: function()
+								{clareInput();goFirst();}
+							});
+						modal.find("#next").click(function(){modal.close();});
+						countDownInterval(modal.find("#countDown"),function(){
+								modal.close();
+							});
+						break;
+					case "2":
+						var modal = $.showModal("#idcardOktelErr", { contentType: 'selector',title:'验证成功', showMask: true, onclose: function()
+								{clareInput();goFirst();}
+							});
+						var mobile = $("#mobile_phone").val();
+						modal.find("#box_mobile").text(mobile.substring(0,3) + "****" + mobile.substring(7));  //186****5446
+						modal.find("#next").click(function(){modal.close();});
+						countDownInterval(modal.find("#countDown"),function(){
+								modal.close();
+							});
+						break;
+					case "3":
+					    var site_soucre = $('input[name=site_source]:checked').val()
+                        console.log(site_soucre);
+                        if(site_soucre == 1){
+					        $('#site_source_name').text('huibo.com');
+                        }else{
+                            $('#site_source_name').text('m.kuaimi.huibo.com');
+                        }
+						$("#div_password").css({display:"block"});
+							$('#btnSubmit').hide();
+						$("#act").val("userAccoutCheck");
+						break;
+					case "9":
+                        if(site_soucre == 1){
+                            $('#_huibo_salary').show();
+                            $('#_kuaimi_salary').hide();
+                        }else{
+                            $('#_kuaimi_salary').show();
+                            $('#_huibo_salary').hide();
+                        }
+                        $('.site_radio').attr("disabled",true);
+						$("#div_reg").css({display:"block"});
+                        var site_source = $('input[name=site_source]:checked').val()
+                        $("#fair_reg").append("<input type='hidden' name='site_source' value='"+site_source+"'/>");
+						$("#act").val("register");
+						break;
+				}
+            },
+			_accountSuccess:function(result) {
+				if (result && result.error) {
+					alert(result.error);
+                    return;
+                }
+				if (result.state == "true") {
+					//ok
+					$("#passwordErr").text("").css({display:"none"});				
+					var modal = $.showModal("#passwordOk", { contentType: 'selector',title:'验证成功', showMask: true, onclose: function()
+							{clareInput();goFirst();}
+						});
+					modal.find("#next").click(function(){modal.close();});
+					countDownInterval(modal.find("#countDown"),function(){
+							modal.close();
+					});
+				}
+				else {
+					//提示用户找回密码
+					$("#passwordErr").text("密码不正确，请重新输入或点击忘记密码").css({display:"block"});
+				}
+			},
+			_regSuccess:function(result) {
+				if (result && result.error) {
+					alert(result.error);
+                    return;
+                }
+				if (result.state == "ok") {
+					//ok
+					var modal = $.showModal("#regOk", { contentType: 'selector', title:'注册成功', showMask: true, onclose: function()
+							{clareInput();goFirst();}
+						});
+					modal.find("#next").click(function(){modal.close();});
+					countDownInterval(modal.find("#countDown"),function(){
+							modal.close();
+					});
+				}
+				else {
+					alert("注册失败");
+				}
+			}
+        }
+    }
+    fair_reg.initialize();
+    //校验规则
+
+
+
+    var userCheckValid;
+    userCheckValid = $("#fair_reg").validate({
+        rules: {
+//            idcard: {
+//                required: true,
+//				idcardVali: true
+//            },
+			user_name: {
+                required: false
+            },
+			mobile_phone: {
+                required: true,
+				rangelength: [11, 11]
+            }
+        },
+        messages: {
+//			idcard: {
+//                required: "身份证号码不能为空",
+//				idcardVali: "身份证必须为15位或18位"
+//            },
+			user_name: {
+                required: "姓名不能为空"
+            },
+			mobile_phone: {
+                required: "手机号码不能为空",
+				rangelength: "手机号码为11位"
+            }
+        },
+        onkeyup: false,
+        focusCleanup: true,
+        errorElement: "span",
+        errorClass: "verJudgeError",
+        errorPlacement: function(error, element) {
+            error.insertAfter($(element).parent());
+            $(element).closest('.teamR').find('.verJudgePass').hide();
+        },
+        highlight: function(element, errorClass) {
+            $(element).addClass('textError');
+        },
+        unhighlight: function(element, errorClass) {
+            $(element).removeClass('textError');
+        },
+        success: function(label) {
+            $(label).closest(".teamR").find(".verJudgePass").show();
+            label.text(" ").remove();
+        }
+    });
+
+
+
+	huibo.date.bind({
+			id: "Pos",
+			dateEntry: [0,1],
+			onSelect:function() {
+				//alert(2);
+			}
+		});
+		
+
+function idInfoParser(val) {	
+    //男 1 女2
+	var birthdayValue;
+	var sr,sex;
+    if (15 == val.length) { //15位身份证号码
+        birthdayValue = val.charAt(6) + val.charAt(7);
+        if (parseInt(birthdayValue) < 10) {
+            birthdayValue = '20' + birthdayValue;
+        }
+        else {
+            birthdayValue = '19' + birthdayValue;
+        }
+        birthdayValue = birthdayValue + '-' + val.charAt(8) + val.charAt(9) + '-' + val.charAt(10) + val.charAt(11);
+        if (parseInt(val.charAt(14) / 2) * 2 != val.charAt(14))
+            sex = '1';
+        else
+            sex = '2';
+        sr = birthdayValue;
+    }
+    if (18 == val.length) { //18位身份证号码
+        birthdayValue = val.charAt(6) + val.charAt(7) + val.charAt(8) + val.charAt(9) + '-' + val.charAt(10) + val.charAt(11)
+			+ '-' + val.charAt(12) + val.charAt(13);
+        if (parseInt(val.charAt(16) / 2) * 2 != val.charAt(16))
+            sex = '1';
+        else
+            sex = '2';
+
+        sr = birthdayValue;
+    }
+	return {"birthday":sr,"sex":sex};
+}
+</script>
+</body>
+</html>

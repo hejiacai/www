@@ -1,0 +1,62 @@
+<style>
+.pReg .regL .thrdLogin{ margin:0; padding:0;}
+.thrdLogin{ background:#e8f5fe; text-align:center; font-size:16px;}
+.regL{ float:none;}
+.reg{ border-radius:4px;}
+.edSucTit{ background:#e8f5fe;}
+.edSucTit2{ padding:30px 0;}
+.subSpan{ text-align:left;}
+div.content{width:100%;}
+.edSucTit2 b{ color:#3d84b8;}
+.edSucTit em, .edSucTit span{ font-family:"微软雅黑";}
+.edSrightx{ padding-bottom:15px;}
+.edSright p span.subSpan{ font-size:14px;width:352px;}
+.edSright p a{ height:30px; line-height:30px; font-size:14px;}
+</style>
+<div class="content" id="content">
+	<div class="reg pReg">
+    	<div class="regL" style="width:1000px;">
+        	<div class="edSucTit">
+                <em></em><span>恭喜您，简历创建成功</span>
+            </div>
+            {/if !empty($linkmans)/}
+            <div class="edSucTit2">
+                联系方式：
+                {/foreach $linkmans as $value/}
+                    <b>{/$value['linktel']/}</b>{/$value['linkman']/}
+                {//foreach/}
+            </div>
+            {//if/}
+            <div class="edSright edSrightx">
+                <p style="padding-top:28px;"><span class="subSpan" style="text-align:left;">打电话前先投个简历，获得面试的成功率增加30%</span><a class="blue" href="javascript:void(0)" id="btnRegisterApplyJob">立即投递</a></p>
+            </div>
+            <div class="edSright edSrightx">
+            	{/if !empty($resume_id)/}
+                <p style="padding-top:0px;"><span class="subSpan" style="text-align:left;">您的简历还可以更丰富，您可以继续为您的简历加分</span><a class="blue" href="{/get_url rule="/resume/update/" data="resume_id=$resume_id" domain='person'/}" target="_blank">完善简历</a></p>
+                {//if/}	
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+hbjs.use('@checkLogin', function(m){
+	var dialog = m['product.checkLogin'].dialog,
+		$ = m['jquery'];
+		
+	$('#btnRegisterApplyJob').click(function(){
+        $.getJSON('{/get_url rule="/apply/getresumeinfo/"/}', function( result) {
+            if(result.status && result.data.resumecount==1) {
+                location.href = '{/get_url rule="/apply/apply/" data="jobflag=$jobflag&resumeId='+result.data.default_resume_id+'"/}';
+            }else {
+                dialog.setContent({
+                    content: '{/get_url rule="/apply/index/" data="jobflag=$jobflag"/}'+'-v-'+Math.random(),
+                    isOverflow: true
+                }).resetSize(586, 'auto').show();            
+            }
+      });  
+
+	});
+});
+</script>
+
+

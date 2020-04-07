@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="{/$config->EmailFromName/} 重庆{/date('m月d日', strtotime($current_scene['date']))/}招聘会,重庆{/date('m', strtotime($current_scene['date']))/}月招聘会,重庆龙头寺招聘会" />
+<meta name="Description" content="企业与职位清单，重庆市龙头寺招聘会{/date('m月d日', strtotime($current_scene['date']))/}500家企业现场招聘，找人才,六千工作岗位,咨询电话{/$config->HuiboPhone400/}.求职者可登录{/$config->HuiBoSiteTitle/}查看职位。" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script src="{/version file='html5.js'/}"></script>
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="fw{/$current_scene['css_type']/}.css"/}" />
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="dialog.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="common.js"/}"></script>
+
+</head>
+<body>
+<!--top begin-->
+{/include file="header.html"/}
+<!--head-->
+<div class="fairHead">
+    <div class="fairHeadCon">
+        <div class="fairHeadL">
+            <h2>{/$current_scene['the_date']/}（{/$current_scene['the_weekday']/}）</h2>
+            <h1>{/$current_scene['subject']/}<sup>求职者，全免费入场!</sup></h1>
+            <div class="remark"><b>大会特点：</b>{/$current_scene['describe']/}</div>
+            <p>地点：重庆市两江新区龙头寺华宇地产5号楼&nbsp;&nbsp;&nbsp;轻轨：<span class="orange strong">3号线狮子坪站</span>下即到&nbsp;&nbsp;&nbsp;公交：221 202 302 <a href='{/get_url rule="/zhaopinhui/traffic"/}'>查询更多公交线路</a></p>
+            <p>咨询热线：{/$config->CqjobFairsPhone/}&nbsp;&nbsp;&nbsp;&nbsp;在线咨询：<a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></p>
+        </div>
+        <div class="fairHeadR">
+            <div class="soonTxt">距离开场还有<em>{/$current_scene['timeinterval']/}</em>天</div>
+            <div class="btn"><a href='{/get_url rule="/zhaopinhui/enterprise" data="sceneid={/$current_scene["scene_id"]/}&fairApply=true"/}'></a></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--head-->
+<div class="bread"><div class="breadCon"><a href='{/get_url rule="/zhaopinhui/fairlist"/}' target="_blank" class="moreFair">更多招聘会</a>您的位置：<a href='{/rewrite type="fair"/}'>招聘会首页</a>&gt;<a href='{/rewrite type="fairScene" date="{/date("Ymd", strtotime($current_scene.date))/}"/}'>{/date("m月d日", strtotime($current_scene["date"]))/}招聘会</a>&gt;<span>参会企业</span></div></div>
+<!--content Begin-->
+<div class="content">
+	<div class="subPage">
+    	<div class="subPageL">
+        	<div class="subPart">
+                <div class="subPartC">
+                	<div class="comLst">
+                    	<div class="table" id="table">
+                       		<div class="tHead"><div class="lstCon lst1">企业名称</div><div class="lstCon lst2">展位编号</div><div class="lstCon lst3">招聘职位数</div></div>
+                            <div class="tBody">
+                            	<ul>
+                            	{/if !empty($companys) && count($companys)>0/}
+                         		{/foreach $companys as $item=>$value/}
+                         		<li>
+                                    <div class="tLst">
+                                        <div class="lstCon lst1"><a href='{/rewrite type="fairSceneCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}" company_flag="{/$value.company_flag/}"/}' target="_blank">{/$value.company_name/}</a></div>
+                                        <div class="lstCon lst2">
+                                        	{/if $value.has_booth_ids/}<span class="No" >{/$value.booth_ids/}{/else/}<span class="Undetermine" >未确定{//if/}</span>
+                                        </div>
+                                        <div class="lstCon lst3">{/$value.job_count/}</div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="tCon">
+                                        <div class="tConL">招聘职位：</div>
+                                        <div class="tConR">
+                                        	{/if !empty($value.jobs) && count($value.jobs)>0/}
+                         					{/foreach $value.jobs as $it=>$val/}
+                         						{/if $it < 8/}
+	                                        		<a href='{/rewrite type="fairSceneCompany" date="{/date("Ymd", strtotime($current_scene["date"]))/}" company_flag="{/$value.company_flag/}"/}#{/$val.job_id/}' target="_blank">{/$val.station/}</a>
+                                        		{/else/}
+                                        			<a class="More" href="" target="_blank">[查看全部职位]</a>
+                                        		{//if/}
+	                                        {//foreach/}
+                							{//if/}
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </li>
+                         		{//foreach/}
+                				{//if/}
+                                </ul>
+                            </div>
+                            {/$pager/}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="subPageR">
+            {/if !empty($major_Adv) && count($major_Adv)>0/}
+       		{/foreach $major_Adv as $item=>$value/}
+         		<div class="subPartBanner"><a href="{/$value.topic_url/}" target="_blank"><img src="{/$ad_path/}{/$value.topic_img_url/}" /></a></div>
+         	{//foreach/}
+  			{//if/}
+        </div>
+        <div class="clear"></div>
+    </div>
+	
+</div>
+<!--content End-->
+{/include file="footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+	$('#table').find('li').hover(function(){
+		$(this).addClass('hov');
+	},function(){
+		$(this).removeClass('hov');
+	});
+});
+</script>
+</body>
+</html>
+
+

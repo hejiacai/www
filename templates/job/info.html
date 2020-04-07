@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="{/$keyword/}" />
+<meta name="Description" content="{/$description/}" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script type="text/javascript" language="javascript" src="{/version file="html5.js"/}" ></script>  
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="job.css"/}" />
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="common.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="dialog.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_validate.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="jquery.form.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_inputFocus.js"/}"></script><!--输入框获取焦点-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_hovchange.js"/}"></script><!--指向改变class-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_fancybox.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_fancybox-thumbs.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_flexslider.js"/}"></script>
+<style>
+footer{padding-bottom:85px;}
+</style>
+</head>
+<body id="body">
+{/include file='header.html'/}
+<div class="content" id="content">
+	<section class="section">
+    	<hgroup>
+        	<div class="bread"><a href="/">首页</a>&gt;{/foreach $jobsorts as $josort/}<a href="{/$josort["jobsortlink"]/}" target="_blank">{/$josort["jobsort_name"]/}</a>&gt;{//foreach/}<a class="cu">{/$station/}</a></div>
+            <div class="conBox">
+            	<div class="hd">
+                	<div class="hdL">
+                    	<p class="comName"><a href="{/$companylink/}">{/$companyname/}</a></p>
+                        <p class="comJob">{/if $jobtype!='全职'/}<em>[{/$jobtype/}]</em>{//if/}{/$station/}{/if $is_urgent/}<b class="anIco"></b>{//if/}</p>
+                    </div>
+                    <div class="hdR">
+                    	{/if !empty($rewards)/}<dl class="end"><dt>福利</dt><dd>{/$rewards/}</dd></dl>{//if/}
+                        
+                        <dl><dt>工作地点</dt><dd>{/$area/}</dd></dl>
+                    	<dl><dt>招聘人数</dt><dd>{/$quantity/}</dd></dl>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="bd">
+                    <div class="bdBox">
+                        <div class="bdL">
+                            <p class="pubTime">发布时间：{/$issuetime/}{/$countDown/}</p>
+                            <div class="jobCon">
+                                <dl class="jobRep x_jobRep">
+                                    <dt>月薪：</dt>
+                                    <dd>
+                                        <p><span style="font-weight:bold; color:#f60;">
+                                                {/if $is_salary_show == 1/}面议{/else/}
+                                                        {/if $min_salary == $max_salary/}
+                                                            ￥{/$min_salary/}
+                                                        {/else/}
+                                                            ￥{/$min_salary/}-{/$max_salary/}
+                                                         {//if/}
+                                                {//if/}
+                                                </span>
+                                          {/if $is_salary_show ==0/}
+                                            {/if $salary_type ==1/}
+              
+                                                <span style="font-weight:normal; color:#999;">（底薪：{/if $base_min_salary == $base_max_salary/}{/$base_min_salary/}{/else/}{/$base_min_salary/}-{/$base_max_salary/}{//if/}元/月+提成）</span>
+                                            {//if/}
+                                          {//if/}
+                                               
+                                        
+                                        </p>
+                                    </dd>
+                                </dl>
+                                <dl class="jobRep">
+                                    <dt>岗位要求：</dt>
+                                    <dd>
+                                        <p>工作年限：{/$workyear/} {/if $allowgraduate/}<i>（可接收应届毕业生）</i>{//if/}</p>
+                                        <p>性别要求：{/$sex/}</p>
+                                        <p>语言要求：{/$language/}</p>
+                                        <p>学历要求：{/$degree/}</p>
+                                        <p>年龄要求：{/$age/}</p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>岗位职责：</dt>
+                                    <dd>{/html_encode content=$jobcontent/}</dd>
+                                </dl>
+                                <dl>
+                                    <dt>任职资格：</dt>
+                                    <dd>{/html_encode content=$other_need/}</dd>
+                                </dl>
+                                <dl class="delBtn">
+                                	<dt>{/if !$isApplyJob/}<a href="javascript:void(0)" class="btn5 btnsF16" id="btnApplyJob">立即投递简历</a>{/else/}<a class="btn5 btnsF16 btn5Unclick" href="javascript:void(0)">已投递简历</a>{//if/}
+                                         {/if !$isFavJob/}<a class="btn3 btnsF16" href="javascript:void(0)" id="btnFav_bf">收藏</a>{/else/}<a class="btn3 btnsF16 btn3Unclick" href="javascript:void(0)" >已收藏</a>{//if/}
+                <a class="btn3 btnsF16" href="javascript:void(0)" id="report_bf">举报</a>
+                                        </dt>
+                                    <dd></dd>
+                                </dl>
+                                <dl>
+                                    <dt>工作地点</dt>
+                                    <dd>{/$area/}{/if !empty($add_info)/},{/$add_info/}<b><i class="hbIconMoon">&#xe042;</i><a href="http://api.map.baidu.com/geocoder?address={/$add_info/}&output=html" id="btnWorkWay" target="_blank" >查看上班路线</a></b>{//if/}</dd>
+                                </dl>
+                                 <dl>
+                                    <dt>联系方式：</dt>
+                                    <dd>
+                                     	<ul>
+                                     	{/if count($linkmans)>0/}
+								        	<li>
+							                 	{/foreach $linkmans as $linkman/}
+							                	  <div class="tiptxt"></div>
+							               		  <p>({/$linkman['linkman']/})<img src="{/get_url rule="/job/LinkTel/"/}jobflag-{/$jobflag/}-type-{/$linkman['linktel']/}.html" class="linkPhone" /></p>
+							                   	  {/if $linkman@last/}<p class="tipTxt">联系我时请说明是在汇博网上看到的</p>{//if/}
+							           			{//foreach/}     	
+								            </li>
+								        {/else/}
+								        	<li>
+						                	  <div class="tiptxt"></div>
+						               		  <p class="gray">请在汇博网直接投递简历。</p>
+								            </li>								            
+							            {//if/} 
+							        </ul>
+                                    </dd>
+                                </dl>                            
+                            </div>
+                        </div>
+                        <div class="bdR">
+                            <div class="comInfo">
+                                <div class="comPhoto">
+                                	<div class="banner">
+                                        <div class="lst flexBanner">
+                                            <ul class="slides">
+                                            {/foreach $company_photos as $key_photo=>$value_photo/}
+                                                <li><a class="fancybox-thumbs"  data-fancybox-group="thumb" href="{/$imgPath/}/{/$value_photo['photo_path']/}"><img src="{/$imgPath/}/{/$value_photo['photo_path1']/}" /></a></li>
+                                            {//foreach/}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comCon">
+                                    <div class="comConT">
+                                        <p><a href="{/$companylink/}" target="_blank">{/$companyname/}</a></p>
+                                        <p>{/$comSize/}</p>
+                                        <p>{/$callings/}</p>
+                                        {/if !empty($address)/}<p>地址：{/$address/}</p>{//if/}
+                                    </div>
+                                    <div class="comConC">
+                                        <span class="conTxt">
+                                            <span>{/$shortInfo/}</span>
+                                            <span class="moreTxt">
+                                                <a href="{/$companylink/}" target="_blank" class="more" >详情</a><!-- id="btnMore" -->
+                                                <div class="detTip" style="display:none;" id="companyDesc">
+                                               	    <div class="detTipArr"><em></em><span></span></div>
+                                                    <div class="detTipBd">
+                                                        <div class="detTipTxt">
+             											{/html_encode content=$info/}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="comFt">
+                                    <a class="message" href="javascript:void(0)" id="message"><i class="hbFntWes">&#xf0e5;</i>给TA留言</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                   {/if $hasotherjob/}
+                    <div class="jobLst" id="lst">
+                        <h3>该企业发布的其它职位</h3>
+                        <div class="jobLstBox">
+                            <table class="jobTable">
+                                <thead>
+                                    <tr>
+                                        <th class="wid225">职位名称</th>
+                                        <th class="wid80">人数</th>
+                                        <th class="wid85">学历要求</th>
+                                        <th class="wid120">薪资水平</th>
+                                        <th class="wid85">工作经验</th>
+                                        <th class="wid150">工作地点</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  {/foreach $otherjobs as $job/}
+                                    <tr>
+                                        <td class="wid225"><a href="{/$job['joblink']/}" title="{/$job['station']/}" target="_blank">{/if $job['jobtype']!='全职'/}<em>[{/$job['jobtype']/}]</em>{//if/}{/$job['station']/}{/if $job['is_urgent']/}<b class="anIco"></b>{//if/}</a></td>
+                                        <td>{/$job['quantity']/}</td>
+                                        <td>{/$job['degree']/}</td>
+                                        <td>{/$job['salary']/}</td>
+                                        <td>{/$job['workyear']/}</td>
+                                        <td>{/$job['area']/}</td>
+                                       
+                                    </tr>
+                                 {//foreach/}
+                                </tbody>
+                            </table>
+                            <div class="more"><a href="{/$companylink/}" target="_blank">更多&gt;&gt;</a></div>
+                        </div>  
+                    </div>
+                    {//if/}
+                </div>
+            </div>
+            <div class="simJob">
+            	<div class="simJobT"><h2>相似职位</h2><a href="{/get_url rule='/jobsearch/index/' data="key=$station"/}" target="_blank" class="more">更多&gt;&gt;</a></div>
+                <div class="simJobC">
+                {/section name=job loop=$similarJobs/}
+                 {/if $smarty.section.job.iteration == 1/}
+                	 <div class="simLst">
+                        <dl>
+                            <ul>
+                 {/elseif $smarty.section.job.iteration%4 == 1/}
+                            <div class="clear"></div>
+                            </ul>
+                        </dl> 
+                        <dl>
+                            <ul>
+                  {//if/}
+                            <li {/if $smarty.section.job.iteration%4 == 0/}class="lstR" {//if/}>
+                                <p class="jobName"><a href="{/$similarJobs[job].joblink/}" target="_blank">{/$similarJobs[job].station/}</a></p>
+                                <p class="comName"><a href="{/$similarJobs[job].companylink/}" target="_blank">{/$similarJobs[job].companyname/}</a></p>
+                                <p><em>{/$similarJobs[job].salary/}</em>--<i>{/$similarJobs[job].address/}</i></p>
+                            </li>
+                 {/if $smarty.section.job.iteration == $similarJobCount/}
+                            <div class="clear"></div>
+                            </ul>
+                        </dl>
+                 {//if/}                        
+                {/sectionelse/}
+				     <div class="noData">暂无数据</div>
+			    {//section/} 
+                </div>
+            </div>
+            </div>
+    	</hgroup>
+    </section>
+</div>
+{/include file="footer.html"/}
+<div class="scrollFun" style="display:block;" id="scrollFun">
+	<div style="position:relative; width:100%;">
+        <div class="scrollFunBox" id="scrollFunBox">
+            <div class="conL">
+                <span><b>感兴趣，就投了吧！</b>投得越多，获得的面试机会就越多</span>
+                <span>
+                {/if !$isApplyJob/}<a class="btn5 btnsF16" href="javascript:void(0)" id="posRum">立即投递简历</a>{/else/}<a class="btn5 btnsF16 btn5Unclick" href="javascript:void(0)">已投递简历</a>{//if/}
+                {/if !$isFavJob/}<a class="btn3 btnsF16" href="javascript:void(0)" id="btnFav">收藏</a>{/else/}<a class="btn3 btnsF16 btn3Unclick" href="javascript:void(0)" >已收藏</a>{//if/}
+                <a class="btn3 btnsF16" href="javascript:void(0)" id="report">举报</a>
+            	</span>
+            </div>
+            <div class="conR">
+                <span class="decPic"><a href="{/get_url rule='/app/p'/}" target="_blank"><img src="{/$siteurl.style/}/img/job/liantu.png"/></a></span>
+                <span class="decTxt">扫一扫，下载汇博手机版<br/>随时看，随时投</span>	
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="scrollFunBg"></div>
+	</div>   
+</div>
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script>
+
+/**
+ * 留言
+ */
+$('#message').click(function() {
+	var islogin = ajaxCheckPersonLogin('ajaxLoginCallback');
+	if(islogin){
+	    $.showModal('{/get_url rule="/job/GuestBook/" data="jobflag=$jobflag"/}'+'-v-'+Math.random(),{title:'有疑问？给TA留言'});
+	}
+});
+/**
+ * 联系方式
+ */
+$('#contact').click(function() {
+	 $.showModal('{/get_url rule="/job/ContactWay/" data="jobflag=$jobflag"/}'+'-v-'+Math.random(),{title:'联系方式'});
+});
+/**
+ * 举报 
+ */
+$('#report,#report_bf').click(function() {
+	var islogin = ajaxCheckPersonLogin('ajaxLoginCallback');
+	if(islogin){
+		$.showModal('{/get_url rule="/companycomplaint/index/" data="companyflag=$companyflag"/}'+'-v-'+Math.random(),{title:'举报'});
+    }
+});
+
+$('#posRum,#btnApplyJob').click(function() {
+	var islogin = ajaxCheckPersonLogin('ajaxLoginCallback');
+	if(islogin){
+	   $.showModal('{/get_url rule="/apply/index/" data="jobflag=$jobflag"/}'+'-v-'+Math.random(),{title:'投递简历'});
+	}
+});
+
+$('#btnFav,#btnFav_bf').click(function(){
+	var islogin = ajaxCheckPersonLogin('ajaxLoginCallback');
+	if(islogin){
+		$.getJSON('{/get_url rule="/job/FavoriteJob/" data="jobflag=$jobflag"/}'+'-v-'+Math.random(),function(result) {
+			if(result.error){
+				 $.message(result.error,{title:'操作失败！'});
+			}
+			else if(result.success){
+				$.anchorMsg(result.success,{title: "操作成功", icon: "success"});
+				$('#btnFav,#btnFav_bf').addClass('btn3Unclick').html('已收藏').unbind();
+			}		
+	    });
+	}
+});
+$('#btnMore').mouseover(function() {
+	$('#companyDesc').show();
+	var height = $('#companyDesc').find('.detTipTxt').height(),
+		tipheight = $('#companyDesc').find('.detTipArr').find('span').height();
+	var top = (height-tipheight)/2;
+	$('#companyDesc').find('.detTipBd').css('top',-top);
+
+}).mouseout(function(){
+	$('#companyDesc').hide();
+});
+
+
+$(document).ready(function(e) {
+    $('#lst').find('tr').hover(function(){
+		$(this).addClass('hov');},function(){
+		$(this).removeClass('hov');
+	});
+	
+	$('.flexBanner').flexslider({
+		animation:"slide",
+		itemWidth:263,
+		itemMargin:0,
+		prevText:'&#xf053;',
+		nextText:'&#xf054;',
+		pauseOnAction:false,
+		pauseOnHover:true,  
+		move:5,
+		controlNav:false
+	});
+	
+	$('.fancybox-thumbs').fancybox({
+		closeBtn  : true,
+		arrows    : true,
+		helpers : {
+			thumbs : {
+				width  : 100,
+				height : 100
+			}
+		},
+		beforeShow:function(){
+			$('.flexBanner').flexslider('pause');
+		},
+		afterClose:function(){
+			$('.flexBanner').flexslider('play');
+		}
+	});
+
+	$('.fancybox-media').attr('rel', 'media-gallery')
+	.fancybox({
+		openEffect : 'none',
+		closeEffect : 'none',
+		prevEffect : 'none',
+		nextEffect : 'none',
+
+		arrows : false,
+		helpers : {
+			media : {},
+			buttons : {}
+		},
+		beforeShow:function(){
+			$('.flexBanner').flexslider('pause');
+		},
+		afterClose:function(){
+			$('.flexBanner').flexslider('play');
+		}
+	});
+});
+
+$.getJSON('{/get_url rule="/job/JobVisit/" data="jobflag=$jobflag"/}');
+function ajaxLoginCallback() {
+	window.location.href = window.location.href ; 
+}
+
+jQuery.fn.extend({
+    keepfixed:function() {
+        var $w = $(window);
+        var controly =$w.height()-$(this).height()+$w.scrollTop();
+        $(this).css({top:controly});
+    },
+    scrollTip: function() {
+        var _self = this;
+        if ($.browser.msie&&$.browser.version<=6.0){
+        	 $(this).css({position:"absolute"});
+            _self.keepfixed();
+            $(window).bind('scroll resize',function(e) {
+            	_self.keepfixed();
+            });
+        }
+    }
+});
+$('#scrollFun').scrollTip();
+</script>
+</body>
+</html>

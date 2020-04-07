@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="{/$the_media['description']/}" />
+<title>{/$the_media['subject']/}{/$title/}</title>
+<!–[if lt IE9]> 
+<script src="{/version file='html5.js'/}"></script>  
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="fairNew.css"/}" />
+
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="dialog.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="common.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_inputFocus.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_validate.js"/}"></script><!--验证-->
+<script type="text/javascript" language="javascript" src="{/version file="jquery.form.js"/}"></script><!--表单提交-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_flexslider.js"/}"></script><!--左右滚动-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_inputFocus.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+<script type="text/javascript">
+    window.CONFIG = {
+        HOST: '{/$siteurl.style/}',
+        COMBOPATH: '/js/v2/'
+    }
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file="global.js"/}"></script>
+<script type="text/javascript">
+        hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<style>
+ .jobFairBner{width:auto;font-family:"微软雅黑"; height:200px; background:url({/$siteurl.style/}/img/fair/new_fair/jobFairBner.jpg) center top no-repeat;}
+ .jobFairMag{width:1000px; overflow:hidden;margin:0 auto;}
+ .jobFairMag h2{ display:block; text-align:left; float:left; font-size:20px; color:#b62a2a; padding-top:120px; padding-left:0;}
+ .jobFairMag div{width:490px; text-align:right; float:right; padding-top:50px;}
+ .jobFairMag div b,.jobFairMag div p{ color:#333; font-size:16px; display:block;width:490px; overflow:hidden; }
+ .jobFairMag div b{ color:#333; font-size:21px; padding-bottom:8px;}
+ .jobFairMag div p span{ font-weight:bold; }
+</style>
+</head>
+<body>
+{/include file="new_headsearch_2015.html"/}
+{/include file="./fair/fairhead.html"/}
+<div class="content">
+	<div class="conL">
+    	<div class="part medRepDet">
+        	<div class="detT">
+            	<h1>{/$the_media.subject/}</h1>
+                <p>发布时间：{/$the_media.issue_time/}</p>
+                <p>来源：[{/$the_media.origin/}]</p>
+                <p>链接：<a href='{/if !base_lib_BaseUtils::nullOrEmpty($the_media.outside_url)/}{/$the_media.outside_url/}{/else/}javascript:void(0);{//if/}' target="_blank">{/$the_media.outside_url/}</a></p>
+            </div>
+            <div class="detC">
+            	<div class="{/if !base_lib_BaseUtils::nullOrEmpty($the_media.video_url)/}textInfoVedio{/else/}none{//if/}"><embed width="577" height="326" align="middle" type="application/x-shockwave-flash" allowscriptaccess="always" quality="low" allowfullscreen="true" src="{/$the_media.video_url/}"></div>
+         		{/$the_media.content/}
+            </div>
+        </div>
+    </div>
+    <div class="conR">
+        {/*<div class="part fairAd">
+            <a target="_blank" href="{/if !empty($major_Adv) && !base_lib_BaseUtils::nullOrEmpty($major_Adv.topic_url)/}{/$major_Adv.topic_url/}{/else/}javascript:void(0);{//if/}">{/if !empty($major_Adv) && !base_lib_BaseUtils::nullOrEmpty($major_Adv.topic_img_url)/}<img src="{/$ad_path/}{/$major_Adv.topic_img_url/}" />{//if/}</a>
+        </div>
+        <div class="part fairAdd">
+            <h3><b></b>招聘会地址</h3>
+            <div class="addCon">
+                <p>重庆两江新区龙头寺火车站华宇广场5号楼</p>
+                <a target="_blank" href="http://j.map.baidu.com/mt0Sq" class="map"><img src="{/$siteurl.style/}/img/fair/mapAdd.jpg" /></a>
+            </div>
+        </div>
+        <div class="part fairInfo">
+            <h3><b></b>我是企业，我要订展</h3>
+            <div class="infoCon">
+                <p><b>订展热线：</b>{/$config->CqjobFairs400Tel/}</p>
+                <p><b>手机号码：</b>{/$config->CqjobFairsCellPhone/}</p>
+                <p><b>QQ在线咨询：</b><a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></p>
+                <p class="btn"><a href="{/get_url rule="/zhaopinhui/enterprise" data="sceneid={/$major_Adv.scene_id/}&fairApply=true"/}" class="btn1 btnsF16"><b></b>在线定展</a></p>
+            </div>
+        </div>*/}
+        {/include file="./fair/fairright.html"/}
+    </div>
+    <div class="clear"></div>
+</div>
+{/include file="footer.html"/}
+<section class="qqTalk">
+	<a target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={/$config->HuiboFairsQQ/}&site=qq&menu=yes"><img border="0" src="//wpa.qq.com/pa?p=2:{/$config->HuiboFairsQQ/}:53" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+</section>
+</body>
+</html>

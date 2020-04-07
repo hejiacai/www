@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!--[if lt IE9]  --> 
+<script src="{/version file='html5.js'/}"></script>  
+<!-- [endif] -->
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='front.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='about.css'/}" />
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+    HOST: '{/$siteurl.style/}',
+    COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file="global.js"/}"></script>
+<script type="text/javascript">
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+</head>
+<body>
+{/include file="new_headsearch_2015.html"/}
+<section class="oth">
+	<div class="othLft">
+    	{/include file="about/leftlink.html" link="message"/}
+    </div>
+    <hgroup class="othRht">
+    	<div class="hd"><h2>网上留言</h2></div>
+        <div class="bd lvmsg">
+            <div class="txt">
+            	<p class="tit"><b style="font-size:15px;">咨询监督电话：400-1010-970 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱：fuwu@huibo.com
+</b></p>
+                <p>请在下方输入您要反馈的问题，请尽量的详细描述，并留下您的电话号码，以便我们能更好的帮您解决问题</p>
+                <p class="tit"><b>注意：此处留言是给汇博网，如要咨询企业，请直接在企业页面咨询</b></p>
+                
+            </div>
+            <form id="formMess" action="/about/saveMessage/" method="post">
+            <div class="form">
+            	<!-- <h3>您好，欢迎您给我们的产品提出反馈意见！</h3> -->
+                <div class="formMod">
+                	<div class="l">意见簿</div>
+                    <div class="r">
+                        <span class="formTextarea">
+                            <textarea id="txtMessage" name="txtMessage" style="width:455px;" class="textarea">{/if $content != ''/}{/$content/}{//if/}</textarea>
+                            <span class="textareaTxt">还剩<i class="green">{/2000 - mb_strlen($content)/}</i>字可输入</span>
+                        </span>
+                        <span class="tipPos">
+                            <span class="tipLay">
+                            </span>
+                        </span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="formMod">
+                	<div class="l">提供截图</div>
+                    <div class="r">
+                    	<span class="tipTxt formFile"><a href="javascript:void(0)"  style="margin:0;" class="btn3 btnsF12">添加文件</a><input id="pic1" name="accessory" onchange="mess.checkFileType(this);" type="file" class="file"></span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="formMod" style="display:none">
+                	<div class="l">&nbsp;</div>
+                    <div class="r">
+                    	<span class="tipTxt formFile"><a href="javascript:void(0)" style="margin:0;" class="btn3 btnsF12">添加文件</a><input id="pic2" name="accessory2" onchange="mess.checkFileType(this);" type="file" class="file"></span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="formMod">
+                	<div class="l">&nbsp;</div>
+                    <div class="r">
+                        <span class="tipTxt">文件格式为“{/if $advise_accessory_format!=''/}{/$advise_accessory_format/}{/else/}.gif,.jpg,.jpeg,.png{//if/}”，最大支持{/if $advise_accessory_size!=''/}{/$advise_accessory_size/}KB{/else/}200KB{//if/}，最多上传2个</span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                
+                <h3>请输入您的联系方式，以便我们及时回复</h3>
+                
+                <div class="formMod">
+                    <div class="l">您的姓名</div>
+                    <div class="r">
+                    <span class="formText"><input id="txtName" name="txtName" type="text" class="text" value="{/$user_name/}"></span>
+                    <span class="tipPos">
+                            <span class="tipLay">
+                            </span>
+                        </span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="formMod">
+                    <div class="l">联系电话</div>
+                    <div class="r">
+                    <span class="formText"><input id="txtPhone" name="txtPhone" type="text" class="text" value="{/$link_tel/}"></span>
+                    <span class="tipPos">
+                            <span class="tipLay">
+                            </span>
+                        </span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="formMod">
+                    <div class="l">电子邮箱</div>
+                    <div class="r">
+                    <span class="formText"><input id="txtEmail" name="txtEmail" type="text" class="text" value="{/$email/}"></span>
+                    <span class="tipPos">
+                            <span class="tipLay">
+                            </span>
+                        </span>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="formBtn"><a href="javascript:void(0)" id="btnSave" class="btn1 btnsF14">提&nbsp;交</a></div>
+            </div>
+       		</form>
+        </div>
+    </hgroup>
+    <div class="clear"></div>
+</section>
+{/include file="./about/footer.html"/}
+<script type="text/javascript">
+var mess={
+	formMessValid:null,	
+	init:function(){
+		$('#txtMessage').setListen({max:2000});
+		mess.formMessValid=$('#formMess').validate({
+			rules:{
+				txtMessage:{required:true,rangelength: [1, 2000]},
+				txtName:{required: true},
+            	txtPhone:{required: true,tel: true},
+            	txtEmail: {required: true,email: true}
+			},
+			messages:{
+				 txtMessage:{required:'请输入留言内容<span class="tipArr"></span>',rangelength:'1-2000个汉字<span class="tipArr"></span>'},
+	             txtName: {required: '请输入联系人<span class="tipArr"></span>'},
+	             txtPhone:{required: '请输入联系电话<span class="tipArr"></span>',tel: '请输入正确的电话号码<span class="tipArr"></span>'},
+	             txtEmail:{required: '请输入电子邮箱<span class="tipArr"></span>',email: '电子邮件格式不正确<span class="tipArr"></span>'}
+			},
+			errorClasses:{
+				txtMessage:{required: 'tipLayErr tipw150',rangelength: 'tipLayErr tipw150'},
+				txtName: {required:'tipLayErr tipw150'},
+				txtPhone:{required:'tipLayErr tipw150',tel:'tipLayErr tipw180'},
+				txtEmail:{required:'tipLayErr tipw150',email:'tipLayErr tipw180'}
+			},
+			tips:{
+				txtMessage:'1-2000个汉字<span class="tipArr"></span>',
+				txtName:'请填写真实姓名<span class="tipArr"></span>'
+			},
+			tipClasses:{
+				txtMessage:'tipLayTxt tipw150',
+				txtName:'tipLayTxt tipw150'
+			},
+			onkeyup:false,
+		    errorElement: 'span',
+		    errorPlacement: function(error, element)
+		    {
+		    	element.parent().next().find('.tipLay').append(error);                           
+		    },
+		    success: function(label)
+			{
+				label.text(" ");
+			}
+		});	
+		mess.saveMessage();
+	},
+	checkFileType:function(obj){
+		var loc = $(obj).val();
+		var index = loc.lastIndexOf('.');
+        var extend = loc.substring(index+1, loc.length).toLowerCase();
+        if (extend == "gif" || extend == "jpg" || extend == "png" || extend == "jpeg") {
+            if($(obj).closest("div.r ").find('.tipTxt').length>=2){
+            	$(obj).closest("div.r ").find('.tipTxt:last').html(loc+'<a href="javascript:void(0)" onclick="mess.removeFile(this);">移除</a>');
+            }else{
+            	$(obj).closest("div.r ").append('<span class="tipTxt">'+loc+'<a href="javascript:void(0)" onclick="mess.removeFile(this);">移除</a></span>');
+            	mess.addFile(obj);
+            }
+        }
+        else {
+            $.message('上传文件格式不正确，只支持{/$advise_accessory_format/}格式的图片', { icon: 'warning' });
+            $('#pic2').parents('.formMod').show();
+            $(obj).closest('.tipTxt').next().remove();
+            $(obj).val('');
+            return false;
+        }
+	},
+	removeFile:function(obj){
+		var self = $(obj);
+		self.closest('.r').find('input').val("");
+		self.closest('.r').find('.tipTxt:last').remove();
+	},
+	addFile:function(obj){
+		 if ($(obj).val() == '') return;
+	     $('#pic2').parents('.formMod').show();
+	},
+	saveMessage:function(){
+		var url;
+        var webAppName;
+        var webUserAgent;
+        var resolution;
+        var referer;
+
+        url = window.location.href;
+        webAppName = navigator.appName;
+        webUserAgent = navigator.userAgent;
+        resolution = window.screen.width + '*' + window.screen.height;
+        referer = '{/$referer/}';
+        
+        //按钮注册事件
+        $("#btnSave").click(function() {
+            var data = { operate: 'save', url: url, webAppName: webAppName, webUserAgent: webUserAgent, resolution: resolution,referer:referer};
+            $("#btnSave").submitForm({ beforeSubmit: $.proxy(mess.formMessValid.form, mess.formMessValid), data: data, success: mess.success, clearForm: false });
+            return false;
+        });
+	},
+	success:function(json){
+		if(json&&json.error){
+			$.message(json.error,{icon:'warning'});
+			return;
+		}
+		mess.clearInput();
+		$.anchorMsg(json.msg);
+		return;
+	},
+	clearInput:function(){
+		$('#txtMessage').val('');
+		$('#pic1').closest('.tipTxt').next().remove();
+        $('#pic2').closest('.r').find('input').val("");
+        $('#pic2').closest('.tipTxt').next().remove();
+        $('[name="accessory"]').val('');
+        $('[name="accessory2"]').val('');
+		$('#pic2').closest('.formMod').hide();
+	}
+}
+mess.init();
+</script>
+</body>
+</html>

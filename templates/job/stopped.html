@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="{/$keyword/}" />
+<meta name="Description" content="{/$description/}" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script type="text/javascript" language="javascript" src="{/version file="html5.js"/}" ></script>  
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="icons.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="job.css"/}" />
+
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="common.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="dialog.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_validate.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="jquery.form.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="ui_menudisplay.js"/}"></script><!--下拉菜单-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_inputFocus.js"/}"></script><!--输入框获取焦点-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_hovchange.js"/}"></script><!--指向改变class-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_drop.js"/}"></script><!--下拉模拟-->
+<script type="text/javascript" language="javascript" src="{/version file="ui_dragsort.js"/}"></script><!--拖动插件-->
+<script type="text/javascript"  src="{/version file="ui_fancybox.js"/}"></script>
+<script type="text/javascript"  src="{/version file="ui_fancybox-thumbs.js"/}"></script>
+</head>
+<body id="body">
+<style type="text/css">
+</style>
+{/include file='header.html'/}
+<div class="content" id="content">
+	<section class="section">
+    	<hgroup>
+        	<div class="bread"><a href="/">首页</a>&gt;{/foreach $jobsorts as $josort/}<a href="{/$josort["jobsortlink"]/}" target="_blank">{/$josort["jobsort_name"]/}</a>&gt;{//foreach/}<a class="cu">{/$station/}</a></div>
+            <div class="conBox">
+            	<div class="hd">
+                	<div class="hdL">
+                    	<p class="comName"><a href="{/$companylink/}">{/$companyname/}</a></p>
+                        <p class="comJob">{/if $jobtype!='全职'/}<em>[{/$jobtype/}]</em>{//if/}{/$station/}{/if $is_urgent/}<b class="anIco"></b>{//if/}</p>
+                    </div>
+                    <div class="hdR">
+                    	{/if !empty($rewards)/}<dl class="end"><dt>福利</dt><dd>{/$rewards/}</dd></dl>{//if/}
+                        <dl><dt>月薪{/$period/}</dt><dd>{/$salary/}</dd></dl>
+                        <dl><dt>工作地点</dt><dd>{/$area/}</dd></dl>
+                    	<dl><dt>招聘人数</dt><dd>{/$quantity/}</dd></dl>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="bd">
+                    <div class="bdBox">
+                        <div class="bdL">
+                            <p class="pubTime">发布时间：{/$issuetime/}</p>
+                            <div class="jobCon">
+                                <dl class="jobRep">
+                                    <dt>岗位要求：</dt>
+                                    <dd>
+                                        <p>工作年限：{/$workyear/} {/if $allowgraduate/}<i>（可接收应届毕业生）</i>{//if/}</p>
+                                        <p>性别要求：{/$sex/}</p>
+                                        <p>语言要求：{/$language/}</p>
+                                        <p>学历要求：{/$degree/}</p>
+                                        <p>年龄要求：{/$age/}</p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>岗位职责：</dt>
+                                    <dd>{/html_encode content=$jobcontent/}</dd>
+                                </dl>
+                                <dl>
+                                    <dt>任职资格：</dt>
+                                    <dd>{/html_encode content=$other_need/}</dd>
+                                </dl>
+                                <dl>
+                                    <dt>工作地点</dt>
+                                   <dd>{/$area/}{/if !empty($add_info)/},{/$add_info/}<b><i class="hbIconMoon">&#xe042;</i><a href="http://api.map.baidu.com/geocoder?address={/$add_info/}&output=html" id="btnWorkWay" target="_blank" >查看上班路线</a></b>{//if/}</dd>
+                                </dl>                                          
+                            </div>
+                            <div class="stopRec"></div>
+                        </div>
+                        <div class="bdR">
+                            <div class="comInfo">
+                                <div class="comPhoto">
+                                {/foreach $company_photos as $key_photo=>$value_photo/}
+							    	<a {/if $value_photo@index > 0/}style="display:none"{//if/}  class="fancybox-thumbs"  data-fancybox-group="thumb" href="{/$imgPath/}/{/$value_photo['photo_path']/}"><img src="{/$imgPath/}/{/$value_photo['photo_path1']/}" /></a>
+							    {//foreach/}</div>
+                               <!--  <a><img src="{/$companylogo/}"/></a> -->
+                                <div class="comCon">
+                                    <div class="comConT">
+                                        <p><a href="{/$companylink/}" target="_blank">{/$companyname/}</a></p>
+                                        <p>{/$comSize/}</p>
+                                        <p>{/$callings/}</p>
+                                        {/if !empty($address)/}<p>地址：{/$address/}</p>{//if/}
+                                    </div>
+                                    <div class="comConC">
+                                        <span class="conTxt">
+                                            <span>{/$shortInfo/}</span>
+                                            <span class="moreTxt">
+                                                <a href="{/$companylink/}" target="_blank" class="more" >详情</a><!-- id="btnMore" -->
+                                                <div class="detTip" style="display:none;" id="companyDesc">
+                                               	    <div class="detTipArr"><em></em><span></span></div>
+                                                    <div class="detTipBd">
+                                                        <div class="detTipTxt">
+             											{/html_encode content=$info/}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="comFt">
+                                    <a class="message" href="javascript:void(0)" id="message"><i class="hbFntWes">&#xf0e5;</i>给TA留言</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                {/if $hasotherjob/}
+                <div class="jobLst" id="lst">
+                        <h3>该企业发布的其它职位</h3>
+                        <div class="jobLstBox">
+                            <table class="jobTable">
+                                <thead>
+                                    <tr>
+                                        <th class="wid285">职位名称</th>
+                                        <th class="wid80">人数</th>
+                                        <th class="wid85">学历要求</th>
+                                        <th class="wid120">薪资水平</th>
+                                        <th class="wid85">工作经验</th>
+                                        <th class="wid85">工作地点</th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  {/foreach $otherjobs as $job/}
+                                    <tr>
+                                        <td class="wid285"><a href="{/$job['joblink']/}" title="{/$job['station']/}" target="_blank">{/if $job['jobtype']!='全职'/}<em>[{/$job['jobtype']/}]</em>{//if/}{/$job['station']/}{/if $job['is_urgent']/}<b class="anIco"></b>{//if/}</a></td>
+                                        <td>{/$job['quantity']/}</td>
+                                        <td>{/$job['degree']/}</td>
+                                        <td>{/$job['salary']/}</td>
+                                        <td>{/$job['workyear']/}</td>
+                                        <td>{/$job['area']/}</td>
+                                        
+                                    </tr>
+                                 {//foreach/}
+                                </tbody>
+                            </table>
+                            <div class="more"><a href="{/$companylink/}" target="_blank">更多&gt;&gt;</a></div>
+                        </div>
+                    </div>
+              {//if/}      
+            </div>
+            <div class="simJob">
+            	<div class="simJobT"><h2>相似职位</h2><a href="{/get_url rule='/jobsearch/index/' data="key=$station"/}" target="_blank" class="more">更多&gt;&gt;</a></div>
+                <div class="simJobC">
+                {/section name=job loop=$similarJobs/}
+                 {/if $smarty.section.job.iteration == 1/}
+                	 <div class="simLst">
+                	 <dl>
+                	 <ul>
+                 {/elseif $smarty.section.job.iteration%4 == 1/}
+                 	 <div class="clear"></div>
+                 	</ul>
+                 	</dl> 
+                 	<dl>
+                 	<ul>
+                 {//if/}
+                    <li {/if $smarty.section.job.iteration%4== 0/}class="lstR" {//if/}>
+                        <p class="jobName"><a href="{/$similarJobs[job].joblink/}" target="_blank">{/$similarJobs[job].station/}</a></p>
+                        <p class="comName"><a href="{/$similarJobs[job].companylink/}" target="_blank">{/$similarJobs[job].companyname/}</a></p>
+                        <p><em>{/$similarJobs[job].salary/}</em>--<i>{/$similarJobs[job].address/}</i></p>
+                    </li>
+                 {/if $smarty.section.job.iteration == $similarJobCount/}
+                   	 <div class="clear"></div>
+                 	</ul>
+                 	</dl>
+                 {//if/}                        
+                {/sectionelse/}
+				     <div class="noData">暂无数据</div>
+			    {//section/} 
+                </div>
+          	    </div>
+            </div>
+    	</hgroup>
+    </section>
+</div>
+{/include file="footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script>
+
+/**
+ * 留言
+ */
+$('#message').click(function() {
+	var islogin = ajaxCheckPersonLogin();
+	if(islogin){
+	    $.showModal('{/get_url rule="/job/GuestBook/" data="jobflag=$jobflag"/}'+'-v-'+Math.random(),{title:'有疑问？给TA留言'});
+	}
+});
+/**
+ * 联系方式
+ */
+$('#contact').click(function() {
+   $.showModal('{/get_url rule="/job/ContactWay/" data="jobflag=$jobflag"/}'+'-v-'+Math.random(),{title:'联系方式'});
+});
+
+/*
+$('#btnMore').click(function() {
+	if($('#companyDesc').is(':hidden')) {
+		$('#companyDesc').show();
+		var height = $('#companyDesc').find('.detTipTxt').height(),
+			tipheight = $('#companyDesc').find('.detTipArr').find('span').height();
+		var top = (height-tipheight)/2;
+		$('#companyDesc').find('.detTipBd').css('top',-top);
+		
+	}else {
+		$('#companyDesc').hide();
+	}
+});
+*/
+$('#btnMore').mouseover(function() {
+	$('#companyDesc').show();
+	var height = $('#companyDesc').find('.detTipTxt').height(),
+		tipheight = $('#companyDesc').find('.detTipArr').find('span').height();
+	var top = (height-tipheight)/2;
+	$('#companyDesc').find('.detTipBd').css('top',-top);
+
+}).mouseout(function(){
+	$('#companyDesc').hide();
+});
+
+
+$(document).ready(function(e) {
+    $('#lst').find('tr').hover(function(){
+		$(this).addClass('hov');},function(){
+		$(this).removeClass('hov');
+	}) 
+});
+
+$.getJSON('{/get_url rule="/job/JobVisit/" data="jobflag=$jobflag"/}');
+$('.fancybox-thumbs').fancybox({
+	closeBtn  : true,
+	arrows    : true
+	/*,
+	helpers : {
+		thumbs : {
+			width  : 100,
+			height : 100
+		}
+	}*/
+});
+
+</script>
+</body>
+</html>

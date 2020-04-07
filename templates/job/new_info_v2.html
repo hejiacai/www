@@ -1,0 +1,696 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="{/$keyword/}" />
+<meta name="Description" content="{/$description/}" />
+<meta name="mobile-agent" content="format=xhtml; url={/$mobile_agent/}"/>
+<meta name="mobile-agent" content="format=html5; url={/$mobile_agent/}"/>
+<meta name="mobile-agent" content="format=wml; url={/$mobile_agent/}"/>
+<meta itemprop="name" content="{/$title/}" />
+<meta itemprop="image" content="{/$company_logo_path/}" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script type="text/javascript" language="javascript" src="{/version file='html5.js'/}" ></script>
+<![endif]–>
+
+<link rel="alternate" media="only screen and(max-width: 640px)" href="{/$mobile_agent/}" >
+<link rel="stylesheet" type="text/css" href="{/version file='v2-reset.css,v2-header.css,v2-widge.css,v2-resume.css,front.css,job.css,jobnew.css,prettyPhoto.css,icons.css,appeal.css,jobnew2018.css,leaveinfo.css'/}" />
+
+
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+
+
+<script type="text/javascript">
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+    <style>
+        .subPhonez {
+            margin-left: 0px;
+        }
+    </style>
+</head>
+<body id="body" class="minBody">
+<input type="hidden" id="j_job_id" value="{/$job_id/}"/>
+<input type="hidden" id="j_jobsort" value="{/$jobsort/}"/>
+<input type="hidden" id="j_jobsort_ids" value="{/$jobsort_ids/}"/>
+<input type="hidden" id="j_person_login_url" value="{/$mobile_url/}/login/getAuthCodeBySeedV2"/>
+<input type="hidden" id="j_new_person_url" value='{/get_url rule="/person/createbasic/" domain="person"/}'/>
+{/include_php file='app/controller/head.php'/}
+<!--<div class="{/if ($re_apply_type > 0) && ($reversion_rate >= 80)/}mentRatePro{/elseif ($re_apply_type > 0) || ($reversion_rate >= 80)/}mentRatePro mentRateProMuil{/else/}0{//if/}">
+    {/if $re_apply_type > 0/}
+    <p class="mentratMag" {/if 80>$reversion_rate && !empty($re_apply_type)/}style="margin-left:11px;"{//if/}>
+       <b class="mentMag">{/$re_apply_type/}工作日</b>
+        <span>职位承诺简历回复</span>
+    </p>
+    {//if/}
+    {/if $reversion_rate >= 80/}
+    <p class="mentratMag">
+        <b style="padding-bottom:2px;">{/$reversion_rate/}%</b>
+        <span>两周内简历回复率</span>
+    </p>
+    {//if/}
+</div>-->
+{/include file='new_headsearch_2015.html'/}
+<div class="bread"><a href="/">首页</a>&gt;{/foreach $jobsorts as $josort/}<a href="{/$josort["jobsortlink"]/}" target="_blank">{/$josort["jobsort_name"]/}</a>&gt;{//foreach/}<a class="cu">{/$station/}</a></div>
+{/if !empty($banner['banner_url'])/}
+<a href="{/$banner['href_url']/}" class="jobFairBanner">
+	<img src="{/$banner['banner_url']/}" />
+</a>
+{//if/}
+<div class="newJobBg">
+	<div class="newJobLf">
+    	<div class="newJobtop">
+            <div class="newtopTit">
+                <h2 style="width:{/if ($re_apply_type > 0) && ($reversion_rate >= 80)/}375{/elseif ($re_apply_type > 0) || ($reversion_rate >= 80)/}470{/else/}650{//if/}px">{/$station/}
+                {/if $jobtype != '全职' && !empty($jobtype)/}<em>{/$jobtype/}</em>{//if/}
+                {/if $is_urgent/}<i></i>{//if/}
+                <span class="newHr f60">{/if $is_hr/}【代招】{//if/}</span>
+                </h2>
+            </div>
+            <p style="margin-top: 24px">
+                <span>
+                    <a href="{/$companylink/}" data-flag="{/$company_flag/}" {/if !$ispersonlogin && $totalCompanyDetailClickNum < 2 && $companyDetailClickNum == 0/}class="j_company_name"{//if/} target="_blank">{/if !empty($company_shortname)/}{/$company_shortname/}{/else/}{/$companyname/}{//if/}</a>
+                    {/if $is_hr/}&nbsp;<span style="color:#666">(由 <a href="{/$link_url/}" target="_blank" class="f60">{/$link_company/}</a> 代为招聘，<img src="{/if $hr_licence/}{/$siteurl.style/}/img/job/newjob/hr_gen.png{/else/}{/$siteurl.style/}/img/job/newjob/hr_gen_valid.png{//if/}" style="vertical-align: bottom; margin-right:1px;" />人力资源许可证)</span>{//if/}
+                </span>
+            </p>
+            <div class="newJobEctBg">
+            	<em class="newDateEct">刷新于：{/$issuetime/}</em>
+            	<div class="newJobEct" {/if $isstoped/} style="display:none;" {//if/} >
+                    {/if !$isFavJob/}<a href="javascript:void(0);" class="newJect4" id="btnFav_bf">收藏</a>{/else/}<a href="javascript:void(0);" class="newJect4">已收藏</a>{//if/}
+                    <div class="newJshare">
+                        <a class="newJect2" href="#">分享</a>
+                        <div class="newJsbg" style="display: none;">
+                            <img height="9" width="19" class="njsImg" src="{/$siteurl.style/}/img/job/newjob/newJob_38.png">
+                            <div class="newJsbd">
+                                <a href="javascript:;" title="新浪微博" onclick="return shareTO('sina');"><i class="shareIcon01"></i></a>
+                                <a href="javascript:;" title="QQ空间" onclick="return shareTO('qq');"><i class="shareIcon03"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="newJect3" href="javascript:;" id="report_bf">举报</a>   
+                </div>
+                <div class="clear"></div>
+            </div>
+            
+            {/if $comstate_data.special_marking/}
+                    {/if $comstate_data.special_marking == 1/}
+                        <p class="desc" style="background: #fffdee none repeat scroll 0 0;border: 1px solid #feeeb2;color: #88530d;font-size: 12px;margin-bottom: 10px;padding: 8px 10px;">
+                            注意：此企业部分职位工作场所为KTV，介意者慎投！
+                        </p>
+                    {/else/}
+                        <p class="desc" style="background: #fffdee none repeat scroll 0 0;border: 1px solid #feeeb2;color: #88530d;font-size: 12px;margin-bottom: 10px;padding: 8px 10px;">
+                            注意：此企业部分职位工作地在海外，海外招聘有风险求职须谨慎！
+                        </p>
+                    {//if/}
+            {/else/}
+                {/if $recruit_type == '2'/}
+                    <p class="desc" style="background: #fffdee none repeat scroll 0 0;border: 1px solid #feeeb2;color: #88530d;font-size: 12px;margin-bottom: 10px;padding: 8px 10px;">汇博提示：该企业为<span> 中介机构</span>，面试职位时可能会向求职者收取介绍费。</p>
+                {/elseif $recruit_type == '3'/}
+                    <p class="desc" style="background: #fffdee none repeat scroll 0 0;border: 1px solid #feeeb2;color: #88530d;font-size: 12px;margin-bottom: 10px;padding: 8px 10px;">
+                        <label style="border: 1px solid #f82800;border-radius: 3px;color: #f82800;display: inline-block;font-size:12px;margin-right: 3px;padding: 1px 3px;vertical-align: 2px;">假招聘转招生</label>
+                        该企业存在假借招聘名义进行培训招生的行为，面试时可能会要求付费培训
+                    </p>
+                {/elseif $recruit_type == '4'/}
+                    <p class="desc" style="background: #fffdee none repeat scroll 0 0;border: 1px solid #feeeb2;color: #88530d;font-size: 12px;margin-bottom: 10px;padding: 8px 10px;">汇博提示：该企业为其他公司招聘人才（承诺不收求职者费用），如发现收费行为请及时向我们举报。</p>
+                {/elseif $recruit_type == '5'/}
+                    <p class="desc" style="background: #fffdee none repeat scroll 0 0;border: 1px solid #feeeb2;color: #88530d;font-size: 12px;margin-bottom: 10px;padding: 8px 10px;">汇博提示：该企业已承诺发布的为真实招聘职位，不向求职者推销收费培训课程，若发现请举报，我们将进行处理。</p>
+                {//if/}
+            {//if/}
+        </div>
+        <div class="newJobCot">
+        	<div class="newJobDtl">
+            	<p {/if !$min_salary && !$base_min_salary/}style="display:none;"{//if/}><i class="iconNew01"></i>
+                    <span class="f60"> 
+                    {/if $min_salary == $max_salary/}
+                    ￥{/$min_salary/}
+                    {/else/}
+                    ￥{/$min_salary/}~{/$max_salary/}
+                    {//if/}元/月
+                    </span>
+                    {/if $salary_month_num/}
+                    <span class="f60">{/$salary_month_num/}薪</span>
+                    {//if/}
+                    {/if !empty($job_level) || $salary_type ==1/}
+                    <span class="gary">（{/get_name job_level=$job_level/}
+                    {/if $salary_type ==1/}
+                    ，底薪：{/if $base_min_salary == $base_max_salary/}{/$base_min_salary/}{/else/}{/$base_min_salary/}~{/$base_max_salary/}{//if/}元/月+提成
+                    {//if/}）
+                    </span>
+                    {//if/}
+                {/if $appraise_count && $salary_score/}<span class="payLevel" style="color: #999;margin: 8px 0px 0px 30px;display: block;"><img src="{/$siteurl.style/}/img/job/newjob/pay_level.png" alt="" style="vertical-align: -3px;margin: 0 6px;"> 薪资相符度：<em style="color:#ff4200;">{/$salary_score/}分
+                ({/if $salary_score>=1&&$salary_score<2/}低{/elseif $salary_score>=2&&$salary_score<3/}较低{/elseif $salary_score>=3&&$salary_score<=3.5/}中
+        {/elseif $salary_score>=3.6&&$salary_score<=4.2/}较高{/elseif $salary_score>=4.3&&$salary_score<=5/}高{//if/})</em> /{/$appraise_count/}人反馈</span>{//if/}
+
+                </p>
+                {/if count($rewards) > 0 || count($other_rewards) > 0 || (count($features) > 0 && is_array($features)) || count($other_feature) > 0/}
+                <div class="newWelfare">
+                    <img src="{/$siteurl.style/}/img/job/newjob/welfare.png" width="24" height="24" />
+                    <ul class="newtopLit">
+                        {/if count($rewards) > 0/}
+                        {/foreach $rewards as $reward/}
+                        <li>{/$reward/}</li>
+                        {//foreach/}
+                        {//if/}
+                        {/if count($other_rewards) > 0/}
+                        {/foreach $other_rewards as $other_reward/}
+                        <li>{/$other_reward/}</li>
+                        {//foreach/}
+                        {//if/}
+                        {/if count($features) > 0 && is_array($features)/}
+                        {/foreach $features as $feature/}
+                        <li class="mark">{/$feature/}</li>
+                        {//foreach/}
+                        {//if/}
+                        {/if count($other_feature) > 0/}
+                        {/foreach $other_feature as $other/}
+                        <li class="mark">{/$other/}</li>
+                        {//foreach/}
+                        {//if/}
+                    </ul>
+                </div>
+                {//if/}
+                <p><i class="iconNew02"></i>
+                    {/*<span>{/$degree/} / {/$workyear/} / {/$language/} / {/$sex/} / {/$age/}</span>*/}
+                    <span>{/$degree/} / {/$workyear/} / {/$language/}  / {/$age/}</span>
+                    <span class="gary"> {/if $allowgraduate/}（可接收应届毕业生）{//if/}</span>
+                </p>
+                {/if !empty($profession) && $allowgraduate/}
+                <p><i class="iconNew05"></i>
+                    <span>{/$profession/}</span>
+                </p>
+                {//if/}
+                <p><i class="iconNew03"></i>
+                    <span>{/$area/}</span>
+                    {/if !empty($add_info)/}
+                    <span class="gary" title="{/$add_info/}">（{/base_lib_BaseUtils::cutstr($add_info,23,'utf-8','','…')/}）</span>
+                    {//if/}
+                    {/if $map_x && $map_y && !empty($add_info)/}
+                    <a href="javascript:;" id="work_map_btn" style="font-size: 12px;color:#3d84b8; font-size:12px; background:url({/$siteurl.style/}/img/job/newjob/newJob_25.png) left center no-repeat; padding-left:17px;"><img src="{/$siteurl.style/}/img/job/newjob/work_map.png" style="margin-right: 3px; vertical-align: -1px; width: 17px;">上班路线查询</a>
+                    {/else/}
+                    <a target="_blank" rel="nofollow" href="http://api.map.baidu.com/geocoder?address={/if !empty($add_info)/}{/$add_info/}{/else/}{/$area/}{//if/}&output=html">查看地图</a>
+                    {//if/}
+                </p>
+                <p><i class="iconNew04"></i>
+                    <span>招聘{/$quantity/}人</span>
+                    <span class="gary">{/$countDown/}</span>
+                </p>
+                {/if !empty($shuanguan_jobs[$job_id]) && !empty($banner['banner_url'])/}
+				<!-- 申请视频面试 -->
+				<div class="applyVideoInterview">
+					<a href="javascript:;" class="j_apply_radio" data-is-login="{/$is_login/}" data-sid="{/$shuanguan_jobs[$job_id]['sid']/}">申请视频面试</a>
+                    {/if $shuanguan_jobs[$job_id]['is_start']/}
+                        <span>视频招聘会正在进行中</span>
+                    {/else/}
+					    <span>{/$shuanguan_jobs[$job_id]['date']/}视频招聘会</span>
+                    {//if/}
+				</div>
+                {//if/}
+                <!--联系方式-->
+                <div class="announcer-infor clearfix" style="position: relative">
+                    <dl>
+                        <dt class="img"><a href="">{/if !empty($account_user_pic)/}<img src="{/$account_user_pic/}" />{/else/}{/$account_user_name_pic/}{//if/}</a></dt>
+                        <dd class="infor">
+                             {/if $allow_online_talk && $is_login_app/}<a id="comuit_compnyer" class="msg" href="javascript:;">和TA聊聊</a>{//if/}
+                            <span class="name" {/if empty($dispaly_linkway)/}style="padding-top:8px"{//if/}>职位发布人：{/$account_info['user_name']/}</span>
+                            <span class="job-name">{/$account_info['station']/}</span>
+                            <p class="desc">
+                                {/if $open_linkway ==1 && !empty($dispaly_linkway) && $dispaly_linkway != '*****'/}
+                                <em id="show_phone_s"><strong>{/$dispaly_linkway/}</strong> <a href="javascript:void(0)" id="btnShowcontactWay" style="background: none">查看</a></em> <span>(联系时请说明是在汇博网上看到的)</span>
+                                <div class="subPhonez subPhonezN"><img src="{/$siteurl.style/}/img/job/newjob/newJob_83.png" width="14" height="7" /><p>打电话前先投个简历，获得面试的成功率增加30%</p></div>
+                                {//if/}
+                            </p>
+                        </dd>
+                	</dl>                
+					{/if !$isstoped/}
+	                {/if !$isApplyJob/}
+	                <a href="javascript:;" class="newJect5 {/if count($linkmans)==0 && $recruit_type != 2 && $recruit_type != 3 && $recruit_type != 4 && $recruit_type != 5/}newJect5Jx{/else if count($linkmans)>0 && ($recruit_type == 2 || $recruit_type == 3 || $recruit_type == 4 || $recruit_type == 5)/}newJect5Jxx{//if/}" id="btnApplyJob" style="top:0px;bottom:auto;right:0px">投个简历</a>
+	                {/else/}
+	                <a href="javascript:;" class="newJect5 {/if count($linkmans)==0 && $recruit_type != 2 && $recruit_type != 3 && $recruit_type != 4 && $recruit_type != 5/}newJect5Jx{/else if count($linkmans)>0 && ($recruit_type == 2 || $recruit_type == 3 || $recruit_type == 4 || $recruit_type == 5)/}newJect5Jxx{//if/}" style="top:0px;bottom:auto;right:0px">已申请</a>
+	                {//if/}
+	                {//if/}
+	                <div class="uploadResume" style="{/if $open_linkway ==1 && !empty($dispaly_linkway) && $dispaly_linkway != '*****'/}bottom: 20px;{//if/}">
+						<a href="javascript:;" class="perResumex updateMyResume" data-resume-id="{/$resume_id/}" data-complete-percent = "{/$complete_percent/}">完善在线简历</a>
+						<a href="javascript:;" class="perUpload updateResumeAnnex" data-resume-id="{/$resume_id/}" data-complete-percent = "{/$complete_percent/}" >上传附件简历</a>
+					</div>
+                </div>
+                
+                <div class="job_dynamic">
+                <p class="title">职位动态</p>
+                <table>
+                    <tr>
+                        <td style="border:0px">
+                            <font>{/if $reversion_rate gte 20/}{/$reversion_rate/}{/else/}低于20{//if/}%</font>
+                            <span><a href="javascript:void(0);" class="ques" msg-data='近两周该职位简历的回复率'></a>简历回复率</span>
+                        </td>
+                        <td style="width:199px">
+                            <font>{/$avg_time/}</font>
+                            <span><a href="javascript:void(0);" class="ques" msg-data='近两周该职位简历的平均回复时长'></a>简历平均回复时长</span>
+                        </td>
+                        {/if $re_apply_type > 0/}
+                         <td style="width:150px">
+                            <font>{/$re_apply_type/}工作日</font>
+                            <span>承诺回复</span>
+                        </td>	
+                        {//if/}
+                                     			
+                        <td>
+                            <font>{/$last_login_time/}</font>
+                            <span>企业最近登录时间</span>
+                        </td>
+                    </tr>
+                    <span class="grayAlt"></span>
+                </table>
+            </div>
+            <div class="clear"></div>
+            </div>
+            {/if $isstoped/}
+            <div class="newJobEct newJobEnd"><img src="{/$siteurl.style/}/img/job/newjob/newJob_63.png" width="31" height="31">
+                <span>该职位已结束招聘</span>
+            </div>  
+            {//if/}
+        </div>
+
+        <div class="newJDuty">
+    		<ul class="newJDutyList">
+            	<li class="cut"><a href="javascript:void(0)" class="index-1">职位描述</a></li>
+                <!--<li><a href="javascript:void(0)" class="index-3">面试评价{/if $is_allow_appraise/}({/$job_appraise_num/}){//if/}</a></li>-->
+                <li><a href="javascript:void(0)" class="index-2">公司简介</a></li>
+            </ul>
+            <!--面试评价 new 20160923-->
+            <!--<div class="invite_appraise_div hide" >
+                {/if $is_allow_appraise/}
+                    {/if $is_have_big_3/}
+                    <div class="appeal-job-all" style="padding-top: 20px">
+                        <p class="evaluate-label" style="margin-top: 0px">
+                            {/foreach $appraise_tip_info as $v/}
+                                {/if (int)$v['num'] >= 3/}
+                                    <span>{/$v['tip_name']/}<font class="color-red2">({/(int)$v['num']/})</font></span>
+                                {//if/}
+                            {//foreach/}
+                        </p>
+                    </div>
+                    {//if/}
+                    {/$appraise_info/}
+                {/else/}
+                    &lt;!&ndash;<div style="text-align:center;padding:100px 0;color:#999;font-size:14px;background: #fff">该公司的职位暂未开通或关闭了评价功能！</div>&ndash;&gt;
+                    <div style="text-align:center;padding:100px 0;color:#999;font-size:14px;background: #fff">该企业未公开面试评价！</div>
+                {//if/}
+            </div>-->
+            <!--/面试评价 new 20160923-->
+        	<div id="company_indroduce" class="newTytit hide">
+            	<h2>公司简介</h2>
+                <div id="info" class="njmTit">{/html_encode content=$companyinfo replace=$replaces/}</div>
+            </div>
+        	<div class="newTytit ">
+            	<h2>岗位职责  {/if $appraise_count/}<span class="payLevel" style="color: #999;" ><img src="{/$siteurl.style/}/img/job/newjob/pay_level.png" alt="" style="vertical-align: -3px;margin: 0 6px;">职责相符度：<em style="color:#ff4200;">{/$match_score/}分
+                ({/if $match_score>=1&&$match_score<2/}低{/elseif $match_score>=2&&$match_score<3/}较低{/elseif $match_score>=3&&$match_score<=3.5/}中
+    {/elseif $match_score>=3.6&&$match_score<=4.2/}较高{/elseif $match_score>=4.3&&$match_score<=5/}高{//if/})</em>  /{/$appraise_count/}人反馈</span>{//if/}</h2>
+                <p>{/html_encode content=$jobcontent replace=$replaces/}</p>
+            </div>
+            {/if !empty($other_need)/}
+            <div class="newTytit ">
+            	<h2>补充说明</h2>
+                <p>{/html_encode content=$other_need replace=$replaces/}</p>
+            </div>
+            {//if/}
+            {/if !empty($tag_names)/}
+            <div class="jobTags jobTags_m" >
+                {/foreach $tag_names as $tn/}
+                <em>{/$tn/}</em>
+                {//foreach/}
+            </div>
+            {//if/}
+        </div>
+        <div class="newoffice">
+        <ul class="nPdtLit" style="border:0px">
+            	<li style="border:0px"><a href="/jobsearch/?key={/$station/}" target='_blank' class="more" style="display: inline-block;width:150px"><i class="hbFntWes">&#xf105;</i>搜索更多相似职位</a><u style="display: inline-block;width:420px;height:15px;border-bottom: 1px dashed #ccc;float:right"></u><a class="cur" href="javascript:;">相似职位</a></li>
+            </ul>
+            <div class="nPdtL" style="display:flex;padding-top: 10px;">
+                    {/if !empty($spread_job)/}
+                        <ul class="nPdt1" style="overflow: initial;">
+                            <li class="subNpd01"> <a href="{/$spread_job['job_link']/}" onclick="sendRecord({/$spread_job['spread_id']/})" target='_blank'><img src="{/$spread_job['company_logo_path']/}" onerror="javascript:this.src='{/$siteurl.style/}/img/c/new_index/newJob_57.jpg';" width="50" height="50" /><span style="font-size: 12px;display: inline-block;position: relative;top: -73px;left: 147px;background-color: red;color: #fff;padding: 1px 3px;">精</span></a></li>
+                            <li class="subNpd02">
+                                <a href="{/$spread_job['job_link']/}" clss='station' target='_blank'><span>{/$spread_job['station']/}</span></a>
+                                <b>{/$spread_job['salary_info']/}</b>
+                                <a href="{/$spread_job['company_link']/}" target="_blank"><em>{/$spread_job['company_name']/}</em></a>
+                            </li>
+                        </ul>
+                        {/if $similarJobCount >0/}
+                            {/foreach $similarJobs as $k=>$job/}
+                                {/if $k < 11/}
+                                <ul class="nPdt1">
+                                    <li class="subNpd01"> <a href="{/$job['joblink']/}" target='_blank'><img src="{/$job['company_logo']/}" onerror="javascript:this.src='{/$siteurl.style/}/img/c/new_index/newJob_57.jpg';" width="50" height="50" /></a></li>
+                                    <li class="subNpd02">
+                                        <a href="{/$job['joblink']/}" clss='station' target='_blank'><span>{/$job['station']/}</span></a>
+                                        <b>{/$job['salary']/}</b>
+                                        <a href="{/$job['companylink']/}" target="_blank"><em>{/$job['companyname']/}</em></a>
+                                    </li>
+									<li>
+                                        {/if !empty($shuangxuan_jobs[$job['job_id']])/}
+                                            {/if $shuangxuan_jobs[$job['job_id']]['is_start']/}
+                                                <label class="jobFairIcon">视频招聘会进行中</label>
+                                            {/else/}
+                                                <label class="jobFairIcon">{/$shuangxuan_jobs[$job['job_id']]['date']/}视频招聘会</label>
+                                            {//if/}
+                                        {//if/}
+									</li>
+                                </ul>
+                                {//if/}
+                            {//foreach/}
+                        {//if/}
+                    {/else if empty($spread_job) && $similarJobCount >0/}
+                        {/foreach $similarJobs as $k=>$job/}
+                            {/if $k < 12/}
+                            <ul class="nPdt1">
+                                <li class="subNpd01"> <a href="{/$job['joblink']/}" target='_blank'><img src="{/$job['company_logo']/}" onerror="javascript:this.src='{/$siteurl.style/}/img/c/new_index/newJob_57.jpg';" width="50" height="50" /></a></li>
+                                <li class="subNpd02">
+                                    <a href="{/$job['joblink']/}" clss='station' target='_blank'><span>{/$job['station']/}</span></a>
+                                    <b>{/$job['salary']/}</b>
+                                    <a href="{/$job['companylink']/}" target="_blank"><em>{/$job['companyname']/}</em></a>
+                                </li>
+								<li>
+                                    {/if !empty($shuangxuan_jobs[$job['job_id']])/}
+                                        {/if $shuangxuan_jobs[$job['job_id']]['is_start']/}
+                                        <label class="jobFairIcon">视频招聘会进行中</label>
+                                        {/else/}
+                                        <label class="jobFairIcon">{/$shuangxuan_jobs[$job['job_id']]['date']/}视频招聘会</label>
+                                        {//if/}
+                                    {//if/}
+								</li>
+                            </ul>
+                            {//if/}
+                        {//foreach/}
+                    {/else/}
+                    <ul class='no_result'><li>暂无数据</li></ul>
+                    {//if/}
+                </div>
+          </div>
+        <div class="clear"></div>
+    </div>
+    <div class="newJobRt">
+        {/if !$ispersonlogin/}
+        <div class="job_login">
+            <div style="text-align: center;">
+                <span class="num">海量职位任你选</span>
+            </div>
+            <div class="account">
+                <input type="hidden" id="loginTimeCount" name="loginTimeCount" value="0"/>
+                <input type="hidden" id="vali_code_count" name="vali_code_count" value="0"/>
+                <div>
+                    <input type="text" id="j_person_phone" placeholder="请输入手机号" class="phone">
+                </div>
+                <div style="display: none" class="imageCap" id="jverifycodemobile" >
+                    <input type="text" id="j_img_verify_code" placeholder="请输入图片验证码" class="imageCaptcha">
+                    <input type="hidden" value="{/$seed/}" id="j_seed">
+                    <a id="btnCode" href="javascript:void(0);">
+                        <img id="imgCode" src='{/get_url rule="/login/verify" data="seed={/$seed/}"/}'/>
+                    </a>
+                </div>
+                <div class="cap">
+                    <input type="text" id="j_verify_code" placeholder="验证码" class="messageCaptcha">
+                    <span class="getCap" id="jbtnSendValidate">获取验证码</span>
+                </div>
+            </div>
+            <div class="submit" id="jbtnMoilbPhoneRegister">求职者登录/注册</div>
+            <div class="agree">点击注册即表示您同意《汇博个人会员注册协议》</div>
+        </div>
+        {//if/}
+    	<div class="nrtTop">
+        	<dl>
+                <dt class="njmNameImg">
+                	<div class="njmNameMge">
+                        <div class="njmNameXbox">
+                            <p><a href="{/$companylink/}" data-flag="{/$company_flag/}" {/if !$ispersonlogin && $totalCompanyDetailClickNum < 2 && $companyDetailClickNum == 0/}class="j_company_name"{//if/} target="_blank"><img src="{/$company_logo_path/}" width="78" height="78" /></a></p>
+                        </div>
+                    </div>
+                </dt>
+                <dd>
+                	<div>
+                        <p class="nrtTopt" ><a href="{/$companylink/}" data-flag="{/$company_flag/}" {/if !$ispersonlogin && $totalCompanyDetailClickNum < 2 && $companyDetailClickNum == 0/}class="j_company_name"{//if/} style="padding-right:0px;" target="_blank">{/if !empty($company_shortname)/}{/$company_shortname/}{/else/}&nbsp;{//if/}
+                            {/if $is_audit/}<img title="企业认证" src="{/$siteurl.style/}/img/job/newjob/newJob_10.png" width="15" height="18" />{//if/}
+                                {/if $is_famous == 2/}
+                                <em class="pxjg enterprises">&nbsp;</em>
+                                {/else if $is_famous == 3/}
+                                <em title="明星雇主" style="background: url({/$siteurl.style/}/img/www/star_company.jpg) no-repeat;width:85px;height: 24px;line-height: 24px;color:#c319ee;font-size: 14px;text-align: right;padding-right: 10px;display: inline-block">明星雇主</em>
+                                {/else if $is_famous == 1/}
+                                <em title="优质企业" style="background: url({/$siteurl.style/}/img/m/new_person/qualityEnterprise.png ) no-repeat;width:79px;height: 24px;line-height: 24px;color:#c8984b;font-size: 14px;text-align: right;padding-left: 10px;padding-right: 10px;display: inline-block;font-family: 'Microsoft YaHei', '微软雅黑';background-size: 20px 18px;border:1px solid #c8984b;background-position: 8px 3px;border-radius: 12px; ">优质企业</em>
+                                {//if/}
+                            </a>
+                        </p>
+                        <p><span>{/$companyname/}</span></p>
+                    </div>
+                </dd>
+            </dl>
+            <div class="nrtTopt"><img style="margin-right:8px;" src="{/$siteurl.style/}/img/job/newjob/newJob_58.png" width="11" height="10" />{/if !empty($company_bright_spot)/}{/$company_bright_spot/}{/else/}公司主营业务以及行业地位暂未填写{//if/}<img style="margin-left:8px;" src="{/$siteurl.style/}/img/job/newjob/newJob_59.png" width="11" height="10" /></div>
+        </div>
+        <div class="nrtTopLit">
+        	<ul class="nrtLit">
+                <li>
+                	<span>行业</span><em title='{/$callings/}'>{/$callings/}</em>
+                </li>
+                <li>
+                	<span>性质</span><em>{/$property/}</em>
+                </li>
+                <li>
+                	<span>规模</span><em>{/$comSize/}</em>
+                </li>
+                {/if $redirect_homepage/}
+                <li>
+                	<span>网址</span><a {/if !$is_preg_url/}rel="nofollow"{//if/} href="{/$redirect_homepage/}" target="_blank">{/$redirect_homepage/}</a>
+                </li>
+                {//if/}
+            </ul>
+            {/if count($company_photos)>0/}
+            <div class="nrtBanner">
+                <div class="infopicBg">
+                    <div class="infopic">
+                        <div class="picbox">
+                            <ul class="gallery piclist">
+                                {/foreach $company_photos as $photo/}
+                                    <li><a class="prettyPhoto" href="{/$imgPath/}/{/$photo['photo_path']/}" rel="prettyPhoto[]"><img src="{/$imgPath/}/{/$photo['photo_path']/}" /></a></li>
+                                {//foreach/}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pic_prev"></div>
+                    <div class="pic_next"></div>
+                </div>			
+            </div>
+            
+            {//if/}
+
+            </div>
+            	<div class="newMessage" style="display: none">
+                	<h2>给我留言</h2>
+                    <textarea rows="12" cols="23" style="width:237px" class="" data-tip="请输入您对该职位的疑问。比如所在地、年薪、福利等等，我会及时给您回复！期待与您合作。">请输入您对该职位的疑问。比如所在地、年薪、福利等等，我会及时给您回复！期待与您合作。</textarea>
+                    <div class="newLeaveB">
+                    	<span>0</span>
+                    	<em>/200</em>
+                        <a href="javascript:void(0)" data-cid="{/$company_id/}" data-jid="{/$job_id/}" id="submitMessage">发 送</a>
+                    </div>
+                </div>
+            
+            <div class="nrtTopLit" style="padding-top: 0">
+            <div class="newJobPdt">
+            	<ul class="nPdtLit" style="margin-bottom: 10px">
+                    <li><a href="javascript:;" class="cur" style="border:0;text-align: left">热门职位</a></li>
+                </ul>
+                <div class="nPdtbg">                	
+                    <div class="nPdtL" style="display: block" id="j_other_scan_jobs">
+                        <ul class="viewed" id="j_other_scan_jobs_bar">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {/if $blue_jobsort_info && $blue_jobsort_info['is_show']/}
+        <!--快米引流-->
+        <div class="kuaimi_flow_detail">
+			<div class="flowKmx">
+				<div class="flowKuaimiz">
+					<span>快米</span>
+					<p>
+						<b>快米工作</b>
+                        {/$blue_jobsort_info['tips']/}
+					</p>
+				</div>
+				<span class="flowKuaimib">找工作，领10元现金</span>
+			</div>
+			<span class="flowDetailIcon"></span>
+			<div class="flowDetailCode">
+				<img src="{/$blue_jobsort_info['weixin_logo_url']/}">
+				<span>
+					扫一扫<br />下载快米APP
+				</span>
+			</div>
+		</div>
+        {//if/}
+        
+    </div>
+</div>
+<!--明星雇主-->
+{/if !empty($star_company_logos)/}
+<div class="star_employer_job">
+    <i class="star_employer_title"></i>
+    <ul>
+        {/foreach $star_company_logos as $v/}
+        <li>
+            <a href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiye/{/$v['company_flag']/}.html" target="_blank"><img src="{/$v['img_url']/}" /><span>{/$v['img_title']/}</span></a>
+        </li>
+        {//foreach/}
+    </ul>
+    <a href="{/get_url rule='/wellknown/index'/}" id="star_employer_more">
+        <span class="one">更</span>
+        <span class="two">多</span>
+    </a>
+</div>
+{//if/}
+<!--/明星雇主-->
+{/include file="leaveinfo.html"/}
+{/include file="footer.html"/}
+<!--消息提醒的那个啥-->
+{/include file="tipmsg.html"/}
+<!--浮动的立即投递简历-->
+<div id='topDivApplyJob' style="position: fixed; top: 480px; left: 0px; width: 100%; z-index: 999; padding: 10px; border-bottom: 1px solid #e1e1e1; display: none;background:#fafafa;">
+    <div style="margin: 0 auto;width:1000px;color:#295266">
+    	<span style="font-size: 18px; font-weight: bold; float: left; display: inline-block; width: 498px;">{/$station/}
+            <font style="color:#ff8685; display: block; font-weight: normal; font-size: 16px;font-weight: bold;margin-top: 5px">
+                <span class="f60"> 
+                {/if $min_salary == $max_salary/}
+                ￥{/$min_salary/}
+                {/else/}
+                ￥{/$min_salary/}~{/$max_salary/}
+                {//if/}元/月
+                </span>
+                <!--<span class="gary">（{/get_name job_level=$job_level/}
+                {/if $salary_type ==1/}
+                ，底薪：{/if $base_min_salary == $base_max_salary/}{/$base_min_salary/}{/else/}{/$base_min_salary/}~{/$base_max_salary/}{//if/}元/月+提成
+                {//if/}）
+                </span>-->
+            </font>
+        </span>
+        <a style="background:#fff url('{/$siteurl.style/}/img/job/newjob/newjobAll.png') no-repeat scroll 0 -126px;color: #fff;display: block;font-size: 18px;font-weight: bold;height: 44px;line-height: 44px;text-indent: 3.4em;width: 160px;margin-left: 500px" href="javascript:void(0);">
+        投个简历
+        </a>
+    </div>
+</div>
+<div class="popzLink">
+    <div class="qrCode">
+        <div class="showQrCode showPhone">
+            <img src="{/$siteurl.style/}/img/phone_app.gif" alt="正在加载..." style="margin-left: 4px">
+            <div class="bottomText" style="text-align:center">
+                <span class="tip">Hot</span>
+                <span class="phone">手机APP</span>
+            </div>
+        </div>
+        <div class="showQrCode">
+            <img src="{/$siteurl.style/}/img/weixin_03.gif" alt="正在加载..." style="margin-left: 4px">
+            <div class="bottomText" style="text-align:center">
+                <img src="{/$siteurl.style/}/img/weixin_icon.png" alt="正在加载..." class="weixinIcon">
+                <span class="weixin">微信公众号</span>
+            </div>
+        </div>
+    </div>
+    <!--	<a class="popzP" href="javascript:"><img width="39" height="42" src="{/$siteurl.style/}/img/index/verson2/popz_phone.jpg"></a>-->
+    <a class="popzL" target="_blank" style="margin-bottom:5px;" href="{/$siteurl.main/}/about/message">意见<br>反馈</a>
+    <a class="backTop hbFntWes backTopNew" title="返回顶部" href="javascript:void(0);" style="display: none">&#xf0d8;</a>
+</div>
+<script type="text/javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=33f9256a1a1ba5a80eb40f8ed45bce3c"></script>
+<script type="text/javascript" src="//api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+<link rel="stylesheet" href="//api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+<section class="floatRT"><a href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/about/message" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<!--定义全局变量来接收相应值-->
+<script type="text/javascript">
+	var isLogin = {/if !empty($ispersonlogin)/} true;{/else/} false;{//if/}
+	var isApplyJob = false;
+	{/if !$isstoped && !$isApplyJob/}
+		isApplyJob = true;
+	{//if/}
+	//上班路线
+	var workMapPost = '{/get_url rule="/job/workMap/" data="jobflag=$jobflag"/}'+'-v-'+Math.random();
+	
+	var jobflagPost = '{/$jobflag/}';
+	
+	//跳转到person.huibo.com
+	var personLink = '{/$siteurl.person/}';
+	//投简历
+	var OverplusApplycount = {/if !empty($OverplusApplycount)/}{/$OverplusApplycount/};{/else/}0;{//if/};
+	
+	var applyedCompanyPost = '{/get_url rule="/job/applyedCompany" data="jobflag=$jobflag"/}';
+	//未达投递上限 显示投递弹窗
+	var applyResoucePost = '{/get_url rule="/apply/index/" data="jobflag=$jobflag"/}' + '{/if $apply_resouce/}-apply_resouce-{/$apply_resouce/}{//if/}' +'-v-'+Math.random();
+	
+	var auto_filter={/if !empty($auto_filter)/}true;{/else/}false;{//if/};
+	//完善简历
+	var perResumePost = "{/get_url domain='person' rule='/resume/update/'/}resume_id-";
+	var reApplyType = '{/$re_apply_type/}';
+	//留言内容
+	var asMessagePost = '{/get_url rule="/company/ajaxSubmitMessage/" data="jobflag=$jobflag"/}';
+	//举报
+	var informPost = '{/get_url rule="/companycomplaint/index/" data="companyflag=$companyflag&jobflag=$jobflag"/}'+'-v-'+Math.random();
+	//留言
+	var leaveWordPost = '{/get_url rule="/job/GuestBook/" data="jobflag=$jobflag"/}'+'-v-'+Math.random();
+	//收藏
+	var collectPost = '{/get_url rule="/job/FavoriteJob/" data="jobflag=$jobflag"/}'+'-v-'+Math.random();
+	var getcontactwayPost = '{/get_url rule="/job/getcontactway/" data="jobflag=$jobflag"/}'+'-v-'+Math.random();
+	var jobVisitPost = '{/get_url rule="/job/JobVisit/" data="jobflag=$jobflag"/}';
+	//访问css及js资源文件
+	var stylePost = '{/$siteurl.style/}';
+	var pageNowPost = '{/$page_now/}';
+	var acttitlePost = "{/if !empty($company_shortname)/}{/$company_shortname/}{/else/}{/$companyname/}{//if/}-{/$station/}";
+	//接盘数据
+	var applyCompanyPost = '{/get_url rule="/job/applyedCompanyV2" data="jobflag=$jobflag"/}';	
+	//评价翻页
+	var evaluationPage = '{/$_job_id/}';
+	var stationPost = '{/$station/}';
+</script>
+
+<!--xiaofei修改20190524-->
+<script type="text/javascript" src="{/version file='post_rs.js'/}"></script>
+<script type="text/javascript" src="{/version file='jquery.form.js'/}"></script>
+<script type="text/javascript" src="{/version file='jquery.ui.widget.js'/}"></script>
+<script type="text/javascript" src="{/version file='jquery.iframe-transport.js'/}"></script>
+<script type="text/javascript" src="{/version file='jquery.fileupload.js'/}"></script>
+
+<script>
+    function sendRecord(spread_id) {
+        var spreadClickSch = '{/get_url rule="/company/SpreadClick/"/}';
+        var spreadClickSchUrl = spreadClickSch + "?spread_id=" + spread_id;
+        $.getJSON(spreadClickSchUrl,
+            function(result) {});
+    }
+</script>
+<script>
+    $('#imgCode,#btnCode').click(function(){
+        $('#imgCode').attr('src','{/$mobile_url/}/login/verify/seed-{/$seed/}'+'-v-'+Math.random());
+        return false;
+    });
+    var back_url = window.location.href;
+    back_url = '{/get_url rule="/login/index" domain="person"/}?back_url='+back_url;
+    var person_id = '{/$person_id/}';
+    var company_id = '{/$company_id/}';
+    //完善建立
+    function update_resume(resume_id){
+        window.location.href = '{/get_url rule="/resume/update" domain="person"/}?resume_id='+resume_id;
+    }
+    //创建简历
+    function create_resume(){
+        window.location.href = '{/get_url rule="/person/CreateBasic" domain="person"/}';
+    }
+</script>
+
+</body>
+</html>

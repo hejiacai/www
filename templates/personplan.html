@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="keywords" content="重庆人才网，重庆招聘，重庆招聘网，重庆找工作，汇博网" />
+<meta name="description" content="汇博网（huibo.com）,原重庆人才网，重庆人都爱上的招聘网站，重庆找工作的理想选择，招聘职位多、真实可靠、薪酬公开的专业招聘网站，查重庆人才网最新招聘信息，找工作，上汇博网！!" />
+<title>{/$title/}</title>
+
+<!-- Html5 页面必须带兼容的js -->
+<!–[if lt IE9]>
+<script src="{/version file='html5.js'/}"></script>
+<![endif]–>
+<!-- Html5 页面必须带兼容的js End -->
+<link rel="stylesheet" type="text/css" href="{/version file='newpersonplan.css'/}" />
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery.validate.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+
+<style>
+body{font-size:12px;font-family:Verdana,"宋体",Arial;color:#444;background:#FFF}body,div,label,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,p,blockquote,th,td,img,button{margin:0;padding:0;border:0;outline:0}table{border-collapse:collapse;border-spacing:0}em,i{font-style:normal}h1,h2,h3,h4,h5,h6{margin:0;padding:0}ul,ol,dl,dd,dt{list-style:none}input,font{font-size:12px;outline:0}textarea{font-size:14px;overflow:auto;resize:none;margin:0;padding:5px;outline:0}h1,h2{font-size:16px}h3,h4{font-size:14px}h5,h6{font-size:12px}h2,h4,h6{font-weight:normal}a{color:#3f74c2;text-decoration:none}a:link{text-decoration:none}a:visited{text-decoration:none}a:hover{color:#0af;text-decoration:none}a:active{text-decoration:none}a:focus{-moz-outline:none;outline:none}a
+*{cursor:pointer}.clear{clear:both;height:0;line-height:0;overflow:hidden;font-size:0}.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}.clearfix{zoom:1}
+	body{font-family:"微软雅黑"}
+	.banner{background: url({/$siteurl.style/}/img/newpersonplan/banner2.jpg) center top no-repeat;height:838px}
+	.w1200{width:1200px;margin:0 auto}
+	.w1000{width:1000px;margin:0 auto}
+	.daijjuan{width:580px;padding:585px 0 0 325px;text-align: center;font-size:20px;color:#333;font-weight:bold;line-height: 35px}
+	.daijjuan .butn{margin:20px 0}
+	.daijjuan a{color:#fff;font-size:30px;background: #ffab19;display: inline-block;padding:10px 40px;border-radius: 5px}
+	.daijjuan a:hover{background: #ffa200}
+	.youhuma{text-align：left;font-size: 14px;margin-left: 130px;background: rgb(204,232,207);width: 300px;padding: 10px 20px;color: #000;text-align: left;line-height: 25px;margin-top: 20px}
+	.box1{background: #f2f9ff;text-align: center;padding: 100px 0}
+	.box1 .desc1{font-size:24px;color:#444;font-weight:bold}
+	.box1 .desc2{font-size:18px;color:#666;line-height: 40px;margin:15px 0}
+	.box1 .desc3{font-size:24px;color:#ff6600;font-weight:bold}
+	.box1 .w1200{background: url({/$siteurl.style/}/img/newpersonplan/pep.jpg) 750px bottom no-repeat;padding-right:300px;width:900px}
+	.box2{text-align: center;padding:100px 0}
+	.box2 .tit1{font-size:36px;color:#ff6600;font-weight:bold;margin-bottom: 20px}
+	.box2 .tit2{font-size: 24px;font-weight:bold;color:#444}
+	.box2 li{float:left;width:190px;margin-left: 60px;color:#828282;font-size:17px;line-height: 30px;padding-top: 150px;margin-top: 60px}
+	.box2 li span{font-size:22px;color:#3f3f3f;display: block;text-align: center;margin:5px 0}
+	.box2 .itme1{background: url({/$siteurl.style/}/img/newpersonplan/icon1.jpg) center top no-repeat}
+	.box2 .itme2{background: url({/$siteurl.style/}/img/newpersonplan/icon2.jpg) center top no-repeat}
+	.box2 .itme3{background: url({/$siteurl.style/}/img/newpersonplan/icon3.jpg) center top no-repeat}
+	.box2 .itme4{background: url({/$siteurl.style/}/img/newpersonplan/icon4.jpg) center top no-repeat}
+	.box3,.box5{background: #f2f9ff;padding:100px 0;text-align: center}
+	.box3 .tit{color:#ff6600;font-size:36px;font-weight:bold;line-height: 55px}
+	.box3 div{background: url({/$siteurl.style/}/img/newpersonplan/box1.jpg) center top no-repeat;width:1153px;height:472px;margin:50px auto 0;position: relative}
+	.box3 div span{font-size:18px;display: inline-block;width:280px;text-align: center;position: absolute;line-height: 35px}
+	.box3 div .item1{left:0;top:235px;color:#6009cb}
+	.box3 div .item2{left:143px;top:89px;color:#fff}
+	.box3 div .item3{left:290px;top:235px;color:#8c000f}
+	.box3 div .item4{left:434px;top:108px;color:#fff}
+	.box3 div .item5{left:576px;top:217px;color:#614f00}
+	.box3 div .item6{left:730px;top:89px;color:#fff}
+	.box3 div .item7{left:872px;top:198px;color:#006b6c}
+	.box4{padding:100px 0}
+	.box4 .tit,.box5 .tit{color:#ff6600;font-size:36px;font-weight:bold;text-align: center}
+	.slideImg{width:1200px;overflow: hidden;background: #f3f3f3;padding:40px 0;height:160px;margin:40px auto 0}
+	.swiper-wrapper{height:160px;overflow: hidden;width:3000px}
+	.swiper-wrapper .swiper-slide{float:left;margin-left:20px;height:160px;overflow: hidden}
+	.swiper-wrapper img{float:left}
+	.swiper-wrapper p{float:left;margin-left: 10px;font-size:18px;color:#333;line-height: 35px}
+	.swiper-wrapper .name{color:#333;font-size:24px;display: block;margin-top: 10px}
+	.swiper-wrapper .monery{color:#ff0000;font-size:24px}
+	.box5 .desc{background: url({/$siteurl.style/}/img/newpersonplan/box2.jpg) center top no-repeat;width:1143px;height:626px;margin:40px auto 0;position: relative}
+	.box5 .desc span{position: absolute;left:0;top:0;width:216px;height:189px;font-size:20px;color:#fff}
+	.box5 .desc .item1{top:150px;left:0px}
+	.box5 .desc .item2{top:385px;left:0px}
+	.box5 .desc .item3{top:261px;left:190px}
+	.box5 .desc .item4{top:160px;left:371px}
+	.box5 .desc .item5{top:385px;left:380px}
+	.box5 .desc .item6{top:55px;left:558px}
+	.box5 .desc .item7{top:249px;left:558px}
+	.box5 .desc .item8{top:487px;left:558px}
+	.box5 .desc .item9{top:183px;left:740px}
+	.box5 .desc .item10{top:384px;left:740px}
+	.box5 .desc .item11{top:298px;left:925px}
+	.footer{background: url({/$siteurl.style/}/img/newpersonplan/footer2.jpg) center top no-repeat;height:89px;color:#fff;font-size:14px;text-align: center;padding-top:90px;line-height: 30px}
+	.tel_zhixun{border:1px dashed #0069a3;padding:3px;width:166px;position: absolute;right:20px;top:800px}
+	.tel_zhixun .content{background: #0069a3;text-align: center;padding:20px 0}
+	.tel_zhixun .content p{font-size:20px;font-weight:bold}
+	.tel_zhixun .content img,.tel_zhixun .content span{display: block;margin:0 auto;text-align: center}
+	.tel_zhixun .content span{color:#afe2ff;font-size:14px;padding-top: 10px;margin-bottom: 5px}
+	.tel_zhixun .content .tel{color:#fff}
+	.tel_zhixun .content p a{color:#fefb00}
+</style>
+</head>
+
+<body>
+	<div class="banner">
+		<div class="w1200">
+			<div class="daijjuan">
+				<p>即日起，汇博网注册用户报名<br />“培养计划”即可领取<span style="color:#ff0000">1000元</span>学费代金券</p>
+                <p class="butn" {/if !empty($code)/}style="display: none"{//if/}><a href="javascript:void(0);" id="btnGetYouhui">立即领取</a></p>
+				<p class="youhuma" {/if empty($code)/}style="display: none"{//if/}>您的优惠码：<span style="color:red">{/$code/}</span><br />请及时保存，使用方式请通过QQ或电话咨询。</p>
+			</div>
+		</div>
+	</div>
+	<div class="box1">
+		<div class="w1200">
+			<p class="desc1">想要摆脱低薪成为职场王者</p>
+			<p class="desc2">
+                <br/>崇尚一技之长不唯学历凭能力。<br/>爱科—你职场的加油站，人生的新起点。<br/>零基础，上班族，应届生只需3一6个月学习+保底就业+后付学费。<br/>成为职场核心技术人才。<br/><br/>
+            </p>
+			<p class="desc3">3-6个月学习时间+保底就业+后付学费</p>
+		</div>
+	</div>
+	<div class="box2">
+		<p class="tit1">“互联网中高端岗位人才定向培养计划”主要课程</p>
+		<p class="tit2">以互联网名企岗位要求为标准设置专业课程，实力打造500万高端互联网专业精英</p>
+		<ul class="w1000 clearfix">
+			<li class="itme1"><span>高级UI设计</span>UI视觉设计师<br />WEB前端工程师<br />界面设计师<br />平面设计师<br />广告创意设计师<br />网页美工</li>
+			<li class="itme2"><span>高级php工程师</span>php项目经理<br />php程序员<br />网站工程师<br />php系统架构师<br />数据库管理员<br />运维工程师</li>
+			<li class="itme3"><span>网络营销经理</span>互联网产品经理<br />网络营销经理<br />运营策划师<br />网络推广主管<br />品牌营销经理<br />电商营销经理</li>
+			<li class="itme4"><span>互联网创业</span>微商创业<br />淘宝创业<br />天猫、京东创业<br />互联网产品<br />个人站长<br />自媒体创业</li>
+		</ul>
+	</div>
+	<div class="box3">
+		<p class="tit">汇博网推荐您加入<br />“互联网中高端岗位人才定向培养计划”的理由</p>
+		<div>
+			<span class="item1">毕业学员由汇博<br />人才网与爱科教育共同保驾<br />护航，推荐就业</span>
+			<span class="item2">培养计划由汇博<br />人才网与爱科教育强强联手，<br />倾情打造</span>
+			<span class="item3">培训导师由来自<br />中国职业教育联盟的金牌认证<br />高级技术讲师担任</span>
+			<span class="item4">所开设课程均针<br />对行业紧缺岗位人才</span>
+			<span class="item5">汇博网<br />注册用户报名参加<br />“培养计划”可领取1000元<br />报名代金券</span>
+			<span class="item6">互联网行业是国家<br />政策大力扶持的战略新兴<br />行业，“钱”景广阔</span>
+			<span class="item7">汇博网<br />注册用户报名参加<br />“培养计划”可在学习期<br />间领取共计2400元<br />生活补助。</span>
+		</div>
+	</div>
+	<div class="box4">
+		<p class="tit">往期学员展示</p>
+			<div class="slideImg flexBanner">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<img src="{/$siteurl.style/}/img/newpersonplan/img1.jpg" />
+						<p><strong class="name">杨亚绮</strong>所学课程：UI设计<br />就业地区：上海<br />薪资：<strong class="monery">￥7000</strong></p>
+					</div>
+					<div class="swiper-slide">
+						<img src="{/$siteurl.style/}/img/newpersonplan/img2.jpg" />
+						<p><strong class="name">张亮</strong>所学课程：Web前端开发<br />就业地区：深圳<br />薪资：<strong class="monery">￥9000</strong></p>
+					</div>
+					<div class="swiper-slide">
+						<img src="{/$siteurl.style/}/img/newpersonplan/img3.jpg" />
+						<p><strong class="name">李响</strong>所学课程：高级PHP<br />就业地区：上海<br />薪资：<strong class="monery">￥12000</strong></p>
+					</div>
+					<div class="swiper-slide">
+						<img src="{/$siteurl.style/}/img/newpersonplan/img4.jpg" />
+						<p><strong class="name">杜兰</strong>所学课程：UI设计<br />就业地区：杭州<br />薪资：<strong class="monery">￥6500</strong></p>
+					</div>
+					<div class="swiper-slide">
+						<img src="{/$siteurl.style/}/img/newpersonplan/img5.jpg" />
+						<p><strong class="name">杨双</strong>所学课程：网络营销<br />就业地区：重庆<br />薪资：<strong class="monery">￥5500</strong></p>
+					</div>
+					<div class="swiper-slide">
+						<img src="{/$siteurl.style/}/img/newpersonplan/img6.jpg" />
+						<p><strong class="name">徐阳</strong>所学课程：高级PHP<br />就业地区：上海<br />薪资：<strong class="monery">￥9000</strong></p>
+					</div>
+					<div class="swiper-slide">
+						<img src="{/$siteurl.style/}/img/newpersonplan/img7.jpg" />
+						<p><strong class="name">陈宇</strong>所学课程：UI设计<br />就业地区：上海<br />薪资：<strong class="monery">￥7000</strong></p>
+					</div>
+					<div class="swiper-slide">
+						<img src="{/$siteurl.style/}/img/newpersonplan/img8.png" />
+						<p><strong class="name">杨鸿源</strong>所学课程：Web前端开发<br />就业地区：广州<br />薪资：<strong class="monery">￥9000</strong></p>
+					</div>
+			</div>
+		</div>
+	</div>
+	<div class="box5">
+		<p class="tit">爱科教育实力介绍</p>
+		<div class="desc">
+			<span class="item1">国内高端<br />互联网岗位人才<br />培养与IT在线教育<br />领导品牌</span>
+			<span class="item2">全国“最佳<br />高级人才教育奖”</span>
+			<span class="item3">央视网、中华网、<br />光明网联合评选出<br />的“十大高级岗位<br />人才孵化品牌”</span>
+			<span class="item4">西南首家<br />互联网高级岗位人才<br />孵化基地</span>
+			<span class="item5">重庆市“高级岗位<br />人才培养卓越贡献奖”</span>
+			<span class="item6">惠普（中国重庆）<br />签约高级岗位员工<br />培养基地</span>
+			<span class="item7">东软、联想、<br />阿里巴巴签约员工<br />高级岗位人才<br />孵化基地</span>
+			<span class="item8">已定向培养<br />全国各地高端互联网<br />人才5万多人</span>
+			<span class="item9">重庆市首批软件产业<br />高级岗位人才<br />培养基地</span>
+			<span class="item10">拥有全国一二线<br />城市10多个就业基地</span>
+			<span class="item11">重庆市首批服务外包<br />高级人才孵化基地</span>
+		</div>
+	</div>
+	<div class="tel_zhixun" id="tel_zhixun">
+		<div class="content">
+			<img src="{/$siteurl.style/}/img/newpersonplan/kefu.jpg" />
+			<span>电话咨询</span>
+			<p class="tel">023-81317188</p>
+			<p class="tel" style="border-bottom: 1px solid #00599f;padding-bottom: 10px">023-81317200</p>
+			<span style="border-top: 1px solid #0084bd">QQ咨询</span>
+			<p><a  style="CURSOR: pointer" onclick="javascript:window.open('//wpa.qq.com/msgrd?v=3&uin=2851501215&site=qq&menu=yes', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" alt="点击这里给我发消息"><img src="//wpa.qq.com/pa?p=2:2851501235:51"></a></p>
+			<span>QQ咨询</span>
+			<p><a  style="CURSOR: pointer" onclick="javascript:window.open('//wpa.qq.com/msgrd?v=3&uin=2851501274&site=qq&menu=yes', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"  border="0" alt="点击这里给我发消息"><img src="//wpa.qq.com/pa?p=2:2851501235:51"></a></p>
+            <span>交流QQ群</span>
+			<p>
+                <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=7e0eda677181f2b1c6fbbe80adf3fb5ad3c1d9ea2fb8ad9353eb119baabfa226"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="互联网行业交流群" title="互联网行业交流群"></a>
+            </p>
+		</div>
+	</div>
+	<div class="footer">©{/date("Y")/} 汇博网 版权所有<br />招聘单位无权收取任何费用，请求职人员加强自我保护意识，按劳动法规保护自身权益，警惕虚假招聘，避免上当受骗!</div>
+<script> 
+var swiper = $(".swiper-wrapper"); 
+
+setInterval(function(){
+  swiper.animate({"margin-left":-swiper.find(".swiper-slide").eq(0).width()},300,function(){
+  	$(swiper.find(".swiper-slide").eq(0)).appendTo(swiper.css({"margin-left":"0px"}));
+  });
+},5000);
+function fixedObj(exports){
+var fixed = exports,isIE6 = !-[1,] && !window.XMLHttpRequest,doc = document;
+
+if(isIE6){
+	var html = doc.getElementsByTagName('html')[0];
+	doc.execCommand("BackgroundImageCache", false, true);
+	html.style.backgroundImage = 'url(about:blank)';
+	html.style.backgroundAttachment = 'fixed';
+}
+
+		fixed.pin = isIE6 ? function(elem, x, y, r, b) {
+			elem = check(elem);
+			var style = getStyle(elem), scroll = getScroll(), dom = '(document.documentElement || document.body)', x = x || getValue(style.left), y = y || getValue(style.top), left, top;
+
+			if (b) {
+				var by = getValue(style.borderTopWidth) + getValue(style.borderBottomWidth);
+				y = getValue(style.height) + by + y;
+				top = 'eval(' + dom + '.scrollTop + ' + dom + '.clientHeight - ' + y + ') + "px"';
+			} else {
+				y = y - scroll.top;
+				top = 'eval(' + dom + '.scrollTop + ' + y + ') + "px"';
+			}
+
+			if (r) {
+				var bx = getValue(style.borderLeftWidth) + getValue(style.borderRightWidth);
+				x = getValue(style.width) + bx + x;
+				left = 'eval(' + dom + '.scrollLeft + ' + dom + '.clientWidth - ' + x + ') + "px"';
+			} else {
+				x = x - scroll.left;
+				left = 'eval(' + dom + '.scrollLeft + ' + x + ') + "px"';
+			}
+
+			style = elem.style;
+			style.position = 'absolute';
+			style.removeExpression('left');
+			style.removeExpression('top');
+			style.setExpression('left', left);
+			style.setExpression('top', top);
+
+		} : function(elem, x, y, r, b) {
+			var elem = $(check(elem)), css = {
+				position : 'fixed'
+			};
+			b = b ? 'bottom' : 'top', r = r ? 'right' : 'left';
+			css[b] = y || 0;
+			css[r] = x || 0;
+			elem.css(css);
+		};
+		fixed.unpin = function(elem, styleObj) {
+			elem = check(elem);
+			var style = check(elem).style;
+			if (isIE6) {
+				style.removeExpression('left');
+				style.removeExpression('top');
+			}
+			$(elem).css(styleObj || {
+				'position' : '',
+				'left' : 'auto',
+				'top' : 'auto'
+			});
+		}
+		function check(elem) {
+			elem = $(elem)[0];
+			if (elem.nodeType !== 1) {
+				throw new Error('tools.fixed: 无效html标签');
+			}
+			return elem;
+		}
+
+		function getScroll() {
+			var html = doc.getElementsByTagName('html')[0], dd = doc.documentElement, db = doc.body;
+			return {
+				left : Math.max(dd.scrollLeft, db.scrollLeft),
+				top : Math.max(dd.scrollTop, db.scrollTop)
+			}
+		}
+
+		function getStyle(elem) {
+			if (elem.currentStyle) {
+				return elem.currentStyle;
+			} else {
+				return getComputedStyle(elem, false);
+			}
+		}
+
+		function getValue(name) {
+			return parseInt(name) || 0;
+		}
+		return fixed;
+};
+fixedObj(window).pin($("#tel_zhixun"),30,30,50,null);
+$('#btnGetYouhui').click(function() {
+	var islogin = ajaxCheckPersonLogin('ajaxLoginCallback');
+	if(islogin){
+	    $.ajax({
+            url:'{/get_url rule="/personplan/AjaxGetDiscount"/}',
+            type:"post",
+            dataType:"json",
+            success:function(json){
+                if(json.status == false){
+                    alert(json.error);
+                    return;
+                }
+                if(json.status){
+                    $('#btnGetYouhui').parent().hide();
+                    $('#btnGetYouhui').parent().next().find('span').html(json.code);
+                    $('#btnGetYouhui').parent().next().show();
+                    alert('领取成功');
+                }
+            }
+        });
+	}
+});
+
+function ajaxLoginCallback() {
+    var url = window.location.href;
+    //url = url.split('#');
+    window.location.href = url;
+	//window.location.href = url[0] + "#btnGetYouhui" ; 
+}
+ </script>
+
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "http://hm.baidu.com/hm.js?fb51309e47424acd6e31c0bd2a65a5a1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+</html>
+

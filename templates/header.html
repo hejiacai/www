@@ -1,0 +1,187 @@
+{/include_php file='app/controller/head.php'/}
+<header>
+    <script type="text/javascript" src="{/version file='ui_autocomplete.js'/}"></script>
+    <script type="text/javascript" src="{/version file='jquery.cookie.js'/}"></script>
+    <script type="text/javascript" src="{/version file='home_head.js'/}"></script>
+    <link rel="stylesheet" type="text/css" href="{/version file='v2-header.css'/}" />
+    <link rel="stylesheet" type="text/css" href="{/version file='newHeader2019.css'/}" />
+    <style type="text/css">
+        .tSchJobRts{margin-left: -6px;}
+        .headR .lgAft ul li{margin:0 5px}
+        .headR .lgAft ul li.user{width:auto}
+        .lgAft ul li.user img{margin-top: 15px}
+    </style>
+	<div class="headerCon">
+    	<div class="headL">
+        	<h1><a href="{/$siteurl.main/}"><img src="{/$siteurl.style/}/img/common/smLogo.jpg"/></a></h1>
+            <span class="backIndex"><a href="{/$siteurl.main/}">首页</a></span>
+            <div class="navLink">
+            	<a href="javascript:void(0)" id="btnNav" class="lnk showPanel showNav"><i class="hbFntWes">&#xf03a;</i>浏览</a>
+                <div class="navBox panelBox" id="boxNav" style="top:44px;">
+                	<div class="navBoxC">
+                        <div class="l">
+                        	<div class="navLst">
+                            	<p><a href="{/get_url rule='/xiaoyuan/'/}">校园招聘</a></p>
+                                <p><a href="{/get_url rule='/zhaopinhui/'/}">重庆招聘会</a></p>
+                                <p><a href="{/get_url rule='/hrcollege/'/}">HR学院</a></p>
+                                <p><a href="{/get_url rule='/zhichang/'/}">职场指南</a></p>
+                                <p><a href="{/$siteurl.company/}/login/">企业服务</a></p>
+                            </div>
+                            <div class="navPhone"><p>下载手机客户端</p><p class="lnk"><a href="{/$siteurl.main/}/app/p"></a></p></div>
+                         </div>
+                        <div class="r">
+                        	<div class="hd"><h3>热门导航</h3></div>
+                            <div class="bd">
+                            	<ul>
+                                <li><a href="{/$siteurl.main/}/xiaoshou/">销售</a></li>
+                                <li><a href="{/$siteurl.main/}/kuaiji/">会计</a></li>
+                                <li><a href="{/$siteurl.main/}/renshi/">人力资源</a></li>
+                                <li><a href="{/$siteurl.main/}/xingzhengwenyuan/">文员</a></li>
+                                <li><a href="{/$siteurl.main/}/qiantaiwenyuan/">前台</a></li>
+                                <li><a href="{/$siteurl.main/}/wangluotuiguang/">网络推广</a></li>
+                                <li><a href="{/$siteurl.main/}/ruanjiankaifa/">软件开发</a></li>
+                                <li><a href="{/$siteurl.main/}/meigong/">美工</a></li>
+                                <li><a href="{/$siteurl.main/}/wangzhanyunying/">网站运营</a></li>
+                                <li><a href="{/$siteurl.main/}/zongjingli/">总经理</a></li>
+                                <li><a href="{/$siteurl.main/}/itxiangmujingli/">项目经理</a></li>
+                                <li><a href="{/$siteurl.main/}/daqujingli/">大区经理</a></li>
+                                <li><a href="{/$siteurl.main/}/yingxiaozongjian/">营销总监</a></li>
+                                <li><a href="{/$siteurl.main/}/xingzheng/">行政</a></li>
+                                <li><a href="{/$siteurl.main/}/guanggaosheji/">广告设计</a></li>
+                                <li><a href="{/$siteurl.main/}/pingmian/">平面</a></li>
+                                <li><a href="{/$siteurl.main/}/jianli/">监理</a></li>
+                                <li><a href="{/$siteurl.main/}/shigongyuan/">施工员</a></li>
+                                <li><a href="{/$siteurl.main/}/zhiyeguwen/">置业顾问</a></li>
+                                <li><a href="{/$siteurl.main/}/fuwuyuan/">服务员</a></li>
+                                <li><a href="{/$siteurl.main/}/ershoufangxiaoshou/">二手房销售</a></li>
+                                <li><a href="{/$siteurl.main/}/pingmianmote/">平面模特</a></li>
+                                <li><a href="{/$siteurl.main/}/hulishi/">护理师</a></li>
+                                <li class="hot"><a href="{/$siteurl.main/}/jobsearch/?params=d01_02">五险一金</a></li>
+                                <li class="hot"><a href="{/$siteurl.main/}/jobsearch/?params=d05">周末双休</a></li><li class="hot"><a  href="{/$siteurl.main/}/jobsearch/?v=d03_04">包吃住</a></li>
+                                <li class="hot"><a href="{/$siteurl.main/}/jobsearch/?params=e8000_0">高薪职位</a></li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <b class="arr"></b>
+                    </div>
+                </div>
+            </div>
+            
+            <span class="tSch" id="tSch">
+                <span class="tSchBox">
+                    <span class="tSchType" id="btnShowType">
+                        <span class="typeBox" id="btnSelectType"><a href="javascript:void(0)">职位</a><a href="javascript:void(0)">公司</a><a href="javascript:void(0)">全文</a></span>
+                        <a class="searchType" href="javascript:void(0)" id="inpType">
+                            {/if $searchItem == "company"/}
+                            公司
+                            {/elseif $searchItem == "fulltext"/}
+                            全文
+                            {/else/}
+                            职位
+                            {//if/}
+                        </a>
+                        <i class="hbFntWes searchType">&#xf0dd;</i>
+                    </span>
+                    <span id="inpBox">
+                    	{/if $isSarch=='true'/}
+                    	 <span {/if $searchItem=="salary" || $searchItem=="company"/}style="display:none"{//if/}><input type="text" class="text tSchText" id="tSchJobTextDo" value="{/if empty($headkeyword) || $searchItem=="salary" || $searchItem=="company"/}请输入关键词{/else/}{/$headkeyword/}{//if/}"><a href="javascript:void(0)" class="hbIconMoon tSchBtn" id="btnJobSearchDo">&#xe07f;</a></span>
+                    	{/else/}
+                    	 <span {/if $searchItem=="salary" || $searchItem=="company"/}style="display:none"{//if/}><input type="text" class="text tSchText" id="tSchJobText" value="{/if empty($headkeyword) || $searchItem=="salary" || $searchItem=="company"/}请输入关键词{/else/}{/$headkeyword/}{//if/}"><a href="javascript:void(0)" class="hbIconMoon tSchBtn" id="btnJobSearch">&#xe07f;</a></span>
+                    	{//if/}
+	                    <span {/if $searchItem!="company"/}style="display:none"{//if/}><input type="text" class="text tSchText" id="tSchComText" value="{/if empty($headkeyword)||$searchItem!="company"/}请输入关键词{/else/}{/$headkeyword/}{//if/}"><a href="javascript:void(0)" class="hbIconMoon tSchBtn" id="btnComSearch">&#xe07f;</a></span>
+	                    <span {/if $searchItem!="salary"/}style="display:none"{//if/}><input type="text" class="text tSchText" id="tSchSalText" value="{/if empty($headkeyword) || $searchItem!="salary"/}请输入关键词{/else/}{/$headkeyword/}{//if/}"><a href="javascript:void(0)" class="hbIconMoon tSchBtn" id="btnSalarySearch">&#xe07f;</a></span>
+                    </span>
+                    
+                </span>
+            </span>
+            <!--<span class="highSch"><a href="{/get_url rule='job/search'/}">高级搜索</a></span>-->
+        </div>
+        <div class="headR">
+        	<!--<div class="lgAft" id="isLogined" style="display:none">
+            	<div class="psnLg" style="display:none">
+                    <ul>
+                    <li>
+                        <a href="javascript:;" class="userOut">退出</a>
+                    </li>
+                    <li class="line">|</li>
+                    <li class="user">
+                        <a href="{/$siteurl.person/}"><span class="psnUserName"></span></a>
+                    </li>
+                    </ul>
+                </div>
+                <div class="comLg" style="display:none">
+                    <ul>
+                    <li>
+                        <a href="javascript:;" class="userOut">退出</a>
+                    </li>
+                    <li class="line">|</li>
+                    <li class="user">
+                        <a href="{/$siteurl.company/}"><span class="comUserName"></span></a>
+                    </li>
+                    </ul>
+                </div>
+         </div>-->
+            <div class="login_reg" id="userEnterBox" style="margin-top: 15px">
+                <div class="log_new">
+                    <a href="javascript:">企业:</a>
+                    <a class="cur" href="{/$siteurl.company/}/login">登录</a>
+                    <span class="slash">/</span>
+                    <a class="cur" href="{/$siteurl.main/}/company/register">注册</a>
+                </div>
+                <u>|</u>
+                <div class="reg_new">
+                    <a href="javascript:">求职:</a>
+                    <a class="cur" href="{/$siteurl.person/}/login">登录</a>
+                    <span class="slash">/</span>
+                    <a class="cur" href="{/$siteurl.person/}/register">注册</a>
+                </div>
+            </div>
+            <div class="lgAft" id="isLogined" style="padding-top: 0px">
+                <div class="psnLg" style="display:none">
+                    <ul>
+                        <li><a href="javascript:;" class="userOut">退出</a></li>
+                        <li class="line">|</li>
+                        <li class="user">
+                            <img src="{/$dataitem['photo']/}" width="23" height="23" id="psnHeadphoto" style="margin-top:17px;">
+                            <a href="{/$siteurl.person/}"><span class="psnUserName">我的汇博</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="comLg" style="display:none">
+                    <ul>
+                        <li><a href="javascript:void(0);" class="userOut">退出</a></li>
+                        <li class="line">|</li>
+                        <li class="user">
+                            <img src="{/$dataitem['photo']/}" width="23" height="23" id="comHeadphoto">
+                            <a target="_blank" href="{/$siteurl.company/}"><span class="comUserName">企业招聘中心</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!---<div class="lgBef">
+            	<ul>
+                	
+                	<li class="enter" style="margin-left:10px"><a href="{/$siteurl.company/}/register">企业注册</a></li>
+                    <li class="enter" ><a href="{/$siteurl.person/}/register">求职注册</a></li>
+                	<li class="line">|</li>
+                	<li class="comEnter"><a href="{/$siteurl.company/}/login">企业登录</a></li>
+                	<li class="userLogin"><a href="{/$siteurl.person/}/login" class="showPanel" id="btnHeaderLogin">求职者登录</a></li>
+                </ul>
+               	<div class="clear"></div>
+            </div>-->
+        </div>
+        <div class="clear"></div>
+    </div>
+</header>
+<script>
+var userEnterBox = $('#userEnterBox');
+	userEnterBox.on('mouseenter mouseleave', '.login', function(e){
+		var target = $(e.currentTarget);
+		target.toggleClass('hover');
+	});
+</script>
+
+
+

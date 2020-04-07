@@ -1,0 +1,20 @@
+{/foreach $comments as $k=>$comment/}
+<tr>
+	<th valign="top"><a href="javascript:;"><img style="width: 32px;height: 32px;" src="{/if !empty($comment['photo'])/}{/$comment['photo']/}{/else/}{/$siteurl.style/}/img/tucao/defalut.jpg{//if/}" onerror="javascript:this.src='{/$siteurl.style/}/img/tucao/defalut.jpg'"/></a></th>
+	<td>
+		<div>
+			<p class="number">
+				<span>{/$comment.friend_create_time/}</span>
+				<a href="javascript:;" class="zhan operate {/if $comment.spraise/}cur{//if/}" data-val='1' data-id="{/$comment.comment_id/}" data-type="2">{/$comment.praise|default:0/}</a>
+				<u>|</u>
+				<a href="javascript:;" class="low operate {/if $comment.sstep/}cur1{//if/}" data-val='2' data-id="{/$comment.comment_id/}" data-type="2">{/$comment.step|default:0/}</a>
+			</p>
+			<span>{/$comment.user_name/}</span>
+			<span class="clear"></span>
+			<div class="textbox">
+				{/$comment.content/}
+			</div>
+		</div>
+	</td>
+</tr>
+{//foreach/}

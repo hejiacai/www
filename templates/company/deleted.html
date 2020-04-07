@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script src="{/version file='html5.js'/}"></script>   
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="icons.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="common.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="dialog.js"/}"></script>
+
+</head>
+<body>
+{/include file='header.html'/}
+
+<section class="wr404">
+    <dl>
+        <dt></dt>
+        <dd>
+            <p class="tit">{/$message/}</p>
+            <p>你可以<a href="/" class="font14">返回首页</a></p>
+            <p>或者你想去其他地方逛逛：<a href="{/get_url rule="/qiuzhi/"/}">找工作</a>|<a href="{/get_url rule="/xiaoyuan/"/}">校园招聘</a>|<a href="{/get_url rule="/zhaopinhui/"/}">现场招聘会</a>|<a href="{/get_url rule="/hrcollege/"/}">HR学院</a>|<a href="//company.huibo.com/login">企业服务</a></p>
+            <p>给我们留言或直接与我们取得联系，服务热+线：<span class="red strong">400-1010-970</span></p>
+        </dd>
+    </dl>
+</section>
+<footer style="position:fixed;bottom:0;left:0;width:100%;background:none;border:0;_position:absolute;">
+
+    	<p>&copy;{/$year/}&nbsp;{/$huibo_title/}&nbsp;版权所有</p>
+</footer>
+<script>
+$(document).ready(function(){
+	$.focusblur('#tSchJob');
+	$.focusblur('#tSchCom');
+	$.focusblur('#tSchCash');
+	var $navLst = $('#navLst');
+	$navLst.find('li').bind('mousemove',function(){
+		$(this).addClass('show');
+	});
+	$navLst.find('li').bind('mouseout',function(){
+		$(this).removeClass('show');
+	});
+	
+	
+    $('#searchTab').find('.tabT').find('a').click(function(){
+		if($(this).hasClass('cu')){
+			return false;
+		}else{
+			var thisIndex = $(this).index();
+			$(this).addClass('cu').siblings('a').removeClass('cu');
+			$('#searchTab').find('.tabC').find('.tabCon').eq(thisIndex).css({'display':'block'}).siblings('.tabCon').css({'display':'none'});
+		}
+	});
+	
+	$('#searchTab').bind('mousemove',function(){
+		$(this).find('.tabT').css({'display':'block'});
+	});
+	
+    $('#fairTab').find('.tabT').find('li').bind('mousemove',function(){
+		if($(this).hasClass('cu')){
+			return false;
+		}else{
+			var thisIndex = $(this).index();
+			$(this).addClass('cu').siblings('li').removeClass('cu');
+			$('#fairTab').find('.tabC').find('.tabCon').eq(thisIndex).css({'display':'block'}).siblings('.tabCon').css({'display':'none'});
+		}
+	});
+	
+    $('#addTab').find('.tabT').find('li').find('b').bind('click',function(){
+		if($(this).parents('li').hasClass('cu')){
+			return false;
+		}else{
+			var thisIndex = $(this).parents('li').index();
+			$(this).parents('li').addClass('cu').siblings('li').removeClass('cu');
+			$('#addTab').find('.tabC').find('.tabCon').eq(thisIndex).css({'display':'block'}).siblings('.tabCon').css({'display':'none'});
+		}
+	});
+	
+	$('#fstAd,#sndAd').find('li').hover(function(){
+		$(this).addClass('show');
+	},function(){
+		$(this).removeClass('show');
+	});
+	
+	
+	$('.flexslider').flexslider({
+		animation: "slide",
+		itemWidth: 180,
+		itemMargin: 0,
+		controlNav:false,
+		prevText:'&#xf053;',
+		nextText:'&#xf054;',
+		pauseOnAction: false,
+		pauseOnHover: true,  
+		move:5
+	});
+	
+	$('.flexBanner').flexslider({
+		animation:"slide",
+		itemWidth:225,
+		itemMargin:0,
+		prevText:'&#xf053;',
+		nextText:'&#xf054;',
+		pauseOnAction:false,
+		pauseOnHover:true,  
+		move:5
+	});
+	  
+
+});
+
+
+//顶部搜索自动补全
+var emails = [
+ { name: "Peter Pan", to: "peter@pan.de",count:34 },
+ { name: "Molly", to: "molly@yahoo.com" ,count:34},
+ { name: "Forneria Marconi", to: "live@japan.jp" ,count:34},
+ { name: "Master <em>Sync</em>", to: "205bw@samsung.com" ,count:34},
+ { name: "Dr. <strong>Tech</strong> de Log", to: "g15@logitech.com",count:34 }
+];//声明静态数据
+$(function() {
+	 $('#tSchJob').autocomplete(emails, {
+		 resultsClass:"tSchJobRts",
+		 max: 12,    //列表里的条目数
+		 minChars: 0,    //自动完成激活之前填入的最小字符
+		 width:400,     //提示的宽度，溢出隐藏
+		 //scrollHeight:120,   //提示的高度，溢出显示滚动条
+		 matchContains: true,    //包含匹配，就是data参数里的数据，是否只要包含文本框里的数据就显示
+		 autoFill: false,    //自动填充
+		 formatItem: function(row, i, max) {
+			 return '<span class="autTempL"><b>'+row.name+'</b>'+row.to+'</span><span class="autTempR">共<em>'+row.count+'</em>条</span>';
+			// return i + '/' + max + ':"' + row.name + '"[' + row.to + ']'+' '+row.count;
+		 },
+		 formatMatch: function(row, i, max) {
+			 return row.name + row.to;
+		 },
+		 formatResult: function(row) {
+			 return row.to;
+		 }
+	 }).result(function(event, row, formatted) {
+		 //alert(row.to + '' + row.name);
+	 });
+	 
+	 $('#tSchCom').autocomplete(emails, {
+		 resultsClass:"tSchComRts",
+		 max: 12,    //列表里的条目数
+		 minChars: 0,    //自动完成激活之前填入的最小字符
+		 width:457,     //提示的宽度，溢出隐藏
+		 //scrollHeight:120,   //提示的高度，溢出显示滚动条
+		 matchContains: true,    //包含匹配，就是data参数里的数据，是否只要包含文本框里的数据就显示
+		 autoFill: false,    //自动填充
+		 formatItem: function(row, i, max) {
+			 return '<span class="autTempL"><b>'+row.name+'</b>'+row.to+'</span><span class="autTempR">共<em>'+row.count+'</em>条</span>';
+			// return i + '/' + max + ':"' + row.name + '"[' + row.to + ']'+' '+row.count;
+		 },
+		 formatMatch: function(row, i, max) {
+			 return row.name + row.to;
+		 },
+		 formatResult: function(row) {
+			 return row.to;
+		 }
+	 }).result(function(event, row, formatted) {
+		 //alert(row.to + '' + row.name);
+	 }); 
+});
+</script>
+</body>
+</html>

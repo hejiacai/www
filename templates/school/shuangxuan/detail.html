@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script type="text/javascript"  src="{/version file="html5.js"/}" ></script>
+<![endif]–>
+
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="campus.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="shuangxuan_main.css"/}" />
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+<script type="text/javascript">
+    window.CONFIG = {
+        HOST: '{/$siteurl.style/}',
+        COMBOPATH: '/js/v2/'
+    }
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file="global.js"/}"></script>
+<script type="text/javascript">
+        hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<style>
+    .tSchJobRts{margin-left: -6px;}
+    .content{width:100%; }
+    .bread{width:1000px; margin:0 auto;}
+    .dualTopBg{ background:url({/$siteurl.style/}/img/school/shuangxuan/duantopbgx.png) repeat-x;}
+    .dualMgy{width:1040px; height:328px; background:url({/$siteurl.style/}/img/school/shuangxuan/duantopbgy.jpg) no-repeat; margin:0 auto;}
+    .dualContYbg{width:100%; height:100%; background:#46b692; overflow:hidden;}
+    .dualCrd{ background:#f1cc94; border:none;}
+    .dualFlt{ border:none;}
+    .dualCtit a, .dualCtit h3{ color:#a38353;}
+    .dualCtit a:hover{ color:#806040;}
+    .dualCtit p img, .dualCtit p span{ color:#aa8956;}
+    .dualCt{ color:#806640;}
+    .dualLit li:hover{background:#f5f5f5;}
+    .dualLit li a, .dualLit li span, .dualLit li em{ color:#666;}
+    .dualLit li a { color:#00a2de;font-weight:normal;}
+    .dualCt{ height:23px;}
+    .dualFlt{width:497px; background:#3fa685; height:215px;}
+    .dualLit{ background:#fff; height:120px;}
+    .dualLit .dualLitMore{ padding:0;}
+    .dualLit .dualLitMore a{width:109px; height:26px; line-height:26px; color:#00a2de; text-indent:1.5em; background:url({/$siteurl.style/}/img/school/shuangxuan/dualmore.png) no-repeat; text-align:left; float:right; margin-top:4px;}
+    .dualLit .dualLitMore a:hover{font-weight:bold;background:url({/$siteurl.style/}/img/school/shuangxuan/dualmore.png) 0 -26px no-repeat; color:#fff; text-decoration:none;}
+    .dualFltBd{width:490px; overflow:hidden;}
+    .dualMg, .dualCont{width:1007px;}
+    .dualLeft, .dualRight{width:497px;}
+    .dualFlthg{ height:auto;}
+    .dualLithg{ height:auto;}
+    .dualMg{width:1000px;}
+    footer{margin-top:0px;}
+	/*=====修改样式=====*/
+	.dualContYbg{ background:#8fd673;}
+	.dualCont h2{ border-left:4px solid #728760; color:#728760}
+	.dualCont h2 span{color:#728760}
+	.dualCrd{ background:#30cfc9;}
+	.dualCtit a, .dualCtit h3{ color:#fff;}
+	.dualCtit p img, .dualCtit p span{ color:#fff;}
+	.dualFlt{ background:#7ebc66;}
+	.dualLit li b{ color:#00a2de;}
+	.dualCt{ font-size:18px; color:#fff;}
+	.dualCtit a:hover{ color:#20938f}
+</style>
+</head>
+<body>
+{/include file='schoolserachhead.html'/}
+<div class="content">
+    <div class="bread"><a href="/">汇博人才</a>&gt;<a href="{/get_url rule="/xiaoyuan/"/}">校园招聘</a>&gt;<a href="{/get_url rule="/shuangxuan/"/}">双选会</a>&gt;<span id="title">{/$shuangxuan['title']/}</span></div>
+    <div class="dualTopBg">
+     <div class="dualMgy">
+      <div class="dualMg" {/if $shuangxuan['title_img']/} style="background:url({/$shuangxuan['title_img']/}) no-repeat;" {//if/}>
+         
+            <div class="dualMgContBg" style="display:none" >
+                <img src="{/$siteurl.style/}/img/school/shuangxuan/duantoppop01.png" width="390" height="34" />
+                       <div class="dualMgCont">
+                           <p style="position:absolute; margin-top:-15px; *+margin-left:0px;" title="">时间：{/if !empty($shuangxuan['show_time'])/}{/$shuangxuan['show_time']/}{/else/}{/$shuangxuan['start_time']/}{//if/}</p>
+                           <p style="padding-top:10px;" title="{/$shuangxuan['address']/}" class="dualMgTit">地点：{/$shuangxuan['address']/}</p>
+                           <p class='dualMgTit'>主办：{/$shuangxuan['sponsor']/}&nbsp;&nbsp;{/$shuangxuan['undertaker']/}</p>
+                        </div>
+            </div>
+        </div>
+      </div>
+    </div>
+{/if count($themes)>0 || count($left_companys)>0 || count($right_companys)>0/}
+<div class="dualContYbg">
+<div class="dualCont">
+    {/if count($themes)>0/}
+        {/foreach $themes as $key=>$theme/}
+             {/if count($theme['companys'])>0/}
+            <h2>{/$theme['theme_name']/}</h2>
+             <div class="dualCbd">
+             {/if count($theme['companys'])>0/}
+                {/foreach $theme['companys'] as $k=>$company/}
+                
+                    <div class="dualFlt" {/if $k%2==1/}style="float:right"{//if/}>
+                         <img src="{/$siteurl.style/}/img/school/shuangxuan/dualfilfer02.png" width="497" height="7" />
+                          <div class="dualFltBd">
+                        <div class="dualCrd">
+                            <div class="dualCtit">
+                                <a href="{/$company['link']/}"  target="_blank">{/$company['company_name']/}</a>
+                                <p><img src="{/$siteurl.style/}/img/school/shuangxuan/dualcity.png" width="13" height="16" /><span>{/$company['area_name']/}</span></p>
+                            </div>
+                            <span class="dualCt">{/$company['recommend_description']/}</span>
+                        </div>
+                        {/if count($company['web_jobs'])>0/}
+                             <ul class="dualLit" >
+                                {/if count($company['web_jobs'])<5/}
+                                    {/foreach $company['web_jobs'] as $j=>$job/}
+                                        {/if $j <4/}
+                                            <li>
+                                                <a href="{/$job['link']/}" target="_blank">
+                                                    <b>{/$job['station']/}</b>
+                                                    <span>{/$job['min_salary']/}-{/$job['max_salary']/}</span>
+                                                    <em>{/$job['reward']/}</em>
+                                                </a>
+                                            </li>
+                                        {//if/}
+                                    {//foreach/}
+                                {/else/}
+                                    {/foreach $company['web_jobs'] as $j=>$job/}
+                                        {/if $j <3/}
+                                            <li>
+                                                <a href="{/$job['link']/}" target="_blank">
+                                                    <b>{/$job['station']/}</b>
+                                                    <span>{/$job['min_salary']/}-{/$job['max_salary']/}</span>
+                                                    <em>{/$job['reward']/}</em>
+                                                </a>
+                                            </li>
+                                        {//if/}
+                                    {//foreach/}  
+                                     <li class="dualLitMore">
+                                        <a href="{/$company['link']/}"  target="_blank">查看更多>></a>
+                                    </li>
+                                {//if/}
+                            </ul>
+                        {/else/}
+                            <ul class ="dualLit dualLit1"><li>该单位的招聘职位正在陆续添加中...</li></ul>
+                        {//if/}
+                          <img style="display:block;" src="{/$siteurl.style/}/img/school/shuangxuan/dualfilfer01.png" width="7" height="7" />     
+                        </div>
+                    </div>
+                {//foreach/}
+             {//if/}
+             </div>
+            {//if/}
+        {//foreach/}
+    {//if/}
+        
+        
+    <!--其他参会单位-->
+    {/if count($left_companys)>0 || count($right_companys)>0/}
+    <h2 class="dualmore"><span>其他参会单位</a></h2>
+    <div class="dualCbd">
+            {/if count($left_companys)>0/}
+                    <div class="dualLeft">
+                    {/foreach $left_companys as $company/}
+                        <div class="dualFlt dualFlthg">
+                            <img src="{/$siteurl.style/}/img/school/shuangxuan/dualfilfer02.png" width="497" height="7">
+                             <div class="dualFltBd">
+                                <div class="dualCrd" style="padding:6px 20px 12px 20px;">
+                                    <div class="dualCtit">
+                                        <a href="{/$company['link']/}" target="_blank">{/$company['company_name']/}</a>
+                                        <p><img src="{/$siteurl.style/}/img/school/shuangxuan/dualcity.png" width="13" height="16" /><span>{/$company['area_name']/}</span></p>
+                                    </div>
+                                </div>
+                                    {/if count($company['web_jobs'])>0 || $company['other_new_job']/}
+                                    <ul class="dualLit dualLithg">
+                                        {/if count($company['web_jobs'])>0/}
+                                            {/foreach $company['web_jobs'] as $job/}
+                                                <li>
+                                                    <a target="_blank" href="{/$job['link']/}">
+                                                        <b>{/$job['station']/}</b>
+                                                        <span>{/$job['min_salary']/}-{/$job['max_salary']/}</span>
+                                                        <em>{/$job['reward']/}</em>
+                                                    </a>
+                                                </li>
+                                            {//foreach/}
+                                        {//if/}
+                                        {/if $company['other_new_job']/}
+                                        <li class="dualGray">
+                                                {/$other_job = explode(' ',$company['other_new_job'])/}
+                                                {/foreach $other_job as $other/}
+                                                <i>{/$other/}</i>
+                                                {//foreach/}
+                                        </li>
+                                        {//if/}
+                                    </ul>
+                                    {//if/}
+                                     <img src="{/$siteurl.style/}/img/school/shuangxuan/dualfilfer01.png" width="7" height="7">          
+                                </div>
+                         </div>
+                     {//foreach/}
+                    </div>
+            {//if/}
+                
+            {/if count($right_companys)>0/}
+                <div class="dualRight">
+                    <div class="dualLeft">
+                        {/foreach $right_companys as $company/}
+                              <div class="dualFlt dualFlthg">
+                                    <img src="{/$siteurl.style/}/img/school/shuangxuan/dualfilfer02.png" width="497" height="7">
+                             <div class="dualFltBd">
+                                    <div class="dualCrd" style="padding:6px 20px 12px 20px;">
+                                        <div class="dualCtit">
+                                            <a href="{/$company['link']/}" target="_blank">{/$company['company_name']/}</a>
+                                            <p><img src="{/$siteurl.style/}/img/school/shuangxuan/dualcity.png" width="13" height="16" /><span>{/$company['area_name']/}</span></p>
+                                        </div>
+                                      </div>
+                                {/if count($company['web_jobs'])>0 || $company['other_new_job']/}
+                                        <ul class="dualLit dualLithg">
+                                            {/if count($company['web_jobs'])>0/}
+                                                {/foreach $company['web_jobs'] as $job/}
+                                                    <li>
+                                                         <a target="_blank" href="{/$job['link']/}">
+                                                            <b>{/$job['station']/}</b>
+                                                            <span>{/$job['min_salary']/}-{/$job['max_salary']/}</span>
+                                                            <em>{/$job['reward']/}</em>
+                                                         </a>
+                                                    </li>
+                                                {//foreach/}
+                                            {//if/}
+                                            {/if $company['other_new_job']/}
+                                            <li class="dualGray">
+                                                   {/$other_job = explode(' ',$company['other_new_job'])/}
+                                                    {/foreach $other_job as $other/}
+                                                        <i>{/$other/}</i>
+                                                    {//foreach/}
+                                            </li>
+                                            {//if/}
+                                        </ul>
+                                   {//if/}
+                                     <img src="{/$siteurl.style/}/img/school/shuangxuan/dualfilfer01.png" width="7" height="7">          
+                                </div>
+                                </div>
+                        {//foreach/}
+                    </div>
+                </div>
+            {//if/}
+</div>
+{//if/}
+<!-----弹窗----->
+    <div class="dualPop" id="dual">
+	<a href="javascript:;" class="dualClose" style="display:none" onclick="return dualPopHide()"></a>
+	<div class="dualCode">
+            <img src="{/$siteurl.style/}/img/school/shuangxuan/dualqrcode.jpg" width="130" height="130" />
+            <p>扫遍高薪靠谱职位 </p>
+        </div>
+        <div class="dualType">
+            <h3>公司报名</h3>
+            <p><img src="{/$siteurl.style/}/img/school/shuangxuan/dualPhone.png" width="14"  height="16" />18623533473</p>
+            <p style="display:none"><img src="{/$siteurl.style/}/img/school/shuangxuan/dualqq.png" width="14"  height="16" />2851501221</p>
+        </div>
+    </div>
+</div>
+</div>
+ {//if/}
+</div>
+{/include file='footer.html'/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script>
+$(function(){
+ $("#dual").mouseover(function(){$(".dualClose").show();}).mouseout(function(){$(".dualClose").hide();});
+    $(window).scroll(function(){
+        if ($(document).scrollTop() > 500){
+            $('.dualPop').addClass('dualPopfixed').css({'top':'0px'}, 100);
+        }else{
+            $('.dualPop').removeClass('dualPopfixed').css({'top':'509px'}, 100);
+			}
+		});
+})
+function dualPopHide(){
+    $("#dual").hide();
+}
+</script>
+</body>
+</html>

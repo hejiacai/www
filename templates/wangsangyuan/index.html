@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+<meta charset="utf-8" />
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="yes" name="apple-touch-fullscreen"/>
+<meta content="telephone=no" name="format-detection"/>
+<meta name="apple-mobile-web-app-title" content="汇博网">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta property="wb:webmaster" content="c51923015ca19eb1" />
+<link rel="apple-touch-icon-precomposed" href="{/$siteurl.style/}/img/75x75.png" >
+<title>网商园区_汇博网</title>
+<meta name="keywords" content="重庆人才网,重庆招聘,重庆招聘网,重庆找工作" />
+<meta name="description" content="汇博网,原重庆人才网(cqjob.com),重庆招聘网,重庆找工作的理想选择,规模大信息真实的专业招聘网站,查询重庆人才网最新招聘信息,上汇博网！" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<style>
+	body{background:#030130 url({/$siteurl.style/}/img/topicPage/wangsangyuan/banner.jpg) center top no-repeat;text-align: left;font-family:"微软雅黑"}
+	.w1000{background-color: #fff;width:1000px;margin:400px auto 0}
+	.box1{padding:40px;position: relative;_height: 400px}
+	.box1 dt{float:left;width:430px;color:#333;font-size:16px;line-height: 27px}
+	.box1 dd{float:right;margin-top: 40px}
+	.box1 dd img{position: relative;z-index: 2}
+	.addres{background-color: #ebebeb;color:#5773ae;padding:15px 40px;position: absolute;left:0px;bottom:20px;width:920px;z-index:1;font-weight:bold;font-size:16px;line-height: 25px}
+	.box2{padding:40px}
+	.item{float: left;width:450px;height: 160px;margin-bottom: 20px}
+	.item p{background: url({/$siteurl.style/}/img/topicPage/wangsangyuan/box.jpg) left top no-repeat;height:40px;margin-top: 25px;padding:0 20px;line-height: 40px}
+	.item p .name{font-size:16px;color:#fff;font-weight:bold}
+	.item p .more{float:right;color:#fff;font-size:12px}
+	.item li{background-color: #f7f7f7;height: 40px;line-height: 40px;font-size: 16px;padding:0 20px}
+	.item li a{color:#333}
+	.item li span{color:#f12c2c;float:right}
+	.item li.two{background-color: #e6eaf2}
+	.footer{color: #999;line-height: 25px;padding:15px;background-color: #fff;margin-top: 40px;text-align: center;font-size:12px;font-family:"宋体"}
+</style>
+</head>
+<body>
+	<div class="w1000">
+		<div class="box1">
+			<dl class="clearfix">
+				<dt>
+					<p><img src="{/$siteurl.style/}/img/topicPage/wangsangyuan/tit1.jpg" /></p>
+					<p class="mgt10">  &nbsp; &nbsp;重庆网商产业园是商务部批准并授牌的国家电子商务示范基地。园区总面积近六万平米，现入驻企业上百家，是集网商、快递物流、金融服务、电商服务、第三方代运营、虚拟电商注册等企业为一体的电子商务园区。2014年其交易总额破106亿元，入驻的企业和创业者均可享受众多的公共服务，是目前重庆市具有电子商务园区属性、单体面积大、集聚企业多、配套设施完善、较具影响力和知名度的电子商务园区。
+					</p>
+				</dt>
+				<dd>
+					<img src="{/$siteurl.style/}/img/topicPage/wangsangyuan/img.jpg" />
+					<p class="addres">
+						园区地址：重庆市江北区北城天街15号富力海洋广场<br />招商热线：023-65302515、 18696690632
+					</p>
+				</dd>
+			</dl>
+		</div>
+		<div class="box2">
+			<p><img src="{/$siteurl.style/}/img/topicPage/wangsangyuan/tit2.jpg" /></p>
+			<div class="clearfix">
+				{/foreach $list as $t=>$data/}
+				<div class="item" {/if $t%2!=0/}style="float:right;"{//if/}>
+					<p>
+						<a href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopin/qiye/{/$data['company_flag']/}.html" class="more">更多职位>></a>
+						<a href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopin/qiye/{/$data['company_flag']/}.html" class="name" data-c="{/$data['company_id']/}">{/$data['company_name']/}</a>
+					</p>
+					<ul>
+						{/foreach $data['jobLst'] as $k=>$job/}
+						<li {/if $k%2!=0/}class="two"{//if/}>
+							<span>{/$job.min_salary/}-{/$job.max_salary/}</span>
+							<a href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopin/zhiwei/{/$job['job_flag']/}.html" style="width:70%;height:33px;display: block;overflow: hidden;" data-j="{/$job['job_id']/}" data-c="{/$job['company_id']/}">{/$job.station/}</a>
+						</li>
+						{//foreach/}
+					</ul>
+				</div>
+				{//foreach/}
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		©2015 汇博网 版权所有<br />招聘单位无权收取任何费用，请求职人员加强自我保护意识，按劳动法规保护自身权益，警惕虚假招聘，避免上当受骗!
+	</div>
+</body>
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "http://hm.baidu.com/hm.js?fb51309e47424acd6e31c0bd2a65a5a1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</html>

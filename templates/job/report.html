@@ -1,0 +1,328 @@
+<style>
+.reportBox{width:560px;font-size:12px;}
+.reportBox .formMod .l{width:80px;}
+.reportBox .formMod .r{width:430px;}
+.reportBox .formMod .r .formTextarea textarea.textarea{height:80px;}
+.reportBox .formMod .r .tipTxt{margin:0; width:430px;}
+.reportBox .formBtn{margin-left:85px;}
+.reportBox .formMod .r .formRad label{ text-align: left; display:block; float:left; width:200px; margin:0 0px 8px 0px!important; line-height:12px; height:24px; padding-top:9px; }
+.reportBox .formMod .r .formRad input{ float: left;display: inline; margin:9px 0 0; cursor:pointer;}
+
+.imgLst{ height:auto; overflow:hidden;}
+.imgLst li img{ width:60px; height:60px;}
+.imgLst li{ width:60px; height:60px; position:relative; margin:10px; float:left;}
+.imgLst li i{background:#00c7d0; display: inline-block; width:16px; height:16px; border-radius:10px; position:absolute; right:-5px; top:-5px;}
+.uploadify{position: relative;z-index: 1}
+.swfUploadBtn{position: absolute;left:0;top:0}
+.imgLst li i{text-align: center;color: #fff}
+
+#imageError {color:red; display:inline-block;}
+</style>
+<script>
+	$('#imgLst').on('click', 'li a', function(e){
+		var target = $(e.currentTarget);
+		var parent = target.closest('li');
+		var id = parent.attr('id');
+		delimg(id, 'img');
+	});
+	$('#upload_photo').click(function(){
+		$('#fileupload').trigger("click");
+	});
+	var loadindex = "";
+	var SWFUpload_0_0 = 0;
+	var this_number = 1;
+	$('#fileupload').fileupload({
+		url:'/companycomplaint/picture/',
+		dataType: 'json',
+		add: function (e, data) {
+			$('#imageError').html('');
+			//1048576
+			if (data.originalFiles[0]['size'] > 2097152) {
+				$('#imageError').html('请上传小于2MB的图片');
+				return false;
+			}
+
+			if(this_number>5){
+				$('#imageError').html('最多只能上传5张图片');
+				return false;
+			}
+
+			this_number++;
+			data.submit();
+		},
+		done: function (e, data) {
+			var json = data.result;
+			$('#demoImage').hide();
+			$('#Image_load').html('');
+			if(json.error==100){
+				noLoginError=true;
+				$('#imageError').html("请选择您要上传的文件");
+			}else if(json.error==101){
+				fileNullError=true;
+				$('#imageError').html("文件超过最大限制");
+			}else if(json.error==102){
+				extensionError=true;
+				$('#imageError').html("您上传的文件格式有误");
+			}else if (json.error==103) {
+				maxCountError = true;
+				$('#imageError').html("抱歉！最多允许上传{/$max_photo_count/}张照片");
+			} else if (json.error==104) {
+				photoUploadFail = true;
+				$('#imageError').html("文件上传失败");
+			} else if (json.error==105) {
+				photoUploadFail = true;
+				$('#imageError').html("上传图片尺寸不符合要求");
+			} else {
+				var path = json.path;
+				var li = '<li id="SWFUpload_0_'+SWFUpload_0_0+'"><img src="'+path+'"><a href=\"javascript:delimg("SWFUpload_0_'+SWFUpload_0_0+'","img");\"><i>×</i></a><a href="javascript:"><i>×</i></a><input type="hidden" imgdata="photo" data-newname="'+json.newname+'" name="hddNewPhotoName" value="'+json.newname+'"></li>';
+				$("#imgLst").append(li);
+				SWFUpload_0_0++;
+				check();
+			}
+		}
+	});
+	function delimg($obj,$type){
+		$('#'+$obj).remove();
+		this_number--;
+		check();
+	}
+	function check(){
+		var FhddNewPhotoName = $('#imgLst input[name=hddNewPhotoName]');
+		var tempPhotoName = '';
+		FhddNewPhotoName.each(function(){
+			tempPhotoName += $(this).val() + ',';
+		});
+
+		$('input[name=PhddNewPhotoName]').val(tempPhotoName);
+	}
+
+</script>
+<form id="frmComplaint" action="{/get_url rule="/companycomplaint/Report/" data="companyflag=$companyflag&jobflag=$jobflag"/}" method="post">
+<div class="dgBox reportBox" style="text-align:left;">
+	<div class="reportForm">
+	    {/if ($iscomplaint==1 && $complaintcount>0)/}
+		<div id="personcomplainttype" class="formMod" style="text-align:center;font-size:18px;">
+			已有<label style='color:red'>{/$complaintcount/}</label>人举报该公司为保险公司,我们<label style='color:red'>正在核实中</label>......
+		</div>
+		{/else/}   
+		<div id="personcomplainttype" class="formMod" style="text-align:center;font-size:18px;display:none">
+			已有<label style='color:red'>{/$complaintcount/}</label>人举报该公司为保险公司,我们<label style='color:red'>正在核实中</label>......
+		</div> 
+	    {//if/}
+        <div class="formMod">
+            <div class="l">举报类型<i>&nbsp;</i></div>
+            <div class="r">
+                <span class="formRad">
+                 {/foreach $types as $key => $value/}
+                    <input type="radio" class="radio" {/if $key =='1'/} checked="checked" {//if/}  id="rp{/$key/}" name="rdPersonCompaint" value="{/$key/}" /><label for="rp{/$key/}">{/$value/}</label>
+                 {//foreach/}
+                </span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="formMod">
+            <div class="l">举报内容<i>&nbsp;</i></div>
+            <div class="r">
+              <span class="formTextarea">
+                 <textarea class="textarea" style="width:410px;" name="txtContent"></textarea>
+              </span>
+              <span class="tipPos">
+                    <span class="tipLay">
+  
+                    </span>
+               </span> 
+              <span class="tipTxt gray">尽可能详细描述，以便我们及时正确的处理</span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="formMod">
+           <div class="l">手机号码<i>&nbsp;</i></div>
+           <div class="r">
+              <span class="formText">
+                 <input type="text" class="text" style="width:230px;" value="{/$telphone/}" name="txtTelphone" />
+              </span>
+               <span class="tipPos">
+                    <span class="tipLay">
+  
+                    </span>
+                </span> 
+           </div>
+           <div class="clear"></div>
+        </div>
+        <!--<div class="formMod">-->
+           <!--<div class="l">邮 箱<i>&nbsp;</i></div>-->
+           <!--<div class="r">-->
+              <!--<span class="formText">-->
+                 <!--<input type="text" class="text"  style="width:230px;" name="txtEmail" value="{/$email/}" />-->
+              <!--</span>-->
+               <!--<span class="tipPos">-->
+                    <!--<span class="tipLay">-->
+  <!---->
+                    <!--</span>-->
+              <!--</span> -->
+              <!--<span class="tipTxt gray">处理结果将通过手机/邮箱告知您，请正确填写您的手机号码或邮箱</span>-->
+
+           <!--</div>-->
+
+			<!--<div class="clear"></div>-->
+        <!--</div>-->
+		<div class="formMod">
+			<div class="l" style="line-height: 20px">举报凭证<span style="color: #999;display: block;font-size: 12px">（非必填）</span></div>
+			<div class="r">
+				<p style="padding-bottom: 5px">如您保留了面试通知、公司环境等照片，请上传以便核实</p>
+				<input type="button" id="upload_photo" value="选择图片" style="height: 27px; width: 85px;" />
+				<span id="imageError"></span>
+				<span style="color: #999;padding-top: 5px;display: inline-block">（最多可添加5张，类型：jpg，jpeg，png，图片大小不超过2M/张）</span>
+
+				<div style="height:auto;">
+					<ul id="imgLst" class="imgLst"></ul>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="formBtn"><a href="javascript:void(0)" class="btnsF14 btn1" id="btnComplaint">提交</a></div>
+    </div>
+	<input type="hidden" name="PhddNewPhotoName" value=""/>
+</div>
+</form>
+<input id="fileupload" value="上传图片" type="file" name="Filedata" data-url="gossip/Upload/" multiple="multiple" accept="image/*" style="display:none;" />
+
+<script type="text/javascript">
+
+try{
+	hbjs.use('@jobDialog, @actions, @form', function(m){
+		factory(m['cqjob.jobDialog'].extend(m['cqjob.actions'], m['cqjob.jobValidate'], m['cqjob.jobForm']));
+	});
+} catch (e){
+	factory($);
+}
+
+function factory($){
+
+	$.focusColor('input.text');
+	var frmComplaint = $("#frmComplaint").validate({
+		rules:{
+			txtContent:{
+				required:true,
+				rangelength:[1,1000]
+			},
+			txtTelphone:{
+				required:true,
+				tel:true
+			}
+			// ,
+			// txtEmail:{
+			// 	required:true,
+			// 	email:true
+			// }
+		},
+		messages:{
+			txtContent:{
+				required:'请填写举报内容<span class="tipArr"></span>',
+				rangelength:'举报内容不能超过1000字 <span class="tipArr"></span>'
+			},
+			txtTelphone:{
+				required:'请填写电话号码<span class="tipArr"></span>',
+				tel:'请填写正确的电话号码<span class="tipArr"></span>'
+			}
+			// ,
+			// txtEmail:{
+			// 	required:'请填写邮箱<span class="tipArr"></span>',
+			// 	email:'请填写正确的邮箱<span class="tipArr"></span>'
+			// }
+		},
+		errorClasses:{
+			txtContent:{
+				required:'tipLayErr tipw120',
+				rangelength:'tipLayErr tipw150'
+			},
+			txtTelphone:{
+				required:'tipLayErr tipw120',
+				tel:'tipLayErr tipw120'
+			}
+			// ,
+			// txtEmail:{
+			// 	required:'tipLayErr tipw120',
+			// 	email:'tipLayErr tipw120'
+			// }
+		},
+		tipClasses:{
+			txtContent:'tipLayTxt tipw120',
+			txtTelphone:'tipLayTxt tipw120'
+            // ,
+			// txtEmail:'tipLayTxt tipw120'
+		},
+		tips:{
+			txtContent:'请填写举报内容<span class="tipArr"></span>',
+			txtTelphone:'请填写电话号码<span class="tipArr"></span>'
+            // ,
+			// txtEmail:'请填写邮箱<span class="tipArr"></span>'
+		},
+		errorElement:'span',
+		errorPlacement:function(error,element){
+			element.closest('div.formMod').find('.tipPos .tipLay').empty().append(error);
+		},
+		success:function(label){
+			label.text(" ");
+		}
+	});
+	
+	$('#btnComplaint').click(function(){
+		var _this = $(this);
+		$(this).submitForm({ beforeSubmit: $.proxy(frmComplaint.form, frmComplaint),success:function(result){
+			if(result.error){
+				 $.message(result.error,{title:'操作失败！'});
+			} else if(result.success){
+				if(_this[0].trigger){
+					_this[0].trigger('close');
+				} else {
+					_this.closeDialog();
+				}
+				$.anchorMsg(result.success,{title: "操作成功", icon: "success"});
+			}
+		},clearForm:false});
+	});
+
+	$("input[name='rdPersonCompaint']").click(function(){
+       var val=parseInt($(this).attr('value'));
+       var complaintcount={/$complaintcount/};
+       if(val==5 && complaintcount>0){
+          $('#personcomplainttype').show();
+        }else{
+          $('#personcomplainttype').hide();
+        }
+	});
+
+	function check(){
+		var FhddNewPhotoName = $('#imgLst input[name=hddNewPhotoName]');
+		var tempPhotoName = '';
+		FhddNewPhotoName.each(function(){
+			tempPhotoName += $(this).val() + ',';
+		});
+
+		$('input[name=PhddNewPhotoName]').val(tempPhotoName);
+
+		/*
+		if(FhddNewPhotoName.size()>0){
+			for(var i=0; i < FhddNewPhotoName.size(); i++){
+				var temp = FhddNewPhotoName.eq(i).val();
+				if(temp != '' || temp != null){
+					tempPhotoName += temp+',';
+				}
+			}
+		}
+		$('input[name=PhddNewPhotoName]').val(tempPhotoName);
+		*/
+	}
+
+	$('#imgLst').on('click', 'li a', function(e){
+		var target = $(e.currentTarget);
+		var parent = target.closest('li');
+		var id = parent.attr('id');
+		delimg(id, 'img');
+	})
+
+}
+
+
+</script>

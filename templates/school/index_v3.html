@@ -1,0 +1,1112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="Keywords" content="{/$keywords/}"/>
+	<meta name="Description" content="{/$description/}"/>
+	<title>{/$title/}</title>
+	<!–[if lt IE9]>
+	<script type="text/javascript" src="{/version file="html5.js"/}"></script>
+	<![endif]–>
+
+	<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file="v2-reset.css"/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file="v2-resume.css"/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file="v2-header.css"/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file="v2-widge.css"/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file="job.css"/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file="jobnew.css"/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file="mainPhoto.css"/}"/>
+
+
+	<!--<link rel="stylesheet" type="text/css" href="{/version file="campus.css"/}" />-->
+	<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file="ui_flexslider.js"/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file="ui_calling.js"/}"></script>
+	<script type="text/javascript">
+		window.CONFIG = {
+			HOST: '{/$siteurl.style/}',
+			COMBOPATH: '/js/v2/'
+		}
+	</script>
+	<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+	<script type="text/javascript" src="{/version file="global.js"/}"></script>
+	<script type="text/javascript">
+		hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+	</script>
+	<style>
+		/*页面底部友情链接样式1*/
+		.pageBot {
+			border-top: 1px solid #bbb;
+			height: auto;
+			width: 100%;
+			overflow: hidden;
+			zoom: 1;
+			background: #fff;
+			margin-top: 20px;
+		}
+
+		.pageBotCon {
+			width: 1000px;
+			margin: 0 auto;
+			text-align: left;
+			border-bottom: 1px solid #bbb;
+			padding-bottom: 10px;
+		}
+
+		footer {
+			margin-top: 0;
+			border-top: none;
+		}
+
+		.frdLink {
+			position: relative;
+			z-index: 10;
+			height: 50px;
+			overflow: hidden;
+		}
+
+		.footer {
+			margin-top: 0;
+		}
+
+		.frdLink b {
+			float: left;
+			display: inline;
+			height: 35px;
+			font-size: 12px;
+			line-height: 35px;
+			width: 70px;
+			font-weight: normal;
+			color: #999;
+		}
+
+		.frdLink .linkScroller {
+			float: left;
+			display: inline;
+			line-height: 25px;
+			width: 930px;
+			height: 50px;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.frdLink .linkScroller ul {
+			width: 930px;
+			position: absolute;
+			left: 0px;
+			margin: 5px 0 0;
+			top: 0px;
+		}
+
+		.frdLink .linkScroller ul li {
+			float: left;
+			display: inline-block;
+			*display: inline;
+			zoom: 1;
+			height: 25px;
+			line-height: 25px;
+			margin: 0 10px 0 0;
+		}
+
+		.frdLink .linkScroller ul li a {
+			color: #424242;
+			display: inline;
+			height: 25px;
+			line-height: 25px;
+			white-space: nowrap;
+			font-size: 12px;
+		}
+
+		.frdLink .linkScroller ul li a:hover {
+			color: #0af;
+		}
+
+		.frdLink .linkScroller {
+			height: auto;
+		}
+
+		.frdLink .linkScroller ul {
+			position: inherit;
+		}
+
+		/*微信二维码*/
+		.weiCodeTop {
+			text-align: center;
+			width: 138px;
+			border: 1px solid #dadada;
+			background: #fff;
+			padding-bottom: 10px;
+			position: absolute;
+			top: 416px;
+			left: 50%;
+			margin-left: 555px;
+		}
+
+		.weiCodeTop img {
+			display: block;
+			padding: 4px;
+			border: 1px solid #e8e8e8;
+			margin: 10px auto 5px auto;
+		}
+
+		.weiCodeTop span {
+			line-height: 20px;
+			color: #444;
+		}
+
+		/*======改版样式=====*/
+		.banner {
+			height: 398px;
+			border-bottom: none;
+		}
+
+		.flexBanner {
+			height: 398px;
+		}
+
+		.banner ul.slides li a {
+			height: 398px;
+		}
+
+		.schBox {
+			top: 70px;
+		}
+
+		.weiCodeTop {
+			top: 459px;
+		}
+
+		.famousFirm {
+			width: 100%;
+			height: 114px;
+			overflow: hidden;
+			background: #28a25e;
+		}
+
+		.famousFirm .ad {
+			margin: 0 auto;
+			width: 1000px;
+			padding: 0px;
+		}
+
+		.ad .bd {
+			padding: 15px 0px;
+		}
+
+		.ad .adLst {
+			margin-left: 10px;
+		}
+
+		.ad .hd {
+			margin-left: 1px;
+		}
+
+		.ad {
+			padding-top: 3px;
+			#padding-top: 1px;
+			border-top: none;
+		}
+
+		.ad .hd ul li, .ad .hd ul li.oth {
+			border: none;
+			background: none;
+		}
+
+		.ad .hd ul li {
+			border-right: 1px solid #f2faf6;
+			height: 114px;
+		}
+
+		.ad .hd ul li a dl dt {
+			color: #fffc00;
+			text-align: left;
+		}
+
+		.ad .hd ul li dl dd p {
+			color: #fff;
+			text-align: left;
+		}
+
+		.ad .hd ul li.fst dl dd p {
+			color: #999
+		}
+
+		.ad .hd ul li dl dt {
+			text-align: left;
+		}
+
+		.ad .hd ul li.fst dl {
+			border-top: none;
+			border-right: 2px solid #fff;
+			top: 0px;
+		}
+
+		.ad .hd ul li.fst {
+			height: 106px;
+			margin-top: 8px;
+		}
+
+		.ad .hd ul li:hover {
+			background: #48b076;
+		}
+
+		.ad .hd ul li.fst:hover {
+			background: #fff;
+		}
+
+		.ad .hd ul li dl {
+			padding-top: 15px;
+		}
+
+		.ad .hd ul li.fst dl {
+			padding-top: 9px;
+		}
+
+		.ad .hd ul li a:hover {
+			background: none;
+		}
+
+		.ad .hd ul li a:hover dl dt {
+			color: #fffc00;
+		}
+
+		.ad .adG {
+			background: #2993ff;
+		}
+
+		.ad .adGl b {
+			color: #fff;
+			border-right: 1px solid #71b7ff;
+		}
+
+		.ad .adGl a {
+			color: #fff;
+		}
+
+		.part .hd {
+			background: #03c2de;
+			border-bottom: none;
+		}
+
+		.part .hd b {
+			width: 2px;
+			background: #fff;
+			left: 21px;
+			height: 16px;
+		}
+
+		.part .hd h3 {
+			color: #fff;
+			font-weight: normal;
+			padding-left: 32px;
+			font-size: 20px;
+		}
+
+		.part .hd .rMore a {
+			color: #fff;
+			padding-right: 10px;
+		}
+
+		.part .hd2 {
+			background: #6ed097;
+		}
+
+		.part .hd3 {
+			background: #fea525;
+		}
+
+		body {
+			background: #fff;
+		}
+
+		.footer {
+			width: 100%;
+			overflow: hidden;
+			border-top: 1px solid #bbb;
+		}
+
+		.pageBot {
+			background: none;
+			border-top: none;
+		}
+
+		.pageBotCon {
+			border-bottom: 1px solid #ccc;
+			padding-bottom: 20px;
+		}
+
+		.footerBm {
+			background: none;
+			border-top: none;
+			padding-bottom: 80px;
+		}
+
+		.ad .adGr a {
+			color: #fff;
+		}
+
+		.part .db ul li {
+			border-bottom: 1px solid #eee;
+			height: 130px;
+			position: relative;
+			z-index: 1;
+		}
+
+		.part {
+			border-bottom: 1px solid #e6e6e6;
+		}
+
+		.leftPart {
+			width: 668px;
+			float: left;
+			border-bottom: none;
+		}
+
+		.part .bd {
+			height: 398px;
+			overflow: hidden;
+		}
+
+		.meetingLst .bd ul li dl dd {
+			width: 510px;
+		}
+
+		.meetingLst .bd ul li dl dd p.tit {
+			width: 510px;
+		}
+
+		.part #lst {
+			border-right: none;
+		}
+
+		.meetingLst .bd ul {
+			padding: 10px 20px 0px 20px;
+		}
+
+		.talk .talkL ul li {
+			width: 333px;
+		}
+
+		.xiaoyuan_title .right_link .more {
+			margin-right: 20px;
+			border-radius: 25px;
+		}
+
+		.seminar_box {
+			height: 429px;
+		}
+
+		#proPopup dl dd a.cur {
+			color: #07b56d;
+		}
+
+		.idunt_float dd.small {
+			height: 408px;
+		}
+
+		/*星座专业活动*/
+		.majorandworkactivity {
+			position: fixed;
+			right: 50%;
+			top: 586px;
+			z-index: 2;
+			margin: 0px -635px 0 0;
+			width: 133px;
+			height: auto;
+			border: 1px solid #f1f1f1;
+			background: #fff;
+		}
+
+		.majorandworkactivity img {
+			width: 133px;
+			height: auto;
+			margin-bottom: 2px;
+		}
+
+		.majorandworkactivity p {
+			width: 100%;
+			font-size: 12px;
+			color: #333333;
+			text-align: center;
+		}
+
+		.boxconTip {
+			width: 270px;
+			overflow: hidden;
+			position: absolute;
+			top: 124px;
+			left: 30px;
+			border: 1px solid #ccc;
+			z-index: 5;
+			background: #fff;
+			display: none;
+		}
+
+		.boxconTip li {
+			width: 100%;
+			overflow: hidden;
+			color: #333;
+			height: 30px;
+			line-height: 30px;
+			border-bottom: 1px solid #f1f1f1;
+			text-indent: 5px;
+		}
+
+		.boxconTip li em {
+			color: #0c7;
+		}
+
+		.boxconTip li a {
+			color: #333;
+		}
+
+		.footerBm {
+			padding-bottom: 30px !important;
+		}
+
+		/*优化首页按行业搜,按专业搜插件*/
+		.JobIndDrop .dropLstCon div.lst1 {
+			height: 365px !important;
+			width: 163px !important;
+			overflow-y: auto;
+		}
+
+		.JobIndDrop .dropLstCon div.lst2 {
+			height: 365px !important;
+			width: 277px !important;
+			overflow: auto;
+		}
+
+		#proPopup.idunt_float, #proPopup.idunt_float_select {
+			width: 772px !important;
+		}
+
+		.idunt_float dd.small {
+			width: 650px !important;
+		}
+
+		.JobIndDrop .dropLst {
+			width: 480px !important;
+		}
+
+		.idunt_float dd.small ul {
+			min-width: 633px !important;
+		}
+
+		.flex-control-nav {
+			position: absolute;
+			width: 100%;
+			left: 0;
+			text-align: center;
+			bottom: 10px;
+			z-index: 2
+		}
+
+		.flex-control-nav li {
+			display: inline-block;
+		}
+
+		.flex-control-nav li a {
+			display: inline-block;
+			width: 10px;
+			height: 0;
+			padding-top: 10px;
+			background: #000;
+			overflow: hidden;
+			border-radius: 50%;
+			filter: alpha(opacity=50);
+			-moz-opacity: 0.50;
+			opacity: 0.50;
+			margin: 0 2px;
+			border: 1px solid #e0e0e0;
+			box-shadow: 0px 0px 8px #fff;
+		}
+
+		.flex-control-nav a.flex-active {
+			background: #07b56d;
+			filter: alpha(opacity=100);
+			-moz-opacity: 1;
+			opacity: 1;
+		}
+
+		.flex-direction-nav {
+			display: none;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="{/version file='base.css,v2-widge.css,v2-resume.css,v2-jobsearch.css,login.css'/}"/>
+	<link rel="stylesheet" type="text/css" href="{/version file='xiaoyuan.css'/}"/>
+
+</head>
+<body>
+{/include file='schoolhead.html' cur_menu='index'/}
+<div class="xiaoyou_banner" style="z-index:50">
+	<div class="schBox">
+		<div class="boxCon_shadow"></div>
+		<div class="boxCon">
+			<ul class="boxconTip">
+				<li>
+					为匹配出<em>218</em>个职位，<a href="javascript:;" target="_blank" id="schoolSearchBtn">点击查看></a>
+				</li>
+				<li>
+					为匹配出<em>218</em>条校招网申信息，<a href="javascript:;" target="_blank" id="rescritSearchBtn">点击查看></a>
+				</li>
+			</ul>
+			<div class="tab" id="tabT">
+				<ul>
+					<li class="cu serach_type" for="txtStation">按职位搜</li>
+					<li class="serach_type" for="callingContainer">按行业搜</li>
+					<li class="serach_type" for="fullText">按专业搜</li>
+				</ul>
+				<div class="clear"></div>
+			</div>
+			<div class="tabC" id="tabC">
+				<div class="tabCon">
+					<div class="form">
+						<div class="formMod">
+                            <span class="formText" id="txtStationSpan">
+                                <label for="txtStation" class="txtLabel">请输入职位名称或公司名称</label>
+                                <input type="text" class="text" id="txtStation" autocomplete="false"/>
+                            </span>
+							<div class="formText drop formText JobIndDrop zindex"
+								 style="display:none;width:270px;box-shadow: none;background: #fff;"
+								 id="callingContainerSpan">
+								<span class="defValue" style="position: absolute; color:#999; left: 10px; top: 4px; font-size: 14px;z-index: 1">请选择行业分类</span>
+							</div>
+							<!--<span class="formText" style="display:none;" id="fullTextSpan"><label for="fullText" class="txtLabel">请输入专业名称</label><input type="text" class="text" id="fullText" /></span>-->
+							<div class="formText" style="display:none;position: relative;" id="fullTextSpan">
+								<label for="fullText" class="txtLabel">请选择专业类别</label>
+								<input type="text" class="text" id="fullText" readonly/>
+								<b class="hbFntWes dropIco wh_drop" style="position: absolute;font-size: 14px;color: #909090;cursor: pointer;top: 12px;right: 0px;"></b>
+							</div>
+						</div>
+					</div>
+					<div class="btn"><a href="javascript:void(0);" id="btnSearch" class="btn4 btnsF16">搜索</a></div>
+				</div>
+				<p class="create_link"><a HREF="{/$siteurl.person/}/person/CreateBasic/">创建简历></a></p>
+			</div>
+			<div id="proPopup" class="idunt_float otherproPopup" style="display:none;position: absolute;top: 125px;left: 30px;">
+				<!--多选状态class="idunt_float_select";单选状态class="idunt_float"-->
+				<dl class="first">
+					<dt><a href="javascript:;" data-value="">不限</a></dt>
+					<dd></dd>
+				</dl>
+				<dl>
+					{/foreach from=$professions key=pid item=top name=professionforeach/}
+						<dt><a class="{/if $smarty.foreach.professionforeach.first/}hover{//if/} top" href="javascript:;" data-value="{/$top['professional_id']/}"><i
+										class="arr_idRit"></i>{/$top['professional_name']/}</a></dt>
+						<dd class="small" {/if $smarty.foreach.professionforeach.first/}style="display: block;"{//if/}>
+							{/foreach $top["sub_items"] as $second/}
+								<ul>
+									<a class="tit" href="javascript:;" data-value="{/$second['professional_id']/}">{/$second['professional_name']/}</a>
+									<li>
+										{/foreach $second['sub_items'] as $third/}
+											<a href="javascript:;" data-value="{/$third['professional_id']/}">{/$third['professional_name']/}</a>
+										{//foreach/}
+									</li>
+								</ul>
+							{//foreach/}
+						</dd>
+					{//foreach/}
+				</dl>
+			</div>
+			<!--搜索专业-->
+			<script>
+				$('#fullTextSpan').click(function (e) {
+					$('#proPopup').show();
+					$('#fullTextSpan .txtLabel').hide();
+				})
+				/*专业要求*/
+				var other_box = $('#other_box'),
+						proRequirement = $('#proRequirement'),
+						proPopup = $('#proPopup'),
+						proPopupParent = proPopup.children('dl'),
+						proPopupAllLink = proPopup.find('a'),
+						proPopupMenu = proPopupParent.children('dt'),
+						proPopupMenuLink = proPopupMenu.children('a'),
+						proPopupItem = proPopupParent.children('dd'),
+						proPopupItemLink = proPopupItem.children('ul'),
+						proSelectedIndex = 0,
+						proPopupSelectedLink = proPopupAllLink.filter(function () {
+							return $(this).hasClass('cur');
+						});
+				function proHide() {
+					proRequirement.removeClass('click');
+					proPopup.hide();
+				}
+				var proIsListener = false;
+				proPopup.on('mouseenter', 'dt a', function (e) {
+					if (!proPopup.hasClass('idunt_float_select')) {
+						var target = $(e.currentTarget),
+								parent = target.parent(),
+								index = proPopupMenu.index(parent);
+						if (!index) return;
+						proPopupMenuLink.removeClass('hover');
+						target.addClass('hover');
+						proPopupItem.hide();
+						proPopupItem.eq(index).show();
+						proSelectedIndex = index;
+					}
+				});
+				proPopup.on('click', 'a', function () {
+					if ($(this).hasClass("top"))
+						return;
+					$('#fullTextSpan .txtLabel').hide();
+					var thisText = $(this).text();
+					$('.small ul a,.first a').removeClass('cur');
+					$(this).addClass('cur');
+					$('#fullText').attr("data-value", $(this).attr("data-value")).val(thisText);
+					$("#proPopup").css('display', 'none');
+				});
+				$(document).on('mouseleave', "#proPopup", function (e) {
+					proHide();
+				});
+			</script>
+		</div>
+	</div>
+	<div class="lst flexBanner" id="flexBanner">
+		<ul class="slides">
+			{/foreach $sliderAds as $advert/}
+				<li><a href="{/$advert["url"]/}" target="_blank" style="background-image:url({/$advertPath/}{/$advert["img"]/})"></a></li>
+			{//foreach/}
+		</ul>
+	</div>
+</div>
+<div class="xiaoyou_tab" style="display: none">
+	<ul class="clearfix">
+		<li class="cu">
+			<u class="tab_icon1"></u>
+			<strong class="name">名企校招</strong>
+			<p class="detailed">35,867个应届生岗位</p>
+		</li>
+		<li>
+			<a target="_blank" href="{/get_url rule='/gongzhao/'/}">
+				<u class="tab_icon2"></u>
+				<strong class="name">公招信息</strong>
+				<p class="detailed">
+					{/foreach $publicrecriuts as $recriut/}
+						{/if $recriut@index eq 1/}{/break/}{//if/}
+						<span>{/$recriut['title']/}</span>
+					{//foreach/}
+				</p>
+			</a>
+		</li>
+		<li>
+			<a target="_blank" href="{/get_url rule='/shuangxuan/'/}">
+				<u class="tab_icon3"></u>
+				<strong class="name">校园双选会</strong>
+				<p class="detailed">
+					{/foreach $shuagnxuans as $shuangxuan/}
+						{/if $shuangxuan@index eq 1/}{/break/}{//if/}
+						<span>{/$shuangxuan['starttime']/}</span>
+					{//foreach/}
+				</p>
+			</a>
+		</li>
+		<li>
+			<a target="_blank" href="{/get_url rule='/xuanjiang/'/}">
+				<u class="tab_icon4"></u>
+				<strong class="name">校园宣讲会</strong>
+				<p class="detailed">
+					{/foreach $xuanjiangs as $xuanjiang/}
+						{/if $xuanjiang@index eq 1/}{/break/}{//if/}
+						<span>[{/$xuanjiang['sponsor']/}]{/$xuanjiang['title']/}</span>
+					{//foreach/}
+				</p>
+			</a>
+		</li>
+		<li>
+			<a target="_blank" href="{/get_url rule='/zhichang/'/}">
+				<u class="tab_icon5"></u>
+				<strong class="name">职场指南</strong>
+				<p class="detailed">
+					<span>初入职场哪些事</span>
+				</p>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<!--星座专业活动二维码-->
+<div class="majorandworkactivity">
+	<img src="{/base_lib_Constant::STYLE_URL/}/img/school/icon_school1.png" alt="">
+	<!--<p>扫码测测你学的专业适合做什么工作吧~</p>-->
+</div>
+
+<div class="star_enterprise_box" style="padding-top: 10px;">
+	<div style="width: 1001px;margin: 0 auto;background: #fff">
+		<div class="interRecruit">
+			<h2>名企校招</h2>
+			<p>35,867个应届生岗位，500强企业期待您的加入</p>
+		</div>
+		<div class="star_employer_box star_employer_more">
+			<i class="star_refresh" id="js_star_refresh"></i>
+			<i class="star_more" id="js_star_more"></i>
+			<script type="text/javascript" language="javascript">
+				hbjs.use('@jobLazyload', function (m) {
+					var $ = m['jquery'];
+					$("#js_star_refresh").on("click", function () {
+						$.ajax({
+							type: "get",
+							dataType: "jsonp",
+							jsonp: "callbackparam",
+							url: "{/$siteurl.main/}/xiaoyuan/randStarCompanys",
+							success: function (json) {
+								if (json.status) {
+									var html = "";
+									$.each(json.data, function (i, n) {
+										html += "<li>";
+										html += '<a target="_blank" href="' + n.companylink + '"><img src="' + n.img + '" /><span>' + n.company_name + '</span></a>';
+										html += "</li>";
+									});
+
+									$("#star_company_logos_ul").html(html);
+								}
+							}
+						});
+					});
+					//查看更多
+					$("#js_star_more").on("click", function () {
+						var starBox = $(".star_employer_box");
+						if (starBox.hasClass("star_employer_more")) {
+							starBox.removeClass("star_employer_more");
+						} else {
+							starBox.addClass("star_employer_more");
+						}
+						return false;
+					});
+				});
+
+			</script>
+			<ul id="star_company_logos_ul" {/if empty($famousCompanys)/}style="display:none;"{//if/}>
+				{/foreach $famousCompanys as $k=>$advert/}
+					<li {/if ($k+1)%4==0/}class="last"{//if/}>
+						<a target="_blank" href="{/$advert['companylink']/}"><img src="{/$advert["img"]/}"><span>{/$advert["company_name"]/}</span></a>
+					</li>
+				{//foreach/}
+			</ul>
+		</div>
+	</div>
+	<div style="height: 1px;"></div>
+	<div class="enterprise_text_list" {/if empty($famousJobs)/}style="display:none;"{//if/}>
+		<ul class="clearfix">
+			{/foreach $famousJobs as $k=>$job/}
+				<li {/if ($k+1)%3==0/}class="last"{//if/}><a href="{/$job['job_url']/}"
+															 target="_blank"><span class="time">{/$job["show_time_format"]/}</span><span class="text">{/$job["station"]/}</span></a>
+				</li>
+			{//foreach/}
+		</ul>
+		<p class="more"><a href="{/get_url rule="/xiaozhao/"/}" target="_blank">更多></a></p>
+	</div>
+</div>
+
+<!--公招信息-->
+{/if !empty($publicrecriuts)/}
+	<div class="maleRecruit">
+		<div class="maleRecCont">
+			<div class="xiaoyuan_title"><p class="right_link"><a class="more" href="{/get_url rule='/gongzhao/'/}" target="_blank">更多&gt;</a></p>
+				<strong class="name">公招信息</strong></div>
+			<ul class="maleRecList">
+				{/foreach $publicrecriuts as $recriut/}
+					<li><a href="{/get_url rule='/gongzhao/'/}{/$recriut['recruit_id']/}" target="_blank">&gt; {/$recriut["title"]/}</a></li>
+				{//foreach/}
+			</ul>
+		</div>
+	</div>
+{//if/}
+
+{/if !empty($recommendjobs)/}
+	<div class="xiaoyuan_main">
+		<div class="xiaoyuan_title"><p class="right_link"><a href="{/get_url rule='/schoolsearch/'/}?key=%E9%94%80%E5%94%AE"
+															 target='_blank'>销售</a><u></u><a href="/schoolsearch/?key=%E8%B4%A2%E5%8A%A1" target='_blank'>财务</a><u></u><a
+						href="/schoolsearch/?key=%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91"
+						target='_blank'>软件开发</a><u></u><a href="/schoolsearch/?key=%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90" target='_blank'>人力资源</a>
+				<a href="{/get_url rule="/schoolsearch/"/}" target='_blank' class="more">更多></a></p><strong class="name">最新校招职位</strong>
+		</div>
+		<div class="new_job_box" style="margin-bottom: 30px;">
+			<ul class="clearfix">
+				{/foreach $recommendjobs as $k=>$job/}
+					<li {/if ($k+1)%4==0/}class="last"{//if/}>
+						<a class="jobtitle" href="{/$job['joblink']/}" target='_blank'>{/$job['station']/}</a>
+						<a class="companyname" href="{/$job['companylink']/}" target='_blank'>{/$job['companyname']/}</a>
+					</li>
+				{//foreach/}
+			</ul>
+		</div>
+	</div>
+{//if/}
+{/*简历模板*/}
+{/if $resumeModel_data && count($resumeModel_data)>=3 && $resumeModel_img_path/}
+	<div class="resumeTemplate">
+		<div class="template-auto">
+			<div class="template-title clearfix">
+				<p class="template-link">
+					<a class="more" href="{/get_url rule='/hbResumeModel/index' domain='person'/}" target="_blank">浏览全部模板&gt;</a>
+				</p>
+				<strong class="name">简历模板</strong>
+			</div>
+			<div class="template-content clearfix">
+				{/foreach $resumeModel_data as $value/}
+					<a href="{/get_url rule='/hbResumeModel/ResumeModel' domain='person'/}?id={/$value['id']/}"
+							target="_blank" class="template-items">
+						<div class="template-item">
+							<div class="item-img">
+								<img src="{/$resumeModel_img_path/}{/$value['model_img']/}" alt="{/$value['model_name']/}">
+							</div>
+							<div class="item-des">
+								<span class="desc-left">{/$value['model_name']/}</span>
+								<span class="desc-right">已下载：{/$value['pre_download']+$value['download']/}</span>
+							</div>
+						</div>
+						<div class="template-master">
+							<img src="{/$style_url/}/img/xiaoyuan/resume/add_temp.png" alt="">
+							<p>免费试用此模板</p>
+						</div>
+					</a>
+				{//foreach/}
+			</div>
+		</div>
+	</div>
+{//if/}
+{/*END 简历模板*/}
+<!----双选会---->
+<div class="star_enterprise_box" style="background: #fff;padding-bottom: 60px;padding-top: 30px;">
+	<div class="xiaoyuan_main">
+		<div class="xiaoyuan_title" style="padding-top: 0px;"><p class="right_link"><a class="more" href="{/get_url rule="/shuangxuan/"/}" target="_blank">更多></a></p>
+			<strong class="name">双选会</strong></div>
+		<div class="double_election_box clearfix" style="border-top:none">
+			<div class="double_left">
+				{/foreach $shuagnxuans as $k=>$shuangxuan/}
+					{/if $k<3/}
+						<dl class="clearfix">
+							<dt>
+								<a href="{/get_url rule="/shuangxuan/detail/"/}sid-{/$shuangxuan["sid"]/}" target="_blank"><img style="width: 98px"
+																																src="{/$shuangxuan['logo']/}"/></a>
+							</dt>
+							<dd>
+								<a href="{/get_url rule="/shuangxuan/detail/"/}sid-{/$shuangxuan["sid"]/}"
+								   target="_blank"
+								   class="name"><strong>{/$shuangxuan['school_name']/}</strong>{/$shuangxuan['title']/}</a>
+								<p class="time">
+									<span>时间：{/$shuangxuan['starttime']/}</span>
+									<span>地点：{/$shuangxuan['address']/}</span>
+								</p>
+							</dd>
+						</dl>
+					{//if/}
+				{//foreach/}
+			</div>
+			<div class="double_right">
+				<p class="title">部分合作高校<span>（排名不分先后）</span></p>
+				<p class="clearfix">
+					{/foreach $schools as $school/}
+						<a rel="nofollow" {/if isset($school['url']) && !empty($school['url'])/}href="{/$school['url']/}"
+						   target="_blank"
+						   {/else/}href="javascript:;"{//if/}><img src="{/$school['badge']/}" style="width:135px;height:51px"/></a>
+					{//foreach/}
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div style="background: #f6f7f9;padding-bottom: 60px;">
+<div class="xiaoyuan_main">
+	<div class="xiaoyuan_title"><p class="right_link"><a class="more" href="{/get_url rule="/xuanjiang/"/}" target="_blank">更多></a></p><strong class="name">宣讲会</strong>
+	</div>
+	<div class="seminar_box">
+		<ul class="seminar_item_box clearfix" style="background: #fff;">
+			{/foreach $xuanjiangs as $xuanjiang/}
+				{/if $xuanjiang@index eq 4/}{/break/}{//if/}
+				<li class="seminar_item{/$xuanjiang@index+1/}">
+					<a href="{/get_url rule="/xuanjiang/detail/"/}sid-{/$xuanjiang["sid"]/}" target="_blank" class="name">{/$xuanjiang['title']/}</a>
+					<span class="title">{/if !empty($xuanjiang['sponsor'])/}{/$xuanjiang['sponsor']/}宣讲会{//if/}</span>
+					<p class="time">时间：{/$xuanjiang['show_time_format']/}<br/>地点：{/$xuanjiang['address']/}</p>
+				</li>
+			{//foreach/}
+		</ul>
+		<div class="seminar_list_box">
+			<p class="title">更多宣讲会预告</span></p>
+			<ul>
+				{/foreach $xuanjiangs as $xuanjiang/}
+					{/if $xuanjiang@index lt 4/}{/continue/}{//if/}
+					<li><span class="time">{/$xuanjiang['date']/}</span><a class="school"
+																		   href="{/get_url rule="/xuanjiang/detail/"/}sid-{/$xuanjiang["sid"]/}"
+																		   target="_blank">{/$xuanjiang['sponsor']/}</a><a href="javascript:;"
+																														   class="name">{/$xuanjiang['title']/}</a></li>
+				{//foreach/}
+			</ul>
+		</div>
+	</div>
+</div>
+</div>
+		<div class="star_enterprise_box" style="display: none;">
+			<div class="xiaoyuan_main">
+				<div class="xiaoyuan_title">
+					<p class="right_link"><a class="more" href="{/get_url rule="/zhichang/"/}" target="_blank">更多></a></p>
+					<strong class="name">职场指南</strong>
+				</div>
+				<img style="display:block; padding: 25px 0 20px 0;" src="{/$siteurl.style/}/img/schoolrecriut/tab_img4_29.jpg">
+			</div>
+		</div>
+
+{/if count($links->items) > 0/}
+	<div class="xiaoyuan_links">
+		<div class="xiaoyuan_links_box">
+			<strong>友情链接：</strong>
+			<p>
+				{/foreach from=$links->items item=link/}
+					<a target="_blank" href="{/$link["url"]/}">{/$link["site_name"]/}</a>
+				{//foreach/}
+			</p>
+		</div>
+	</div>
+{//if/}
+{/include file='footer.html'/}
+<script type="text/javascript" language="javascript">
+	$.setIndex("zindex");
+	$('#callingContainerSpan').calling({type: 'single', singlelimit: false, hddName: 'callingContainer'});
+	$("#callingContainerSpan span").click(function () {
+		$("#callingContainerSpan .defValue").hide();
+	});
+	$('#callingContainerSpan')
+	$(document).ready(function () {
+		$.focusblur('input.text');
+		$('input.JobCay').attr("disabled", true);
+		var $winWh = $(window).width();
+		$('.flexBanner').flexslider({
+			animation: "fade",
+			itemWidth: "100%",
+			itemMargin: 0,
+			prevText: '&#xf053;',
+			nextText: '&#xf054;',
+			pauseOnAction: false,
+			pauseOnHover: true,
+			slideshowSpeed: 5000,
+			move: 5
+		});
+	});
+	$('.defValue').click(function () {
+		$('.dropRdSet input').focus();
+		$('.dropLst').show();
+	});
+	$(".serach_type").on("click", function () {
+		var for_name = $(this).attr("for");
+		if (for_name == 'txtStation' && $.trim($("#txtStation").val()) != '') {
+			$(".boxconTip").show();
+		} else {
+			$(".boxconTip").hide();
+		}
+		$(".serach_type").each(function (i, n) {
+			$(n).removeClass("cu");
+			var temp_name = $(n).attr("for");
+			$("#" + temp_name + "Span").hide();
+//        if(for_name != "callingContainer"){
+//            $("#"+for_name).val("");
+//        }else{
+//            $('#callingContainerSpan').resetCallingValue();
+//        }
+		});
+		$(this).addClass("cu");
+		$("#" + for_name + "Span").show();
+
+	});
+	$("#txtStation").on("input propertychange", function () {
+		if ($.trim($("#txtStation").val()) == '') {
+			$(".boxconTip").hide();
+			return;
+		}
+
+		$.post('/schoolsearch/SerachNum?key=' + encodeURIComponent($("#txtStation").val()), function (data) {
+			$(".boxconTip").children().first().find("em").text(data.job_num);
+			$(".boxconTip").children().first().find("a").attr("href", "{/base_lib_Constant::MAIN_URL_NO_HTTP/}/schoolsearch?key=" + encodeURIComponent($("#txtStation").val()));
+			$(".boxconTip").children().last().find("em").text(data.recurit_num);
+			$(".boxconTip").children().last().find("a").attr("href", "{/base_lib_Constant::MAIN_URL_NO_HTTP/}/index/SchoolRecruitList?key=" + encodeURIComponent($("#txtStation").val()));
+			if (data.recurit_num != 0) {
+				$(".boxconTip").children().last().show();
+			} else {
+				$(".boxconTip").children().last().hide();
+			}
+			$(".boxconTip").show();
+		});
+	});
+	document.onkeydown = function (event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && e.keyCode == 13) { // enter 键
+			var serach_type = $(".serach_type.cu").attr("for");
+			var str = '';
+			if (serach_type == "txtStation") {
+				str = 'key=' + encodeURIComponent($("#txtStation").val());
+			} else if (serach_type == "callingContainer") {
+				var calling_id = $('#callingContainerSpan').getCallingValue();
+				if (calling_id != undefined && calling_id != '' && calling_id.length > 0) {
+					calling_id = calling_id[0].split(",");
+					calling_id = calling_id[0];
+				}
+				str = 'hddcallingid=' + calling_id;
+			} else {
+				str = 'hddProfessionId=' + encodeURIComponent($("#fullText").attr("data-value"));
+			}
+			window.open("{/base_lib_Constant::MAIN_URL_NO_HTTP/}/schoolsearch?" + str, '_blank');
+		}
+	}
+	var xiaoyuan = {
+		init: function () {
+			this._search();
+		},
+		_search: function () {
+			$('#btnSearch').click(function () {
+				//keyword    calling    graduate
+				/*var station = $('#txtStation').val(),
+				 callings =  $('#callingContainer').getCallingValue(),
+				 callingid = '';
+				 if(callings!=null&&callings.length>0) {
+				 callingid  = callings[0].split(',')[0];
+				 }
+				 var arr = new Array(),
+				 str = 'params=j088';
+				 if(callingid!=''&&callingid!=null) {
+				 str += ('c'+callingid);
+				 }
+				 arr.push(str);
+				 if(station!=''&&station!=null) {
+				 arr.push('key='+station+'');
+				 }
+				 $('#btnSearch').attr('href','/jobsearch/?'+arr.join('&'));*/
+
+				var serach_type = $(".serach_type.cu").attr("for");
+
+				var str = '';
+				if (serach_type == "txtStation") {
+					str = 'key=' + encodeURIComponent($("#txtStation").val());
+				} else if (serach_type == "callingContainer") {
+					var calling_id = $('#callingContainerSpan').getCallingValue();
+					if (calling_id != undefined && calling_id != '' && calling_id.length > 0) {
+						calling_id = calling_id[0].split(",");
+						calling_id = calling_id[0];
+					}
+					str = 'hddcallingid=' + calling_id;
+				} else {
+					str = 'hddProfessionId=' + encodeURIComponent($("#fullText").attr("data-value"));
+				}
+
+				$('#btnSearch').attr('href', '/schoolsearch/?' + str).attr("target", "_blank");
+
+			});
+		}
+	};
+
+	xiaoyuan.init();
+	$("#schoolSearchBtn,#rescritSearchBtn").click(function () {
+		$(".boxconTip").hide();
+	});
+</script>
+</body>
+</html>

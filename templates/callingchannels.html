@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="{/$keyword/}" />
+<meta name="Description" content="{/$description/}" />
+<title>{/$title/}</title>
+<!–[if lt IE9]> 
+<script type="text/javascript" language="javascript" src="{/version file="html5.js"/}" ></script>
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file="base.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="front.css"/}" />
+<link rel="stylesheet" type="text/css" href="{/version file="datalst.css"/}" />
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="common.js"/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file="dialog.js"/}"></script>
+<style>
+	dl dt{position: absolute;text-align: right;display: block;color: #999;font-family: "微软雅黑";}
+	dl dd{margin-left: 98px;white-space: nowrap;}
+	dl dd a{text-decoration: none;font-family: "微软雅黑";color: #999;}
+   {/if count($links->items) > 0/}
+        /*页面底部友情链接样式*/
+        .pageBot{border-top:1px solid #bbb; height:auto;width:100%; overflow:hidden;zoom:1; background:#fff;margin-top:20px;}
+         .pageBotCon{width:1000px;margin:0 auto; text-align:left; border-bottom:1px solid #bbb; padding-bottom:10px;}
+         footer{ margin-top:0; border-top:none;}
+         .frdLink{position:relative;z-index:10;height:50px;overflow:hidden;}
+         .footer{margin-top:0;}
+         .frdLink b{float:left;display:inline;height:35px;font-size:12px;line-height:35px;width:70px;font-weight:normal;color:#999;}
+         .frdLink .linkScroller{float:left;display:inline;line-height:25px;width:930px; height:50px; overflow:hidden;position:relative;}
+         .frdLink .linkScroller ul{width:930px;position:absolute;left:0px;margin:5px 0 0;top:0px;}
+         .frdLink .linkScroller ul li{float:left; display:inline-block; *display:inline;zoom:1; height:25px; line-height:25px;margin:0 10px 0 0;}
+         .frdLink .linkScroller ul li a{color:#424242; display:inline; height:25px; line-height:25px;white-space:nowrap;font-size:12px;}
+         .frdLink .linkScroller ul li a:hover{color:#0af;}
+         .frdLink .linkScroller{ height:auto;}
+         .frdLink .linkScroller ul{ position:inherit;}
+    {//if/}
+</style>
+</head>
+<body id="body">
+{/include file='header.html'/}
+<div class="content" id="content">
+    <div class="indGuid">
+        <h1>{/$curcalling->Name/}</h1>
+        <span class="changInd">
+            <a href="javascript:void(0)" class="changLnk" id="btnChangeCalling">切换行业频道<i class="hbFntWes">&#xf107;</i></a>
+            <div class="changBox" style="display:none;" id="callingContainer">
+                <div class="changBoxC">
+                    <b class="arr"></b>
+                    <div class="changBoxLst">
+                        <ul>
+                        {/foreach $callings as $calling/}
+                        <li><a href="/hangyezhaopin/{/$calling->EnglishName/}/">{/$calling->Name/}</a></li>
+                        {//foreach/}
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </span>
+        <div class="clear"></div>
+    </div>
+    {/if count($adverts)>0||count($recomendadverts)>0/}
+		<section class="indLogo">
+	    	<ul>
+	    {/foreach $adverts as $advert/}
+	        <li><a href="{/$advert['companylink']/}" target="_blank"><img src="{/$advert['img_path_url']/}" /></a></li>
+	    {//foreach/} 
+	    {/foreach $recomendadverts as $advert/}
+	        <li><a href="{/$advert['companylink']/}" target="_blank"><img src="{/$advert['img_path_url']/}" /></a></li>
+	    {//foreach/}  	      
+	        </ul>
+	        <div class="clear"></div>
+	    </section>
+	 {//if/}   
+    
+    {/foreach $recommendCompanys as $company/}
+	    {/if $company@first/}
+	    <section class="indRec">
+	    	<h2>推荐企业</h2>
+	        <div class="lst">
+	        	<ul>
+	    {//if/}    	
+	            <li><a href="{/$company['companylink']/}" target="_blank">{/$company['company_name']/}</a></li>
+	    {/if $company@last/}
+	            </ul>
+	            <div class="clear"></div>
+	        </div>
+	    </section>
+	    {//if/}
+    {//foreach/}
+    {/foreach $lastestCompanys as $company/}
+      {/if $company@first/}
+   	  <section class="indRec">
+    	<h2>最新招聘</h2>
+        <div class="lst">
+        	<ul>
+      {//if/}  	
+            <li><a href="{/$company['companylink']/}" target="_blank">{/$company['company_name']/}</a></li>
+     {/if $company@last/}       
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </section>
+    {//if/}
+    {//foreach/}
+    <dl>
+        <dt style="width:98px">分行业招聘：</dt>
+        <dd>
+           	<a target="_blank" href="/hangyezhaopin/guanggao/">广告招聘网</a>
+            <a target="_blank" href="/hangyezhaopin/fangdichan/">房地产招聘网</a>
+            <a target="_blank" href="/hangyezhaopin/wuliu/">汽车招聘网</a>
+            <a target="_blank" href="/hangyezhaopin/fangdichan/">建筑招聘网</a>
+            <a target="_blank" href="/hangyezhaopin/fangdichan/">装饰招聘网</a>
+            <a target="_blank" href="/hangyezhaopin/jisuanji/">IT招聘网</a>
+            <a target="_blank" href="/hangyezhaopin/zhuanyefuwu/">教育招聘网</a>
+            <a target="_blank" href="/hangyezhaopin/jinrong/">金融招聘网</a>
+            <a target="_blank" href="/hangyezhaopin/shenghuofuwu/">餐饮招聘网</a>
+            <a target="_blank" href="/hangyezhaopin/maoyi/">消费品招聘网</a>
+            <a target="_blank" href="/hangyezhaopin/zhiyao/">医疗招聘网</a>
+            <a target="_blank" href="/hangyezhaopin/wuliu/">物流招聘网</a>
+            <a target="_blank" href="/hangyezhaopin/nengyuan/">化工招聘网</a>
+        </dd>
+    </dl>
+    <dl>
+        <dt style="width:98px">热门搜索：</dt>
+        <dd>
+            <a target="_blank" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiuzhi/">招聘</a>
+            <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/jianzhi/">兼职</a>
+            <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiuzhi/">求职</a>
+            <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiuzhi/">找工作</a>
+            <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}">人才网</a>
+            <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}">招聘会</a>
+            <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}">重庆招聘</a>
+            <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/jianzhi/">重庆兼职</a>
+            <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}">重庆求职</a>
+            <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiuzhi/">重庆找工作</a>
+            <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}">重庆人才网</a>
+            <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/shuangxuan/">校园双选会</a>
+            <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopinhui/">重庆招聘会</a>
+            <a target="_balnk" href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiuzhi/">重庆最新招聘信息</a>
+        </dd>
+    </dl>
+</div>
+{/if count($links->items) > 0/}
+<section class="pageBot">
+    <div class="pageBotCon">
+        <div class="frdLink" style=" height: auto;">
+                      <b style="font-weight: bolder;">友情链接:</b>
+                      <div id="linkScroller" class="linkScroller" style="overflow: visible;">
+                      <ul>
+                              {/foreach from=$links->items item=link/}
+                               <li><a style="color:#999" target="_blank" href="{/$link["url"]/}">{/$link["site_name"]/}</a></li>
+                      {//foreach/}
+                      </ul>
+                      </div>
+                  <div class="clear"></div>
+              </div>
+   </div>
+</section>
+{//if/}
+{/include file='footer.html'/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script type="text/javascript" language="javascript">
+$(document).ready(function(){
+	$('#btnChangeCalling').click(function(){
+		if($('#callingContainer').is(':hidden')) {
+			$('#callingContainer').show();
+		}else {
+			$('#callingContainer').hide();
+		}
+	});
+   $('body').click(function(e){
+		// 检测发生在body中的点击事件,隐藏顶部个人信息
+		var cell = $(e.target);
+		if (cell)
+		{
+			var tgID = $(cell).attr('id') == '' ? "string" : $(cell).attr('id');
+			var isTagert = false;
+			try
+			{
+				 // 如果事件触发元素不是Input元素 并且不是发生在时间控件区域
+				 isTagert = tgID != 'btnChangeCalling' && $(cell).closest('#btnChangeCalling').length <= 0;
+			}
+			catch (e)
+			{
+				isTagert = true;
+			}
+			if (isTagert)
+			{
+				$('#callingContainer').hide();
+			}
+		}
+	});
+
+		
+});
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{/if count($tipMsgs)>0/}
+<style>
+.msg_alert{width:327px;position:fixed;right:0px;bottom:0px;text-align: left;font-family:"微软雅黑";z-index: 999}
+.msg_alert .close{display: inline-block;width:13px;height:7px;background: url({/base_lib_Constant::STYLE_URL/}/img/msgico0224.png) 0 0 no-repeat;overflow: hidden;float:right;cursor: pointer}
+.msg_alert .msgInfor{border:2px solid #dcdcdc;display: none}
+.msg_alert .msgInfor .title{height:40px;padding:0 20px;background: #f0f0f0;font-size:14px;color:#444;line-height: 40px}
+.msg_alert .msgInfor .title .close{margin-top: 15px;background-position:0 -34px}
+.msg_alert .msgInfor .title .close:hover{background-position:0 -51px}
+.msg_alert .msgInfor .con{padding:20px 20px 10px 20px;font-size:12px;color:#666;font-family:"宋体";line-height: 22px;background: #fff}
+.msg_alert .msgInfor .con a{color:#3d84b8}
+.msg_alert .msgInfor .con a:hover{text-decoration: underline}
+.msg_alert .msgInfor .con p{margin-top: 35px;text-align: right;color:#999}
+.msg_alert .msgInfor .con p a{color:#999;margin-left: 15px}
+.msg_alert .msgInfor .con p a:hover{color:#333;text-decoration: none}
+.msg_alert .msgAlt{width:220px;height:38px;float:right;color:#444;font-size:12px;line-height: 38px;overflow: hidden;font-family:"宋体";background: url({/base_lib_Constant::STYLE_URL/}/img/gray_box.gif) 0 -48px no-repeat;padding-left:30px;display: block}
+.msg_alert .msgAlt:hover{background-position: 0 0}
+.msg_alert .msgAlt i{display: inline-block;width:20px;height:16px;background: url({/base_lib_Constant::STYLE_URL/}/img/msgico0224.png) 0 -68px no-repeat;float:left;margin:10px;overflow: hidden}
+.msg_alert .msgAlt .close{margin: 15px 10px 0 0}
+.msg_alert .msgAlt .close:hover{background-position:0 -17px}	
+.showMsg .msgInfor{display: block}
+.showMsg .msgAlt{display: none}
+#msgAlt font{color:#ea4645;font-size: 12px}
+#msgAltRed{background: url({/base_lib_Constant::STYLE_URL/}/img/red_box.gif) center top no-repeat}
+</style>
+<div class="msg_alert" id="msgAlert">
+	<div class="msgInfor">
+		<p class="title"><a class="close" id="msgclose"></a>消息提醒</p>
+		<div class="con">
+			{/foreach $tipMsgs as $index => $tipMsg/}
+			<span class="msgContent" style="{/if $index!=0/}display:none;{/else/}display: block;{//if/}min-height:60px" data-index="{/$index/}" data-id="{/$tipMsg.tipmsg_id/}" data-hasread="0" data-readtime="{/$tipMsg.readonce|default:0/}">{/$tipMsg.msgContent/}</a></span>
+			{//foreach/}
+			<p>共<font color="#ea4645">{/count($tipMsgs)/}</font>条{/if count($tipMsgs)>1/}<a href="javascript:;" id="prevmsg">上一条</a><a href="javascript:;" id="nextmsg">下一条</a>{//if/}</p>
+		</div>
+	</div>
+	<a href="javascript:;" class="msgAlt" id="msgAlt" style="display: none;">您当前有<font>{/if count($tipMsgs)>99/}99+{/else/}{/count($tipMsgs)/}{//if/}</font>条未读提醒</a>
+	<a href="javascript:;" class="msgAlt" id="msgAltRed" data-id="{/$tipMsgs[0]['tipmsg_id']/}" data-readtime="{/$tipMsgs[0]['readonce']|default:0/}">{/base_lib_BaseUtils::cutstr($tipMsgs[0]['msgContent'], 14, 'utf-8', '', '...')/}</a>
+</div>
+{//if/}

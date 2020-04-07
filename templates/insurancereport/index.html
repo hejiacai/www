@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>举报保险公司送红包_{/$huibo_homepage/}</title>
+<link rel="stylesheet" type="text/css" href="{/version file='insurancereport.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='perback.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='icons.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='v2-widge.css'/}" />
+<!--
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='input.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+-->
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript">
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+<style>
+body{ background: #4ab2b3;}
+*{ text-align: left;}    
+.hb_ui_dialog .ui_dialog_close{
+	position: absolute;
+	right: 15px;
+	top: 5px;
+	font-size: 20px;
+	color: #676767;
+}
+.hb_ui_dialog .ui_dialog_title{}
+#insuranceReportForm .promptMsg{display:none}
+#insuranceReportForm .errorMsg{display:block}
+</style>
+</head>
+<body>
+<div class="reportNce01">
+	<div>
+    	<a href="#" class="logo"></a>
+            {/if $isLogin == false/}
+                <p>
+                    <a href="{/$person_url/}/login" target="_blank">求职者登录</a>
+                    <b>|</b>
+                    <a href="{/$company_url/}/login" target="_blank">企业登录</a>
+                    <b>|</b>
+                    <a href="{/$person_url/}/register">求职者注册</a>
+                    <b>|</b>
+                    <a href="{/$company_url/}/register">企业注册</a>
+                </p>
+            {/else/}
+                <p>
+                    {/if $userType=='c'/}
+                        <a href="{/$userInfo["companyUrl"]/}">我的汇博</a>
+                    {/else if $userType=='p'/}
+                        <a href="{/$userInfo["personUrl"]/}">我的汇博</a>
+                    {//if/}
+                    <b>|</b>
+                    <a href="javascript:void(0);" id="userOut" class="userOut">退出</a>
+                </p>
+            {//if/}
+   </div>
+</div>
+<div class="reportNce02"></div>
+<div class="reportNce03">
+	<ul>
+        {/foreach $report_success_list as $report_success_log/}
+            <li>
+                <span class="subNce01">{/$report_success_log['reportor_name']|mb_substr:0:1/}XX</span>
+                <span class="subNce02"><em>举报</em>{/$report_success_log['company_name']/}</span>
+                <span class="subNce03">{/if $report_success_log['audit_status'] == '1'/}已核实{/else/}未核实{//if/}</span>
+                <span class="subNce04">获得200元现金奖励</span>
+                <a href="{/get_url rule="/insurancereport/activity"/}" target="_blank">详情点击</a>
+            </li>
+        {//foreach/}
+    </ul>
+</div>
+<h2 class="reportTit">话题热议</h2>
+<div class="reportNce04">
+	<div class="left">
+    	<div class="reportMage">
+            <form method="post" name="insuranceDiscussForm" id="insuranceDiscussForm"  action="/insurancereport/addInsuranceDiscussDo">
+                <span class="repMage01">给我留言</span>
+                <textarea name="discussContent" id="discussContent" cols="" rows="" class="repMage02"></textarea>
+                <div class="repMage03">
+                    <span><b id="repR">500</b>/500</span>
+                    <a href="javascript:void(0)" id="addInsuranceDiscuss">发 布</a>
+                    <label>
+                        <input id="is_hide" name="is_hide" type="checkbox" value="1" />匿名
+                    </label>
+                </div>
+            </form>
+        </div>
+        <h2 class="reportHot">热门话题</h2>
+        <ul class="reportList">
+            {/foreach $insurance_discuss_list->items as $insurance_discuss/}
+            <li class="insurance_discuss_item" name="{/$insurance_discuss['is_hide']/}">
+                    <p>{/$insurance_discuss['content']|nl2br/}</p>
+                    <span>{/if $insurance_discuss['is_hide']/}匿名{/else/}{/$insurance_discuss['user_name']/}{//if/}</span>
+            </li>
+            {//foreach/}
+        </ul>
+        {/$pager/}
+    </div>
+    <div class="right">
+    	<div class="reportRtx01">
+        	<h2>我要举报</h2>
+            <ul class="reportRList">
+                <form id="insuranceReportForm" name="insuranceReportForm" method="post" action="/insurancereport/addInsuranceReportDo">
+                    <li>
+                        <input type="text" id="companyName" name="companyName" placeholder="举报公司全名" />
+                        <span data-for="companyName" class="promptMsg"></span>
+                    </li>
+                    <li>
+                        <input type="text" id="content" name="content" placeholder="举报内容" />
+                        <span data-for="content" class="promptMsg"></span>
+                    </li>
+                    <li>
+                        <input type="text" id="reportorName" name="reportorName" placeholder="举报人姓名" />
+                        <span data-for="reportorName" class="promptMsg"></span>
+                    </li>
+                    <li>
+                        <input type="text" id="reportorTel" name="reportor_tel" placeholder="手机" />
+                        <span data-for="reportor_tel" class="promptMsg"></span>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" id="submitInsuranceReport">提交信息</a>
+                    </li>
+                </form>
+            </ul>
+        </div>
+        <div class="reportRtx01" style="margin-top:10px;">
+        	<h2>活动规则</h2>
+            <div class="reportRtx02">
+            	1.凡是汇博注册用户均可参加＜举报“保险公司”
+   得现金＞活动。<br />
+2.在汇博网上发现有“保险公司”假借其他企
+  业名 义发布招聘“保险代理人”职位，立刻在本
+  活动页面右侧“我要举报”栏输入公司名称、举
+  报内容等相关信息，点击提交。<br />
+3.工作人员核实信息属实后，将关闭被举报公司页
+   面，并删除其相关的所有招聘信息。<br />
+4.抢先首位举报“保险公司”，并信息属实的用户
+  ，便可获得200元奖金奖励！<br />
+5.我们工作人员将在您提交信息的3-10个工作日内
+  联系您领取奖金。<br />
+               <span>备注：车险相关招聘岗位已通过汇博网严格的审核流程，不在本次举报范围内 ，求职者可放心求职！<br>
+（本次活动的最终解释权归汇博网所有）
+</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">©2015 汇博网 版权所有 | 增值电信业务经营许可证：渝B2-20060063 | 人才中介服务许可证：渝中人社[2011]216号<br />
+招聘单位无权收取任何费用,请求职人员加强自我保护意识,按劳动法规保护自身权益,警惕虚假招聘,避免上当受骗!</div>
+
+<script type="text/javascript">
+
+window.LOGIN_TEMPLATE = [
+'<p>',
+'{LOGIN}',
+'<b>|</b>',
+'<a href="javascript:void(0);" id="userOut" class="userOut">退出</a></p>'].join('');
+
+hbjs.use('@checkLogin, @validator, @hbCommon, @jobDialog', function(m){
+	
+	var $ = m['product.hbCommon'].extend(m['cqjob.jobDialog']),
+		checkLogin = m['product.checkLogin'], //判断是否登录，是则弹出层
+		validator = m['widge.validator.form'],
+		Dialog = m['widge.overlay.hbDialog'];
+
+	var form = new validator({
+			element: $('#insuranceReportForm'),
+			rules: {
+				companyName:{
+					required:true, range:[2,60]
+				},
+				content:{
+					required:true, range:[2,500]
+				},
+				reportorName:{
+					required:true, range:[2,6], match:/^[\u4e00-\u9fa5]+$/i
+				},
+				reportor_tel: 'required mobile'
+			},
+			errorMessages: {
+				companyName:{
+					required:'请填写公司全名',
+					range:'公司全名为2-60位'
+				},
+				content:{
+					required:'请填写举报内容',
+					range:'举报内容为2-60位'
+				},
+				reportorName:{
+					required:'请填写举报人姓名',
+					range:'举报人姓名为2-6位中文',
+					match:'举报人姓名为2-6位中文'
+				},
+				reportor_tel:{
+					required:'请填写举报人联系电话',
+					mobile:'电话号码不正确'
+				}
+			},
+			errorElement: 'span'
+		});
+	
+	form.on('invalid', function(e){
+		e.label.addClass('errorMsg');
+	}).on('pass', function(e){
+		e.label.removeClass('errorMsg');
+	});
+	
+	
+	$('#submitInsuranceReport').click(function(){
+		var islogin = checkLogin.isLogin('ajaxLoginCallback');
+			checkLogin.dialog.resetSize(498);
+		if(!islogin){
+			return;
+		}
+		
+		form.submit(function(valid){
+			$.ajax({
+				'url':'/insurancereport/addInsuranceReportDo',
+				'type':'post',
+				'dataType':'json',
+				'data':$('#insuranceReportForm').serialize(),
+				'success':function(json){
+					if(json.status === '1'){
+						$.anchorMsg('保存成功',{title: "操作成功", icon: "success",onclose:function(){
+							location.reload();
+						}});
+					}
+				},
+				'error':function(){
+					$.message('保存失败', { title: "系统提示", icon: "fail" });
+				}
+			});
+		});
+		
+		return false;
+	});
+	
+	
+	var insuranceDiscussForm = new validator({
+			element: $('#insuranceDiscussForm'),
+			rules: {
+				discussContent: {
+					required: true,
+					range: [1, 500]
+				}
+			},
+			errorMessages: {
+				discussContent: {
+					required: '请填写',
+					range: '不能超过500个字'
+				}
+			},
+			keepBlur: true,
+			keepKey: true
+		});
+		
+	insuranceDiscussForm.on('invalid', function(e){
+		alert(e.message);
+	});
+	
+	//添加热门话题
+	$('#addInsuranceDiscuss').click(function(){
+		var islogin = checkLogin.isLogin('ajaxLoginCallback');
+			checkLogin.dialog.resetSize(498);
+		if(!islogin){
+			return;
+		}
+		if($("#discussContent").val().length == 0){
+            $.message('请输入留言内容', { title: "系统提示", icon: "fail" });
+            return;
+        }
+		insuranceDiscussForm.submit(function(){
+			$.ajax({
+				'url':'/insurancereport/addInsuranceDiscussDo',
+				'type':'post',
+				'dataType':'json',
+				'data':$('#insuranceDiscussForm').serialize(),
+				'success':function(json){
+					if(json.status === '1'){
+						$.anchorMsg(json.info,{title: "操作成功", icon: "success",onclose:function(){
+								window.location.href = '/insurancereport/index-page-1';
+							}
+						});
+					}else{
+						$.message(json.info, { title: "系统提示", icon: "fail" });
+						return;
+					}
+				},
+				'error':function(json){
+					$.message(json.info, { title: "系统提示", icon: "fail" });
+					return;
+				}
+			});
+		});
+	});
+    $('.insurance_discuss_item').click(function () {
+        var li = $(this),
+        is_hide = li.attr('name'),
+        textarea = $('#discussContent'),
+        user_name = li.find('span').text();
+        if (is_hide !== '1') {
+          textarea.val('@'+user_name);
+        }
+    });
+	//退出
+	$("#userOut").click(function(){
+		$.ajax({
+			'url':'/index/signOut',
+			'type':'get',
+			'dataType':'json',
+			'success':function(json){
+				if(json.success){
+                    $.anchorMsg('退出成功',{title: "操作成功", icon: "success",onclose:function(){
+                            location.reload();
+                        }
+                    });
+				}else{
+					$.message('退出失败', { title: "系统提示", icon: "fail" });
+				}
+			}
+		});
+		return false;
+	});
+	
+	
+	$('#discussContent').keyup(function(){
+		var max = 500;
+		var wordlen = $("#discussContent").val();
+		var count = wordlen.length;
+		var lastlen = max-parseInt(count);
+		if(lastlen > 500){
+			alert("最多只能输入500个字");
+			$(this).blur();
+			return;
+		}
+		$('#repR').html(lastlen);				
+	});
+	$('input').placeHolder();
+	//滚动
+	var nce3 = $(".reportNce03").css({"height":"100px"}),nceU = nce3.find("ul"),time = null;
+	function timeer(){
+		time = setInterval(function(){
+			nceU.find("li").eq(0).animate({"margin-top":-53},500,function(){
+				nceU.append(nceU.find("li").eq(0).css({"margin-top":0}));
+			});		
+		},3000);
+	}	
+	timeer();	
+	nceU.hover(function(){
+		clearInterval(time);
+	},function(){
+		timeer();
+	});
+});
+</script>
+</body>
+</html>

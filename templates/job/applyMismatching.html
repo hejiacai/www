@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>投递确认</title>
+<style type="text/css">
+   .vul{list-style:none;font-size:14px;line-height:30px;}
+   .vmsg{color:#E46A4A}
+</style>
+</head>
+<body>
+  <div>
+     <ul class="vul">
+       <li style="padding:0px 10px 0px 10px;">您简历中</li>
+       <li style="padding:0px 10px 0px 10px;"><label class="vmsg">{/$msg/}</label>与职位要求不匹配，企业可能需要时间考虑，但企业会在<label class="vmsg">{/if $re_apply_type>0/}{/$re_apply_type/}{/else/}5{//if/}个工作日内</label>查看并回复您。<br/>确认投递吗？</li>
+       <li>
+          <div style="text-align:right">
+            <button id="btnvYes" type="button" class="btn3" style="height:30px;width:110px;border-radius: 3px;display: inline-block; font-family:微软雅黑; font-size: 16px; height: 35px; line-height: 35px; margin: 0 5px; padding: 0 15px; cursor:pointer;">确认投递</button>&nbsp;&nbsp;&nbsp;
+		    <button id="btnvClose" type="button" class="btn3" style="height:30px;width:110px;border-radius: 3px;display: inline-block; font-family:微软雅黑; font-size: 16px; height: 35px; line-height: 35px; margin: 0 5px; padding: 0 15px; cursor:pointer;">放弃投递</button>
+          </div>
+       </li>
+     </ul>
+  </div>
+</body>
+</html>

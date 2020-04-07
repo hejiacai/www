@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>{/$seo_title/} - {/$title|default:'互联网产业园'/}</title>
+		<meta name="keywords" content="{/$seo_key/}" />
+		<meta name="description" content="{/$seo_desc/}" />
+		<style type="text/css">
+			*{ padding: 0px; margin: 0px; font-family: "微软雅黑"; font-size: 12px; color: #333; font-style: normal; list-style: none;}
+			img{ border: none;}
+			a{ text-decoration: none;}
+			a:hover{ text-decoration: underline;}
+			.park_topbd{width:100%; overflow: hidden; background: #fff;display: none;}
+			.park_top{width:1000px; overflow: hidden; margin: 0 auto; background: #fff;}
+			.park_top .left{ float: left;}
+			.park_top .right{ float: right;}
+			.park_banner{width:100%; height: 420px; overflow: hidden;}
+			.park_list_bd{width:800px; margin: 0 auto; padding-top: 40px; padding-bottom: 20px; overflow: hidden;}
+			.park_list{width:758px; overflow: hidden; border: 1px solid #eee; background: #fff; border-radius: 20px; margin-bottom: 20px; padding: 20px;}
+			.footer{ padding: 40px 0; text-align: center; overflow: hidden; background: #000742; color: #fff; line-height: 24px; }
+			.park_litop{width:100%; overflow: hidden;}
+			.park_litop img{ display: block;width:100px; height: 100px; border-radius: 8px; border: 1px solid #eee; float: left;}
+			.park_lirt{ width:635px; float: right; overflow: hidden;}
+			.park_lirt a.park_click{ display: block; font-size: 20px; color: #333; padding-bottom: 10px; font-weight: bold;}
+			.park_lirt p.park_p{ color: #666; line-height: 20px; }
+			.sub_listbd{width:635px; margin: 10px 0 0 0px; overflow: hidden;}
+			.sub_listbd li{width:50%; float: left; overflow: hidden;}
+			.sub_listbd li a{ display: block; overflow: hidden;}
+			.sub_listbd li a span,.sub_listbd li a em{ overflow: hidden;white-space:nowrap;text-overflow:ellipsis; line-height: 30px;}
+			.sub_listbd li a span{ display: block;float: left;width: 145px;}
+			.sub_listbd li a:hover span{ text-decoration: underline;}
+			.sub_listbd li a em{ display: block;float: left; width: 105px; color: #ff0000;}
+			.park_more{ display: block;width:100%; text-align: right; font-size: 16px; color: #2870cd;}
+			.park_more i{ display: inline-block; vertical-align: middle; margin-left: 6px; background: url({/$siteurl.style/}/img/topicPage/tempalte4/park_more.jpg) no-repeat;width:21px; height: 21px;}
+
+		</style>
+	</head>
+	<body style="background: {/$bg_color/} url({/$pic_base/}{/$bg_img/})">
+		<div class="park_topbd">
+		<div class="park_top">
+			<div class="left">
+				<img src="{/$pic_base/}{/$top_left_img/}"/>
+			</div>
+			<div class="right">
+				<img src="{/$pic_base/}{/$top_right_img/}"/>
+			</div>
+		</div>
+		</div>
+		<div class="park_banner" style="background: {/$bg_color/} url({/if empty($main_pic)/}{/$siteurl.style/}/img/topicPage/topic/banner.png{/else/}{/$pic_base/}{/$main_pic/}{//if/}) no-repeat scroll center 0;"></div>
+		<div class="park_list_bd" >
+
+			{/foreach $dataLst as $k=>$list/}
+			<div style="border:1px solid {/if !empty($job_border_color)/}{/$job_border_color/}{/else/}#f1f1f1{//if/};" class="park_list">
+				<div class="park_litop">
+					<img src="{/if !empty($list['company_logo_path'])/}{/$logo_base/}{/$list['company_logo_path']/}{/else/}{/$siteurl.style/}/img/job/newjob/default_logo.png{//if/}"/>
+					<div class="park_lirt">
+						<!--<a href="#" target="_blank">{/$list['company_short_info']|default:$list['company_name']/}</a>-->
+						<a href="{/if !empty($list['company_id'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopin/qiye/{/$list['company_flag']/}.html{/else/}{/if stripos($list['company_link'],'http://')=== false/}//{//if/}{/$list['company_link']/}{//if/}" class="park_click" target="_blank">{/$list['company_name']/}</a>
+						<p class="park_p">
+							{/if !empty($list['company_desc'])/}{/base_lib_BaseUtils::cutstr($list['company_desc'],45, 'utf-8', '', '...')/}{/else/}{/base_lib_BaseUtils::cutstr($list['info'],45, 'utf-8', '', '...')/}{//if/}
+						</p>
+						<ul class="sub_listbd">
+						{/foreach $list['jobLst'] as $key=>$job/}
+						{/if $key<4/}
+						<li>
+							<a  target="_blank" href="{/if !empty($job['job_flag'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopin/zhiwei/{/$job['job_flag']/}.html{/else/}{/if stripos($job['job_link'],'http://')=== false/}//{//if/}{/$job['job_link']/}{//if/}">
+								<span style="font-size: 14px">{/$job.station/}</span>
+								<em style="font-size: 14px">{/if $job['min_salary']%1000==0/}{/($job['min_salary']/1000)/}{/else/}{/sprintf("%.1f",($job['min_salary']/1000))/}{//if/}K-{/if $job['max_salary']%1000==0/}{/($job['max_salary']/1000)/}{/else/}{/sprintf("%.1f",($job['max_salary']/1000))/}{//if/}K
+								</em>
+							</a>
+						</li>
+						{//if/}
+						{//foreach/}
+					</ul>
+					</div>
+
+				</div>
+
+				{/if $is_force_login!=1/}
+					<a href="{/if !empty($list['company_id'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/qiye/{/$list['company_flag']/}.html{/else/}{/if stripos($list['company_link'],'http://')=== false/}//{//if/}{/$list['company_link']/}{//if/}?seejob=true" class="park_more" target="_blank">查看更多职位<i></i></a>
+				{/else/}
+					<a href="javascript:;" data-topic="{/$list['topic_id']/}" data-tcompanyid="{/$list['tcompany_id']/}"  class="park_more showMoreJobs">查看更多职位<i></i></a>
+				{//if/}
+				</div>
+
+			{//foreach/}
+
+
+
+		</div>
+		<div class="footer" style="{/if !empty($bottow_footer_color)/}background: {/$bottow_footer_color/};{//if/}">
+			©{/date('Y')/} 汇博人才网 版权所有<br />
+招聘单位无权收取任何费用，请求职人员加强自我保护意识，按劳动法规保护自身权益，警惕虚假招聘，避免上当受骗!
+		</div>
+	</body>
+	<script type="text/javascript">
+        window.CONFIG = {
+            HOST: '{/$siteurl.style/}',
+            COMBOPATH: '/js/v2/'
+        }
+	</script>
+	<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+    {/if $is_force_login==1/}
+    <script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+    <script type="text/javascript" src="{/version file='global.js'/}"></script>
+    <link rel="stylesheet" type="text/css" href="{/version file='v2-reset.css,v2-header.css,v2-widge.css,jobnew2018.css,leaveinfo.css'/}" />
+    <link rel="stylesheet" type="text/css" href="{/version file='topictemplatelogin.css'/}" />
+<script type="text/javascript" src="{/version file='topictemplatelogin.js'/}"></script>
+	<script>
+
+
+        hbjs.use('widge.overlay.hbDialog, widge.fileUploader, widge.overlay.confirmBox', function (Dialog, fileUploader, confirmBox, $) {
+            var dialog = new Dialog({
+                idName: 'add-black',
+                close: 'x',
+                title: '职位列表',
+                isAjax: true
+
+            });
+
+
+
+            $(".showMoreJobs").click(function () {
+                var tcompany_id = $(this).attr('data-tcompanyid');
+                var topic_id = $(this).attr('data-topic');
+                var url = '{/get_url rule="/topic/GetMorJob/"/}' + '?topic_id='+topic_id + "&tcompany_id=" +tcompany_id;
+                dialog.setContent({
+                    content: url
+                });
+
+                dialog.show();
+            })
+
+
+
+        })
+
+	</script>
+{//if/}
+	{/include './topicpage/public_ajax.html'/}
+	<script>
+        $(function () {
+            var page_url = '{/$smarty.server.REQUEST_URI/}';
+            page_ajax('{/$page/}', page_url, '.park_list_bd', 500);
+        });
+	</script>
+</html>

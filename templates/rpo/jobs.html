@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>重庆招聘外包公司-重庆招聘外包(RPO)-汇博招聘外包</title>
+<meta name="keywords" content="重庆招聘外包公司,重庆招聘外包(RPO),、汇博招聘外包">
+<meta name="description" content="汇博招聘外包，重庆知名招聘外包公司，为您从职位发布、筛选简历、组织面试直至入职，提供“起点到终点”的一站式服务。">
+<!–[if lt IE9]>
+<script type="text/javascript" src="{/version file='html5.js'/}"></script>
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file='base.css,v2-widge.css'/}"/>
+<link rel="stylesheet" type="text/css" href="{/version file='front.css'/}"/>
+
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+<script type="text/javascript">
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="{/version file='new-headsearch-2015.css'/}"/>
+<link rel="stylesheet" type="text/css" href="{/version file="rpo.css"/}" />
+{/include file='./lietou/header.html' showSecondMenu=false/}
+<div class="rpomenu">
+	<div class="w1000">
+		<a href="{/get_url rule='/rpo'/}"><img src="{/$siteurl.style/}/img/rpo/rpologo.jpg" /></a>
+		<ul>
+			<li>
+				<a href="{/get_url rule='/rpo'/}">首页</a>
+				<a href="{/get_url rule='/rpo/serviceflow'/}">服务流程&产品</a>
+				<a href="javascript:void(0);"  class="cur">最新职位</a>
+				<a href="{/get_url rule='/rpo/contact'/}">联系方式</a>
+			</li>
+		</ul>
+	</div>	
+</div>
+<div class="w1000 all-zhiwei">
+	{/if !empty($companys)/}
+	{/foreach $companys as $k=>$company/}
+	<div class="all-zhiwei-box"  data-cid="{/$company['company_id']/}">
+		<p class="title"><a href="{/$company['companylink']/}" class="name" target="_blank">{/if $company['company_shortname']/}{/$company['company_shortname']/}{/else/}{/$company['company_name']/}{//if/}</a><a target="_blank" href="{/$company['companylink']/}">{/if (!empty($company['company_bright_spot']))/}“{/$company['company_bright_spot']/}”{//if/}</a></p>
+		<ul class="con">
+			{/foreach $company['jobs'] as $kk=>$job/}
+			<li {/if $kk>=100/}style="display:none;"{//if/} data-jid="{/$job['job_id']/}" data-kk="{/$kk/}">
+				<span style="width:265px"><a href="{/$job['joblink']/}" target="_blank">{/$job['station']/}</a></span>
+				<span style="width:225px">{/if $job.min_salary == $job.max_salary/}￥{/$job.min_salary/}{/else/}￥{/$job.min_salary/}-{/$job.max_salary/}{//if/}{/if $job.salary_type ==1/}({/if $job.base_min_salary == $job.base_max_salary/}{/$job.base_min_salary/}{/else/}{/$job.base_min_salary/}~{/$job.base_max_salary/}{//if/}){//if/}</span>
+				<span style="width:158px" data-jinyan="{/$job['work_year']/}">{/$job['work_year']/}</span>
+				
+				<span style="{/if !empty($job['work_area'])/}width:155px{/else/}width:295px{//if/}">{/if !empty($job['degree_id'])/}{/get_name degree=$job['degree_id']/}{/else/}学历不限{//if/}</span>
+				{/if !empty($job['work_area'])/}
+				<span style="width:135px">{/$job['work_area']/}</span>
+				{//if/}
+			</li>
+			{//foreach/}
+		</ul>
+		<!--{/if count($company['jobs'])>5/}
+		<p><a class="allResume" href="javascript:void(0)" data-index="1">还有<font>{/count($company['jobs'])-5/}</font>条相关职位<i class="arr_more"></i></a></p>
+		{//if/}-->
+	</div>	
+	{//foreach/}
+	<div class="zhiwei-page">
+		<div class="page">{/$pager/}</div>
+	</div>
+	{/else/}
+	<div class="noData">亲，没有相关的职位哦</div>
+	{//if/}
+	
+</div>
+
+{/include file="footer.html"/}
+<script type="text/javascript">
+function ajaxLoginCallback() {
+    window.location.href = window.location.href; 
+}    
+</script>
+<script type="text/javascript">
+/*hbjs.use('widge.overlay.hbDialog', function (Dialog, $) {
+	
+	$(".allResume").on('click',function(){
+		var ul = $(this).parent().prev(),
+			hiddenli = ul.find('li:hidden'),
+			allli = ul.find('li');
+		if(hiddenli.length == 0){
+			allli.each(function(index, el) {
+				if(index>=100){
+					$(el).hide();
+				}				
+			});
+			$(this).html('还有<font>'+(allli.length-5)+'</font>条相关职位<i class="arr_more"></i>');
+		}else{
+			hiddenli.each(function(index, el) {
+				$(el).show();
+			});
+			$(this).html('收起相关职位 ↑ ');
+		}		
+	})
+
+})*/
+</script>
+</body>
+</html>

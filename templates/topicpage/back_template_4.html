@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{/$seo_title/} - {/$title|default:'互联网产业园'/}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{/$seo_key/}" />
+<meta name="description" content="{/$seo_desc/}" />
+<style>
+*{ margin:0; padding:0; font-family:"微软雅黑"; font-size:16px; font-style:normal; list-style:none;}
+.main{width:1200px; overflow:hidden; margin:0 auto;}
+.main-img{ display:block;}
+.main-list01{width:1124px; border-radius:38px; border:2px solid #faa701; overflow:hidden; padding:45px 35px; margin-top:80px;}
+.main-list02{ border:3px solid #50b59e;}
+
+.njmNameImg{width:170px; height:170px; overflow:hidden; background:#fff; float:left; background:#f0f0f0;}
+.njmNameMge{
+	width: 170px;
+	height: 170px;
+	overflow: hidden;
+}
+.njmNameImg .njmNameXbox{
+	width:170px;
+    height:170px;
+	overflow:hidden;
+	position:relative;
+	display:table-cell;
+	text-align:center;
+	vertical-align:middle;
+}
+.njmNameImg .njmNameXbox p {
+	position:static;
+	+position:absolute;
+	top:50%
+}
+.njmNameImg .njmNameXbox p img{
+	position:static;
+	+position:relative;
+	top:-50%;left:-50%;
+	max-width:160px;
+  	max-height:160px;
+}
+.doubleCont{width:910px; float:left; overflow:hidden; margin:0 0 0 40px;}
+.doubleCont h2{ font-size:35px;font-weight:bold; color:#666;}
+.doubleCont h2 span{ font-size:14px; font-weight:bold; color:#050505;}
+.doubleCont p{ font-size:16px; color:#9c6b50; line-height:30px; text-indent:30px; padding-top:12px;}
+.doubleList{width:910px; overflow:hidden; margin:40px 0 20px 0;}
+.doubleList li{width:455px; float:left;}
+.doubleList li a,.doubleList li span{display:block; float:left; height:30px; line-height:30px; color:#574a02; font-size:18px;}
+.doubleList li a{font-size:18px; color:#666;width:200px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap; text-decoration:none;}
+.doubleList li a:hover,.doubleMore:hover{ color:#333; text-decoration:underline;}
+.doubleList li span{ float:right;padding-right:60px; font-size:18px; color:#ff5b01; text-align:right;}
+.doubleList li.dblLine{ border-right:none;}
+.doubleList li.dblLine a{ text-indent:20px;}
+.doubleList .dblLine span{ padding-right:5px;}
+.doubleMore{ display:block;width:850px; text-align:right; color:#010101; text-decoration:underline;}
+.footer{ overflow:hidden;width:100%; text-align:center; font-family:Verdana, Geneva, sans-serif; font-size:12px; color:#ccc; padding:30px 0px; line-height:24px;}
+</style>
+</head>
+
+<body>
+<div class="main">
+	<img class="main-img" src="{/$siteurl.style/}/img/topicPage/topic/chanye01.jpg" width="1199" height="383" />
+    <img class="main-img" src="{/$siteurl.style/}/img/topicPage/topic/chanye02.jpg" width="1199" height="396" />
+    
+    {/foreach $dataLst as $k=>$list/}
+
+    <div class="main-list01 {/if ($k%2)!=0/}main-list02{//if/}">
+    	<div class="njmNameImg">
+        	<div class="njmNameMge">
+                <div class="njmNameXbox">
+                    <p><img src="{/if !empty($list['company_logo_path'])/}{/$logo_base/}{/$list['company_logo_path']/}{/else/}{/$siteurl.style/}/img/job/newjob/default_logo.png{//if/}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="doubleCont">
+            <h2>{/$list['company_short_info']|default:$list['company_name']/}</h2>
+            <p>{/if !empty($list['company_desc'])/}{/base_lib_BaseUtils::cutstr($list['company_desc'],150, 'utf-8', '', '...')/}{/else/}{/base_lib_BaseUtils::cutstr($list['info'],150, 'utf-8', '', '...')/}{//if/}</p>
+            <ul class="doubleList">
+				{/foreach $list['jobLst'] as $key=>$job/}
+				{/if $key<4/}
+                <li><a target="_blank" href="{/if !empty($job['job_flag'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopin/zhiwei/{/$job['job_flag']/}.html{/else/}{/if stripos($job['job_link'],'http://')=== false/}//{//if/}{/$job['job_link']/}{//if/}" style="width:310px">{/$job.station/}</a>
+                    <span>
+                        {/if $job['min_salary']%1000==0/}{/($job['min_salary']/1000)/}{/else/}{/sprintf("%.1f",($job['min_salary']/1000))/}{//if/}K-{/if $job['max_salary']%1000==0/}{/($job['max_salary']/1000)/}{/else/}{/sprintf("%.1f",($job['max_salary']/1000))/}{//if/}K
+                    </span></li>
+				{//if/}
+                {//foreach/}
+            </ul>
+            <a target="_blank" href="{/if !empty($list['company_id'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopin/qiye/{/$list['company_flag']/}.html{/else/}{/if stripos($list['company_link'],'http://')=== false/}//{//if/}{/$list['company_link']/}{//if/}" class="doubleMore">更多点击详情>></a>
+        </div>
+    </div>
+
+	{//foreach/}   
+</div>
+<div class="footer"> ©{/date('Y')/} 汇博网 版权所有<br />招聘单位无权收取任何费用，请求职人员加强自我保护意识，按劳动法规保护自身权益，警惕虚假招聘，避免上当受骗! </div>
+<script type="text/javascript" language="javascript" src="{/version file='track.js'/}"></script>
+</body>
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "http://hm.baidu.com/hm.js?fb51309e47424acd6e31c0bd2a65a5a1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</html>

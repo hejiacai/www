@@ -1,0 +1,7 @@
+PS：主站在做过一次头部共用之后，出现的新的需求无法满足，需进一步拆分，
+现将主站（www.huibo.com）下的头部拆分为一下几部分：（方便后来的小伙伴使用和维护，^_^）
+
+    【公招信息发布页面】可以参考：URI：index/PublicRecruitList，文件位置：www\app\templates\publicrecruit\list.html
+
+
+

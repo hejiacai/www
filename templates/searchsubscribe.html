@@ -1,0 +1,302 @@
+<div class="contMain">
+<div class="content" id="content">
+    <section class="section">
+        <hgroup>
+            <div class="job-left">
+                <div class="edit-status-box create-item step21">
+                    <h2 class="jobTit">订阅职位</h2>
+                    <dl class="clearfix">
+                        <dt>接收邮箱<i class="red">*</i></dt>
+                        <dd class="formRows"><label class="txtLabel" for="txtStation" style="display: none;"></label>
+                            <input id="mail" type="text" class="c-text" name="txtStation">
+                            <span id='err_mail' class="prompt-msg msg" data-for="txtStation"></span>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt>接收周期<i class="red">*</i></dt>
+                        <dd class="formRows">
+                            <label class="icon-rad icon-rad-checked" data-name="hidJobtype" data-value="3" data-status="true"><em></em>3天<input name="push_cycle" type="hidden" value="3" ></label>
+                            <label class="icon-rad" data-name="hidJobtype" data-value="7" data-status="false"><em></em>7天</label>
+                            <span data-for="hidJobtype" class="prompt-msg msg"></span>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt>订阅职位<i class="red">*</i></dt>
+                        <dd class="formMod checkMod formRows" style="z-index:5">
+                            <div id="dropJobsort" class="drop formText JobCayDrop" style="z-index:4;width:300px"></div>
+                            <span id="err_job_sub" class="prompt-msg msg" data-for="hidJobsort"></span>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt>期望行业</dt>
+                        <dd class="formMod checkMod formRows" style="z-index:4">
+                            <div id="dropCalling" class="drop formText JobIndDrop" style="z-index:3;width:300px"></div>
+                            <span id="err_hope_job" class="prompt-msg msg" data-for="hidCalling"></span>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt>月薪范围</dt>
+                        <dd class="formRows"><label class="txtLabel" for="txtStation" style="display: none;">请输入求职意向</label>
+                            <input id="money_min" type="text" class="c-text" name="txtStation" watermark="请输入求职意向" style="width:80px; text-align:center;" value="">
+                            <em class="promptEm">—</em>
+                            <input style="width:80px; text-align:center;" id="money_max" type="text" class="c-text" name="txtStation" watermark="请输入求职意向" value="">
+                            <em class="promptEm">元</em>
+                            <span id="err_money" class="prompt-msg msg" data-for="txtStation"></span>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix sub-item">
+                        <dt>&nbsp;</dt>
+                        <dd>
+                            <button id="saveSubBtn" type="button" class="saveBtn sub-btn">提交</button>
+                            <button id="cancelSubBtn" type="button" class="cancelBtn canl-btn" style="margin-left: 18px;">返回</button>
+                        </dd>
+                    </dl>
+                    <div class="jobArea01">长期不查看订阅内容将不再推送，如需要请重新订阅！</div>
+                </div>
+            </div>
+            <div class="job-right">
+                <h2 class="jobtit-rt">为什么要订阅？</h2>
+                <ul class="joblit-rt">
+                    <li>我们精准匹配帮你挑工作，节省浏览和筛选时间。
+                        节省时间、节省时间、节省时间！</li>
+                    <li>严格按照订阅周期和条件发送邮件，信息保密。说
+                        到做到、说到做到、说到做到！</li>
+                </ul>
+            </div>
+        </hgroup>
+    </section>
+</div>
+</div>
+<script type="text/javascript">
+
+hbjs.use('@confirmBox, @jobsort, @calling', function(m){
+	
+	var confirmBox = m['widge.overlay.confirmBox'];
+	var $ = m['cqjob.jobsort'].extend(m['cqjob.calling']);
+
+	$('#mail').on('change', function(){
+		checkMail(this);
+	});
+	$('.icon-rad').on('click', function(){
+		push_cycle_selsect(this);
+	});
+	
+	var x_job_sub = $('#dropJobsort').jobsort({
+			max:2,hddName:'hidJobsort',
+			isLimit:true,
+			onSelect:function(){}
+		});
+	x_job_sub.setJobSortValue($('input[name="job_sort_id"]').val());
+	$('#dropJobsort').on('click', checkJobSub);
+	//期望行业
+	$('#dropCalling').calling({
+		max:2,hddName:'hidCalling',
+		isLimit:true,
+		unLimitedLevel:3
+	});
+	
+	$('#money_min').on('change', checkMinMoeny);
+	$('#money_max').on('change', checkMoney);
+	$('#saveSubBtn').on('click', commit_sub);
+	$('#cancelSubBtn').on('click', cancel_sub);
+	/**
+	 * 推送周期选择
+	 */
+	function push_cycle_selsect(obj){
+		$('[class="icon-rad icon-rad-checked"]').attr('class','icon-rad');
+		obj.setAttribute('class','icon-rad icon-rad-checked');
+		$('input[name="push_cycle"]').attr('value',obj.getAttribute('data-value'));
+		//alert($('input[name="push_cycle"]').val());
+	}
+	
+	/**
+	 * 订阅取消
+	 */
+	function cancel_sub(){
+		document.getElementById('web_sub_box').style.display = 'none';
+		$('.main').css('display','');
+		$('.links_box').css('display','');
+		//window.history.back();
+	}
+	
+	/**
+	 * 订阅提交
+	 */
+	function commit_sub(){
+		var mail_status = false;
+		var money_status = false;
+		mail_status = checkMail(document.getElementById('mail'));
+		money_status = checkMoney();
+		//职位分类
+		var job_sub = checkJobSub();
+		var hope_job = checkHopJob() ? checkHopJob() : null;
+
+		//参数的验证
+		if(!mail_status || job_sub == false || money_status == false)
+			return false;
+		$.post("/websubscribe/Create",{
+			'mail':document.getElementById('mail').value,
+			'push_cycle':$('input[name="push_cycle"]').val(),
+			'money_min':($('#money_min').val()),
+			'money_max':($('#money_max').val()),
+			'job_subscription':job_sub,
+			'hope_job':hope_job},
+			function(data){
+			if(data.error == undefined){
+			   if(data.status == true) {
+				   confirmBox.timeBomb(data.message, {
+					   name: 'success',
+					   width: 200,
+					   timeout: 2500
+				   });
+
+				   setTimeout('if(document.referrer == ""){window.location.reload();}window.location.href=document.referrer;',2000);
+						
+			   } else {
+				   confirmBox.timeBomb(data.message, {
+					   name : 'warning',
+					   width : getBLen(data.message) * 7 + 100,
+					   timeout : 2500
+				   });
+			   }
+			} else {
+			   alert(data.error);
+			}
+		},'json');
+		return false;
+	}
+	
+	function getBLen(str) {
+		if (str == null) return 0;
+		if (typeof str != "string"){
+			str += "";
+		}
+		return str.replace(/[^x00-xff]/g,"01").length;
+	}
+
+	//订阅职位
+	function checkJobSub()
+	{
+		var err = document.getElementById('err_job_sub');
+		var job_sub = $('input[name="hidJobsort"]').val();
+		if(job_sub == '' || job_sub == null){
+			err.setAttribute('class','prompt-msg msg error-msg');
+			err.innerHTML = "<em></em><i></i>请选择订阅职位";
+			return false;
+		}
+		err.setAttribute('class','prompt-msg msg');
+		err.innerHTML = '';
+		return job_sub;
+
+	}
+
+	//希望行业 hidCalling
+	function checkHopJob()
+	{
+		var err = document.getElementById('err_hope_job');
+		var job_sub = $('input[name="hidCalling"]').val();
+		if(job_sub == '' || job_sub == null){
+//            err.setAttribute('class','prompt-msg msg error-msg');
+//            err.innerHTML = "<em></em><i></i>请选择订阅职位";
+			return false;
+		}
+//        err.setAttribute('class','prompt-msg msg');
+//        err.innerHTML = '';
+		return job_sub;
+
+	}
+
+	/**
+	 * 邮箱验证
+	 */
+	function checkMail(object)
+	{
+		if(!$(object).attr('value').match(/^\w+[@]{1}\w+[.]\w+$/))
+		{
+//            alert('请正确填写您的邮箱');
+			showError(object);
+			document.getElementById('err_mail').setAttribute('class','prompt-msg msg error-msg');
+			document.getElementById('err_mail').innerHTML = "<em></em><i></i>请正确填写您的邮箱";
+			return false;
+		}
+		$(object).attr('style','');
+		document.getElementById('err_mail').innerHTML = "";
+		document.getElementById('err_mail').setAttribute('class','prompt-msg msg');
+		return true;
+	}
+
+	function checkMinMoeny(){
+		var min = (document.getElementById('money_min'));
+		var max = (document.getElementById('money_max'));
+		var err = document.getElementById('err_money');		
+		if(min.value != "" && max.value != ""){
+			if(!min.value.match(/^[1-9][0-9]{1,5}[0-9]$/) || !max.value.match(/^[1-9][0-9]{1,5}[0-9]$/) ){             
+				 showError(min);
+				showError(max);
+				err.setAttribute('class','prompt-msg msg error-msg');
+				err.innerHTML = "<em></em><i></i>请正确输入您的月薪（整数）";
+				return false;
+			}
+			if(parseInt(min.value) >= parseInt(max.value)){              
+				showError(min);
+				showError(max);
+				err.setAttribute('class','prompt-msg msg error-msg');
+				err.innerHTML = "<em></em><i></i>月薪最小值不能大于等于最大值";
+				return false;
+			}
+		}
+
+		//ok
+		min.style.borderColor = 'rgb(207, 207, 207)';
+		max.style.borderColor = 'rgb(207, 207, 207)';
+		err.setAttribute('class','prompt-msg msg');
+		err.innerHTML = '';
+		return true;
+	}
+	
+	/**
+	 * 月薪验证
+	 * @param object
+	 */
+	function checkMoney(){
+		var min = (document.getElementById('money_min'));
+		var max = (document.getElementById('money_max'));
+		var err = document.getElementById('err_money');		
+		if(min.value != "" || max.value != ""){
+			if(!min.value.match(/^[1-9][0-9]{1,5}[0-9]$/) || !max.value.match(/^[1-9][0-9]{1,5}[0-9]$/) ){
+				showError(min);
+				showError(max);
+				err.setAttribute('class','prompt-msg msg error-msg');
+				err.innerHTML = "<em></em><i></i>请正确输入您的月薪（整数）";
+				return false;
+			}
+
+
+			if(parseInt(min.value) >= parseInt(max.value)){
+				showError(min);
+				showError(max);
+				err.setAttribute('class','prompt-msg msg error-msg');
+				err.innerHTML = "<em></em><i></i>月薪最小值不能大于等于最大值";
+				return false;
+			}
+		}
+		min.style.borderColor = 'rgb(207, 207, 207)';
+		max.style.borderColor = 'rgb(207, 207, 207)';
+		err.setAttribute('class','prompt-msg msg');
+		err.innerHTML = '';
+		return true;
+	}
+
+	/**
+	 * js
+	 * @param object
+	 */
+	function showError(object){
+		object.style.borderColor="#ff0000";
+		object.style.borderWidth="1px";
+		object.style.borderStyle="solid";
+	}
+});
+
+
+</script>

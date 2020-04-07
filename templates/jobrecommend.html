@@ -1,0 +1,521 @@
+<!doctype html>
+<html> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="keywords" content="{/$keywords/}" />
+<meta name="description" content="{/$description/}" />
+<meta name="mobile-agent" content="format=xhtml; url={/$siteurl.mobile/}/xiaoshouguwen/"/>
+<meta name="mobile-agent" content="format=html5; url={/$siteurl.mobile/}/xiaoshouguwen/"/>
+<meta name="mobile-agent" content="format=wml; url={/$siteurl.mobile/}/xiaoshouguwen/"/>
+<link rel="stylesheet" type="text/css" href="{/version file='newHeader2019.css'/}">
+    <title>{/$title/}</title>
+<!–[if lt IE9]>
+<script src="{/version file="html5.js"/}"></script>
+<![endif]–>
+<link rel="alternate" media="only screen and(max-width: 640px)" href="{/$siteurl.mobile/}/xiaoshouguwen/" />
+
+<link rel="stylesheet" type="text/css" href="{/version file='base.css,v2-widge.css,v2-resume.css,v2-jobsearch.css,login.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='v2-header.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='comback.css'/}"/>
+
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" language="javascript" src="{/version file="jquery-1.8.3.min.js"/}"></script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file="global.js"/}"></script>
+<script type="text/javascript">
+hbjs.config({
+	combos: {
+		'@homeSideSortMenu': [
+			'product.homeSideSortMenu', 'product.sideMenu.sideSortMenuGroup', 'product.sideMenu.sideSortMenu',
+			'product.sideMenu.sideSortMenuData', '@popup'
+		],
+		'@jobPostipGroup': [
+			'product.jobList.jobPostipGroup', 'product.jobList.jobPostip', '@popup'
+		]
+	}
+});
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+
+<style>
+.bottom_job{font-family: "微软雅黑";font-size: 14px;color: #666;margin-top: 10px;margin-bottom: 48px;}
+.bottom_job span{display:block;float:left;}
+.bottom_job a{border-style: solid;border-width: 1px;border-color: #D7D7D7;color:#2161BF;}
+.bottom_job a:link,.bottom_job a:visited{display:block;float:left;background-color:#ffffff;text-align:center;padding:0px 12px 0px 12px;text-decoration:none;margin-left: 10px;}
+.bottom_job a:hover,.bottom_job a:active{background-color: #FAFCFC;}
+.login_reg a.newPhone i{background: transparent url("{/$siteurl.style/}/img/newindex/icon_phone.png") no-repeat scroll 0% 0%;display: inline-block;width: 12px;height: 16px;vertical-align: -3px; margin-right: 5px;}
+.login_reg a.newPhone:hover i{background-position: 0px -26px;}
+.login_reg .personage{width: 80px;}
+.lgAft ul li a.newPhone i{background: transparent url("{/$siteurl.style/}/img/newindex/icon_phone.png") no-repeat scroll 0% 0%;display: inline-block;
+    width: 12px;height: 16px;vertical-align: -3px;margin-right: 5px;}
+.lgAft ul li a.newPhone:hover i{background-position: 0px -26px;}
+.nav_login .login_reg{margin-top: -2px;}
+</style>
+<style>   
+.checkMod .drop input.text{ background:none;}
+.contMain{width:100%; background:#f0f0f0; padding:20px 0 50px 0;}
+div.content_body{background: #E9E9E9 none repeat scroll 0% 0%;}
+div.content{width:1100px;}
+hgroup{ overflow:inherit;}
+section.section{ height:480px;}
+
+.promptEm{ display:block; float:left; font-size:14px; color:#6c6c6c; margin:0 8px;}
+.job-left{width:620px; float:left;}
+.jobTit{ display:block; font-size:16px; font-family:"宋体"; color:#444; font-weight:bold;width:103px; text-align:right;}
+.edit-status-box{ background:#fff; padding:0px;}
+.job-right{width:330px; border-left:1px solid #cdcdcd; height:390px; padding-left:50px; float:left;}
+.edit-status-box dl {margin-top:20px;}
+.jobArea01{ overflow:hidden;color:#c2c1c1;margin-top:5px;font-size:14px; background:url({/$siteurl.style/}/img/webjobsubscribe/jobicon01.png) left center no-repeat; margin:20px 0 0 124px; padding-left:24px;}
+.edit-status-box .sub-btn,.edit-status-box .sub-btn:visited{ padding:0 50px; background:#66bce4; border:1px solid #66bce4;box-shadow:none; outline:none;}
+.edit-status-box .canl-btn{ padding:0 50px; background:#f0f0f0; color:#898989; margin-left:40px;}
+.jobtit-rt{ background:url({/$siteurl.style/}/img/webjobsubscribe/jobicon02.png) left center no-repeat; padding-left:25px; color:#d73937; font-size:16px; margin-top:10px;}
+.joblit-rt{ overflow:hidden;}
+.joblit-rt li{ margin-top:30px; background:url({/$siteurl.style/}/img/webjobsubscribe/jobicon03.png) left 6px no-repeat; color:#6c6c6c; line-height:24px; padding-left:24px;}
+</style>
+<!--20160113 mijing-->
+<style>
+.job_recomd{width:1000px;margin:30px auto;background: #fff;box-shadow:0px 0px 10px #d8d5d5}
+.one_job{background: #fafafa;border-bottom: 1px solid #f0f0f0;padding:50px 55px}
+.one_job .jobImg{width:78px;height:78px;border:1px solid #ebebeb;display: block;float:left}
+.one_job .jobImg img{width:100%;height:100%}
+.one_job .jobInfor{float:right;width:785px;font-size:14px;color:#b2b2b2;position: relative}
+.jobInfor .next{color:#ccc;font-size:14px;float:right;background: url({/$siteurl.style/}/img/job/newjob/refresh.jpg) left center no-repeat;padding-left: 20px}
+.jobInfor .next:hover{color:#3d84b8}
+.jobInfor .name{color:#666}
+.jobInfor .name a{font-size: 16px;font-weight:bold}
+.jobInfor .jobtitle{color:#295266;font-size:24px}
+.jobInfor .label{margin: 10px 0}
+.jobInfor .label label{color:#fff;font-size:14px;background: #ff9c00;margin-right:5px;border-radius: 2px;display: inline-block;padding:0px 10px;line-height:20px;height:22px}
+.jobInfor i{height: 24px;margin-right: 7px;width: 24px;display: inline-block;background:url("{/$siteurl.style/}/img/job/newjob/newjobAll.png") no-repeat scroll 0 0;vertical-align: middle}
+.jobInfor .money,.jobInfor .welfare{margin-bottom: 5px}
+.jobInfor .welfare{position: relative; padding-left: 31px;}
+.jobInfor .money strong{color:#ff6b50}
+.jobInfor .welfare i{background:url({/$siteurl.style/}/img/job/newjob/welfare.png);position: absolute;left: 0px;top:3px;}
+.jobInfor .welfare label{display: inline-block;padding:1px 7px;border:1px solid #cbcbcb;color:#666;margin-right: 5px;margin-top:3px;margin-bottom:3px}
+.jobInfor .worktime i{background-position:-24px 0}
+.jobInfor .worktime{color: #333;margin-bottom:5px}
+.jobInfor .worktime span{color:#999}
+.jobInfor .address i{background-position: -48px 0}
+.jobInfor .showMap{background:url({/$siteurl.style/}/img/job/newjob/newJob_25.png) no-repeat;font-size:12px;padding-left: 17px}
+.viewMore{background: #0092db;font-size:18px;color:#fff;font-weight:bold;display: inline-block;padding:7px 25px;text-decoration: none;position: absolute;bottom:5px;right:0px}
+.viewMore:hover{background: #049eeb;color:#fff}
+.jobList{padding:0px 40px 30px 50px}
+.jobList dl{width:415px;height:80px;float:left;margin:10px 0 0 10px;border:1px solid #f6f6f6;padding:10px}
+.jobList dt{float:left;margin-right: 20px}
+.jobList dt img{width:79px;height:79px;border:1px solid #e9e9e9}
+.jobList dd{float:left;color:#999;font-size:14px;line-height: 25px;margin-top: 5px;width:310px}
+.jobList dd a{color:#999;font-size:14px}
+.jobList dd i{background: url({/$siteurl.style/}/img/job/newjob/toudiIcon1.jpg) left 0 no-repeat;display: inline-block;width:13px;height:15px;overflow: hidden;float:left;margin-right:5px;margin-top:4px}
+.jobList dd i.icon2{background-position: 0 -25px}
+.jobList dd strong{color:#ff9c00;font-size:16px}
+.title2{margin:30px 0 0 60px;font-size: 16px;color:#666;font-weight:bold}
+.huifu{float:right;font-size:14px;color:#999}
+.huifu img{vertical-align: middle;margin-right:3px}
+.resumeAlt{color:#666;font-size:16px;margin-left: 60px;padding-bottom: 60px}
+.resumeAlt a{color:#fff;background: #0092db;display: inline-block;padding:3px 10px;border-radius: 3px;margin:0 10px}
+.resumeAlt a:hover{background: #02a1f0}
+</style>
+</head>
+<body>
+{/*职位搜索页面的头部和其他页面的头部都不一样，所以没有做成单独的头文件*/}
+{/include_php file='app/controller/head.php'/}
+<div class="partjobPop" id="partjobPop" style="display:none;">
+    <a target="_blank" href="{/base_lib_Constant::JIANZHI_URL_NO_HTTP/}" class="partknowx"></a>
+    <a href="javascript:" class="partknow">知道了</a>
+</div>
+<div class="nav_login" {/if $dataitem['isLogin'] && $dataitem['type']=='p'/} style="line-height: 0px;"{//if/}>
+	<div class="w1100">
+        {/if $dataitem['isLogin']/}
+        <div class="lgAft" id="userLoginBox">
+            {/if $dataitem['type']=='p'/}
+                {/include file='./new_headtop_2015.html' origin='search'/}
+            {/else/}
+                <ul style="margin-top: -5px;">
+                    <li><a class="userOut" id="userOut" href="javascript:void(0);">退出</a></li>
+                    <li class="line">|</li>
+                    <li class="user">
+                        <img width="18" height="18" id="headphoto" src="{/$dataitem['photo']/}">
+                        <a href="{/if $dataitem['type']=='c'/}{/get_url domain="company"/}{/else/}{/get_url domain="person"/}{//if/}" target="_blank"><span class="comUserName">{/if $dataitem['type']=='c'/}企业招聘中心{/else/}我的汇博{//if/}</span></a>
+                    </li>
+                </ul>
+            {//if/}
+        </div>
+        {//if/}
+        <div id="userEnterBox" class="login_reg"  {/if $dataitem['isLogin']/}style="display:none"{//if/} >
+            <a class="newPhone" href="/app/p/" style="margin-right: 15px;float: left;line-height: 28px;color:#999"  target="_blank"><i></i>手机版</a>
+            <u>|</u>
+	        <div class="jobDingYue" style="margin-right: 15px;float: left;line-height: 28px;margin-left:15px;">
+	            <a href="javascript:;" style="color:rgb(153, 153, 153)" onclick="web_sub()">职位订阅</a>
+	        </div>
+        	<u>|</u>
+            <div class="log_new">
+                <a href="javascript:">企业:</a>
+                <a class="cur" href="{/$siteurl.company/}/login">登录</a>
+                <span class="slash">/</span>
+                <a class="cur" href="{/$siteurl.main/}/company/register">注册</a>
+            </div>
+            <u>|</u>
+            <div class="reg_new">
+                <a href="javascript:">求职:</a>
+                <a class="cur" href="{/$siteurl.person/}/login">登录</a>
+                <span class="slash">/</span>
+                <a class="cur" href="{/$siteurl.person/}/register">注册</a>
+            </div>
+        </div>        
+        <a  href="javascript:" class="collect" id="addFavoritesBtn"><i class="icon_collect"></i>收藏汇博</a>
+	</div>
+</div>
+<!--logo和搜索-->
+<div class="logo_search w1100">
+	<div id="search_box" class="search">
+    	<form>
+          <div class="search_select">
+              <div class="cur">
+                  <label>{/if $searchtype == "company"/}公司{/elseif $searchtype == "fulltext"/}全文{/else/}职位{//if/}</label>
+                  <i class="arr_stb"></i>
+              </div>
+              <ul class="item">
+                  <li data-value="1"><a href="javascript:">职位</a></li>
+                  <li data-value="2"><a href="javascript:">公司</a></li>
+                  <li data-value="3"><a href="javascript:">全文</a></li>
+              </ul>
+          </div>
+          
+          <div class="inputText">
+              <input class="keys" type="text" placeholder="找一找，总有适合您的工作" value=""/>
+              <div id="ui_hbsug_top" class="ui_hbsug ui_hbsug_top"></div>
+          </div>
+          <input type="button" value="搜索" class="butsub" />
+		</form>
+	</div>
+	<div class="logo"><a href="{/$siteurl.main/}">LOGO</a></div>
+</div>
+<!--菜单-->
+<div class="newNavbg clearfix">
+    <div class="w1100">
+        <a id="subClassify" class="subClassify" href="#"><i class="arr_type"></i>全部职位分类</a><!--hover-->
+        <a target="_blank" href="{/get_url domain='company'/}">企业服务</a>
+        <a target="_blank" href="{/get_url rule='/zhaopinhui/'/}">重庆招聘会</a>
+        <a target="_blank" href="{/get_url rule='/lietou/'/}" class="headhunter">汇博猎头</a>
+        <a target="_blank" href="{/get_url rule='/xiaoyuan/'/}">校园招聘</a>
+        <a target="_blank" href="{/get_url rule='/hrcollege/'/}">HR学院</a>
+        <a target="_blank" href="{/get_url rule='/wellknown/'/}">知名企业</a>
+        <a target="_blank" href="{/base_lib_Constant::JIANZHI_URL_NO_HTTP/}" id="jianzhi">汇博兼职</a>
+    </div>
+</div>
+<div id="subClassifyMenu" class="newLeft" style="display: none">
+    <nav>
+        <div id="boxNav" class="pos" style="display: block;">
+            <div class="lst" id="side_menu_list">
+                <ul>
+                    <li class=""><a href="javascript:" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon"></i><p class="lnk">销售、客服、市场、公关</p></a></li>
+                    <li class=""><a href="javascript:" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon"></i><p class="lnk">人力、行政、财务、管理</p></a></li>
+                    <li class=""><a href="javascript:" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon"></i><p class="lnk">生产、工人、质控</p></a></li>
+                    <li class="subPageMenu"><a target="_blank" href="/it/" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon2"></i><p class="lnk">互联网、游戏、软件</p></a></li>
+                    <li class=""><a href="javascript:" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon3"></i><p class="lnk">通信、硬件、电子电器</p></a></li>
+                    <li class="subPageMenu"><a target="_blank" href="/car/" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon4"></i><p class="lnk">汽车、机械</p></a></li>
+                    <li class="subPageMenu"><a target="_blank" href="/fangdichan/" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon5"></i><p class="lnk">房地产、建筑、物业、装饰</p></a></li>
+                    <li class=""><a href="javascript:" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon6"></i><p class="lnk">金融、银行、保险</p></a></li>
+                    <li class=""><a href="javascript:" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon7"></i><p class="lnk">广告、设计、传媒</p></a></li>
+                    <li class=""><a href="javascript:" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon8"></i><p class="lnk">餐饮、百货、生活服务</p></a></li>
+                    <li class=""><a href="javascript:" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon9"></i><p class="lnk">医疗、医药</p></a></li>
+                    <li class=""><a href="javascript:" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon10"></i><p class="lnk">教育、培训、专业服务</p></a></li>
+                    <li class=""><a href="javascript:" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon11"></i><p class="lnk">能源、化工、服装、环保</p></a></li>
+                    <li class=""><a href="javascript:" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon12"></i><p class="lnk">进出口、采购、物流、司机</p></a></li>
+                    <li class=""><a href="javascript:" class="lstLnk"><em class="hbFntWes"></em><i style="left: 15px;" class="newIcon newIcon13"></i><p class="lnk">农林牧渔、实习生、其他</p></a></li>
+                </ul>
+            </div>
+            <div class="lstMaskWhite1"></div>
+            <div class="lstMaskGray1"></div>
+        </div>
+    </nav>
+</div> 
+
+<div class="job_recomd">
+	<!--当前职位信息-->
+	<div class="one_job clearfix">
+		<a href="{/$companylink/}" class="jobImg"><img src="{/$company_logo_path/}" /></a>
+		<div class="jobInfor">
+			<a href="javascript:;" class="next" onclick="javascript:window.location.href = '{/base_lib_Constant::MAIN_URL_NO_HTTP/}/jobrecommend?eds={/$thisids/}';">不感兴趣，换一换</a>
+			<p class="name"><a href="{/$companylink/}">{/if $company_shortname/}{/$company_shortname/}{/else/}{/$companyname/}{//if/}</a>{/if (!empty($company_bright_spot))/}“{/$company_bright_spot/}”{//if/}</p>
+			<strong class="jobtitle">{/$station/}</strong>
+			<p class="label">
+				{/if $is_famous/}<label>名企</label>{//if/}
+				{/if $re_apply_type>0/}<label>简历{/if $re_apply_type==2/}两{/elseif $re_apply_type==5/}五{//if/}工作日必回</label>{//if/}
+				{/if $reversion_rate >= 80/}<label>回复率>80%</label>{//if/}
+			</p>
+			<p class="money">
+				<i></i>
+				<strong>
+				{/if $min_salary == $max_salary/}
+                 ￥{/$min_salary/}
+                    {/else/}
+                    ￥{/$min_salary/}~{/$max_salary/}
+                    {//if/}元/月
+                </strong>
+				<span>
+					（{/get_name job_level=$job_level/}{/if $salary_type ==1/}
+                    ，底薪：{/if $base_min_salary == $base_max_salary/}{/$base_min_salary/}{/else/}{/$base_min_salary/}~{/$base_max_salary/}{//if/}元/月+提成
+                    {//if/}）
+                </span>
+            </p>
+			<p class="welfare">
+				<i></i>
+				{/if count($rewards) > 0/}
+                {/foreach $rewards as $reward/}
+                <label>{/$reward/}</label>
+                {//foreach/}
+                {//if/}
+                {/if count($other_rewards) > 0/}
+                {/foreach $other_rewards as $other_reward/}
+                <label>{/$other_reward/}</label>
+                {//foreach/}
+                {//if/}
+			</p>
+			
+			<p class="worktime"><i></i>{/$degree/} / {/$workyear/} / {/$language/} / {/$sex/} / {/$age/}<span>{/if $allowgraduate/}（可接收应届毕业生）{//if/}</span></p>
+
+			<p class="address"><i></i><a href="javascript:;">{/$area/}</a>&nbsp; <span title="{/$add_info/}">{/if !empty($add_info)/}（{/base_lib_BaseUtils::cutstr($add_info,23,'utf-8','','…')/}）{//if/}</span>&nbsp; <a target="_blank" rel="showMap" href="http://api.map.baidu.com/geocoder?address={/if !empty($add_info)/}{/$add_info/}{/else/}{/$area/}{//if/}&output=html">查看地图</a></p>
+			<a href="{/$joblink/}" class="viewMore">查看职位详情</a>
+		</div>
+	</div>
+
+	<p class="title2">其他适合你的职位</p>
+	<div class="jobList clearfix">
+		{/foreach $recommendJobs as $key=>$job/}
+        {/if $key < 6/}
+        <dl class="clearfix" data-key="{/$key/}" {/if $key%2!=0/}style="float:left;margin-right: 0px"{//if/}>
+            <dt><a href="{/$job.companylink/}" target="_blank"><img src="{/$job.companylogo/}" onerror="javascript:this.src='{/$defaultLogo/}'"/></a></dt>
+            <dd>
+                {/if in_array($job['jobreply'],[2,5])/}<span class="huifu"><img src="{/$siteurl.style/}/img/c/new_index/{/$job.jobreply/}.png" />工作日必复</span>{//if/}
+                <a href="{/$job.joblink/}?src=2|{/$basejobflag/}" target="_blank" value="{/$job.jobflag/}">{/base_lib_BaseUtils::cutstr($job['station'],10)/}</a>
+                <p><i class="icon2"></i><strong>{/$job.salary/}</strong></p>
+                <p><i></i>{/base_lib_BaseUtils::cutstr($job['companyname'],6)/}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/$job.address/}</p>
+            </dd>
+        </dl>
+        {//if/}
+        {//foreach/}
+	</div>
+	<p align="center" style="padding:20px;font-size: 14px"><a style="color:#999; text-decoration: underline;" href="{/$siteurl.main/}/jobsearch?{/if $searchjobsort/}params=a{/$searchjobsort/}{/else/}key={//if/}">使用搜索功能查找更多适合我的职位>></a></p>
+</div>
+{/include file="footer.html"/}
+<div id="side_menu_items" class="posBox">
+<script type="text/javascript">
+hbjs.use('@fixed, @checkLogin, @confirmBox, @search, @homeSideSortMenu, @jobPostipGroup, @hbCommon, @mask, @dateFormat', function(m){
+		var $ = m['product.hbCommon'],
+			util = m['base.util'],
+			cookie = m['tools.cookie'],
+			fixed = m['tools.fixed'],
+			position = m['tools.position'],
+			checkLogin = m['product.checkLogin'],
+			confirmBox = m['widge.overlay.confirmBox'],
+			jobTopSearch = m['product.jobSearch.jobTopSearch'],
+			homeSideSortMenu = m['product.homeSideSortMenu'],
+			jobPostipGroup = m['product.jobList.jobPostipGroup'],
+            Dialog = m['widge.overlay.hbDialog'],
+            mask = m['widge.overlay.mask'];
+
+		var userEnterBox = $('.login_regAge');
+	    userEnterBox.on('mouseenter mouseleave', '.login,.personage, .newPhone', function(e){
+	        var target = $(e.currentTarget);
+	        if(e.type === "mouseenter"){
+	            target.addClass('hover');
+	        } else {
+	            target.removeClass('hover');
+	        }
+	    });
+		
+		pWidth = 70,
+		fontSize = 18;
+		
+		var job = new homeSideSortMenu({
+				url: {
+					host: '{/base_lib_Constant::MAIN_URL_NO_HTTP/}',
+					path: '/jobsearch/',
+					param: null,
+					alias: 'alias',
+					selectId: ["1701"]
+				},
+				banner: [{
+					id: 3,
+					link: '/it/',
+					value: '<img src="{/$siteurl.style/}/img/common/channel.jpg" alt="" />',
+					className: 'subPageMenu',
+					isHref : true
+				},
+				{
+					id: 5,
+					link: '/car/',
+					value: '<img src="{/$siteurl.style/}/img/common/channel3.png" alt="" />',
+					className: 'subPageMenu',
+					isHref : true
+				},
+				{
+					id: 6,
+					link: '/fangdichan/',
+					value: '<img src="{/$siteurl.style/}/img/common/channel2.png" alt="" />',
+					className: 'subPageMenu',
+					isHref: true
+				}],
+				isRenderTriggerMenu: false,
+				isSpacer: null,
+				width:740,
+				posY: 172
+			});
+		job.init();
+		
+		var subClassifyMenu = job.get('trigger').closest('#subClassifyMenu'),
+			subClassify = $('#subClassify');
+		function resetMenuPostion(){
+			var pinObj = {
+				element: subClassifyMenu,
+				x: 0,
+				y: 0
+			},
+			baseObj = {
+				element: subClassify,
+				x: 0,
+				y: '100%'
+			};
+			position.pin(pinObj, baseObj);
+		};
+		
+		var subAreas = ['#subClassify', '#subClassifyMenu', '#side_menu_items'],
+			mouseSource;
+        
+        $(document).on('mouseover', function(e){
+            var target = $(e.target);
+            resetMenuPostion();
+            if(target.closest(subAreas[0]).length){
+                if(!mouseSource){
+                    subClassifyMenu.slideDown('fast');
+                } else {
+                    subClassifyMenu.show();
+                }
+                mouseSource = true;
+            } else if(target.closest(subAreas[1]).length){
+                subClassifyMenu.show();
+                mouseSource = true;
+            } else if(target.closest(subAreas[2]).length){
+                subClassifyMenu.show();
+                mouseSource = true;
+            } else {
+                mouseSource = null;
+                subClassifyMenu.hide();
+            }
+        });
+
+        /*退出按钮*/
+        $("#userOut").click(function(){
+            $.ajax({
+                'url':'/index/signOut',
+                'type':'get',
+                'dataType':'json',
+                'success':function(json){
+                    if(json.success){
+                        $("#userEnterBox").show();
+                        $("#userLoginBox").hide();
+                        $('.nav_login').css('line-height','25px');
+                        var msg = '退出成功';
+                        confirmBox.timeBomb(msg, {
+                            name: 'success',
+                            width: pWidth + msg.length * fontSize,
+                            timeout: 1000
+                        });
+                        window.location.href = "{/$siteurl.main/}";
+                    }else{
+                        var msg = '退出失败';
+                        confirmBox.timeBomb(msg, {
+                            name: 'fail',
+                            width: pWidth + msg.length * fontSize,
+                            timeout: 1000
+                        });                    
+                    }
+                }
+            });
+            return false;
+        });
+
+        		
+		var searchConfig = {
+			trigger: '.butsub',
+			select: {
+				trigger: '.search_select',
+				trigerClassName: 'hover',
+				align: {
+					baseXY: [0, '100%-2']
+				}
+			},
+			selectedIndex:'0',
+			initDataSource: '/head/SearchKeyword',
+			dataSource:[
+				'{/base_lib_Constant::MAIN_URL_NO_HTTP/}/index/auto/?limit=12&timestamp={{timestamp}}&type=job&q={{query}}&callback=jsonpcallback','{/base_lib_Constant::MAIN_URL_NO_HTTP/}/index/auto/?limit=12&timestamp={{timestamp}}&type=company&q={{query}}&callback=jsonpcallback,{/base_lib_Constant::MAIN_URL_NO_HTTP/}/index/auto/?limit=12&timestamp={{timestamp}}&type=fulltext&q={{query}}&callback=jsonpcallback'
+			],
+			url: [
+				'{/base_lib_Constant::MAIN_URL_NO_HTTP/}/jobsearch/?key={{query}}',
+				'{/base_lib_Constant::MAIN_URL_NO_HTTP/}/jobsearch/?params=u2&key={{query}}',
+				'{/base_lib_Constant::MAIN_URL_NO_HTTP/}/jobsearch/?params=u3&key={{query}}'
+			],
+			placeHolder: [
+				'找一找，总有适合您的工作',
+				'请输入公司名称',
+				'请输入关键词'
+			]
+		};
+		//头部搜索
+		var search = new jobTopSearch($.extend({
+			container: $('#search_box form'),
+			search: {
+				trigger: '.keys',
+				align: {
+					baseXY: [0, '100%']
+				},
+				width: 493,
+				zIndex: 1000,
+				target: $('#ui_hbsug_top')
+			}
+		}, searchConfig));
+		
+		search.on('submit', function(e){
+			if(e.index == 0 && e.value && e.value != undefined) {
+				$.getJSON('/head/SaveJobkey/?keyword='+ encodeURIComponent(e.value),function(result){
+					window.location.href = e.url;
+				});
+			} else {
+				  window.location.href = e.url;	
+			}
+		});
+		
+		var searchInput = search.getSearch(),
+			searchSelect = search.getSelect();
+		
+		searchInput.on('itemAllDelete', function(e){
+			$.getJSON('/head/ClearSearchKeywords/');
+		});
+		
+		searchInput.on('itemDeleted', function(e){
+			$.getJSON('/head/DelSearchKeyword/keyword-'+e.value+'');
+		});
+		
+		searchInput.on('searchItemSelected', function(e){
+			var index = searchSelect.get('selectedIndex'),
+				key = e.data.value;
+			if(e.url && index == 0 && key!=undefined){
+				$.getJSON('/head/SaveJobkey/?keyword='+encodeURIComponent(key),function(result){
+					window.location.href = e.url;
+				});
+			} else {
+				window.location.href = e.url;
+			}
+		});
+});	
+</script>
+</body>
+</html>

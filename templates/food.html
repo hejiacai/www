@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="餐饮招聘" />
+<meta name="description" content="" />
+
+<title>餐饮招聘|重庆汇博网</title>
+<!–[if lt IE9]>
+<script src="{/version file="html5.js"/}"></script>
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file='v2-reset.css,v2-header.css,v2-icons.css,v2-widge.css,v2-job.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='index.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='newindex.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='itpage.css'/}" />
+<style>
+input.focus{ background:none; border:none;box-shadow:none;}
+.newSchtx.focus{ height:32px; line-height:32px;}
+.frdLink .linkScroller ul li a{ color:#999;}
+.frdLink .linkScroller ul li a:hover{ color:#0af;}
+.inPageCtentbg{width:100%; background:url({/$siteurl.style/}/img/it/corporation.png) repeat-x; overflow:hidden;}
+.newBannerbtm li .subBannerMsg{ position:absolute;width:119px;  height:30px; background:#00b9bf; color:#fff; line-height:30px; text-align:center; margin-left:-1px;#margin-left:-59px; display:none; }
+.newBannerbtm li:hover .subBannerMsg{ display:block;}
+.subBanner h2{ font-size:14px; margin:17px auto 8px auto;}
+.subBannerNull{background:url({/$siteurl.style/}/img/it/bannerImg05null.png); }
+.subBannerNull h2{ margin:0 auto; height:117px; line-height:117px;}
+.inPageListrt{min-height: 117px;}
+.subFirmBd p{ position:relative;}
+.subFirmBd p span{ font-size:12px;  display: inline-block;position: absolute;top:4px; color:#ccc;right: 15px;}
+.newBannerbtm li a{width:98px;height:97px; padding:10px;}
+.njmNameXbox{width:98px;height:97px;}
+.njmNameXbox p img{max-width: 98px; max-height: 97px;}
+.newBannerbtm li a{width:98px;height:97px; padding:10px;}
+.njmNameXbox{width:98px;height:97px;}
+.njmNameXbox p img{max-width: 98px; max-height: 97px;}
+.new_search_box .butsub {
+    width: 73px;
+    height: 36px;
+    border: 0;
+    background: #ff6563;
+    cursor: pointer;
+    color: #fff;
+}
+</style>
+<script type="text/javascript" src="{/version file='version.js'/}"></script>
+<script type="text/javascript">
+window.CONFIG = {
+	HOST: '{/$siteurl.style/}',
+	COMBOPATH: '/js/v2/'
+}
+</script>
+<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+<script type="text/javascript" src="{/version file='global.js'/}"></script>
+
+<script type="text/javascript">
+hbjs.config({
+	combos: {
+		'@homeSideSortMenu': [
+			'product.homeSideSortMenu', 'product.sideMenu.sideSortMenuGroup', 'product.sideMenu.sideSortMenu',
+			'product.sideMenu.sideSortMenuData', '@popup'
+		],
+		'@homeSideSortBigMenu': 'product.homeSideSortBigMenu'
+	}
+});
+hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+</script>
+</head>
+
+<body>
+    {/include file='channelheader.html'/}
+    <div class="newheadSch newheadPageSch clearfix">
+        <div class="newLogo">
+            <a href="{/$siteurl.main/}" target="_self">LOGO</a>
+            <span class="txtNewlogo">餐饮/酒店/零售/服务</span>
+        </div>
+        <div class="newSch clearfix">
+            <div class="newSchy clearfix">
+                
+                <div id="search_box" class="new_search_box clearfix">
+                	<form>
+                      <div class="search_select">
+                          <div class="cur">
+                              <label>职位</label>
+                              <i class="arr_stb"></i>
+                          </div>
+                          <ul class="item">
+                              <li data-value="1"><a href="javascript:">职位</a></li>
+                              <li data-value="2"><a href="javascript:">公司</a></li>
+                              <li data-value="3"><a href="javascript:">全文</a></li>
+                          </ul>
+                      </div>
+                      
+                      <div class="inputText">
+                          <input class="keys" type="text" placeholder="找一找，总有适合您的工作" value="{/if !empty($keyword)/}{/$keyword/}{//if/}"/>
+                          <div id="ui_hbsug_top" class="ui_hbsug ui_hbsug_top"></div>
+                      </div>
+                      <input type="button" value="搜本频道" class="butsub butsubx" />
+                    </form>
+                    
+                </div>
+                
+                <a href="javascript:void(0);" class="newschHigh" id="btnJobSearchSite">搜全站</a>
+                
+                <a href="{/$siteurl.main/}{/get_url rule='/jobsearch/advanced/'/}" class="newschHigh2">高级搜索</a>
+            </div>
+            <p class="newSchTit">
+            </p>
+        </div>
+    </div>
+    <div class="inPageCtentbg">
+        <div class="inPageCtent clearfix">
+            <div class="inPagelf">
+                <div id="newLeft" class="newLeft" style="display:none;">
+                <nav>
+                    <div class="pos" id="boxNav">
+                        <div id="side_menu_list" class="lst" id="navLst">
+                           <ul></ul>
+                        </div>
+                        <div class="lstMaskWhite1"></div>
+                        <div class="lstMaskGray1"></div>
+                    </div>
+                </nav>
+            </div>
+            <ul id="inPageListLf" class="inPageListLf">
+                {/foreach name=jobsort_outer item=jobsort from=$jobsorts/}
+                    <li>
+                        <div class="inPagef01">
+                            <h2><b>{/$jobsort['jobsort_name']/}</b><em></em></h2>
+                            <p>
+                            {/foreach $jobsort['hot_jobsorts'] as $hot/}
+                                {/if $hot['alias']/}
+                                <a href="{/$siteurl.main/}/{/$hot['alias']/}/" target="_blank">{/$hot['jobsort_name']/}</a>
+                                {/else/}
+                                <a href="{/$siteurl.main/}/jobsearch/?params=a{/$hot['jobsort']/}" target="_blank">{/$hot['jobsort_name']/}</a>
+                                {//if/}
+                            {//foreach/}
+                            </p>
+                        </div>
+                        <div class="inPagef02">
+                            <h2><b>{/$jobsort['jobsort_name']/}</b><em></em></h2>
+                            <p>
+                            {/foreach $jobsort['hot_jobsorts'] as $hot/}
+                                {/if $hot['alias']/}
+                                <a href="{/$siteurl.main/}/{/$hot['alias']/}/" target="_blank">{/$hot['jobsort_name']/}</a>
+                                {/else/}
+                                <a href="{/$siteurl.main/}/jobsearch/?params=a{/$hot['jobsort']/}" target="_blank">{/$hot['jobsort_name']/}</a>
+                                {//if/}
+                            {//foreach/}
+                            </p>
+                        </div>
+                        <dl class="inPageListrt">
+                                <dd>
+                                    <p>
+                                        {/foreach $jobsort['_child'] as $sort/}
+                                            {/if $sort['alias']/}
+                                            <a href="{/$siteurl.main/}/{/$sort['alias']/}/" target="_blank">{/$sort['jobsort_name']/}</a>
+                                            {/else/}
+                                            <a href="{/$siteurl.main/}/jobsearch/?params=a{/$sort['jobsort']/}" target="_blank">{/$sort['jobsort_name']/}</a>
+                                            {//if/}
+                                        {//foreach/}
+                                    </p>
+                                </dd>
+                        </dl>
+                    </li>
+                {//foreach/}
+            </ul>
+            </div>
+            <div class="inPagert">
+                <ul id="newBannerbtm" class="newBannerbtm">
+                    {/foreach $companys as $company/}
+                        <li {/if $company@last/} class="last"{//if/}> 
+                            <a target="_blank" href="{/$company['url']/}"> 
+                            <div class="njmNameXbox"> 
+                                <p>
+                                    {/if $company['advert_id']/}
+                                    <img src="{/get_assets img="{/$adPath/}{/$company['img']/}"/}"  />
+                                    {/elseif $company['company_logo_path']/}
+                                    <img src="{/$logo_path/}{/$company['company_logo_path']/}"  />
+                                    {/else/}
+                                    <img src="{/$siteurl.style/}/img/c/new_index/headlogo.png"  />
+                                    {//if/}
+                                </p> 
+                            </div>
+                            <div class="subBanner {/if empty($company['company_bright_spot'])/}subBannerNull{//if/}"> 
+                                <h2>{/if $company['company_shortname']/}{/$company['company_shortname']/}{/else/}{/$company['company_name']/}{//if/}</h2> 
+                                <span>{/$company['company_bright_spot']/}</span> 
+                            </div> 
+                            </a>
+                            {/if !$company['advert_id'] && !$company['is_famous']/}<div class="subBannerMsg">简历处理率≥80%</div>{//if/}
+                        </li> 
+                    {//foreach/}
+                </ul>
+                <div id="inPageTabBd">
+                  <ul class="inPageList">
+                      <li class="cut"><a href="javascript:">{/if $have_fangdichan_jobsort/}推荐职位{/else/}热门职位{//if/}</a></li>
+                      <li><a href="javascript:">最新职位</a></li>
+                  </ul>
+                    <!--最新职位-->
+                <div class="inPageTab">
+                    <ul class="inPageFirmlist"  style="display:block;">
+                      {/foreach $recommend_and_hot_jobs item=job/}
+                          <li>
+                              <a href="{/$job['job_link']/}" class="subFirm01"  target="_blank">
+                                  <img src="{/if $job['company_logo_path']/}{/$logo_path/}{/$job['company_logo_path']/}{/else/}{/$siteurl.style/}/img/c/new_index/headlogo.png{//if/}" width="78" height="78" />
+                              </a>
+                              <div class="subFirmBd">
+                                  <a href="{/$job['job_link']/}" class="subFirm02" target="_blank" title="{/$job['station']/}">{/html_encode content=base_lib_BaseUtils::cutstr($job['station'],14,'utf-8','','...')/}</a>
+                                  <span class="re_apply_type {/if $job['re_apply_type']>0/}replydays{/$job['re_apply_type']/}{//if/}" title="简历{/$job['re_apply_type']/}工作日必回复">{/if $job['re_apply_type']>0/}工作日必复{//if/}</span>
+                                   <div class="subFirm03">
+                                   <a href="{/$siteurl.main/}/qiye/{/$job['company_flag']/}.html"  target="_blank">{/$job['company_name']/}</a><span>{/$job['area']/}</span>
+                                   </div>
+                                   <p>{/if $job['salary']/}<b>￥</b>{/$job['salary']/}{/else/}待遇面议{//if/}<em>|</em>{/if $job['work_year']/}经验≥{/$job['work_year']/}年{/else/}经验不限{//if/}<span>{/$job['refresh_time']/}</span>
+                                   </p>
+                              </div>
+                          </li>
+                      {//foreach/}
+                    </ul>
+                    <ul class="inPageFirmlist">
+                        {/foreach from=$newjobs item=newjob/}
+                            <li>
+                                <a href="{/$newjob['job_link']/}" class="subFirm01"  target="_blank">
+                                    <img src="{/if $newjob['company_logo_path']/}{/$logo_path/}{/$newjob['company_logo_path']/}{/else/}{/$siteurl.style/}/img/c/new_index/headlogo.png{//if/}" width="78" height="78" />
+                                </a>
+                                <div class="subFirmBd">
+                                    <a href="{/$newjob['job_link']/}" class="subFirm02" target="_blank" title="{/$newjob['station']/}">{/html_encode content=base_lib_BaseUtils::cutstr($newjob['station'],14,'utf-8','','...')/}</a>
+                                    <span class="re_apply_type {/if $newjob['re_apply_type']>0/}replydays{/$newjob['re_apply_type']/}{//if/}" title="简历{/$newjob['re_apply_type']/}工作日必回复">{/if $newjob['re_apply_type']>0/}工作日必复{//if/}</span>
+                                     <div class="subFirm03">
+                                     <a href="{/$siteurl.main/}/qiye/{/$newjob['company_flag']/}.html"  target="_blank">{/$newjob['company_name']/}</a><span>{/$newjob['area']/}</span>
+                                     </div>
+                                   <p>{/if $newjob['salary']/}<b>￥</b>{/$newjob['salary']/}{/else/}待遇面议{//if/}<em>|</em>
+                                       {/if $newjob['work_year']/}经验≥{/$newjob['work_year']/}年{/else/}经验不限{//if/}<span>{/$newjob['time']/}</span>
+                                   </p>
+                                </div>
+                            </li>
+                        {//foreach/}
+                    </ul>
+                </div>
+                </div>
+                  <a href="{/$siteurl.main/}/{/get_url rule='jobsearch/?params=a12'/}" class="firmPageMore">更多职位 <em>>></em></a>
+            </div>
+        </div>
+    </div>
+    <section class="pageBot">
+        <div class="pageBotCon">
+            {/if count($links->items) > 0/}
+            <div class="frdLink" style=" border-top: 0px;">
+                <b style="font-weight: bolder;">友情链接:</b>
+                <div id="linkScroller" class="linkScroller" style="overflow: visible;">
+                <ul>
+                    {/foreach from=$links->items item=link/}
+                     <li><a target="_blank" href="{/$link["url"]/}">{/$link["site_name"]/}</a></li>
+                    {//foreach/}
+                </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            {//if/}
+        </div>
+    </section>
+    {/include file="footer.html"/}
+
+<div id="side_menu_items" class="posBox">
+</div>
+
+<script type="text/javascript">
+
+//左侧菜单
+hbjs.use('@hoverDir, @homeSideSortBigMenu, @search, @tabs', function(m){
+	
+	var $ = m['jquery'],
+		jobTopSearch = m['product.jobSearch.jobTopSearch'];
+	
+	new m['widge.hoverDir']({
+		container: $('#newBannerbtm'),
+		element: '.subBanner',
+		size:120
+	});
+	
+	new m['product.homeSideSortBigMenu']({
+		noAllows: 6
+	});
+	
+	var searchConfig = {
+		trigger: '.butsub',
+		select: {
+			trigger: '.search_select',
+			trigerClassName: 'hover',
+			align: {
+				baseXY: [0, '100%-2']
+			}
+		},
+		selectedIndex:'{/if $searchtype == "company"/}1{/elseif $searchtype == "fulltext"/}2{/else/}0{//if/}',
+		initDataSource: '/head/SearchKeyword',
+		dataSource:[
+			'{/$siteurl.main/}/index/auto/?limit=12&timestamp={{timestamp}}&type=job&q={{query}}&callback=jsonpcallback','{/$siteurl.main/}/index/auto/?limit=12&timestamp={{timestamp}}&type=company&q={{query}}&callback=jsonpcallback,{/$siteurl.main/}/index/auto/?limit=12&timestamp={{timestamp}}&type=fulltext&q={{query}}&callback=jsonpcallback'
+		],
+		url: [
+			'{/$siteurl.main/}/jobsearch/?params=a12&key={{query}}',
+			'{/$siteurl.main/}/jobsearch/?params=u2&key={{query}}',
+			'{/$siteurl.main/}/jobsearch/?params=u3&key={{query}}'
+		],
+		placeHolder: [
+			'找一找，总有适合您的工作',
+			'请输入公司名称',
+			'请输入关键词'
+		]
+	};
+	//头部搜索
+	var search = new jobTopSearch($.extend({
+		container: $('#search_box form'),
+		search: {
+			trigger: '.keys',
+			align: {
+				baseXY: [0, '100%']
+			},
+			width: 343,
+			zIndex: 1000,
+			target: $('#ui_hbsug_top')
+		}
+	}, searchConfig));
+	
+	search.on('submit', function(e){
+        if(e.index == 0 && e.value && e.value != undefined) {
+            $.getJSON('/head/SaveJobkey/?keyword='+ encodeURIComponent(e.value) + '',function(result){
+				window.location.href = e.url;
+			});
+		} else {
+			  window.location.href = e.url;	
+		}
+	});
+	
+	var searchInput = search.getSearch(),
+		searchSelect = search.getSelect();
+	
+	searchInput.on('itemAllDelete', function(e){
+		$.getJSON('{/get_url rule="/head/ClearSearchKeywords/"/}');
+	});
+	searchInput.on('itemDeleted', function(e){
+		$.getJSON('{/get_url rule="/head/DelSearchKeyword/" data="keyword='+e.value+'"/}');
+	});
+	searchInput.on('searchItemSelected', function(e){
+		//e.url是链接
+		//e.data.text是对应的文字
+		//e.index是索引号
+		var index = searchSelect.get('selectedIndex'),
+			key = e.data.value;
+		if(e.url && index == 0 && key != undefined){
+			$.getJSON('{/get_url rule="/head/SaveJobkey/"/}?keyword='+encodeURIComponent(key),function(result){
+				window.location.href = e.url;
+			});
+		}else {
+			window.location.href = e.url;
+		}
+	});
+	
+	//搜全站职位
+    $('#btnJobSearchSite').click(function(){
+    	var keyword = searchInput.input.getValue();    
+    	var locationurl = "/jobsearch";            	
+    	if(keyword != ""){
+    		locationurl += "/?key="+encodeURIComponent(keyword);
+        } else {
+        	locationurl = "/jobsearch/";
+        }
+    	window.location.href = locationurl;
+        return false;
+    });
+	
+	new m['widge.tabs']({
+		element: $('#inPageTabBd'),
+		tabName: '.inPageList',
+		tabIndex: 0,
+		contentName: '.inPageFirmlist',
+		className: 'cut'
+	});
+});
+
+
+hbjs.use('@jobDialog, @actions', function(m){
+
+	var $ = m['cqjob.actions'].extend(m['cqjob.jobDialog']);
+	
+	$('.inPageFirmlist li:odd').addClass('firmEven');
+	$('nav .lst ul li a').mouseout(function(){
+		 $(this).find('.newIcon').css({left:"15px"});			 
+	});
+	$(".link").on("click", function(e) {
+        e.stopPropagation();
+        window.open($(this).attr("data-url"));
+    });
+	
+	$(".pos").mouseenter(function(){
+        $(".pos").css("display","block");
+    }); 
+
+	$('#navLst li,.posBox').bind('mouseenter',function(){
+		$(this).addClass('show');
+	});
+	$('#navLst li,.posBox').bind('mouseleave',function(){
+		$(this).removeClass('show');
+	});
+
+});
+
+</script>
+
+</body>
+</html>

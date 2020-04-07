@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!--[if lt IE9]  --> 
+<script src="{/version file='html5.js'/}"></script>  
+<!-- [endif] -->
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='front.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='about.css'/}" />
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+
+</head>
+<body>
+{/include file="header.html"/}
+
+
+<section class="oth">
+	<div class="othLft">
+    	{/include file="about/leftlink.html" link="fee"/}
+    </div>
+    <hgroup class="othRht">
+    	<div class="hd"><h2>收费标准</h2></div>
+        <div class="bd cashst">
+        	<p class="tit">网络招聘收费与服务标准</p>
+            <div class="table">
+                <table width="100%" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <td width="128">会员类型</td>
+                            <td width="70">发布时间</td>
+                            <td width="100">下载简历</td>
+                            <td width="80">接收简历</td>
+                            <td width="319">发布区域</td>
+                            <td class="lasttd" width="80">价格</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th bgcolor="#fffbf1">年度VIP会员（A）</th>
+                            <td>12个月</td>
+                            <td>700条简历</td>
+                            <td>不限</td>
+                            <td>职位搜索列表、首页“行业招聘信息栏”，行业频道图片广告，个性化页面模板服务</td>
+                            <td class="lasttd">2200元</td>
+                        </tr>
+                        <tr>
+                            <th bgcolor="#fffbf1">年度VIP会员（B）</th>
+                            <td>12个月</td>
+                            <td>700条简历</td>
+                            <td>不限</td>
+                            <td>职位搜索列表、首页“行业招聘信息栏”。</td>
+                            <td class="lasttd">1350元</td>
+                        </tr>
+                        <tr>
+                            <th bgcolor="#fffbf1">半年度VIP会员</th>
+                            <td>6个月</td>
+                            <td>400条简历</td>
+                            <td>不限</td>
+                            <td>职位搜索列表、首页“行业招聘信息栏”。</td>
+                            <td class="lasttd">850元</td>
+                        </tr>
+                        <tr>
+                            <th bgcolor="#fffbf1">季度VIP会员</th>
+                            <td>3个月</td>
+                            <td>250条简历</td>
+                            <td>不限</td>
+                            <td>职位搜索列表、首页“行业招聘信息栏”。</td>
+                            <td class="lasttd">700元</td>
+                        </tr>
+                        <tr>
+                            <th bgcolor="#fffbf1">月度VIP会员</th>
+                            <td>1个月</td>
+                            <td>100条简历</td>
+                            <td>不限</td>
+                            <td>职位搜索列表、首页“行业招聘信息栏”。</td>
+                            <td class="lasttd">350元</td>
+                        </tr>
+                        <tr class="te">
+                            <th bgcolor="#fffbf1">年度黄金会员</th>
+                            <td>12个月</td>
+                            <td>1000条简历</td>
+                            <td>不限</td>
+                            <td>职位搜索列表、首页“行业招聘信息栏”、“推荐企业信息栏”。</td>
+                            <td class="lasttd">3800元</td>
+                        </tr>
+                        <tr class="te">
+                            <th bgcolor="#fffbf1">半年度黄金会员</th>
+                            <td>6个月</td>
+                            <td>600条简历</td>
+                            <td>不限</td>
+                            <td>职位搜索列表、首页“行业招聘信息栏”、“推荐企业信息栏”。</td>
+                            <td class="lasttd">2400元</td>
+                        </tr>
+                        <tr class="te">
+                            <th bgcolor="#fffbf1">季度黄金会员</th>
+                            <td>3个月</td>
+                            <td>400条简历</td>
+                            <td>不限</td>
+                            <td>职位搜索列表、首页“行业招聘信息栏”、“推荐企业信息栏”。</td>
+                            <td class="lasttd">1700元</td>
+                        </tr>
+                        <tr class="te">
+                            <th class="bottd" bgcolor="#fffbf1">月度黄金会员</th>
+                            <td class="bottd">1个月</td>
+                            <td class="bottd">200条简历</td>
+                            <td class="bottd">不限</td>
+                            <td class="bottd">职位搜索列表、首页“行业招聘信息栏”、“推荐企业信息栏”。</td>
+                            <td class="lasttd bottd">750元</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="tit">办理手续</p>
+            <p>（1）注册为{/$huibo_home_page/}单位会员（<a href="{/$com_reg_url/}{/get_url rule="/register"/}">立即注册</a>）</p>
+            <p>（2）提供贵公司营业执照副本复印件以通过验证（传真号码为：{/if $fax_num!=''/}{/$fax_num/}{/else/}023-63611574{//if/}）；</p>
+            <p>（3）选择会员类型及期限，交纳相应的服务费用。</p>
+            <p>VIP 会员可同时发布100条招聘信息，发布的招聘信息每1天可刷新提前。</p>
+            <p style="margin-bottom:15px;">黄金会员可同时发布300条招聘信息，发布的招聘信息每30分钟分钟可刷新提前。</p>
+            <p class="tit">网络广告</p>
+            <p style="margin-bottom:15px;">图片、文字及其它广告收费标准，请参照“{/$huibo_site_name/}”广告报价表”。</p>
+            <p class="tit">收款方式：（1）在线支付(立即到帐，推荐)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）现金&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）银行转账；</p>
+            <div class="img"><img src="{/$siteurl.style/}/img/about/shoufeibz.gif" /></div>
+            <p style="text-indent:0;">备注：为更好保障贵公司权益，请在传真至{/$huibo_site_name/}的营业执照复印件中间空白处标注“<span class="red">此复印件仅供huibo.com验证招聘信息用</span>”等字样。</p>
+        </div>
+    </hgroup>
+    <div class="clear"></div>
+</section>
+{/include file="./about/footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+</body>
+</html>

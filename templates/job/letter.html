@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="{/$SiteTitle/}，招聘企业，最新招聘企业大全，{/$currentLetter/}开头，第{/$currentPage/}页" />
+<meta name="Description" content="{/$SiteTitle/}最新招聘企业目录，{/$SiteTitle/}是重庆地区的人才网和重庆招聘网，提供{/$SiteTitle/}最新招聘信息,招聘求职理想选择" />
+<title>重庆最新招聘企业大全_{/$currentLetter/}开头_第{/$currentPage/}页 -{/$SiteTitle/}</title>
+<!–[if lt IE9]>
+<script src="{/version file='html5.js'/}"></script>
+<![endif]–>
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='icons.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='front.css'/}" />
+
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+<script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+
+</head>
+<body>
+{/include file='header.html'/}
+
+<section class="let">
+    <div class="hd">
+    	<b>按关键字拼音首字母查询:</b>
+        <ul>
+        {/foreach from=$jobSearchUrls key=url_index item=jobSearchUrl/}
+        <li><a href="{/$jobSearchUrl[1]/}">{/$jobSearchUrl[0]/}</a></li>
+        {//foreach/}
+        </ul>
+        <div class="clear"></div>
+    </div>
+    <div class="bd">
+    	<h3>您当前查看的是字母“<span class="strong orange">{/$currentLetter/}</span>”:</h3>
+    	<ul>
+        {/foreach $jobs as  $key => $job/}
+        <li><a target="_blank" href="{/getJobUrl jobID=$job["job_id"]/}" title="{/$job["station"]/}">{/$job["station"]/}{/$job["company_name"]/}</a></li>
+        {//foreach/}
+        </ul>
+        <div class="clear"></div>
+    </div>
+    {/$pager/}
+</section>
+{/include file='footer.html'/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script>
+$(document).ready(function(){
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>汇博运营数据监控</title>
+    <script src="http://assets.huibo.com/js/jquery-1.8.3.min.js"></script>
+    <script src="http://assets.huibo.com/js/echarts/echarts.min.js"></script>
+    <script src="http://assets.huibo.com/js/echarts/countUp.js"></script>
+    <style>
+        body{padding: 0;margin: 0;background: #062b4c;font-family: "Microsoft YaHei";}
+        p,h1,h2,div{padding: 0;margin: 0;}
+        .head{background: url("{/$siteurl.style/}/img/c/marketdata/head05.png") no-repeat top center;width: 100%;height: 104px;overflow: hidden;position: relative;}
+        .head .head-num-center{color: #03fdf3;text-align: center;font-size: 38px;position: absolute;top: 16px;width: 100%;left: 0px;letter-spacing: 10px;font-weight: bold;}
+        .head .head-num-center .head-en{font-weight: normal;font-size: 17px;color: #00f0ff;letter-spacing: 7px;}
+        .head .head-num-one{float: left;color: #00fffc;font-size: 25px;position: absolute;left: 20px;top: 60px;}
+        .head .head-num-two{float: right;color: #00fffc;font-size: 25px;position: absolute;right: 20px;top: 60px;}
+        .head .head-num-one strong,.head .head-num-two strong{font-size: 38px;color: #04fe8b;vertical-align: middle;}
+        .huibo_head{position: absolute;left: 20px;top: 0px;}
+        .content{padding:20px 20px;box-sizing: border-box;overflow: hidden;}
+        .wrap{width: 100%;overflow: hidden;}
+        .content .wrap>div{float: left;}
+        .content .wrap .item{width: 24%;height: auto;}
+        .content .wrap .item .two{margin: 10px 0px;}
+        .content .wrap .item h2,.content .wrap .deliver h2{color:#02fcf9;font-weight: normal; font-size: 16px;height: 29px;line-height: 27px;padding-left: 9px;width: 99%;background:url("{/$siteurl.style/}/img/c/marketdata/bg002.png") no-repeat top left;box-sizing: border-box;background-size: 100% 100%;margin: 2px 2px;}
+        .content .wrap .item .small{background: url("{/$siteurl.style/}/img/c/marketdata/bg0001.png") no-repeat;background-size:100% 100%;width: 100%;height: auto;}
+        .content .wrap .item .big{background: url("{/$siteurl.style/}/img/c/marketdata/bg0001.png") no-repeat;background-size:100% 100%; width: 100%;height: auto;overflow: hidden;}
+        .content .center{position: relative; width: 50%;height: auto;margin: 0px 1%;border:1px solid #0376b9;box-sizing: border-box;}
+        .content .center .deliver{width: 50%;position: absolute;left: 0px;bottom: 0px;background: url("{/$siteurl.style/}/img/c/marketdata/bg0001.png") no-repeat;background-size:100% 100%;height: auto;z-index: 3;overflow: hidden;}
+        .content .wrap .deliver h2{position: relative;z-index: 5;}
+        .content .center .deliver .number{width: 100%;overflow: hidden;}
+        .content .center .deliver .number p{font-size: 14px;color: #0a81ff;padding:0px 20px ;margin-top: 3px;}
+        .content .center .deliver .number p b{font-weight: normal;}
+        .content .center .deliver .number p span span{ color: #00c0ea;}
+        .content .center .deliver .number .blue{color:#00c0ea;font-weight: normal; }
+        .content .wrap .item h2 img,.content .wrap .deliver h2 img{width: 17px;height: 13px;margin-right: 6px;}
+        .small-today{position: relative;top:0px;left: 9px;margin-left: 0px;}
+        .small-today span{position: absolute;top:4px;left: 0px;font-size: 13px;color: #2698ff;}
+        .small-today strong{font-size: 16px;color: #02fcf9;vertical-align: middle;margin-left: 10px;}
+        .one .number{margin-left: 33px;}
+        .one .number p{color: #2698ff;font-size: 20px;height: 20%;}
+        .one .number p .blue{color: #02fcf9;}
+        .bg2016{position: relative;box-sizing: border-box;overflow: hidden;}
+        .bg2016>img{display: block;  max-width: 86%;  margin-left: 9px;max-height: 100%;margin-bottom: 5px;}
+        .number .bg-num{text-align: center;}
+        #js_post{margin-left: 0px;position: relative;}
+        .bg-left{width: 88%;display: inline-block;}
+        .number .bg-text{position: absolute;top:9px;left: 9px;width: 10%;height: auto;display: inline-block;}
+        .bg-text p{color: #0775ce;font-size: 10px;margin-top: 24px;}
+        .bg-bott span{font-size: 12px;color: #2698ff;margin: 0 3px;}
+        .bg-bott{text-align: center;height:16px;line-height: 16px;}
+
+        .foot{width: 100%;background: url("{/$siteurl.style/}/img/c/marketdata/bgfoot.png") repeat-x;height: 40px;margin-top: 10px;}
+
+        .BMap_cpyCtrl
+        {
+            display:none;
+        }
+        .anchorBL{
+            display:none;
+        }
+        .today{position: absolute;left: 0;right: 0;text-align: center;bottom: 17px;
+            color: #02fcf9; font-size: 16px;}
+        .today em{font-style: normal;color: #02fcf9; font-size: 16px;}
+    </style>
+
+
+</head>
+<body>
+<div class="head">
+    <span class="head-num-one">求职者累计注册量：<strong id="js_person">0</strong></span>
+    <span class="head-num-center">
+        <!--<p>汇博网运营数据</p>
+        <p class="head-en">HUIBO OPERATION DATA</p>-->
+    </span>
+    <span class="head-num-two">累计服务企业：<strong id="js_company">0</strong></span>
+    <img src="{/$siteurl.style/}/img/c/marketdata/huibo_head.png" alt="" class="huibo_head" style="max-width: 10%;">
+    <span class="today">数据更新时间：<em id="today">2019-01-01</em></span>
+</div>
+<div class="content">
+    <div class="wrap">
+        <div class="item left">
+            <div class="small one">
+                <h2><!--<img src="{/$siteurl.style/}/img/c/marketdata/icon.png" alt="">--> <span style="font-size: 20px;letter-spacing:-6px;margin-right: 10px;"> >> </span>近期数量</h2>
+                <div class="number" style="padding: 20px 0px;box-sizing: border-box;">
+                    <p><span style="margin-right: 8px;">今日登录量:</span><span id="login_number" class="blue"></span></p>
+                    <p><span style="margin-right: 8px;">近7日登录量:</span><span id="login7" class="blue">250564</span></p>
+                    <p><span style="margin-right: 8px;">今日投递量:</span><span id="delivery_number" class="blue">26935</span></p>
+                    <p><span style="margin-right: 8px;">近7日投递量:</span><span id="delivery7" class="blue">142584</span></p>
+                    <p><span style="margin-right: 8px;">近7日职位浏览量:</span><span id="jobvisit" class="blue">142584</span></p>
+                </div>
+            </div>
+            <div class="big two">
+                <h2><!--<img src="{/$siteurl.style/}/img/c/marketdata/icon.png" alt="">--> <span style="font-size: 20px;letter-spacing:-6px;margin-right: 10px;"> >> </span>{/date("Y")-1/}年 求职情况分析</h2>
+                <div class="number bg2016">
+                    <img src="{/$siteurl.style/}/img/c/marketdata/job_0004.png" alt="">
+                    <!--<div class="bg-text">
+                        <p>1000</p>
+                        <p>500</p>
+                        <p>0</p>
+                    </div>
+                    <div class="bg-left">
+                        <div class="bg-num">
+                            &lt;!&ndash;<img src="{/$siteurl.style/}/img/c/marketdata/job01.png" alt="">
+                            <img src="{/$siteurl.style/}/img/c/marketdata/job02.png" alt="">
+                            <img src="{/$siteurl.style/}/img/c/marketdata/job03.png" alt="">&ndash;&gt;
+                            <img src="{/$siteurl.style/}/img/c/marketdata/bgnum.png" alt="">
+                        </div>
+                        <div class="bg-bott">
+                            <span style="margin-left: 20px;">岗位需求数</span>
+                            <span>投递简历数</span>
+                            <span>面试邀请数</span>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+            <div class="big three">
+                <h2><!--<img src="{/$siteurl.style/}/img/c/marketdata/icon.png" alt="">--> <span style="font-size: 20px;letter-spacing:-6px;margin-right: 10px;"> >> </span>求职者学历/年龄分布</h2>
+                <div class="number">
+                    <div id="edu" class="number" style="width: 50%;float: left;"></div>
+                    <div id="age" class="number" style="width: 50%;float: left;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="center">
+            <div id="main"></div>
+            <div class="deliver">
+                <h2><!--<img src="{/$siteurl.style/}/img/c/marketdata/icon.png" alt="">--> <span style="font-size: 20px;letter-spacing:-6px;margin-right: 10px;"> >> </span>重庆市简历投递实时信息</h2>
+                <div class="number">
+                </div>
+            </div>
+        </div>
+
+        <div class="item right">
+            <div class="small one">
+                <h2><!--<img src="{/$siteurl.style/}/img/c/marketdata/icon.png" alt="">--> <span style="font-size: 20px;letter-spacing:-6px;margin-right: 10px;"> >> </span>近7日刷新职位</h2>
+                <div class="number small-today" style="margin-left: 0px;">
+                    <span>今日刷新职位:<strong id="post_number"></strong></span>
+                    <div id="js_post" class="number">
+
+                    </div>
+                </div>
+            </div>
+            <div class="big two">
+                <h2><!--<img src="{/$siteurl.style/}/img/c/marketdata/icon.png" alt="">--> <span style="font-size: 20px;letter-spacing:-6px;margin-right: 10px;"> >> </span>企业行业分布</h2>
+                <div class="number">
+                    <div id="js_industry" class="number"></div>
+                </div>
+            </div>
+            <div class="big three">
+                <h2><!--<img src="{/$siteurl.style/}/img/c/marketdata/icon.png" alt="">--> <span style="font-size: 20px;letter-spacing:-6px;margin-right: 10px;"> >> </span>企业地区分布</h2>
+                <div class="number">
+                    <div id="js_area" class="number"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="foot">
+
+</div>
+<!--高度-->
+<script type="text/javascript">
+//  console.log($(window).height());
+//  当日时间
+    var date=new Date();
+    var year=date.getFullYear();//当前年份
+    var month=date.getMonth();//当前月份
+    var data=date.getDate();//天
+    var time=year+"-"+fnW((month+1))+"-"+fnW(data);
+    $('#today').text(time);
+    function fnW(str){
+        var num;
+        num = str>10?str:"0"+str;
+        return num;
+    }
+  var clientheight = $(window).height();//屏幕内容高度
+  $(".content").css("height",clientheight-154);//左右两边三个框总高度
+  $(".center").css("height",clientheight-154-30);//中间地图框总高度
+  $(".item>div").css("height",(clientheight-154-50)/3);//左右两边一个框总高度
+  $(".deliver").css("height",(clientheight-154-50)/3);//重庆实时投递信息框
+  $(".number").css("height",(clientheight-154-50)/3-30);//放插件框的高度
+  //$("#js_post").css("height",(clientheight-180-50)/3-30-20);//近7日刷新职位
+  $(".bg-num img").css("height",(clientheight-154-50)/3-30-38);//2016求职情况分析图片的高度
+</script>
+
+<!--数字动画-->
+<script type="text/javascript">
+  var js_person = new CountUp("js_person", 24.02, 0, 0, 9),//求职者累计注册量
+    js_company = new CountUp("js_company", 24.02, 0, 0, 9),//累计服务企业
+    login_number = new CountUp("login_number", 24.02, 0, 0, 9),//今日登录量
+    delivery_number = new CountUp("delivery_number", 24.02, 0, 0, 9),//今日投递量
+    post_number = new CountUp("post_number", 24.02, 0, 0, 9),//今日刷新职位
+    login7 = new CountUp("login7", 24.02, 0, 0, 9),//7天登录量
+    delivery7 = new CountUp("delivery7", 24.02, 0, 0, 9);//7天投递量
+     jobvisit = new CountUp("jobvisit", 24.02, 0, 0, 9);//7天投递量
+  js_person.start();
+  js_company.start();
+  login_number.start();
+  delivery_number.start();
+  post_number.start();
+  login7.start();
+  delivery7.start();
+  jobvisit.start();
+  var i = 1000;
+  /*今日数字*/
+  var setSunCont = 1;
+  function setNumber(ajaxgo){
+    if(ajaxgo) return;
+    ajaxgo = true;
+    $.ajax({
+       url:"http://www.huibo.com/marketdata/GetDataV2",
+      dataType:"json",
+      success:function(json){
+        /*今日数字*/
+        console.log(json["person_login_num"]["today"]["num"]);
+        login_number.update(json["person_login_num"]["today"]["num"]);
+        delivery_number.update(json["person_apply_num"]["today"]["num"]);
+        post_number.update(json["job_num"]["today"]["num"]);
+        js_company.update(json["company_register_num"]);
+        js_person.update(json["person_register_num"]);
+        login7.update(json["person_login_num"]["dayAll"]["num"]);
+        delivery7.update(json["person_apply_num"]["dayAll"]["num"]);
+        jobvisit.update(json["job_visit_count"]);
+        if(setSunCont) {
+          /*setSun("js_login",
+            [json["person_login_num"]["day7"]["date"], json["person_login_num"]["day6"]["date"], json["person_login_num"]["day5"]["date"], json["person_login_num"]["day4"]["date"], json["person_login_num"]["day3"]["date"], json["person_login_num"]["day2"]["date"], json["person_login_num"]["day1"]["date"]],
+            [json["person_login_num"]["day7"]["num"], json["person_login_num"]["day6"]["num"], json["person_login_num"]["day5"]["num"], json["person_login_num"]["day4"]["num"], json["person_login_num"]["day3"]["num"], json["person_login_num"]["day2"]["num"], json["person_login_num"]["day1"]["num"]]
+          );
+          /!*登录*!/
+          setSun("js_delivery",
+            [json["person_apply_num"]["day7"]["date"], json["person_apply_num"]["day6"]["date"], json["person_apply_num"]["day5"]["date"], json["person_apply_num"]["day4"]["date"], json["person_apply_num"]["day3"]["date"], json["person_apply_num"]["day2"]["date"], json["person_apply_num"]["day1"]["date"]],
+            [json["person_apply_num"]["day7"]["num"], json["person_apply_num"]["day6"]["num"], json["person_apply_num"]["day5"]["num"], json["person_apply_num"]["day4"]["num"], json["person_apply_num"]["day3"]["num"], json["person_apply_num"]["day2"]["num"], json["person_apply_num"]["day1"]["num"]]
+          );*/
+          /*投递*/
+          setSun("js_post",
+            [json["job_num"]["day7"]["date"], json["job_num"]["day6"]["date"], json["job_num"]["day5"]["date"], json["job_num"]["day4"]["date"], json["job_num"]["day3"]["date"], json["job_num"]["day2"]["date"], json["job_num"]["day1"]["date"]],
+            [json["job_num"]["day7"]["num"], json["job_num"]["day6"]["num"], json["job_num"]["day5"]["num"], json["job_num"]["day4"]["num"], json["job_num"]["day3"]["num"], json["job_num"]["day2"]["num"], json["job_num"]["day1"]["num"]]
+          );
+          /*岗位*/
+          setSunCont = 0;
+        }
+        ajaxgo = false;
+        setTimeout(function(){
+          setNumber(ajaxgo);
+        },5000);
+      }
+    });
+  }
+  setNumber(false);
+  /*近七日曲线图*/
+  function setSun(id,day,data){
+    var js_post = echarts.init(document.getElementById(id));
+    postoption = {
+      color: ['#00c5e7'],
+      textStyle:{
+        color:'#2698ff',
+        fontSize:'10'
+      },
+      backgroundColor: 'transparent',
+      tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+          type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+      },
+      grid: {
+        left: '0',
+        right: '20',
+        bottom: '10',
+        top:'40',
+        containLabel: true
+      },
+      xAxis : [
+        {
+          type : 'category',
+          data : day,
+          axisTick: {
+            alignWithLabel: true
+          },
+          axisLine:{
+            lineStyle:{
+              color:"#063973"
+            }
+          }
+        }
+      ],
+      yAxis : [
+        {
+          type : 'value',
+          axisLine:{
+            lineStyle:{
+              color:"#063973"
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: ['#063973']
+            }
+          }
+        }
+      ],
+      series : [
+        {
+          name:'值',
+          type:'bar',
+          barWidth: '20%',
+          itemStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1,
+                [
+                  {offset: 0, color: '#ef68ff'},
+                  {offset: 0.5, color: '#b76cfa'},
+                  {offset: 1, color: '#0379ea'}
+                ]
+              )
+            },
+          },
+          data:data
+        }
+      ]
+    };
+    js_post.setOption(postoption);
+  }
+</script>
+<!--/数字动画-->
+
+
+
+<!--求职者学历分布-->
+<script>
+  var js_position = echarts.init(document.getElementById('edu'));
+  positionoption = {
+    color:["#08f2d9","#03d152","#ff931b","#fef006","#f714d0","#f168ff","#ba6cfa","#03c5f6"],
+    textStyle:{
+      color:'#666'
+    },
+    lineStyle:{
+      color:'#666'
+    },
+    /*title : {
+      text: '求职者学历分布',
+      x:'center',
+      borderColor:'#666'
+    },*/
+    tooltip: {
+      trigger: 'item',
+      formatter: "{a} <br/>{b}:({d}%)"
+    },
+    series: [
+      {
+        type:'pie',
+        selectedMode: '',
+        radius: [0, '30%'],
+        label: {
+          normal: {
+            position: 'inner'
+          }
+        },
+        labelLine: {
+          normal: {
+            show: false
+          }
+        }
+      },
+      {
+        type:'pie',
+        radius: ['30%', '52%'],
+        name:'学历',
+        itemStyle : {
+          normal: {
+            label: {
+              show: true,
+              textStyle: {
+                color: '#2698ff',
+                fontSize:10,
+              }
+            },
+            labelLine: {
+              show: true,
+              length: 0,
+              color:'##2698ff'
+            }
+          },
+        },
+        data:[
+          {value:96538, name:'本科'},
+          {value:190, name:'博士'},
+          {value:19080, name:'初中'},
+          {value:147499, name:'大专'},
+          {value:54690, name:'高中'},
+          {value:3690, name:'硕士'},
+          {value:52868, name:'中技/中专'}
+        ]
+      }
+    ]
+  };
+  js_position.setOption(positionoption);
+</script>
+
+<!--求职者年龄分布-->
+<script>
+  var js_age = echarts.init(document.getElementById('age'));
+  ageoption ={
+    color:["#08f2d9","#03d152","#fef006","#f168ff","#0299f9"],
+    textStyle:{
+      color:'#666'
+    },
+    borderColor:'#666',
+    /*title : {
+      text: '求职者年龄分布',
+      x:'center'
+    },*/
+    tooltip: {
+      trigger: 'item',
+      formatter: "{a} <br/>{b}: ({d}%)"
+    },
+    /*calculable : true,*/ //是否显示外框
+    series: [
+      {
+        type:'pie',
+        selectedMode: '',
+        radius: [0, '30%'],
+      },
+      {
+        type:'pie',
+        radius: ['30%', '52%'],
+        name:'年龄',
+        itemStyle : {
+          normal: {
+            label: {
+              show: true,
+              textStyle: {
+                color: '#2698ff',
+                fontSize:10,
+              }
+            },
+            labelLine: {
+              show: true,
+              length: 2
+            }
+          },
+        },
+        data:[
+          {value:126175, name:'20-25岁'},
+          {value:3984, name:'20岁以下'},
+          {value:135913, name:'25-30岁'},
+          {value:95650, name:'30-45岁'},
+          {value:18699, name:'45岁以上'}
+        ]
+      }
+    ]
+  };
+  js_age.setOption(ageoption);
+</script>
+
+<!--行业分布-->
+<script>
+  var myChart2 = echarts.init(document.getElementById('js_industry'));
+  option2 = {
+    color:["#08f2d9","#03d152","#d2ef09","#d506a2","#f714d0","#f168ff","#ba6cfa","#4d86fb","#1075ff","#0299f9","#03c5f6"],
+    textStyle:{
+      color:'#666'
+    },
+    borderColor:'#666',
+    /*title : {
+      text: '企业行业分布',
+      x:'center'
+    },*/
+    tooltip : {
+      trigger: 'item',
+      formatter: "{a} <br/>{b}:({d}%)"
+    },
+    legend: {
+      x : 'center',
+      y : 'bottom',
+      data:['rose1','rose2','rose3','rose4','rose5','rose6','rose7','rose8']
+    },
+    toolbox: {
+      show : true,
+      feature : {
+        mark : {show: true},
+        dataView : {show: true, readOnly: false},
+        magicType : {
+          show: true,
+          type: ['pie', 'funnel']
+        },
+        restore : {show: true},
+        saveAsImage : {show: true}
+      }
+    },
+    calculable : true,
+    series: [
+      {
+        type:'pie',
+        selectedMode: '',
+        radius: [0, '30%'],
+        label: {
+          normal: {
+            position: 'inner'
+          }
+        },
+        labelLine: {
+          normal: {
+            show: false
+          }
+        }
+      },
+      {
+        type:'pie',
+        radius: ['40%', '65%'],
+        name:'行业',
+        center: ['50%', '48%'],
+        itemStyle : {
+          normal: {
+            //板块显示信息
+            label: {
+              show: true,
+              textStyle: {
+                color: '#2698ff'
+              }
+            },
+            //链接板块显示信息线
+            labelLine: {
+              show: true,
+              length: 2
+            }
+          },
+        },
+        data:[
+          {value:2038, name:'IT行业'},
+          {value:1302, name:'餐饮/酒店/生活服务'},
+          {value:1526, name:'房地产/建筑'},
+          {value:1111, name:'广告/文化/传媒'},
+          {value:175, name:'交通/运输/物流/快递'},
+          {value:1462, name:'教育/培训/专业服务'},
+          {value:217, name:'金融/银行'},
+          {value:1253, name:'汽车/摩托车/机械制造'},
+          {value:1774, name:'消费品'},
+          {value:1055, name:'装饰/建材'},
+          {value:1377, name:'综合行业'}
+        ]
+      }
+    ]/*
+        series : [
+            {
+                name:'行业',
+                type:'pie',
+                radius : [30, 100],
+                center : ['50%', '50%'],
+                roseType : 'area',
+                data:[
+                    {value:42074, name:'餐饮/旅游/酒店/生活服务'},
+                    {value:52635, name:'房地产/建筑/物业/装饰'},
+                    {value:19769, name:'广告/文化/传媒'},
+                    {value:36103, name:'互联网/软件/计算机硬件'},
+                    {value:21592, name:'教育/培训/专业服务'},
+                    {value:12315, name:'金融'},
+                    {value:31516, name:'进出口/物流/其他行业'},
+                    {value:7569, name:'其他'},
+                    {value:32340, name:'机械制造/汽车/摩托车'},
+                    {value:35832, name:'消费品'},
+                    {value:13773, name:'医药/医疗'}
+                ]
+            }
+        ]*/
+  };
+
+  myChart2.setOption(option2);
+</script>
+
+<!--地区分布-->
+<script>
+  var js_area = echarts.init(document.getElementById('js_area'));
+  areaoption = {
+    color:["#08f2d9","#03d152","#fef006","#ff931b","#f714d0","#f168ff","#ba6cfa","#4d86fb","#1075ff","#0299f9","#03c5f6"],
+    textStyle:{
+      color:'#666'
+    },
+    borderColor:'#666',
+    /*title : {
+      text: '企业地区分布',
+      x:'center'
+    },*/
+    tooltip : {
+      trigger: 'item',
+      formatter: "{a} <br/>{b} :({d}%)"
+    },
+    legend: {
+      x : 'center',
+      y : 'bottom',
+      data:['rose1','rose2','rose3','rose4','rose5','rose6','rose7','rose8']
+    },
+    toolbox: {
+      show : true,
+      feature : {
+        mark : {show: true},
+        dataView : {show: true, readOnly: false},
+        magicType : {
+          show: true,
+          type: ['pie', 'funnel']
+        },
+        restore : {show: true},
+        saveAsImage : {show: true}
+      }
+    },
+    calculable : true,
+    series: [
+      {
+        type:'pie',
+        selectedMode: '',
+        radius: [0, '30%'],
+        label: {
+          normal: {
+            position: 'inner'
+          }
+        },
+        labelLine: {
+          normal: {
+            show: false
+          }
+        }
+      },
+      {
+        type:'pie',
+        radius: ['40%', '65%'],
+        name:'地区',
+        center: ['50%', '48%'],
+        itemStyle : {
+          normal: {
+            //板块显示信息
+            label: {
+              show: true,
+              textStyle: {
+                color: '#2698ff'
+              }
+            },
+            //链接板块显示信息线
+            labelLine: {
+              show: true,
+              length: 2
+            }
+          },
+        },
+        data:[
+          {value:1324, name:'渝中区'},
+          {value:1833, name:'江北区'},
+          {value:1679, name:'九龙坡'},
+          {value:816, name:'沙坪坝区'},
+          {value:1431, name:'南岸区'},
+          {value:211, name:'大渡口区'},
+          {value:2347, name:'渝北区'},
+          {value:270, name:'巴南区'},
+          {value:223, name:'北碚区'},
+          {value:530, name:'两江新区'},
+          {value:545, name:'永川区'}
+        ]
+      }
+    ]
+  };
+  js_area.setOption(areaoption);
+</script>
+
+<!--简历实时投递信息-->
+<script>
+  /*$(document).ready(function(e) {
+    var bodyHeight=$('body').height();
+    $('.huiboDate').css("height",bodyHeight);
+    $('.huiboDate div').css("height",bodyHeight-45);
+  });*/
+  var _wrap=$('.deliver .number');
+  var _interval=1000;
+  var _moving;
+  _wrap.hover(function(){
+    clearInterval(_moving);
+  },function(){
+    _moving=setInterval(function(){
+      var _field=_wrap.find('p:first');
+      var _h=_field.height();
+      _field.animate({marginTop:-_h+'px'},600,function(){
+        _field.css('marginTop',0).appendTo(_wrap);
+      })
+    },_interval)
+  }).trigger('mouseleave');
+
+  $.ajax({
+    type:"POST",
+    url:"{/$siteurl.www/}/marketdata/mapdata",
+    /*url:"{/$siteurl.www/}/marketdata/mapdata",*/
+    /*url:"{/$siteurl.www/}/marketdata/mapdata",*/
+    dataType:"json",
+    success: function(date){
+      for(i=0;i<date.length;i++){
+        $('.deliver .number').append("<p>"+"<span><b class='blue'>"+date[i].user_name+"</b>在"+"<b class='gray'>"+date[i].area_name+"</b></span>"+"<span>,投递<span>["+date[i].station+"]</span>职位</span>"+"</p>")
+      }
+    }
+  })
+
+</script>
+
+<script src="{/$siteurl.style/}/js/echarts2/js/echarts.js"></script>
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>-->
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=lwmIK8mH4P7HcjHnsx3wESLmvkPjcf07"></script>-->
+<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=33f9256a1a1ba5a80eb40f8ed45bce3c"></script>
+<script src="{/$siteurl.style/}/js/echarts2/extension/BMap/doc/markdatanew2.js"></script>
+
+</body>
+</html>      

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="{/$seo_key/}" />
+    <meta name="description" content="{/$seo_desc/}" />
+    <title>{/$seo_title/} - {/$title/}</title>
+
+</head>
+<body>
+<div style="width:600px;margin:0 auto;font-family: '微软雅黑'">
+    <a class="banner" href="{/get_url rule='/topic/index' data="t={/$topic_name/}" domain="main"/}"><img src='{/$pic_base/}{/$mail_pic/}' style="display: block;border:0px" /></a>
+    <div style="width:560px;margin:0 auto">
+        <img src="{/$siteurl.style/}/img/topicPage/mail/title.jpg" style="margin:25px 0" />
+        <ul style="list-style: none;margin:0;padding:0;width:560px;height:117px">
+        	{/foreach $dataLst as $key => $job/}{/if $key <= 47/}{/if $key%3 == 0 && $key > 2/}</ul><ul style="list-style: none;margin:0;padding:0;width:560px;height:117px">{//if/}       	
+	            <li style="list-style: none;width:170px;height:100px;float:left;{/if $key%3 == 1/}margin:0 20px 15px 20px;{/else/}margin-bottom: 15px;{//if/}text-align: center;border:1px solid #f7f7f7">
+	                <p style="background: #f8f8f8;margin:0;padding:10px 0;height:40px">
+	                    <span><a href="{/if $job['is_mail_job']!=1 || empty({/$job['mail_job_link']/})/}
+	                                    {/if !empty($job['job_flag'])/}{/base_lib_Constant::MAIN_URL_NO_HTTP/}/zhaopin/zhiwei/{/$job['job_flag']/}.html{/else/}{/if stripos($job['job_link'],'http://')=== false/}//{//if/}{/$job['job_link']/}{//if/}
+	                                {/else/}{/$job['mail_job_link']/}{//if/}" style="color:#666;font-size: 14px;text-decoration: none;display: block">{/base_lib_BaseUtils::cutstr($job['station'],9,'utf-8','',"...")/}</a></span>
+	                    <b style="color:#ff001d;font-size:14px">{/$job.min_salary/}-{/$job.max_salary/}</b>
+	                </p>
+	                <a style="color:#696969;text-decoration: none;font-size: 12px;display: block;margin:10px 0" href="{/get_url rule='/topic/index' data="t={/$topic_name/}"/}" data-companyid="{/$job.tcompany_id/}">{/if empty($job.company_shortname)/}{/$job.company_name/}{/else/}{/$job.company_shortname/}{//if/}</a>
+	            </li>{//if/}{//foreach/}
+        </ul>
+        <p><a class="gozt" href="{/get_url rule='/topic/index' data="t={/$topic_name/}" domain="main"/}" style="color:#fff;font-size: 16px;text-align: center;background: #ffa101;height: 40px;line-height: 40px;display: block;text-decoration: none;font-weight:bold">点击进入活动页面>></a></p>
+        <img src="{/$siteurl.style/}/img/topicPage/mail/ewm.jpg" style="display: block;margin-top: 30px" />
+        <p style="margin:25px 0 ;color:#b3b3b3;font-size:12px;line-height: 22px">如非本人订阅，请忽略此邮件，为您带来不便请谅解！如有任何问题，欢迎咨询我们：400-1010-970<br />
+            <span style="font-size:12px;color:#b3b3b3">如果邮件内容不能正常浏览，<a style="color:#ed1c22;text-decoration: underline;margin-right: 20px" href="{/get_url rule='/topic/index' data="t={/$topic_name/}" domain="main"/}">请点击查看</a></span><a style="color:#333;font-size:12px;text-decoration: underline" href="">退订此邮件</a>
+        </p>
+        <div style="background: #f1f1f1;color:#666;text-align: center;padding:20px 0;font-size: 12px;line-height: 25px">©{/date('Y')/} 汇博网 版权所有<br /> 增值电信业务经营许可证：渝B2-20060063 人才中介服务许可证：渝中人社[2011]216号</div>
+   		<style>	   
+           {/$more_style/}		   	   		   
+       </style>
+    </div>
+</div>
+</body>
+</html>

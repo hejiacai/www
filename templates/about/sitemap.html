@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!--[if lt IE9]  --> 
+<script src="{/version file='html5.js'/}"></script>  
+<!-- [endif] -->
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='front.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='about.css'/}" />
+<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+</head>
+<body>
+
+{/include file="header.html"/}
+
+
+<section class="oth">
+	<div class="othLft">
+    	{/include file="about/leftlink.html" link="sitemap"/}
+    </div>
+    <hgroup class="othRht">
+    	<div class="hd"><h2>网站地图</h2></div>
+        <div class="bd webmap">
+            <dl>
+            <dt><a href="javascript:void(0);">个人求职</a></dt>
+            <dd><a href="{/$person_url/}{/get_url rule="/register"/}">注册个人账户</a><a href="{/$person_url/}{/get_url rule="/login"/}">登录求职中心</a><a href="{/$person_url/}{/get_url rule="/resume/manage"/}">我的简历</a><a href="{/$person_url/}{/get_url rule="/apply"/}">我的职位</a><a href="{/$person_url/}{/get_url rule="/certification"/}">账户管理</a><a href="/Person/Fair/FairList.aspx">现场招聘</a><a href="{/get_url rule="/job/search"/}">职位搜索</a><a href="{/get_url rule="/wellknown"/}">名企招聘</a></dd>
+            </dl>
+            <dl>
+            <dt><a href="javascript:void(0);">企业招聘</a></dt>
+            <dd><a href="{/$company_url/}{/get_url rule="/register"/}">注册企业账户</a><a href="{/$company_url/}{/get_url rule="/login"/}">登录招聘中心</a><a href="{/$company_url/}{/get_url rule="/index"/}">招聘中心</a><a href="{/$company_url/}{/get_url rule="/job"/}">职位管理</a><a href="{/$company_url/}{/get_url rule="/apply/"/}">简历管理</a><a href="{/$company_url/}{/get_url rule="/resumesearch/"/}">简历搜索</a><a href="{/$company_url/}{/get_url rule="/fairjob/"/}">现场招聘</a><a href="{/$company_url/}{/get_url rule="/company/modify"/}">系统管理</a></dd>
+            </dl>
+            <dl>
+            <dt><a href="javascript:void(0);">重庆招聘会</a></dt>
+            <dd><a href="/zhaopinhui/">招聘会介绍</a><a href="/zhaopinhui/enterprise">在线订展</a><a href="/zhaopinhui/enterprise">企业参会指南</a><a href="/zhaopinhui/notified">求职指南</a><a href="/zhaopinhui/fairlist">现场招聘会</a></dd>
+            </dl>
+            <dl>
+            <dt><a href="javascript:void(0);">手机找工作</a></dt>
+            <dd><a href="{/$mobile_url/}">3G手机找工作</a></dd>
+            </dl>
+            <dl>
+            <dt><a href="javascript:void(0);">校园招聘</a></dt>
+            <dd><a href="/Information/InformationList.aspx?sortID=xiaoyuanzhaopin.ggb">公告板</a><a href="/Information/InformationList.aspx?sortID=xiaoyuanzhaopin.jyzd">就业指导</a><a href="/JobSearchResult.aspx?chkWorkYear3=1&chkDegree3=1&chkSalary2=1">校园招聘单位</a><a href="/Information/InformationList.aspx?sortID=xiaoyuanzhaopin.gxlj">网站高校链接</a></dd>
+            </dl>
+            <dl>
+            <dt><a href="javascript:void(0);">职场指南</a></dt>
+            <dd><a href="/zhichang/sort/sort-职场之路">职场之路</a><a href="/zhichang/sort/sort-求职面试">求职面试</a><a href="/zhichang/sort/sort-职场风向">职场风向</a><a href="/zhichang/sort/sort-劳动与法">劳动与法</a></dd>
+            </dl>
+            <dl>
+            <dt><a href="javascript:void(0);">帮助信息</a></dt>
+            <dd><a href="{/get_url rule="/"/}">帮助中心</a><a href="{/get_url rule="/about/"/}">关于我们</a><a href="{/get_url rule="/about/contact/"/}">联系我们</a><a href="/person/companyshow/emkr9733b98xzl6ak.shtml">加入我们</a><a href="{/get_url rule="/about/fee/"/}">收费标准</a><a href="/About/Ad.aspx">广告投放</a><a href="{/get_url rule="/about/message/"/}">网站留言</a><a href="{/get_url rule="/about/links/"/}">友情链接</a></dd>
+            </dl>
+        </div>
+    </hgroup>
+    <div class="clear"></div>
+</section>
+{/include file="./about/footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>{/$title/}</title>
+<!--[if lt IE9]  --> 
+<script src="{/version file='html5.js'/}"></script>  
+<!-- [endif] -->
+<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='front.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='hrcollege.css'/}" />
+<link rel="stylesheet" type="text/css" href="{/version file='hrserver.css'/}" />
+	<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='jquery-1.8.3.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='common.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='dialog.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='jquery.form.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='ui_validate.js'/}"></script>
+	<script type="text/javascript" language="javascript" src="{/version file='ui_inputFocus.js'/}"></script>
+	<script type="text/javascript">
+		window.CONFIG = {
+			HOST: '{/$siteurl.style/}',
+			COMBOPATH: '/js/v2/'
+		}
+	</script>
+	<script type="text/javascript" src="{/version file='hbjs.js,jquery.min.js,util.js,class.js,shape.js,event.js,aspect.js,attribute.js,cookie.js'/}"></script>
+	<script type="text/javascript" src="{/version file="global.js"/}"></script>
+	<script type="text/javascript">
+			hbjs.loadJS('{/$siteurl.style/}/js/v2/cqjob/common.js');
+	</script>
+
+<script type="text/javascript" language="javascript" src="{/version file='ui_flexslider.js'/}"></script><!--左右滚动-->
+
+</head>
+<body id="body">
+	{/include file="new_headsearch_2015.html"/}
+<section>
+    <hgroup class="content">
+    	<div class="topPart">
+        	<div class="hd"></div>
+            <div class="banner">
+                <div class="lst flexBanner">
+                    <ul class="slides">
+                    {/if count($hr_pictures)>0/}
+                    {/foreach $hr_pictures as $key=>$value/}
+                    <!--
+                    <li><a target="_blank" href="{/get_url rule="/hrcollege/activitydetail/" data="activity_id={/$value['activity_id']/}"/}"><img src="{/$advert_vir_path/}{/$value['advert_picture_url']/}" /></a></li>
+                    -->
+                    <li><a target="_blank" href="{/$value.href/}"><img src="{/$value.src/}" /></a></li>
+                   
+                    {//foreach/}
+                    {/else/}
+                    <li><a href="javascript:void(0)"><img src="{/$siteurl.style/}/img/hr/bn2.jpg" /></a></li>
+                    <li><a href="javascript:void(0)"><img src="{/$siteurl.style/}/img/hr/bn3.jpg" /></a></li>
+                    <li><a href="javascript:void(0)"><img src="{/$siteurl.style/}/img/hr/bn1.jpg" /></a></li>
+                    {//if/}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bdPart">
+           <form id="formActivity" action="{/get_url rule="/hrcollege/searchdo"/}" method="get">
+        	<div class="l">
+            	<div class="filter">
+                	<span class="filt typeT">
+                    	<b>类型：</b>
+                    	<input type="hidden" id="hddTopActivityTypeId" name="hddTopActivityTypeId" value="{/$top_activity_type_id/}"/>
+            			<input type="hidden" id="hddActivityTypeId" name="hddActivityTypeId" value="{/$activity_type_id/}"/>
+                        <span id="activity_type">
+                        	<a href="javascript:void(0)" v="" {/if $top_activity_type_id==''&&$activity_type_id==''/}class='cu'{//if/}>全部</a>
+                        	{/foreach $top_activitytype as $key=>$value/}
+                        		{/if $top_activity_type_id!=''&&$top_activity_type_id==$value['activity_type_id']/}
+                        		<a class="cu" v="{/$value['activity_type_id']/}" href="javascript:void(0)">{/$value['activity_name']/}<i class="hbFntWes">&#xf0dd;</i></a>
+                        		{/else/}
+                        		<a v="{/$value['activity_type_id']/}" href="javascript:void(0)">{/$value['activity_name']/}<i class="hbFntWes">&#xf0dd;</i></a>
+                        		{//if/}
+                        	{//foreach/}
+                        </span>
+                        {/if count($child_activity_arr)>0/}
+	                        <span class="typeC">
+	                        <span class="typeCon">
+                        	{/foreach $child_activity_arr as $key=>$value/}
+                        	{/if $activity_type_id!=''&&$activity_type_id==$value['activity_type_id']/}
+                        		 <a class="cu" v="{/$value['activity_type_id']/}" href="javascript:void(0)">{/$value['activity_name']/}</a>
+                        	{/else/}
+                        	 	<a v="{/$value['activity_type_id']/}" href="javascript:void(0)">{/$value['activity_name']/}</a>
+                        	{//if/}
+                        	{//foreach/}
+                        	 </span>
+                    		</span>
+                        {//if/}
+                        <div class="clear"></div>
+                    </span>
+                    <span class="filt object" id="condition_audience">
+                        	<b>对象：</b>
+                        	<input type="hidden" id="hddAudienceId" name="hddAudienceId" value="{/$audience_id/}"> 
+                            <span>
+                            	<a v="" {/if $audience_id==''||$audience_id==0/}class='cu'{//if/} href="javascript:void(0)">全部</a>
+                            	{/foreach $audience as $key=>$value/}
+                           			{/if $audience_id!=''&&$audience_id==$key/}
+                           			<a class="cu" v="{/$key/}" href="javascript:void(0)">{/$value/}</a>
+                           			{/else/}
+                           			<a v="{/$key/}" href="javascript:void(0)">{/$value/}</a>
+                           			{//if/}
+                            	{//foreach/}
+                            </span>
+                        </span>
+                </div>
+                <div class="act">
+                	<div class="actT">
+                		<input type="hidden" id="hddExpired" name="hddExpired" value="{/$is_exp/}"/>
+                    	<ul id="ulExp">
+                        	{/if $show_last_activity==true/}<li {/if $is_exp!='1'/}class="cu"{//if/}><a v="0"  href="javascript:void(0)">最新活动</a></li>{//if/}
+                            <li {/if $is_exp=='1'/}class="cu"{//if/}><a v="1" href="javascript:void(0)">往期活动</a></li>
+                        </ul>
+                        <div class="tipTxt">举办<em>{/$already_activity_count/}</em>场活动  共有<em>{/$all_signup_count/}</em>人报名参加学习</div>
+                    </div>
+                    <div class="actC">
+                    	<div class="actCon">
+                        	<div class="actLst">
+                        		{/if count($activity_arr)>0/}
+                            	<ul>
+                            	{/foreach $activity_arr as $key=>$value/}
+                                	<li>
+                                    	<span class="actTit">
+                                            <h2><a target="_blank" href="{/get_url rule="/hrcollege/activitydetail/" data="activity_id={/$value['activity_id']/}"/}">【{/$value['date']/}】{/$value['subject']/}（{/$value['modus']/}）</a></h2>
+                                            <span class="des"><em>{/$value['feature']/}</em><em>规模：{/$value['predict_extent']/}人</em></span>
+                                        </span>
+                                        <dl>
+                                        	<dt><img src="{/if $value['activity_picture_url']!=''/}{/$advert_vir_path/}{/$value['activity_picture_url']/}{/else/}{/$siteurl.style/}/img/common/c_nopic.jpg{//if/}"/></dt>
+                                            <dd>
+                                            	<span class="lstT">
+                                                    <h3><a target="_blank" href="{/get_url rule="/hrcollege/lecturerdetail/" data="lecturer_id={/$value['resume_id']/}"/}">讲师：<b>{/$value['resume_name']/}</b>{/$value['specialties']/}</a><i class="price">￥{/$value['price']/}</i></h3>
+                                                    <p>擅长领域：{/$value['resume_signorys']/}</p>
+                                                    <p>擅长行业：{/$value['calling']/}</p>
+                                                    <p>主讲课程：{/$value['curriculum']/}</p>
+                                                </span>
+                                                <span class="lstC">
+                                                	<h3>课程简介</h3>
+                                                    <p>{/$value['course_introduction']/}</p>
+                                                </span>
+                                            </dd>
+                                        </dl>
+                                        <p class="more"><a target="_blank" href="{/get_url rule="/hrcollege/activitydetail/" data="activity_id={/$value['activity_id']/}"/}">继续阅读</a></p>
+                                    </li>
+                                    {//foreach/}
+                                </ul>
+                                {/else/}
+                                <div class="noData">暂无数据</div>
+                                {//if/}
+                            </div>
+                            <div class="page">
+                                {/$pager/}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="r">
+            	<div class="serverList">
+            		<h3>汇博网综合服务</h3>
+            		<ul>
+						{/foreach $service_type as $k=>$val/}
+            			<li><a target="_blank" href="{/get_url rule="/companyarticle/index/" data="service_type={/$k/}"/}">{/$val.name/}</a></li>
+						{//foreach/}
+            		</ul>
+            	</div>
+                <div class="weixin">
+                    <div class="wxBox">
+                        <div class="wxT">
+                            <p><img src="{/$siteurl.style/}/img/hr/wx1.jpg"/></p>
+                            <p>扫描微信二维码<br/>分享人力资源管理智慧</p>
+                        </div>
+                        <div class="wxF">
+                            <p>汇博诚邀讲师及机构合作</p>
+                            <p>联系电话:<i class="tel">4001010970-7403</i></p>
+                        </div>
+                    </div>
+                </div>
+            	<div class="rev">
+                	<div class="tit"><h3>活动回顾</h3><a class="more" target="_blank" href="{/get_url rule="/hrcollege/activityreview/"/}">更多</a></div>
+                	{/if count($review_activity_arr)>0/}
+                	<div class="revC">
+                		{/foreach $review_activity_arr as $key=>$value/}
+                    	<dl>
+                        	<dt><a target="_blank" href="{/get_url rule="/hrcollege/activityreviewdetail/" data="activity_id={/$value['activity_id']/}"/}"><img src="{/if $value['review_picture_url']!=''/}{/$advert_vir_path/}{/$value['review_picture_url']/}{/else/}{/$siteurl.style/}/img/common/c_nopic.jpg{//if/}"/></a></dt>
+                            <dd>
+                            	<p><em>主&nbsp;&nbsp;&nbsp;题：</em><a target="_blank" href="{/get_url rule="/hrcollege/activitydetail/" data="activity_id={/$value['activity_id']/}"/}"  class="theme">{/$value['subject']/}</a></p>
+                                <p><em>讲&nbsp;&nbsp;&nbsp;师：</em><a target="_blank" href="{/get_url rule="/hrcollege/lecturerDetail" data="lecturer_id={/$value['resume_id']/}"/}" class="name">{/$value['resume_name']/}</a></p>
+                                <p><em>举办方：</em><i class="host">{/$value['organizers']/}</i></p>
+                            </dd>
+                        </dl>
+                        {//foreach/}
+                    </div>
+               		{//if/}
+                </div>
+                <div class="lec">
+                	<div class="tit"><h3>讲师风采</h3><a target="_blank" class="more" href="{/get_url rule="/hrcollege/lecturer"/}">更多</a></div>
+                	{/if count($lecturer_arr)>0/}
+                    <div class="lecC">
+                    	{/foreach $lecturer_arr as $key=>$value/}
+                    	<dl>
+                        	<dt><a target="_blank" href="{/get_url rule="/hrcollege/lecturerDetail" data="lecturer_id={/$value['resume_id']/}"/}"><img src="{/if $value['picture']!=''/}{/$lecturer_vir_path/}{/$value['picture']/}{/else/}{/$siteurl.style/}/img/common/user100_125.jpg{//if/}"/></a></dt>
+                            <dd><p><a target="_blank" href="{/get_url rule="/hrcollege/lecturerDetail" data="lecturer_id={/$value['resume_id']/}"/}" class="name">{/$value['user_name']/}</a><span>{/$value['specialties']/}</span>{/$value['resume_signorys']/}</p></dd>
+                        </dl>
+                        {//foreach/}
+ 
+                    </div>
+                    {//if/}
+                </div>
+            </div>
+            <div class="clear"></div>
+            </form>
+        </div>
+    </hgroup>
+</section>
+{/include file="footer.html"/}
+<section class="floatRT"><a href="{/get_url rule='/about/message' domain='main'/}" target="_blank" class="serviceLink">我有问题要反馈</a><b></b></section>
+<script type="text/javascript">
+var activity={
+	init:function(){
+		//活动图片
+		$('.flexBanner').flexslider({
+			animation:"slide",
+			itemWidth:1000,
+			itemMargin:0,
+			prevText:'&#xf053;',
+			nextText:'&#xf054;',
+			pauseOnAction:false,
+			pauseOnHover:true,  
+			move:1
+		});
+		activity.search_conditon();
+	},
+	submit_search:function(){
+		$('#formActivity').submit();
+	},
+	search_conditon:function(){
+		//类型
+		$('#activity_type').find('a').click(function(){
+			var _self = $(this);
+			var this_val = _self.attr('v');
+			_self.addClass('cu').siblings().removeClass('cu');
+			if(this_val==''||this_val=='0'){
+				_self.closest('.filter').find('.typeC').hide();
+				$('#hddTopActivityTypeId').val('');
+				$('#hddActivityTypeId').val('');
+				activity.submit_search();
+				return false;
+			}else{
+				$.post('{/get_url rule="/hrcollege/getSubActivityType/" data="activity_type_id='+this_val+'"/}',function(data){
+					if(data&&data.error){
+						$.anchorMsg(data.error,{icon:'warning'});
+						return;
+					}
+					var container = $('<span class="typeC" />');
+					var containerLst = ($('<span class="typeCon"/>'));
+					for(var i=0;i<data.length;i++){
+						containerLst.append('<a href="javascript:void(0)" v="'+data[i].activity_type_id+'">'+data[i].activity_name+'</a>');
+					}
+					container.append(containerLst);
+					_self.closest('.filter').find('.typeC').remove();
+					_self.parent().after(container);
+					
+				},'json');
+				_self.addClass('cu').siblings().removeClass('cu');
+				$('#hddTopActivityTypeId').val(this_val);
+			}
+		});
+		//类型搜索
+		$('.typeC').find('a').live('click',function(){
+			var _self = $(this);
+			var this_val = _self.attr('v');
+			_self.addClass('cu').siblings().removeClass('cu');
+			$('#hddActivityTypeId').val(this_val);
+			activity.submit_search();
+			return false;
+		});
+		//对象
+		$('#condition_audience').find('a').click(function(){
+			var _self = $(this);
+			var this_val = _self.attr('v');
+			_self.addClass('cu').siblings().removeClass('cu');
+			$('#hddAudienceId').val(this_val);
+			activity.submit_search();
+			return false;
+		});
+		{/if $show_last_activity==true/}
+		//往期活动
+		$('#ulExp').find('a').click(function(){
+			var _self = $(this);
+			var this_val = _self.attr('v');
+			_self.closest('li').addClass('cu').siblings().removeClass('cu');
+			$('#hddExpired').val(this_val);
+			activity.submit_search();
+			return false;
+		});
+		{//if/}
+	}	
+}
+activity.init();
+</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{/$fair_info['name']/}</title>
+		<link rel="stylesheet" href="//www.huibo.com/topicpage/20171110data/js/swiper-3.4.2.min.css">
+		<style type="text/css">
+		* {
+		padding: 0px;
+		margin: 0px;
+		font-family: "微软雅黑";
+		font-size: 14px;
+		list-style: none;
+		}
+		body{ background: #fff;}
+		a {
+			text-decoration: none;
+		}
+
+		img {
+			border: none;
+		}
+		.template01{width:100%; height: 336px; background: url({/$siteurl.style/}/img/sidefair/template_img01.jpg) center top no-repeat; overflow: hidden; position: relative; }
+		.logo{ display: block; position: absolute; top: 0px; left: 0px; width:196px; height: 194px; text-indent: -9999em;}
+		.template02{width:100%; height: 244px; background: url({/$siteurl.style/}/img/sidefair/template_img02.jpg) center top no-repeat; overflow: hidden; text-align: center;}
+		.template01 h2{ font-size: 55px; color: #fff; text-align: center; padding-top: 140px;}
+		.template01 h3{font-size: 35px; color: #fff; text-align: center; padding-top: 22px;}
+		.template02 h2{ max-width: 80%; text-align: center; color: #fff; overflow: hidden; border: 2px solid #fff; font-size: 26px; border-radius: 30px; padding: 0 40px; height: 62px; line-height: 62px;  display:inline-block; margin-top:0px;}
+		.templateIntro{width:1068px; overflow: hidden; margin: 0 auto; padding-top: 80px;}
+		.templateIntro h2{width:119px; height: 40px; background: url({/$siteurl.style/}/img/sidefair/template_img03.jpg) no-repeat; text-align: center; line-height: 36px; color: #333; font-size: 24px; margin: 0 auto; margin-bottom: 20px;}
+		.templateIntroBd{ overflow: hidden; padding: 0 45px; position: relative;}
+		.templateIntroBd img{ display: block; position: absolute;width:25px; height: 15px; opacity: 0.3;filter:alpha(Opacity=30);}
+		.templateIntroBd img.templateIntroLt{ top: 14px; left: 0px;}
+		.templateIntroBd img.templateIntroRb{ bottom: 10px; right: 10px;}
+		.templateIntroBd p{ line-height: 40px; color: #323346; font-size: 16px;}
+		.template03{width:100%; height: 548px; background: url({/$siteurl.style/}/img/sidefair/template_img06new.jpg) center top no-repeat; overflow: hidden; }
+		.templateBanner{width:990px; height: 218px;margin: 185px auto 0 auto;}
+		.template04{width:100%; overflow: hidden; background: #f3f8ff; padding: 20px 0 100px 0;}
+		.tmpMain{width:1018px; overflow: hidden; margin: 0 auto;}
+		.templateList{width:320px;overflow: hidden; background: #fff; border-radius: 4px; margin-bottom: 18px;}
+		.tmpList01{ border-radius: 4px 4px 0 0; padding:12px; overflow: hidden; background: #d2e4ff;}
+		.tmpList01 img{ display: block; float: left;width:60px; height: 60px; border-radius: 4px;}
+		.tmpList01 p{width:220px; float: right;}
+		.tmpList01 p span{ display: block;width:100%; height:24px; line-height: 24px; overflow: hidden;text-overflow: ellipsis;white-space: nowrap; color: #333; font-size: 16px; font-weight: bold; padding-top: 5px;}
+		.tmpList01 p em{ display: block; padding-top: 5px; font-style: inherit; color: #666; font-size: 12px;}
+		.tmpList02{ padding: 20px 0; padding-right: 5px;}
+		.tmpList02 span{ display: block; float: left; color: #333; font-size: 18px; padding: 0 0 14px 15px;}
+        .tmpList02 span a{ display: block; text-decoration: none; color: #333; font-size: 14px;}
+        .tmpList02 span a:hover{ color: #0066CC;}
+		.footer{width:100%; text-align: center; line-height: 24px; color: #fff; font-size: 14px; padding: 40px 0; background: #323346;}
+		.tempTit02{ display:block;width:191px; height: 38px; background: url({/$siteurl.style/}/img/sidefair/template_img07.jpg) no-repeat; text-align: center; line-height: 38px; color: #333; font-size: 24px; margin: 0 auto; margin-bottom: 35px; font-weight: bold;}
+        .tmpMainLeft{width:320px; float: left; margin-right: 18px;}
+        .tmpMainCenter{width:320px; float: left; margin-right: 18px;}
+        .tmpMainRight{width:320px; float: left;}
+		.swiper-container,.swiper-container1{  width: 100%;  height: 100%;  overflow: hidden;  }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #8ab8ff;
+            width: 80%;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        .swiper-slide:nth-child(2n) {
+            width: 60%;
+        }
+        .swiper-slide:nth-child(3n) {
+            width: 40%;
+        }
+        .swiper-slide img{width: 230px; height: 209px;}
+        .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{display: none;}
+        .swiper-pagination-clickable{display: none;}
+		</style>
+		<script type="text/javascript" src="{/version file="jquery-1.10.1.min.js"/}"></script>
+		<script src="//www.huibo.com/topicpage/20171110data/js/swiper-3.4.2.min.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div class="template01">
+			<a href="{/base_lib_Constant::MAIN_URL_NO_HTTP/}" target="_blank" class="logo">LOGO</a>
+			<h2>{/$fair_info['start_time']|date_format:'%m月%d日'/}（{/$fair_info['week']/}）</h2>
+			<h3>{/$fair_info['name']/}</h3>
+		</div>
+		<div class="template02">
+			<h2>地点：{/$fair_info['address']/}</h2>
+		</div>
+		<div class="templateIntro">
+			<h2>简介</h2>
+			<div class="templateIntroBd">
+				<img class="templateIntroLt" src="{/$siteurl.style/}/img/sidefair/template_img04.jpg"/>
+				<img class="templateIntroRb" src="{/$siteurl.style/}/img/sidefair/template_img05.jpg"/>
+				<p>
+                    {/html_encode content=$fair_info['introduce']/}
+				</p>
+			</div>
+		</div>
+        {/if !empty($pic['total'])/}
+		<div class="template03">
+			<div class="templateBanner">
+				<div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {/foreach $pic as $k=>$v/}
+                        {/if !empty($v['path'])/}
+                        <div class="swiper-slide"><img src="{/$v['path']/}" alt="" /></div>
+                        {//if/}
+                        {//foreach/}
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+			</div>
+		</div>
+        {//if/}
+		<div class="template04">
+			<span class="tempTit02">本次参会企业</span>
+			<div class="tmpMain">
+
+                <div class="tmpMainLeft">
+                    {/foreach $company as $k=>$v/}
+                    {/if ($k+3)%3==0/}
+                    <div class="templateList">
+                        <div class="tmpList01">
+                            <a href="{/$v['info']['link']/}" target="_blank">
+                                <img src="{/$v['info']['company_logo_path']/}"/>
+                                <p>
+                                    <span>{/$v['info']['company_name']/}</span>
+                                    <em>{/$size[$v['info']['size_id']]/}/{/$property[$v['info']['property_id']]/}/{/$v['info']['calling']/}</em>
+                                </p>
+                            </a>
+                        </div>
+
+                        <div class="tmpList02">
+                            {/foreach $v['job'] as $key=>$val/}
+                            <span><a href="{/$val['link']/}" target="_blank">{/$val['station']/}</a></span>
+                            {//foreach/}
+                        </div>
+                    </div>
+                    {//if/}
+                    {//foreach/}
+                </div>
+
+                <div class="tmpMainCenter">
+                    {/foreach $company as $k=>$v/}
+                    {/if ($k+3)%3==1/}
+                    <div class="templateList">
+                        <div class="tmpList01">
+                            <a href="{/$v['info']['link']/}" target="_blank">
+                                <img src="{/$v['info']['company_logo_path']/}"/>
+                                <p>
+                                    <span>{/$v['info']['company_name']/}</span>
+                                    <em>{/$size[$v['info']['size_id']]/}/{/$property[$v['info']['property_id']]/}/{/$v['info']['calling']/}</em>
+                                </p>
+                            </a>
+                        </div>
+
+                        <div class="tmpList02">
+                            {/foreach $v['job'] as $key=>$val/}
+                            <span><a href="{/$val['link']/}" target="_blank">{/$val['station']/}</a></span>
+                            {//foreach/}
+                        </div>
+                    </div>
+                    {//if/}
+                    {//foreach/}
+                </div>
+
+                <div class="tmpMainRight">
+                    {/foreach $company as $k=>$v/}
+                    {/if ($k+3)%3==2/}
+                    <div class="templateList">
+                        <div class="tmpList01">
+                            <a href="{/$v['info']['link']/}" target="_blank">
+                                <img src="{/$v['info']['company_logo_path']/}"/>
+                                <p>
+                                    <span>{/$v['info']['company_name']/}</span>
+                                    <em>{/$size[$v['info']['size_id']]/}/{/$property[$v['info']['property_id']]/}/{/$v['info']['calling']/}</em>
+                                </p>
+                            </a>
+                        </div>
+
+                        <div class="tmpList02">
+                            {/foreach $v['job'] as $key=>$val/}
+                            <span><a href="{/$val['link']/}" target="_blank">{/$val['station']/}</a></span>
+                            {//foreach/}
+                        </div>
+                    </div>
+                    {//if/}
+                    {//foreach/}
+                </div>
+
+			</div>
+		</div>
+		
+		<div class="footer">©2019 汇博人才网 版权所有<br />招聘单位无权收取任何费用，请求职人员加强自我保护意识，按劳动法规保护自身权益，警惕虚假招聘，避免上当受骗! </div>
+		
+<script>
+  var swiper = new Swiper('.swiper-container', {
+    pagination: '.swiper-pagination',
+    slidesPerView: 4,
+    paginationClickable: true,
+    loop: true,
+    autoplay: 3000,
+    spaceBetween: 10,
+    autoplayDisableOnInteraction: false,
+    speed:500
+  });
+</script>
+        <script>
+          var _hmt = _hmt || [];
+          (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?fb51309e47424acd6e31c0bd2a65a5a1";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+          })();
+        </script>
+        <script type="text/javascript" language="javascript" src="{/version file='track.js'/}"></script>
+	</body>
+</html>

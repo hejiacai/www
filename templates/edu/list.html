@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="{/version file='base.css'/}" />
+		<link rel="stylesheet" type="text/css" href="{/version file='hb_education.css'/}" />
+		<script type="text/javascript" src="{/version file='jquery-1.8.3.min.js'/}"></script>
+	</head>
+	<body style="background: #eff0f5">
+		<div class="eduHeadTop">
+			<div class="eduHeadCenter clearfix">
+				<div class="eduHeadLeft">
+					<img src="{/$siteurl.style/}/img/edu/edu_img01.jpg" >
+					<b>精选课程</b>
+				</div>
+				{/if !$is_person_login/}
+				<div class="eduHeadRight">
+					<a href="{/$siteurl.educompany/}/register" target="_blank">培训企业注册</a>
+					<a href="{/$siteurl.educompany/}/login" target="_blank">企业登录</a>
+				</div>
+				{//if/}
+			</div>
+		</div>
+		<div class="eduContent clearfix" >
+			<div class="eduTit">汇博自营</div>
+			<div class="eduList" {/if empty($res)/}style="min-height: 600px;"{//if/}>
+				<a href="{/$siteurl.main/}/topicpage/eduction/index4.html" target="_blank">
+					<img class="bannerImg" src="{/$siteurl.style/}/img/edu/edu_img03.jpg" >
+					<span class="subTit">工业机器人就业培训</span>
+				</a>
+				<!--<a href="{/$siteurl.main/}/topicpage/20190702edu/index2.html" target="_blank">-->
+					<!--<img class="bannerImg" src="{/$siteurl.style/}/img/edu/edu_img04.jpg" >-->
+					<!--<span class="subTit">免费学习新媒体</span>-->
+				<!--</a>-->
+			</div>
+			<div class="eduTit" {/if empty($res)/}style="display: none;"{//if/}>为您精选</div>
+
+			<div class="eduList eduList02 " id="jobList" {/if empty($res)/}style="display: none;"{//if/}>
+				{/if !empty($res)/}
+				{/foreach $res as $v/}
+				<a target="_blank" href="{/$siteurl.main/}/edu/detail/id-{/$v['course_id']/}">
+					<img class="bannerImg" src="{/$v['p_url']/}" >
+					<span class="subTit">{/$v['course_name']/}</span>
+					<p class="eduCompany">
+						<img src="{/$v['logo_path']/}" >
+						<em>{/$v['company_name']/}</em>
+					</p>
+					{/if $v['train_deposit']==1/}
+					<i class="eduGuard"></i>
+					{//if/}
+				</a>
+				{//foreach/}
+				{/else/}
+					<div class="noData mgb10">对不起，没有找到您想要的课程</div>
+				{//if/}
+				<div class="clear"></div>
+				<div class="loading" style="display:none;width:100%;text-align: center">
+					<!--<img src="//assets.huibo.com/img/part/part_loading1.gif"/><br/>-->
+					加载中
+				</div>
+			</div>
+			
+		</div>
+
+		{/include file="footer.html"/}
+	</body>
+<script>
+    var ajax_page_requist = {
+        init:function(){
+            var doc = $(document),
+                win = $(window),
+                isLoadScroll = false;
+
+            total_page = parseInt('{/$total_page/}');
+            page = parseInt('{/$cur_page/}');
+            failter_ids ='{/$failter_ids/}';
+            url = "/?";
+            content_last = '';//反正重复请求的数据加载
+            is_do = false;//一旦触发，is_do 锁住 ,保证逻辑不被并发,及保证请求完第2页后才请求第3页，这样,,,（避免重复请求，避免一次下滑多次触发导致page到最后，而页面显示不完整数据（网络卡，刷新过快））
+            win.on('scroll', function() {
+                if(is_do){
+                    return false;
+                }else{
+                    is_do = true;
+                }
+
+                var c = doc.scrollTop() + win.height() >= doc.height() - 50;
+                if(c && !isLoadScroll){
+                    //开始滚动
+                    $(".loading").show();
+                    if((total_page-page)<=0){
+                        isLoadScroll = false;//每次都提示
+                        $(".loading").html(" <span style='display:block;font-size: 14px;padding-bottom:20px'>到底了,没有更多数据了</span>");
+                        // setTimeout("$(\".loading\").hide()",1500);
+                        //解锁
+                        is_do = false;
+                        return false;
+                    }
+
+                    $.post('{/$siteurl.main/}/edu/index/page-' + (1 + page) + url,{filter_ids:failter_ids}, function (e) {
+
+                        if(content_last != e.message)
+                        {
+                            $("#jobList").append(e.message);
+                            content_last = e.message;
+                            failter_ids = e.failter_ids;
+                        }
+
+                        page++;
+
+                        //停止滚动
+                        setTimeout('$(".loading").hide();',1000);
+                        //解锁
+                        is_do = false;
+                        //window.location.refresh();
+                    },"json");
+                }else{
+                    //解锁
+                    is_do = false;
+                }
+
+            });
+        }
+    };
+    ajax_page_requist.init();
+</script>
+</html>
